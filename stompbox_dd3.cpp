@@ -299,17 +299,17 @@ void stompbox_dd3::setEditPages()
     editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "18", "normal_ratio1.25");
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "19", "normal_ratio1.25");
     editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "1A", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(1, 0, 1, 2);
+    editDetails()->page()->addGroupBox(0, 1, 1, 1);
 
     editDetails()->page()->newGroupBox("Filter");
     editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    editDetails()->page()->addGroupBox(0, 2, 1, 1);
 
     editDetails()->page()->newGroupBox("Level");
     editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75"); //effect
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
     editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "20"); //carry over
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    editDetails()->page()->addGroupBox(0, 3, 1, 1);
     editDetails()->page()->addStackField();
 
 

@@ -51,13 +51,23 @@ customControlSwitch::customControlSwitch(QWidget *parent,
 
     this->label->setUpperCase(true);
     this->label->setText(labeltxt);
-    QString imagePath  = ":/images/switch.png";
+    QString imagePath  = ":/images/ledbutton.png";
     if(direction.contains("invert")) { imagePath = ":/images/switch_invert.png"; };
     this->switchbutton = new customSwitch(false, this, hex0, hex1, hex2, hex3, imagePath);
 
     if(direction == "left")
     {
+        this->label->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+        this->label->setTextRaise(qRound(1 * ratio));
 
+        QHBoxLayout *mainLayout = new QHBoxLayout;
+        mainLayout->setContentsMargins(0, 0, 0, 0);
+        mainLayout->setSpacing(qRound(8 * ratio));
+        mainLayout->addWidget(this->switchbutton, 0, Qt::AlignLeft | Qt::AlignVCenter);
+        mainLayout->addWidget(this->label, 0, Qt::AlignLeft | Qt::AlignVCenter);
+        mainLayout->addStretch(1);
+
+        this->setLayout(mainLayout);
     }
     else if(direction == "right")
     {
@@ -110,14 +120,6 @@ customControlSwitch::customControlSwitch(QWidget *parent,
 
 void customControlSwitch::paintEvent(QPaintEvent *)
 {
-    /* DRAWS RED BACKGROUND  */
-    if(hover==true){
-        QPixmap image(":/images/dragbar.png");
-        QRectF target(0.0, 0.0, this->width(), this->height());
-        QRectF source(0.0, 0.0, 600, 600);
-        QPainter painter(this);
-        painter.drawPixmap(target, image, source);
-    };
 }
 
 void customControlSwitch::valueChanged(bool value, QString hex0, QString hex1, QString hex2, QString hex3)

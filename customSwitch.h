@@ -38,7 +38,7 @@ public:
 		QString hex1 = "void",
 		QString hex2 = "void",
 		QString hex3 = "void",
-                QString imagePath = ":/images/switch.png");
+                QString imagePath = ":/images/ledbutton.png");
 	void setValue(bool value);
 
 signals:
@@ -61,10 +61,12 @@ private:
 
 	bool active;
 	bool m_value;
+	bool pressed;
+	bool useModernToggle;
 	QString imagePath;
 	QSize switchSize;
 	unsigned int imageRange;
-	QPoint switchPos; 
+	QPoint switchPos;
 	QPoint dragStartPosition;
 	signed int yOffset;
 };

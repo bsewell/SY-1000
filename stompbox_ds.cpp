@@ -80,12 +80,12 @@ void stompbox_ds::setEditPages()
     editDetails()->page()->newGroupBox("Level");
     editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(1, 1, 1, 1);
+    editDetails()->page()->addGroupBox(0, 2, 1, 1);
 
     editDetails()->page()->newGroupBox("Solo");
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "07");
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(1, 0, 1, 1);
+    editDetails()->page()->addGroupBox(0, 3, 1, 1);
 
     editDetails()->addPage();
 }

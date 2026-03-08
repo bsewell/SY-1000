@@ -68,14 +68,11 @@ void soundsource_normal::setEditPages()
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
     editDetails()->page()->newGroupBox(tr("Normal Input"));
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "12", "01");   // off/on effect
+    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "12", "01", "left");   // off/on effect
+    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, "12", "02", "0~200_ratio1.75");  //level
+    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, "12", "04", "large");   //cable
+    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, "12", "05", "large");   //phase
     editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox(tr("Selection"));
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, "12", "02", "0~200_ratio1.75");  //level
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, "12", "04", "large");   //cable
-    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, "12", "05", "large");   //phase
-    editDetails()->page()->addGroupBox(1, 0, 1, 1);
 
     editDetails()->addPage();
 }

@@ -134,7 +134,7 @@ customControlParaEQ::customControlParaEQ(QWidget *parent,
 
     MidiTable *midiTable = MidiTable::Instance();
     if (this->area.contains("System")) {this->area = "System";} else {this->area = "Structure";};
-    QFont Sfont( "Arial", 8*fratio, QFont::Normal);
+    QFont Sfont( "Arial", 9*fratio, QFont::Normal);
 
     if(type.contains("inst"))
     {QString temp=hex_2; hex_2=hex_9; hex_9=hex_1;  hex_1=temp;};
@@ -407,6 +407,7 @@ customControlParaEQ::customControlParaEQ(QWidget *parent,
         knobLayout->setColumnStretch(column, 1);
         knobLayout->addWidget(labels[column], 0, column, Qt::AlignHCenter | Qt::AlignBottom);
         knobLayout->addWidget(knobs[column], 1, column, Qt::AlignHCenter | Qt::AlignTop);
+        displays[column]->setContentsMargins(0, -5*ratio, 0, 0);
         knobLayout->addWidget(displays[column], 2, column, Qt::AlignHCenter | Qt::AlignTop);
     }
 
@@ -424,6 +425,7 @@ customControlParaEQ::customControlParaEQ(QWidget *parent,
             knob->setValue(v);
             QString txt = midiTableDrag->getValue(this->hex0, this->hex1, addr, hexKey, toHex(v));
             display->setText(txt);
+            SysxIO::Instance()->setFileSource(this->hex0, this->hex1, addr, hexKey, toHex(v));
             emit updateSignal();
         });
     };
@@ -500,19 +502,13 @@ customControlParaEQ::customControlParaEQ(QWidget *parent,
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(timed()) );
 
     setMouseTracking(true);
+
+    dialogUpdateSignal();
 }
 
 
 void customControlParaEQ::paintEvent(QPaintEvent *)
 {
-    /* DRAWS RED BACKGROUND  */
-    if(hover==true){
-        QPixmap image(":/images/dragbar.png");
-        QRectF target(0.0, 0.0, this->width(), this->height());
-        QRectF source(0.0, 0.0, 600, 600);
-        QPainter painter(this);
-        painter.drawPixmap(target, image, source);
-    };
 }
 
 void customControlParaEQ::dialogUpdateSignal()

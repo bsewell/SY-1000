@@ -86,17 +86,17 @@ void soundsource_inst2::setEditPages()
         hex2 = "1F";
     };
 
-    //editDetails()->page()->newGroupBox("Instrument 2");
+    editDetails()->page()->newGroupBox("Instrument 2");
     editDetails()->page()->newStackControl(0);
-    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, hex2, "01", "large_inst"); //type
+    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00", "left");  // on-off
+    editDetails()->page()->addComboBox(0, 1, 1, 2, "10", hex1, hex2, "01", "large_inst"); //type
     editDetails()->page()->addStackControl();
     //editDetails()->page()->addSystemOverride(0, 0, 1, 2, "10", hex1, "12", "00", "01", "less_than");
-    editDetails()->page()->insertStackField(0, 1, 0, 2, 8);
-    editDetails()->page()->addSwitch(0, 2, 1, 1, "10", hex1, hex2, "00");  // on-off
+    editDetails()->page()->insertStackField(0, 1, 1, 2, 8);
     editDetails()->page()->addKnob(0, 3, 1, 2, "10", hex1, hex2, "02", "normal_ratio1.5", "right");  // LEVEL
     editDetails()->page()->addSwitch(0, 5, 1, 1, "10", hex1, hex2, "03");  //nor-mix
     editDetails()->page()->addDataKnob(0, 6, 1, 2, "10", hex1, hex2, "04", "0~200_ratio1.25", "left");  //nor-mix level
-    //editDetails()->page()->addGroupBox(0, 0, 1, 1);
+    editDetails()->page()->addGroupBox(0, 0, 1, 1);
 
     // *********************************************************************************************************** DYNAMIC SYNTH ********************
     editDetails()->page()->newStackField(0);

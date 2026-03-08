@@ -365,7 +365,8 @@ editWindow* stompBox::editDetails()
 
 void stompBox::mousePressEvent(QMouseEvent *event)
 {
-    Q_UNUSED(event);
+    this->dragStartPosition = event->position().toPoint();
+    this->dragInProgress = false;
 
     this->selected=true;
     this->hovered=false;
@@ -380,21 +381,29 @@ void stompBox::mousePressEvent(QMouseEvent *event)
     update();
 }
 
+void stompBox::mouseReleaseEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton && !this->dragInProgress)
+    {
+        const int dragDistance = (event->position().toPoint() - this->dragStartPosition).manhattanLength();
+        if(dragDistance <= QApplication::startDragDistance() &&
+           id != 24 && id != 25 && id != 26 && id != 27 &&
+           this->hex0 != "void" && this->hex1 != "void" &&
+           this->hex2 != "void" && this->hex3 != "void")
+        {
+            this->sw = !this->sw;
+            valueChanged(this->sw);
+            update();
+        }
+    }
+
+    this->dragInProgress = false;
+    QWidget::mouseReleaseEvent(event);
+}
+
 void stompBox::mouseDoubleClickEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
-    if(/*this->selected==true && */id!=24 && id!=25 && id!=26 && id!=27)
-    {
-        if(this->sw==true)
-        {
-            this->sw=false;
-            valueChanged(sw);
-        }else {
-            this->sw=true;
-            valueChanged(sw);
-        };
-        update();
-    };
 }
 
 void stompBox::mouseMoveEvent(QMouseEvent *event)
@@ -418,10 +427,13 @@ void stompBox::mouseMoveEvent(QMouseEvent *event)
     {
         QPoint mousePoint = event->position().toPoint();
         QRect stompRect = this->rect();
+        const int dragDistance = (event->position().toPoint() - dragStartPosition).manhattanLength();
 
         if ( /*(event->position().toPoint() - dragStartPosition).manhattanLength() > QApplication::startDragDistance() &&*/
-            stompRect.contains(mousePoint) )
+            stompRect.contains(mousePoint) &&
+            dragDistance > QApplication::startDragDistance() )
         {
+            this->dragInProgress = true;
 
             QByteArray itemData;
             QDataStream dataStream(&itemData, QIODevice::WriteOnly);
@@ -666,6 +678,12 @@ void stompBox::valueChanged(bool value)
     if(hex0!="void" && hex1!="void" &&  hex2!="void" && hex3!="void")
     {
         valueChanged(value, this->hex0, this->hex1, this->hex2, this->hex3);
+        emit updateStompBoxes();
+        if(this->editDialog)
+        {
+            QMetaObject::invokeMethod(this->editDialog, "dialogUpdateSignal", Qt::DirectConnection);
+            this->editDialog->pageUpdateSignal();
+        }
     };
 }
 

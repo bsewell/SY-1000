@@ -158,6 +158,7 @@ public slots:
     void valueChanged(bool value, QString hex1, QString hex2, QString hex3); // Not used.
     void updateDialog(int index);
     void updateDisplay(QString text);
+    void syncPowerState();
 
 signals:
     void dialogUpdateSignal();
@@ -166,6 +167,7 @@ signals:
 
 
 private:
+    void registerManagedControl(QWidget *widget);
     int currentIndex;
     QGridLayout* layout;
     QList<QGridLayout*> groupBoxLayouts;
@@ -186,6 +188,12 @@ private:
     QList<int> fieldIndexes;
     int fieldItems;
     QTimer* timer;
+    QList<QWidget*> managedControls;
+    QWidget *powerSwitchControl = nullptr;
+    QString powerHex0 = "void";
+    QString powerHex1 = "void";
+    QString powerHex2 = "void";
+    QString powerHex3 = "void";
 };
 
 #endif // EDITPAGE_H

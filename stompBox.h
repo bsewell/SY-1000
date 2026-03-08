@@ -113,6 +113,7 @@ signals:
 protected:
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseDoubleClickEvent(QMouseEvent *event);
     void showEvent(QShowEvent *event);
@@ -157,6 +158,7 @@ private:
     Qt::Alignment flowLabelAlignment = Qt::AlignHCenter | Qt::AlignTop;
     QRect opaqueBounds;
     bool opaqueBoundsValid = false;
+    bool dragInProgress = false;
     void meter_reset();
     bool t_reset;
 };

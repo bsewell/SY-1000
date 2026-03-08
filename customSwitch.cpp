@@ -1,7 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2007~2025 Colin Willcocks.
-** Copyright (C) 2005~2007 Uco Mesdag. 
+** Copyright (C) 2005~2007 Uco Mesdag.
 ** All rights reserved.
 ** This file is part of "SY-1000 FloorBoard".
 **
@@ -17,7 +17,7 @@
 **
 ** You should have received a copy of the GNU General Public License along
 ** with this program; if not, write to the Free Software Foundation, Inc.,
-** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
+** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 **
 ****************************************************************************/
 
@@ -33,7 +33,6 @@ customSwitch::customSwitch(bool active, QWidget *parent,QString hex0, QString he
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
 
-
     if(hex0 == "INVERT") {
         this->hex0 = "10";
         this->imagePath = ":/images/switch_invert.png";
@@ -45,13 +44,23 @@ customSwitch::customSwitch(bool active, QWidget *parent,QString hex0, QString he
     this->hex2 = hex2;
     this->hex3 = hex3;
     this->active = active;
+    this->pressed = false;
 
-    QSize imageSize = QPixmap(imagePath).size();
-    this->switchSize = QSize(imageSize.width(), imageSize.height()/3);
-    this->imageRange = 1;
-    //this->switchPos = switchPos;
-    this->setOffset(0);
-    this->setFixedSize(switchSize*ratio);
+    this->useModernToggle = !this->imagePath.contains("_invert");
+
+    if(useModernToggle)
+    {
+        this->switchSize = QSize(28, 28);
+        this->setFixedSize(QSize(qRound(28*ratio), qRound(28*ratio)));
+    }
+    else
+    {
+        QSize imageSize = QPixmap(this->imagePath).size();
+        this->switchSize = QSize(imageSize.width(), imageSize.height()/3);
+        this->imageRange = 1;
+        this->setOffset(0);
+        this->setFixedSize(switchSize*ratio);
+    }
 
     QObject::connect(this, SIGNAL( valueChanged(bool, QString, QString, QString, QString) ),
                      this->parent(), SLOT( valueChanged(bool, QString, QString, QString, QString) ));
@@ -63,12 +72,73 @@ void customSwitch::paintEvent(QPaintEvent *)
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
 
-    QRectF target(0.0 , 0.0, switchSize.width()*ratio, switchSize.height()*ratio);
-    QRectF source(0.0, yOffset, switchSize.width(), switchSize.height());
-    QPixmap image(imagePath);
-
     QPainter painter(this);
-    painter.drawPixmap(target, image, source);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+
+    if(useModernToggle)
+    {
+        const qreal w = this->width();
+        const qreal h = this->height();
+        const qreal pad = 2.0 * ratio;
+
+        // Outer housing — dark metallic rectangle like a stomp switch
+        QRectF housing(pad, pad, w - pad * 2.0, h - pad * 2.0);
+        QLinearGradient housingGrad(housing.topLeft(), housing.bottomLeft());
+        if(pressed)
+        {
+            housingGrad.setColorAt(0.0, QColor(30, 32, 36));
+            housingGrad.setColorAt(1.0, QColor(50, 54, 58));
+        }
+        else
+        {
+            housingGrad.setColorAt(0.0, QColor(55, 58, 64));
+            housingGrad.setColorAt(1.0, QColor(38, 40, 46));
+        }
+        painter.setPen(QPen(QColor(20, 22, 26), 1.0));
+        painter.setBrush(housingGrad);
+        painter.drawRoundedRect(housing, 4.0 * ratio, 4.0 * ratio);
+
+        // LED indicator circle in the center
+        const qreal ledR = qMin(w, h) * 0.28;
+        QRectF ledRect(w / 2.0 - ledR, h / 2.0 - ledR, ledR * 2.0, ledR * 2.0);
+
+        if(active)
+        {
+            // Glow effect behind LED
+            QRadialGradient glow(ledRect.center(), ledR * 2.2);
+            glow.setColorAt(0.0, QColor(0, 220, 80, 60));
+            glow.setColorAt(1.0, QColor(0, 220, 80, 0));
+            painter.setPen(Qt::NoPen);
+            painter.setBrush(glow);
+            painter.drawEllipse(ledRect.adjusted(-ledR * 0.8, -ledR * 0.8, ledR * 0.8, ledR * 0.8));
+
+            // Bright green LED
+            QRadialGradient ledGrad(ledRect.center(), ledR);
+            ledGrad.setColorAt(0.0, QColor(120, 255, 160));
+            ledGrad.setColorAt(0.5, QColor(0, 220, 80));
+            ledGrad.setColorAt(1.0, QColor(0, 160, 50));
+            painter.setPen(QPen(QColor(0, 100, 40), 0.5));
+            painter.setBrush(ledGrad);
+            painter.drawEllipse(ledRect);
+        }
+        else
+        {
+            // Dim LED — dark with faint color
+            QRadialGradient ledGrad(ledRect.center(), ledR);
+            ledGrad.setColorAt(0.0, QColor(40, 55, 42));
+            ledGrad.setColorAt(1.0, QColor(25, 35, 28));
+            painter.setPen(QPen(QColor(20, 28, 22), 0.5));
+            painter.setBrush(ledGrad);
+            painter.drawEllipse(ledRect);
+        }
+    }
+    else
+    {
+        QRectF target(0.0, 0.0, switchSize.width()*ratio, switchSize.height()*ratio);
+        QRectF source(0.0, yOffset, switchSize.width(), switchSize.height());
+        QPixmap image(imagePath);
+        painter.drawPixmap(target, image, source);
+    }
 }
 
 void customSwitch::setOffset(signed int imageNr)
@@ -83,7 +153,15 @@ void customSwitch::mousePressEvent(QMouseEvent *event)
     {
         this->dragStartPosition = event->position().toPoint();
         setFocus();
-        setOffset(2);
+        if(useModernToggle)
+        {
+            this->pressed = true;
+            update();
+        }
+        else
+        {
+            setOffset(2);
+        }
     };
 }
 
@@ -91,16 +169,18 @@ void customSwitch::mouseReleaseEvent(QMouseEvent *event)
 {
     if ( event->button() == Qt::LeftButton )
     {
+        this->pressed = false;
         if(active)
         {
-            setOffset(0);
+            if(!useModernToggle) setOffset(0);
             emitValue(false);
         }
         else
         {
-            setOffset(1);
+            if(!useModernToggle) setOffset(1);
             emitValue(true);
         };
+        update();
         clearFocus();
     };
 }
@@ -123,13 +203,16 @@ void customSwitch::mouseMoveEvent(QMouseEvent *event)
 void customSwitch::setValue(bool value)
 {
     this->active = value;
-    if(active)
+    if(useModernToggle)
     {
-        setOffset(1);
+        update();
     }
     else
     {
-        setOffset(0);
-    };
+        if(active)
+            setOffset(1);
+        else
+            setOffset(0);
+    }
     clearFocus();
 }

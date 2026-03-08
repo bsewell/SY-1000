@@ -40,6 +40,7 @@
 #include "customRenameWidget.h"
 #include "customControlVU.h"
 #include "Preferences.h"
+#include "SysxIO.h"
 
 editPage::editPage(QWidget *parent)
     : QWidget(parent)
@@ -70,6 +71,8 @@ editPage::editPage(QWidget *parent)
     //this, SIGNAL( dialogUpdateSignal() ));
 
     // QObject::connect(this, SIGNAL( updateDisplay(QString) ), this->parent(), SIGNAL( updateDisplay(QString) ));
+    QObject::connect(this, &editPage::dialogUpdateSignal, this, &editPage::syncPowerState);
+    QObject::connect(this, &editPage::updateSignal, this, &editPage::syncPowerState);
 }
 
 void editPage::paintEvent(QPaintEvent *)
@@ -102,6 +105,7 @@ void editPage::addParaEQ(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(ParaEQ, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(ParaEQ);
 }
 
 void editPage::addSystemOverride(int row, int column, int rowSpan, int columnSpan,
@@ -119,8 +123,9 @@ void editPage::addSystemOverride(int row, int column, int rowSpan, int columnSpa
         }
         else
         {
-                this->layout->addWidget(SystemOverride, row, column, rowSpan, columnSpan);
+        this->layout->addWidget(SystemOverride, row, column, rowSpan, columnSpan);
         };
+        registerManagedControl(SystemOverride);
 }
 
 void editPage::addKnob(int row, int column, int rowSpan, int columnSpan,
@@ -141,6 +146,7 @@ void editPage::addKnob(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(knob, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(knob);
 }
 
 void editPage::addDataKnob(int row, int column, int rowSpan, int columnSpan,
@@ -161,6 +167,7 @@ void editPage::addDataKnob(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(knob, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(knob);
     knob->setWhatsThis(tr("hold down mouse button and drag up/down for quick adjustment")
                        + "<br>" + tr("use scroll wheel or up/down arrow keys for fine adjustment"));
 }
@@ -183,6 +190,7 @@ void editPage::addTarget(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(target, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(target);
     target->setWhatsThis(tr("hold down mouse button and drag up/down for quick adjustment or")
                          + "<br>" + tr("press arrow to open list box and click on an item to select")
                          + "<br>" + tr(" or use scroll wheel or up/down arrow keys for fine adjustment"));
@@ -206,6 +214,7 @@ void editPage::addRange(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(range, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(range);
     range->setWhatsThis(tr("hold down mouse button and drag up/down for quick adjustment")
                         + "<br>" + tr("use scroll wheel or up/down arrow keys for fine adjustment"));
 }
@@ -218,9 +227,25 @@ void editPage::addSwitch(int row, int column, int rowSpan, int columnSpan,
                          QString direction,
                          Qt::Alignment alignment)
 {
+    if(this->groupBoxMode && row == 0 && column == 0 && direction == "bottom")
+    {
+        direction = "left";
+    }
+
     customControlSwitch *switchbutton = new customControlSwitch(this, hex0, hex1, hex2, hex3, direction);
     if(this->groupBoxMode)
     {
+        if(row == 0 && column == 0)
+        {
+            if(this->powerSwitchControl == nullptr)
+            {
+                this->powerSwitchControl = switchbutton;
+                this->powerHex0 = hex0;
+                this->powerHex1 = hex1;
+                this->powerHex2 = hex2;
+                this->powerHex3 = hex3;
+            }
+        }
         this->groupBoxLayout->addWidget(switchbutton, row, column, rowSpan, columnSpan, alignment);
     }
     else if(this->stackFieldMode)
@@ -231,6 +256,7 @@ void editPage::addSwitch(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(switchbutton, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(switchbutton);
     switchbutton->setWhatsThis(tr("press with mouse button to toggle switch state")
                                + "<br>" + tr("a lit button indicates and effect is ON"));
 }
@@ -263,6 +289,7 @@ void editPage::addComboBox(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(combobox, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(combobox);
     combobox->setWhatsThis(tr("press arrow to open selection box and click on item to select")
                            + "<br>" + tr("also use scroll wheel or up/down arrow keys to change selection"));
 }
@@ -294,6 +321,7 @@ void editPage::addMultiComboBox(int row, int column, int rowSpan, int columnSpan
     {
         this->layout->addWidget(combobox, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(combobox);
 }
 
 void editPage::addTabBar(int row, int column, int rowSpan, int columnSpan,
@@ -324,6 +352,7 @@ void editPage::addTabBar(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(tabBar, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(tabBar);
     tabBar->setWhatsThis(tr("press arrow to open selection box and click on item to select")
                            + "<br>" + tr("also use scroll wheel or up/down arrow keys to change selection"));
 }
@@ -356,6 +385,7 @@ void editPage::addSpinBox(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(spinbox, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(spinbox);
     spinbox->setWhatsThis(tr("press arrow to open selection box and click on item to select")
                            + "<br>" + tr("also use scroll wheel or up/down arrow keys to change selection"));
 }
@@ -382,6 +412,7 @@ void editPage::addNameEdit(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(nameEdit, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(nameEdit);
 }
 
 void editPage::addLabel(int row, int column, int rowSpan, int columnSpan, QString text, Qt::Alignment alignment)
@@ -421,6 +452,7 @@ void editPage::addVU(int row, int column, int rowSpan, int columnSpan,
     {
         this->layout->addWidget(vu, row, column, rowSpan, columnSpan, alignment);
     };
+    registerManagedControl(vu);
 }
 
 void editPage::valueChanged(bool value, QString hex1, QString hex2, QString hex3)
@@ -492,7 +524,6 @@ void editPage::addGroupBox(int row, int column, int rowSpan, int columnSpan)
 
     //QString snork = this->groupBoxes.at(boxesIndex)->title();
     this->groupBoxes.at(boxesIndex)->setLayout(this->groupBoxLayouts.at(layoutIndex));
-
     if(this->groupBoxIndex == 0)
     {
         if(this->stackFieldMode)
@@ -539,6 +570,15 @@ void editPage::setGridLayout()
     mainLayout->addStretch();
 
     this->setLayout(mainLayout);
+    syncPowerState();
+}
+
+void editPage::registerManagedControl(QWidget *widget)
+{
+    if(widget)
+    {
+        this->managedControls.append(widget);
+    }
 }
 
 void editPage::newStackControl(int id)
@@ -607,4 +647,38 @@ void editPage::updateDisplay(QString text)
 {
     text = "nul";
     //
+}
+
+void editPage::syncPowerState()
+{
+    if(this->powerSwitchControl == nullptr ||
+       this->powerHex0 == "void" || this->powerHex1 == "void" ||
+       this->powerHex2 == "void" || this->powerHex3 == "void")
+    {
+        return;
+    }
+
+    SysxIO *sysxIO = SysxIO::Instance();
+    if(!sysxIO->deviceReady())
+    {
+        return;
+    }
+
+    const bool enabled = (sysxIO->getSourceValue(powerHex0, powerHex1, powerHex2, powerHex3) > 0);
+    const QList<QWidget*> &controls = this->managedControls;
+    for(QWidget *widget : controls)
+    {
+        if(!widget)
+        {
+            continue;
+        }
+
+        if(widget == this->powerSwitchControl)
+        {
+            widget->setEnabled(true);
+            continue;
+        }
+
+        widget->setEnabled(enabled);
+    }
 }

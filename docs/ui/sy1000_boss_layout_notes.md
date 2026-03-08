@@ -9,7 +9,7 @@ This note captures practical UI patterns from the BOSS SY-1000 screenshots and t
   - Strong section identity via muted accent color (not neon).
 
 - Two-zone parameter layout
-  - Zone A (optional): mode/type selectors (combo row) under header.
+  - Zone A (optional): left power rail plus mode/type selectors in the same first row under header.
   - Zone B: knob matrix below a divider line.
 
 - Predictable control cell
@@ -18,6 +18,13 @@ This note captures practical UI patterns from the BOSS SY-1000 screenshots and t
     2) Numeric/text value centered
     3) Label in uppercase
   - Disabled controls keep position but are dimmed (no reflow).
+
+- Predictable leading switch rail
+  - If a page has an enable state, the first control at the far left is always the on/off switch.
+  - The switch rail keeps a consistent width so adjacent parameter boxes start on the same vertical line.
+  - The same SysEx address must drive both the edit-page switch and the signal-chain rectangle state.
+  - When the effect is off, the parameter controls for that page are disabled while the power switch remains active.
+  - Clicking the signal-chain rectangle must toggle the same power state as the page switch; both views stay in sync.
 
 - Horizontal rhythm first
   - Controls align to a strict column grid across each row.
@@ -86,7 +93,7 @@ Recommended layout values from screenshot proportions:
 
 1. Standardize `QGridLayout` spacing/margins in edit pages (`editPage.cpp`) to tokens above.
 2. Unify control cell construction in knob widgets (`customControlKnob.cpp`, `customControlDataKnob.cpp`) so label/value spacing is constant.
-3. Add a reusable block header widget style for all effect pages.
+3. Add a reusable left-edge switch rail / block header pattern for all effect pages.
 4. Prevent reflow when params are unavailable; render dimmed placeholders instead.
 5. Replace ad-hoc font sizes with 3 text roles: title, value, label.
 
@@ -105,6 +112,7 @@ Recommended layout values from screenshot proportions:
 ## 8) Acceptance checks for redesign
 
 - Top and bottom of all boxes on a row align.
+- Pages with an on/off state always place the switch at the far left of the first row.
 - All line-to-box intersections hit mid-left/mid-right edges.
 - Row spacing is identical between sections.
 - Changing control availability does not move neighboring controls.

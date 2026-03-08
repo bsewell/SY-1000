@@ -7,18 +7,19 @@ Purpose: give Claude a deterministic, code-anchored checklist to compare BOSS SY
 1. Open one screenshot and identify the block name and control labels.
 2. Open the mapped source file(s) below.
 3. Verify each expected control exists as an `addComboBox`, `addKnob`, `addDataKnob`, `addSwitch`, or `addParaEQ`.
-4. Mark status:
+4. For any page with power state, verify the first row starts with a left-edge `addSwitch(...)` and that the same address is also used by the signal-chain tile via `setButton(...)`.
+5. Mark status:
    - `Match`: all controls and page role exist.
    - `Partial`: controls exist but layout/header/state/selector behavior differs.
    - `Gap`: controls or behavior are missing.
-5. Record exact file+line evidence for each mismatch.
+6. Record exact file+line evidence for each mismatch.
 
 ## Block-to-Code Mapping
 
 | Screenshot block | Expected controls from screenshot | Code anchors | Status |
 |---|---|---|---|
 | INST 1 (COMMON / ALT TUNE / GUITAR / AMP / NS / EQ) | INST TYPE, level/mix, per-string levels/pan, alt tune page set | `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_inst1.cpp:95`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_inst1.cpp:100`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_inst1.cpp:102`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_inst1.cpp:1527` | Partial |
-| NORMAL INPUT | CABLE SIM, NORMAL LEVEL, PHASE | `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_normal.cpp:75`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_normal.cpp:76`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_normal.cpp:77` | Match |
+| NORMAL INPUT | ON/OFF, CABLE SIM, NORMAL LEVEL, PHASE | `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_normal.cpp:72`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_normal.cpp:73`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_normal.cpp:74`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/soundSource_normal.cpp:75` | Match |
 | MASTER | GK SET, PATCH LEVEL, BPM, KEY, TEMPO HOLD | `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_master.cpp:64`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_master.cpp:65`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_master.cpp:66`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_master.cpp:68`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_master.cpp:72` | Match |
 | MAIN OUT | OUTPUT SELECT, GLOBAL EQ, PHASE | `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_main_out_left.cpp:82`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_main_out_left.cpp:84`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_main_out_left.cpp:103` | Partial |
 | SUB OUT | OUTPUT SELECT, GLOBAL EQ, PHASE | `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_sub_out_left.cpp:81`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_sub_out_left.cpp:83`, `/Users/bsewell/010 MUSIC STUDIO /SY-1000/stompbox_sub_out_left.cpp:102` | Partial |

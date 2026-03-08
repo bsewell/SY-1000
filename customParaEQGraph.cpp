@@ -83,10 +83,10 @@ void drawGainLabels(QPainter &painter, const QRectF &plot)
     painter.setFont(f);
     painter.setPen(QColor(185, 197, 214, 150));
 
-    const QList<int> gains = {-12, -6, 0, 6, 12};
+    const QList<int> gains = {-20, -10, 0, 10, 20};
     for(int g : gains)
     {
-        const qreal y = plot.center().y() - (static_cast<qreal>(g) * (plot.height() / 28.0));
+        const qreal y = plot.center().y() - (static_cast<qreal>(g) * (plot.height() / 44.0));
         painter.drawText(QRectF(0.0, y - 7.0, plot.left() - 6.0, 14.0),
                          Qt::AlignRight | Qt::AlignVCenter,
                          QString::number(g));
@@ -138,7 +138,9 @@ qreal bellShape(qreal x, qreal center, qreal width)
 
 qreal gainValue(unsigned short value)
 {
-    return static_cast<qreal>(value) - 12.0;
+    // SY-1000 EQ gain range: raw 12..52 maps to -20..+20 dB.
+    // Raw 32 (0x20) = 0 dB center.
+    return static_cast<qreal>(value) - 32.0;
 }
 
 }
@@ -152,15 +154,15 @@ customParaEQGraph::customParaEQGraph (QWidget *parent)
     // Initialize graph state so first paint + hit-testing are stable.
     m_iLowCut = 0;
     m_iHighCut = 0;
-    m_iLowGain = 12;
-    m_iHighGain = 12;
-    m_iLowMidGain = 12;
-    m_iHighMidGain = 12;
+    m_iLowGain = 32;
+    m_iHighGain = 32;
+    m_iLowMidGain = 32;
+    m_iHighMidGain = 32;
     m_iLowMidFreq = 15;
     m_iHighMidFreq = 15;
     m_iLowMidQ = 3;
     m_iHighMidQ = 3;
-    m_iLevel = 12;
+    m_iLevel = 32;
 
     m_iDragNode = -1;
     m_lastPlot = QRectF();
@@ -347,7 +349,7 @@ void customParaEQGraph::paintEvent ( QPaintEvent *pPaintEvent )
 
     // Anchor the 0 dB baseline to the visual center of the plot instead of drifting with Level.
     m_lastZeroY = m_lastPlot.center().y();
-    m_lastGainScale = m_lastPlot.height() / 28.0;
+    m_lastGainScale = m_lastPlot.height() / 44.0;
 
     const qreal lowCutAmount = qBound(0.0, static_cast<qreal>(m_iLowCut) / 30.0, 1.0);
     const qreal highCutAmount = qBound(0.0, static_cast<qreal>(m_iHighCut) / 30.0, 1.0);
@@ -463,8 +465,9 @@ void customParaEQGraph::dragNode ( const QPoint& pos )
 
     auto gainToValue = [](qreal gainDb) -> unsigned short
     {
-        const int v = qRound(gainDb + 12.0);
-        return static_cast<unsigned short>(qBound(0, v, 24));
+        // Reverse of gainValue: dB + 32 = raw value, clamped to 12..52.
+        const int v = qRound(gainDb + 32.0);
+        return static_cast<unsigned short>(qBound(12, v, 52));
     };
 
     switch(m_iDragNode)

@@ -1,0 +1,294 @@
+EFFECT Parameters
+FX1–FX3
+With FX1, FX2 and FX3, you can select the effect to be used from the
+following.
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+TYPE
+
+Refer to FX1/FX2/FX3 TYPE
+
+Value
+
+Explanation
+
+Page
+
+LO-FI
+
+This deliberately degrades the
+audio quality to create a distinctive
+impression.
+
+p. 48
+
+OCTAVE
+OCTAVE BASS
+
+FX1/FX2/FX3 TYPE
+
+PAN
+
+With the volume level of the left and
+right sides alternately changing, when
+playing sound in stereo, you can get
+p. 49
+an effect that makes the guitar sound
+appear to fly back and forth between
+the speakers.
+
+PARAMETRIC EQ
+
+This effect adjusts the tonal character.
+Four frequency bands can be
+adjusted.
+
+p. 49
+
+PEDAL BEND
+
+This lets you use the pedal to get a
+pitch bend effect.
+
+p. 49
+
+PHASER
+
+By adding varied-phase portions to
+the direct sound, the phaser effect
+gives a whooshing, swirling character
+to the sound.
+
+p. 50
+
+PITCH SHIFTER
+
+This effect changes the pitch of the
+original sound (up or down) within a
+range of two octaves.
+
+p. 50
+
+REVERB
+
+This effect adds reverberation to the
+sound.
+
+p. 51
+
+RING MOD
+
+This creates a bell-like sound by ringmodulating the guitar sound with
+the signal from the internal oscillator.
+The sound can be unmusical and lack
+distinctive pitches.
+
+p. 51
+
+ROTARY
+
+This produces an effect like the sound
+p. 51
+of a rotary speaker.
+
+SITAR SIM
+
+This simulates the sound of the sitar.
+
+p. 52
+
+SLICER
+
+This consecutively interrupts the
+sound to create the impression that
+a rhythm backing phrase is being
+played.
+
+p. 52
+
+SLOW GEAR
+This produces a volume-swell effect
+SLOW GEAR BASS (“violin-like” sound).
+
+p. 52
+
+You can have sound played on the
+guitar be held continuously. This
+effect allows you to perform the
+melody in the upper registers while
+holding a note in the lower registers.
+
+p. 52
+
+You can produce a wah effect with
+the filter changing in response to the
+guitar (bass) level.
+
+p. 53
+
+TREMOLO
+
+Tremolo is an effect that creates a
+cyclic change in volume.
+
+p. 53
+
+VIBRATO
+
+This effect creates vibrato by slightly
+modulating the pitch.
+
+p. 53
+
+WAH
+
+You can control the wah effect in
+real time by the expression pedal
+connected to the CTL 3, 4/EXP 1 jack
+or CTL 5, 6/EXP 2 jack.
+
+p. 54
+
+This is a list of the effects that can be selected for FX1/FX2/FX3.
+Value
+
+Explanation
+
+AC RESONANCE
+
+This processor allows you to change
+the sound produced by the pickup on
+an acoustic electric guitar, creating a
+p. 43
+richer sound similar to that obtained
+with a microphone placed close to the
+guitar.
+
+Page
+
+AUTO WAH
+
+This changes the filtering over a
+periodic cycle, providing an automatic p. 43
+wah effect.
+
+CHORUS
+
+In this effect, a slightly detuned sound
+is added to the original sound to add p. 43
+depth and breadth.
+
+CLASSIC-VIBE
+
+Although this resembles a phaser
+effect, it also provides a unique
+undulation that you can’t get with a
+regular phaser.
+
+p. 44
+
+COMPRESSOR
+
+This is an effect that produces a long
+sustain by evening out the volume
+level of the input signal. You can also
+use it as a limiter to suppress only the
+sound peaks and prevent distortion.
+
+p. 44
+
+DEFRETTER
+
+This simulates a fretless guitar.
+
+p. 44
+
+DEFRETTER BASS This simulates a fretless bass.
+
+p. 45
+
+DELAY
+FLANGER
+FLANGER BASS
+
+FOOT VOLUME
+
+GRAPHIC EQ
+
+HARMONIST
+
+Adds delayed sound to the direct
+sound, giving more body to the sound p. 45
+or creating special effects.
+The flanging effect gives a twisting,
+jet-airplane-like character to the
+sound.
+
+p. 46
+
+This is a volume control effect.
+Typically, you will operate this using
+an expression pedal connected to the
+CTL3,4/EXP1 jack or the CTL5,6/EXP2
+jack.
+
+p. 46
+
+This effect adjusts the tonal character.
+Seven frequency bands can be
+adjusted.
+
+p. 47
+
+SOUND HOLD
+
+TOUCH WAH
+
+Harmonist is an effect where the
+amount of shifting is adjusted
+according to an analysis of the guitar p. 47
+input, allowing you to create harmony
+based on diatonic scales.
+
+HUMANIZER
+
+This can create human vowel-like
+sounds.
+
+p. 48
+
+ISOLATOR
+
+An effect that cuts the sound of the
+specified region.
+
+p. 48
+
+LIMITER
+
+Attenuates loud input levels to
+prevent distortion.
+
+p. 48
+
+42
+
+This adds a note one octave lower and
+a note two octaves lower, creating a
+p. 49
+richer sound.
+
+TOUCH WAH
+BASS
+
+

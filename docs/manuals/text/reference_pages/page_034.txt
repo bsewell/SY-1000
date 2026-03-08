@@ -1,0 +1,297 @@
+INST Parameters > E.GUITAR Parameters
+Parameter
+
+Value
+
+Explanation
+
+Parameter
+
+Value
+
+Explanation
+
+0–100
+
+Adjusts the attack of the picking
+sound.
+
+SOLO LEVEL
+
+0–100
+
+Adjusts the volume level
+when the SOLO SW is ON.
+
+0–100
+
+Adds a characteristically resonant
+quality to the sound.
+
+SP TYPE
+
+Select the speaker type “SP TYPE” (p. 35).
+
+MIC TYPE
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+This setting selects the simulated mic type “MIC
+TYPE” (p. 35).
+
+VOLUME
+
+0–100
+
+Adjusts the volume. With a setting
+of 0, there will be no sound.
+
+TONE
+
+0–100
+
+Adjusts the tone of the body. The
+standard value is 100; lowering the
+value creates a softer tone.
+
+ATTACK
+*3
+RESONANCE
+*3
+DIRECT LEVEL
+*3
+
+Simulates the distance
+between the mic and
+speaker.
+
+MIC DISTANCE
+
+This simulates the mic position.
+
+*1 Valid when the TYPE is set to ST.
+
+CENTER
+
+Simulates the condition that
+the mic is set in the middle
+of the speaker cone.
+
+1 cm–10 cm
+
+Simulates the condition that
+the mic is moved away from
+the center of the speaker
+cone.
+
+MIC LEVEL
+
+0–100
+
+Adjusts the volume of the
+mic.
+
+DIRECT LEVEL
+
+0–100
+
+Adjusts the volume of the
+direct sound.
+
+*2 Valid when the TYPE is set to LP.
+*3 Valid when the TYPE is set to FRETLESS.
+
+MIC POSITION
+
+AMP (AMP Modeling)
+(When E.GUITAR, ACOUSTIC, AC BASS, or E.BASS is selected)
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns the AMP on/off.
+
+TYPE
+
+Select the amp type “TYPE” (p. 34).
+
+GAIN
+
+0–120
+
+Adjusts the distortion of the
+amp.
+
+SAG
+
+-10–+10
+
+Adjusts the amount by which
+compression changes in
+response to the power amp.
+
+-10–+10
+
+Adjusts the amount by which
+dynamics is affected by the
+interaction between the
+power amp and the speaker
+transformer.
+
+RESONANCE
+
+Adjusts the volume of the
+entire preamp.
+
+LEVEL
+
+0–100
+
+BASS
+
+0–100
+
+Adjusts the tone for the low
+frequency range.
+
+0–100
+
+Adjusts the tone for the
+middle frequency range.
+
+TREBLE
+
+0–100
+
+Adjusts the tone for the high
+frequency range.
+
+PRESENCE
+
+0–100
+
+Adjusts the tone for the ultra
+high frequency range.
+
+MIDDLE
+
+BRIGHT
+
+OFF, ON
+
+* Be careful not to raise the
+Level setting too high.
+
+SOLO SW
+
+34
+
+LOW, MIDDLE,
+HIGH
+
+OFF, ON
+
+AMP settings can be saved/
+loaded as ten different
+variations.
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be
+loaded into a different patch,
+which is convenient when
+you’re creating sounds.
+These variations are shared
+with the AMP setting in
+EFFECT.
+
+TYPE
+Value
+
+Explanation
+
+TRANSPARENT
+
+An amp with a broad frequency range and an
+extremely flat response.
+
+NATURAL
+
+An unembellished, clean sound that minimizes
+the amp’s idiosyncrasies, such as its trebly
+character and boomy low end.
+
+BOUTIQUE
+
+Crunch sound that allows the nuances of your
+picking to be expressed even more faithfully
+than on conventional combo amps.
+
+SUPREME
+
+Great-feeling crunch sound that responds to the
+nuances of your picking while taking advantage
+of the distinctive character of a 4x12” speaker
+cabinet.
+
+MAXIMUM
+
+An amp that delivers the distinctively great
+response and tone of a vintage Marshall, while
+making it even higher gain.
+
+JUGGERNAUT
+
+* The sound of each Type is
+created on the basis of the
+level of MIDDLE.
+
+A large stack sound that has been tweaked
+extensively in the pursuit of the ultimate metal
+sound.
+
+X-CRUNCH
+
+Crunch sound that uses MDP to deliver a crisp
+tone from all strings.
+
+The tone to one suitable for
+solos.
+
+X-HI GAIN
+
+High-gain sound that uses MDP to obtain highgain sound with a wide range and a great-feeling
+sense of separation.
+
+Turns the bright setting on/
+off.
+* BRIGHT is valid for some of
+the amps in TYPE.
+Provides for selection from
+three levels of distortion:
+LOW, MIDDLE, and HIGH.
+
+GAIN SW
+
+SHORT, MEDIUM,
+The distance from
+LONG
+the speakers is
+farther in the order of
+SHORT<MEDIUM<LONG.
+
+Distortion will successively
+increase for settings of LOW,
+MIDDLE and HIGH.
+
+

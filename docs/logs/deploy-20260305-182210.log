@@ -1,0 +1,138 @@
+=========================================
+ SY-1000FloorBoard Deploy
+=========================================
+Logging to: /Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/logs/deploy-20260305-182210.log
+
+--- Step 0: Generate Makefile with Qt5 qmake ---
+Project MESSAGE: X-Code LIBRARIES SHOULD BE INSTALLED or ERROR will Occur
+Project MESSAGE: Please install the X-Code Audio System packages if not present
+Project MESSAGE: Including Mac OS X specific headers and sources...
+qmake OK
+
+--- Step 1: Build ---
+make: Nothing to be done for `first'.
+Build OK
+
+--- Step 2: macdeployqt (bundle Qt frameworks) ---
+macdeployqt OK
+
+--- Step 3: Bottom-up codesign ---
+  Signing frameworks...
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtCore.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtDBus.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtGui.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtNetwork.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtPrintSupport.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtQml.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtQmlModels.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtQuick.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtSvg.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtVirtualKeyboard.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtWidgets.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/QtXml.framework: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libfreetype.6.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libglib-2.0.0.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libgthread-2.0.0.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libintl.8.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libjpeg.8.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/liblzma.5.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libmd4c.0.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libpcre2-16.0.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libpcre2-8.0.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libpng16.16.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libtiff.6.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libwebp.7.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libwebpdemux.2.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libwebpmux.3.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/Frameworks/libzstd.1.dylib: replacing existing signature
+  Signing plugins...
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/iconengines/libqsvgicon.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqgif.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqicns.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqico.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqjpeg.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqmacheif.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqmacjp2.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqtga.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqtiff.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqwbmp.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqwebp.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/platforminputcontexts/libqtvirtualkeyboardplugin.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/platforms/libqcocoa.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/printsupport/libcocoaprintersupport.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/styles/libqmacstyle.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_hangul.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_openwnn.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_pinyin.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_tcime.dylib: replacing existing signature
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_thai.dylib: replacing existing signature
+  Signing executable...
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app/Contents/MacOS/SY-1000FloorBoard: replacing existing signature
+  Signing app bundle...
+/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app: replacing existing signature
+  Verifying signature...
+  Signature VALID
+
+--- Step 4: Deploy to /Applications ---
+  Old app moved to: /Applications/SY-1000FloorBoard.app.bak.182218
+  Copied to: /Applications/SY-1000FloorBoard.app
+  Re-signing deployed bundle (bottom-up)...
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtCore.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtDBus.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtGui.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtNetwork.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtPrintSupport.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtQml.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtQmlModels.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtQuick.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtSvg.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtVirtualKeyboard.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtWidgets.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/QtXml.framework: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libfreetype.6.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libglib-2.0.0.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libgthread-2.0.0.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libintl.8.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libjpeg.8.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/liblzma.5.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libmd4c.0.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libpcre2-16.0.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libpcre2-8.0.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libpng16.16.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libtiff.6.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libwebp.7.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libwebpdemux.2.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libwebpmux.3.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/Frameworks/libzstd.1.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/iconengines/libqsvgicon.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqgif.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqicns.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqico.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqjpeg.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqmacheif.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqmacjp2.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqtga.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqtiff.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqwbmp.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/imageformats/libqwebp.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/platforminputcontexts/libqtvirtualkeyboardplugin.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/platforms/libqcocoa.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/printsupport/libcocoaprintersupport.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/styles/libqmacstyle.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_hangul.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_openwnn.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_pinyin.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_tcime.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/PlugIns/virtualkeyboard/libqtvirtualkeyboard_thai.dylib: replacing existing signature
+/Applications/SY-1000FloorBoard.app/Contents/MacOS/SY-1000FloorBoard: replacing existing signature
+/Applications/SY-1000FloorBoard.app: replacing existing signature
+  /Applications signature VALID
+  Resume state cleared
+
+--- Step 5: Launch ---
+
+=========================================
+ Deploy complete. Check startup log with:
+   cat ~/Library/Application\ Support/Gumtown/SY-1000FloorBoard/startup.log
+ Startup snapshot saved to: /Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/logs/startup-20260305-182210.log
+=========================================

@@ -1,0 +1,109 @@
+Basic Operation
+
+Operating Example 3 (EFFECT Edit Screen)
+
+Screen Operations
+In the play screen, you can turn or press the [1]–[6] knobs to adjust
+the parameters that are shown in the lower part of the display.
+
+Operating Example 1 (INST Screen)
+Turn operation
+
+Press operation
+Turn operation
+
+Operation
+
+Explanation
+
+Turn the [1]–[5] knobs
+
+Changes the value of the setting for
+the parameter
+
+Turn the [6] knob
+
+Selects the block to edit.
+
+Press the [6] knob
+
+Turns the selected block on/off.
+
+Operation
+
+Explanation
+
+Turn the [1] knob
+
+Changes the INST TYPE of INST1.
+
+Long-press the [6] knob
+
+Shows a list with all parameters of
+the selected block.
+
+Press the [1] knob
+
+Accesses a screen where you can
+switch the INST TYPE variation of
+INST1.
+
+Turn the [6] knob while
+pressing it
+
+Changes the position of the selected
+block.
+
+Turns INST1 on/off.
+
+Turn the [2] knob
+
+When off, the icon is shown in gray.
+
+Press the [2] knob
+
+Accesses the edit screen for INST1.
+
+MEMO
+As for INST1, you can operate INST2 with the [3] knob and [4] knob,
+and operate INST3 with the [5] knob and [6] knob.
+
+Operating Example 2 (INST Edit Screen)
+Use the [6] knob to select
+
+Turn operation
+
+Use the [K] [J] (PAGE)
+buttons to switch
+
+Press operation
+
+Operation
+
+Explanation
+
+Turn the [1]–[5] knobs
+
+Changes the value of the setting for
+the parameter
+
+Turn the [6] knob
+
+Selects the block to edit.
+
+Press the [6] knob
+
+Shows a list with all parameters of
+the selected block.
+
+Press the [K] [J] (PAGE)
+buttons
+
+Switches the parameters to show.
+
+12
+
+MEMO
+To change a value in larger steps, turn a [1]–[5] knob while pressing it.
+
+

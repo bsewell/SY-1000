@@ -1,0 +1,802 @@
+|
+00 53 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 54 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 55 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 56 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 57 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 58 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 59 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 5A | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 5B | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 5C | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 5D | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 5E | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 5F | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 60 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 61 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 62 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 63 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 64 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 65 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 66 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 67 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 68 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 69 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 6A | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 6B | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 6C | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 6D | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 6E | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 6F | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 70 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 71 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 72 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 73 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 74 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 75 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 76 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 77 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 78 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 79 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 7A | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 7B | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 7C | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 7D | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 7E | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+00 7F | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+01 00 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+01 01 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+01 02 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+01 03 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+01 04 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+01 05 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+01 06 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+01 07 | 0000 aaaa | EFFECT VARIATION
+(0 - 11) |
+|
+|
+|PATCH, ---, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10 |
+|
+01 08 | 0000 00aa | BTS DEVELOP MODE
+(0 - 2) |
+|
+|
+|
+OFF, DEV_BTS, DEV_SY |
+|-------------+----------------------------------------------------------------|
+
+| 00 00 01 09 |Total Size
+|
++------------------------------------------------------------------------------+
+* [PatchCommon]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0aaa aaaa | Patch Name1
+(32 - 126) |
+|
+00 01 | 0aaa aaaa | Patch Name2
+(32 - 126) |
+|
+00 02 | 0aaa aaaa | Patch Name3
+(32 - 126) |
+|
+00 03 | 0aaa aaaa | Patch Name4
+(32 - 126) |
+|
+00 04 | 0aaa aaaa | Patch Name5
+(32 - 126) |
+|
+00 05 | 0aaa aaaa | Patch Name6
+(32 - 126) |
+|
+00 06 | 0aaa aaaa | Patch Name7
+(32 - 126) |
+|
+00 07 | 0aaa aaaa | Patch Name8
+(32 - 126) |
+|
+00 08 | 0aaa aaaa | Patch Name9
+(32 - 126) |
+|
+00 09 | 0aaa aaaa | Patch Name10
+(32 - 126) |
+|
+00 0A | 0aaa aaaa | Patch Name11
+(32 - 126) |
+|
+00 0B | 0aaa aaaa | Patch Name12
+(32 - 126) |
+|
+00 0C | 0aaa aaaa | Patch Name13
+(32 - 126) |
+|
+00 0D | 0aaa aaaa | Patch Name14
+(32 - 126) |
+|
+00 0E | 0aaa aaaa | Patch Name15
+(32 - 126) |
+|
+00 0F | 0aaa aaaa | Patch Name16
+(32 - 126) |
+|
+00 10 | 0aaa aaaa | Num1 Function
+(0 - 119) |
+|
+|
+|
+OFF, *, PATCH +1, PATCH -1, LEVEL +10,
+|
+|
+|
+|
+LEVEL +20, LEVEL -10, LEVEL -20, BPM TAP,
+|
+|
+|
+|
+DLY1 TAP, DLY2 TAP, MST DLY TAP, FX1 DLY TAP,
+|
+|
+|
+|
+FX2 DLY TAP, FX3 DLY TAP, TUNER, MANUAL,
+|
+|
+|
+|
+MANUAL/TUNER, TUNER/MANUAL, INST1, INST2,
+|
+|
+|
+|
+INST3, INST ALL, INST1 NOR MIX, INST2 NOR MIX, |
+|
+|
+|
+INST3 NOR MIX, NORMAL, 1: ALT TUNE,
+|
+|
+|
+|
+2: ALT TUNE, 3: ALT TUNE, ALL: ALT TUNE,
+|
+|
+|
+|
+1: 12STR, 2: 12STR, 3: 12STR, ALL: 12STR,
+|
+|
+|
+|
+1: STR BEND, 2: STR BEND, 3: STR BEND,
+|
+|
+|
+|
+ALL: STR BEND, INST1 LFO1, INST1 LFO2,
+|
+|
+|
+|
+INST1 LFO1&2, INST2 LFO1, INST2 LFO2,
+|
+|
+|
+|
+INST2 LFO1&2, INST3 LFO1, INST3 LFO2,
+|
+|
+|
+|
+INST3 LFO1&2, INST ALL LFO, INST1 SEQ1,
+|
+|
+|
+|
+INST1 SEQ2, INST1 SEQ1&2, INST2 SEQ1,
+|
+|
+|
+|
+INST2 SEQ2, INST2 SEQ1&2, INST3 SEQ1,
+|
+|
+|
+|
+INST3 SEQ2, INST3 SEQ1&2, INST ALL SEQ,
+|
+|
+|
+|
+1: SEQ1 TRIG, 1: SEQ2 TRIG, 1: SEQ1&2 TRIG,
+|
+|
+|
+|
+2: SEQ1 TRIG, 2: SEQ2 TRIG, 2: SEQ1&2 TRIG,
+|
+|
+|
+|
+3: SEQ1 TRIG, 3: SEQ2 TRIG, 3: SEQ1&2 TRIG,
+|
+|
+|
+|
+ALL SEQ TRIG, 1: SEQ1 TURBO, 1: SEQ2 TURBO,
+|
+|
+|
+|
+1:SEQ1&2 TURBO, 2: SEQ1 TURBO, 2: SEQ2 TURBO,
+|
+|
+|
+|
+2:SEQ1&2 TURBO, 3: SEQ1 TURBO, 3: SEQ2 TURBO,
+|
+|
+|
+|
+3:SEQ1&2 TURBO, ALL: SEQ TURBO, INST1 HOLD,
+|
+|
+|
+|
+INST2 HOLD, INST3 HOLD, INST ALL HOLD,
+|
+|
+|
+|
+SYNC TRIG, 1: PU SEL UP, 2: PU SEL UP,
+|
+|
+|
+|
+3: PU SEL UP, 1: PU SEL DOWN, 2: PU SEL DOWN,
+|
+|
+|
+|
+3: PU SEL DOWN, INST1 AMP, INST2 AMP,
+|
+|
+|
+|
+INST3 AMP, INST1 AMP SOLO, INST2 AMP SOLO,
+|
+|
+|
+|
+INST3 AMP SOLO, FX1, FX2, FX3, CMP, DS,
+|
+|
+|
+|
+DS SOLO, AMP, AMP SOLO, EQ1, EQ2, NS, DLY1,
+|
+|
+|
+|
+DLY2, MST DLY, CHO, REV, S/R, FX1 TRIGGER,
+|
+|
+|
+|
+FX2 TRIGGER, FX3 TRIGGER, MDLY TRIGGER,
+|
+|
+|
+|
+DIV CH SELECT, MIDI START, MMC PLAY
+|
+|
+00 11 | 0000 000a | Num1 Mode
+(0 - 1) |
+|
+|
+|
+TOGGLE, MOMENT |
+|
+00 12 | 0aaa aaaa | Num2 Function
+(0 - 119) |
+|
+|
+|
+OFF, *, PATCH +1, PATCH -1, LEVEL +10,
+|
+|
+|
+|
+LEVEL +20, LEVEL -10, LEVEL -20, BPM TAP,
+|
+|
+|
+|
+DLY1 TAP, DLY2 TAP, MST DLY TAP, FX1 DLY TAP,
+|
+|
+|
+|
+FX2 DLY TAP, FX3 DLY TAP, TUNER, MANUAL,
+|
+|
+|
+|
+MANUAL/TUNER, TUNER/MANUAL, INST1, INST2,
+|
+|
+|
+|
+INST3, INST ALL, INST1 NOR MIX, INST2 NOR MIX, |
+|
+|
+|
+INST3 NOR MIX, NORMAL, 1: ALT TUNE,
+|
+|
+|
+|
+2: ALT TUNE, 3: ALT TUNE, ALL: ALT TUNE,
+|
+|
+|
+|
+1: 12STR, 2: 12STR, 3: 12STR, ALL: 12STR,
+|
+|
+|
+|
+1: STR BEND, 2: STR BEND, 3: STR BEND,
+|
+|
+|
+|
+ALL: STR BEND, INST1 LFO1, INST1 LFO2,
+|
+|
+|
+|
+INST1 LFO1&2, INST2 LFO1, INST2 LFO2,
+|
+|
+|
+|
+INST2 LFO1&2, INST3 LFO1, INST3 LFO2,
+|
+|
+|
+|
+INST3 LFO1&2, INST ALL LFO, INST1 SEQ1,
+|
+|
+|
+|
+INST1 SEQ2, INST1 SEQ1&2, INST2 SEQ1,
+|
+|
+|
+|
+INST2 SEQ2, INST2 SEQ1&2, INST3 SEQ1,
+|
+|
+|
+|
+INST3 SEQ2, INST3 SEQ1&2, INST ALL SEQ,
+|
+|
+|
+|
+1: SEQ1 TRIG, 1: SEQ2 TRIG, 1: SEQ1&2 TRIG,
+|
+|
+|
+|
+2: SEQ1 TRIG, 2: SEQ2 TRIG, 2: SEQ1&2 TRIG,
+|
+|
+|
+|
+3: SEQ1 TRIG, 3: SEQ2 TRIG, 3: SEQ1&2 TRIG,
+|
+|
+|
+|
+ALL SEQ TRIG, 1: SEQ1 TURBO, 1: SEQ2 TURBO,
+|
+|
+|
+|
+1:SEQ1&2 TURBO, 2: SEQ1 TURBO, 2: SEQ2 TURBO,
+|
+|
+|
+|
+2:SEQ1&2 TURBO, 3: SEQ1 TURBO, 3: SEQ2 TURBO,
+|
+|
+|
+|
+3:SEQ1&2 TURBO, ALL: SEQ TURBO, INST1 HOLD,
+|
+|
+|
+|
+INST2 HOLD, INST3 HOLD, INST ALL HOLD,
+|
+|
+|
+|
+SYNC TRIG, 1: PU SEL UP, 2: PU SEL UP,
+|
+|
+|
+|
+3: PU SEL UP, 1: PU SEL DOWN, 2: PU SEL DOWN,
+|
+|
+|
+|
+3: PU SEL DOWN, INST1 AMP, INST2 AMP,
+|
+|
+|
+|
+INST3 AMP, INST1 AMP SOLO, INST2 AMP SOLO,
+|
+|
+|
+|
+INST3 AMP SOLO, FX1, FX2, FX3, CMP, DS,
+|
+|
+|
+|
+DS SOLO, AMP, AMP SOLO, EQ1, EQ2, NS, DLY1,
+|
+|
+|
+|
+DLY2, MST DLY, CHO, REV, S/R, FX1 TRIGGER,
+|
+|
+|
+|
+FX2 TRIGGER, FX3 TRIGGER, MDLY TRIGGER,
+|
+|
+|
+|
+DIV CH SELECT, MIDI START, MMC PLAY
+|
+|
+00 13 | 0000 000a | Num2 Mode
+(0 - 1) |
+|
+|
+|
+TOGGLE, MOMENT |
+|
+00 14 | 0aaa aaaa | Num3 Function
+(0 - 119) |
+|
+|
+|
+OFF, *, PATCH +1, PATCH -1, LEVEL +10,
+|
+|
+|
+|
+LEVEL +20, LEVEL -10, LEVEL -20, BPM TAP,
+|
+|
+|
+|
+DLY1 TAP, DLY2 TAP, MST DLY TAP, FX1 DLY TAP,
+|
+|
+|
+|
+FX2 DLY TAP, FX3 DLY TAP, TUNER, MANUAL,
+|
+|
+|
+|
+MANUAL/TUNER, TUNER/MANUAL, INST1, INST2,
+|
+|
+|
+|
+INST3, INST ALL, INST1 NOR MIX, INST2 NOR MIX, |
+|
+|
+|
+INST3 NOR MIX, NORMAL, 1: ALT TUNE,
+|
+|
+|
+|
+2: ALT TUNE, 3: ALT TUNE, ALL: ALT TUNE,
+|
+|
+|
+|
+1: 12STR, 2: 12STR, 3: 12STR, ALL: 12STR,
+|
+|
+|
+|
+1: STR BEND, 2: STR BEND, 3: STR BEND,
+|
+
+21
+
+

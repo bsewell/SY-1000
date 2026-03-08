@@ -1,0 +1,271 @@
+EFFECT Parameters > FX1–FX3
+Parameter
+
+Value
+
+Explanation
+
+EFFECT
+LEVEL
+
+0–100
+
+Adjusts the volume of the pitch
+bend sound.
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+DIRECT
+LEVEL
+
+VARIATION
+
+PATCH, 01–10
+
+PITCH SHIFTER
+This effect changes the pitch of the original sound (up or down)
+within a range of two octaves.
+Parameter
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+1VOICE
+
+One-voice pitch-shifted sound
+output in mono.
+
+2MONO
+
+Two-voice pitch-shifted sound
+(PS1, PS2) output in mono.
+
+2STEREO
+
+Two-voice pitch-shifted sound
+(PS1, PS2) output through left
+and right channels.
+
+By adding varied-phase portions to the direct sound, the phaser
+effect gives a whooshing, swirling character to the sound.
+
+VOICE
+
+PS1:PITCH
+PS2:PITCH
+
+Parameter
+
+Value
+
+Explanation
+
+TYPE
+
+4STAGE,
+8STAGE,
+12STAGE,
+BiPHASE
+
+Selects the number of stages that
+the phaser effect will use.
+
+DIRECT LEVEL
+
+*1
+
+0–100, BPM
+Œ–`
+
+This sets the rate of the phaser
+effect.
+
+PS1:MODE
+
+DEPTH
+
+0–100
+
+Determines the depth of the
+phaser effect.
+
+RESONANCE
+
+0–100
+
+Determines the amount of
+resonance (feedback). Increasing
+the value will emphasize the effect,
+creating a more unusual sound.
+
+MANUAL
+
+0–100
+
+Adjusts the center frequency of the
+phaser effect.
+
+OFF, 0–100,
+BPM Œ–`
+
+This sets the cycle of the step
+function that changes the rate and
+depth. When it is set to a higher
+value, the change will be finer. Set
+this to “Off” when not using the
+Step function.
+
+STEP RATE
+*1
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume of the phaser.
+
+DIRECT LEVEL
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+PHASER settings can be saved/
+loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+Explanation
+
+Selects the number of voices for the pitch shift
+sound.
+
+PHASER
+
+RATE
+
+Value
+
+PEDAL BEND settings can be
+saved/loaded as ten variations.
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+-24–+24
+
+Adjusts the amount of pitch
+shift (the amount of interval) in
+semitone steps.
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+*1
+
+Selection for the pitch shifter mode.
+
+PS2:MODE
+*1
+
+FAST,
+MEDIUM,
+SLOW
+
+The response is slower in the
+order of FAST, MEDIUM and
+SLOW, but the modulation is
+lessened in the same order.
+MONO is used for inputting
+single notes.
+
+MONO
+
+You may be unable to produce
+the intended effect when
+playing chords (two or more
+notes played simultaneously).
+
+-50–+50
+
+Make fine adjustments to
+the interval. The amount of
+the change in the FINE 100 is
+equivalent to that of the PITCH 1.
+
+0 ms–300 ms,
+BPM `–Œ
+
+Adjusts the time from when the
+direct sound is heard until the
+pitch shifted sounds are heard.
+Normally you can leave this set
+at 0ms.
+
+0–100
+
+Adjusts the volume of the pitch
+shifter.
+
+PS1:FEEDBACK
+
+0–100
+
+Adjusts the feedback amount of
+the pitch shift sound.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+
+PS1:FINE
+PS2:FINE
+*1
+PS1:PRE-DELAY
+*2
+PS2:PRE-DELAY
+*1 *2
+PS1:LEVEL
+PS2:LEVEL
+*1
+
+PITCH SHIFTER settings can be
+saved/loaded as ten variations.
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be
+loaded into a different patch,
+which is convenient when you’re
+creating sounds.
+
+*1 Valid when the VOICE is set to 2MONO or 2STEREO.
+*2 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+50
+
+

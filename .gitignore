@@ -1,0 +1,20 @@
+# Build artifacts
+release/
+Makefile
+.qmake.stash
+generatedfiles/
+qrc_*.cpp
+moc_*.cpp
+*.o
+*.orig
+
+# Qt Creator
+.qtc_clangd/
+.qtcreator/
+*.pro.user
+
+# Packager (built app)
+packager/
+
+# macOS
+.DS_Store

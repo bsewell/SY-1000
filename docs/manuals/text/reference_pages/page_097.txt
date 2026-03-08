@@ -1,0 +1,89 @@
+Troubleshooting
+
+When Connected to a MIDI Device or Computer
+Problem
+The external sound module
+connected to the MIDI OUT
+connector does not sound
+Only one string sounds on
+the external sound module
+(some strings do not sound)
+Pitch is incorrect (different
+than the guitar pitch)
+When you view the note
+messages recorded in your
+sequencer, the pitches
+differ from what is actually
+sounded
+
+MIDI messages not being
+transmitted/received
+Pitch does not change
+smoothly
+
+Items to check
+
+Action
+
+Do the MIDI channels of the transmitting and receiving
+devices match?
+
+Match the MIDI channels.
+
+Could you have turned down the volume using the
+volume control of the GK pickup or the expression pedal?
+
+Raise the volume.
+
+Could you be using Mono mode to transmit from the
+SY-1000 to a sound module that is unable to receive six
+MIDI channels simultaneously?
+
+Use a sound module that supports multitimbral
+operation. Use the SY-1000 in Poly mode.
+
+Is the Bend Range of your external sound module set to
++/- 24?
+
+Set the Bend Range of your external sound module
+to +/- 24.
+
+Is your guitar tuned accurately?
+
+Tune your guitar accurately.
+
+The SY-1000 expresses the pitch as a combination of note
+data and pitchbend data. This means that if you’re looking
+Check the pitchbend data.
+only at the note data, the pitches may appear different
+than what you played.
+Could there be a short in the MIDI cable?
+
+Try replacing the MIDI cable.
+
+Are the SY-1000 and the external MIDI device connected
+properly?
+
+Check the connection with the external MIDI device.
+
+Are the MIDI channels matched?
+
+Check to confirm that both devices are set to the
+same MIDI channel.
+
+Check the Program Change message transmission
+If you are transmitting from the SY-1000, have the settings
+ON/OFF setting and the settings for the controller
+for transmission been made?
+number to be transmitted.
+In CTL, check the GUITAR TO MIDI/BASS TO MIDI setting
+CHROMATIC.
+
+If this is set to “TYPE2” or “TYPE3,” pitch bend data
+will not be output, and the pitch will change in
+semitone steps. Set the CHROMATIC setting to “OFF”
+or “TYPE1.”
+
+97
+
+

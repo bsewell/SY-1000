@@ -1,0 +1,346 @@
+CONTROL ASSIGN Parameters > CONTROL FUNCTION
+Value
+
+Value
+
+Explanation
+
+1:SEQ1 TURBO
+
+*3 Switches INST1 SEQ1’s TURBO on/off.
+
+Explanation
+
+MST DLY
+
+Switches the MASTER DELAY on and off.
+
+1:SEQ2 TURBO
+
+*3 Switches INST1 SEQ2’s TURBO on/off.
+
+CHO
+
+Switches the CHORUS on and off.
+
+1:SEQ1&2
+TURBO
+
+Switches SEQ1 and SEQ2 TURBO on/off for
+*3
+INST1.
+
+REV
+
+Switches the REVERB on and off.
+
+2:SEQ1 TURBO
+
+*3 Switches INST2 SEQ1’s TURBO on/off.
+
+S/R
+
+Switches the SEND/RETURN on and off.
+
+2:SEQ2 TURBO
+
+*3 Switches INST2 SEQ2’s TURBO on/off.
+
+FX1 TRIGGER
+
+Switches the FX1 TRIGGER on and off.
+
+2:SEQ1&2
+TURBO
+
+Switches SEQ1 and SEQ2 TURBO on/off for
+*3
+INST2.
+
+FX2 TRIGGER
+
+Switches the FX2 TRIGGER on and off.
+
+FX3 TRIGGER
+
+Switches the FX3 TRIGGER on and off.
+
+3:SEQ1 TURBO
+
+*3 Switches INST3 SEQ1’s TURBO on/off.
+
+3:SEQ2 TURBO
+
+*3 Switches INST3 SEQ2’s TURBO on/off.
+
+MST DLY
+TRIGGER
+
+Turns the trigger on/off when the MASTER
+DELAY’s TYPE is WARP or TWIST.
+
+3:SEQ1&2
+TURBO
+
+Switches SEQ1 and SEQ2 TURBO on/off for
+*3
+INST3.
+
+DIV CH.SELECT
+
+Switches the DIVIDER channel select.
+
+MIDI START
+
+Controls the Start/Stop of external MIDI
+devices (such as sequencers).
+
+ALL:SEQ TURBO
+
+*3
+
+MMC PLAY
+
+INST1 HOLD
+
+*2 Switches INST1’s HOLD on/off.
+
+Controls the Play/Stop of external MIDI
+devices (such as hard disk recorders).
+
+INST2 HOLD
+
+*2 Switches INST2’s HOLD on/off.
+
+*1 This cannot be assigned to CUR NUM and MANUAL1–MANUAL4.
+
+INST3 HOLD
+
+*2 Switches INST3’s HOLD on/off.
+
+INST ALL HOLD
+
+*2 Switches HOLD on/off for all INST1–INST3.
+
+*2 Valid when the INST TYPE is set to DYNAMIC SYNTH or OSC
+SYNTH.
+
+SYNC TRIG
+
+*2
+
+1:PU SEL UP
+
+*4
+Switches the PU of INST1.
+*6
+
+2:PU SEL UP
+
+*4
+Switches the PU of INST2.
+*6
+
+3:PU SEL UP
+
+*4
+Switches the PU of INST3.
+*6
+
+1:PU SEL DOWN
+
+*4
+Switches the PU of INST1.
+*6
+
+2:PU SEL DOWN
+
+*4
+Switches the PU of INST2.
+*6
+
+GK VOL, EXP1, EXP 2
+
+3:PU SEL DOWN
+
+*4
+Switches the PU of INST3.
+*6
+
+Value
+
+Explanation
+No assignment.
+
+Switches all TURBO of SEQs on/off for all
+INST1–INST3.
+
+Retriggers the SEQ and LFO whose SYNC is
+ON for INST1–INST3.
+
+*3 Valid when the INST TYPE is set to DYNAMIC SYNTH.
+*4 Valid when the INST TYPE is set to E.GTR, ACOUSTIC (SITAR), or
+VIO GUITAR.
+*5 Valid when the INST TYPE is set to E.GTR, ACOUSTIC, AC BASS, or
+E.BASS.
+*6 Setting available with GK PATCH.
+MEMO
+CUR NUM is valid when the CONTROL MODE (p. 81) is set to
+MEMORY.
+
+INST1 AMP
+
+*5
+Switches INST1’s AMP Modeling on/off.
+*6
+
+OFF
+FV1
+
+Assigns FOOT VOLUME1.
+
+INST2 AMP
+
+*5
+Switches INST2’s AMP Modeling on/off.
+*6
+
+FV2
+
+Assigns FOOT VOLUME2.
+
+INST3 AMP
+
+*5
+Switches INST3’s AMP Modeling on/off.
+*6
+
+FV1+TUNER
+
+Assigns FOOT VOLUME1. TUNER is displayed if
+the pedal is returned all the way.
+
+*5 Switches AMP Modeling solo on/off for
+INST1 AMP SOLO
+*6 INST1.
+
+FV2+TUNER
+
+Assigns FOOT VOLUME2. TUNER is displayed if
+the pedal is returned all the way.
+
+*5 Switches AMP Modeling solo on/off for
+INST2 AMP SOLO
+*6 INST2.
+*5 Switches AMP Modeling solo on/off for
+INST3 AMP SOLO
+*6 INST3.
+FX1
+
+Switches the FX1 on and off.
+
+FX2
+
+Switches the FX2 on and off.
+
+FX3
+
+Switches the FX3 on and off.
+
+CMP
+
+Switches the COMPRESSOR on and off.
+
+DS
+
+Switches the DISTORTION on and off.
+
+DS SOLO
+
+Switches the DISTORTION SOLO on and off.
+
+AMP
+
+Switches the AMP on and off.
+
+AMP SOLO
+
+Switches the AMP SOLO on and off.
+
+EQ 1
+
+Switches the EQUALIZER 1 on and off.
+
+EQ 2
+
+Switches the EQUALIZER 2 on and off.
+
+NS
+
+Switches the NOISE SUPRESSOR on and off.
+
+DLY1
+
+Switches the DELAY 1 on and off.
+
+DLY2
+
+Switches the DELAY 2 on and off.
+
+68
+
+FX1 PEDAL
+POS.
+
+*3 Assigns the PEDAL POSITION of FX1.
+
+FX2 PEDAL
+POS.
+
+*3 Assigns the PEDAL POSITION of FX2.
+
+FX3 PEDAL
+POS.
+
+*3 Assigns the PEDAL POSITION of FX3.
+
+PATCH
+LEVEL100
+
+Assigns the function of controlling PATCH LEVEL
+in the range 0–100.
+
+PATCH
+LEVEL200
+
+Assigns the function of controlling PATCH LEVEL
+in the range 0–200.
+
+INST1 LEVEL
+
+Assigns the LEVEL of INST1.
+
+INST2 LEVEL
+
+Assigns the LEVEL of INST2.
+
+INST3 LEVEL
+
+Assigns the LEVEL of INST3.
+
+INST ALL
+LEVEL
+
+Assigns the LEVEL of all INST1–INST3.
+
+INST1
+CUTOFF
+
+*1 Assigns the CUTOFF of INST1.
+
+INST2
+CUTOFF
+
+*1 Assigns the CUTOFF of INST2.
+
+

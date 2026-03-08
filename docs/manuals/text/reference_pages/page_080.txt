@@ -1,0 +1,169 @@
+CONTROL ASSIGN Parameters > LED COLOR
+Parameter
+
+Value
+
+Explanation
+This sets the Control Change number
+to be output.
+
+CC1 CC#
+CC2 CC#
+
+OFF, #1–#31, When the MODE is set to POLY,
+messages are output only over the
+#64–#95
+BASIC CH; when this is set to MONO,
+the messages are output over the six
+channels starting from the BASIC CH.
+
+BANK MSB
+*1
+STR1 BANK
+MSB–STR6
+BANK MSB
+*2
+
+OFF, 1–127
+
+This sets the Bank Select (MSB). *1
+
+HiC BANK
+MSB–LoB
+BANK MSB
+BANK LSB
+
+OFF, 1–127
+
+This sets the Bank Select (LSB). *1
+
+HiC BANK
+LSB–LoB
+BANK LSB
+
+Value
+
+Explanation
+
+OFF
+
+Refer to
+“Value” (p.
+80).
+
+Specifies the color of the LED when
+the switch is not pressed.
+
+ON
+
+Refer to
+“Value” (p.
+80).
+
+Specifies the color of the LED when
+the switch is pressed.
+
+Value
+
+Explanation
+
+OFF
+
+The LED is not lit.
+
+RED
+LIGHT BLUE
+GREEN
+
+Specify the color of LED illumination.
+
+YELLOW
+
+PC
+
+WHITE
+
+*1
+
+*2
+
+Parameter
+
+BLUE
+
+*2
+
+STR1 PC–STR6
+PC
+
+[BANKI]/[BANKH] switch, [CTL1]/[CTL2]
+switch, [1]–[4] switch, CUR NUM
+
+Value
+
+*1
+
+*2
+
+You can specify the color of the LED for each footswitch.
+
+* CUR NUM indicates the number of the currently selected patch
+(current number).
+
+*2
+
+STR1 BANK
+LSB–STR6
+BANK LSB
+
+LED COLOR
+
+PURPLE
+OFF, 1–128
+
+This sets the Program Number. *1
+
+HiC PC–LowB
+PC
+*2
+*1 Setting available with MODE set to POLY.
+*2 Setting available with MODE set to MONO. This can be specified
+for each string.
+
+AUTO
+
+The illumination behavior and color that are
+appropriate for the footswitch function will
+be specified.
+If “ON” is set to AUTO, the OFF setting is
+ignored.
+
+AUTO RED
+AUTO BLUE
+AUTO LIGHT BLUE
+AUTO GREEN
+AUTO YELLOW
+AUTO WHITE
+
+The illumination behavior that is
+appropriate for the footswitch function will
+be specified. You can specify the color.
+If “ON” is set to AUTO, the OFF setting is
+ignored.
+
+AUTO PURPLE
+
+PREFERENCE
+Value
+PATCH
+SYSTEM
+
+80
+
+Explanation
+Different settings can be made independently
+for each patch.
+The same settings will be shared by all
+patches.
+
+

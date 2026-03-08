@@ -1,0 +1,127 @@
+SYSTEM Parameters > IN/OUT SETTING
+Parameter
+
+Value
+
+Explanation
+
+Parameter
+
+Specifies the position of the divided pickup.
+
+4STR-1
+
+4STR-2
+
+Explanation
+
+This sets the direction for the divided pickup’s
+installation.
+
+Position for a 4-string bass.
+GK PU
+POSITION
+
+Value
+
+The cable extends from
+the side of the 6th string.
+(GUITAR MODE)
+
+4STR-3
+
+1st string
+2nd string
+3rd string
+4th string
+
+Position for a 5-string bass (Low B–G).
+GK PU
+POSITION
+
+GK PU
+POSITION
+*2
+
+5STR-Lo1
+
+5STR-Lo2
+
+1st string
+2nd string
+3rd string
+4th string
+Low B string
+
+NORMAL
+
+The cable extends from the
+side of the bass’s bridge.
+(BASS MODE)
+
+Position for a 5-string bass (E–Hi C).
+GK PU
+POSITION
+
+5STR-Hi1
+
+5STR-Hi2
+
+High C string
+1st string
+2nd string
+3rd string
+4th string
+
+Position for a 6-string bass.
+GK PU
+POSITION
+
+PU
+DIRECTION
+The cable extends from
+the side of the 1st string.
+(GUITAR MODE)
+
+6STR
+High C string
+1st string
+2nd string
+3rd string
+4th string
+Low B string
+
+PU PHASE
+
+NORMAL, INVERSE
+
+This sets the phase for the
+divided pickup and normal
+pickup.
+Set this to “NORMAL,” and if
+the low-frequency range is
+cut, set this to “INVERSE.”
+REVERSE
+
+PIEZO TONE L
+*3
+PIEZO TONE H
+*3
+
+82
+
+The cable extends from
+the side of the bass’s neck.
+(BASS MODE)
+
+-10 dB–+10 dB
+
+Adjusts the low-frequency
+range.
+
+-10 dB–+10 dB
+
+Adjusts the high-frequency
+range.
+
+

@@ -1,0 +1,179 @@
+SYSTEM Parameters > IN/OUT SETTING
+Parameter
+
+Value
+
+SW POSITION NORMAL, REVERSE
+
+NORMAL PU
+GAIN
+
+-20 dB–+20 dB
+
+DISTANCE 1–
+DISTANCE 6
+
+10.0–30.0 mm
+
+Explanation
+
+Parameter
+
+Value
+
+Explanation
+
+Swaps the functions of the
+[S1] and [S2] buttons of
+the GK-3, GK-2A, GK-3B, or
+GK-2B.
+
+LEVEL
+
+0–100
+
+Adjusts the volume.
+
+SENS
+
+-50–+50
+
+Adjusts the overall input sensitivity.
+
+-50–+50
+
+Adjusts the sensitivity of the lowfrequency region. Increase this
+setting if you want to make the
+low-frequency region thicker.
+
+Adjusts the input level of
+the normal pickup. When
+making this setting, set the
+GK pickup’s select switch to
+“MIX.”
+
+LOW
+
+Decrease this setting if you want
+to make the low-frequency region
+clearer.
+
+Specifies the distance
+between the divided pickup
+and the bridge.
+HIGH
+
+DISTANCE
+HiC–
+DISTANCE
+LowB
+
+Decrease this setting if you want
+to restrain the volume of the highfrequency region.
+
+5.5–55.5 mm
+* If the pickup type is set to
+“GC-1” or one of the piezotype pickups, this setting
+is not necessary.
+
+SENS 1–SENS
+6
+SENS
+HiC–+SENS
+LowB
+
+-50–+50
+
+Adjusts the sensitivity of the highfrequency region. Increase this
+setting if you want more volume in
+the high-frequency region, such as
+when soloing.
+
+Specifies the input
+sensitivity of the divided
+pickup.
+
+0–100
+
+MAIN OUT, SUB OUT
+OUTPUT SELECT&LEVEL
+Specify the device (amp) that’s connected to the MAIN OUTPUT, SUB
+OUTPUT jacks.
+Parameter
+
+Value
+
+Explanation
+
+STEREO LINK
+
+OFF, ON
+
+If this is ON, the L and R
+settings are made at the same
+time.
+
+*1 Setting available with GUITAR MODE.
+*2 Setting available with BASS MODE.
+*3 Setting available when GK PU TYPE is PIEZO type.
+
+NORMAL SETTING
+You can save ten types of settings for your conventional guitar (bass)
+as a NORMAL SETTING.
+The NORMAL SETTING parameters are saved even when you turn off
+the power. You need not make the settings each time you play the
+instrument.
+These settings are for the signal that is input to INST (DYNAMIC
+SYNTH), and apply to a NORMAL PATCH.
+Parameter
+
+Value
+
+Explanation
+Selects the NORMAL
+SET used when EFFECTS
+parameters0MASTER parameters
+NORMAL SET is set to “SYSTEM.”
+
+SETTING
+
+1–10
+
+NAME
+
+Edits the name of the NORMAL set (up to eight
+characters).
+
+COMPRESSOR
+SW
+
+OFF, ON
+
+Turns the compressor on/off.
+
+ATTACK
+
+0–100
+
+Adjusts the strength of the attack
+when picking.
+
+SUSTAIN
+
+0–100
+
+The various parameters specified
+in NORMAL SETTING are saved in
+the NORMAL SET number that you
+select here.
+
+Adjusts the range (time) during
+which the decaying sound of
+the guitar/bass is amplified to a
+constant volume.
+Larger values will result in longer
+sustain.
+
+83
+
+

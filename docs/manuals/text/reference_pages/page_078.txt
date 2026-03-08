@@ -1,0 +1,148 @@
+CONTROL ASSIGN Parameters > PATCH MIDI
+
+PATCH MIDI
+
+About the Range of a Controller’s Change
+This sets the operational range within which the value of the
+setting changes when an expression pedal or other controller
+that changes the value consecutively is used as the source. If
+the controller is moved outside the operational range, the value
+does not change, it stops at “minimum” or “maximum.”
+
+Allowable
+Parameter
+Settings Range
+
+(Example) With ACT LOW: 40, ACT HIGH: 80
+
+When you change patches, a program number and bank select
+messages are transmitted to an external MIDI device.
+* If the “MIDI SETTING” parameter “TX PC MAP” is set to FIX, the
+PATCH MIDI function will not operate. Set the parameter to “PATCH
+MIDI.”
+
+PATCH MIDI 1–PATCH MIDI 4
+
+MAX
+
+Parameter
+Degree to Which
+Expression Pedal
+Is Depressed
+
+MIN
+
+0
+When the
+pedal is
+fully raised
+
+40
+ACT
+LOW
+
+80
+ACT
+HIGH
+
+127
+When the
+pedal is fully
+advanced
+
+CHANNEL
+(CH)
+
+PC#
+
+Value
+OFF, 1–16
+
+OFF, 1–128
+
+If this is OFF, no MIDI message is
+transmitted.
+Specifies whether a program
+number is transmitted when you
+switch patches.
+
+Specifies whether bank select
+messages are transmitted when you
+switch patches.
+
+ON
+
+BANK MSB
+BANK LSB
+
+OFF, 1–127
+
+40
+
+60 80
+Center
+Value
+ACT
+ACT
+LOW
+HIGH
+
+127
+When the
+pedal is fully
+advanced
+
+* When using a footswitch or other on/off switching controller
+as the source, leave these at “ACT LOW: 0” and “ACT HIGH:
+127.” With certain settings, the value may not change.
+
+* It is not possible to transmit only
+BANK LSB.
+* Not transmitted if PC# is OFF.
+* It is not possible to transmit only
+bank select. Bank select is always
+transmitted in conjunction with
+program numbers.
+
+Degree to Which
+Expression Pedal
+Is Depressed
+
+OFF
+
+78
+
+Specifies the transmit channel for
+MIDI messages.
+
+If this is OFF, no program number is
+transmitted.
+
+Value
+
+0
+When the
+pedal is
+fully raised
+
+Explanation
+
+CC1#
+CC2#
+CC1 VALUE
+CC2 VALUE
+
+OFF, 1–127
+
+Specifies whether a control change
+is transmitted when you switch
+patches.
+If this is OFF, no control change is
+transmitted.
+
+0–127
+
+Specifies the value of the control
+change.
+
+

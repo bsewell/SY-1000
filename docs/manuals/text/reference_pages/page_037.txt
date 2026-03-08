@@ -1,0 +1,153 @@
+INST Parameters > AC BASS Parameters
+
+TYPE
+
+AC BASS Parameters
+
+TYPE
+
+Explanation
+
+MA28
+
+The sound of a Martin D-28. Older model known for
+its exquisitely balanced sound.
+
+AC BASS
+
+TRP-0
+
+The sound of a Martin 000-28. This model features a
+full low-end resonance and crisp, distinct contour.
+
+Parameter
+
+Value
+
+Explanation
+
+VOLUME
+
+0–100
+
+GB45
+
+The sound of a Gibson J-45. This vintage model
+features a unique, seasoned tone with good
+response.
+
+Adjusts the volume. With a setting
+of 0, there will be no sound.
+
+GB SML
+
+The sound of a Gibson B-25. Featuring a compact
+body, this vintage model is often used in blues.
+
+BODY
+
+0–100
+
+This sets the volume level of the
+resonant sound produced by
+the panels and cavity (the body
+resonation).
+
+GLD40
+
+The sound of a Guild D-40. This model features
+warm resonance from the body along with a
+delicate string resonance.
+
+RESONANCE
+
+0–100
+
+Adjusts the body resonance. The
+resonation increases as the value
+is raised.
+
+NYLON
+
+This models a nylon-string guitar.
+
+RESO
+
+This models a Dobro-type resonator guitar.
+
+BANJO
+
+This models a conventional five-string banjo.
+
+-50–+50
+
+SITAR
+
+This models a Coral electric sitar. The sitar’s
+distinctive buzz and tonal change are modeled.
+
+Specifies the size of the body. This
+modifies the resonant frequency
+to simulate changes in body size. A
+setting of 0 will produce a normal
+resonance.
+
+ATTACK
+
+0–100
+
+Specifies the strength of the attack
+when you pluck the string strongly.
+The higher the value you set, the
+greater the intensity of the sound
+produced when the strings are
+played. The attack of the body
+sound will increase as well.
+
+BOTTOM
+
+0–100
+
+This sets the volume level of string
+vibration.
+
+BUZZ SENS
+
+0–100
+
+This sets the sensitivity for the
+distinctive harmonics of an acoustic
+bass. Adjust this to match the
+velocity of fingering.
+
+DECAY
+
+0–100
+
+This sets the decay of the string
+vibration.
+
+AMP (AMP Modeling)
+
+SIZE
+
+Refer to “AMP (AMP Modeling)” (p. 34).
+
+NS
+Refer to “NS” (p. 35).
+
+EQ
+Refer to “EQ” (p. 35).
+
+AMP (AMP Modeling)
+Refer to “AMP (AMP Modeling)” (p. 34).
+
+NS
+Refer to “NS” (p. 35).
+
+EQ
+Refer to “EQ” (p. 35).
+
+37
+
+

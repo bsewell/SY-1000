@@ -1,0 +1,59 @@
+Connecting to a Computer
+By connecting the SY-1000 to a computer via USB, you can do the
+following.
+USB COMPUTER
+port
+
+Using the SY-1000 as an Audio Interface
+You can record the sound of the SY-1000 on your computer, or have
+sound from your computer be output from the SY-1000’s MAIN
+OUTPUT jacks or SUB OUTPUT jacks.
+* For details of the audio signal flow when connected via USB and
+instructions on how to make settings, refer to “SY-1000 Parameter
+Guide” (PDF file).
+* Refer to the instruction manual for the software you are using to
+learn how to switch the input source of the software.
+
+55 Transmit and receive digital audio signals and MIDI messages
+between the computer and the SY-1000.
+55 Edit and manage patches using the dedicated software
+
+55 Download patches from our dedicated BOSS TONE CENTRAL
+(http://bosstonecentral.com/) website
+& http://bosstonecentral.com/
+
+Making use of the SY-1000’s dedicated software
+Download the dedicated tool from the BOSS website. For details on
+how to use the software, refer to the Readme.htm file that comes
+with the download.
+https://www.boss.info/global/support/
+
+Installing the USB Driver
+
+Using the dedicated software allows you to do the following:
+
+You must install the USB driver before connecting to a computer.
+
+55 Name patches
+
+Please download the USB driver from the website shown below.
+Install this special driver before making a USB connection. For further
+details, refer to the Readme.htm file that comes with the download.
+https://www.boss.info/global/support/
+
+55 Easily download patches from our BOSS TONE CENTRAL website.
+55 Edit patch settings
+
+55 Organize patches in order and switch them around
+
+55 Back up patches and system settings, and return to the backed up
+settings
+
+The program you need to use, and the steps you need to take to
+install the USB driver will differ depending on your computer setup,
+so please carefully read and refer to the Readme.htm file that comes
+with the download.
+
+95
+
+

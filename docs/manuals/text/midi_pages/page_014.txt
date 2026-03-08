@@ -1,0 +1,990 @@
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|
+|
+|
+INST2 SEQ1, INST2 SEQ2, INST2 SEQ1&2,
+|
+|
+|
+|
+INST3 SEQ1, INST3 SEQ2, INST3 SEQ1&2,
+|
+|
+|
+|
+INST ALL SEQ, 1: SEQ1 TRIG, 1: SEQ2 TRIG,
+|
+|
+|
+|
+1: SEQ1&2 TRIG, 2: SEQ1 TRIG, 2: SEQ2 TRIG,
+|
+|
+|
+|
+2: SEQ1&2 TRIG, 3: SEQ1 TRIG, 3: SEQ2 TRIG,
+|
+|
+|
+|
+3: SEQ1&2 TRIG, ALL SEQ TRIG, 1: SEQ1 TURBO,
+|
+|
+|
+|
+1: SEQ2 TURBO, 1:SEQ1&2 TURBO, 2: SEQ1 TURBO,
+|
+|
+|
+|
+2: SEQ2 TURBO, 2:SEQ1&2 TURBO, 3: SEQ1 TURBO,
+|
+|
+|
+|
+3: SEQ2 TURBO, 3:SEQ1&2 TURBO, ALL: SEQ TURBO, |
+|
+|
+|
+INST1 HOLD, INST2 HOLD, INST3 HOLD,
+|
+|
+|
+|
+INST ALL HOLD, SYNC TRIG, 1: PU SEL UP,
+|
+|
+|
+|
+2: PU SEL UP, 3: PU SEL UP, 1: PU SEL DOWN,
+|
+|
+|
+|
+2: PU SEL DOWN, 3: PU SEL DOWN, INST1 AMP,
+|
+|
+|
+|
+INST2 AMP, INST3 AMP, INST1 AMP SOLO,
+|
+|
+|
+|
+INST2 AMP SOLO, INST3 AMP SOLO, FX1, FX2, FX3, |
+|
+|
+|
+CMP, DS, DS SOLO, AMP, AMP SOLO, EQ1, EQ2, NS, |
+|
+|
+|
+DLY1, DLY2, MST DLY, CHO, REV, S/R,
+|
+|
+|
+|
+FX1 TRIGGER, FX2 TRIGGER, FX3 TRIGGER,
+|
+|
+|
+|
+MDLY TRIGGER, DIV CH SELECT, MIDI START,
+|
+|
+|
+|
+MMC PLAY
+|
+|
+00 3A | 0000 000a | Manual Num4 Mode
+(0 - 1) |
+|
+|
+|
+TOGGLE, MOMENT |
+|
+00 3B | 0000 000a | Manual Num1 Preference
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 3C | 0000 000a | Manual Num2 Preference
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 3D | 0000 000a | Manual Num3 Preference
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 3E | 0000 000a | Manual Num4 Preference
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 3F | 0000 000a | CONTROL MODE
+(0 - 1) |
+|
+|
+|
+MEMORY, MANUAL |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 40 |Total Size
+|
++------------------------------------------------------------------------------+
+
+|
+|
+INST ALL SEQ, 1: SEQ1 TRIG, 1: SEQ2 TRIG,
+|
+|
+|
+1: SEQ1&2 TRIG, 2: SEQ1 TRIG, 2: SEQ2 TRIG,
+|
+|
+|
+2: SEQ1&2 TRIG, 3: SEQ1 TRIG, 3: SEQ2 TRIG,
+|
+|
+|
+3: SEQ1&2 TRIG, ALL SEQ TRIG, 1: SEQ1 TURBO,
+|
+|
+|
+1: SEQ2 TURBO, 1:SEQ1&2 TURBO, 2: SEQ1 TURBO,
+|
+|
+|
+2: SEQ2 TURBO, 2:SEQ1&2 TURBO, 3: SEQ1 TURBO,
+|
+|
+|
+3: SEQ2 TURBO, 3:SEQ1&2 TURBO, ALL: SEQ TURBO, |
+|
+|
+INST1 HOLD, INST2 HOLD, INST3 HOLD,
+|
+|
+|
+INST ALL HOLD, SYNC TRIG, 1: PU SEL UP,
+|
+|
+|
+2: PU SEL UP, 3: PU SEL UP, 1: PU SEL DOWN,
+|
+|
+|
+2: PU SEL DOWN, 3: PU SEL DOWN, INST1 AMP,
+|
+|
+|
+INST2 AMP, INST3 AMP, INST1 AMP SOLO,
+|
+|
+|
+INST2 AMP SOLO, INST3 AMP SOLO, FX1, FX2, FX3, |
+|
+|
+CMP, DS, DS SOLO, AMP, AMP SOLO, EQ1, EQ2, NS, |
+|
+|
+DLY1, DLY2, MST DLY, CHO, REV, S/R,
+|
+|
+|
+FX1 TRIGGER, FX2 TRIGGER, FX3 TRIGGER,
+|
+|
+|
+MDLY TRIGGER, DIV CH SELECT, MIDI START,
+|
+|
+|
+MMC PLAY
+|
+00 34 | 0000 000a | Manual Num1 Mode
+(0 - 1) |
+|
+|
+TOGGLE, MOMENT |
+00 35 | 0aaa aaaa | Manual Num2 Function
+(0 - 116) |
+|
+|
+OFF, LEVEL +10, LEVEL +20, LEVEL -10,
+|
+|
+|
+LEVEL -20, BPM TAP, DLY1 TAP, DLY2 TAP,
+|
+|
+|
+MST DLY TAP, FX1 DLY TAP, FX2 DLY TAP,
+|
+|
+|
+FX3 DLY TAP, TUNER, MANUAL, MANUAL/TUNER,
+|
+|
+|
+TUNER/MANUAL, INST1, INST2, INST3, INST ALL,
+|
+|
+|
+INST1 NOR MIX, INST2 NOR MIX, INST3 NOR MIX,
+|
+|
+|
+NORMAL, 1: ALT TUNE, 2: ALT TUNE, 3: ALT TUNE, |
+|
+|
+ALL: ALT TUNE, 1: 12STR, 2: 12STR, 3: 12STR,
+|
+|
+|
+ALL: 12STR, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, INST1 LFO1,
+|
+|
+|
+INST1 LFO2, INST1 LFO1&2, INST2 LFO1,
+|
+|
+|
+INST2 LFO2, INST2 LFO1&2, INST3 LFO1,
+|
+|
+|
+INST3 LFO2, INST3 LFO1&2, INST ALL LFO,
+|
+|
+|
+INST1 SEQ1, INST1 SEQ2, INST1 SEQ1&2,
+|
+|
+|
+INST2 SEQ1, INST2 SEQ2, INST2 SEQ1&2,
+|
+|
+|
+INST3 SEQ1, INST3 SEQ2, INST3 SEQ1&2,
+|
+|
+|
+INST ALL SEQ, 1: SEQ1 TRIG, 1: SEQ2 TRIG,
+|
+|
+|
+1: SEQ1&2 TRIG, 2: SEQ1 TRIG, 2: SEQ2 TRIG,
+|
+|
+|
+2: SEQ1&2 TRIG, 3: SEQ1 TRIG, 3: SEQ2 TRIG,
+|
+|
+|
+3: SEQ1&2 TRIG, ALL SEQ TRIG, 1: SEQ1 TURBO,
+|
+|
+|
+1: SEQ2 TURBO, 1:SEQ1&2 TURBO, 2: SEQ1 TURBO,
+|
+|
+|
+2: SEQ2 TURBO, 2:SEQ1&2 TURBO, 3: SEQ1 TURBO,
+|
+|
+|
+3: SEQ2 TURBO, 3:SEQ1&2 TURBO, ALL: SEQ TURBO, |
+|
+|
+INST1 HOLD, INST2 HOLD, INST3 HOLD,
+|
+|
+|
+INST ALL HOLD, SYNC TRIG, 1: PU SEL UP,
+|
+|
+|
+2: PU SEL UP, 3: PU SEL UP, 1: PU SEL DOWN,
+|
+|
+|
+2: PU SEL DOWN, 3: PU SEL DOWN, INST1 AMP,
+|
+|
+|
+INST2 AMP, INST3 AMP, INST1 AMP SOLO,
+|
+|
+|
+INST2 AMP SOLO, INST3 AMP SOLO, FX1, FX2, FX3, |
+|
+|
+CMP, DS, DS SOLO, AMP, AMP SOLO, EQ1, EQ2, NS, |
+|
+|
+DLY1, DLY2, MST DLY, CHO, REV, S/R,
+|
+|
+|
+FX1 TRIGGER, FX2 TRIGGER, FX3 TRIGGER,
+|
+|
+|
+MDLY TRIGGER, DIV CH SELECT, MIDI START,
+|
+|
+|
+MMC PLAY
+|
+00 36 | 0000 000a | Manual Num2 Mode
+(0 - 1) |
+|
+|
+TOGGLE, MOMENT |
+00 37 | 0aaa aaaa | Manual Num3 Function
+(0 - 116) |
+|
+|
+OFF, LEVEL +10, LEVEL +20, LEVEL -10,
+|
+|
+|
+LEVEL -20, BPM TAP, DLY1 TAP, DLY2 TAP,
+|
+|
+|
+MST DLY TAP, FX1 DLY TAP, FX2 DLY TAP,
+|
+|
+|
+FX3 DLY TAP, TUNER, MANUAL, MANUAL/TUNER,
+|
+|
+|
+TUNER/MANUAL, INST1, INST2, INST3, INST ALL,
+|
+|
+|
+INST1 NOR MIX, INST2 NOR MIX, INST3 NOR MIX,
+|
+|
+|
+NORMAL, 1: ALT TUNE, 2: ALT TUNE, 3: ALT TUNE, |
+|
+|
+ALL: ALT TUNE, 1: 12STR, 2: 12STR, 3: 12STR,
+|
+|
+|
+ALL: 12STR, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, INST1 LFO1,
+|
+|
+|
+INST1 LFO2, INST1 LFO1&2, INST2 LFO1,
+|
+|
+|
+INST2 LFO2, INST2 LFO1&2, INST3 LFO1,
+|
+|
+|
+INST3 LFO2, INST3 LFO1&2, INST ALL LFO,
+|
+|
+|
+INST1 SEQ1, INST1 SEQ2, INST1 SEQ1&2,
+|
+|
+|
+INST2 SEQ1, INST2 SEQ2, INST2 SEQ1&2,
+|
+|
+|
+INST3 SEQ1, INST3 SEQ2, INST3 SEQ1&2,
+|
+|
+|
+INST ALL SEQ, 1: SEQ1 TRIG, 1: SEQ2 TRIG,
+|
+|
+|
+1: SEQ1&2 TRIG, 2: SEQ1 TRIG, 2: SEQ2 TRIG,
+|
+|
+|
+2: SEQ1&2 TRIG, 3: SEQ1 TRIG, 3: SEQ2 TRIG,
+|
+|
+|
+3: SEQ1&2 TRIG, ALL SEQ TRIG, 1: SEQ1 TURBO,
+|
+|
+|
+1: SEQ2 TURBO, 1:SEQ1&2 TURBO, 2: SEQ1 TURBO,
+|
+|
+|
+2: SEQ2 TURBO, 2:SEQ1&2 TURBO, 3: SEQ1 TURBO,
+|
+|
+|
+3: SEQ2 TURBO, 3:SEQ1&2 TURBO, ALL: SEQ TURBO, |
+|
+|
+INST1 HOLD, INST2 HOLD, INST3 HOLD,
+|
+|
+|
+INST ALL HOLD, SYNC TRIG, 1: PU SEL UP,
+|
+|
+|
+2: PU SEL UP, 3: PU SEL UP, 1: PU SEL DOWN,
+|
+|
+|
+2: PU SEL DOWN, 3: PU SEL DOWN, INST1 AMP,
+|
+|
+|
+INST2 AMP, INST3 AMP, INST1 AMP SOLO,
+|
+|
+|
+INST2 AMP SOLO, INST3 AMP SOLO, FX1, FX2, FX3, |
+|
+|
+CMP, DS, DS SOLO, AMP, AMP SOLO, EQ1, EQ2, NS, |
+|
+|
+DLY1, DLY2, MST DLY, CHO, REV, S/R,
+|
+|
+|
+FX1 TRIGGER, FX2 TRIGGER, FX3 TRIGGER,
+|
+|
+|
+MDLY TRIGGER, DIV CH SELECT, MIDI START,
+|
+|
+|
+MMC PLAY
+|
+00 38 | 0000 000a | Manual Num3 Mode
+(0 - 1) |
+|
+|
+TOGGLE, MOMENT |
+00 39 | 0aaa aaaa | Manual Num4 Function
+(0 - 116) |
+|
+|
+OFF, LEVEL +10, LEVEL +20, LEVEL -10,
+|
+|
+|
+LEVEL -20, BPM TAP, DLY1 TAP, DLY2 TAP,
+|
+|
+|
+MST DLY TAP, FX1 DLY TAP, FX2 DLY TAP,
+|
+|
+|
+FX3 DLY TAP, TUNER, MANUAL, MANUAL/TUNER,
+|
+|
+|
+TUNER/MANUAL, INST1, INST2, INST3, INST ALL,
+|
+|
+|
+INST1 NOR MIX, INST2 NOR MIX, INST3 NOR MIX,
+|
+|
+|
+NORMAL, 1: ALT TUNE, 2: ALT TUNE, 3: ALT TUNE, |
+|
+|
+ALL: ALT TUNE, 1: 12STR, 2: 12STR, 3: 12STR,
+|
+|
+|
+ALL: 12STR, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, INST1 LFO1,
+|
+|
+|
+INST1 LFO2, INST1 LFO1&2, INST2 LFO1,
+|
+|
+|
+INST2 LFO2, INST2 LFO1&2, INST3 LFO1,
+|
+|
+|
+INST3 LFO2, INST3 LFO1&2, INST ALL LFO,
+|
+|
+|
+INST1 SEQ1, INST1 SEQ2, INST1 SEQ1&2,
+|
+
+* [SystemLed]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 0aaa | NUM1 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 01 | 0000 aaaa | NUM1 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 02 | 0000 0aaa | NUM2 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 03 | 0000 aaaa | NUM2 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 04 | 0000 0aaa | NUM3 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 05 | 0000 aaaa | NUM3 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 06 | 0000 0aaa | NUM4 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 07 | 0000 aaaa | NUM4 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 08 | 0000 0aaa | BANKDOWN OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 09 | 0000 aaaa | BANKDOWN ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0A | 0000 0aaa | BANKUP OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0B | 0000 aaaa | BANKUP ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0C | 0000 0aaa | CTL1 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0D | 0000 aaaa | CTL1 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+
+14
+
+

@@ -1,0 +1,231 @@
+(*)One Way Communication
+
+****************************************
+MIDI Implementation
+****************************************
+
+(-)Request Data 1 RQ1 (11H)
+Status Data Byte
+Status
+F0H,
+41H, dev, 00H, 00H, 00H, 69H, 11H,
+F7H
+aaH, bbH, ccH, ddH, ssH, ttH, uuH, vvH, sum,
+
+Model: SY-1000
+Date: December 24, 2024
+Version: 1.01
+
+Byte
+F0H:
+41H:
+dev:
+00H:
+00H:
+00H:
+69H:
+11H:
+aaH:
+bbH:
+ccH:
+ddH:
+ssH:
+ttH:
+uuH:
+vvH:
+sum:
+F7H:
+
+****************************************
+1. Recognized data
+****************************************
+If "MENU:MIDI:MIDI SETTING:MIDI IN THRU" and "MENU:MIDI:MIDI SETTING:USB IN THRU"
+are set to anything other than "OFF," the received message will be transmitted as
+it is.
+
+[*]Channel Voice Message
+
+These messages are received if the "MENU:MIDI:MIDI SETTING:RX CHANNEL" setting
+matches the MIDI channel number of the incoming message.
+(*)Control Change
+(-)Bank Select
+Status 2nd Byte
+BnH
+00H
+BnH
+20H
+
+3rd Byte
+mmH
+00H
+
+n = MIDI Channel Number
+mm = Bank Number (MSB)
+
+(-)Data Set 1 DT1 (12H)
+Status Data Byte
+Status
+F0H,
+41H, dev, 00H, 00H, 00H, 69H, 12H,
+F7H
+aaH, bbH, ccH, ddH, eeH, ffH, ..., sum,
+
+: 0H - FH (0 - 15) 0=ch.1 15=ch.16
+: 00H - 03H (0 - 3)
+
+* After this unit starts up, it operates with 00H as the bank number until a bank
+select message is received.
+
+Byte
+F0H:
+41H:
+dev:
+00H:
+00H:
+00H:
+69H:
+12H:
+aaH:
+bbH:
+ccH:
+ddH:
+eeH:
+ffH:
+:
+sum:
+F7H:
+
+(-)Control Change Number #1 - #31 (MSB), #33 - #63 (LSB), #64 - #95
+Status 2nd Byte 3rd Byte
+BnH
+ccH
+vvH
+n = MIDI Channel Number
+: 0H - FH (0 - 15) 0=ch.1 15=ch.16
+cc = Control Change Number : 01H - 1FH (MSB) ( 1 – 31),
+20H - 3FH (LSB) (32 – 63),
+40H - 5FH
+(64 - 95)
+vv = Value
+: 00H - 7FH (0 - 127)
+* Recognized if the "MENU:ASSIGN SETTING:SOURCE" setting is CC#1 - #31 or CC#64 #95.
+Target value = (parameter min) + ((((cc value) - (ACT LOW)) * (parameter range))
+/ ((ACT HIGH) - (ACT LOW)))
+(*)Program Change
+Status 2nd Byte
+CnH
+ppH
+n = MIDI Channel Number
+pp = Program Number
+
+: 0H - FH (0 - 15) 0 = ch.1, 15 = ch.16
+: 00H - 7FH (0 - 127)
+
+* This message switches to the patch that is specified by "MENU:MIDI:PROGRAM
+MAP."
+
+[*]System Realtime Messages
+(*)Timing Clock
+Status
+F8H
+* Recognized if the "MENU:MIDI:MIDI SETTING:SYNC CLOCK" setting is other than
+INTERNAL.
+(*)Active Sensing
+Status
+FEH
+* When an Active Sensing message is received, the interval of all subsequent
+messages will begin to be monitored.
+When the message interval is being monitored, and the interval exceeds 400 ms,
+the display indicates "MIDI OFFLINE" and the unit returns to a state in which
+message interval is not monitored.
+
+[*]System Exclusive Messages
+
+Status Data Byte
+F0H,
+iiH, dev, ddH, ..., eeH,
+Byte
+F0H:
+ii:
+dev:
+dd,...,ee = data:
+F7H:
+
+Status
+F7H
+
+Explanation
+System Exclusive Message status
+ID number (41H:Roland's manufacturer ID)
+Device ID (dev: 00H-1FH, 7FH) * 7FH = Broadcast
+00H-7FH(0-127)
+EOX (End of Exclusive)
+
+(*)Universal Non-Realtime System Exclusive Messages
+(-)Identity Request Message (Device Inquiry)
+Status Data Byte
+Status
+F0H,
+7EH, dev, 06H, 01H, F7H
+Byte
+F0H:
+7EH:
+dev:
+06H:
+01H:
+F7H:
+
+Explanation
+System Exclusive Message status
+Manufacturer ID (Roland)
+Device ID (00H-1FH, 7FH)
+* 7FH = Broadcast
+Model ID # 1 (SY-1000)
+Model ID # 2 (SY-1000)
+Model ID # 3 (SY-1000)
+Model ID # 4 (SY-1000)
+Command ID (RQ1)
+Address MSB
+Address
+Address
+Address LSB
+Size MSB
+Size
+Size
+Size LSB
+Checksum
+EOX (End of Exclusive)
+
+Explanation
+System Exclusive Message status
+Universal Non-realtime Message
+Device ID (dev: 00H-1FH, 7FH)
+* 7FH = Broadcast
+Sub ID # 1 (General Information)
+Sub ID # 2 (Identity Request)
+EOX (End of Exclusive)
+
+When this message is received, this unit transmits the prescribed identity reply
+message (see transmitted data).
+
+1
+
+Explanation
+System Exclusive Message status
+Manufacturer ID (Roland)
+Device ID (00H-1FH, 7FH)
+* 7FH = Broadcast
+Model ID # 1 (SY-1000)
+Model ID # 2 (SY-1000)
+Model ID # 3 (SY-1000)
+Model ID # 4 (SY-1000)
+Command ID (DT1)
+Address MSB
+Address
+Address
+Address LSB
+Data
+Checksum
+EOX (End of Exclusive)
+
+

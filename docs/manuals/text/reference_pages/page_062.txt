@@ -1,0 +1,180 @@
+EFFECT Parameters > NOISE SUPPRESSOR
+
+NOISE SUPPRESSOR
+
+FOOT VOLUME 1, FOOT VOLUME 2
+
+This effect reduces the noise and hum picked up by guitar pickups.
+Since it suppresses the noise in synchronization with the envelope
+of the guitar sound (the way in which the guitar sound decays over
+time), it has very little effect on the guitar sound, and does not harm
+the natural character of the sound.
+
+This is a volume control effect.
+
+Parameter
+
+Value
+
+Explanation
+
+VOLUME MIN 0–100
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+Sets the volume when the heel of
+the EXP Pedal is depressed.
+
+VOLUME MAX 0–100
+
+Selects the volume when the toe of
+the EXP Pedal is depressed.
+
+THRESHOLD
+
+0–100
+
+Adjust this parameter as appropriate
+for the volume of the noise. If the
+noise level is high, a higher setting
+is appropriate. If the noise level is
+low, a lower setting is appropriate.
+Adjust this value until the decay
+of the guitar sound is as natural as
+possible.
+* High settings for the threshold
+parameter may result in there
+being no sound when you play
+with your guitar volume turned
+down.
+
+RELEASE
+
+0–100
+
+Normally, this is controlled with the expression pedal connected to
+the CTL 3, 4/EXP 1 jack or CTL 5, 6/EXP 2 jack.
+Parameter
+
+Value
+
+You can select how the actual
+volume changes relative to the
+amount the pedal is pressed.
+Volume
+
+VOLUME
+CURVE
+
+SLOW1,
+SLOW2,
+NORMAL,
+FAST
+
+Input volume from the GK IN jack.
+
+*1
+
+* Set the GK SETTING parameter
+SENS (p. 83) appropriately.
+
+NORMAL
+INPUT
+
+Input volume from the GUITAR
+INPUT jack.
+Noise suppressor input volume.
+
+DETECT
+NS INPUT
+
+* When connected as illustrated
+below, and you want to prevent
+a spatial-type effects sound (such
+as a delay sound) from being
+eradicated by the NS, you should
+set DETECT to “NS INPUT.”
+DLY
+
+NS
+
+Spatial-type effect
+INST1 OUT
+INST2 OUT
+INST3 OUT
+
+Specifies the output volume of the
+INST.
+NOISE SUPPRESSOR settings can be
+saved/loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Setting available with GK PATCH.
+
+62
+
+ST
+FA
+
+AL
+RM
+O
+N
+2
+OW
+SL
+
+OW
+SL
+
+Adjusts the time from when the
+noise suppressor begins to function
+until the noise level reaches “0.”
+
+When the pedal
+is fully raised
+
+This controls the noise suppressor based on the
+volume level for the point specified in Detect.
+GK INPUT
+
+Explanation
+
+PEDAL
+POSITION
+
+0–100
+
+1
+
+When the pedal
+is fully advanced
+
+Adjusts the volume.
+FOOT VOLUME settings can be
+saved/loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+These variations are shared with the
+FOOT VOLUME setting in FX1–FX3.
+
+

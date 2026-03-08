@@ -1,0 +1,237 @@
+CONTROL ASSIGN Parameters > ASSIGN SETTING
+
+ASSIGN SETTING
+
+Parameter
+
+Value
+
+Explanation
+
+0–100, BPM
+Œ–`
+
+Specifies the time for one cycle
+of the wave pedal.
+
+SYSTEM
+
+The message is transmitted on
+the MIDI channel specified by
+TX CHANNEL of “MIDI SETTING”
+(p. 89).
+
+1–16
+
+The message is transmitted on
+the specified MIDI channel.
+
+*2 0–127
+
+The message is transmitted
+using the specified controller
+number.
+
+This sets the minimum value for the range in
+which the parameter can change.
+
+MIDI CC# MIN *2 0–127
+
+Selects the minimum value of
+the transmitted CC# message.
+
+WAVE PEDAL
+RATE
+
+*4
+
+ASSIGN 1–ASSIGN 16
+For each parameter, you can specify, in detail, which controller will
+control which parameter. You can create 16 sets of such assignments.
+Parameter
+
+Value
+
+Explanation
+
+SW
+
+OFF, ON
+
+Turns the ASSIGN 1–16 on/off.
+
+This selects the parameter to be changed.
+
+TARGET
+
+MIDI CH
+
+MIDI CC#
+
+*2
+*3
+
+Refer to “TARGET list” (p. 71).
+
+MIN
+
+*6
+
+The value differs depending on the parameter
+assigned for TARGET parameter.
+
+MIDI CC#
+MAX
+
+*2 0–127
+
+Selects the maximum value of
+the transmitted CC# message.
+
+MIDI PC#
+
+*3 1–128
+
+MAX
+
+This sets the maximum value for the range in
+which the parameter can change. The value
+*6
+differs depending on the parameter assigned
+for TARGET parameter.
+
+Specifies the program number
+that is transmitted.
+
+MIDI PC#
+BANK MSB
+
+*3 OFF, 1–127
+
+Specifies the bank select MSB
+that is transmitted. If this is
+OFF, the bank select MSB is not
+transmitted.
+
+*3 OFF, 1–127
+
+Specifies the bank select LSB
+that is transmitted. If this is
+OFF, the bank select LSB is not
+transmitted.
+
+SOURCE
+
+This selects the controller that will operate the
+*6 parameter.
+Refer to “SOURCE list” (p. 76).
+
+MOMENT
+MODE
+
+*6
+TOGGLE
+
+ACT LOW
+
+ACT HIGH
+
+0–126
+
+1–127
+
+RISE TIME
+
+*5
+*6 0–100
+*7
+
+FALL TIME
+
+*5
+*6 0–100
+*7
+
+INPUT SENS
+
+0–100
+
+SAW
+WAVE PEDAL
+FORM
+
+*1 TRI
+SINE
+
+70
+
+The normal state is Off
+(minimum value), with the
+switch On (maximum value)
+only while the footswitch is
+depressed.
+The setting alternately switches
+to OFF (minimum value) and
+ON (maximum value) each time
+the footswitch is pressed.
+You can set the controllable
+range for target parameters
+within the source’s operational
+range.
+
+MIDI PC#
+BANK LSB
+
+*1 Valid when the SOURCE is set to WAVE PEDAL.
+*2 Valid when the TARGET is set to MIDI CC#.
+*3 Valid when the TARGET is set to MIDI PC#.
+*4 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+*5 Valid when the SOURCE is set to other than EXP1, EXP2, GK VOL,
+or WAVE PEDAL.
+
+Target parameters are
+controlled within the range set
+with ACT LOW and ACT HIGH.
+
+*6 Valid when the TARGET is set to other than BPM TAP, DLY1 TAP,
+DLY2 TAP, MST DLY TAP, FX1 DLY TAP, FX2 DLY TAP, FX3 DLY TAP, PU
+SELECT UP, PU SELECT DOWN, SEQ RETRIGGER, SYNC RETRIGGER,
+or MIDI PC#.
+
+You should normally set ACT
+LOW to 0 and ACT HIGH to 127.
+
+*7 Valid when the SOURCE is set to other than STRING1–STRING6,
+STR HiC–STR LowB, STRING ALL, NORMAL IN, or MIDI CC#.
+
+Adjusts the
+time over
+which the
+target changes
+from minimum
+to maximum.
+
+Set this
+to zero if
+you want
+the value
+to change
+immediately,
+such as for
+Adjusts the
+a parameter
+time over
+that turns
+which the
+target changes a value on/
+from maximum off or for tap
+input.
+to minimum.
+Adjusts the input sensitivity
+when STRING1–STRING6, STR
+HiC–STR LowB, STRING ALL, or
+NORMAL INPUT is selected as
+the SOURCE.
+
+

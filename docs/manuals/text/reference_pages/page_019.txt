@@ -1,0 +1,53 @@
+Saving a Patch
+The INST settings and the combination of effects can be saved in a
+patch, and recalled at any time.
+If you select a different patch or turn off the power after editing the
+settings, edited settings will be lost. If you want to keep the data, you
+must save it.
+
+1.	 Press the [WRITE] button.
+
+2.	 Press the [1] knob to select “WRITE” (PATCH WRITE).
+
+3.	 Use the [1] knob to select the save-destination
+(U01-1–U50-4).
+You can use knobs [3]–[6] to edit the name.
+
+Editing a name
+To edit the patch name, use the [6] knob to move the cursor
+and use the [5] knob to change the character.
+Operation
+
+Explanation
+
+Turn the [3] knob
+
+Selects the type of characters
+
+Press the [3] knob
+
+Delete one character (delete)
+
+Turn the [4] knob
+
+Switch uppercase/lowercase
+
+Press the [4] knob
+
+Insert one space (insert)
+
+Turn the [5] knob
+
+Changes the character
+
+Turn the [6] knob
+
+Moves the cursor
+
+4.	 Press the [WRITE] button.
+The patch is written.
+To cancel this procedure, press the [4] knob.
+
+19
+
+

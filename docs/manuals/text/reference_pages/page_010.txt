@@ -1,0 +1,107 @@
+Getting Ready
+
+Specifying the Distance from the Bridge
+
+Tuning the Guitar (TUNER)
+
+For each string, specify the distance from the bridge to the center of
+the pickup.
+
+Tune the guitar (bass).
+The SY-1000 is equipped with a conventional monophonic tuner
+which lets you tune your instrument one string at a time (SINGLE
+MODE), and a polyphonic tuner which lets you play and tune all of
+your open strings simultaneously (MULTI MODE).
+
+1.	 Press the BANK [I] switch and BANK [H] switch
+simultaneously.
+The TUNER screen appears.
+
+2.	 Use the [K] [J] (PAGE) buttons to select the tuner
+mode.
+9.	 Use the [K] [J] (PAGE) buttons to access the
+DISTANCE screen.
+
+TUNER MODE
+
+Explanation
+
+MULTI MODE
+
+You can play and tune six strings
+simultaneously.
+* Setting available with GK PATCH.
+
+SINGLE MODE
+
+10.	 Turn the [1]–[6] knobs.
+Specify the distance from the bridge to the center of the pickup.
+MEMO
+
+You can play one individual string to tune
+that string.
+
+3.	 Play an open string, and tune it so that only the
+center indicator in the screen is lit.
+
+Making Tuner Settings
+
+This setting is not needed if GK PU TYPE is “Roland V-Guitar GC-1” or if
+you selected a piezo type pickup.
+
+These settings specify how the tuner operates.
+
+Adjusting the Pickup Sensitivity
+
+PITCH
+
+Parameter
+
+screen.
+
+435–445Hz
+(default: 440Hz)
+MUTE
+
+The volume will differ if the distances between each string and the
+divided pickup are different. Specify the sensitivity of the pickup to
+compensate for this volume difference.
+
+11.	 Use the [K] [J] (PAGE) buttons to access the SENS
+
+Value
+
+OUTPUT
+
+BYPASS
+
+Explanation
+Specifies the reference pitch.
+Sound will not be output while
+tuning.
+While tuning, the sound from
+the GK IN connector/GUITAR
+INPUT jack will be output without
+change.
+All INSTs and effects will be off.
+
+THRU
+
+Allows you to tune while hearing
+the current INST and effect sound.
+* Only for SINGLE MODE.
+
+12.	 While playing the strings strongly, turn the [1]–[6]
+
+knobs so that the level meters reach the triangular
+marks.
+
+MEMO
+Depending on the guitar (bass) you’re using, the level meter
+might reach full-scale even if the sensitivity is at minimum. If this
+is the case, adjust the distance between the divided pickup and
+the string so it’s somewhat greater than the recommendation.
+
+10
+
+

@@ -1,0 +1,223 @@
+INST Parameters > ACOUSTIC Parameters
+Parameter
+
+Value
+
+Explanation
+
+LOW-MID
+FREQ
+
+20.0 Hz–16.0
+kHz
+
+Specifies the center of the frequency
+range that will be adjusted by the
+LOW-MID GAIN.
+
+LOW-MID Q
+
+0.5, 1, 2, 4,
+8, 16
+
+Adjusts the width of the area
+affected by the EQ centered at the
+LOW-MID FREQ.
+Higher values will narrow the area.
+
+LOW-MID
+GAIN
+
+-20 dB–+20
+dB
+
+Adjusts the low-middle frequency
+range tone.
+
+HIGH-MID
+FREQ
+
+20.0 Hz–16.0
+kHz
+
+Specifies the center of the frequency
+range that will be adjusted by the
+HIGH-MID GAIN.
+
+HIGH-MID Q
+
+0.5, 1, 2, 4,
+8, 16
+
+Adjusts the width of the area
+affected by the EQ centered at the
+HIGH-MID FREQ.
+Higher values will narrow the area.
+
+ACOUSTIC Parameters
+ACOUSTIC
+Parameter
+
+Value
+
+TYPE
+
+Select the acoustic guitar type “TYPE” (p. 37).
+
+BODY
+*1
+
+RESONANCE
+*2
+
+Explanation
+
+0–100
+
+Adjusts the body resonation.
+Raising the value produces more
+of a sense of the guitar body in
+the sound. Lower the value in
+conditions where feedback is prone
+to occur.
+
+0–100
+
+Adjusts the body resonance. The
+resonation increases as the value
+is raised.
+
+HIGH-MID
+GAIN
+
+-20 dB–+20
+dB
+
+Adjusts the low-middle frequency
+range tone.
+
+VOLUME
+
+0–100
+
+Adjusts the volume. With a setting
+of 0, there will be no sound.
+
+HIGH GAIN
+
+-20 dB–+20
+dB
+
+Adjusts the tone for the high
+frequency range.
+
+TONE
+
+-50–+50
+
+HIGH CUT
+
+20.0 Hz–16.0
+kHz, FLAT
+
+Cuts the frequency region above the
+specified frequency. When FLAT is
+selected, the high cut filter will have
+no effect.
+
+Adjusts the tone of the body. The
+standard value is 0; raising the
+value boosts the high range.
+
+0–100
+
+Specifies the strength of the attack
+when you pluck the string strongly.
+As this setting is increased, the
+attack will be sharper, and the
+sound will be crisper.
+
+LEVEL
+
+-20 dB–+20
+dB
+
+Adjusts the overall volume level of
+the equalizer.
+
+ATTACK
+*3
+
+SUSTAIN
+*4
+
+0–100
+
+You can specify how the resulting
+volume will be affected by changes
+(loud/soft dynamics) in the guitar
+string vibrations that are input.
+Adjusts the range (time) over which
+low-level signals are boosted.
+Larger values will result in longer
+sustain.
+
+Selects the pickup position.
+PU SELECT
+*5
+
+SENS
+*5
+COLOR
+*5
+DECAY
+*5
+BUZZ
+*5
+
+FRONT
+
+Front pickup
+
+R+F
+
+Rear and front pickups
+
+REAR
+
+Rear pickup
+
+PIEZO
+
+Piezo pickup
+
+0–100
+
+Adjusts the input sensitivity.
+
+0–100
+
+Adjusts the overall tone quality of
+the sitar.
+
+0–100
+
+Adjusts the time it takes following
+the attack for the tone to change.
+
+0–100
+
+Adjusts the amount of
+characteristic buzz produced by the
+buzz bridge when the strings make
+contact with it.
+
+*1 Valid when the TYPE is set to other than RESO or BANJO.
+*2 Valid when the TYPE is set to RESO or BANJO.
+*3 Valid when the TYPE is set to NYLON, BANJO, or SITAR.
+*4 Valid when the TYPE is set to RESO.
+*5 Valid when the TYPE is set to SITAR.
+
+36
+
+

@@ -1,0 +1,278 @@
+INST Parameters > DYNAMIC SYNTH Parameters
+
+LFO1, LFO2
+
+SEQ
+
+Here you can cyclically modulate the sound by applying vibrato to
+modulate the pitch or applying tremolo to modulate the volume.
+
+This is a step sequencer function with up to 16 steps. You can create
+complex changes by combining steps with a different envelope at
+each step.
+
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns the LFO1/LFO2 on/off.
+
+Selects the waveform of LFO1 and LFO2.
+
+SHAPE
+
+RATE
+*3
+
+SIN
+
+Sine wave
+
+SAW UP
+
+Sawtooth wave
+
+SAW DOWN
+
+Sawtooth wave (negative
+polarity)
+
+TRI
+
+Triangle wave
+
+SQR
+
+Square wave
+
+RANDOM
+
+Random wave
+
+S&H
+
+Sample and Hold
+
+0–100, BPM
+Œ–`
+
+Determines the speed of the
+LFO1/LFO2.
+
+DYNAMIC DEPTH OFF, ON
+
+Specifies whether the dynamics
+of the input signal controls the
+depth at which LFO1 and LFO2
+are applied.
+
+PITCH DEPTH
+
+0–100
+
+Allows the LFO to modulate
+the pitch, producing a vibrato
+effect.
+
+FILTER DEPTH
+
+0–100
+
+Allows the LFO to modulate
+the FILTER CUTOFF (cutoff
+frequency).
+
+AMP DEPTH
+
+0–100
+
+Allows the LFO to modulate the
+AMP LEVEL (volume), producing
+a tremolo effect.
+
+PWM DEPTH
+*1
+FADE TIME
+*2
+
+SYNC
+
+BPM
+
+Parameter
+
+VARIATION1&2
+
+Value
+
+Explanation
+
+PATCH, 01–50
+
+SEQUENCER1, SEQUENCER2,
+and TARGET settings can be
+saved/loaded as 50 different
+variations.
+A saved VARIATION can be
+loaded into a different patch,
+which is convenient when
+you’re creating sounds.
+
+SEQUENCER 1, SEQUENCER 2
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns the SEQUENCER1/
+SEQUENCER2 on/off.
+Specifies whether the start timing
+of the LFO for which SYNC is ON is
+synchronized with the SEQUENCER.
+
+SYNC
+
+OFF, ON
+
+The start timing is retriggered
+using the CONTROL FUNCTION
+parameter SYNC TRIG (p. 68) or
+the ASSIGN SETTING parameter
+SYNC RETRIGGER (p. 73).
+
+0–100
+
+Adjusts the depth at which
+PWM is modulated.
+
+1SHOT
+
+OFF, ON
+
+0–100
+
+Specifies the time until the LFO
+reaches its maximum amplitude.
+
+If this is on, the steps specified by
+the LOOP LENGTH of SEQUENCER1
+and SEQUENCER2 will play only
+once.
+
+TURBO
+
+OFF, ON
+
+If this is ON, operation is twice as
+fast as specified by RATE.
+
+RATE
+
+0–100, BPM
+Œ–`
+
+OFF, ON
+
+If SYNC is ON, you can use the
+CONTROL FUNCTION parameter
+SYNC TRIG (p. 68) or the
+ASSIGN SETTING parameter
+SYNC RETRIGGER (p. 73) to
+retrigger the start timing of the
+LFO.
+
+Specifies the rate at which the
+sequence pattern of SEQUENCER1
+or SEQUENCER2 repeats.
+
+1–16
+
+Specifies the length (number
+of steps) of SEQUENCER1 or
+SEQUENCER2 that is repeated.
+
+Parameter
+
+Value
+
+Explanation
+
+PITCH
+
+OFF, SEQ1,
+SEQ2
+
+Specifies the SEQUENCER that is
+assigned to the OSC section’s PITCH
+(p. 25).
+
+CUTOFF
+
+OFF, SEQ1,
+SEQ2
+
+Specifies the SEQUENCER that is
+assigned to the FILTER section’s
+CUTOFF (p. 26).
+
+LEVEL
+
+OFF, SEQ1,
+SEQ2
+
+Specifies the SEQUENCER that is
+assigned to the INST COMMON
+section’s INST LEVEL (p. 23).
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+LFO1 and LFO2 settings can be
+saved/loaded as 50 different
+variations.
+
+VARIATION1&2
+
+COMMON
+
+PATCH, 01–50
+
+A saved VARIATION can be
+loaded into a different patch,
+which is convenient when
+you’re creating sounds.
+
+*1 Valid when the WAVEFORM (p. 25) in the OSC section is set to
+PWM.
+*2 Valid when the DYNAMIC DEPTH is ON.
+*3 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+*1
+LOOP
+LENGTH
+
+TARGET
+
+*2
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+*2 If the OSC section’s WAVEFORM (p. 25) is set to INPUT, the
+PITCH does not change.
+
+27
+
+

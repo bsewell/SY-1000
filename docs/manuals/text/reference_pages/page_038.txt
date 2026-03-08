@@ -1,0 +1,315 @@
+INST Parameters > E.BASS Parameters
+Parameter
+
+E.BASS Parameters
+
+TREBLE
+*3
+
+BASS (In GUITAR MODE)
+Parameter
+
+Value
+
+REAR VOLUME
+*1
+FRONT
+VOLUME
+
+JB
+
+The sound of a Fender Jazz Bass.
+
+PB
+
+The sound of a Fender Precision
+Bass.
+
+FRETLESS
+
+This models a fretless bass.
+
+0–100
+
+Sets the volume of the rear pickup.
+
+0–100
+
+Sets the volume of the front pickup.
+
+Selects the fretless tone type.
+
+*2
+
+SENS
+*2
+DEPTH
+*2
+ATTACK
+*2
+RESONANCE
+*2
+DIRECT LEVEL
+*2
+VOLUME
+TONE
+
+JB (REAR)
+
+The sound of the rear pickup of a
+Jazz Bass.
+
+JB (R+F)
+
+The sound of the rear pickup and
+front pickup of a Jazz Bass.
+
+JB (FRONT)
+
+The sound of the front pickup of a
+Jazz Bass.
+
+PB
+
+The sound of a Precision Bass.
+
+0–100
+
+This controls the input sensitivity.
+
+0–100
+
+This controls the volume of the
+harmonics.
+
+0–100
+0–100
+0–100
+0–100
+0–100
+
+Adjusts the attack of the picking
+sound.
+Adds a characteristically resonant
+quality to the sound.
+Adjusts the volume of the direct
+sound.
+Adjusts the volume. With a setting
+of 0, there will be no sound.
+Adjusts the tone of the body.
+
+0–100
+
+Adjusts the tone for the high
+frequency range.
+
+0–100
+
+Adjusts the tone for the low
+frequency range.
+
+Selects the pickup position.
+REAR
+
+Use the rear pickup.
+
+*4
+
+R+F
+
+Use both front and rear pickups.
+
+FRONT
+
+Use the front pickup.
+
+OFF, ON
+
+Switches the rear pickup on/off.
+
+OFF, ON
+
+Switches the front pickup on/off.
+
+TREBLE ON
+*5
+BASS ON
+RHYTHM/
+SOLO
+
+Switches between rhythm and solo.
+RHYTHM
+
+The volume will be set to 50.
+
+*5
+
+SOLO
+
+The volume will be set to 100.
+
+Selects the fretless tone type.
+
+TONE TYPE
+*6
+
+SENS
+*6
+DEPTH
+*6
+ATTACK
+*6
+RESONANCE
+*6
+DIRECT LEVEL
+*6
+VOLUME
+*7
+TONE
+
+*1 Valid when the TYPE is set to JB.
+
+Explanation
+
+PU SELECT
+
+*5
+
+*1
+
+TONE TYPE
+
+*3
+
+Explanation
+
+Type of Bass
+TYPE
+
+BASS
+
+Value
+
+*8
+
+JB (REAR)
+
+The sound of the rear pickup of a
+Jazz Bass.
+
+JB (R+F)
+
+The sound of the rear pickup and
+front pickup of a Jazz Bass.
+
+JB (FRONT)
+
+The sound of the front pickup of a
+Jazz Bass.
+
+PB
+
+The sound of a Precision Bass.
+
+0–100
+
+This controls the input sensitivity.
+
+0–100
+
+This controls the volume of the
+harmonics.
+
+0–100
+
+Adjusts the attack of the picking
+sound.
+
+0–100
+
+Adds a characteristically resonant
+quality to the sound.
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+0–100
+
+Adjusts the volume. With a setting
+of 0, there will be no sound.
+
+0–100
+
+Adjusts the tone of the body.
+
+*2 Valid when the TYPE is set to FRETLESS.
+*1 Valid when the TYPE is set to VINT JB, JB, RICK, T-BIRD, ACTIVE, or
+VIOLIN.
+
+BASS (In BASS MODE)
+
+*2 Valid when the TYPE is set to RICK.
+
+Parameter
+
+Value
+
+TYPE
+
+Select the bass guitar type “TYPE” (p. 39).
+
+MASTER
+VOLUME
+
+0–100
+
+Sets the overall bass volume level.
+With a setting of 0, there will be no
+sound.
+
+*5 Valid when the TYPE is set to VIOLIN.
+
+0–100
+
+Sets the volume of the rear pickup.
+
+*8 Valid when the TYPE is set to VINT JB, JB, VINT PB, PB, T-BIRD, or
+FRETLESS.
+
+0–100
+
+Sets the volume of the front pickup.
+
+0–100
+
+Adjusts the tone of the rear pickup.
+
+0–100
+
+Adjusts the tone of the front
+pickup.
+
+*1
+REAR VOLUME
+*1
+FRONT
+VOLUME
+
+Explanation
+
+*1
+REAR TONE
+*2
+FRONT TONE
+*2
+
+38
+
+*3 Valid when the TYPE is set to M-MAN or ACTIVE.
+*4 Valid when the TYPE is set to RICK.
+*6 Valid when the TYPE is set to FRETLESS.
+*7 Valid when the TYPE is set to VINT PB, PB, M-MAN, or FRETLESS.
+
+

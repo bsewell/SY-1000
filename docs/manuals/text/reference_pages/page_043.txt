@@ -1,0 +1,275 @@
+EFFECT Parameters > FX1–FX3
+55
+
+55
+
+55
+
+This effect sound is mono.
+This effect sound is output with two channels.
+These effects take a mono input and output it on two channels.
+
+AC RESONANCE
+
+Parameter
+
+This processor allows you to change the sound produced by the
+pickup on an acoustic electric guitar, creating a richer sound similar
+to that obtained with a microphone placed close to the guitar.
+Parameter
+
+Value
+
+Explanation
+
+NATURAL
+
+A natural and uncolored sound.
+
+WIDE
+
+Mellow sound that emphasizes the
+body resonance
+
+BRIGHT
+
+Brilliant sound with an extended
+high-frequency range
+
+RESONANCE
+
+0–100
+
+Use this knob to adjust the balance
+between the body resonance effect
+of the acoustic guitar and the direct
+sound of the pickup.
+
+TONE
+
+-50–+50
+
+Adjusts the tone.
+
+LEVEL
+
+0–100
+
+Specifies the volume of the effect.
+
+TYPE
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+Explanation
+AUTO WAH settings can be saved/
+loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+CHORUS
+In this effect, a slightly detuned sound is added to the original sound
+to add depth and breadth.
+Parameter
+
+Value
+
+Explanation
+
+Selection for the chorus mode.
+MONO
+
+AC RESONANCE settings can be
+saved/loaded as ten variations.
+VARIATION
+
+Value
+
+STEREO1
+MODE
+
+This chorus effect outputs the same
+sound from both L channel and R
+channel.
+This stereo chorus uses spatial
+synthesis, with the direct sound
+output in the L channel and the
+effect sound output in the R
+channel.
+
+AUTO WAH
+
+STEREO2
+
+This changes the filtering over a periodic cycle, providing an
+automatic wah effect.
+
+This is a stereo chorus effect that
+adds different chorus sounds to L
+channel and R channel.
+
+DUAL
+
+This lets you apply chorus
+independently to the L and R
+channels.
+
+0–100, BPM
+Œ–`
+
+Adjusts the rate of the chorus
+effect.
+
+Parameter
+
+Value
+
+Explanation
+
+Selects the wah mode.
+
+RATE
+
+LPF
+
+Low pass filter. Passes only the lowfrequency region.
+
+*2
+
+BPF
+
+Band pass filter. Passes only the
+specified frequency region.
+
+RATE 2
+
+HPF
+
+High pass filter. Passes only the
+high-frequency region.
+
+*1
+
+0–100, BPM
+Œ–`
+
+Adjusts the frequency (speed) of
+the change.
+
+DEPTH
+
+0–100
+
+Adjusts the depth of the effect.
+
+*1
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume of the effect
+sound.
+
+PRE-DELAY
+
+FREQUENCY
+
+0–100
+
+Adjusts the center frequency of the
+Wah effect.
+
+PRE-DELAY 1
+
+RESONANCE
+
+0–100
+
+Adjusts the amount of wah effect
+applied in the range near the
+reference frequency.
+
+*1
+
+WAVEFORM
+
+TRI, SINE
+
+Selects the type of wave.
+
+EFFECT LEVEL
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+EFFECT LEVEL
+1
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+
+EFFECT LEVEL
+2
+
+FILTER MODE
+
+RATE
+
+DIRECT LEVEL
+BPM
+
+RATE 1
+*1 *2
+DEPTH
+DEPTH 1
+DEPTH 2
+
+PRE-DELAY 2
+
+0–100
+
+Adjusts the depth of the chorus
+effect.
+* To use it for doubling effect, set
+the value to 0.
+
+0.0 ms–40.0
+ms
+
+Adjusts the time needed for the
+effect sound to be output after the
+direct sound has been output. By
+setting a longer pre delay time, you
+can obtain an effect that sounds
+like more than one sound is being
+played at the same time (doubling
+effect).
+
+0–100
+
+Adjusts the volume of the effect
+sound.
+
+*1
+
+43
+
+

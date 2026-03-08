@@ -1,0 +1,279 @@
+EFFECT Parameters > MASTER DELAY
+
+MASTER DELAY
+
+Parameter
+
+Adds delayed sound to the direct sound, giving more body to the
+sound or creating special effects.
+
+*5
+
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+Selects the DELAY type “TYPE” (p. 59).
+TYPE
+
+D1 TIME
+D2 TIME
+
+Explanation
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+CARRY OVER
+
+OFF, ON
+
+Specifies whether the effect sound
+remains when you turn off the
+effect, or does not remain.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+
+* The stereo effect is canceled if a mono effect or
+AMP Modeling is connected after a stereo delay
+effect.
+
+TIME
+*1 *12
+
+Value
+
+DIRECT LEVEL
+
+DELAY settings can be saved/loaded
+as ten variations.
+VARIATION
+
+1 ms–2000
+ms, BPM `–Œ
+
+PATCH, 01–10
+
+Adjusts the delay time.
+
+These variations are shared with the
+DELAY setting in FX1–FX3.
+
+*2 *12
+FEEDBACK
+*3
+D1 FEEDBACK 0–100
+D2 FEEDBACK
+
+This sets the amount of delay sound
+returned to the input. A higher
+value will increase the number of
+the delay repeats.
+
+*2
+EFFECT LEVEL
+
+0–120
+
+D2 EFFECT
+LEVEL
+
+Adjusts the volume of the delay
+sound.
+
+D2 HIGH CUT
+
+*6
+MOD RATE
+*7
+MOD DEPTH
+*7
+TRIGGER
+*8
+MODE
+*9
+TRIGGER
+*9
+RISE TIME
+*9
+FALL TIME
+*9 *10
+FADE TIME
+*9 *11
+
+*5 Valid when the TYPE is set to other than WARP or TWIST.
+*6 Valid when the TYPE is set to PAN.
+
+*9 Valid when the TYPE is set to TWIST.
+20.0 Hz–16.0
+kHz, FLAT
+
+This sets the frequency at which the
+high cut filter begins to take effect.
+When FLAT is selected, the high cut
+filter will have no effect.
+
+0–100%
+
+Adjusts the delay time of the
+right channel delay. This setting
+adjusts the R channel delay time
+relative to the L channel delay time
+(considered as 100%).
+
+*2
+TAP TIME
+
+*3 Valid when the TYPE is set to other than DUAL-S, DUAL-P, DUAL
+L/R, WARP or TWIST.
+
+*8 Valid when the TYPE is set to WARP.
+
+HIGH CUT
+D1 HIGH CUT
+
+*2 Valid when the TYPE is set to DUAL-S, DUAL-P, or DUAL L/R.
+
+*7 Valid when the TYPE is set to MOD.
+
+*2
+*3
+
+*1 Valid when the TYPE is set to other than DUAL-S, DUAL-P, DUAL
+L/R, or TWIST.
+
+*4 Valid when the TYPE is set to other than DUAL-S, DUAL-P, or DUAL
+L/R.
+
+*4
+D1 EFFECT
+LEVEL
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*10 Valid when the MODE is set to RISE0FALL.
+*11 Valid when the MODE is set to RISE0FADE.
+*12 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+TYPE
+Value
+
+Explanation
+
+STEREO1
+
+The direct sound is output from the left channel, and
+the effect sound is output from the right channel.
+
+0–100
+
+Adjusts the modulation rate of the
+delay sound.
+
+0–100
+
+Adjusts the modulation depth of the
+delay sound.
+
+OFF, ON
+
+If this is ON, the WARP effect is
+applied.
+
+RISE0FALL
+
+Rotation stops when you switch
+TRIGGER from ON to OFF.
+
+RISE0FADE
+
+When you switch TRIGGER from
+ON to OFF, fade-out occurs while
+continuing the rotation.
+
+OFF, ON
+
+The TWIST effect is applied when
+you turn this ON.
+
+DUAL-S
+
+This is a delay comprising two different delays
+connected in series.
+
+0–100
+
+This parameter adjusts the amount
+of time it is to take for the effect to
+transition to the maximum.
+
+DUAL-P
+
+0–100
+
+This parameter adjusts the amount
+of time it is to take for the effect to
+transition to the original.
+
+This is a delay comprising two delays connected in
+parallel.
+
+DUAL-L/R
+
+This delay lets you specify the L and R channels
+independently. Delay 1 goes to the left channel,
+Delay 2 to the right.
+
+0–100
+
+Adjusts the fade-out time.
+
+REVERSE
+
+This produces an effect where the sound is played
+back in reverse.
+
+STEREO2
+
+This is a stereo-in/out delay.
+This delay is specifically for stereo output. This allows
+you to obtain the tap delay effect that divides the
+delay time, then deliver them to L and R channels.
+
+PAN
+
+TAP TIME
+OUTPUT R
+
+EFFECT LEVEL
+INPUT
+
+DELAY
+
+TIME
+OUTPUT L
+
+FEEDBACK
+
+59
+
+

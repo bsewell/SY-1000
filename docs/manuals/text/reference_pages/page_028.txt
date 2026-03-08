@@ -1,0 +1,233 @@
+INST Parameters > DYNAMIC SYNTH Parameters
+
+SEQ1, SEQ2
+
+Editing the sequencer
+
+Parameter
+PITCH STEP1–
+STEP 16 MAX
+PITCH STEP1–
+STEP16 MIN
+CUTOFF STEP1–
+STEP16 MAX
+CUTOFF STEP1–
+STEP16 MIN
+
+Value
+
+Explanation
+
+-24–+24
+
+Specify the width of PITCH
+change for each STEP.
+
+0–100
+
+Specify the width of CUTOFF
+change for each STEP.
+
+1. Turn the [6] knob to select “SEQ.”
+
+2. Press the [6] knob.
+
+LEVEL STEP1–
+STEP16 MAX
+
+Specify the width of INST LEVEL
+change for each STEP.
+
+0–100
+
+LEVEL STEP1–
+STEP16 MIN
+STEP1–STEP16
+CURVE
+
+Specify the curve of change for each step of
+SEQUENCER1 and SEQUENCER2.
+
+About SEQUENCER
+If you make eight steps of sequence settings with STEP CURVE, PITCH
+MIN, and PITCH MAX set as shown in the table below, the output will
+be as indicated by the graph.
+Example of an eight-step sequence
+STEP
+
+1
+
+The SEQUENCE COMMON screen appears.
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+STEP
+CURVE
+PITCH
+MIN
+
+-12
+
+-9
+
+-6
+
+-3
+
+0
+
++3
+
++6
+
++9
+
+PITCH
+MAX
+
+-9
+
+-6
+
+-3
+
+0
+
++3
+
++6
+
++9
+
++12
+
+3. Specify how SEQUENCER1 and SEQUENCER2
+operate.
+Knob
+
+Explanation
+
+[1] knob
+
+Accesses the SEQUENCER1 and
+SEQUENCER2 VARIATION screen.
+
+[2] knob
+
+Set the parameters of SEQUENCER1.
+
+[4] knob
+
+Set the parameters of SEQUENCER2.
+
+[6] knob
+
+Specify which sequencer controls
+PITCH, CUTOFF, and LEVEL.
+
+4. Use the [K] [J] (PAGE) buttons to switch to the
+SEQUENCER1 or SEQUENCER2 screens.
+
+Output example
++12
++9
+
+Operation
+
+Explanation
+
++3
+
+Turn the [1] knob
+
+Switch the TARGET editing screen
+(PITCH, CUTOFF, LEVEL).
+
+0
+
+Press the [1] knob
+
+Switch the SEQ1 and SEQ2 screens.
+
+Turn the [2] knob
+
+Specify the LOOP LENGTH (length of
+the sequencer loop).
+
+Turn the [3] knob
+
+Specify the CURVE of the selected
+step.
+
+Turn the [4] knob
+
+Adjust the MIN value of the
+parameter selected by the cursor.
+
+Turn the [5] knob
+
+Adjust the MAX value of the
+parameter selected by the cursor.
+
+Press the [5] knob
+
+Retrigger the LFO or SEQUENCER for
+which SYNC (p. 27) is ON.
+
+Turn the [6] knob
+
+Select the step to edit.
+
+Press the [6] knob
+
+Switch the sequencer on/off.
+
++6
+
+-3
+-6
+
+STEP 8
+
+STEP 7
+
+STEP 6
+
+STEP 5
+
+STEP 4
+
+STEP 3
+
+STEP 2
+
+-12
+
+STEP 1
+
+-9
+
+About STEP CURVE
+STEP CURVE provides a choice of the following 13 types.
+
+* If a parameter to be controlled (PITCH, CUTOFF, LEVEL) is not
+assigned to the sequencer, these settings have no effect (they are
+shown in gray).
+* Settings of steps that are beyond the value specified by LENGTH
+have no effect (they are shown in gray).
+
+28
+
+

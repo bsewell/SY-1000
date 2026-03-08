@@ -1,0 +1,294 @@
+INST Parameters > E.GUITAR Parameters
+Value
+
+Explanation
+
+Value
+
+Explanation
+
+X-MODDED
+
+Core sound that uses MDP to preserve the
+definition of the sound even with extreme gain.
+
+B2x15”
+
+This is a general open-back speaker cabinet for the
+bass guitar with two 15-inch speakers.
+
+JC-120
+
+This models the sound of the Roland JC-120.
+
+TWIN COMBO
+
+This models a Fender Twin Reverb.
+
+B4x10”
+
+This is a large speaker cabinet for bass, with four 10inch speakers in a sealed design.
+
+B8x10”
+
+This is a stack of two cabinets for bass, each with
+four 10-inch speakers.
+
+DELUXE COMBO This models a Fender Deluxe Reverb.
+TWEED COMBO
+
+This models a Fender Bassman 4 x 10” Combo.
+
+DIAMOND AMP
+
+Models the VOX AC30.
+
+BRIT STACK
+
+This models a Marshall 1959.
+
+MIC TYPE
+
+RECTI STACK
+
+Models the sound of the Channel 2 MODERN
+Mode on the MESA/Boogie DUAL Rectifier.
+
+Value
+
+Explanation
+
+MATCH COMBO
+
+This models the sound input to left input on a
+Matchless D/C-30.
+
+DYN57
+
+This is the sound of the SHURE SM57. General
+dynamic mic used for instruments and vocals.
+
+BG COMBO
+
+This models the sound of the MESA/Boogie
+combo amp.
+
+DYN421
+
+This is the sound of the SENNHEISER MD-421.
+Dynamic mic with extended low end.
+
+ORNG STACK
+
+This models the dirty channel of an ORANGE
+ROCKERVERB.
+
+CND451
+
+This is the sound of the AKG C451B. Small condenser
+mic for use with instruments.
+
+BGNR UB METAL
+
+This models the sound that models the high-gain
+channel of a Bogner Uberschall.
+
+CND87
+
+This is the sound of the NEUMANN U87. Condenser
+mic with flat response.
+
+NATURAL BASS
+
+Uncolored clean sound for bass.
+FLAT
+
+X-DRIVE BASS
+
+High-gain sound for bass, using MDP to provide
+wide range and a good-sounding sense of
+separation.
+
+Simulates a mic with perfectly flat response.
+Produces a sonic image close to that of listening to
+the sound directly from the speakers (on site).
+
+CONCERT
+
+This models the Ampeg SVT.
+
+SUPER FLAT
+
+A bass amp with flat response.
+
+FLIP TOP
+
+Models the Ampeg B-15.
+
+B MAN
+
+Models the Fender Bassman100.
+
+(When E.GUITAR, ACOUSTIC, AC BASS, E.BASS, VIO GUITAR, or POLY FX
+is selected)
+
+BASS 360
+
+Models the Acoustic 360.
+
+This effect reduces the noise and hum picked up by guitar pickups.
+
+SW-TOUR
+
+Models the SWR SM-400.
+
+AC BASS
+
+An amp ideal for ACOUSTIC BASS.
+
+GK BASS
+
+Models the Gallien-Krueger 800RB.
+
+MARK
+
+Models the Markbass Little Mark III.
+
+Since it suppresses the noise in synchronization with the envelope
+of the guitar sound (the way in which the guitar sound decays over
+time), it has very little effect on the guitar sound, and does not harm
+the natural character of the sound.
+
+NS
+
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+THRESHOLD
+
+0–100
+
+Adjust this parameter as appropriate
+for the volume of the noise. If the
+noise level is high, a higher setting
+is appropriate. If the noise level is
+low, a lower setting is appropriate.
+Adjust this value until the decay
+of the guitar sound is as natural as
+possible.
+
+RELEASE
+
+0–100
+
+Adjusts the time from when the
+noise suppressor begins to function
+until the noise level reaches “0.”
+
+SP TYPE
+Value
+
+Explanation
+
+OFF
+
+Turns off the speaker simulator.
+
+ORIGINAL
+
+This is the built-in speaker of the amp you selected
+with AMP TYPE.
+
+1x8”
+
+This is a compact open-back speaker cabinet with
+one 8-inch speaker.
+
+1x10”
+
+This is a compact open-back speaker cabinet with
+one 10-inch speaker.
+
+1x12”
+
+This is a compact open-back speaker cabinet with
+one 12-inch speaker.
+
+2x12”
+
+This is a general open-back speaker cabinet with
+two 12-inch speakers.
+
+4x10”
+
+This is an optimal speaker cabinet for a large
+enclosed amp with four 10-inch speakers.
+
+4x12”
+
+This is an optimal speaker cabinet for a large
+enclosed amp with four 12-inch speakers.
+
+Parameter
+
+Value
+
+Explanation
+
+8x12”
+
+This is a stack of two cabinets each with four 12-inch
+speakers.
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+B1x15”
+
+This is a compact open-back speaker cabinet for the
+bass guitar with one 15-inch speaker.
+
+LOW CUT
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+B1x18”
+
+This is a compact open-back speaker cabinet for the
+bass guitar with one 18-inch speaker.
+
+Sets the frequency at which the low
+cut filter begins to take effect. When
+FLAT is selected, the low cut filter
+will have no effect.
+
+LOW GAIN
+
+-20 dB–+20
+dB
+
+Adjusts the tone for the low
+frequency range.
+
+EQ
+(When E.GUITAR, ACOUSTIC, AC BASS, E.BASS, or VIO GUITAR is
+selected)
+Adjusts the tone. This is a parametric EQ that lets you adjust four
+separate frequency ranges.
+
+35
+
+

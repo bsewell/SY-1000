@@ -1,0 +1,892 @@
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+|
+* TABLE 8 |
+|
+00 5F | 000a aaaa | CHAIN ELEMENT23
+(0 - 24) |
+|
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+|
+* TABLE 8 |
+|
+00 60 | 000a aaaa | CHAIN ELEMENT24
+(0 - 24) |
+|
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+|
+* TABLE 8 |
+|
+00 61 | 000a aaaa | CHAIN ELEMENT25
+(0 - 24) |
+|
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+|
+* TABLE 8 |
+|
+00 62 | 000a aaaa | CHAIN ELEMENT26
+(0 - 24) |
+|
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+|
+* TABLE 8 |
+|
+00 63 | 000a aaaa | CHAIN ELEMENT27
+(0 - 24) |
+|
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+|
+* TABLE 8 |
+|
+00 64 | 000a aaaa | CHAIN ELEMENT28
+(0 - 24) |
+|
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+|
+* TABLE 8 |
+|
+00 65 | 000a aaaa | CHAIN ELEMENT29
+(0 - 24) |
+|
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+|
+* TABLE 8 |
+|
+00 66 | 000a aaaa | CHAIN ELEMENT30
+(0 - 24) |
+|
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+|
+* TABLE 8 |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 67 |Total Size
+|
++------------------------------------------------------------------------------+
+
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 51 | 000a aaaa | CHAIN ELEMENT9
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 52 | 000a aaaa | CHAIN ELEMENT10
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 53 | 000a aaaa | CHAIN ELEMENT11
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 54 | 000a aaaa | CHAIN ELEMENT12
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 55 | 000a aaaa | CHAIN ELEMENT13
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 56 | 000a aaaa | CHAIN ELEMENT14
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 57 | 000a aaaa | CHAIN ELEMENT15
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 58 | 000a aaaa | CHAIN ELEMENT16
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 59 | 000a aaaa | CHAIN ELEMENT17
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 5A | 000a aaaa | CHAIN ELEMENT18
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 5B | 000a aaaa | CHAIN ELEMENT19
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 5C | 000a aaaa | CHAIN ELEMENT20
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 5D | 000a aaaa | CHAIN ELEMENT21
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 5E | 000a aaaa | CHAIN ELEMENT22
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+
+* [PatchGtr2Midi]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 000a | MODE
+(0 - 1) |
+|
+|
+|
+MONO, POLY |
+|
+00 01 | 0000 00aa | ALT TUNE
+(0 - 3) |
+|
+|
+|
+OFF, INST1, INST2, INST3 |
+|
+00 02 | 0000 0aaa | PLAY FEEL
+(0 - 4) |
+|
+|
+|
+FEEL1, FEEL2, FEEL3, FEEL4, NO DYNA |
+|
+00 03 | 0000 00aa | CHROMATIC
+(0 - 3) |
+|
+|
+|
+OFF, TYPE1, TYPE2, TYPE3 |
+|
+00 04 | 0000 00aa | HOLD TYPE
+(0 - 2) |
+|
+|
+|
+HOLD1, HOLD2, HOLD3 |
+|
+00 05 | 0000 aaaa | DYNAMICS
+(1 - 10) |
+|
+00 06 | 0000 aaaa | LOW VELO CUT
+(0 - 10) |
+|
+|
+|
+OFF, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 07 |Total Size
+|
++------------------------------------------------------------------------------+
+* [PatchInst1]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 000a | INST ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 01 | 0000 0aaa | INST TYPE
+(0 - 7) |
+|
+|
+|
+DYNAMIC SYNTH, OSC SYNTH, GR-300, E.GUITAR,
+|
+|
+|
+|
+ACOUSTIC, E.BASS, VIO GUITAR, POLY FX
+|
+|
+00 02 | 0aaa aaaa | INST LEVEL
+(0 - 100) |
+|
+00 03 | 0000 000a | NOR MIX SW
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|#
+00 04 | 0000 aaaa |
+|
+
+35
+
+

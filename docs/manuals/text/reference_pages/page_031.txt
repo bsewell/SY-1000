@@ -1,0 +1,201 @@
+INST Parameters > OSC SYNTH Parameters
+
+AMP
+
+Parameter
+
+Value
+
+Specifies whether the start
+timing of the LFO for which
+SYNC is ON is synchronized with
+the SEQUENCER.
+
+In the AMP section you can modify the sound by changing its volume
+and dynamics.
+Parameter
+
+Value
+
+Explanation
+
+VELOCITY SENS
+
+0–100
+
+Specifies the sensitivity to the
+strength at which you pick the
+string.
+
+A. ENV ATTACK
+
+0–100
+
+A. ENV DECAY
+
+0–100
+
+A. ENV SUSTAIN
+
+0–100
+
+A. ENV RELEASE
+
+0–100
+
+LOW CUT
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+Cuts the frequency region
+below the specified frequency.
+When FLAT is selected, the low
+cut filter will have no effect.
+
+HIGH CUT
+
+20.0 Hz–16.0
+kHz, FLAT
+
+Cuts the frequency region
+above the specified frequency.
+When FLAT is selected, the high
+cut filter will have no effect.
+
+Specifies the attack/decay/
+sustain level, and release time of
+the AMP.
+
+Explanation
+
+SYNC
+
+OFF, ON
+
+BPM
+
+40–250
+
+The start timing is retriggered
+using the CONTROL FUNCTION
+parameter SYNC TRIG (p.
+68) or the ASSIGN SETTING
+parameter SYNC RETRIGGER (p.
+73).
+Adjusts the BPM value for each
+patch.
+LFO1 and LFO2 settings can be
+saved/loaded as 50 different
+variations.
+
+VARIATION1&2
+
+PATCH, 01–50
+
+A saved VARIATION can be
+loaded into a different patch,
+which is convenient when
+you’re creating sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+LFO1, LFO2
+Here you can cyclically modulate the sound by applying vibrato to
+modulate the pitch or applying tremolo to modulate the volume.
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns the LFO1/LFO2 on/off.
+
+Selects the waveform of LFO1 and LFO2.
+SIN
+
+Sine wave
+
+SAW UP
+
+Sawtooth wave
+
+SAW DOWN
+
+Sawtooth wave (negative
+polarity)
+
+TRI
+
+Triangle wave
+
+SQR
+
+Square wave
+
+RANDOM
+
+Random wave
+
+S&H
+
+Sample and Hold
+
+0–100, BPM
+Œ–`
+
+Determines the speed of the
+LFO1/LFO2.
+
+0–100
+
+Allows the LFO to modulate
+the pitch, producing a vibrato
+effect.
+
+FILTER DEPTH
+
+0–100
+
+Allows the LFO to modulate
+the FILTER CUTOFF (cutoff
+frequency).
+
+AMP DEPTH
+
+0–100
+
+Allows the LFO to modulate the
+AMP LEVEL (volume), producing
+a tremolo effect.
+
+DELAY TIME
+
+0–100
+
+Specifies the time from when
+a note is played until the LFO
+begins to apply.
+
+FADE TIME
+
+0–100
+
+Specifies the time until the LFO
+reaches its maximum amplitude.
+
+SHAPE
+
+RATE
+*1
+PITCH1 DEPTH
+PITCH2 DEPTH
+
+31
+
+

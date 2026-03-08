@@ -1,0 +1,258 @@
+INST Parameters > DYNAMIC SYNTH Parameters
+Parameter
+DETUNE
+*4
+SHARPNESS
+*5
+FEEDBACK
+*6
+HARMONICS
+*6
+S-SAW
+DETUNE
+
+Value
+
+Explanation
+
+-50–+50
+
+Specifies the amount of detuning.
+
+0–100
+
+Specifies the frequency range
+of the noise that is heard. Larger
+values strengthen the sense of
+pitch.
+
+0–100
+
+Adjusts the amount of feedback.
+Larger values increase the amount
+of feedback, changing the volume
+of the harmonics.
+
+0–100
+
+Specifies the tonal character of the
+harmonics.
+
+0–100
+
+Specifies the amount of pitch
+spread between the seven
+sawtooth waves that are layered
+within one oscillator.
+
+*7
+
+Uses the dynamics of the input
+signal to control the pitch.
+P. ENV ATTACK -50–+50
+
+-50–+50
+
+Specifies the depth to which pitch
+is modulated by the dynamics of
+the input signal.
+
+P. BEND
+DEPTH
+
+-24–+24
+
+Specifies the depth of bend.
+
+P. BEND CTL
+
+0–100
+
+This parameter controls the bend.
+
+OFF, ON
+
+In the FILTER section you can modify the brightness of the sound
+by changing the type of filter and applying various changes to the
+output waveform.
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Switches filter on/off.
+
+Type of filter
+LPF
+
+The region above the cutoff
+frequency will be cut, making the
+sound more mellow.
+
+HPF
+
+The region below the cutoff
+frequency will be cut, emphasizing
+the high-frequency range.
+
+BPF
+
+It passes only the range of
+frequencies in the region of the
+cutoff frequency, cutting the other
+frequencies.
+
+PKG
+
+Boosts the range of frequencies in
+the region of the cutoff frequency.
+
+LADDER LPF
+
+A ladder-type low-pass filter.
+
+LADDER HPF
+
+A ladder-type high-pass filter.
+
+-12 dB, -24 dB
+
+Selects the slope (steepness) of the
+low-pass filter.
+
+0–100
+
+Adjusts the cutoff frequency.
+
+TYPE
+
+SLOPE
+*1
+CUTOFF
+
+Assign this when using a CTL pedal
+or EXP pedal to control bend.
+Switches oscillator sync on/off.
+
+*8 *9
+
+Sound consists of numerous overtones at various frequencies. By
+using a filter to pass or cut the overtones of specific frequency
+regions, you can modify the brightness of the sound.
+
+Values in the positive direction
+speed up the pitch release, and
+values in the negative direction
+slow down the pitch attack.
+
+P. ENV DEPTH
+
+SYNC SW
+
+FILTER
+
+If this is ON, it generates a complex
+waveform by forcibly resetting
+INST2 and INST3 to the beginning
+of their cycle in synchronization
+with the INST1 frequency.
+
+Resonance emphasizes the sound
+in the region of the filter cutoff
+frequency.
+RESONANCE
+
+0–100
+
+Specifies how the dynamics of the
+input signal controls the filter.
+
+Switches the ring modulator on/off.
+RING SW
+*8
+
+OFF, ON
+
+If this is on, the signals of INST1
+and INST2 (or INST1 and INST3)
+are multiplied with each other to
+produce a complex waveform.
+
+*1 Setting available with GK PATCH.
+*2 If INPUT is selected as WAVEFORM, there are no editable
+parameters in the OSC block.
+*3 Valid when the WAVEFORM is set to PWM.
+*4 Valid when the WAVEFORM is set to DETUNE SAW.
+*5 Valid when the WAVEFORM is set to NOISE.
+*6 Valid when the WAVEFORM is set to FEEDBACK OSC.
+*7 Valid when the WAVEFORM is set to SUPER SAW.
+*8 Valid only when the INST1 TYPE (p. 23) is set to DYNAMIC
+SYNTH.
+*9 Valid when the WAVEFORM is set to other than NOISE or INPUT.
+
+26
+
+Increasing the resonance setting
+will increase this emphasis,
+producing a distinctive sound that
+is characteristic of synthesizers.
+
+F. ENV ATTACK -50–+50
+
+F. ENV DEPTH
+
+-50–+50
+
+Values in the positive direction
+speed up the filter release. Values in
+the negative direction slow down
+the filter attack.
+Specifies the depth to which the
+filter is modulated by the dynamics
+of the input signal.
+
+*1 Valid when the TYPE is set to LPF, HPF, BPF, PKG.
+
+AMP
+In the AMP section you can modify the sound by changing its volume
+and dynamics.
+Parameter
+
+Value
+
+Explanation
+
+A. ENV
+ATTACK
+
+-50–+50
+
+Specifies how the dynamics of the
+input signal controls the amp.
+
+LOW CUT
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+Cuts the frequency region below the
+specified frequency. When FLAT is
+selected, the low cut filter will have
+no effect.
+
+HIGH CUT
+
+20.0 Hz–16.0
+kHz, FLAT
+
+Cuts the frequency region above the
+specified frequency. When FLAT is
+selected, the high cut filter will have
+no effect.
+
+

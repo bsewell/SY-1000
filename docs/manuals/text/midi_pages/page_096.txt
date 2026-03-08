@@ -1,0 +1,135 @@
+1927 MIXER
+B:PAN
+1928 BALANCER 1
+A/B BALANCE
+1929
+BALANCER 1
+A:PAN
+1930
+BALANCER 1
+B:PAN
+1931 BALANCER 2
+A/B BALANCE
+1932
+BALANCER 2
+A:PAN
+1933
+BALANCER 2
+B:PAN
+1934
+BALANCER 3
+A/B BALANCE
+1935
+BALANCER 3
+A:PAN
+1936
+BALANCER 3
+B:PAN
+1937
+MAIN OUT
+MAIN OUT PHASE
+1938
+MAIN OUT
+MAIN OUT R PHASE
+1939 SUB OUT
+SUB OUT PHASE
+1940 SUB OUT
+SUB OUT R PHASE
+1941
+MIDI
+MIDI CC#
+1942
+MIDI
+MIDI PC#
+------------------------------------------------------------* TABLE 7 : INPUT BOX ELEMENT TABLE
++-------------------------+
+| # | VALUE
+|
++-------------------------+
+| 0 | INST1
+|
+| 1 | INST2
+|
+| 2 | INST3
+|
+| 3 | NORMAL
+|
++-------------------------+
+# Each VALUE must not appear duplicately.
+# From "INPUT BOX1" to "INPUT BOX4" are group parameters.
+The DT1 to each parameter is temporarily suspended, and the DT1 to the
+group parameter's final address automatically checks the pending parameters,
+and if there is no problem, the value is set.
+If the value is incomplete it will not be set.
+Parameters before set are read out for the RQ1 to pending parameters.
+Pending values cannot be read.
+* TABLE 8 : CHAIN ELEMENT TABLE
++-------------------------+
+| # | VALUE
+|
++-------------------------+
+| 0 | COMPRESSOR
+|
+| 1 | DISTORTION
+|
+| 2 | AMP
+|
+| 3 | NOISE SUPPRESSOR
+|
+| 4 | FX1
+|
+| 5 | FX2
+|
+| 6 | FX3
+|
+| 7 | EQUALIZER1
+|
+| 8 | EQUALIZER2
+|
+| 9 | CHORUS
+|
+| 10 | DELAY1
+|
+| 11 | DELAY2
+|
+| 12 | MASTER DELAY
+|
+| 13 | REVERB
+|
+| 14 | FOOT VOLUME1
+|
+| 15 | FOOT VOLUME2
+|
+| 16 | SEND/RETURN
+|
+| 17 | DIVIDER
+|
+| 18 | BRANCH_AB
+|
+| 19 | MIXER
+|
+| 20 | SUB OUT L
+|
+| 21 | SUB OUT R
+|
+| 22 | MAIN OUT L
+|
+| 23 | MAIN OUT R
+|
+| 24 | SPLIT
+|
++-------------------------+
+# Each VALUE (except for SPLIT) must not appear duplicately.
+# When STEREO LINK SW (MAIN OUT/SUB OUT) is on, R should be placed
+immediately after L.
+# From "CHAIN ELEMENT1" to "CHAIN ELEMENT30" are group parameters.
+The DT1 to each parameter is temporarily suspended, and the DT1 to the
+group parameter's final address automatically checks the pending parameters,
+and if there is no problem, the value is set.
+If the value is incomplete it will not be set.
+Parameters before set are read out for the RQ1 to pending parameters.
+Pending values cannot be read.
+
+96
+
+

@@ -1,0 +1,157 @@
+SYSTEM Parameters
+CONTROL MODE
+The control mode setting lets you choose how you want to operate
+the effects.
+Value
+
+Explanation
+This mode lets you recall and use the patches that
+are saved in the unit (Memory mode).
+
+MEMORY
+
+Use the [1]–[4] switches to switch patches.
+* Even in memory mode, you can select functions
+other than patch recall.
+This mode lets you use the [1]–[4] switches to
+operate the functions that are assigned to them by
+each patch or by the settings for the entire system
+(Manual mode).
+
+MANUAL
+
+When you select manual mode, a portion of the
+PLAY screen changes.
+
+IN/OUT SETTING
+GK SETTING
+Here you can make settings for the divided pickup to ensure that the
+SY-1000 will always play optimally.
+These settings must be made when you newly attach a divided
+pickup to a guitar (or a bass), or when you’ve adjusted the height of
+the divided pickup.
+The SY-1000 can save ten sets of these settings (GK SETTING).
+If you save the GK SETTING parameters for each of your guitars
+(basses), you can quickly recall the appropriate settings when you
+connect a different guitar (bass).
+The GK SETTING parameters are saved even when you turn off the
+power. You need not make the settings each time you play the
+instrument.
+Parameter
+
+Value
+
+Explanation
+Selects the GK SET used
+when EFFECTS parameters
+0MASTER parameters GK
+SET is set to “SYSTEM.”
+
+SETTING
+
+1–10
+
+NAME
+
+Edits the name of the GK set (up to eight characters).
+GK-3
+
+Choose this when using a
+Roland GK-3.
+
+GK-2A
+
+Choose this when using
+a Roland GK-2A, or when
+using a guitar (commercially
+available) with a built-in
+divided pickup.
+
+GC-1
+
+Choose this when using a
+Roland V-Guitar GC-1.
+
+GK TYPE
+*1
+
+The various parameters
+specified in GK SETTING are
+saved in the GK SET number
+that you select here.
+
+PIEZO
+PIEZO F
+PIEZO G
+PIEZO L
+
+(Flat response)
+Piezo
+pickup
+
+PIEZO R
+
+GK TYPE
+
+GK-2B
+
+PIEZO R
+
+*2
+
+RMC
+
+Choose this when using
+a Roland GK-2B, or when
+using a bass (commercially
+available) with a built-in
+divided pickup.
+
+PIEZO G
+
+SCALE
+
+L.R. Baggs
+
+GK-3B
+
+PIEZO
+
+*1
+
+Graph Tech
+
+Choose this if you’re using
+a GK-3B.
+
+*2
+
+SCALE
+
+Fishman
+
+Piezo
+pickup
+
+(Flat response)
+Graph Tech
+RMC
+
+500–660 mm, ST (648
+mm), LP (628 mm)
+
+Specify the scale length of
+the guitar you’re using.
+
+710–940 mm, SHORT
+(760 mm), MEDIUM
+(812 mm), LONG JB/
+PB (864 mm), EXTRA
+LONG (914 mm)
+
+Specify the scale length of
+the bass you’re using.
+
+81
+
+

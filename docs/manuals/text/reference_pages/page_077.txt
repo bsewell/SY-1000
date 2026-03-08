@@ -1,0 +1,119 @@
+CONTROL ASSIGN Parameters > Virtual Expression Pedal System (Wave Pedal)
+
+Virtual Expression Pedal System (Wave
+Pedal)
+
+About the Range of a Target’s Change
+
+By assigning a desired parameter to the virtual expression pedal,
+you can produce an effect as though you were operating a physical
+expression pedal to change the volume or tone quality in real time.
+
+When using an external footswitch, or other controller that acts
+as an on/off switch, “Min” is selected with Off (CLOSED), and
+“Max” is selected with On (OPEN).
+
+The virtual expression pedal system can be specified as a SOURCE for
+ASSIGN 1–ASSIGN 16.
+
+When using an external expression pedal or other controller
+that generates a consecutive change in the value, the value of
+the setting changes accordingly, within the range set by the
+minimum and maximum values. Also, when the target is of an
+on/off type, the median value of the received data is used as the
+dividing line in determining whether to switch it on or off.
+
+If SOURCE is set to “WAVE PEDAL,” the virtual expression pedal will
+cyclically modify the parameter specified by TARGET in a fixed wave
+form.
+
+Always changes in a fixed curve regardless of the actual pedal
+
+STRING1–STRING6, STR HiC–STR LowB,
+STRING ALL, NORMAL IN
+
+When using the footswitch:
+
+Allowable
+Parameter
+Settings Range
+
+Wave pedal
+
+The target’s value changes between MIN (the minimum value)
+and MAX (the maximum value).
+
+INPUT SENS (Input Sens)
+Parameter
+
+Value
+
+INPUT SENS 0–100
+
+MAX
+
+MIN
+
+0
+When the pedal
+is fully raised
+
+Explanation
+Adjusts the input sensitivity when
+STRING1–STRING6, STR HiC–STR LowB,
+STRING ALL, or NORMAL INPUT is
+selected as the SOURCE.
+
+ON
+
+When using the expression pedal:
+
+Allowable
+Parameter
+Settings Range
+
+If you want to adjust the input sensitivity, set the INPUT SENS.
+
+MIN
+OFF
+
+The parameter set as the target changes in response to the input
+level.
+MEMO
+
+MAX
+
+127
+When the pedal is
+fully advanced
+
+When controlling the On/Off target with the expression pedal:
+Value
+ON
+
+OFF
+0
+When the pedal When the pedal
+is fully raised
+is advanced
+halfway
+
+Degree to Which
+Expression Pedal
+Is Depressed
+127
+When the pedal
+is fully advanced
+
+* The range that can be selected changes according to the
+target setting.
+* When the “minimum” is set to a higher value than the
+“maximum,” the change in the parameter is reversed.
+* The values of settings can change if the target is changed
+after the “minimum” and “maximum” settings have been
+made. If you’ve changed the target, be sure to recheck the
+“minimum” and “maximum” settings.
+
+77
+
+

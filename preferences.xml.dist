@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Preferences of the SY-1000 FloorBoard application. -->
+<Preferences>
+	<General>
+		<Application version="20250519"/>
+		<Donate url=""/>
+		<Files dir=""/>
+		<Help url="http:SY-1000-Help-HTML/SY-1000_HTML_Help.html"/>
+		<Language code="en"/>
+		<Manual url="https://www.Boss.com/products/en/_support/om.cfm?PRODUCT=SY-1000"/>
+		<Upload url="https://www.vguitarforums.com/smf/index.php"/>
+		<Webpage url="https://sourceforge.net/projects/sy1000floorboard/"/>
+	</General>
+	<Language>
+		<Locale select="0"/>
+	</Language>
+	<Midi>
+		<BulkFinish patch="200"/>
+		<BulkStart patch="1"/>
+		<DBug bool="true"/>
+        <Device bool="true"/>
+		<Delay set="20"/>
+		<MidiIn device="0"/>
+		<MidiOut device="1"/>
+        <MidiIn name="SY-1000" device="0"/>
+		<MidiOut name="SY-1000" device="1"/>
+		<TxCh set="1"/>
+	</Midi>
+	<Scheme>
+		<Colour select="1"/>
+		<Style select="0"/>
+	</Scheme>
+	<Window>
+        <AutoMode bool="true"/>
+        <AutoScale bool="true"/>
+        <BassMode bool="false"/>
+		<Collapsed width="1350" defaultwidth="1350" bool="true"/>
+        <Font ratio="1.1"/>
+		<Position x="1" y="1"/>        
+		<Restore sidepanel="true" window="true"/>
+        <Scale ratio="1.2"/>
+		<Single bool="true"/>
+		<Size height="750" width="1350" minwidth="1350" minheight="750"/>
+		<Splash bool="true"/>		
+	</Window>
+</Preferences>

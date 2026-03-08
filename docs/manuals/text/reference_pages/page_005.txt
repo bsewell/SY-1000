@@ -1,0 +1,108 @@
+Getting Ready
+MAIN OUTPUT jack / SUB OUTPUT jack
+
+MIDI IN, MIDI OUT/THRU jacks
+
+Connect these jacks to your guitar amp, headphones (sold separately), or to
+PA (LINE).
+
+Connect an external MIDI device here.
+
+* Connect your headphones to the MAIN OUTPUT L/PHONES jack.
+
+For details, refer to “MIDI” (p. 89).
+
+* If your system is mono, use only the R/MONO jack.
+* If you’re using headphones, don’t connect anything to R/MONO jack.
+
+Ground Terminal
+Connect this to an external earth or
+ground if necessary.
+
+CTL 3, 4/EXP 1, CTL 5, 6/EXP 2 jacks
+You can connect an expression pedal (EV-30, FV-500L, FV-500H, or EV-5: sold separately) or footswitch (FS-5U, FS-6, FS-7: sold separately), and
+use it to control various functions.
+For details on the settings, refer to “CONTROL ASSIGN Parameters” (p. 67).
+To use these as EXP 1,
+EXP 2 jacks
+Connect an expression
+pedal.
+
+To use these as CTL 3,4 or CTL 5,6 jacks
+Connect a footswitch.
+FS-5U x 1
+
+FS-5U x 2
+
+FS-6
+
+FS-7
+
+1/4” phone type
+
+Stereo 1/4” phone type
+
+Stereo 1/4” phone type
+
+Stereo 1/4” phone type
+
+1/4” phone type
+
+1/4” phone type x 2
+
+Stereo 1/4” phone type
+
+Stereo 1/4” phone type
+
+.
+/
+
+* Use only the
+specified expression
+pedal (EV-30, FV500L, FV-500H, or EV5: sold separately).
+By connecting any
+other expression
+pedals, you risk
+causing malfunction
+and/or damage to
+the unit.
+
+.
+/
+
+.
+/
+
+.
+/
+
+CTL 4
+CTL 6
+CTL 3
+CTL 5
+
+CTL 4
+CTL 6
+
+CTL 3
+CTL 5
+
+CTL 4
+CTL 6
+
+CTL 3
+CTL 5
+
+CTL 3
+CTL 5
+
+MODE / POLARITY switch
+FS-5U
+
+FS-6
+
+FS-7
+
+5
+
+

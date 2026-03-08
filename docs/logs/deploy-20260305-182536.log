@@ -1,0 +1,16 @@
+=========================================
+ SY-1000FloorBoard Deploy
+=========================================
+Logging to: /Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/logs/deploy-20260305-182536.log
+
+--- Step 0: Generate Makefile with Qt5 qmake ---
+Project MESSAGE: X-Code LIBRARIES SHOULD BE INSTALLED or ERROR will Occur
+Project MESSAGE: Please install the X-Code Audio System packages if not present
+Project MESSAGE: Including Mac OS X specific headers and sources...
+qmake OK
+
+--- Step 1: Build ---
+make: Nothing to be done for `first'.
+Build OK
+
+--- Step 2: macdeployqt (bundle Qt frameworks) ---

@@ -1,0 +1,183 @@
+INST Parameters > OSC SYNTH Parameters
+
+LAYER
+
+OSC SYNTH Parameters
+
+Here you can specify the range of notes that are sounded. This is
+useful when layering multiple sounds together.
+Parameter
+
+Value
+
+Explanation
+
+OSC
+
+L. FADE
+
+1–60
+
+Specifies the area over which the
+low range will fade out.
+
+In the OSC section you specify the waveform that is the basis of the
+synthesizer sound.
+
+LOWER
+
+A0–E6
+
+Specifies the lowest note of the
+range that will sound.
+
+Parameter
+
+UPPER
+
+A0–E6
+
+Specifies the highest note of the
+range that will sound.
+
+U. FADE
+
+1–60
+
+Specifies the area over which the
+high range will fade out.
+
+* Valid when the WAVEFORM (p. 25) in the OSC section is set to
+other than INPUT.
+
+Value
+
+Explanation
+
+This creates the waveform that determines the
+character of the sound, and also specifies the pitch.
+There are two oscillators (OSC1 and OSC2).
+SINGLE
+
+Only OSC1 is used.
+
+DUAL
+
+OSC1 and OSC2 are used.
+
+SYNC
+
+This is oscillator sync. It generates
+a complex waveform by forcibly
+resetting OSC2 to the beginning
+of its cycle in synchronization with
+the OSC1 frequency.
+
+RING
+
+This is a ring modulator. It
+generates a complex waveform by
+multiplying OSC1 and OSC2.
+
+MODE
+
+Selects the waveform that is the basis of the
+sound.
+
+WAVEFORM1
+WAVEFORM2
+
+PITCH1
+PITCH2
+FINE1
+FINE2
+
+SIN
+
+Sine wave
+
+SAW
+
+Sawtooth wave
+
+TRI
+
+Triangle wave
+
+SQR
+
+Square wave
+
+PWM
+
+Pulse wave (asymmetrical
+rectangular wave)
+
+NOISE
+
+Noise
+
+-24–+24
+
+Adjusts the pitch.
+
+-50–+50
+
+Specifies a finer adjustment than
+PITCH.
+
+PULSE WIDTH1
+PULSE WIDTH2 0–100
+
+Specifies the pulse width.
+
+*1
+PW MOD
+RATE1
+PW MOD
+RATE2
+
+0–100
+
+Specifies the depth to which the
+LFO will modulate pulse width.
+
+*1
+P. ENV
+ATTACK1
+P. ENV
+ATTACK2
+P. ENV DECAY1
+P. ENV DECAY2
+P. ENV DEPTH1
+P. ENV DEPTH2
+LEVEL1
+LEVEL2
+MONO/POLY
+SW
+
+0–100
+
+Specifies the attack/decay time of
+the pitch envelope.
+
+0–100
+0–100
+
+Specifies the depth to which the
+envelope will modulate the pitch.
+
+0–100
+
+Specifies the volume of the
+oscillator.
+
+MONO, POLY
+
+If this is set to MONO, only a single
+note will sound even if you play a
+chord.
+
+29
+
+

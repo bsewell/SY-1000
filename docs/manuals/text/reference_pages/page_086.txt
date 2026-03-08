@@ -1,0 +1,217 @@
+SYSTEM Parameters > IN/OUT SETTING
+
+AUDIO ROUTING
+Value
+
+Value
+
+Use this setting if you want the output processed
+by a plug-in effect on your DAW to be output to the
+SY-1000’s OUTPUT.
+
+Explanation
+Use this setting if you want to play your guitar while
+playing back a backing song from your computer.
+
+Only the sound of the SY-1000 is output from the
+SY-1000’s USB port.
+
+The sound of the SY-1000 and the backing from your
+computer are mixed and output from the SY-1000’s
+OUTPUT.
+The sound of only the SY-1000 is output from the
+SY-1000’s USB port.
+
+Explanation
+
+PC GK1-6 IN
+
+DIRECT OFF
+
+DIVIDED PU
+
+GK SETTING
+
+INST
+
+EFFECTS
+CHAIN
+
+NORMAL PU
+
+USB OUT
+POSITION
+PC IN
+USB OUT LEVEL
+
+PC GK1-6 IN
+
+STANDARD
+
+USB OUT
+POSITION
+DIVIDED PU
+
+GK SETTING
+
+INST
+
+PC IN
+
+EFFECTS
+CHAIN
+
+PC GK 1-6 OUT
+MAIN OUT
+
+USB OUT LEVEL
+PC OUT
+
+NORMAL PU
+
+USB MAIN MIX LEVEL
+
+MAIN OUT LEVEL
+
+USB SUB MIX LEVEL
+
+SUB OUT LEVEL
+
+SUB OUT
+USB IN
+POSITION
+PC GK 1-6 OUT
+MAIN OUT
+PC OUT
+
+USB MAIN MIX LEVEL
+
+MAIN OUT LEVEL
+
+USB SUB MIX LEVEL
+
+SUB OUT LEVEL
+
+SUB OUT
+USB IN
+POSITION
+
+Use this setting if you want to play your guitar while
+playing back a song from your computer.
+The sound of the SY-1000 and the backing are mixed
+and output from the SY-1000’s OUTPUT and from
+the USB port.
+PC GK1-6 IN
+
+MIX
+
+DIVIDED PU
+
+GK SETTING
+
+INST
+
+EFFECTS
+CHAIN
+
+NORMAL PU
+
+PC IN
+USB OUT
+POSITION
+
+USB OUT LEVEL
+
+PC GK 1-6 OUT
+MAIN OUT
+PC OUT
+
+USB MAIN MIX LEVEL
+
+MAIN OUT LEVEL
+
+USB SUB MIX LEVEL
+
+SUB OUT LEVEL
+
+SUB OUT
+USB IN
+POSITION
+
+Use this setting if the sound unprocessed by an INST
+and effects is being played back from the computer
+and input to the SY-1000 for resynthesis.
+PC GK1-6 IN
+
+RE-SYNTH1
+
+DIVIDED PU
+
+GK SETTING
+USB OUT
+POSITION
+INST
+
+NORMAL PU
+
+PC IN
+
+EFFECTS
+CHAIN
+
+USB OUT LEVEL
+
+USB IN
+POSITION
+PC GK 1-6 OUT
+MAIN OUT
+MAIN OUT LEVEL
+
+PC OUT
+USB IN LEVEL
+
+SUB OUT
+SUB OUT LEVEL
+
+Use this setting if the sound unprocessed by an
+INST and effects is being resynthesized while the
+computer plays a backing song.
+PC GK1-6 IN
+
+DIVIDED PU
+
+RE-SYNTH2
+
+GK SETTING
+USB OUT
+POSITION
+
+NORMAL PU
+
+INST
+
+EFFECTS
+CHAIN
+
+PC IN
+USB OUT LEVEL
+
+PC GK 1-6 OUT
+MAIN OUT
+PC OUT
+
+USB MAIN MIX LEVEL
+
+MAIN OUT LEVEL
+
+USB SUB MIX LEVEL
+
+SUB OUT LEVEL
+
+SUB OUT
+USB IN
+POSITION
+
+86
+
+

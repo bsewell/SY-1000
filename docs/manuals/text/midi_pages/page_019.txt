@@ -1,0 +1,663 @@
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+
+02 1F | 0000 dddd | Program Change
+02 20 | 0000 aaaa |
+02 21 | 0000 bbbb |
+02 22 | 0000 cccc |
+02 23 | 0000 dddd | Program Change
+02 24 | 0000 aaaa |
+02 25 | 0000 bbbb |
+02 26 | 0000 cccc |
+02 27 | 0000 dddd | Program Change
+02 28 | 0000 aaaa |
+02 29 | 0000 bbbb |
+02 2A | 0000 cccc |
+02 2B | 0000 dddd | Program Change
+02 2C | 0000 aaaa |
+02 2D | 0000 bbbb |
+02 2E | 0000 cccc |
+02 2F | 0000 dddd | Program Change
+02 30 | 0000 aaaa |
+02 31 | 0000 bbbb |
+02 32 | 0000 cccc |
+02 33 | 0000 dddd | Program Change
+02 34 | 0000 aaaa |
+02 35 | 0000 bbbb |
+02 36 | 0000 cccc |
+02 37 | 0000 dddd | Program Change
+02 38 | 0000 aaaa |
+02 39 | 0000 bbbb |
+02 3A | 0000 cccc |
+02 3B | 0000 dddd | Program Change
+02 3C | 0000 aaaa |
+02 3D | 0000 bbbb |
+02 3E | 0000 cccc |
+02 3F | 0000 dddd | Program Change
+02 40 | 0000 aaaa |
+02 41 | 0000 bbbb |
+02 42 | 0000 cccc |
+02 43 | 0000 dddd | Program Change
+02 44 | 0000 aaaa |
+02 45 | 0000 bbbb |
+02 46 | 0000 cccc |
+02 47 | 0000 dddd | Program Change
+02 48 | 0000 aaaa |
+02 49 | 0000 bbbb |
+02 4A | 0000 cccc |
+02 4B | 0000 dddd | Program Change
+02 4C | 0000 aaaa |
+02 4D | 0000 bbbb |
+02 4E | 0000 cccc |
+02 4F | 0000 dddd | Program Change
+02 50 | 0000 aaaa |
+02 51 | 0000 bbbb |
+02 52 | 0000 cccc |
+02 53 | 0000 dddd | Program Change
+02 54 | 0000 aaaa |
+02 55 | 0000 bbbb |
+02 56 | 0000 cccc |
+02 57 | 0000 dddd | Program Change
+02 58 | 0000 aaaa |
+02 59 | 0000 bbbb |
+02 5A | 0000 cccc |
+02 5B | 0000 dddd | Program Change
+02 5C | 0000 aaaa |
+02 5D | 0000 bbbb |
+02 5E | 0000 cccc |
+02 5F | 0000 dddd | Program Change
+02 60 | 0000 aaaa |
+02 61 | 0000 bbbb |
+02 62 | 0000 cccc |
+02 63 | 0000 dddd | Program Change
+02 64 | 0000 aaaa |
+02 65 | 0000 bbbb |
+02 66 | 0000 cccc |
+02 67 | 0000 dddd | Program Change
+02 68 | 0000 aaaa |
+02 69 | 0000 bbbb |
+02 6A | 0000 cccc |
+02 6B | 0000 dddd | Program Change
+02 6C | 0000 aaaa |
+02 6D | 0000 bbbb |
+02 6E | 0000 cccc |
+02 6F | 0000 dddd | Program Change
+02 70 | 0000 aaaa |
+02 71 | 0000 bbbb |
+02 72 | 0000 cccc |
+02 73 | 0000 dddd | Program Change
+02 74 | 0000 aaaa |
+02 75 | 0000 bbbb |
+02 76 | 0000 cccc |
+02 77 | 0000 dddd | Program Change
+02 78 | 0000 aaaa |
+02 79 | 0000 bbbb |
+02 7A | 0000 cccc |
+02 7B | 0000 dddd | Program Change
+02 7C | 0000 aaaa |
+02 7D | 0000 bbbb |
+02 7E | 0000 cccc |
+02 7F | 0000 dddd | Program Change
+03 00 | 0000 aaaa |
+03 01 | 0000 bbbb |
+03 02 | 0000 cccc |
+03 03 | 0000 dddd | Program Change
+03 04 | 0000 aaaa |
+03 05 | 0000 bbbb |
+03 06 | 0000 cccc |
+03 07 | 0000 dddd | Program Change
+03 08 | 0000 aaaa |
+03 09 | 0000 bbbb |
+03 0A | 0000 cccc |
+03 0B | 0000 dddd | Program Change
+
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+|
+|
+|
+|#
+
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+
+19
+
+03 0C | 0000 aaaa |
+03 0D | 0000 bbbb |
+03 0E | 0000 cccc |
+03 0F | 0000 dddd | Program Change
+03 10 | 0000 aaaa |
+03 11 | 0000 bbbb |
+03 12 | 0000 cccc |
+03 13 | 0000 dddd | Program Change
+03 14 | 0000 aaaa |
+03 15 | 0000 bbbb |
+03 16 | 0000 cccc |
+03 17 | 0000 dddd | Program Change
+03 18 | 0000 aaaa |
+03 19 | 0000 bbbb |
+03 1A | 0000 cccc |
+03 1B | 0000 dddd | Program Change
+03 1C | 0000 aaaa |
+03 1D | 0000 bbbb |
+03 1E | 0000 cccc |
+03 1F | 0000 dddd | Program Change
+03 20 | 0000 aaaa |
+03 21 | 0000 bbbb |
+03 22 | 0000 cccc |
+03 23 | 0000 dddd | Program Change
+03 24 | 0000 aaaa |
+03 25 | 0000 bbbb |
+03 26 | 0000 cccc |
+03 27 | 0000 dddd | Program Change
+03 28 | 0000 aaaa |
+03 29 | 0000 bbbb |
+03 2A | 0000 cccc |
+03 2B | 0000 dddd | Program Change
+03 2C | 0000 aaaa |
+03 2D | 0000 bbbb |
+03 2E | 0000 cccc |
+03 2F | 0000 dddd | Program Change
+03 30 | 0000 aaaa |
+03 31 | 0000 bbbb |
+03 32 | 0000 cccc |
+03 33 | 0000 dddd | Program Change
+03 34 | 0000 aaaa |
+03 35 | 0000 bbbb |
+03 36 | 0000 cccc |
+03 37 | 0000 dddd | Program Change
+03 38 | 0000 aaaa |
+03 39 | 0000 bbbb |
+03 3A | 0000 cccc |
+03 3B | 0000 dddd | Program Change
+03 3C | 0000 aaaa |
+03 3D | 0000 bbbb |
+03 3E | 0000 cccc |
+03 3F | 0000 dddd | Program Change
+03 40 | 0000 aaaa |
+03 41 | 0000 bbbb |
+03 42 | 0000 cccc |
+03 43 | 0000 dddd | Program Change
+03 44 | 0000 aaaa |
+03 45 | 0000 bbbb |
+03 46 | 0000 cccc |
+03 47 | 0000 dddd | Program Change
+03 48 | 0000 aaaa |
+03 49 | 0000 bbbb |
+03 4A | 0000 cccc |
+03 4B | 0000 dddd | Program Change
+03 4C | 0000 aaaa |
+03 4D | 0000 bbbb |
+03 4E | 0000 cccc |
+03 4F | 0000 dddd | Program Change
+03 50 | 0000 aaaa |
+03 51 | 0000 bbbb |
+03 52 | 0000 cccc |
+03 53 | 0000 dddd | Program Change
+03 54 | 0000 aaaa |
+03 55 | 0000 bbbb |
+03 56 | 0000 cccc |
+03 57 | 0000 dddd | Program Change
+03 58 | 0000 aaaa |
+03 59 | 0000 bbbb |
+03 5A | 0000 cccc |
+03 5B | 0000 dddd | Program Change
+03 5C | 0000 aaaa |
+03 5D | 0000 bbbb |
+03 5E | 0000 cccc |
+03 5F | 0000 dddd | Program Change
+03 60 | 0000 aaaa |
+03 61 | 0000 bbbb |
+03 62 | 0000 cccc |
+03 63 | 0000 dddd | Program Change
+03 64 | 0000 aaaa |
+03 65 | 0000 bbbb |
+03 66 | 0000 cccc |
+03 67 | 0000 dddd | Program Change
+03 68 | 0000 aaaa |
+03 69 | 0000 bbbb |
+03 6A | 0000 cccc |
+03 6B | 0000 dddd | Program Change
+03 6C | 0000 aaaa |
+03 6D | 0000 bbbb |
+03 6E | 0000 cccc |
+03 6F | 0000 dddd | Program Change
+03 70 | 0000 aaaa |
+03 71 | 0000 bbbb |
+03 72 | 0000 cccc |
+03 73 | 0000 dddd | Program Change
+03 74 | 0000 aaaa |
+03 75 | 0000 bbbb |
+03 76 | 0000 cccc |
+03 77 | 0000 dddd | Program Change
+03 78 | 0000 aaaa |
+
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+|
+|
+(0 - 399) |
+|
+
+

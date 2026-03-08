@@ -1,0 +1,62 @@
+Saving a Sound (WRITE)
+
+Initializing Patches (PATCH INITIALIZE)
+
+Inserting a Patch (PATCH INSERT)
+
+You can return (initialize) a User patch to its original factory settings.
+This is convenient when you want to create a new patch from scratch.
+
+You can insert a patch into any position of the user patches.
+
+CAUTION
+Any tone settings you’ve stored in a patch are lost once the
+initialization is executed.
+
+1. Press the [WRITE] button.
+2. Press the [3] knob to select “INITIALIZE” (PATCH
+INITIALIZE).
+3. Use the [1] knob to select the user patch that you
+want to initialize. Use the [2] knob to select the type
+of patch.
+
+* If you decide to cancel without initializing, press the [EXIT] button
+a several times. You’ll be returned to the Play screen.
+* The patch type can also be switched even after initialization. For
+details, refer to the EFFECTS section’s explanation of INPUT block
+“PATCH TYPE” (p. 66).
+
+4. Press the [WRITE] button once again.
+
+For example, if you insert patch U01-1 at U02-1, patch U02-1 and
+subsequent patches are shifted (renumbered) backward by one.
+(Patch U02-1 becomes U02-2.)
+CAUTION
+When you execute the insert operation, the last user patch (U50-4) is
+deleted.
+
+1. Press the [WRITE] button.
+2. Press the [4] knob to select “INSERT” (PATCH
+INSERT).
+3. Use the [1] knob to select the insert-destination
+user patch.
+
+* If you decide to cancel without inserting, press the [EXIT] button a
+several times. You’ll be returned to the Play screen.
+
+4. Press the [WRITE] button once again.
+A confirmation message appears.
+
+A confirmation message appears.
+
+5. Press the [6] knob.
+5. Press the [6] knob.
+The patch will be initialized. If you decide to cancel the initialize
+operation, press the [5] knob.
+
+94
+
+The patch is inserted at the specified position. If you decide to
+cancel the insert operation, press the [5] knob.
+
+

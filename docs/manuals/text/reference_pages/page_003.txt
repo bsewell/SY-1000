@@ -1,0 +1,70 @@
+Contents
+PREFERENCE. . . . . . . . . . . . . . . . . . . . . . . ..  . 69
+ASSIGN SETTING. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 70
+ASSIGN 1–ASSIGN 16. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 70
+Virtual Expression Pedal System
+(Wave Pedal) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 77
+STRING1–STRING6, STR HiC–STR
+LowB, STRING ALL, NORMAL IN .  .  .  .  .  .  .  . 77
+INPUT SENS (Input Sens) .  .  .  .  .  .  .  .  .  .  .  .  .  . 77
+PATCH MIDI. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 78
+PATCH MIDI 1–PATCH MIDI 4.  .  .  .  .  .  .  .  .  .  . 78
+GUITAR TO MIDI/BASS TO MIDI .  .  .  .  .  .  .  .  . 79
+LED COLOR.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 80
+[BANKI]/[BANKH] switch, [CTL1]/
+[CTL2] switch, [1]–[4] switch, CUR
+NUM.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 80
+PREFERENCE. . . . . . . . . . . . . . . . . . . . . . . ..  . 80
+
+SYSTEM Parameters. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 81
+CONTROL MODE. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 81
+IN/OUT SETTING.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 81
+GK SETTING .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 81
+NORMAL SETTING .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 83
+MAIN OUT, SUB OUT .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 83
+TOTAL. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 85
+USB AUDIO.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 85
+HARDWARE SETTING .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 87
+KNOB SETTING .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 87
+ASSIGN HOLD .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 87
+GROUND LIFT .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 87
+OTHER .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 88
+PLAY OPTION.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 88
+MIDI. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 89
+Operations from the SY-1000 .  .  .  .  .  .  .  .  .  . 89
+Operations from an External MIDI
+Device .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 89
+MIDI SETTING. . . . . . . . . . . . . . . . . . . . . . ..  . 89
+PROGRAM MAP BANK1–BANK4.  .  .  .  .  .  .  . 90
+BULK DUMP .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 90
+GUITAR TO MIDI/BASS TO MIDI.  .  .  .  .  .  .  .  . 91
+TUNER .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 91
+TUNER MODE. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 91
+FACTORY RESET .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 92
+MODE SETTING.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 92
+
+Saving a Sound (WRITE) .  .  .  .  .  .  .  .  .  .  .  .  . 93
+Saving a Patch (PATCH WRITE).  .  .  .  .  .  .  .  .  . 93
+Exchanging Patches (PATCH
+EXCHANGE) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 93
+Initializing Patches (PATCH
+INITIALIZE) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 94
+Inserting a Patch (PATCH INSERT). .  .  .  .  .  . 94
+
+Connecting to a Computer.  .  .  .  .  .  .  .  .  .  . 95
+Installing the USB Driver .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 95
+Using the SY-1000 as an Audio
+Interface .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 95
+
+Troubleshooting .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 96
+When Using the SY-1000 on Its Own.  .  .  . 96
+When Connected to a MIDI Device or
+Computer .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 97
+
+Block Diagram .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 98
+When Using a GK PATCH .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 98
+When Using a NORMAL PATCH .  .  .  .  .  .  .  .  . 99
+
+3
+
+

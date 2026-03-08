@@ -1,0 +1,207 @@
+SYSTEM Parameters > IN/OUT SETTING
+Parameter
+
+Value
+
+Explanation
+
+-20–+20 dB
+
+Adjusts the tone for the
+high-middle frequency
+range.
+
+HIGH-MID GAIN
+*1
+L: HIGH-MID GAIN
+*2
+R: HIGH-MID GAIN
+*2
+HIGH GAIN
+*1
+L: HIGH GAIN
+
+-20–+20 dB
+
+*2
+
+Adjusts the tone for the
+high frequency range.
+
+R: HIGH GAIN
+
+USB AUDIO
+Here you can make USB-related settings for when the SY-1000 is
+connected to a computer via USB.
+Parameter
+
+Value
+
+Explanation
+
+MAIN MIX
+LEVEL
+
+0–100
+
+Adjusts the level of the
+sound that is input from the
+computer.
+
+SUB MIX
+LEVEL
+
+0–100
+
+Adjusts the level of the
+sound that is input from the
+computer.
+
+IN LEVEL
+
+0–100
+
+Adjusts the level of the
+sound that is input from the
+computer.
+
+OUT LEVEL
+
+0–100
+
+Adjusts the level of the
+sound that is ouput to the
+computer.
+
+AUDIO
+ROUTING
+
+Specifies the routing for USB audio. You can record
+the sound of the SY-1000 into your DAW, play back
+the recorded sound from your DAW and monitor it
+on the SY-1000, or re-synth your recording.
+
+*2
+HIGH CUT
+*1
+
+20.0Hz–
+16.0kHz
+
+L: HIGH CUT
+*2
+
+FLAT
+
+R: HIGH CUT
+
+This sets the frequency at
+which the high cut filter
+begins to take effect. When
+FLAT is selected, the high
+cut filter will have no effect.
+
+*2
+
+*1 *2
+
+*1 Valid when the STEREO LINK is set to ON.
+*2 Valid when the STEREO LINK is set to OFF.
+
+*1
+
+TOTAL
+These parameters control the threshold level of the noise suppressor
+used by each patch, the overall reverb level, and the overall output.
+This does not affect the settings of each patch.
+Parameter
+
+Value
+
+Explanation
+Adjusts the reverb level specified for
+each patch.
+
+TOTAL REVERB
+0%–200%
+LEVEL
+
+It is useful to adjust the reverb level
+appropriately for the space in which
+you’re performing. This does not
+affect the settings of each patch.
+* If you want to use the settings
+specified for each patch, set this
+to 100%.
+Control the threshold level of the
+noise suppressor used by each
+patch.
+
+TOTAL NS
+THRESHOLD
+
+IN POSITION
+
+-20 dB–+20
+dB
+
+It is effective to adjust this when
+you switch to connecting a different
+guitar, or according to the amount
+of noise in the performance venue.
+This does not affect the settings of
+each patch.
+* If you want to use the settings
+specified for each patch, set this
+to 0 dB.
+
+OUT
+POSITION
+*2 *3
+
+Refer to “AUDIO ROUTING” (p. 86).
+INST1, INST2,
+INST3, NORMAL
+IN, BALANCER1,
+BALANCER2,
+BALANCER3, MAIN
+OUT, SUB OUT,
+MAIN&SUB
+
+This sets the point at
+which digital audio signals
+received via USB (from your
+computer) are connected
+within the SY-1000.
+
+INST1, INST2,
+INST3, NORMAL
+IN, BALANCER1,
+BALANCER2,
+BALANCER3, MAIN
+OUT, SUB OUT
+
+This specifies the point at
+which digital audio signals
+are taken from inside the
+SY-1000 and sent via USB
+(to your computer).
+
+*1 INST1–INST3, NORMAL IN, and BALANCER1–BALANCER3 are valid
+when the AUDIO ROUTING is set to RE-SYNTH1. And, MAIN OUT,
+SUB OUT, and MAIN&SUB are valid when the AUDIO ROUTING is
+set to other than RE-SYNTH1.
+*2 When the AUDIO ROUTING is set to MIX, only MAIN OUT and SUB
+OUT are valid.
+*3 NORMAL IN is valid when the AUDIO ROUTING is set to
+STANDARD or DIRECT OFF.
+
+What is resynthesis?
+This is a technique in which the original sound unprocessed by an
+INST or effects is recorded into your DAW, and then you later use the
+INST sounds and effects to design your sound. This gives you the
+freedom to change the sound after you’ve finished recording.
+
+85
+
+

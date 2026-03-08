@@ -1,0 +1,173 @@
+INST Parameters > VIO GUITAR Parameters
+
+TYPE
+
+VIO GUITAR Parameters
+
+Value
+
+Explanation
+
+VINT JB
+
+This models a Fender Jazz Bass from the sixties.
+
+JB
+
+This models a Fender Jazz Bass from the late
+seventies or later.
+
+VINT PB
+
+This models a Fender Precision Bass from the early
+sixties.
+
+PB
+
+This models a Fender Precision Bass from the late
+seventies or later.
+
+REAR
+
+M-MAN
+
+This models a Music Man StingRay Bass from the
+seventies.
+
+*1
+
+RICK
+
+This models a Rickenbacker 4001.
+
+T-BIRD
+
+This models a Gibson Thunderbird.
+
+ACTIVE
+
+This models a typical bass equipped with active
+pickups.
+
+VIOLIN
+
+This models a Höfner Violin Bass.
+
+FRONT
+
+This models a fretless bass.
+
+R+F
+
+FRETLESS
+
+GUITAR
+Parameter
+
+Value
+
+TYPE
+
+Select the electric guitar type “TYPE” (p. 33).
+Selects the pickup position.
+R+C
+CENTER
+*1
+
+PU SELECT
+
+C+F
+*1
+
+*2
+ALL
+
+AMP (AMP Modeling)
+Refer to “AMP (AMP Modeling)” (p. 34).
+
+NS
+Refer to “NS” (p. 35).
+
+EQ
+Refer to “EQ” (p. 35).
+
+Explanation
+
+*3
+
+Rear pickup
+Rear and center pickups
+Center pickup
+Center and front pickups
+Front pickup
+Rear and front pickups
+All pickups
+
+MILD,
+STANDARD,
+BRIGHT1,
+BRIGHT2
+
+Selects the fretless tone type.
+
+0–100
+
+This controls the input sensitivity.
+
+0–100
+
+This controls the volume of the
+harmonics.
+
+0–100
+
+Adjusts the attack of the picking
+sound.
+
+0–100
+
+Adds a characteristically resonant
+quality to the sound.
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+VOLUME
+
+0–100
+
+Adjusts the volume. With a setting
+of 0, there will be no sound.
+
+TONE
+
+0–100
+
+Adjusts the tone of the body. The
+standard value is 100; lowering the
+value creates a softer tone.
+
+TONE TYPE
+*4
+SENS
+*4
+DEPTH
+*4
+ATTACK
+*4
+RESONANCE
+*4
+DIRECT LEVEL
+*4
+
+*1 Valid when the TYPE is set to CLA-ST, MOD-ST, or LIPS.
+*2 Valid when the TYPE is set to TE, LP, P-90, RICK, 335, L4, WIDE
+RANGE, or BRIGHT HUM.
+*3 Valid when the TYPE is set to LIPS.
+*4 Valid when the TYPE is set to FRETLESS.
+
+39
+
+

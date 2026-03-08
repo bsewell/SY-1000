@@ -1,0 +1,197 @@
+Contents
+Getting Ready. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 4
+Connecting the Equipment .  .  .  .  .  .  .  .  .  .  .  .  . 4
+Turning the Power On/Off ([POWER]
+switch) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 4
+Auto Off Function. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 4
+Panel Descriptions.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 6
+Selecting the Instrument (Guitar/
+Bass) to Use (MODE SETTING) .  .  .  .  .  .  .  .  .  .  . 7
+Specifying the Device Connected to
+OUTPUT Jacks (OUTPUT SELECT) .  .  .  .  .  .  .  . 7
+Making Pickup Settings (GK SETTING) .  .  . 8
+Specifying the Pickup Type .  .  .  .  .  .  .  .  .  .  .  .  . 8
+Specifying Your Guitar’s (Bass’s) Scale
+Length.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 9
+Specifying the Pickup Position (BASS
+MODE Only).  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 9
+Specifying the Distance from the
+Bridge .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 10
+Adjusting the Pickup Sensitivity. . . . . ..  . 10
+Tuning the Guitar (TUNER) .  .  .  .  .  .  .  .  .  .  .  .  . 10
+Making Tuner Settings .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 10
+
+Basic Operation .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 11
+Display (Play Screen). .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 11
+About the Icons. . . . . . . . . . . . . . . . . . . . ..  . 11
+Screen Operations.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 12
+Operating Example 1 (INST Screen) .  .  .  . 12
+Operating Example 2 (INST Edit
+Screen). .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 12
+Operating Example 3 (EFFECT Edit
+Screen). .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 12
+
+Switching Patches (Tone) .  .  .  .  .  .  .  .  .  .  .  . 13
+The Structure and Patches of the SY1000 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 13
+Types of Bank. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 13
+Types of Patch.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 13
+Selecting a Patch .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 13
+
+Editing a Patch .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 14
+Changing the INST. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 14
+Editing the INST .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 14
+Viewing All Parameters While You Edit.. 14
+Saving the Edited INST Settings
+(VARIATION).  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 15
+Recalling a Saved INST Variation. . . . . ..  . 15
+Editing the Effects .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 16
+Basic Operation for Effect Editing .  .  .  .  .  . 16
+Editing While Viewing All Parameters. .  . 16
+Changing the Effect Order. .  .  .  .  .  .  .  .  .  .  .  . 16
+Saving the Edited Effect Settings
+(VARIATION).  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 17
+Recalling a Saved Effect Variation .  .  .  .  .  . 17
+Assigning Functions to the Foot
+Switches and Expression Pedal.  .  .  .  .  .  .  .  . 18
+Making Assignments from the Effect
+Edit Screen (Quick Assign).  .  .  .  .  .  .  .  .  .  .  .  . 18
+
+Saving a Patch. . . . . . . . . . . . . . . . . . . . . ..  . 19
+Settings for the Entire SY-1000
+(System Parameters).  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 20
+
+2
+
+Settings for the SY-1000 .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 20
+Restoring the Factory Default
+Settings (Factory Reset) .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 20
+
+Turning Off the Auto Off Function. .  .  .  .  . 20
+
+The Internal Structure of the SY1000.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 21
+INST (Instrument) Block.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 21
+EFFECT (Effects) Block. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 21
+
+INST Parameters .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 22
+Availability of Functions for Each
+INST TYPE (GUITAR MODE) .  .  .  .  .  .  .  .  .  .  .  .  . 22
+Availability of Functions for Each
+INST TYPE (BASS MODE) .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 22
+INST TYPE .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 23
+Parameters Common to Each INST
+TYPE (COMMON) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 23
+Parameters Common to Each INST
+TYPE (ALT TUNE).  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 24
+DYNAMIC SYNTH Parameters. .  .  .  .  .  .  .  .  .  . 25
+OSC. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 25
+FILTER. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 26
+AMP .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 26
+LFO1, LFO2.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 27
+SEQ.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 27
+LAYER.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 29
+OSC SYNTH Parameters .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 29
+OSC. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 29
+FILTER. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 30
+AMP .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 31
+LFO1, LFO2.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 31
+GR-300 (In GUITAR MODE) / ANALOG
+GR (In BASS MODE) Parameters .  .  .  .  .  .  .  . 32
+GR-300/ANALOG GR .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 32
+E.GUITAR Parameters .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 33
+GUITAR (In GUITAR MODE). .  .  .  .  .  .  .  .  .  .  .  . 33
+GUITAR (In BASS MODE).  .  .  .  .  .  .  .  .  .  .  .  .  .  . 33
+AMP (AMP Modeling) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 34
+NS .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 35
+EQ.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 35
+ACOUSTIC Parameters .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 36
+ACOUSTIC.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 36
+AMP (AMP Modeling) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 37
+NS .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 37
+EQ.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 37
+AC BASS Parameters .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 37
+AC BASS. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 37
+AMP (AMP Modeling) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 37
+NS .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 37
+EQ.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 37
+E.BASS Parameters. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 38
+BASS (In GUITAR MODE).  .  .  .  .  .  .  .  .  .  .  .  .  .  . 38
+BASS (In BASS MODE) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 38
+AMP (AMP Modeling) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 39
+NS .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 39
+EQ.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 39
+VIO GUITAR Parameters.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 39
+GUITAR. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 39
+HARMO .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 40
+FILTER. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 40
+NS .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 40
+EQ.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 40
+POLY FX Parameters .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 41
+NS .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 41
+
+EFFECT Parameters .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 42
+
+FX1–FX3. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 42
+AC RESONANCE. . . . . . . . . . . . . . . . . . . . ..  . 43
+AUTO WAH .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 43
+CHORUS .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 43
+CLASSIC-VIBE.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 44
+COMPRESSOR .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 44
+DEFRETTER.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 44
+DEFRETTER BASS .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 45
+DELAY .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 45
+FLANGER/FLANGER BASS. .  .  .  .  .  .  .  .  .  .  .  .  . 46
+FOOT VOLUME. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 46
+GRAPHIC EQ. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 47
+HARMONIST.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 47
+HUMANIZER.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 48
+ISOLATOR .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 48
+LIMITER .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 48
+LO-FI. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 48
+OCTAVE/OCTAVE BASS .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 49
+PAN. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 49
+PARAMETRIC EQ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 49
+PEDAL BEND .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 49
+PHASER .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 50
+PITCH SHIFTER. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 50
+REVERB .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 51
+RING MOD .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 51
+ROTARY .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 51
+SITAR SIM .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 52
+SLICER .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 52
+SLOW GEAR/SLOW GEAR BASS. .  .  .  .  .  .  .  . 52
+SOUND HOLD .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 52
+TOUCH WAH/TOUCH WAH BASS .  .  .  .  .  .  . 53
+TREMOLO .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 53
+VIBRATO .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 53
+WAH.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 54
+AMP (AMP Modeling) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 54
+TYPE.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 55
+SP TYPE .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 55
+MIC TYPE.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 55
+CHORUS. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 56
+COMPRESSOR .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 57
+TYPE.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 57
+DISTORTION.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 57
+TYPE.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 57
+EQ 1, EQ2. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 58
+MASTER DELAY.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 59
+TYPE.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 59
+DELAY 1, DELAY 2.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 60
+REVERB. . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..  . 61
+NOISE SUPPRESSOR .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 62
+FOOT VOLUME 1, FOOT VOLUME 2. .  .  .  .  . 62
+SEND/RETURN.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 63
+MODE. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 63
+DIVIDER.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 64
+MIXER.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 64
+BALANCER 1–BALANCER 3 .  .  .  .  .  .  .  .  .  .  .  .  . 65
+MAIN OUT/SUB OUT .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 65
+MASTER.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 66
+NORMAL INPUT. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 66
+
+CONTROL ASSIGN Parameters .  .  .  .  .  .  . 67
+CONTROL FUNCTION .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 67
+FUNCTION .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 67
+MODE. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 69
+
+

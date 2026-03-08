@@ -1,0 +1,972 @@
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|
+|
+|
+|
+|
+|#
+|
+|#
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|#
+|
+|#
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|
+|
+R30, R31, R32, R33, R34, R35, R36, R37, R38,
+|
+|
+|
+R39, R40, R41, R42, R43, R44, R45, R46, R47,
+|
+|
+|
+R48, R49, R50
+|
+00 27 | 0aaa aaaa | BAL1:B:PAN
+(0 - 100) |
+|
+|
+L50, L49, L48, L47, L46, L45, L44, L43, L42,
+|
+|
+|
+L41, L40, L39, L38, L37, L36, L35, L34, L33,
+|
+|
+|
+L32, L31, L30, L29, L28, L27, L26, L25, L24,
+|
+|
+|
+L23, L22, L21, L20, L19, L18, L17, L16, L15,
+|
+|
+|
+L14, L13, L12, L11, L10, L09, L08, L07, L06,
+|
+|
+|
+L05, L04, L03, L02, L01, CENTER, R01, R02,
+|
+|
+|
+R03, R04, R05, R06, R07, R08, R09, R10, R11,
+|
+|
+|
+R12, R13, R14, R15, R16, R17, R18, R19, R20,
+|
+|
+|
+R21, R22, R23, R24, R25, R26, R27, R28, R29,
+|
+|
+|
+R30, R31, R32, R33, R34, R35, R36, R37, R38,
+|
+|
+|
+R39, R40, R41, R42, R43, R44, R45, R46, R47,
+|
+|
+|
+R48, R49, R50
+|
+00 28 | 0aaa aaaa | BAL2:A/B BALANCE
+(0 - 100) |
+|
+|
+100:0, 100:2, 100:4, 100:6, 100:8, 100:10,
+|
+|
+|
+100:12, 100:14, 100:16, 100:18, 100:20,
+|
+|
+|
+100:22, 100:24, 100:26, 100:28, 100:30,
+|
+|
+|
+100:32, 100:34, 100:36, 100:38, 100:40,
+|
+|
+|
+100:42, 100:44, 100:46, 100:48, 100:50,
+|
+|
+|
+100:52, 100:54, 100:56, 100:58, 100:60,
+|
+|
+|
+100:62, 100:64, 100:66, 100:68, 100:70,
+|
+|
+|
+100:72, 100:74, 100:76, 100:78, 100:80,
+|
+|
+|
+100:82, 100:84, 100:86, 100:88, 100:90,
+|
+|
+|
+100:92, 100:94, 100:96, 100:98, 100:100,
+|
+|
+|
+98:100, 96:100, 94:100, 92:100, 90:100,
+|
+|
+|
+88:100, 86:100, 84:100, 82:100, 80:100,
+|
+|
+|
+78:100, 76:100, 74:100, 72:100, 70:100,
+|
+|
+|
+68:100, 66:100, 64:100, 62:100, 60:100,
+|
+|
+|
+58:100, 56:100, 54:100, 52:100, 50:100,
+|
+|
+|
+48:100, 46:100, 44:100, 42:100, 40:100,
+|
+|
+|
+38:100, 36:100, 34:100, 32:100, 30:100,
+|
+|
+|
+28:100, 26:100, 24:100, 22:100, 20:100,
+|
+|
+|
+18:100, 16:100, 14:100, 12:100, 10:100, 8:100, |
+|
+|
+6:100, 4:100, 2:100, 0:100
+|
+00 29 | 0aaa aaaa | BAL2:A:PAN
+(0 - 100) |
+|
+|
+L50, L49, L48, L47, L46, L45, L44, L43, L42,
+|
+|
+|
+L41, L40, L39, L38, L37, L36, L35, L34, L33,
+|
+|
+|
+L32, L31, L30, L29, L28, L27, L26, L25, L24,
+|
+|
+|
+L23, L22, L21, L20, L19, L18, L17, L16, L15,
+|
+|
+|
+L14, L13, L12, L11, L10, L09, L08, L07, L06,
+|
+|
+|
+L05, L04, L03, L02, L01, CENTER, R01, R02,
+|
+|
+|
+R03, R04, R05, R06, R07, R08, R09, R10, R11,
+|
+|
+|
+R12, R13, R14, R15, R16, R17, R18, R19, R20,
+|
+|
+|
+R21, R22, R23, R24, R25, R26, R27, R28, R29,
+|
+|
+|
+R30, R31, R32, R33, R34, R35, R36, R37, R38,
+|
+|
+|
+R39, R40, R41, R42, R43, R44, R45, R46, R47,
+|
+|
+|
+R48, R49, R50
+|
+00 2A | 0aaa aaaa | BAL2:B:PAN
+(0 - 100) |
+|
+|
+L50, L49, L48, L47, L46, L45, L44, L43, L42,
+|
+|
+|
+L41, L40, L39, L38, L37, L36, L35, L34, L33,
+|
+|
+|
+L32, L31, L30, L29, L28, L27, L26, L25, L24,
+|
+|
+|
+L23, L22, L21, L20, L19, L18, L17, L16, L15,
+|
+|
+|
+L14, L13, L12, L11, L10, L09, L08, L07, L06,
+|
+|
+|
+L05, L04, L03, L02, L01, CENTER, R01, R02,
+|
+|
+|
+R03, R04, R05, R06, R07, R08, R09, R10, R11,
+|
+|
+|
+R12, R13, R14, R15, R16, R17, R18, R19, R20,
+|
+|
+|
+R21, R22, R23, R24, R25, R26, R27, R28, R29,
+|
+|
+|
+R30, R31, R32, R33, R34, R35, R36, R37, R38,
+|
+|
+|
+R39, R40, R41, R42, R43, R44, R45, R46, R47,
+|
+|
+|
+R48, R49, R50
+|
+00 2B | 0aaa aaaa | BAL3:A/B BALANCE
+(0 - 100) |
+|
+|
+100:0, 100:2, 100:4, 100:6, 100:8, 100:10,
+|
+|
+|
+100:12, 100:14, 100:16, 100:18, 100:20,
+|
+|
+|
+100:22, 100:24, 100:26, 100:28, 100:30,
+|
+|
+|
+100:32, 100:34, 100:36, 100:38, 100:40,
+|
+|
+|
+100:42, 100:44, 100:46, 100:48, 100:50,
+|
+|
+|
+100:52, 100:54, 100:56, 100:58, 100:60,
+|
+|
+|
+100:62, 100:64, 100:66, 100:68, 100:70,
+|
+|
+|
+100:72, 100:74, 100:76, 100:78, 100:80,
+|
+|
+|
+100:82, 100:84, 100:86, 100:88, 100:90,
+|
+|
+|
+100:92, 100:94, 100:96, 100:98, 100:100,
+|
+|
+|
+98:100, 96:100, 94:100, 92:100, 90:100,
+|
+|
+|
+88:100, 86:100, 84:100, 82:100, 80:100,
+|
+|
+|
+78:100, 76:100, 74:100, 72:100, 70:100,
+|
+|
+|
+68:100, 66:100, 64:100, 62:100, 60:100,
+|
+|
+|
+58:100, 56:100, 54:100, 52:100, 50:100,
+|
+|
+|
+48:100, 46:100, 44:100, 42:100, 40:100,
+|
+|
+|
+38:100, 36:100, 34:100, 32:100, 30:100,
+|
+|
+|
+28:100, 26:100, 24:100, 22:100, 20:100,
+|
+|
+|
+18:100, 16:100, 14:100, 12:100, 10:100, 8:100, |
+|
+|
+6:100, 4:100, 2:100, 0:100
+|
+00 2C | 0aaa aaaa | BAL3:A:PAN
+(0 - 100) |
+|
+|
+L50, L49, L48, L47, L46, L45, L44, L43, L42,
+|
+|
+|
+L41, L40, L39, L38, L37, L36, L35, L34, L33,
+|
+|
+|
+L32, L31, L30, L29, L28, L27, L26, L25, L24,
+|
+|
+|
+L23, L22, L21, L20, L19, L18, L17, L16, L15,
+|
+|
+|
+L14, L13, L12, L11, L10, L09, L08, L07, L06,
+|
+|
+|
+L05, L04, L03, L02, L01, CENTER, R01, R02,
+|
+|
+|
+R03, R04, R05, R06, R07, R08, R09, R10, R11,
+|
+|
+|
+R12, R13, R14, R15, R16, R17, R18, R19, R20,
+|
+|
+|
+R21, R22, R23, R24, R25, R26, R27, R28, R29,
+|
+|
+|
+R30, R31, R32, R33, R34, R35, R36, R37, R38,
+|
+|
+|
+R39, R40, R41, R42, R43, R44, R45, R46, R47,
+|
+|
+|
+R48, R49, R50
+|
+00 2D | 0aaa aaaa | BAL3:B:PAN
+(0 - 100) |
+|
+|
+L50, L49, L48, L47, L46, L45, L44, L43, L42,
+|
+|
+|
+L41, L40, L39, L38, L37, L36, L35, L34, L33,
+|
+|
+|
+L32, L31, L30, L29, L28, L27, L26, L25, L24,
+|
+|
+|
+L23, L22, L21, L20, L19, L18, L17, L16, L15,
+|
+|
+|
+L14, L13, L12, L11, L10, L09, L08, L07, L06,
+|
+|
+|
+L05, L04, L03, L02, L01, CENTER, R01, R02,
+|
+|
+|
+R03, R04, R05, R06, R07, R08, R09, R10, R11,
+|
+|
+|
+R12, R13, R14, R15, R16, R17, R18, R19, R20,
+|
+|
+|
+R21, R22, R23, R24, R25, R26, R27, R28, R29,
+|
+|
+|
+R30, R31, R32, R33, R34, R35, R36, R37, R38,
+|
+|
+|
+R39, R40, R41, R42, R43, R44, R45, R46, R47,
+|
+
+34
+
+|
+|
+R48, R49, R50
+|
+00 2E | 0000 000a | SEND/RETURN:ON/OFF
+(0 - 1) |
+|
+|
+OFF, ON |
+00 2F | 0000 00aa | SEND/RETURN:MODE
+(0 - 2) |
+|
+|
+NORMAL, DIRECT MIX, BRANCH OUT |
+00 30 | 0000 aaaa |
+|
+00 31 | 0000 bbbb | SEND/RETURN:SEND LEVEL
+(0 - 200) |
+00 32 | 0000 aaaa |
+|
+00 33 | 0000 bbbb | SEND/RETURN:RETURN LEVEL
+(0 - 200) |
+00 34 | 0aaa aaaa | SEND/RETURN:ADJUST
+(0 - 100) |
+00 35 | 0000 000a | SEND/RETURN:PHASE
+(0 - 1) |
+|
+|
+NORMAL, INVERT |
+00 36 | 0000 000a | MAIN:STEREO LINK
+(0 - 1) |
+|
+|
+OFF, ON |
+00 37 | 0000 000a | MAIN L:PHASE
+(0 - 1) |
+|
+|
+NORMAL, INVERT |
+00 38 | 0000 000a | MAIN R:PHASE
+(0 - 1) |
+|
+|
+NORMAL, INVERT |
+00 39 | 0000 000a | SUB:STEREO LINK
+(0 - 1) |
+|
+|
+OFF, ON |
+00 3A | 0000 000a | SUB L:PHASE
+(0 - 1) |
+|
+|
+NORMAL, INVERT |
+00 3B | 0000 000a | SUB R:PHASE
+(0 - 1) |
+|
+|
+NORMAL, INVERT |
+00 3C | 0000 aaaa |
+|
+00 3D | 0000 bbbb | MASTER:PATCH LEVEL
+(0 - 200) |
+00 3E | 0000 aaaa |
+|
+00 3F | 0000 bbbb |
+|
+00 40 | 0000 cccc |
+|
+00 41 | 0000 dddd | MASTER:BPM
+(400 - 2500) |
+00 42 | 0000 aaaa | MASTER:KEY
+(0 - 11) |
+|
+|
+C(Am), Db(Bbm), D(Bm), Eb(Cm), E(C#m), F(Dm), |
+|
+|
+F#(D#m), G(Em), Ab(Fm), A(F#m), Bb(Gm),
+|
+|
+|
+B(G#m)
+|
+00 43 | 0000 000a | CONTROL/ASSIGN:TEMPO HOLD
+(0 - 1) |
+|
+|
+OFF, ON |
+00 44 | 0aaa aaaa | CONTROL/ASSIGN:INPUT SENS
+(0 - 100) |
+|
+|
+* TABLE 7 |
+00 46 | 0000 00aa | INPUT BOX2
+(0 - 3) |
+|
+|
+INST1, INST2, INST3, NORMAL |
+|
+|
+* TABLE 7 |
+00 47 | 0000 00aa | INPUT BOX3
+(0 - 3) |
+|
+|
+INST1, INST2, INST3, NORMAL |
+|
+|
+* TABLE 7 |
+00 48 | 0000 00aa | INPUT BOX4
+(0 - 3) |
+|
+|
+INST1, INST2, INST3, NORMAL |
+|
+|
+* TABLE 7 |
+00 49 | 000a aaaa | CHAIN ELEMENT1
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 4A | 000a aaaa | CHAIN ELEMENT2
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 4B | 000a aaaa | CHAIN ELEMENT3
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 4C | 000a aaaa | CHAIN ELEMENT4
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 4D | 000a aaaa | CHAIN ELEMENT5
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 4E | 000a aaaa | CHAIN ELEMENT6
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 4F | 000a aaaa | CHAIN ELEMENT7
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+|
+|
+SUB OUT R, MAIN OUT L, MAIN OUT R, SPLIT
+|
+|
+|
+* TABLE 8 |
+00 50 | 000a aaaa | CHAIN ELEMENT8
+(0 - 24) |
+|
+|
+COMPRESSOR, DISTORTION, AMP, NOISE SUPPRESSOR, |
+|
+|
+FX1, FX2, FX3, EQUALIZER1, EQUALIZER2, CHORUS, |
+|
+|
+DELAY1, DELAY2, MASTER DELAY, REVERB,
+|
+|
+|
+FOOT VOLUME1, FOOT VOLUME2, SEND/RETURN,
+|
+|
+|
+DIVIDER, BRANCH_AB, MIXER, SUB OUT L,
+|
+
+

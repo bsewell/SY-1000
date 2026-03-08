@@ -1,0 +1,252 @@
+EFFECT Parameters > FX1–FX3
+
+GRAPHIC EQ
+
+Parameter
+
+You can adjust the tone character in seven bands.
+Parameter
+
+Value
+
+Explanation
+
+LEVEL
+
+-20–+20 dB
+
+Adjusts the overall volume level of
+the equalizer.
+
+100 Hz
+
+-20–+20 dB
+
+KEY
+
+Adjust the volume of each
+frequency band.
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+HARMONIST
+Harmonist is an effect where the amount of shifting is adjusted
+according to an analysis of the guitar input, allowing you to create
+harmony based on diatonic scales.
+* Because of the need to analyze the pitch, chords (two or more
+sounds played simultaneously) cannot be played. Be sure to mute
+all the other strings and play only one note at a time.
+* When you are to play the next string while a certain sound is still
+playing, mute the previous sound and then play the next one
+with a clear attack. If the unit cannot detect the attack, it may not
+sound correctly.
+* The sensitivity may vary according to the guitar’s TONE knob and
+pickup type.
+Value
+
+Explanation
+
+Selects the number of voices for the pitch shift
+sound.
+1VOICE
+
+One-voice pitch-shifted sound
+output in mono.
+
+2MONO
+
+Two-voice pitch-shifted sound
+(HR1, HR2) output in mono.
+
+2STEREO
+
+*1
+
+Adjusts the volume of the
+harmony sound.
+
+0–300 ms,
+BPM `–Œ
+
+Adjusts the time from when the
+direct sound is heard until the
+harmonist sounds are heard.
+Normally you can leave this set
+at 0 ms.
+
+HR1:FEEDBACK
+
+0–100
+
+Adjusts the feedback amount of
+the harmonist sound.
+
+DIRECT LEVEL
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+
+*1
+GRAPHIC EQ settings can be saved/
+loaded as ten variations.
+
+HR2:HARMONY
+
+0–100
+
+HR2:LEVEL
+
+6.4 kHz
+
+HR1:HARMONY
+
+Minor
+HR1:LEVEL
+
+3.2 kHz
+
+VOICE
+
+The key setting corresponds
+to the key of the song (¾, ²) as
+follows.
+
+Major
+
+1.6 kHz
+
+Parameter
+
+C (Am)–B
+(G#m)
+
+Minor
+
+400 Hz
+
+VARIATION
+
+Explanation
+
+Major
+
+200 Hz
+800 Hz
+
+Value
+
+Two-voice pitch-shifted sound
+(HR1, HR2) output through left
+and right channels.
+This determines the pitch of
+the sound added to the input
+sound, when you are making a
+harmony.
+
+-2 oct–+2 oct, It allows you to set it by up to
+USER
+2 octaves higher or lower than
+the input sound. When the scale
+is set to USER, this parameter
+sets the user scale number to
+be used.
+
+HR1:PRE-DELAY
+*2
+HR2:PRE-DELAY
+*1 *2
+
+HARMONIST settings can be
+saved/loaded as ten variations.
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be
+loaded into a different patch,
+which is convenient when
+you’re creating sounds.
+
+*1 Valid when the VOICE is set to 2MONO or 2STEREO.
+*2 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+USER SCALE
+* Effective with USER selected for HARMONY parameter.
+Parameter
+
+Value
+
+C
+
+C– C–C– C– C
+
+D²
+
+D²– D²–D²– D²– D²
+
+D
+
+D– D–D– D– D
+
+E²
+
+E²– E²–E²– E²– E²
+
+E
+
+E– E–E– E– E
+
+F
+
+F– F–F– F– F
+
+F¾
+
+F¾– F¾–F¾– F¾– F¾
+
+G
+
+G– G–G– G– G
+
+A²
+
+A²– A²–A²– A²– A²
+
+A
+
+A– A–A– A– A
+
+B²
+
+B²– B²–B²– B²– B²
+
+B
+
+B– B–B– B– B
+
+The minus (-) and plus (+) symbols indicate sounds above or below
+the specified original note.
+Triangles next to the note names indicate octaves.
+One downward-pointing triangle indicates a note one octave below
+the note displayed; two triangles indicates a two-octave drop.
+One upward-pointing triangle indicates a note one octave above the
+note displayed; two triangles indicates a two-octave rise.
+
+47
+
+

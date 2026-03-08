@@ -1,0 +1,1314 @@
+Sound List
+
+
+
+
+             01
+    SY-1000 Sound List
+Guitar Mode
+Patch
+       Name                INST1        INST2        INST3        CTL1                      CTL2
+Number
+                                                                  INST1:P.BEND CTL          INST1:AMP ENV ATTACK
+                           DYNAMIC      DYNAMIC      DYNAMIC
+P01-1   DYNAMIC SAW LEAD                                          INST2:P.BEND CTL          INST2:AMP ENV ATTACK
+                           SYNTH        SYNTH        SYNTH
+                                                                  INST3:P.BEND CTL          INST3:AMP ENV ATTACK
+                                                                                            INST1:PITCH
+                           DYNAMIC
+P01-2   WARM HORN                       OSC SYNTH    OSC SYNTH    MST DLY:ON/OFF            INST2:PITCH
+                           SYNTH
+                                                                                            INST3:PITCH
+P01-3   12STR ORCH         VIO GUITAR   POLY FX      ACOUSTIC     MST DLY:ON/OFF            BPM TAP
+                           DYNAMIC      DYNAMIC      DYNAMIC
+P01-4   DISCOVERY                                                 INST1:HOLD                BPM TAP
+                           SYNTH        SYNTH        SYNTH
+                           DYNAMIC      DYNAMIC      DYNAMIC                                INST2:P.BEND CTL
+P02-1   ROTARY ORGAN                                              FX1:ROTARY SPEED SELECT
+                           SYNTH        SYNTH        SYNTH                                  INST3:P.BEND CTL
+                           DYNAMIC                   DYNAMIC
+P02-2   STRINGS PAD                     OSC SYNTH                 INST3:ON/OFF              MDLY:TRIGGER
+                           SYNTH                     SYNTH
+                           DYNAMIC      DYNAMIC      DYNAMIC      AMP:ON/OFF
+P02-3   ADVANCED GK CLN                                                                     MST DLY:E.LEVEEL
+                           SYNTH        SYNTH        SYNTH        EQ2:HIGH-MID GAIN
+                           DYNAMIC                   DYNAMIC
+P02-4   INTENSE FILTER                  E.GUITAR                  MST DLY:ON/OFF            BPM TAP
+                           SYNTH                     SYNTH
+                                                                                            INST2:ON/OFF
+P03-1   GR-300 DEEP REV    GR-300       GR-300       GR-300       INST1:PITCH SW            INST3:ON/OFF
+                                                                                            FX2:ON/OFF (CHORUS)
+                           DYNAMIC      DYNAMIC      DYNAMIC
+P03-2   CRYSTALS SYNTH                                            MST DLY:ON/OFF            INST1:PITCH
+                           SYNTH        SYNTH        SYNTH
+                           DYNAMIC
+P03-3   SITAR&PAD                       POLY FX      ACOUSTIC     INST1:HOLD                INST1:PITCH
+                           SYNTH
+                           DYNAMIC      DYNAMIC
+P03-4   SEQ FOR SHUFFLE                              POLY FX      INST1:PITCH               BPM TAP
+                           SYNTH        SYNTH
+                           DYNAMIC      DYNAMIC                                             FX3:ON/OFF(PHASER)
+P04-1   FAIRY STRINGS                                OSC SYNTH    INST2:ALT TUNE
+                           SYNTH        SYNTH                                               MST DLY:ON/OFF
+                           DYNAMIC      DYNAMIC      DYNAMIC                                FX3:ON/OFF(CHORUS)
+P04-2   HARD FLT BASS                                             INST2:ON/OFF
+                           SYNTH        SYNTH        SYNTH                                  MST DLY:ON/OFF
+                                                                  INST2:ON/OFF
+P04-3   EG&AC OPEN G       E.GUITAR     ACOUSTIC     ---                                    ALL:ALT TUNE
+                                                                  INST1:PU SEL
+                                                                                            FX2:ON/OFF(SLICER)
+                           DYNAMIC      DYNAMIC      DYNAMIC      INST2:ON/OFF
+P04-4   SCARIER SEQUENCE                                                                    MST DLY:ON/OFF
+                           SYNTH        SYNTH        SYNTH        INST3:ON/OFF
+                                                                                            DLY1:ON/OFF
+P05-1   FLASHBACK          VIO GUITAR   VIO GUITAR   ---          FX2:ON/OFF(VIBRATO)       MST DLY:ON/OFF
+                                                                  INST1:STR BEND CTL
+P05-2   MONO PORTA SINE    OSC SYNTH    OSC SYNTH    ---                                    INST2:ON/OFF
+                                                                  INST2:STR BEND CTL
+P05-3   OVERTONE LEAD      VIO GUITAR   POLY FX      E.GUTIAR     AMP:TYPE                  FX3:ON/OFF(FLANGER)
+                                                                  FX1:ON/OFF(SLICER)
+                                        DYNAMIC                   FX2:ON/OFF(AUTO WAH)
+P05-4   SATURN             OSC SYNTH                 GR-300                                 FX3:ON/OFF(SLOW GEAR)
+                                        SYNTH                     MST DLY:ON/OFF
+                                                                  EQ2:ON/OFF
+                           DYNAMIC      DYNAMIC      DYNAMIC
+P06-1   VINTAGE SYNBRASS                                          INST3:ON/OFF              BPM TAP
+                           SYNTH        SYNTH        SYNTH
+                                                                  AMP:ON/OFF                MST DLY:ON/OFF
+P06-2   FLUTY GUITAR       VIO GUITAR   VIO GUITAR   VIO GUITAR
+                                                                  DS:ON/OFF                 FX3:ON/OFF(PHASER)
+        WARM DREAD
+P06-3                      ACOUSTIC     ACOUSTIC     ACOUSTIC     ALL :12STR                CHO:ON/OFF
+        NOUGHT
+                           DYNAMIC      DYNAMIC      DYNAMIC
+P06-4   DRAMATIC CUE                                              INST3:HOLD                BPM TAP
+                           SYNTH        SYNTH        SYNTH
+                                        DYNAMIC
+P07-1   UNDERWATER BASS    GR-300                    E.BASS       NORMAL INPUT:ON/OFF       FX2:ON/OFF(FLANGER BASS)
+                                        SYNTH
+
+2
+                                                                                                    SY-1000 Sound List
+
+Patch
+       Name                INST1        INST2       INST3        CTL1                    CTL2
+Number
+                           DYNAMIC      DYNAMIC     DYNAMIC
+P07-2   SIMPLE SYN BASS                                          INST2:ON/OFF            INST3:ON/OFF
+                           SYNTH        SYNTH       SYNTH
+                                                                 AMP:ON/OFF
+                           DYNAMIC      DYNAMIC     DYNAMIC
+P07-3   SUPER SHIMMER                                            EQ1:ON/OFF              MST DLY:FEEDBACK
+                           SYNTH        SYNTH       SYNTH
+                                                                 CMP:ON/OFF
+                           DYNAMIC      DYNAMIC     DYNAMIC                              INST3:ON/OF
+P07-4   CHORD SEQUENCE                                           INST1:ON/OFF
+                           SYNTH        SYNTH       SYNTH                                SYNC RETRIGGER
+                           DYNAMIC
+P08-1   GR-SYNTH PAD                    GR-300      ---          INST2:PITCH SW          INST2:VIB SW
+                           SYNTH
+                                                                                         INST1:ON/OFF
+                                                                                         INST3:ON/OFF
+                           DYNAMIC      DYNAMIC     DYNAMIC
+P08-2   1979 JP LEAD                                             FX2:TRIGGER(VIBRATO)    INST2:WAVEFORM
+                           SYNTH        SYNTH       SYNTH
+                                                                                         INST2:ALT TUNE
+                                                                                         EQ2:ON/OFF
+P08-3   P90&TE CLEAN GTR   E.GUITAR     E.GUITAR    ---          FX2:ON/OFF(PHASER)      FX3:ON/OFF(TREMOLO)
+                           DYNAMIC                  DYNAMIC
+P08-4   ARPEGGIO STEP                   E.GUITAR                 INST3:ON/OFF            BPM TAP
+                           SYNTH                    SYNTH
+                                                    DYNAMIC
+P09-1   WIDE RANGE LEAD    OSC SYNTH    OSC SYNTH                ALL:ALT TUNE            INST1:LFO1 ON/OFF
+                                                    SYNTH
+                                                                                         FX1:ON/OFF(TREMOLO)
+                           DYNAMIC      DYNAMIC     DYNAMIC
+P09-2   SLOW TREM EP                                             MST DLY:ON/OFF          FX2:ON/OFF(PHASER)
+                           SYNTH        SYNTH       SYNTH
+                                                                                         FX3:ON/OFF(CHORUS)
+P09-3   DADGAD 12STRING    ACOUSTIC     ACOUSTIC    ---          FX2:ON/OFF(VIBRATO)     FX3:ON/OFF(ROTARY)
+                           DYNAMIC      DYNAMIC
+P09-4   POLYFX+PAD+SEQ                              POLY FX      INST3:ON/OFF            INST1:SEQ1 TURBO
+                           SYNTH        SYNTH
+P10-1   FOOLED YOU AGAIN   OSC SYNTH    OSC SYNTH   ---          MST DLY:ON/OFF          BPM TAP
+                                                                                         INST1:LFO1 FILTER DEPTH
+P10-2   REPLICANT          OSC SYNTH    ---         ---          MST DLY:ON/OFF
+                                                                                         FX2:RING MOD E.LEVEL
+P10-3   DIAMOND ROCK       E.BASS       E.GUITAR    ---          FX1:ON/OFF(ROTARY)      NORMAL INPUT:ON/OFF
+                           DYNAMIC                  DYNAMIC
+P10-4   WIDE ARPEGGIO                   POLY FX                  INST3:ON/OFF            BPM TAP
+                           SYNTH                    SYNTH
+P11-1   CAVE SWIM          VIO GUITAR   OSC SYNTH   ---          MST DLY:ON/OFF          BPM TAP
+                                                                                         INST1:P.BEND CTL
+                           DYNAMIC      DYNAMIC     DYNAMIC      INST1:LFO2 ON/OFF
+P11-2   SWEEP STRINGS                                                                    INST2:P.BEND CTL
+                           SYNTH        SYNTH       SYNTH        INST2:LFO2 ON/OFF
+                                                                                         INST3:P.BEND CTL
+                                                                 MST DLY:FEEDBACK
+P11-3   INFINITE FB CTL1   E.GUITAR     ---         ---                                  NORMAL INPUT:ON/OFF
+                                                                 MST DLY:E.LEVEL
+                           DYNAMIC      DYNAMIC
+P11-4   TE + PAD +SEQ                               E.GUITAR     INST2:ON/OFF            INST2:SEQ1 TURBO
+                           SYNTH        SYNTH
+                           DYNAMIC      DYNAMIC
+P12-1   ARCOSS THE LAKE                             VIO GUITAR   INST3:ON/OFF            NORMAL INPUT:ON/OFF
+                           SYNTH        SYNTH
+P12-2   VHS BRASS          GR-300       ---         ---          MST DLY:ON/OFF          BPM TAP
+                                                                 EQ2:ON/OFF
+                                                                 INST1:PU SEL
+P12-3   TRI-HIGH GAIN C    E.GUITAR     E.GUITAR    E.BASS       INST2:PU SEL            BPM TAP
+                                                                 INST3:ON/OFF
+                                                                 MST DLY:ON/OFF
+                                                    DYNAMIC      INST3:SEQ1&2 ON/OFF
+P12-4   RINGCHIME+SQ PAD   OSC SYNTH    POLY FX                                          INST3:SEQ1 TURBO
+                                                    SYNTH        DLY1:ON/OFF
+                           DYNAMIC      DYNAMIC     DYNAMIC
+P13-1   ONE NINE NINE BR                                         FX3:TRIGGER (VIBRATO)   FX1:PEDAL BEND PEDAL POS
+                           SYNTH        SYNTH       SYNTH
+                                                    DYNAMIC
+P13-2   AMBIENT SCAPE      VIO GUITAR   POLY FX                  DIV CH SELECT           BPM TAP
+                                                    SYNTH
+                           DYNAMIC      DYNAMIC     DYNAMIC                              AMP:ON/OFF
+P13-3   PAD PHASE ECHO                                           CHO:ON/OFF
+                           SYNTH        SYNTH       SYNTH                                CMP:TONE
+
+                                                                                                                     3
+SY-1000 Sound List
+
+Patch
+       Name                 INST1        INST2        INST3        CTL1                    CTL2
+Number
+                            DYNAMIC      DYNAMIC
+P13-4    SEQ+DLY GTR                                  E.GUITAR     INST1:SEQ1 TURBO        BPM TAP
+                            SYNTH        SYNTH
+P14-1    SPIN VOX           VIO GUITAR   VIO GUITAR   ---          FX2:ON/OFF(ROTARY)      FX1:TYPE
+P14-2    SYNCROTRON         ---          OSC SYNTH    ---          MST DLY:ON/OFF          BPM TAP
+                                                                                           INST1:12STR
+P14-3    SUPER CLEAN TE     E.GUITAR     E.GUITAR     E.GUITAR     DIV CH SELECT           INST2:12STR
+                                                                                           INST3:12STR
+                            DYNAMIC                   DYNAMIC
+P14-4    SLICER OF FIRE                  OSC SYNTH                 FX3:ON/OFF(SLICER)      BPM TAP
+                            SYNTH                     SYNTH
+P15-1    FUNKY OSC          OSC SYNTH    OSC SYNTH    OSC SYNTH    INST3:ON/OFF            FX3:ON/OFF(PHASER)
+                                                                                           INST3:ON/OFF
+P15-2    SLIP AND GLIDE     OSC SYNTH    ---          E.GUITAR     MST DLY:ON/OFF
+                                                                                           MST DLY:E.LEVEL
+                                                                   DS:ON/OFF
+P15-3    BLUESY335          E.GUITAR     ---          ---                                  MST DLY:ON/OFF
+                                                                   INST1:PU SEL
+P15-4    GR300 & FANTASIA   GR-300       ACOUSTIC     OSC SYNTH    INST1:PITCH SW          INST3:ON/OFF
+                                                                   INST1:P.BEND CTL
+                            DYNAMIC      DYNAMIC      DYNAMIC                              INST2:LFO2 ON/OFF
+P16-1    SYNCED SQUARE                                             INST2:P.BEND CTL
+                            SYNTH        SYNTH        SYNTH                                INST3:LFO2 ON/OFF
+                                                                   INST3:P.BEND CTL
+                                                      DYNAMIC                              FX3:ON/OFF(PAN)
+P16-2    FAT LAYER BRASS    OSC SYNTH    OSC SYNTH                 MST DLY:ON/OFF
+                                                      SYNTH                                INST3:P.BEND CTL
+P16-3    CREAMY LP&ES       E.GUITAR     E.GUITAR     ---          MST DLY:ON/OFF          CHO:ON/OFF
+                            DYNAMIC                   DYNAMIC
+P16-4    TWINKLE BELL&PAN                OSC SYNTH                 INST3:SEQ1&2 TRIGGER    BPM TAP
+                            SYNTH                     SYNTH
+P17-1    LOFI TALKER        GR-300       GR-300       ---          MST DLY:ON/OFF          BPM TAP
+P17-2    VIO-BASS           VIO GUITAR   E.BASS       ---          FX2:ON/OFF(OCTAVE BASS) MST DLY:ON/OFF
+P17-3    BARITONE TREM      ---          E.GUITAR     ---          INST2:STR BEND CTL      BPM TAP
+                                         DYNAMIC      DYNAMIC
+P17-4    HOLD ON            POLY FX                                INST3:HOLD              NORMAL INPUT:ON/OFF
+                                         SYNTH        SYNTH
+                                                                                           INST1:ON/OFF
+                            DYNAMIC      DYNAMIC                   INST1:PITCH
+P18-1    MYSTERIOUS PIPE                              E.GUITAR                             INST2:ON/OFF
+                            SYNTH        SYNTH                     INST2:PITCH
+                                                                                           INST3:ON/OFF
+                            DYNAMIC      DYNAMIC      DYNAMIC
+P18-2    AIR VOICE PAD                                             FX2:ON/OFF(FLANGER)     MST DLY:TRIGGER
+                            SYNTH        SYNTH        SYNTH
+                            DYNAMIC
+P18-3    ST&SYNTH                        E.GUITAR     ---          MST DLY:ON/OFF          FX1:ON/OFF(CHORUS)
+                            SYNTH
+                                         DYNAMIC      DYNAMIC                              INST1:ON/OFF
+P18-4    GRASSY SYNTH GT    OSC SYNTH                              FX2:ON/OFF(TREMOLO)
+                                         SYNTH        SYNTH                                INST3:ON/OFF
+                                                                   INST1:STR BEND CTL
+P19-1    5TH'S RULE!        E.GUITAR     GR-300       ---                                  INST2:PITCH SW
+                                                                   INST2:STR BEND CTL
+P19-2    SPARKLE            VIO GUITAR   VIO GUITAR   ---          MST DLY:ON/OFF          BPM TAP
+                                         E.GUITAR<-                                        INST3:ON/OFF
+P19-3    JAZZY 335/L4       E.GUITAR                  POLY FX      INST2:TYPE
+                                         >ACOUSTIC                                         BAL1:A/B BALANCE
+                            DYNAMIC                   DYNAMIC
+P19-4    FUN ON CTL 1                    POLY FX                   INST ALL HOLD           BPM TAP
+                            SYNTH                     SYNTH
+                                         DYNAMIC                   INST3:ON/OFF
+P20-1    VIO GT & ST PAD    OSC SYNTH                 VIO GUITAR                           BPM TAP
+                                         SYNTH                     INST2: LFO2 ON/OFF
+                                                      DYNAMIC
+P20-2    OSC AIR LEAD       OSC SYNTH    OSC SYNTH                 INST3:ON/OFF            FX2:ON/OFF(CHORUS)
+                                                      SYNTH
+P20-3    POLY FUNKY GTR     E.GUITAR     POLY FX      ---          FX1:ON/OFF(DEFRETTER)   INST1:ALT TUNE
+
+
+
+
+4
+                                                                                                      SY-1000 Sound List
+
+Patch
+       Name                INST1        INST2       INST3        CTL1                       CTL2
+Number
+                                                                 INST1: RESONANCE
+                                                                 INST2: RESONANCE
+                           DYNAMIC      DYNAMIC                  INST1: SEQ CUTOFF TARGET
+P20-4   WOBBLE BASS                                 E.BASS                                  BPM TAP
+                           SYNTH        SYNTH                    INST2: SEQ CUTOFF TARGET
+                                                                 SYNC RETRIGGER
+                                                                 DS:TYPE
+P21-1   ALIEN FOLK SONG    VIO GUITAR   OSC SYNTH   ACOUSTIC     MST DLY:ON/OFF             NORMAL INPUT:ON/OFF
+                           DYNAMIC
+P21-2   SYNTH&JAZZ GTR                  E.GUITAR    ---          INST2:ALT TUNE             INST1:P.BEND CTL
+                           SYNTH
+                                                                 INST1:STR BEND SW
+P21-3   DOUBLE 12          ACOUSTIC     ACOUSTIC    ---                                     ALL:ALT TUNE
+                                                                 INST2:STR BEND SW
+P21-4   PRETTY & GROSS     OSC SYNTH    OSC SYNTH   ---          FX1:ON/OFF(RING MOD)       FX2:ON/OFF(RING MOD)
+                                                                                            FX1:ON/OFF(PHASER)
+                           DYNAMIC      DYNAMIC     DYNAMIC      INST1:P.BEND CTL
+P22-1   SLOW TOUCH FLT                                                                      INST1:LFO1 ON/OFF
+                           SYNTH        SYNTH       SYNTH        INST3:P.BEND CTL
+                                                                                            INST3:LFO1 ON/OFF
+                           DYNAMIC      DYNAMIC     DYNAMIC      INST1:P.BEND CTL
+P22-2   PWM OCT LEAD                                                                        INST3:P.BEND CTL
+                           SYNTH        SYNTH       SYNTH        INST2:P.BEND CTL
+                                                                 MST DLY:ON/OFF
+P22-3   POLY AMP           E.GUITAR     E.GUITAR    E.GUITAR                                CHO:ON/OFF
+                                                                 EQ2:ON/OFF
+                           DYNAMIC      DYNAMIC
+P22-4   SUPER BEND SYNTH                            E.GUITAR     INST3:ON/OFF               INST3:STR BEND CTL
+                           SYNTH        SYNTH
+                                                                 INST3:ON/OFF
+                                                                 BAL1 A:PAN
+                                        DYNAMIC
+P23-1   SOFT BRASS&12AG    OSC SYNTH                ACOUSTIC     MST DLY:ON/OFF             BPM TAP
+                                        SYNTH
+                                                                 INST2:SEQ1 ON/OFF
+                                                                 INST2:PITCH
+P23-2   TRI OSC COMBO      OSC SYNTH    OSC SYNTH   OSC SYNTH    INST ALL HOLD              ALL: STR BEND SW
+P23-3   SLOW AMBIENT       POLY FX      POLY FX     ACOUSTIC     INST3:ON/OFF               MST DLY TAP
+P23-4   WALK ALSO RUN      OSC SYNTH    OSC SYNTH   ---          INST1:LFO1 ON/OFF          BPM TAP
+P24-1   CRYSTAL&GR         POLY FX      GR-300      ---          DLY1:ON/OFF                FX3:ON/OFF(TREMOLO)
+                                                                 FX2:ON/OFF(FLANGER)
+                           DYNAMIC      DYNAMIC
+P24-2   PLUCK VIO-GUITAR                            VIO GUITAR   FX3:ON/OFF(PHASER)         INST3:ALT TUNE
+                           SYNTH        SYNTH
+                                                                 DLY1:ON/OFF
+                                                                 INST1:ON/OFF
+P24-3   DRV GTR<->AC       E.GUITAR     ---         ACOUSTIC                                MST DLY:ON/OFF
+                                                                 INST3:ON/OFF
+                           DYNAMIC                  DYNAMIC
+P24-4   BREATHING OUT                   GR-300                   NORMAL INPUT:ON/OFF        MST DLY:TRIGGER
+                           SYNTH                    SYNTH
+                                                                 INST1:P.BEND CTL
+                           DYNAMIC      DYNAMIC     DYNAMIC                                 INST ALL SEQ
+P25-1   SYN-HARMONICA                                            INST2:P.BEND CTL
+                           SYNTH        SYNTH       SYNTH                                   INST3:ON/OFF
+                                                                 INST3:P.BEND CTL
+                           DYNAMIC      DYNAMIC     DYNAMIC
+P25-2   SPLIT STRINGS                                            INST3:HOLD                 INST2:ON/OFF
+                           SYNTH        SYNTH       SYNTH
+                                                                                            INST3:STR LEVEL4
+                                                    DYNAMIC                                 INST3:STR LEVEL3
+P25-3   EG&AG W/ST PAD     E.GUITAR     ACOUSTIC                 FX3:ON/OFF(TREMOLO)
+                                                    SYNTH                                   INST3:STR LEVEL2
+                                                                                            INST3:STR LEVEL1
+                           DYNAMIC      DYNAMIC     DYNAMIC
+P25-4   PAD/RHYTHM BS&HH                                         INST1:P.BEND CTL           ALL SEQ TRIG
+                           SYNTH        SYNTH       SYNTH
+                                                                                            INST1:P.BEND CTL
+                           DYNAMIC      DYNAMIC     DYNAMIC
+P26-1   SLOW RISE>CTL1                                           ALL SEQ TRIGGER            INST2:P.BEND CTL
+                           SYNTH        SYNTH       SYNTH
+                                                                                            INST3:P.BEND CTL
+                                                                                            INST1: LFO1 PITCH DEPTH1
+P26-2   FLYING EAGLE       OSC SYNTH    ---         ---          FX1:ON/OFF(RING MOD)
+                                                                                            MST DLY:FEEDBACK
+P26-3   DUELIN B           ACOUSTIC     ACOUSTIC    ---          INST1:12STR                INST2:12STR
+
+                                                                                                                       5
+SY-1000 Sound List
+
+Patch
+       Name                 INST1       INST2        INST3       CTL1                      CTL2
+Number
+                            DYNAMIC     DYNAMIC                  INST1:LFO2 ON/OFF
+P26-4    WALKING ON MARS                             E.GUITAR                              DS:ON/OFF
+                            SYNTH       SYNTH                    INST2:LFO2 ON/OFF
+                                                                                           INST1:ON/OFF
+P27-1    MONO OSC LEAD      OSC SYNTH   OSC SYNTH    ---         INST ALL HOLD
+                                                                                           INST2:ON/OFF
+                                                                 INST1:STR BEND CTL
+P27-2    MONO SYNC SQUARE   OSC SYNTH   OSC SYNTH    OSC SYNTH   INST2:STR BEND CTL        INST3:ON/OFF
+                                                                 INST3:STR BEND CTL
+P27-3    POLY GUITAR        GR-300      POLY FX      ---         FX1:ON/OFF(PAN)           FX2:ON/OFF(AUTO WAH)
+                                                                 NORMAL INPUT:ON/OFF
+                            DYNAMIC
+P27-4    REZ SEQ                        ---          ---         INST1:HOLD                BPM TAP
+                            SYNTH
+                                                                 FX2:ON/OFF(PAN)
+                                                                                           INST1:PITCH1
+                                        DYNAMIC
+P28-1    OSC SAW LEAD>OD    OSC SYNTH                E.GUITAR    MST DLY:ON/OFF            INST2:PITCH
+                                        SYNTH
+                                                                                           INST3:ON/OFF
+P28-2    PWM BELL GTR       OSC SYNTH   OSC SYNTH    OSC SYNTH   INST3:ON/OFF              MST DLY TAP
+P28-3    NYLON+BELL PAD     OSC SYNTH   VIO GUITAR   ACOUSTIC    INST1:ON/OFF              INST2:ON/OFF
+                            DYNAMIC     DYNAMIC      DYNAMIC
+P28-4    3OSC SEQ SLICE                                          INST ALL SEQ              BPM TAP
+                            SYNTH       SYNTH        SYNTH
+                                                                 INST1:P.BEND CTL
+                            DYNAMIC     DYNAMIC      DYNAMIC
+P29-1    DEEP PAD                                                INST2:P.BEND CTL          INST ALL SEQ
+                            SYNTH       SYNTH        SYNTH
+                                                                 INST3:P.BEND CTL
+                            DYNAMIC     DYNAMIC      DYNAMIC
+P29-2    FAT POLY SYNTH                                          INST3:ON/OFF              MST DLY:TRIGGER
+                            SYNTH       SYNTH        SYNTH
+                            DYNAMIC     DYNAMIC      DYNAMIC
+P29-3    ADVANCED LEAD OD                                        DS:ON/OFF                 FX3:ON/OFF(CHORUS)
+                            SYNTH       SYNTH        SYNTH
+                            DYNAMIC     DYNAMIC      DYNAMIC
+P29-4    X-FADE FILTER                                           INST ALL SEQ              BPM TAP
+                            SYNTH       SYNTH        SYNTH
+                                                                 INST1:STR BEND CTL
+P30-1    OSC HARP           OSC SYNTH   OSC SYNTH    OSC SYNTH   INST2:STR BEND CTL        INST3:ON/OFF
+                                                                 INST3:STR BEND CTL
+P30-2    FANTASIA           E.GUITAR    ACOUSTIC     POLY FX     FX3:ROTARY SPEED SELECT   BPM TAP
+                                                                                           CHO:ON/OFF
+P30-3    RICH NYLON         ACOUSTIC    ACOUSTIC     ---         DLY1:ON/OFF
+                                                                                           INST2:12STR
+                            DYNAMIC     DYNAMIC      DYNAMIC
+P30-4    DRIVIN'SEQ&S.PAD                                        INST3:ON/OFF              BPM TAP
+                            SYNTH       SYNTH        SYNTH
+                                                                 INST1:P.BEND CTL
+                            DYNAMIC     DYNAMIC      DYNAMIC
+P31-1    SOFT FLT BASS                                           INST2:P.BEND CTL          INST3:ON/OFF
+                            SYNTH       SYNTH        SYNTH
+                                                                 INST3:P.BEND CTL
+P31-2    MALLET PAD         POLY FX     POLY FX      OSC SYNTH   INST3:ON/OFF              FX3:ON/OFF(PHASER)
+P31-3    BASS+12STR SPLIT   ACOUSTIC    E.BASS       POLY FX     INST3:ON/OFF              INST1:12STR
+                                                                 INST3:ON/OFF
+                            DYNAMIC
+P31-4    GARDEN BIRDIES                 OSC SYNTH    E.GUITAR    INST1:HOLD                BPM TAP
+                            SYNTH
+                                                                 INST2:ON/OFF
+                                                                 INST1:P.BEND CTL
+                            DYNAMIC     DYNAMIC      DYNAMIC
+P32-1    FLOATING SINE                                           INST2:P.BEND CTL          INST2 SEQ1 ON/OFF
+                            SYNTH       SYNTH        SYNTH
+                                                                 INST3:P.BEND CTL
+                            DYNAMIC     DYNAMIC                  INST1:CUTOFF
+P32-2    RESO PWM                                    ---                                   INST2:P.BEND CTL
+                            SYNTH       SYNTH                    INST1:P.BEND CTL
+                                                                                           FX1:ON/OFF(CLASSIC-VIBE)
+                                                                 INST3:ON/OFF
+P32-3    MODULATION MAX     E.GUITAR    ACOUSTIC     POLY FX                               FX2:ON/OFF(FLANGER)
+                                                                 FX3:ROTARY SPEED SELECT
+                                                                                           FX3:ON/OFF(ROTARY)
+                            DYNAMIC     DYNAMIC      DYNAMIC     INST2:P.BEND CTL
+P32-4    RING MOD MIX                                                                      DS:ON/OFF
+                            SYNTH       SYNTH        SYNTH       INST3:P.BEND CTL
+
+
+
+6
+                                                                                                     SY-1000 Sound List
+
+Patch
+       Name                INST1        INST2        INST3        CTL1                   CTL2
+Number
+                                                                                         INST2:ON/OFF
+P33-1   PHASE OSC EP       OSC SYNTH    OSC SYNTH    OSC SYNTH    INST ALL:HOLD
+                                                                                         INST3:ON/OFF
+                                                     DYNAMIC                             INST ALL:ON/OFF
+P33-2   ROBOT WARZ         VIO GUITAR   VIO GUITAR                MST DLY:TRIGGER
+                                                     SYNTH                               NORMAL INPUT:ON/OFF
+P33-3   POLY DIST+GR       GR-300       POLY FX      ---          INST1:PITCH SW         AMP:SOLO SW
+                           DYNAMIC
+P33-4   TREKKNIG                        POLY FX      ---          INST1:LFO1&2 ON/OFF    INST2:ON/OFF
+                           SYNTH
+P34-1   CHORUS OSC EP      OSC SYNTH    OSC SYNTH    OSC SYNTH    INST ALL:HOLD          INST2:ON/OFF
+                                                                                         DS:ON/OFF
+P34-2   E.P. PHASE         POLY FX      POLY FX      POLY FX      MST DLY:ON/OFF
+                                                                                         EQ1:ON/OFF
+                                                     DYNAMIC
+P34-3   CHICKEN            E.GUITAR     E.GUITAR                  INST3:ON/OFF           CHO:ON/OFF
+                                                     SYNTH
+                                                                  INST ALL:HOLD
+                                        DYNAMIC
+P34-4   HOLD YOUR NERVE    GR-300                    VIO GUITAR   INST1:ON/OFF           NORMAL INPUT:ON/OFF
+                                        SYNTH
+                                                                  INST3:ON/OFF
+                                        DYNAMIC      DYNAMIC
+P35-1   FB SWEEPERS        OSC SYNTH                              MST DLY:ON/OFF         FX3:ON/OFF(DELAY)
+                                        SYNTH        SYNTH
+                                                                  INST1:PITCH
+                           DYNAMIC                   DYNAMIC
+P35-2   MG MONO SYNTH LD                OSC SYNTH                 INST2:PITCH1           INST ALL LFO
+                           SYNTH                     SYNTH
+                                                                  INST3:PITCH
+                                                                                         INST1:12STR
+P35-3   CRAZY DIAMOND      E.GUITAR     E.GUITAR     ---          DS:ON/OFF
+                                                                                         INST1:PU SEL
+                           DYNAMIC      DYNAMIC                   MST DLY:ON/OFF
+P35-4   MOVING SEQ PAD                               ---                                 BPM TAP
+                           SYNTH        SYNTH                     FX1:ON/OFF(CHORUS)
+                           DYNAMIC                   DYNAMIC                             INST2:PITCH SW
+P36-1   FAT GR-300 LEAD                 GR-300                    FX3:TRIGGER(VIBRATO)
+                           SYNTH                     SYNTH                               INST1:PITCH
+P36-2   CRUNCHY ORGAN      OSC SYNTH    OSC SYNTH    ---          DS:ON/OFF              FX1:ROTARY SPEED SELECT
+P36-3   NYLON DREAMS       ACOUSTIC     ACOUSTIC     POLY FX      INST3:ON/OFF           FX1:ON/OFF(OCTAVE)
+                           DYNAMIC      DYNAMIC
+P36-4   LOFI,WIND&ALONE                              OSC SYNTH    INST2:ON/OFF           BPM TAP
+                           SYNTH        SYNTH
+P37-1   DETUNE THE SYNTH   GR-300       E.GUITAR     OSC SYNTH    INST1:FINE B           BPM TAP
+                                                     DYNAMIC      INST2:ON/OFF           INST1:HOLD
+P37-2   SEPARATE OSC SYN   OSC SYNTH    OSC SYNTH
+                                                     SYNTH        INST3:ON/OFF           INST2:HOLD
+                                                                  DS:SOLO SW
+                                                                  FX1:ON/OFF(SLICER)
+P37-3   MAGIC BARITONE     E.GUITAR     E.GUITAR     GR-300       FX2:ON/OFF(AUTO WAH)   FX3:ON/OFF(PHASER)
+                                                                  MST DLY:ON/OFF
+                                                                  EQ2:ON/OFF
+                           DYNAMIC      DYNAMIC      DYNAMIC
+P37-4   GT OSC PAN SEQ                                            INST ALL SEQ           BPM TAP
+                           SYNTH        SYNTH        SYNTH
+                           DYNAMIC                   DYNAMIC                             INST3:HOLD
+P38-1   MAJESTIC CHOIR                  POLY FX                   FX3:ON/OFF(ROTARY)
+                           SYNTH                     SYNTH                               FX2:ON/OFF(AUTO WAH)
+                           DYNAMIC      DYNAMIC
+P38-2   PARAGLIDER                                   E.GUITAR     MST DLY:ON/OFF         CHO:ON/OFF
+                           SYNTH        SYNTH
+P38-3   BARITONES          E.GUITAR     E.GUITAR     ---          FX2:ON/OFF(PAN)        FX3:ON/OFF(PHASER)
+                                                                  INST3:ON/OFF
+                                                                                         INST1:STR BEND CTL
+P38-4   PLAY THE CHORD!    POLY FX      POLY FX      OSC SYNTH    DLY1:ON/OFF
+                                                                                         INST2:STR BEND CTL
+                                                                  INST2:STR BEND SW
+                                                                  INST1:P.BEND CTL
+                           DYNAMIC      DYNAMIC      DYNAMIC
+P39-1   MELLOW SYN LEAD                                           INST2:P.BEND CTL       INST ALL LFO
+                           SYNTH        SYNTH        SYNTH
+                                                                  INST3:P.BEND CTL
+                                                                  ALL:ALT TUNE           INST ALL HOLD
+P39-2   4TH SLOW PAD       OSC SYNTH    OSC SYNTH    OSC SYNTH
+                                                                  FX3:ON/OFF(AUTO WAH)   FX2:TRIGGER (VIBRATO)
+P39-3   12ST RESO OPEN G   ACOUSTIC     ACOUSTIC     ACOUSTIC     INST3:ON/OFF           ALL:ALT TUNE
+
+                                                                                                                      7
+SY-1000 Sound List
+
+Patch
+       Name                INST1        INST2        INST3        CTL1                    CTL2
+Number
+                                                     DYNAMIC      INST1:ON/OFF
+P39-4    AUTO PITCH CHNG   POLY FX      POLY FX                                           BPM TAP
+                                                     SYNTH        INST2:ON/OFF
+                                                                  INST1:ON/OFF
+P40-1    TRIPLE POLY FX    POLY FX      POLY FX      POLY FX                              MST DLY:TRIGGER
+                                                                  INST3:ON/OFF
+P40-2    IN THE RAIN       POLY FX      ACOUSTIC     POLY FX      MST DLY:ON/OFF          FX3:ON/OFF(PHASER)
+P40-3    SUGAR STONE       E.GUITAR     E.GUITAR     ---          ALL:ALT TUNE            FX2:ON/OFF(PHASER)
+                           DYNAMAMIC                 DYNAMIC
+P40-4    +CHOP NOISE SEQ                POLY FX                   INST3:HOLD              BPM TAP
+                           SYNTH                     SYNTH
+P41-1    LOW SYNTH         GR-300       OSC SYNTH    ---          FX1:ON/OFF(CHORUS)      FX2:ON/OFF(VIBRATO)
+P41-2    SWEEP SYNTH       OSC SYNTH    E.GUITAR     ---          FX1:TRIGGER(DELAY)      FX2:ON/OFF(RING MOD)
+                                                                  INST1:ACOUSTIC TYPE
+P41-3    AC TYPE CHANGE    ACOUSTIC     ACOUSTIC     ---                                  MST DLY:ON/OFF
+                                                                  INST2:ACOUSTIC TYPE
+                           DYNAMIC      DYNAMIC      DYNAMIC
+P41-4    SQR SHORT WAVE                                           MST DLY:ON/OFF          FX2:ON/OFF(LO-FI)
+                           SYNTH        SYNTH        SYNTH
+                           DYNAMIC
+P42-1    FRIENDS                        OSC SYNTH    ---          FX2:ON/OFF(OCTAVE BASS) BPM TAP
+                           SYNTH
+P42-2    BIG STRINGS       GR-300       GR-300       VIO GUITAR   NORMAL INPUT:ON/OFF     FX1:ON/OFF(SLOW GEAR)
+P42-3    CLEAN CHORD       E.GUITAR     E.GUITAR     ---          INST2:12STR             INST2:ALT TUNE
+                           DYNAMIC                                FX2:ON/OFF(PAN)
+P42-4    AUTO-CARTOON                   ---          POLY FX                              BPM TAP
+                           SYNTH                                  INST3:ON/OFF
+                                        DYNAMIC
+P43-1    ALIEN ICE CREAM   OSC SYNTH                 ---          FX2:ON/OFF(RING MOD)    INST2:ON/OFF
+                                        SYNTH
+P43-2    CON UKULELE       ACOUSTIC     ---          ---          CHO:ON/OFF              MST DLY:ON/OFF
+P43-3    EAGLE CA          E.GUITAR     E.GUITAR     ---          BAL1:A/B BALANCE        FX1:ON/OFF(TREMOLO)
+                           DYNAMIC
+P43-4    ROBOT DISCO                    ---          ---          FX2:ON/OFF(RING MOD)    BPM TAP
+                           SYNTH
+                           DYNAMIC      DYNAMIC
+P44-1    BIG PHASER PAD                              ---          MST DLY:ON/OFF          BPM TAP
+                           SYNTH        SYNTH
+                           DYNAMIC
+P44-2    LFO DYN PULSE                  ---          ---          INST1:PITCH             BPM TAP
+                           SYNTH
+                                                                  FX1:ON/OFF(REVERB)
+P44-3    ST SOUL CLEAN     E.GUITAR     ---          ---          FX2:ON/OFF(TOUCH WAH)   FX3:ON/OFF(VIBRATO)
+                                                                  INST1:PU SEL
+                                        DYNAMIC
+P44-4    HOLD/TWIST        OSC SYNTH                 ---          INST1:HOLD              FX1:TRIGGER (DELAY)
+                                        SYNTH
+                                        DYNAMIC      DYNAMIC
+P45-1    PAN FLUTE         VIO GUITAR                             INST3:ON/OFF            FX2:ON/OFF(DEFRETTER)
+                                        SYNTH        SYNTH
+                                                                                          FX2:ON/OFF(SLICER)
+P45-2    VIO PAD           VIO GUITAR   VIO GUITAR   POLY FX      INST2:ON/OFF
+                                                                                          DLY1:ON/OFF
+                                                                                          AMP:ON/OFF
+                                                                                          FX1:ON/OFF(WAH)
+                                                                                          FX2:ON/OFF(WAH)
+P45-3    BIG BALLAD        E.GUITAR     E.GUITAR     ---          DLY2:ON/OFF
+                                                                                          INST1:AMP ON/OFF
+                                                                                          INST2:AMP ON/OFF
+                                                                                          INST2:PU SEL
+                                                                  FX1:ON/OFF(DELAY)
+P45-4    OSC DRUM SET      OSC SYNTH    OSC SYNTH    OSC SYNTH    FX3:ON/OFF(REVERB)      DS:ON/OFF
+                                                                  EQ2:ON/OFF
+                           DYNAMIC      DYNAMIC                   FX1:ON/OFF(SLICER)
+P46-1    LEVEL 8                                     ---                                  BPM TAP
+                           SYNTH        SYNTH                     FX3:ON/OFF(SLICER)
+                                                                  INST2:ON/OFF
+P46-2    BRUTE & FLUTE     VIO GUITAR   E.BASS       E.BASS                               FX3:ON/OFF(CLASSIC-VIBE)
+                                                                  INST3:ON/OFF
+P46-3    JAZZ COMBO        E.GUITAR     ---          ---          INST1:AMP SOLO          INST1:12STR
+                           DYNAMIC      DYNAMIC      DYNAMIC      INST2:HOLD
+P46-4    5&6 STR RHYTHM                                                                   BPM TAP
+                           SYNTH        SYNTH        SYNTH        INST3:HOLD
+
+8
+                                                                                                  SY-1000 Sound List
+
+Patch
+       Name                INST1      INST2      INST3      CTL1                       CTL2
+Number
+P47-1   SITAR NIGHTS       ACOUSTIC   ACOUSTIC   ACOUSTIC   NORMAL INPUT:ON/OFF        CHO:ON/OFF
+                                                 DYNAMIC
+P47-2   70'S BASS          E.BASS     E.BASS                INST1:ALT TUNE             FX1:ON/OFF(TOUCH WAH BASS)
+                                                 SYNTYH
+                                                            FX1:ON/OFF(SLICER or
+P47-3   BRUTAL BALITONE    E.GUITAR   E.GUITAR   ---                                   FX1:TYPE
+                                                            CLASSIC-VIBE)
+                           DYNAMIC               DYNAMIC
+P47-4   EG+-5TH+DROP SGN              E.GUITAR              INST1:PITCH                BPM TAP
+                           SYNTH                 SYNTH
+                           DYNAMIC    DYNAMIC    DYNAMIC    EQ1:ON                     INST2:ON/OFF
+P48-1   NOR:SAW LEAD
+                           SYNTH      SYNTH      SYNTH      INST1:P.BEND CTL           INST3:ON/OFF
+                                                            INST1:P.BEND CTL
+                           DYNAMIC    DYNAMIC    DYNAMIC
+P48-2   NOR:PWM OCT LEAD                                    INST2:P.BEND CTL           NORMAL INUT:ON/OFF
+                           SYNTH      SYNTH      SYNTH
+                                                            INST3:P.BEND CTL
+                                                            INST1:P.BEND CTL
+                           DYNAMIC    DYNAMIC    DYNAMIC
+P48-3   NOR:SYNC LEAD                                       INST2:P.BEND CTL           INST3:ON/OFF
+                           SYNTH      SYNTH      SYNTH
+                                                            INST3:P.BEND CTL
+                           DYNAMIC    DYNAMIC    DYNAMIC    INST1:P.BEND CTL
+P48-4   NOR:FILTER LEAD                                                                INST3:ON/OFF
+                           SYNTH      SYNTH      SYNTH      INST2:P.BEND CTL
+                           DYNAMIC    DYNAMIC    DYNAMIC
+P49-1   NOR:STRINGS                                         NORMAL INPUT:ON/OFF        INST3:ON/OFF
+                           SYNTH      SYNTH      SYNTH
+                           DYNAMIC    DYNAMIC    DYNAMIC
+P49-2   NOR:BRASS                                           NORMAL INPUT:ON/OFF        INST3:ON/OFF
+                           SYNTH      SYNTH      SYNTH
+                                                                                       INST1:P.BEND CTL
+                           DYNAMIC    DYNAMIC    DYNAMIC
+P49-3   NOR:ORGAN                                           FX2:ROTARY SPEED SELECT    INST2:P.BEND CTL
+                           SYNTH      SYNTH      SYNTH
+                                                                                       INST3:P.BEND CTL
+                           DYNAMIC    DYNAMIC    DYNAMIC    INST2:F.ENV ATTACK
+P49-4   NOR:SYNTH BASS                                                                 INST3:ON/OFF
+                           SYNTH      SYNTH      SYNTH      INST3:F.ENV ATTACK
+                                                            INST1: RESONANCE
+                                                            INST2: RESONANCE
+                           DYNAMIC    DYNAMIC    DYNAMIC    INST1: SEQ CUTOFF TARGET
+P50-1   NOR:WABBLE BASS                                                                BPM TAP
+                           SYNTH      SYNTH      SYNTH      INST2: SEQ CUTOFF TARGET
+                                                            SYNC RETRIGGER
+                                                            DS:TYPE
+                           DYNAMIC    DYNAMIC    DYNAMIC    INST ALL:HOLD
+P50-2   NOR:MIXED SEQ                                                                  BPM TAP
+                           SYNTH      SYNTH      SYNTH      NORMAL INPUT:ON/OFF
+                           DYNAMIC    DYNAMIC    DYNAMIC    INST ALL:HOLD
+P50-3   NOR:TRI-RHYTHM                                                                 BPM TAP
+                           SYNTH      SYNTH      SYNTH      NORMAL INPUT:ON/OFF
+                                                            INST1:HOLD
+                           DYNAMIC    DYNAMIC    DYNAMIC
+P50-4   NOR:MOVING FLT                                      INST2:HOLD                 BPM TAP
+                           SYNTH      SYNTH      SYNTH
+                                                            NORMAL INPUT:ON/OFF
+
+
+
+
+                                                                                                                   9
+SY-1000 Sound List
+
+
+Bass Mode
+Patch
+       Name                 INST1       INST2       INST3       CTL1                       CTL2
+Number
+                            DYNAMIC     DYNAMIC     DYNAMIC                                INST1:RESONANCE
+P01-1    DYNAMIC SYN BASS                                       NORMAL INPUT:ON/OFF
+                            SYNTH       SYNTH       SYNTH                                  INST2:RESONANCE
+                                                                                           FX1:ON/OFF(PHASER)
+                            DYNAMIC     DYNAMIC     DYNAMIC     INST1:P.BEND CTL
+P01-2    SLOW TOUCH FLT                                                                    INST1:LFO1 ON/OFF
+                            SYNTH       SYNTH       SYNTH       INST3:P.BEND CTL
+                                                                                           INST3:LFO1 ON/OFF
+P01-3    FULL SECTION       E.BASS      E.BASS      E.BASS      MST DLY:ON/OFF             BPM TAP
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P01-4    DISCOVERY                                              INST1:HOLD                 BPM TAP
+                            SYNTH       SYNTH       SYNTH
+                                                                INST1:PITCH SW
+                                        DYNAMIC     DYNAMIC
+P02-1    ACID BASS          ANALOG GR                           INST1:VIB SW               MST DLY:ON/OFF
+                                        SYNTH       SYNTH
+                                                                INST1:VIB DPT
+P02-2    FUNK RETRO SYNTH   ANALOG GR   ---         ---         INST1:VIB SW               NORMAL INPUT:ON/OFF
+P02-3    JAZZ STANDARD      AC BASS     AC BASS     ---         INST2:ON/OFF               CHO:ON/OFF
+                                                                INST ALL:HOLD
+                            DYNAMIC     DYNAMIC
+P02-4    STEP FLT SYNTH                             E.BASS      INST3:AMP SOLO SW          BPM TAP
+                            SYNTH       SYNTH
+                                                                FX1:ON/OFF (PAN)
+                                                                                           FX3:ON/OFF (OCTAVE BASS)
+P03-1    HEAVY ENV GR       ANALOG GR   ANALOG GR   ---         NORMAL INPUT:ON/OFF
+                                                                                           FX1:ON/OFF (CHORUS)
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P03-2    DIST MIX BASS                                          INST ALL:LFO ON/OFF        BPM TAP
+                            SYNTH       SYNTH       SYNTH
+P03-3    PROG OD            E.BASS      E.BASS      ---         FX1:ON/OFF (OCTAVE BASS)   CHO:ON/OFF
+                                                                INST1: RESONANCE
+                                                                INST2: RESONANCE
+                            DYNAMIC     DYNAMIC                 INST1: SEQ CUTOFF TARGET
+P03-4    WOBBLE BASS                                E.BASS                                 BPM TAP
+                            SYNTH       SYNTH                   INST2: SEQ CUTOFF TARGET
+                                                                SYNC RETRIGGER
+                                                                DS:TYPE
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P04-1    HEAVY STR PAD                                          FX3:ON/OFF (SLICER)        BPM TAP
+                            SYNTH       SYNTH       SYNTH
+                                                                INST1:P.BEND CTL
+                            DYNAMIC     DYNAMIC     DYNAMIC                                INST2:LFO2 ON/OFF
+P04-2    SYNCED SQUARE                                          INST2:P.BEND CTL
+                            SYNTH       SYNTH       SYNTH                                  INST3:LFO2 ON/OFF
+                                                                INST3:P.BEND CTL
+P04-3    WEIRD ABOVE        E.BASS      E.BASS      ---         FX2:ON/OFF (OCTAVE BASS)   MST DLY:TRIGGER
+                            DYNAMIC
+P04-4    SEQ AND DESTROY                ---         ---         FX2:ON/OFF (FLANGER BASS) BPM TAP
+                            SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P05-1    CRYSTALS SYNTH                                         MST DLY:ON/OFF             INST1:PITCH
+                            SYNTH       SYNTH       SYNTH
+                                                                                           INST1:PITCH
+                            DYNAMIC
+P05-2    WARM HORN                      OSC SYNTH   OSC SYNTH   NORMAL INPUT:ON/OFF        INST2:PITCH
+                            SYNTH
+                                                                                           INST3:PITCH
+P05-3    8STR FRETLESS      E.BASS      E.BASS      ---         NORMAL INPUT:ON/OFF        INST2:ON/OFF
+                            DYNAMIC     DYNAMIC
+P05-4    SEQ FOR SHUFFLE                            POLY FX     INST1:P.BNED CTL           BPM TAP
+                            SYNTH       SYNTH
+                                                                                           INST1:LFO1 FILTER DEPTH
+P06-1    REPLICANT          OSC SYNTH   ---         ---         MST DLY:ON/OFF
+                                                                                           FX2:RING MOD E.LEVEL
+                                                                INST1:P.BEND CTL
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P06-2    SOFT FLT SYNTH                                         INST2:P.BEND CTL           INST3:ON/OFF
+                            SYNTH       SYNTH       SYNTH
+                                                                INST3:P.BEND CTL
+P06-3    70'S UNISON        E.GUITAR    E.BASS      ---         FX1:ON/OFF (PHASER)        FX2:ON/OFF (CHORUS)
+                            DYNAMIC     DYNAMIC                                            INST1:HOLD
+P06-4    DS BASS WITH SEQ                           E.BASS      INST3:ON/OFF
+                            SYNTH       SYNTH                                              INST2:HOLD
+
+
+
+10
+                                                                                                SY-1000 Sound List
+
+Patch
+       Name                INST1       INST2       INST3       CTL1                   CTL2
+Number
+                           DYNAMIC
+P07-1   MOON WHISTLE                   OSC SYNTH   ANALOG GR   NORMAL INPUT:ON/OFF    INST2:ON/OFF
+                           SYNTH
+                                                                                      INST1:P.BEND CTL
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P07-2   SLOW RISE>CTL1                                         ALL SEQ TRIGGER        INST2:P.BEND CTL
+                           SYNTH       SYNTH       SYNTH
+                                                                                      INST3:P.BEND CTL
+                                                   DYNAMIC
+P07-3   SMASH BASS         ANALOG GR   E.BASS                  INST2:ON/OFF           FX1:ON/OFF (FLANGER BASS)
+                                                   SYNTH
+                                                               FX1:ON/OFF(SLICER)
+                                       DYNAMIC                 FX2:ON/OFF(AUTO WAH)
+P07-4   SATURN             OSC SYNTH               GR-300                             FX3:ON/OFF(SLOW GEAR)
+                                       SYNTH                   MST DLY:ON/OFF
+                                                               EQ1:ON/OFF
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P08-1   ORGAN BASS                                             INST3:ON/OFF           FX1:ROTARY SPEED SELECT
+                           SYNTH       SYNTH       SYNTH
+                           DYNAMIC                 DYNAMIC
+P08-2   LOWER SUB BASS                 OSC SYNTH               INST1:ON/OFF           INST3:ON/OFF
+                           SYNTH                   SYNTH
+P08-3   UNISON FILTER      ---         E.BASS      E.GUITAR    AMP:ON/OFF             INST3:ON/OFF
+                                                               FX3:ON/OFF (SLICER)
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P08-4   5TH SAW BS + SEQ                                       MST DLY:ON/OFF         BPM TAP
+                           SYNTH       SYNTH       SYNTH
+                                                               INST3:SEQ2 ON/OFF
+                           DYNAMIC     DYNAMIC     DYNAMIC                            FX3:ON/OFF(CHORUS)
+P09-1   HARD FLT BASS                                          INST2:ON/OFF
+                           SYNTH       SYNTH       SYNTH                              NORMAL INPUT:ON/OFF
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P09-2   SQR SHORT WAVE                                         NORMAL INPUT:ON/OFF    FX2:ON/OFF(LO-FI)
+                           SYNTH       SYNTH       SYNTH
+                                                                                      REV:ON/OFF
+P09-3   FRENCH CHICKEN     E.GUITAR    E.BASS      POLY FX     AMP:ON/OFF
+                                                                                      FX1:ON/OFF (CHORUS)
+                                       DYNAMIC     DYNAMIC     INST ALL:HOLD
+P09-4   16TH SEQ BASS      ANALOG GR                                                  BPM TAP
+                                       SYNTH       SYNTH       SYNC RETRIGGER
+P10-1   RESONANCE GR       ANALOG GR   ANALOG GR   ANALOG GR   INST1:ON/OFF           INST2:ON/OFF
+                                                                                      INST1:STR BEND CTL
+                                                   DYNAMIC     INST1:ON/OFF
+P10-2   FRETLESS GT+FLT    E.BASS      E.GUITAR                                       INST2:STR BEND CTL
+                                                   SYNTH       INST2:ON/OFF
+                                                                                      INST3:STR BEND CTL
+P10-3   STINGER            E.BASS      ---         ---         FX2:ON/OFF (CHORUS)    REV:ON/OFF
+                           DYNAMIC     DYNAMIC                 MST DLY:ON/OFF
+P10-4   MOVING SEQ PAD                             ---                                BPM TAP
+                           SYNTH       SYNTH                   FX1:ON/OFF(CHORUS)
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P11-1   SAW UP LFO BASS                                        INST3:ON/OFF           BPM TAP
+                           SYNTH       SYNTH       SYNTH
+                                       DYNAMIC
+P11-2   UNDERWATER BASS    ANALOG GR               E.BASS      NORMAL INPUT:ON/OFF    FX2:ON/OFF(FLANGER BASS)
+                                       SYNTH
+P11-3   PB + JB +ACTIVE    E.BASS      E.BASS      E.BASS      DS:ON/OFF              INST3:ON/OFF
+                                                                                      INST1:HOLD
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P11-4   SAW LD&SEQ HOLD                                        INST3:LFO1 ON/OFF      INST1:SEQ1 ON/OFF
+                           SYNTH       SYNTH       SYNTH
+                                                                                      INST1:SEQ2 ON/OFF
+                                                                                      INST1:ON/OFF
+                           DYNAMIC     DYNAMIC                 INST1:PITCH
+P12-1   MYSTERIOUS PIPE                            E.GUITAR                           INST2:ON/OFF
+                           SYNTH       SYNTH                   INST2:PITCH
+                                                                                      INST3:ON/OFF
+                                                               NORMAL INPUT:ON/OFF
+P12-2   MU TOWN            E.BASS      POLY FX     ANALOG GR                          INST2:ON/OFF
+                                                               INST1:ON/OFF
+P12-3   PICCOLO BASS       AC BASS     ---         ---         CHORUS:ON/OFF          NORMAL INPUT:ON/OFF
+                                                                                      FX2:ON/OFF(SLICER)
+                           DYNAMIC     DYNAMIC     DYNAMIC     INST2:ON/OFF
+P12-4   SCARIER SEQUENCE                                                              MST DLY:ON/OFF
+                           SYNTH       SYNTH       SYNTH       INST3:ON/OFF
+                                                                                      DLY1:ON/OFF
+                                                                                      FX1:ON/OFF(TREMOLO)
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P13-1   SLOW TREM EP                                           MST DLY:ON/OFF         FX2:ON/OFF(PHASER)
+                           SYNTH       SYNTH       SYNTH
+                                                                                      FX3:ON/OFF(CHORUS)
+
+
+                                                                                                               11
+SY-1000 Sound List
+
+Patch
+       Name                 INST1       INST2       INST3       CTL1                       CTL2
+Number
+                                                                                           INST1:P.BEND CTL
+                            DYNAMIC     DYNAMIC     DYNAMIC     INST1:LFO2 ON/OFF
+P13-2    SWEEP STRINGS                                                                     INST2:P.BEND CTL
+                            SYNTH       SYNTH       SYNTH       INST2:LFO2 ON/OFF
+                                                                                           INST3:P.BEND CTL
+                                                                AMP:ON/OFF
+P13-3    FRETLESS LEAD      ---         E.BASS      ---                                    REV:ON/OFF
+                                                                FX1:ON/OFF (CHORUS)
+                            DYNAMIC                 DYNAMIC
+P13-4    WIDE ARPEGGIO                  POLY FX                 INST3:ON/OFF               BPM TAP
+                            SYNTH                   SYNTH
+P14-1    HEAVY BOTTOM GR    ANALOG GR   ANALOG GR   ANALOG GR   INST1:ON/OFF               INST2:ON/OFF
+P14-2    LOFI TALKER        ANALOG GR   ANALOG GR   ---         MST DLY:ON/OFF             BPM TAP
+P14-3    DIRT PHASE         E.BASS      E.BASS      ---         DS:ON/OFF                  INST1:NOR MIX SW ON/OFF
+                            DYNAMIC     DYNAMIC
+P14-4    MODULAR PULSE                              ---         INST1:RESONANCE            BPM TAP
+                            SYNTH       SYNTH
+                                        DYNAMIC
+P15-1    LOW+TRI SYNTH      ANALOG GR               ANALOG GR   INST1:ON/OFF               INST2:ON/OFF
+                                        SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P15-2    VINTAGE BRASS                                          INST3:ON/OFF               BPM TAP
+                            SYNTH       SYNTH       SYNTH
+P15-3    SIMPLE OCTAVE      E.BASS      ---         ---         FX1:ON/OFF (OCTAVE BASS)   DS:ON/OFF
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P15-4    SOFT STR + BELL                                        INST3:ON/OFF               BPM TAP
+                            SYNTH       SYNTH       SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P16-1    SQUELCHY MODULAR                                       INST2:LFO1 ON/OFF          FX2:ON/OFF (DELAY)
+                            SYNTH       SYNTH       SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P16-2    3 DYNA SYN BASS                                        MST DLY:ON/OFF             INST3:ON/OFF
+                            SYNTH       SYNTH       SYNTH
+                                                                                           FX1:ON/OFF(CLASSIC-VIBE)
+                                                                INST3:ON/OFF
+P16-3    MODULATION MAX     E.GUITAR    AC BASS     POLY FX                                FX2:ON/OFF(FLANGER)
+                                                                FX3:ROTARY SPEED SELECT
+                                                                                           FX3:ON/OFF(ROTARY)
+                            DYNAMIC
+P16-4    WET FILTER PULSE               ---         ---         MST DLY:ON/OFF             BPM TAP
+                            SYNTH
+                                                    DYNAMIC
+P17-1    WIDE RANGE LEAD    OSC SYNTH   OSC SYNTH               ALL:ALT TUNE               INST1:LFO1 ON/OFF
+                                                    SYNTH
+                            DYNAMIC
+P17-2    BIG SAW PAD                    ---         ---         FX1:ON/OFF (CHORUS)        MST DLY:ON/OFF
+                            SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC     AMP:ON/OFF
+P17-3    ADVANCED CLEAN                                                                    MST DLY:E.LEVEEL
+                            SYNTH       SYNTH       SYNTH       EQ2:HIGH-MID GAIN
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P17-4    UPPER 5TH STR+SE                                       INST1:ON/OFF               INST2:HOLD
+                            SYNTH       SYNTH       SYNTH
+                            DYNAMIC
+P18-1    GR-SYNTH PAD                   ANALOG GR   ---         INST2:PITCH SW             INST2:VIB SW
+                            SYNTH
+                                                                                           DS:ON/OFF
+P18-2    E.P. PHASE         POLY FX     POLY FX     POLY FX     MST DLY:ON/OFF
+                                                                                           EQ1:ON/OFF
+                                        DYNAMIC
+P18-3    SLOW PAD BASS      POLY FX                 ---         FX1:ON/OFF (DELAY)         BPM TAP
+                                        SYNTH
+                                                                                           INST3:ON/OFF
+                                        DYNAMIC     DYNAMIC     INST1:ON/OFF
+P18-4    PORTAMENTO LD+SQ   OSC SYNTH                                                      INST3:HOLD
+                                        SYNTH       SYNTH       INST2:ON/OFF
+                                                                                           INST3:SEQ1&2 ON/OFF
+                                        DYNAMIC
+P19-1    PLANET Q           ---                     ANALOG GR   NORMAL INPUT:ON/OFF        INST2:ON/OFF
+                                        SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P19-2    FLT + 4TG=BASS                                         INST1:PITCH                INST3:HOLD
+                            SYNTH       SYNTH       SYNTH
+                                        DYNAMIC                                            INST1:ON/OFF
+P19-3    JAZZ GROUP         E.GUITAR                AC BASS     INST3:ON/OFF
+                                        SYNTH                                              INST2:ON/OFF
+
+
+
+
+12
+                                                                                                    SY-1000 Sound List
+
+Patch
+       Name                INST1       INST2       INST3       CTL1                       CTL2
+Number
+                                                               FX1:ON/OFF (CHORUS)
+                                                               INST1:F.ENV ATK
+                                                               INST2:F.ENV ATK
+                           DYNAMIC     DYNAMIC     DYNAMIC     INST3:F.ENV ATK
+P19-4   CLUBBY TRIAD                                                                      FX2:ON/OFF (SLICER)
+                           SYNTH       SYNTH       SYNTH       INST1:F.ENV DPT
+                                                               INST2:F.ENV DPT
+                                                               INST3:F.ENV DPT
+                                                               MIXER A/B BALANCE
+                           DYNAMIC                                                        MST DLY:ON/OFF
+P20-1   FRIENDS ELECTRIC               ---         ---         INST1:PITCH
+                           SYNTH                                                          REV:ON/OFF
+                           DYNAMIC     DYNAMIC
+P20-2   MEAN PWM BASS                              ---         MST DLY:ON/OFF             INST2:ON/OFF
+                           SYNTH       SYNTH
+                                                               NORMAL INPUT:ON/OFF
+P20-3   MR. JAZZ           ANALOG GR   E.BASS      ---                                    INST1:ON/OFF
+                                                               INST2:ON/OFF
+                           DYNAMIC
+P20-4   LFO DYN PULSE                  ---         ---         INST1:PITCH                BPM TAP
+                           SYNTH
+                                       DYNAMIC     DYNAMIC
+P21-1   SYNC OR SLICE      ---                                 FX1:ON/OFF (SLICER)        BPM TAP
+                                       SYNTH       SYNTH
+P21-2   TRIPOD ATTACK      ---         ANALOG GR   ANALOG GR   NORMAL INPUT:ON/OFF        INST2:ON/OFF
+P21-3   PAN POLY DIST      ---         E.BASS      POLY FX     AMP:ON/OFF                 INST3:ON/OFF
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P21-4   FUZZ BASS W/S&H                                        DS:ON/OFF                  BPM TAP
+                           SYNTH       SYNTH       SYNTH
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P22-1   FAT POLY SYNTH                                         INST3:ON/OFF               MST DLY:TRIGGER
+                           SYNTH       SYNTH       SYNTH
+                                                               INST1:PITCH
+                           DYNAMIC                 DYNAMIC
+P22-2   MG MONO SYNTH LD               OSC SYNTH               INST2:PITCH1               INST ALL LFO
+                           SYNTH                   SYNTH
+                                                               INST3:PITCH
+                                                                                          FX3:ON/OFF (TOUCH WAH
+P22-3   DIST GT & BASS     E.GUITAR    E.BASS      ---         FX1:ON/OFF (FLANGER)
+                                                                                          BASS)
+                           DYNAMIC     DYNAMIC     DYNAMIC     INST1:ON/OFF               INST1:HOLD
+P22-4   SMOOTH LD W/ SEQ
+                           SYNTH       SYNTH       SYNTH       INST3:ON/OFF               INST3:HOLD
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P23-1   AIR VOICE PAD                                          FX2:ON/OFF(FLANGER BASS)   MST DLY:TRIGGER
+                           SYNTH       SYNTH       SYNTH
+P23-2   LOST SWEET         ---         OSC SYNTH   ANALOG GR   NORMAL INPUT:ON/OFF        INST2:ON/OFF
+P23-3   A'S SWING          AC BASS     POLY FX     ---         FX3:ON/OFF(ROTARY)         BPM TAP
+                           DYNAMIC     DYNAMIC     DYNAMIC     INST ALL:LFO ON/OFF
+P23-4   SL&SWEEP BASS                                                                     BPM TAP
+                           SYNTH       SYNTH       SYNTH       DLY1:ON/OFF
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P24-1   3OCT RESO BASS                                         NORMAL INPUT:ON/OFF        DS:ON/OFF
+                           SYNTH       SYNTH       SYNTH
+                                                               INST1:STR BEND CTL
+P24-2   5TH'S RULE!        E.BASS      ANALOG GR   ---                                    INST2:PITCH SW
+                                                               INST2:STR BEND CTL
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P24-3   ADVANCED LEAD OD                                       DS:ON/OFF                  FX3:ON/OFF(CHORUS)
+                           SYNTH       SYNTH       SYNTH
+                           DYNAMIC     DYNAMIC
+P24-4   POLYFX+PAD+SEQ                             POLY FX     INST3:ON/OFF               INST1:SEQ1 TURBO
+                           SYNTH       SYNTH
+P25-1   LITTLE TALK        ANALOG GR   ANALOG GR   ANALOG GR   NORMAL INPUT:ON/OFF        INST2:ON/OFF
+                                                               INST1:P.BEND CTL
+                           DYNAMIC     DYNAMIC     DYNAMIC                                INST ALL SEQ
+P25-2   SYN-HARMONICA                                          INST2:P.BEND CTL
+                           SYNTH       SYNTH       SYNTH                                  INST3:ON/OFF
+                                                               INST3:P.BEND CTL
+                                                               INST1:ON/OFF
+P25-3   AC & FRETLESS      AC BASS     E.BASS      E.GUITAR                               INST3:ON/OFF
+                                                               INST2:ON/OFF
+                           DYNAMIC     DYNAMIC                 INST1:ON/OFF
+P25-4   TRIPLET JAMMER                             ---                                    BPM TAP
+                           SYNTH       SYNTH                   INST2:HOLD
+                                                   DYNAMIC
+P26-1   DYNO FOOD          ANALOG GR   ANALOG GR               NORMAL INPUT:ON/OFF        INST2:ON/OFF
+                                                   SYNTH
+
+
+                                                                                                                   13
+SY-1000 Sound List
+
+Patch
+       Name                 INST1       INST2       INST3       CTL1                        CTL2
+Number
+                            DYNAMIC     DYNAMIC     DYNAMIC     INST1:P.BEND CTL
+P26-2    PWM OCT LEAD                                                                       INST3:P.BEND CTL
+                            SYNTH       SYNTH       SYNTH       INST2:P.BEND CTL
+                            DYNAMIC     DYNAMIC
+P26-3    PARAGLIDER                                 E.BASS      MST DLY:ON/OFF              CHO:ON/OFF
+                            SYNTH       SYNTH
+                            DYNAMIC
+P26-4    VOYAGER 1                      ---         ---         INST1: LFO1 ON/OFF          MST DLY:ON/OFF
+                            SYNTH
+                                                    DYNAMIC
+P27-1    EARTHQUAX          ANALOG GR   POLY FX                 INST2:ON/OFF                INST3:ON/OFF
+                                                    SYNTH
+P27-2    IN THE ROOM        OSC SYNTH   E.BASS      ANALOG GR   AMP:ON/OFF                  INST3:ON/OFF
+                                                    DYNAMIC
+P27-3    BASS + SPLIT SYN   ANALOG GR   E.BASS                  AMP:ON/OFF                  INST3:ON/OFF
+                                                    SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P27-4    AROUND THE HEAD                                        INST3:ON/OFF                BPM TAP
+                            SYNTH       SYNTH       SYNTH
+                                                    DYNAMIC
+P28-1    POISON GR          ANALOG GR   ANALOG GR               INST1:ON/OFF                INST3:ON/OFF
+                                                    SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P28-2    DEEP FILTER                                            MST DLY:ON/OFF              INST3:ON/OFF
+                            SYNTH       SYNTH       SYNTH
+P28-3    AC + GR + POLY     AC BASS     ANALOG GR   POLY FX     INST1:ON/OFF                INST3:ON/OFF
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P28-4    DRAMATIC CUE                                           INST3:HOLD                  BPM TAP
+                            SYNTH       SYNTH       SYNTH
+                            DYNAMIC     DYNAMIC                 INST1:CUTOFF
+P29-1    RESO PWM                                   ---                                     INST2:P.BEND CTL
+                            SYNTH       SYNTH                   INST1:P.BEND CTL
+                                                    DYNAMIC
+P29-2    SYN LD & TRY BEL   OSC SYNTH   OSC SYNTH               INST3:ON/OFF                INST3:PITCH
+                                                    SYNTH
+                                                                NORMAL INPUT:ON/OFF
+P29-3    2020               E.BASS      POLY FX     ANALOG GR                               INST2:ON/OFF
+                                                                INST1:ON/OFF
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P29-4    3OSC SEQ SLICE                                         INST ALL SEQ                BPM TAP
+                            SYNTH       SYNTH       SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P30-1    SPLIT STRINGS                                          INST3:HOLD                  INST2:ON/OFF
+                            SYNTH       SYNTH       SYNTH
+P30-2    TIGHT SYNTH        POLY FX     OSC SYNTH   ANALOG GR   INST1:ON/OFF                INST2:ON/OFF
+P30-3    METAL BASS         E.BASS      E.BASS      ---         INST2:ON/OFF                REV:ON/OFF
+                            DYNAMIC     DYNAMIC
+P30-4    TALKING SEQ BASS                           ---         FX1:ON/OFF (HUMANIZER)      BPM TAP
+                            SYNTH       SYNTH
+                            DYNAMIC     DYNAMIC
+P31-1    WHISTLE BASS                               ANALOG GR   INST3:ON/OFF                INST2:ON/OFF
+                            SYNTH       SYNTH
+                            DYNAMIC     DYNAMIC
+P31-2    SUPER BEND SYNTH                           E.GUITAR    INST3:ON/OFF                INST3:STR BEND CTL
+                            SYNTH       SYNTH
+                                                                NORMAL INPUT:ON/OFF
+P31-3    DR. PB             ---         E.BASS      POLY FX                                 INST3:ON/OFF
+                                                                INST2:ON/OFF
+                                                                FX1:ON/OFF (FLANGER BASS)
+                            DYNAMIC
+P31-4    LFO PER STRING                 ---         ---         FX2:ON/OFF (HUMANIZER)      BPM TAP
+                            SYNTH
+                                                                DS:LEVEL
+                                                                INST1:P.BEND CTL
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P32-1    FLOATING SINE                                          INST2:P.BEND CTL            INST2 SEQ1 ON/OFF
+                            SYNTH       SYNTH       SYNTH
+                                                                INST3:P.BEND CTL
+P32-2    TRIPLE GR          ANALOG GR   ANALOG GR   ANALOG GR   INST1:ON/OFF                INST2:ON/OFF
+P32-3    SLOW AMBIENT       POLY FX     POLY FX     AC BASS     MST DLY:ON/OFF              BPM TAP
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P32-4    PHRASE+BASS                                            INST2:ON/OFF                BPM TAP
+                            SYNTH       SYNTH       SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P33-1    VINTAGE MN BASS                                        FX1:ON/OFF (CHORUS)         INST3:ON/OFF
+                            SYNTH       SYNTH       SYNTH
+                                        DYNAMIC                                             INST2:ON/OFF
+P33-2    EX ABY             ---                     ANALOG GR   NORMAL INPUT:ON/OFF
+                                        SYNTH                                               DLY1:ON/OFF
+P33-3    POLY DIST+GR       ANALOG GR   POLY FX     ---         INST1:PITCH SW              AMP:SOLO SW
+
+
+
+14
+                                                                                                   SY-1000 Sound List
+
+Patch
+       Name                INST1       INST2       INST3       CTL1                      CTL2
+Number
+                           DYNAMIC     DYNAMIC
+P33-4   SEQ HOLD CTL1                              ---         INST2:HOLD                BPM TAP
+                           SYNTH       SYNTH
+                           DYNAMIC     DYNAMIC     DYNAMIC                               INST2:P.BEND CTL
+P34-1   ROTARY ORGAN                                           FX1:ROTARY SPEED SELECT
+                           SYNTH       SYNTH       SYNTH                                 INST3:P.BEND CTL
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P34-2   FILTERED BASS                                          INST1:ON/OFF              DS:ON/OFF
+                           SYNTH       SYNTH       SYNTH
+                           DYNAMIC                             REV:ON/OFF
+P34-3   HP SWEEP BASS                  ---         ---                                   NORMAL INPUT:ON/OFF
+                           SYNTH                               MIXER A/B BALANCE
+                                                   DYNAMIC     INST3:SEQ1&2 ON/OFF
+P34-4   RINGCHIME+SQ PAD   OSC SYNTH   POLY FX                                           INST3:SEQ1 TURBO
+                                                   SYNTH       DLY1:ON/OFF
+                                                                                         INST2:ON/OFF
+P35-1   GR DEEP REV        ANALOG GR   ANALOG GR   ANALOG GR   INST1:PITCH SW            INST3:ON/OFF
+                                                                                         FX2:ON/OFF (CHORUS)
+P35-2   HIT MOO            ANALOG GR   OSC SYNTH   ANALOG GR   NORMAL INPUT:ON/OFF       INST2:ON/OFF
+                                                               INST2:ON/OFF
+                                                   DYNAMIC                               FX1:PEDAL BEND PEDAL POS
+P35-3   ROYAL GT+SYN BS    E.GUITAR    E.GUITAR                INST3:ON/OFF
+                                                   SYNTH                                 FX2:VIBRATO TRIGGER
+                                                               INST1:ALT TUNE
+                           DYNAMIC     DYNAMIC
+P35-4   FLANGE PULSE                               ---         FX1:ON/OFF (DELAY)        BPM TAP
+                           SYNTH       SYNTH
+                                       DYNAMIC                                           INST2:ON/OFF
+P36-1   HI-TONE+ FLT SYN   ---                     ANALOG GR   NORMAL INPUT:ON/OFF
+                                       SYNTH                                             DLY1:ON/OFF
+                                                               INST1:P.BEND CTL
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P36-2   DEEP PAD                                               INST2:P.BEND CTL          INST ALL SEQ
+                           SYNTH       SYNTH       SYNTH
+                                                               INST3:P.BEND CTL
+                           DYNAMIC     DYNAMIC     DYNAMIC                               AMP:ON/OFF
+P36-3   PAD PHASE ECHO                                         CHO:ON/OFF
+                           SYNTH       SYNTH       SYNTH                                 CMP:TONE
+                           DYNAMIC                 DYNAMIC
+P36-4   ARPEGGIO STEP                  E.GUITAR                INST3:ON/OFF              BPM TAP
+                           SYNTH                   SYNTH
+                                                   DYNAMIC
+P37-1   OSC AIR LEAD       OSC SYNTH   OSC SYNTH               INST3:ON/OFF              FX2:ON/OFF(CHORUS)
+                                                   SYNTH
+                           DYNAMIC                 DYNAMIC                               INST2:PITCH SW
+P37-2   FAT GR LEAD                    ANALOG GR               FX3:TRIGGER(VIBRATO)
+                           SYNTH                   SYNTH                                 INST1:PITCH
+                                                   DYNAMIC
+P37-3   LAYERED POLY FX    POLY FX     POLY FX                 INST1:ON/OFF              BPM TAP
+                                                   SYNTH
+                           DYNAMIC
+P37-4   ON THE SCREEN                  ANALOG GR   ANALOG GR   INST1:ON/OFF              INST2:ON/OFF
+                           SYNTH
+                                       DYNAMIC
+P38-1   SWEEP GR BASS      ANALOG GR               E.BASS      FX2:ON/OFF (CHORUS)       INST1:PITCH SW
+                                       SYNTH
+                                                                                         INST2:ON/OFF
+P38-2   PHASE OSC EP       OSC SYNTH   OSC SYNTH   OSC SYNTH   INST ALL:HOLD
+                                                                                         INST3:ON/OFF
+P38-3   EASE POLY BASS     POLY FX     POLY FX     ---         MST DLY:ON/OFF            BPM TAP
+                                                   DYNAMIC     INST1:ON/OFF
+P38-4   AUTO PITCH CHNG    POLY FX     POLY FX                                           BPM TAP
+                                                   SYNTH       INST2:ON/OFF
+                                                   DYNAMIC                               FX3:ON/OFF(PAN)
+P39-1   FAT LAYER BRASS    OSC SYNTH   OSC SYNTH               MST DLY:ON/OFF
+                                                   SYNTH                                 INST3:P.BEND CTL
+                           DYNAMIC                 DYNAMIC
+P39-2   STRINGS PAD                    OSC SYNTH               INST3:ON/OFF              MDLY:TRIGGER
+                           SYNTH                   SYNTH
+P39-3   TOUCH WAH BASS     POLY FX     ---         ---         INST1:POLARITY            FX2:ON/OFF (CHORUS)
+                           DYNAMIC     DYNAMIC     DYNAMIC
+P39-4   MDN DANCE GROOVE                                       INST3:HOLD                INST3:SEQ1&2 TURBO
+                           SYNTH       SYNTH       SYNTH
+                           DYNAMIC     DYNAMIC                                           FX3:ON/OFF(PHASER)
+P40-1   FAIRY STRINGS                              OSC SYNTH   INST2:ALT TUNE
+                           SYNTH       SYNTH                                             MST DLY:ON/OFF
+P40-2   IQ 86              ---         OSC SYNTH   ANALOG GR   NORMAL INPUT:ON/OFF       INST2:ON/OFF
+                           DYNAMIC
+P40-3   JUST THE SUB                   ---         ---         FX1:ON/OFF (CHORUS)       NORMAL INPUT:ON/OFF
+                           SYNTH
+
+                                                                                                                  15
+SY-1000 Sound List
+
+Patch
+       Name                 INST1       INST2       INST3       CTL1                   CTL2
+Number
+                                        DYNAMIC     DYNAMIC
+P40-4    HOLD ON            POLY FX                             INST3:HOLD             NORMAL INPUT:ON/OFF
+                                        SYNTH       SYNTH
+                                                    DYNAMIC
+P41-1    COSMIC BEE         ANALOG GR   ANALOG GR               NORMAL INPUT;ON/OFF    FX3:ON/OFF (OCTAVE BASS)
+                                                    SYNTH
+P41-2    COUNTDOWN          ANALOG GR   E.BASS      OSC SYNTH   INST2:ON/OFF           INST1:ON/OFF
+P41-3    P82 ANNO           ANALOG GR   E.BASS      OSC SYNTH   INST2:ON/OFF           INST3:ON/OFF
+P41-4    FOOLED YOU AGAIN   OSC SYNTH   OSC SYNTH   ---         MST DLY:ON/OFF         BPM TAP
+                                                                INST1:P.BEND CTL
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P42-1    MELLOW SYN LEAD                                        INST2:P.BEND CTL       INST ALL LFO
+                            SYNTH       SYNTH       SYNTH
+                                                                INST3:P.BEND CTL
+                                        DYNAMIC
+P42-2    ALIEN WORD         ANALOG GR               ANALOG GR   NORMAL INPUT:ON/OFF    INST2:ON/OFF
+                                        SYNTH
+                                                                                       INST1:BUZZ SENS
+P42-3    UPRIGHT BASS       AC BASS     ---         ---         REV:ON/OFF
+                                                                                       INST1:DECAY
+                            DYNAMIC                 DYNAMIC
+P42-4    BREATHING OUT                  ANALOG GR               NORMAL INPUT:ON/OFF    MST DLY:TRIGGER
+                            SYNTH                   SYNTH
+                                                                INST1:STR BEND CTL
+P43-1    MONO PORTA SINE    OSC SYNTH   OSC SYNTH   ---                                INST2:ON/OFF
+                                                                INST2:STR BEND CTL
+                            DYNAMIC
+P43-2    INVISIBLE MU                   ANALOG GR   ANALOG GR   NORMAL INPUT:ON/OFF    INST1:ON/OFF
+                            SYNTH
+                                        DYNAMIC
+P43-3    SUBSTRATTA         E.GUITAR                ANALOG GR   INST1:ON/OFF           INST2:ON/OFF
+                                        SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P43-4    DRIVIN'SEQ&S.PAD                                       INST3:ON/OFF           BPM TAP
+                            SYNTH       SYNTH       SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P44-1    ENDLESS SUB                                            INST1:ON/OFF           INST3:ON/OFF
+                            SYNTH       SYNTH       SYNTH
+P44-2    HUMUNGUS           OSC SYNTH   OSC SYNTH   ---         DS:ON/OFF              MST DLY:ON/OFF
+P44-3    BACK TO SCHOOL     POLY FX     ANALOG GR   ANALOG GR   INST3:ON/OFF           INST1:ON/OFF
+                            DYNAMIC     DYNAMIC     DYNAMIC     INST2:P.BEND CTL
+P44-4    RING MOD MIX                                                                  DS:ON/OFF
+                            SYNTH       SYNTH       SYNTH       INST3:P.BEND CTL
+P45-1    ELECTRO            OSC SYNTH   E.BASS      POLY FX     INST1:ON/OFF           INST3:ON/OFF
+                                                                INST1:ON/OFF
+P45-2    TRIPLE POLY FX     POLY FX     POLY FX     POLY FX                            MST DLY:TRIGGER
+                                                                INST3:ON/OFF
+P45-3    ANGRY THUNDER      ---         E.BASS      POLY FX     AMP:ON/OFF             INST3:ON/OFF
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P45-4    PAD/RHYTHM BS&HH                                       INST1:P.BEND CTL       ALL SEQ TRIG
+                            SYNTH       SYNTH       SYNTH
+                                        DYNAMIC
+P46-1    BIG TALK           ---                     ANALOG GR   NORMAL INPUT:ON/OFF    INST2:ON/OFF
+                                        SYNTH
+                                        DYNAMIC     DYNAMIC
+P46-2    FB SWEEPERS        OSC SYNTH                           MST DLY:ON/OFF         FX3:ON/OFF(DELAY)
+                                        SYNTH       SYNTH
+P46-3    JULY 1985          OSC SYNTH   POLY FX     POLY FX     INST1:ON/OFF           INST3:ON/OFF
+                            DYNAMIC
+P46-4    TREKKNIG                       POLY FX     ---         INST1:LFO1&2 ON/OFF    INST2:ON/OFF
+                            SYNTH
+                            DYNAMIC                 DYNAMIC                            INST3:HOLD
+P47-1    MAJESTIC CHOIR                 POLY FX                 FX3:ON/OFF(ROTARY)
+                            SYNTH                   SYNTH                              FX2:ON/OFF(AUTO WAH)
+P47-2    CRYSTAL&GR         POLY FX     ANALOG GR   ---         DLY1:ON/OFF            FX3:ON/OFF(TREMOLO)
+P47-3    LEMME HEAR YA!     E.BASS      ---         ---         INST1:PU SELECT        REV:ON/OFF
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P47-4    BEAT GOES ON                                           INST ALL: SEQ ON/OFF   BPM TAP
+                            SYNTH       SYNTH       SYNTH
+                            DYNAMIC     DYNAMIC     DYNAMIC     EQ1:ON                 INST2:ON/OFF
+P48-1    NOR:SAW LEAD
+                            SYNTH       SYNTH       SYNTH       INST1:P.BEND CTL       INST3:ON/OFF
+                                                                INST1:P.BEND CTL
+                            DYNAMIC     DYNAMIC     DYNAMIC
+P48-2    NOR:PWM OCT LEAD                                       INST2:P.BEND CTL       NORMAL INUT:ON/OFF
+                            SYNTH       SYNTH       SYNTH
+                                                                INST3:P.BEND CTL
+
+
+
+16
+                                                                                               SY-1000 Sound List
+
+Patch
+       Name                 INST1     INST2     INST3     CTL1                       CTL2
+Number
+                                                          INST1:P.BEND CTL
+                            DYNAMIC   DYNAMIC   DYNAMIC
+P48-3     NOR:SYNC LEAD                                   INST2:P.BEND CTL           INST3:ON/OFF
+                            SYNTH     SYNTH     SYNTH
+                                                          INST3:P.BEND CTL
+                            DYNAMIC   DYNAMIC   DYNAMIC   INST1:P.BEND CTL
+P48-4     NOR:FILTER LEAD                                                            INST3:ON/OFF
+                            SYNTH     SYNTH     SYNTH     INST2:P.BEND CTL
+                            DYNAMIC   DYNAMIC   DYNAMIC
+P49-1     NOR:STRINGS                                     NORMAL INPUT:ON/OFF        INST3:ON/OFF
+                            SYNTH     SYNTH     SYNTH
+                            DYNAMIC   DYNAMIC   DYNAMIC
+P49-2     NOR:BRASS                                       NORMAL INPUT:ON/OFF        INST3:ON/OFF
+                            SYNTH     SYNTH     SYNTH
+                                                                                     INST1:P.BEND CTL
+                            DYNAMIC   DYNAMIC   DYNAMIC
+P49-3     NOR:ORGAN                                       FX2:ROTARY SPEED SELECT    INST2:P.BEND CTL
+                            SYNTH     SYNTH     SYNTH
+                                                                                     INST3:P.BEND CTL
+                            DYNAMIC   DYNAMIC   DYNAMIC   INST2:F.ENV ATTACK
+P49-4     NOR:SYNTH BASS                                                             INST3:ON/OFF
+                            SYNTH     SYNTH     SYNTH     INST3:F.ENV ATTACK
+                                                          INST1: RESONANCE
+                                                          INST2: RESONANCE
+                            DYNAMIC   DYNAMIC   DYNAMIC   INST1: SEQ CUTOFF TARGET
+P50-1     NOR:WABBLE BASS                                                            BPM TAP
+                            SYNTH     SYNTH     SYNTH     INST2: SEQ CUTOFF TARGET
+                                                          SYNC RETRIGGER
+                                                          DS:TYPE
+                            DYNAMIC   DYNAMIC   DYNAMIC   INST ALL:HOLD
+P50-2     NOR:MIXED SEQ                                                              BPM TAP
+                            SYNTH     SYNTH     SYNTH     NORMAL INPUT:ON/OFF
+                            DYNAMIC   DYNAMIC   DYNAMIC   INST ALL:HOLD
+P50-3     NOR:TRI-RHYTHM                                                             BPM TAP
+                            SYNTH     SYNTH     SYNTH     NORMAL INPUT:ON/OFF
+                                                          INST1:HOLD
+                            DYNAMIC   DYNAMIC   DYNAMIC
+P50-4     NOR:MOVING FLT                                  INST2:HOLD                 BPM TAP
+                            SYNTH     SYNTH     SYNTH
+                                                          NORMAL INPUT:ON/OFF
+
+
+
+
+© 2020 Roland Corporation
+                                                                                                              17
+

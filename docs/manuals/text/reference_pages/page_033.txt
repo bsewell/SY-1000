@@ -1,0 +1,271 @@
+INST Parameters > E.GUITAR Parameters
+
+E.GUITAR Parameters
+
+Value
+
+Explanation
+
+LP
+
+The sound of a Gibson Les Paul Standard. Simulates
+the installation of two humbucking pickups (passive
+type).
+
+P-90
+
+The sound of a Gibson Les Paul Junior. This provides
+two single-coil pickups of the type used on fixedneck guitars and affectionately known as soap-bar
+or dog-ear pickups.
+
+335
+
+The sound of a Gibson ES-335 Dot. Typical semiacoustic guitar with two humbucking pickups.
+
+GUITAR (In GUITAR MODE)
+Parameter
+
+Value
+
+Explanation
+
+TYPE
+
+Select the electric guitar type “TYPE” (p. 33).
+Selects the pickup position.
+REAR
+R+C
+*1
+CENTER
+*1
+
+PU SELECT
+
+C+F
+*1
+FRONT
+R+F
+*2
+ALL
+*3
+
+TONE TYPE
+*4
+SENS
+*4
+DEPTH
+*4
+ATTACK
+*4
+RESONANCE
+
+Rear pickup
+Rear and center pickups
+Center pickup
+
+Front pickup
+
+LIPS
+
+The sound of a Danelectro 56-U3. This models a
+guitar equipped with three pickups noted for their
+visual resemblance to lipstick tubes.
+
+WIDE RANGE
+
+This produces the fat sound typical of a larger
+number of coil windings than on a conventional
+single-coil pickup.
+
+BRIGHT HUM
+
+A conventional humbucking pickup places two coils
+side by side, causing the high frequencies to be
+canceled; however, this model produces a tone that
+preserves these high frequencies while retaining the
+characteristics of a humbucking pickup.
+
+FRETLESS
+
+This models a fretless guitar.
+
+All pickups
+
+MILD,
+STANDARD,
+BRIGHT1,
+BRIGHT2
+
+Selects the fretless tone type.
+
+0–100
+
+This controls the input sensitivity.
+
+0–100
+
+This controls the volume of the
+harmonics.
+
+GUITAR (In BASS MODE)
+
+0–100
+
+Adjusts the attack of the picking
+sound.
+
+Parameter
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+VOLUME
+
+0–100
+
+Adjusts the volume. With a setting
+of 0, there will be no sound.
+
+TONE
+
+0–100
+
+Adjusts the tone of the body. The
+standard value is 100; lowering the
+value creates a softer tone.
+
+*4
+
+This models a Rickenbacker 360. Semi-hollow body
+guitar with two unique single-coil pickups.
+
+Rear and front pickups
+
+Adds a characteristically resonant
+quality to the sound.
+
+DIRECT LEVEL
+
+Equipped with two humbucking pickups and strung
+with flat wound strings.
+
+RICK
+Center and front pickups
+
+0–100
+
+*4
+
+L4
+
+The sound of a Gibson L-4 CES. Acoustic body guitar
+suited for jazz.
+
+Value
+
+ST
+
+The sound of a Fender Stratocaster.
+Simulates the installation of three
+single-coil pickups (passive type).
+
+LP
+
+The sound of a Gibson Les Paul
+Standard. Simulates the installation
+of two humbucking pickups
+(passive type).
+
+FRETLESS
+
+This models a fretless guitar.
+
+TYPE
+
+Selects the pickup position.
+REAR
+
+*1 Valid when the TYPE is set to CLA-ST, MOD-ST, or LIPS.
+
+R+C
+
+*2 Valid when the TYPE is set to TE, LP, P-90, 335, L4, RICK, WIDE
+RANGE, or BRIGHT HUM.
+
+*1
+
+*3 Valid when the TYPE is set to LIPS.
+
+CENTER
+PU SELECT
+
+*4 Valid when the TYPE is set to FRETLESS.
+
+*1
+C+F
+*1
+
+TYPE
+
+FRONT
+
+Value
+
+Explanation
+
+CLA-ST
+
+The sound of a Fender Stratocaster. Simulates the
+installation of three single-coil pickups (passive
+type).
+
+MOD-ST
+
+This models a guitar with three EMG active singlecoil pickups.
+
+TE
+
+The sound of a Fender Telecaster. This models a
+guitar with two single-coil pickups.
+
+Explanation
+
+Select the electric guitar type.
+
+R+F
+*2
+TONE TYPE
+*3
+SENS
+*3
+DEPTH
+*3
+
+Rear pickup
+Rear and center pickups
+Center pickup
+Center and front pickups
+Front pickup
+Rear and front pickups
+
+MILD,
+STANDARD,
+BRIGHT1,
+BRIGHT2
+
+Selects the fretless tone type.
+
+0–100
+
+This controls the input sensitivity.
+
+0–100
+
+This controls the volume of the
+harmonics.
+
+33
+
+

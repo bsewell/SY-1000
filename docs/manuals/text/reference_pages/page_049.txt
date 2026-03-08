@@ -1,0 +1,282 @@
+EFFECT Parameters > FX1–FX3
+Parameter
+
+Value
+
+Explanation
+LO-FI settings can be saved/loaded
+as ten variations.
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+PARAMETRIC EQ
+You can adjust the tone character in four bands.
+Parameter
+
+Value
+
+Explanation
+
+LOW CUT
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+This sets the frequency at which
+the low cut filter begins to take
+effect. When FLAT is selected, the
+low cut filter will have no effect.
+
+OCTAVE/OCTAVE BASS
+
+LOW GAIN
+
+-20–+20 dB
+
+Adjusts the tone for the low
+frequency range.
+
+This adds a note one octave lower and a note two octaves lower,
+creating a richer sound.
+
+LOW-MID
+FREQ
+
+Specifies the center of the
+20.0 Hz–16.0 kHz frequency range that will be
+adjusted by the LOW-MID GAIN.
+
+VARIATION
+
+PATCH, 01–10
+
+Parameter
+
+Value
+
+Explanation
+
+-2OCT
+
+0–100
+
+Adjusts the volume of the sound
+two octaves below.
+
+-1OCT
+
+0–100
+
+Adjusts the volume of the sound
+one octave below.
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+OCTAVE and OCTAVE BASS settings
+can be saved/loaded as ten
+variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+PAN
+With the volume level of the left and right sides alternately changing,
+when playing sound in stereo, you can get an effect that makes the
+guitar sound appear to fly back and forth between the speakers.
+Parameter
+
+Value
+
+Explanation
+
+AUTO
+
+Varies the volume level on the left
+and right according to the settings for
+WAVE SHAPE, RATE, and DEPTH.
+
+MANUAL
+
+Output uses the volume balance set
+with POSITION.
+
+TYPE
+
+WAVE
+SHAPE
+
+Adjusts changes in volume level.
+0–100
+
+A higher value will steepen wave’s
+shape.
+
+0–100, BPM
+Œ–`
+
+Adjusts the frequency (speed) of the
+change.
+
+0–100
+
+Adjusts the depth of the effect.
+
+0–100
+
+Adjusts the volume.
+
+*1
+RATE
+*1 *3
+DEPTH
+*1
+EFFECT
+LEVEL
+POSITION
+*2
+
+L50–CENTER– Adjusts the volume balance between
+R50
+the left and right channels.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each patch.
+PAN settings can be saved/loaded as
+ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded into
+a different patch, which is convenient
+when you’re creating sounds.
+
+*1 Setting available when TYPE is set to AUTO.
+*2 Setting available when TYPE is set to MANUAL.
+*3 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+LOW-MID Q
+
+0.5–16
+
+Adjusts the width of the area
+affected by the EQ centered
+at the LOW-MID FREQ. Higher
+values will narrow the area.
+
+LOW-MID
+GAIN
+
+-20–+20 dB
+
+Adjusts the low-middle
+frequency range tone.
+
+HIGH-MID
+FREQ
+
+Specifies the center of the
+20.0 Hz–16.0 kHz frequency range that will be
+adjusted by the HIGH-MID GAIN.
+
+HIGH-MID Q
+
+0.5–16
+
+Adjusts the width of the area
+affected by the EQ centered
+at the HIGH-MID FREQ. Higher
+values will narrow the area.
+
+HIGH-MID
+GAIN
+
+-20–+20 dB
+
+Adjusts the high-middle
+frequency range tone.
+
+HIGH GAIN
+
+-20–+20 dB
+
+Adjusts the tone for the high
+frequency range.
+
+HIGH CUT
+
+This sets the frequency at which
+20.0 Hz–16.0 kHz, the high cut filter begins to take
+FLAT
+effect. When FLAT is selected, the
+high cut filter will have no effect.
+
+LEVEL
+
+-20–+20 dB
+
+Adjusts the overall volume level
+of the equalizer.
+PARAMETRIC EQ settings can be
+saved/loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+These variations are shared with
+the EQ1 and EQ2 block setting.
+
+PEDAL BEND
+This lets you use the pedal to get a pitch bend effect.
+Typically, you will operate this using an expression pedal connected
+to the CTL3,4/EXP1 jack or the CTL5,6/EXP2 jack.
+* Because of the need to analyze the pitch, chords (two or more
+sounds played simultaneously) cannot be played.
+Parameter
+
+Value
+
+Explanation
+
+PITCH
+
+-24–+24
+
+This sets the pitch at the point
+where the EXP Pedal is all the way
+down.
+
+0–100
+
+Adjusts the pedal position for
+pedal bend. This parameter is
+used after it’s been assigned to
+an expression pedal or similar
+controller.
+
+PEDAL
+POSITION
+
+49
+
+

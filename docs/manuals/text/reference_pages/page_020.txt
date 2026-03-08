@@ -1,0 +1,92 @@
+Settings for the Entire SY-1000 (System Parameters)
+Settings for the SY-1000
+Here you can make settings that are common to the entire SY-1000
+(system parameters).
+For details on each parameter, refer to “SYSTEM Parameters” (p. 81).1
+
+1.	 Press the [SYSTEM] button.
+
+Restoring the Factory Default Settings (Factory
+Reset)
+Restoring the SY-1000’s settings to their original factory default
+settings is referred to as “Factory Reset.”
+Not only can you return all of the settings to the values in effect when
+the SY-1000 was shipped from the factory, you can also specify the
+items to be reset.
+* When you execute “Factory Reset,” the settings you made will
+be lost. Save the data you need to your computer using the
+dedicated software.
+
+1.	 Press the [SYSTEM] button.
+2.	 Use the [K] [J] (PAGE) buttons to select “FACTORY
+RESET.”
+MEMO
+You can use the [K] [J] (PAGE) buttons to see additional items.
+
+2.	 Press a [1]–[6] knob to select the item that you want
+to edit.
+A sub-menu appears.
+
+3.	 Choose the type of settings to be restored to the
+factory default settings with knobs [1] and [6].
+
+3.	 Once again press a [1]–[6] knob to select the item
+that you want to edit.
+4.	 Use knobs [1]–[6] to select parameters or edit the
+values.
+
+Knob
+
+Explanation
+
+[1]
+
+Specifies FROM.
+
+[6]
+
+Specifies TO.
+
+Value
+
+Explanation
+
+SYSTEM
+
+System parameter settings
+
+U01-1–U50-4
+VARIATION
+
+Settings for Patch Numbers
+U01-1–U50-4
+Settings for VARIATION
+
+MEMO
+The method of selecting parameters and editing their value will
+differ depending on the item.
+
+4.	 Press the [WRITE] button.
+Press the [6] knob to execute the factory reset.
+To cancel factory reset, press the [5] knob.
+Once the Factory Reset is complete, you are returned to the Play
+screen.
+
+Turning Off the Auto Off Function
+The SY-1000 can turn off its power automatically. The power will turn
+off automatically when 10 hours have passed since you last played or
+operated the unit. The display will show a message approximately 15
+minutes before the power turns off.
+With the factory settings, this function is turned “ON” (power-off in 10
+hours). If you want to have the power remain on all the time, turn it
+“OFF.”
+
+1.	 Press the [SYSTEM] button.
+2.	 Choose “HARDWARE SETTING” 0 “OTHER.”
+3.	 Use the [1] knob to select “OFF.”
+4.	 Press the [EXIT] button a number of times to return
+to the play screen.
+
+20
+
+

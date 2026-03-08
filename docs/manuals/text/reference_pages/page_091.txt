@@ -1,0 +1,124 @@
+SYSTEM Parameters > TUNER
+MEMO
+If you are using the Bulk Dump function to send the same settings to
+another SY-1000 unit, set both units to the same MODE.
+You can’t perform a bulk dump between two SY-1000 units whose
+MODE differs (one SY-1000 operating in GUITAR MODE and another
+SY-1000 operating in BASS MODE).
+
+GUITAR TO MIDI/BASS TO MIDI
+Parameter
+
+Value
+
+Explanation
+Switches on/off the GUITAR TO
+MIDI/BASS TO MIDI function.
+
+ON/OFF
+
+HOLD CTL
+
+BEND THIN
+
+OFF, ON
+
+If this is OFF, no MIDI messages
+related to GUITAR TO MIDI/BASS TO
+MIDI are transmitted.
+
+GK SW1, GK
+SW2, CTL1,
+CTL2, CTL3,
+CTL4, CTL5,
+CTL6
+
+This setting determines the
+controller used for the HOLD
+function.
+
+OFF, ON
+
+Setting this to ON thins out the
+Pitch Bend messages and reduces
+the volume of MIDI data.
+
+BEND RANGE 0–24
+
+Specifies the maximum range of
+change for pitch bend messages.
+
+BASIC CH
+
+1-11
+
+Specifies the MIDI transmit channel
+used by the GUITAR TO MIDI/BASS
+TO MIDI function.
+
+OFF, ON
+
+When set to ON, the Bank Select
+messages and Program Change
+messages used for the GUITAR TO
+MIDI/BASS TO MIDI function are
+not transmitted when patches are
+changed.
+
+PC MASK
+
+TUNER
+The SY-1000’s tuner function provides two modes: single mode
+(SINGLE MODE) lets you tune one string at a time, and multi mode
+(MULTI MODE) can detect the pitch of six strings simultaneously.
+In the TUNER screen, you can use the [K] [J] (PAGE) buttons to switch
+modes.
+
+TUNER MODE
+Parameter
+
+TUNER MODE
+
+PITCH
+
+Value
+
+Explanation
+
+MULTI MODE
+
+Allows you to tune six strings at the
+same time.
+* Setting available with GK PATCH.
+
+Allows you to tune by playing a
+SINGLE MODE single note on the specific string
+you’re tuning.
+435–445 Hz
+
+Specifies the reference pitch.
+
+MUTE
+
+Sound will not be output while
+tuning.
+
+BYPASS
+OUTPUT
+
+While tuning, the sound of the
+guitar being input to the SY-1000
+will be output without change.
+All INST and effects are off.
+Allows you to tune while outputting
+the sound of the current patch.
+
+THRU
+
+* If ALT TUNE is on, the sound
+processed by the ALT TUNE effect
+is output.
+
+91
+
+

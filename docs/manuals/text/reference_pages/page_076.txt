@@ -1,0 +1,186 @@
+CONTROL ASSIGN Parameters > ASSIGN SETTING
+CHORUS
+
+MAIN OUT
+
+ON/OFF
+
+MAIN OUT PHASE
+
+MODE
+
+MAIN OUT R PHASE
+
+RATE
+DEPTH
+
+SUB OUT
+
+SOURCE list
+Value
+
+Explanation
+
+NUM1–NUM4
+
+Assigns the SY-1000’s number [1]–[4] switch.
+
+CUR NUM
+
+SUB OUT R PHASE
+
+BANK DOWN
+
+Assigns the SY-1000’s [BANKI] switch.
+
+WAVEFORM
+
+MIDI
+
+BANK UP
+
+Assigns SY-1000’s [BANKH] switch.
+
+LOW CUT
+
+MIDI CC#
+
+CTL1, CTL2
+
+HIGH CUT
+
+MIDI PC#
+
+Assigns the SY-1000’s [CTL1] or [CTL2]
+switch.
+
+CTL3, CTL4
+*1 Setting available with GUITAR
+MODE.
+
+Assigns the external footswitch connected
+to the CTL3, 4/EXP1 jack.
+
+CTL5, CTL6
+
+*2 Setting available with BASS
+MODE.
+
+Assigns the external footswitch connected
+to the CTL5, 6/EXP2 jack.
+
+EXP1
+
+*3 Setting available with INST2
+and INST3.
+
+Assigns the external expression pedal
+connected to the CTL3, 4/EXP1 jack.
+
+EXP2
+
+Assigns the external expression pedal
+connected to the CTL5, 6/EXP2 jack.
+
+GK SW1, GK SW2
+
+Assign the [S1] and [S2] switches of the
+divided pickup.
+
+GK VOL
+
+Assigns the volume knob of the divided
+pickup.
+
+EFFECT LEVEL
+
+DIRECT LEVEL
+RATE1
+DEPTH1
+PRE-DELAY1
+EFFECT LEVEL1
+WAVEFORM1
+
+*3
+
+Assigns the same number switch as the
+selected patch number.
+
+SUB OUT PHASE
+
+PRE-DELAY
+
+LOW CUT1
+HIGH CUT1
+RATE2
+DEPTH2
+
+Assigns the wave pedal.
+
+PRE-DELAY2
+EFFECT LEVEL2
+WAVEFORM2
+LOW CUT2
+HIGH CUT2
+OUTPUT MODE
+COMPRESSOR
+ON/OFF
+TYPE
+SUSTAIN
+ATTACK
+
+WAVE PEDAL
+
+Refer to “Virtual Expression Pedal System
+(Wave Pedal)” (p. 77).
+
+STRING1–
+STRING6, STRING *1
+ALL
+STR HiC–STR
+LowB, STRING
+ALL
+
+The assigned target parameter will change
+*2 according to the input level.
+
+NORMAL IN
+CC#1–CC#31,
+CC#64–CC#95
+
+Assigns the Control Change messages from
+an external MIDI device.
+
+EFFECT LEVEL
+
+*1 Setting available with GUITAR MODE.
+
+DIRECT LEVEL
+
+*2 Setting available with BASS MODE.
+
+TONE
+
+*3 Setting available when CONTROL MODE (p. 81) is MEMORY.
+
+SEND/RETURN
+ON/OFF
+MODE
+SEND LEVEL
+RETURN LEVEL
+ADJUST
+PHASE
+DIVIDER
+MODE
+CH SELECT
+MIXER
+BALANCER 1
+BALANCER 2
+BALANCER 3
+A/B BALANCE
+A:PAN
+B:PAN
+
+76
+
+

@@ -1,0 +1,260 @@
+INST Parameters > INST TYPE
+Parameter
+
+INST TYPE
+Value
+
+Explanation
+
+DYNAMIC
+SYNTH
+
+This is a synthesizer that produces a sound
+that responds to the natural nuances of your
+performance.
+
+STR PAN 3rd,
+
+OSC SYNTH
+
+This is a synthesizer that detects the pitch and attack
+information in the input sound and outputs signals
+produced by the built-in oscillator.
+This models the Roland GR-300, the famed analog
+polyphonic guitar synthesizer of yesteryear.
+
+STR PAN HiC
+
+GR-300
+*2
+
+ANALOG GR
+*3
+
+E.GUITAR
+*1
+ACOUSTIC
+*1 *2
+AC BASS
+*1 *3
+E.BASS
+*1
+VIO GUITAR
+*2
+POLY FX
+
+Value
+
+Explanation
+
+STRING PAN 6–
+STRING PAN 1
+
+It provides hexa-distortion, with a hexa-VCO and
+VCF (variable frequency filter) that generates
+independent pitch-shiftable sawtooth waves for
+the six strings, letting you enjoy analog synthesizer
+sounds that reflect the nuances of your guitar
+performance.
+This is the sound of a vintage analog polyphonic
+bass synthesizer. It provides hexa-distortion, with
+a hexa-VCO and VCF (variable frequency filter) that
+generates independent pitch-shiftable sawtooth
+waves for the six strings, letting you enjoy analog
+synthesizer sounds that reflect the nuances of your
+bass performance.
+This provides a variety of electric guitar sounds.
+
+*2
+Specifies the left/right pan of
+each string.
+
+STR PAN LowB
+STR PAN 4th,
+
+L50–CENTER–
+* The pan effect is canceled if a
+R50
+monaural effect is connected
+after the instrument.
+
+STR PAN 2nd,
+STR PAN 1st,
+*3
+
+VARIATION
+
+PATCH, 01–50
+
+You can save and load 50
+variations for each TYPE.
+(COMMON parameters and
+ALT TUNE parameters are
+excepted.)
+A saved VARIATION can be
+loaded into a different patch,
+which is convenient when
+you’re creating sounds.
+
+*1 If the INST TYPE is E.GUITAR, ACOUSTIC, AC BASS, or E.BASS,
+the signal that passes through NOR MIX LEVEL is mixed directly
+before AMP Modeling. Refer to “Signal flow for the NOR MIX
+LEVEL parameter” (p. 23).
+*2 Valid in the GUITAR MODE.
+
+This provides a variety of acoustic guitar sounds.
+
+*3 Valid in the BASS MODE.
+
+This provides a variety of acoustic bass sounds.
+
+Signal flow for the NOR MIX LEVEL parameter
+
+This provides a variety of electric bass sounds.
+
+The flow of the signal that passes through the NOR MIX LEVEL
+depends on the INST TYPE.
+
+By adding overtones (harmonics), this provides a
+soft and distinctive tone.
+
+DYNAMIC SYNTH, OSC SYNTH
+
+This is an effect processor that independently
+processes the signal of each string.
+
+GK IN
+
+INST
+
+Divided Pickup
+
+INST LEVEL
+OSC
+
+FILTER
+
+AMP
+NOR MIX LEVEL
+
+Normal Pickup
+
+Parameters Common to Each INST TYPE
+(COMMON)
+
+GR-300, ANALOG GR, POLY FX
+
+Parameter
+
+Value
+
+Explanation
+
+GK IN
+
+INST ON/OFF
+
+OFF, ON
+
+Instrument on/off
+
+Divided Pickup
+
+INST LEVEL
+
+0–100
+
+Specifies the volume of the
+instrument.
+
+Normal Pickup
+
+NOR MIX SW
+
+OFF, ON
+
+Turns on/off the signal of the
+normal pickup.
+
+0–200
+
+Adjusts the volume of the
+normal pickup.
+
+NOR MIX LEVEL
+*1
+
+E.GUITAR, ACOUSTIC, AC BASS, E.BASS
+INST
+AMP
+Modeling
+
+INST LEVEL
+
+NOR MIX LEVEL
+
+0–100
+
+Specifies the output level of
+each string.
+
+VIO GUITAR
+
+STR LEVEL 2nd,
+
+GK IN
+
+STR LEVEL 1st,
+
+Divided Pickup
+
+*3
+
+E.GUITAR
+ACOUSTIC
+AC BASS
+BASS
+
+Normal Pickup
+
+STR LEVEL LowB
+
+STR LEVEL HiC
+
+INST LEVEL
+NOR MIX LEVEL
+
+Divided Pickup
+
+*2
+
+STR LEVEL 3rd,
+
+GR-300
+ANALOG GR
+POLY FX
+
+GK IN
+
+STRING LEVEL6–
+STRING LEVEL1
+
+STR LEVEL 4th,
+
+INST
+
+INST
+
+INST LEVEL
+GUITAR
+
+HARMO
+
+FILTER
+NOR MIX LEVEL
+
+Normal Pickup
+
+23
+
+

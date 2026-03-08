@@ -1,0 +1,281 @@
+EFFECT Parameters > FX1–FX3
+
+DEFRETTER BASS
+
+Parameter
+
+This simulates a fretless bass.
+
+*7
+
+Parameter
+SENS
+ATTACK
+TONE
+
+MOD RATE
+
+Value
+
+Explanation
+
+MOD DEPTH
+
+0–100
+
+This controls the input sensitivity of
+the defretter.
+
+*7
+
+0–100
+
+Adjusts the attack of the picking
+sound.
+
+*8
+
+-50–+50
+
+Adjusts the amount of blurring
+between the notes.
+
+TRIGGER
+
+MODE
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume of the effect
+sound.
+
+*9
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+
+TRIGGER
+
+DEFRETTER BASS settings can be
+saved/loaded as ten variations.
+
+RISE TIME
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*9
+*9
+FALL TIME
+*9 *10
+FADE TIME
+
+Value
+
+Explanation
+
+0–100
+
+Adjusts the modulation rate of the
+delay sound.
+
+0–100
+
+Adjusts the modulation depth of the
+delay sound.
+
+OFF, ON
+
+If this is ON, the WARP effect is
+applied.
+
+RISE0FALL
+
+Rotation stops when you switch
+TRIGGER from ON to OFF.
+
+RISE0FADE
+
+When you switch TRIGGER from
+ON to OFF, fade-out occurs while
+continuing the rotation.
+
+OFF, ON
+
+The TWIST effect is applied when
+you turn this ON.
+
+0–100
+
+This parameter adjusts the amount
+of time it is to take for the effect to
+transition to the maximum.
+
+0–100
+
+This parameter adjusts the amount
+of time it is to take for the effect to
+transition to the original.
+
+0–100
+
+Adjusts the fade-out time.
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+DELAY
+
+*9 *11
+
+Adds delayed sound to the direct sound, giving more body to the
+sound or creating special effects.
+
+*5
+
+Parameter
+
+CARRY OVER
+
+OFF, ON
+
+Specifies whether the effect sound
+remains when you turn off the
+effect, or does not remain.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+
+DIRECT LEVEL
+
+Value
+
+Explanation
+
+Selects the delay type “TYPE” (p. 46).
+TYPE
+
+* The stereo effect is canceled if a mono effect or
+AMP Modeling is connected after a stereo delay
+effect.
+
+DELAY settings can be saved/loaded
+as ten variations.
+
+TIME
+*1 *12
+D1 TIME
+D2 TIME
+
+1 ms–2000
+ms, BPM `–Œ
+
+Adjusts the delay time.
+
+*2 *12
+*3
+D1 FEEDBACK 0–100
+D2 FEEDBACK
+
+This sets the amount of delay sound
+returned to the input. A higher
+value will increase the number of
+the delay repeats.
+
+*2
+*4
+0–120
+
+D2 EFFECT
+LEVEL
+
+Adjusts the volume of the delay
+sound.
+
+20.0 Hz–16.0
+kHz, FLAT
+
+This sets the frequency at which the
+high cut filter begins to take effect.
+When FLAT is selected, the high cut
+filter will have no effect.
+
+*2
+TAP TIME
+*6
+
+*4 Valid when the TYPE is set to other than DUAL-S, DUAL-P, or DUAL
+L/R.
+*5 Valid when the TYPE is set to other than WARP or TWIST.
+*7 Valid when the TYPE is set to MOD.
+
+HIGH CUT
+
+D2 HIGH CUT
+
+*2 Valid when the TYPE is set to DUAL-S, DUAL-P, or DUAL L/R.
+
+*6 Valid when the TYPE is set to PAN.
+
+*2
+
+D1 HIGH CUT
+
+*1 Valid when the TYPE is set to other than DUAL-S, DUAL-P, DUAL
+L/R, or TWIST.
+*3 Valid when the TYPE is set to other than DUAL-S, DUAL-P, DUAL
+L/R, WARP or TWIST.
+
+EFFECT LEVEL
+
+*3
+
+PATCH, 01–10
+
+These variations are shared with the
+MASTER DELAY setting.
+
+FEEDBACK
+
+D1 EFFECT
+LEVEL
+
+VARIATION
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+0–100%
+
+Adjusts the delay time of the
+right channel delay. This setting
+adjusts the R channel delay time
+relative to the L channel delay time
+(considered as 100%).
+
+*8 Valid when the TYPE is set to WARP.
+*9 Valid when the TYPE is set to TWIST.
+*10 Valid when the MODE is set to RISE0FALL.
+*11 Valid when the MODE is set to RISE0FADE.
+*12 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+45
+
+

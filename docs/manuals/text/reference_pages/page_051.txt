@@ -1,0 +1,290 @@
+EFFECT Parameters > FX1–FX3
+
+REVERB
+
+RING MOD
+
+This effect adds reverberation to the sound.
+Parameter
+
+Value
+
+Explanation
+
+This selects the reverb type. Various different
+simulations of space are offered.
+
+TYPE
+
+This creates a bell-like sound by ring-modulating the guitar sound
+with the signal from the internal oscillator. The sound can be
+unmusical and lack distinctive pitches.
+Parameter
+
+Value
+
+Explanation
+
+INTELLIGENT
+
+OFF, ON
+
+If this is ON, the oscillator
+frequency changes according
+to the pitch of the input sound,
+producing a pitched sound. In this
+case, the expected effect does
+not occur if the pitch of the guitar
+sound is not detected correctly. We
+recommend that you use this with
+single-note playing.
+
+0–100
+
+Adjusts the frequency of the
+internal oscillator.
+
+0–100, BPM
+Œ–`
+
+Adjusts the rate at which the
+internal oscillator is modulated.
+
+0–100
+
+Adjusts the depth to which the
+internal oscillator is modulated.
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume of the effect
+sound.
+
+DIRECT LEVEL
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+
+AMBIENCE
+
+Simulates an ambience mic (offmic, placed at a distance from the
+sound source) used in recording
+and other applications. Rather than
+emphasizing the reverberation, this
+reverb is used to produce a sense of
+openness and depth.
+
+ROOM
+
+Simulates the reverberation in
+a small room. Provides warm
+reverberations.
+
+FREQUENCY
+
+HALL1
+
+Simulates the reverberation in a
+concert hall. Provides clear and
+spacious reverberations.
+
+FREQ MOD
+RATE
+
+HALL2
+
+Simulates the reverberation in
+a concert hall. Provides mild
+reverberations.
+
+PLATE
+
+Simulates plate reverberation (a
+reverb unit that uses the vibration of
+a metallic plate). Provides a metallic
+sound with a distinct upper range.
+
+SPRING
+
+This simulates the sound of a guitar
+amp’s built-in spring reverb.
+
+MOD
+
+This reverb adds the wavering sound
+found in hall reverb to provide an
+extremely pleasant reverb sound.
+
+TIME
+
+0.1 s–10.0 s
+
+Adjusts the length (time) of
+reverberation.
+
+PRE-DELAY
+
+0 ms–500 ms
+
+Adjusts the time until the reverb
+sound appears.
+
+*1
+FREQ MOD
+DEPTH
+
+RING MOD settings can be saved/
+loaded as ten variations.
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+Adjusts the volume of the reverb
+sound.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+This sets the frequency at which the
+low cut filter begins to take effect.
+When FLAT is selected, the low cut
+filter will have no effect.
+
+ROTARY
+
+20.0 Hz–16.0
+kHz, FLAT
+
+This sets the frequency at which the
+high cut filter begins to take effect.
+When FLAT is selected, the high cut
+filter will have no effect.
+
+1–10
+
+Adjusts the density of the reverb
+sound.
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+
+CARRY OVER
+
+OFF, ON
+
+Specifies whether the effect sound
+remains when you turn off the effect,
+or does not remain.
+
+0–100
+
+Adjusts the sensitivity of the spring
+effect. When the value is set higher,
+the effect is obtained even with a
+weak picking.
+
+EFFECT LEVEL 0–100
+
+LOW CUT
+
+HIGH CUT
+
+DENSITY
+
+SPRING SENS
+*1
+
+This produces an effect like the sound of a rotary speaker.
+Parameter
+
+Value
+
+SPEED
+SELECT
+
+SLOW, FAST
+
+RATE SLOW
+*1
+RATE FAST
+
+0–100, BPM
+Œ–`
+
+*1
+
+0–100, BPM
+Œ–`
+
+DEPTH
+
+0–100
+
+RISE TIME
+
+0–100
+
+FALL TIME
+
+0–100
+
+REVERB settings can be saved/loaded
+as ten variations.
+VARIATION
+
+PATCH, 01–10 A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Valid when the TYPE is set to SPRING.
+
+EFFECT LEVEL 0–100
+DIRECT LEVEL 0–100
+
+Explanation
+This parameter changes the
+simulated speaker’s rotating speed
+(SLOW or FAST).
+This parameter adjusts the rotation
+speed when SPEED SELECT is set to
+“SLOW.”
+This parameter adjusts the rotation
+speed when SPEED SELECT is set to
+“FAST.”
+Adjusts the amount of depth in the
+rotary effect.
+This parameter adjusts the time it
+takes for the rotation SPEED SELECT
+to change when switched from
+“SLOW” to “FAST.”
+This parameter adjusts the time it
+takes for the rotation SPEED SELECT
+to change when switched from
+“FAST” to “SLOW.”
+Adjusts the volume.
+Adjusts the volume of the direct
+sound.
+
+51
+
+

@@ -1,0 +1,283 @@
+EFFECT Parameters > AMP (AMP Modeling)
+Parameter
+
+VARIATION
+
+Value
+
+PATCH, 01–10
+
+Explanation
+
+Value
+
+Explanation
+
+AMP Modeling settings can be
+saved/loaded as ten variations.
+
+CONCERT
+
+This models the Ampeg SVT.
+
+SUPER FLAT
+
+A bass amp with flat response.
+
+FLIP TOP
+
+Models the Ampeg B-15.
+
+B MAN
+
+Models the Fender Bassman 100.
+
+BASS 360
+
+Models the Acoustic 360.
+
+SW-TOUR
+
+Models the SWR SM-400.
+
+AC BASS
+
+An amp ideal for ACOUSTIC BASS.
+
+GK BASS
+
+Models the Gallien-Krueger 800RB.
+
+MARK
+
+Models the Markbass Little Mark III.
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+The variations are common to AMP
+Modeling (when E.GUITAR, E.BASS,
+ACOUSTIC, or AC BASS is selected)
+within the INST.
+
+TYPE
+Value
+
+Explanation
+
+TRANSPARENT
+
+An amp with a broad frequency range and an
+extremely flat response. Good for acoustic guitar.
+
+NATURAL
+
+An unembellished, clean sound that minimizes
+the amp’s idiosyncrasies, such as its trebly
+character and boomy low end.
+
+BOUTIQUE
+
+Crunch sound that allows the nuances of your
+picking to be expressed even more faithfully
+than on conventional combo amps.
+
+SP TYPE
+Value
+
+Explanation
+
+OFF
+
+This turns off the speaker simulator.
+
+ORIGINAL
+
+This is the built-in speaker of the amp you selected
+with PREAMP TYPE.
+
+1x8”
+
+This is a compact open-back speaker cabinet with
+one 8-inch speaker.
+
+1x10”
+
+This is a compact open-back speaker cabinet with
+one 10-inch speaker.
+
+1x12”
+
+This is a compact open-back speaker cabinet with
+one 12-inch speaker.
+
+2x12”
+
+This is a general open-back speaker cabinet with
+two 12-inch speakers.
+
+4x10”
+
+This is a large closed-back speaker cabinet with four
+10-inch speakers.
+
+4x12”
+
+This is a large closed-back speaker cabinet with four
+12-inch speakers.
+
+SUPREME
+
+Great-feeling crunch sound that responds to the
+nuances of your picking while taking advantage
+of the distinctive character of a 4x12” speaker
+cabinet.
+
+MAXIMUM
+
+An amp that delivers the distinctively great
+response and tone of a vintage Marshall, while
+making it even higher gain.
+
+JUGGERNAUT
+
+A large stack sound that has been tweaked
+extensively in the pursuit of the ultimate metal
+sound.
+
+X-CRUNCH
+
+Crunch sound that uses MDP to deliver a crisp
+tone from all strings.
+
+8x12”
+
+This is a stack of two cabinets each with four 12-inch
+speakers.
+
+B1x15”
+
+X-HI GAIN
+
+High-gain sound that uses MDP to obtain highgain sound with a wide range and a great-feeling
+sense of separation.
+
+This is a compact open-back speaker cabinet for the
+bass guitar with one 15-inch speaker.
+
+B1x18”
+
+This is a compact open-back speaker cabinet for the
+bass guitar with one 18-inch speaker.
+
+B2x15”
+
+This is a general open-back speaker cabinet for the
+bass guitar with two 15-inch speakers.
+
+B4x10”
+
+This is a large closed-back speaker cabinet for the
+bass guitar with four 10-inch speakers.
+
+B8x10”
+
+This is a stack of two cabinets for bass, each with
+four 10-inch speakers.
+
+X-MODDED
+
+Core sound that uses MDP to preserve the
+definition of the sound even with extreme gain.
+
+JC-120
+
+This models the sound of the Roland JC-120.
+
+TWIN COMBO
+
+This models a Fender Twin Reverb.
+
+DELUXE COMBO This models a Fender Deluxe Reverb.
+TWEED COMBO
+
+This models a Fender Bassman 4x10” Combo.
+
+DIAMOND AMP
+
+This models a VOX AC30.
+
+BRIT STACK
+
+This models a Marshall 1959.
+
+RECTI STACK
+
+Models the sound of the Channel 2 MODERN
+Mode on the MESA/Boogie DUAL Rectifier.
+
+MATCH COMBO
+
+This models the sound input to left input on a
+Matchless D/C-30.
+
+BG COMBO
+
+MIC TYPE
+Value
+
+Explanation
+
+DYN57
+
+This models the sound of the MESA/Boogie
+combo amp.
+
+This is the sound of the SHURE SM57. General
+dynamic mic used for instruments and vocals.
+
+DYN421
+
+ORNG STACK
+
+This models the dirty channel of an ORANGE
+ROCKERVERB.
+
+This is the sound of the SENNHEISER MD-421.
+Dynamic mic with extended low end.
+
+CND451
+
+BGNR UB METAL
+
+This models the sound that models the high-gain
+channel of a Bogner Uberschall.
+
+This is the sound of the AKG C451B. Small condenser
+mic for use with instruments.
+
+CND87
+
+NATURAL BASS
+
+Uncolored clean sound for bass.
+
+This is the sound of the NEUMANN U87. Condenser
+mic with flat response.
+
+X-DRIVE BASS
+
+High-gain sound for bass, using MDP to provide
+wide range and a good-sounding sense of
+separation.
+
+FLAT
+
+Simulates a mic with perfectly flat response.
+Produces a sonic image close to that of listening to
+the sound directly from the speakers (on site).
+
+55
+
+

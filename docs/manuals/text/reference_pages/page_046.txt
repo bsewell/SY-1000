@@ -1,0 +1,259 @@
+EFFECT Parameters > FX1–FX3
+
+TYPE
+Value
+
+Explanation
+
+STEREO1
+
+The direct sound is output from the left channel, and
+the effect sound is output from the right channel.
+
+STEREO2
+
+This is a stereo-in/out delay.
+This delay is specifically for stereo output. This allows
+you to obtain the tap delay effect that divides the
+delay time, then deliver them to L and R channels.
+
+PAN
+
+Value
+
+Explanation
+
+HIGH CUT
+
+20.0 Hz–16.0
+kHz, FLAT
+
+This sets the frequency at which
+the high cut filter begins to take
+effect. When FLAT is selected, the
+high cut filter will have no effect.
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume of the flanger.
+
+DIRECT LEVEL
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+FLANGER and FLANGER BASS
+settings can be saved/loaded as ten
+variations.
+
+TAP TIME
+OUTPUT R
+
+EFFECT LEVEL
+INPUT
+
+Parameter
+
+DELAY
+
+TIME
+OUTPUT L
+
+VARIATION
+
+PATCH, 01–10
+
+FEEDBACK
+
+DUAL-S
+
+This is a delay comprising two different delays
+connected in series.
+
+DUAL-P
+
+This is a delay comprising two delays connected in
+parallel.
+
+DUAL-L/R
+
+This delay lets you specify the L and R channels
+independently. Delay 1 goes to the left channel,
+Delay 2 to the right.
+
+REVERSE
+ANALOG
+
+TAPE
+MOD
+WARP
+
+TWIST
+
+This produces an effect where the sound is played
+back in reverse.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+FOOT VOLUME
+This is a volume control effect.
+Typically, you will operate this using an expression pedal connected
+to the CTL3,4/EXP1 jack or the CTL5,6/EXP2 jack.
+Parameter
+
+Value
+
+Explanation
+
+This gives a mild analog delay sound.
+
+VOLUME MIN 0–100
+
+Sets the volume when the heel of
+the EXP Pedal is depressed.
+
+This setting provides the characteristic wavering
+sound of the tape echo.
+
+VOLUME MAX 0–100
+
+Selects the volume when the toe of
+the EXP Pedal is depressed.
+You can select how the actual
+volume changes relative to the
+amount the pedal is pressed.
+Volume
+
+A delay with a pleasant amount of modulation
+added.
+Produces a dream-like sound.
+Produces an aggressive sense of rotation.
+Using this in conjunction with distortion will
+produce an even wilder sense of rotation.
+
+VOLUME
+CURVE
+
+FLANGER/FLANGER BASS
+
+SLOW1,
+SLOW2,
+NORMAL,
+FAST
+
+Parameter
+
+Value
+
+Explanation
+
+RATE
+*1
+
+0–100, BPM
+Œ–`
+
+This sets the rate of the flanging
+effect.
+
+DEPTH
+
+0–100
+
+Determines the depth of the
+flanging effect.
+
+RESONANCE
+
+0–100
+
+Determines the amount of
+resonance (feedback). Increasing
+the value will emphasize the effect,
+creating a more unusual sound.
+
+MANUAL
+
+0–100
+
+Adjusts the center frequency at
+which to apply the effect.
+
+SEPARATION
+
+0–100
+
+Adjusts the diffusion. The diffusion
+increases as the value increases.
+
+LOW CUT
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+This sets the frequency at which
+the low cut filter begins to take
+effect. When FLAT is selected, the
+low cut filter will have no effect.
+
+ST
+FA
+
+AL
+RM
+O
+N
+2
+OW
+SL
+
+OW
+SL
+
+The flanging effect gives a twisting, jet-airplane-like character to the
+sound.
+
+46
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+When the pedal
+is fully raised
+PEDAL
+POSITION
+
+0–100
+
+1
+
+When the pedal
+is fully advanced
+
+Adjusts the volume.
+FOOT VOLUME settings can be
+saved/loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+The variations are common to FOOT
+VOLUME 1 and FOOT VOLUME 2.
+
+

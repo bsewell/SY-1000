@@ -1,0 +1,266 @@
+EFFECT Parameters > AMP (AMP Modeling)
+
+WAH
+
+AMP (AMP Modeling)
+
+You can control the wah effect in real time by the expression pedal.
+Parameter
+
+Value
+
+Explanation
+
+Selects the type of wah.
+
+TYPE
+
+PEDAL
+POSITION
+
+CRY WAH
+
+This models the sound of the CRY
+BABY wah pedal popular in the ‘70s.
+
+VO WAH
+
+Models the VOX V846.
+
+FAT WAH
+
+This is a wah sound featuring a bold
+tone.
+
+LIGHT WAH
+
+This wah has a refined sound with
+no unusual characteristics.
+
+This expanded wah features a
+7STRING WAH variable range compatible with
+seven-string and baritone guitars.
+RESO WAH
+
+This completely original effect offers
+enhancements on the characteristic
+resonances produced by analog
+synth filters.
+
+BASS WAH
+
+This wah has been specially adapted
+for use in the bass registers.
+Inclusion of the low-frequency
+range in the wah sound produces a
+robust wah effect, with no dilution
+of the sound.
+Adjusts the position of the wah
+pedal.
+
+0–100
+
+* This parameter is used after it’s
+been assigned to an expression
+pedal or similar controller.
+
+PEDAL MIN
+
+0–100
+
+Selects the tone produced when the
+heel of the EXP Pedal is depressed.
+
+PEDAL MAX
+
+0–100
+
+Selects the tone produced when the
+toe of the EXP Pedal is depressed.
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume of the effect
+sound.
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+WAH settings can be saved/loaded
+as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+Simulates the response of the preamp, the size of the speakers, and
+the type of cabinet.
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+TYPE
+
+Selects the AMP type “TYPE” (p. 55).
+
+GAIN
+
+0–120
+
+Adjusts the distortion of the amp.
+
+SAG
+
+-10–+10
+
+Adjusts the amount by which
+compression changes in response
+to the power amp.
+
+-10–+10
+
+Adjusts the amount by which
+dynamics is affected by the
+interaction between the power
+amp and the speaker transformer.
+
+RESONANCE
+
+Adjusts the volume of the entire
+preamp.
+
+LEVEL
+
+0–100
+
+BASS
+
+0–100
+
+Adjusts the tone for the low
+frequency range.
+
+MIDDLE
+
+0–100
+
+Adjusts the tone for the middle
+frequency range.
+
+TREBLE
+
+0–100
+
+Adjusts the tone for the high
+frequency range.
+
+PRESENCE
+
+0–100
+
+Adjusts the tone for the ultra high
+frequency range.
+
+BRIGHT
+
+OFF, ON
+
+GAIN SW
+
+Provides for selection from
+three levels of distortion: LOW,
+MIDDLE, and HIGH. Distortion will
+LOW, MIDDLE, successively increase for settings of
+LOW, MIDDLE and HIGH.
+HIGH
+* The sound of each Type is created
+on the basis that the Gain is set to
+MIDDLE.
+
+SOLO SW
+
+OFF, ON
+
+Switches the tone to one suitable
+for solos.
+
+SOLO LEVEL
+
+0–100
+
+Adjusts the volume level when the
+SOLO SW is ON.
+
+SP TYPE
+
+This setting selects the simulated speaker type “SP
+TYPE” (p. 55).
+
+MIC TYPE
+
+This setting selects the simulated mic type “MIC
+TYPE” (p. 55).
+
+* Be careful not to raise the LEVEL
+setting too high.
+
+Turns the bright setting on/off.
+
+SHORT,
+MIC DISTANCE MEDIUM,
+LONG
+
+* BRIGHT is valid for some of the
+amps in TYPE.
+
+Simulates the distance between
+the mic and speaker.
+The distance from the speakers
+is farther in the order of
+SHORT<MEDIUM<LONG.
+
+This simulates the mic position.
+CENTER
+
+Simulates the condition that the
+mic is set in the middle of the
+speaker cone.
+
+1 cm–10 cm
+
+Simulates the condition that the
+mic is moved away from the center
+of the speaker cone.
+
+MIC LEVEL
+
+0–100
+
+Adjusts the volume of the mic.
+
+DIRECT LEVEL
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+
+MIC POSITION
+
+54
+
+

@@ -1,0 +1,150 @@
+Switching Patches (Tone)
+The Structure and Patches of the SY-1000
+The SY-1000 consists of three sound engines (the INST blocks) and effects whose connections you are free to change (the FX block).
+INST1
+
+FX1
+
+INST2
+
+FX2
+
+INST3
+
+FX3
+
+NORMAL
+
+CMP
+
+S/R
+EQ2
+
+DLY1
+
+SUB L/R
+MST DLY
+
+DS
+
+AMP
+
+EQ1
+
+NS
+
+FV1
+
+CHO
+
+REV
+
+FV2
+
+DIV
+
+MIX
+
+MAIN L/R
+
+MST
+
+DLY2
+
+The INST settings together with the combination of effects are collectively called a “patch.”
+A set of four patches is called a “bank.”
+Patches are managed by their bank (1–50) and number (1–4); the SY-1000 can store 200 patches.
+Bank 50
+Bank 3
+Bank 2
+Bank 1
+
+Patch 1
+
+Patch 2
+
+Patch 3
+
+Patch 4
+
+[1]–[4] switch
+
+BANK [I], BANK [H]
+switch
+
+Types of Bank
+
+Selecting a Patch
+
+The SY-1000 has two types of bank.
+Types of bank
+
+Explanation
+
+Preset bank
+(P01–P50)
+
+Cannot be overwritten, however, you can write
+a preset patch into the User bank, modify the
+settings to your needs and store your modified
+version in the User bank.
+
+User bank (U01–
+U50)
+
+Can be overwritten.
+
+When you switch patches, the tonal character changes.
+BANK [I] [H] switches
+
+Types of Patch
+The SY-1000 has two types of patch.
+Types of patch
+GK PATCH
+
+[1]–[4] switches
+
+Explanation
+
+1.	 Use the BANK [I] [H] switches to select a bank.
+
+Patches for a guitar (bass) that uses a divided
+pickup.
+
+2.	 Use the [1]–[4] switches to select a patch within the
+selected bank.
+
+If these patches are selected, the display shows
+the GK icon
+.
+
+Bank number
+
+Patch number
+
+Patches for a conventional guitar (bass) that is
+connected to the GUITAR INPUT. These can be
+used even if you don’t have a divided pickup.
+
+NORMAL PATCH
+
+You can also use these patches with the
+conventional guitar (bass) signal (normal
+pickup) that is routed through the divided
+pickup.
+Patch name
+
+If you’re using NORMAL PATCH, the GK icon goes
+dark.
+* DYNAMIC SYNTH is the only INST TYPE that
+can be selected for a NORMAL PATCH.
+* Use the “PATCH TYPE” (p. 66) parameter to
+switch to a NORMAL PATCH.
+
+MEMO
+You can also change patches by turning [1] knob below the
+display.
+
+13
+
+

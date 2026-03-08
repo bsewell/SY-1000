@@ -1,0 +1,74 @@
+Basic Operation
+Here we explain how you can use the buttons and knobs to operate
+the SY-1000, and how to switch screens.
+
+About the Icons
+
+Display (Play Screen)
+The screen that appears after you start the SY-1000 is called the “play
+screen.”
+
+Screen 1
+
+Icon
+
+This screen shows the bank number and patch number in especially
+large characters.
+Bank number
+
+Patch number
+
+Explanations
+Indicates the input level of the GK IN
+connector.
+* When using a NORMAL PATCH (p.
+13), this indicates the level of the
+guitar signal.
+Indicates the output level of the MAIN
+OUTPUT jacks and SUB OUTPUT jacks.
+Indicates the input level of the
+RETURN jack.
+* Shown in the EFFECTS edit screen.
+
+Patch name
+
+Indicates the output level of the SEND
+jack.
+
+Screen 2
+
+* Shown in the EFFECTS edit screen.
+
+This screen shows the bank number, patch number, and patch name.
+
+* Shown in the EFFECTS edit screen.
+
+Indicates the output level of the
+selected effect block.
+Indicates BALANCER1–3 and MIXER
+BALANCE.
+* Shown in the EFFECTS edit screen.
+Indicates the BPM.
+
+Screen 3
+This screen shows the functions that are assigned to the pedal
+switches of the unit.
+
+Blinks in time with the BPM.
+Shown when a GK PATCH (p. 13) is
+selected.
+When using a NORMAL PATCH (p.
+13), this icon goes dark.
+When the screen contains multiple
+pages, this indicates the position of
+the current page.
+Indicates the page to which you
+navigate using the [K] [J] (PAGE)
+buttons (edit screen).
+
+Screen 4
+This screen shows how the INST and effects are connected (CHAIN).
+
+11
+
+

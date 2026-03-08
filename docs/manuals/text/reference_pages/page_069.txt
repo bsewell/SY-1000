@@ -1,0 +1,194 @@
+CONTROL ASSIGN Parameters > CONTROL FUNCTION
+Value
+
+Explanation
+
+INST3
+CUTOFF
+
+*1 Assigns the CUTOFF of INST3.
+
+INST ALL
+CUTOFF
+
+*1 Assigns the CUTOFF of all INST1–INST3.
+
+INST1 RESO
+
+*1 Assigns the RESONANCE of INST1.
+
+INST2 RESO
+
+*1 Assigns the RESONANCE of INST2.
+
+INST3 RESO
+
+*1 Assigns the RESONANCE of INST3.
+
+INST ALL
+RESO
+
+*1 Assigns the RESONANCE of all INST1–INST3.
+
+1:GTR VOL
+
+*2
+Assigns the GUITAR (BASS) VOLUME of INST1.
+*4
+
+2:GTR VOL
+
+*2
+Assigns the GUITAR (BASS) VOLUME of INST2.
+*4
+
+3:GTR VOL
+
+*2
+Assigns the GUITAR (BASS) VOLUME of INST3.
+*4
+
+ALL:GTR VOL
+
+*2 Assigns the GUITAR (BASS) VOLUME of all
+*4 INST1–INST3.
+
+1:NOR MIX
+100
+
+Assigns the function of controlling the NOR MIX
+LEVEL of INST1 in the range 0–100.
+
+1:NOR MIX
+200
+
+Assigns the function of controlling the NOR MIX
+LEVEL of INST1 in the range 0–200.
+
+2:NOR MIX
+100
+
+Assigns the function of controlling the NOR MIX
+LEVEL of INST2 in the range 0–100.
+
+2:NOR MIX
+200
+
+Assigns the function of controlling the NOR MIX
+LEVEL of INST2 in the range 0–200.
+
+3:NOR MIX
+100
+
+Assigns the function of controlling the NOR MIX
+LEVEL of INST3 in the range 0–100.
+
+3:NOR MIX
+200
+
+Assigns the function of controlling the NOR MIX
+LEVEL of INST3 in the range 0–200.
+
+ALL:NOR MIX
+100
+
+Assigns the function of controlling the NOR MIX
+LEVEL of INST1–INSTS3 in the range 0–100.
+
+ALL:NOR MIX
+200
+
+Assigns the function of controlling the NOR MIX
+LEVEL of INST1–INSTS3 in the range 0–200.
+
+1:STR BEND
+
+*4 Assigns the STR BEND CONTROL of INST1.
+
+2:STR BEND
+
+*4 Assigns the STR BEND CONTROL of INST2.
+
+3:STR BEND
+
+*4 Assigns the STR BEND CONTROL of INST3.
+
+ALL:STR
+BEND
+
+*4
+
+MODE
+
+Value
+TOGGLE
+MOMENT
+
+Explanation
+The setting is toggled On (maximum value) or Off
+(minimum value) with each press of the footswitch.
+The normal state is Off (minimum value), with
+the switch On (maximum value) only while the
+footswitch is depressed.
+
+PREFERENCE
+Value
+PATCH
+SYSTEM
+
+Explanation
+Different settings can be made independently for
+each patch.
+The same settings will be shared by all patches.
+
+Assigns the STR BEND CONTROL of all INST1–
+INST3.
+
+1:DYNA BEND
+
+Assigns PITCH BEND of DYNAMIC SYNTH for
+INST1.
+
+2:DYNA BEND
+
+Assigns PITCH BEND of DYNAMIC SYNTH for
+INST2.
+
+3:DYNA BEND
+
+Assigns PITCH BEND of DYNAMIC SYNTH for
+INST3.
+
+ALL:DYNA
+BEND
+
+Assigns PITCH BEND of DYNAMIC SYNTH for all
+INST1–INST3.
+
+MIXER BAL
+
+Assigns the A/B BALANCE of MIXER.
+
+BALANCER 1
+
+Assigns the A/B BALANCE of BALANCER1.
+
+BALANCER 2
+
+Assigns the A/B BALANCE of BALANCER2.
+
+BALANCER 3
+
+Assigns the A/B BALANCE of BALANCER3.
+
+*1 Valid when the INST TYPE is set to DYNAMIC SYNTH, OSC SYNTH,
+or GR-300.
+*2 Valid when the INST TYPE is set to E.GUITAR, ACOUSTIC, AC BASS,
+or E.BASS.
+*3 Valid for the PEDAL POSITION parameters of PEDAL BEND, WAH,
+and FOOT VOLUME respectively.
+*4 Setting available with GK PATCH.
+
+69
+
+

@@ -1,0 +1,229 @@
+EFFECT Parameters > EQ 1, EQ2
+Value
+
+Explanation
+This is a crunch sound of the BOSS BD-2.
+
+BLUES OD
+OD-1
+
+This produces distortion that faithfully reproduces
+the nuances of picking.
+This models the sound of the BOSS OD-1.
+This produces sweet, mild distortion.
+
+T-SCREAM
+
+This models an Ibanez TS-808.
+
+TURBO OD
+
+This is the high-gain overdrive sound of the BOSS
+OD-2.
+
+DIST
+
+This gives a basic, traditional distortion sound.
+
+CENTA OD
+
+This models a KLON CENTAUR.
+
+RAT
+
+This models a Proco RAT.
+
+GUV DS
+
+This models a Marshall GUV’NOR.
+
+DIST+
+
+This models the sound of the MXR DISTORTION+.
+
+EQ 1, EQ2
+You can adjust the tone character in four bands.
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+LOW CUT
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+This sets the frequency at which the
+low cut filter begins to take effect.
+When FLAT is selected, the low cut
+filter will have no effect.
+
+LOW GAIN
+
+-20–+20 dB
+
+Adjusts the tone for the low
+frequency range.
+
+LOW-MID
+FREQ
+
+20.0 Hz–16.0
+kHz
+
+Specifies the center of the frequency
+range that will be adjusted by the
+LOW-MID GAIN.
+
+LOW-MID Q
+
+0.5–16
+
+Adjusts the width of the area
+affected by the EQ centered at the
+LOW-MID FREQ. Higher values will
+narrow the area.
+
+LOW-MID
+GAIN
+
+-20–+20 dB
+
+Adjusts the low-middle frequency
+range tone.
+
+HIGH-MID
+FREQ
+
+20.0 Hz–16.0
+kHz
+
+Specifies the center of the frequency
+range that will be adjusted by the
+HIGH-MID GAIN.
+
+HIGH-MID Q
+
+0.5–16
+
+Adjusts the width of the area
+affected by the EQ centered at the
+HIGH-MID FREQ. Higher values will
+narrow the area.
+
+HIGH-MID
+GAIN
+
+-20–+20 dB
+
+Adjusts the high-middle frequency
+range tone.
+
+HIGH GAIN
+
+-20–+20 dB
+
+Adjusts the tone for the high
+frequency range.
+
+HIGH CUT
+
+20.0 Hz–16.0
+kHz, FLAT
+
+This sets the frequency at which the
+high cut filter begins to take effect.
+When FLAT is selected, the high cut
+filter will have no effect.
+
+LEVEL
+
+-20–+20 dB
+
+Adjusts the overall volume level of
+the equalizer.
+
+This models the sound of the BOSS MT-2.
+METAL ZONE
+
+It produces a wide range of metal sounds, from
+old style to slash metal.
+This models the sound of the BOSS HM-2.
+
+HM-2
+
+It produces distinctive cranked-up distortion
+sound with compression.
+This models the sound of the BOSS ML-2.
+
+METAL CORE
+’60S FUZZ
+
+It produces a sound that is ideal for high-speed
+metal riffs.
+This models a FUZZFACE.
+It produces a fat fuzz sound.
+
+MUFF FUZZ
+
+This models an Electro-Harmonix Big Muff π.
+
+BASS OD
+
+Overdrive tuned especially for use with basses.
+
+BASS DS
+
+Distortion tuned especially for use with basses.
+
+BASS MT
+
+Wild, radical distortion sound.
+
+BASS FUZZ
+
+Fuzz tuned especially for use with basses.
+
+HI BAND DRIVE
+
+X-BASS OD
+
+With this effect, distortion is applied only to the
+high frequency sounds, and not to the sounds
+in the low frequency range. It is distinctive for
+producing a strong low-end even when intensely
+distorted.
+This effect uses MDP to provide ideal distortion in
+all pitch ranges of the bass, from low to high.
+
+BASS DRV
+
+This models a TECH21 SANSAMP BASS DRIVER DI.
+
+BASS DI
+
+This models a MXR Bass D.I.+.
+
+EQ settings can be saved/loaded as
+ten variations.
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+These variations are shared with the
+PARAMETRIC EQ setting in FX1–FX3.
+
+58
+
+

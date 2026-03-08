@@ -1,0 +1,242 @@
+EFFECT Parameters > COMPRESSOR
+
+COMPRESSOR
+
+DISTORTION
+
+This is an effect that produces a long sustain by evening out the
+volume level of the input signal.
+
+This effect distorts the sound to create long sustain.
+
+Parameter
+
+Value
+
+Explanation
+
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+TYPE
+
+Selects the compressor type “TYPE” (p. 57).
+
+TYPE
+
+Selects the DISTORTION type “TYPE” (p. 57).
+
+DRIVE
+
+0–120
+
+Adjusts the depth of distortion.
+
+TONE
+
+-50–+50
+
+Adjusts the tone.
+
+LEVEL
+
+0–100
+
+Adjusts the volume of the effect
+sound.
+
+-50–+50
+
+Adjusts the tone for the low
+frequency range. Turning this to the
+left (counterclockwise) produces a
+sound with the low end cut; turning
+it to the right boosts the low end in
+the sound.
+
+SUSTAIN
+ATTACK
+
+0–100
+0–100
+
+Adjusts the range (time) over which
+low-level signals are boosted. Larger
+values will result in longer sustain.
+Adjusts the strength of the attack
+when picking.
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume.
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+
+TONE
+
+Adjusts the tone character.
+
+VARIATION
+
+-50–+50
+
+PATCH, 01–10
+
+BOTTOM
+
+COMPRESSOR settings can be
+saved/loaded as ten variations.
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+SOLO SW
+
+OFF, ON
+
+Switches the tone to one suitable
+for solos.
+
+SOLO LEVEL
+
+0–100
+
+Adjusts the volume level when the
+SOLO SW is ON.
+
+These variations are shared with the
+COMPRESSOR setting in FX1–FX3.
+
+DISTORTION settings can be saved/
+loaded as ten variations.
+VARIATION
+
+PATCH, 01–10
+
+TYPE
+Value
+
+Explanation
+
+BOSS COMP
+
+This models a BOSS CS-3.
+
+Hi-BAND
+
+A compressor that adds an even stronger effect in
+the high end.
+
+LIGHT
+
+A compressor with a light effect.
+
+D-COMP
+
+This models a MXR DynaComp.
+
+MID BOOST
+
+ORANGE
+
+This is modeled on the sound of the Dan Armstrong
+ORANGE SQUEEZER.
+
+CLEAN BOOST
+
+FAT
+
+When applied heavily, this compressor effect
+provides a fat tone with a boosted midrange.
+
+TREBLE BOOST
+
+MILD
+
+When applied heavily, this compressor effect
+produces a sweet tone with the high end cut.
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+TYPE
+Value
+
+CRUNCH
+NATURAL OD
+
+Explanation
+This is a booster with unique characteristics in the
+midrange.
+This not only functions as a booster, but also
+produces a clean tone that has punch even when
+used alone.
+This is a booster that has bright characteristics.
+A lustrous crunch sound with an added element
+of amp distortion.
+This is an overdrive sound that provides distortion
+with a natural feeling.
+
+WARM OD
+
+This is a warm overdrive.
+
+FAT DS
+
+A distortion sound with thick distortion.
+
+LEAD DS
+METAL DS
+OCT FUZZ
+A-DIST
+
+X-OD
+
+X-DIST
+
+Produces a distortion sound with both the
+smoothness of an overdrive along with a deep
+distortion.
+This is a distortion sound that is ideal for
+performances of heavy riffs.
+A fuzz sound with rich harmonic content.
+This uses MDP technology to obtain ideal
+distortion in all ranges of the guitar, from low to
+high.
+This is an overdrive that uses MDP to obtain the
+distortion that’s most appropriate in each pitch
+range.
+This is a distortion that uses MDP to obtain the
+distortion that’s most appropriate in each pitch
+range.
+
+57
+
+

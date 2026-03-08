@@ -1,0 +1,279 @@
+EFFECT Parameters > FX1–FX3
+
+HUMANIZER
+This can create human vowel-like sounds.
+Parameter
+
+Value
+
+Parameter
+
+Value
+
+Explanation
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+ISOLATOR settings can be saved/
+loaded as ten variations.
+
+Explanation
+
+This sets the mode that switches the vowels.
+PICKING
+
+It changes from VOWEL1 to VOWEL2
+along with the picking. The time
+spent for the change is adjusted
+with the rate.
+
+AUTO
+
+By adjusting the rate and depth, two
+vowels (VOWEL1 and VOWEL2) can
+be switched automatically.
+
+VOWEL1
+
+a, e, i, o, u
+
+Selects the first vowel.
+
+VOWEL2
+
+a, e, i, o, u
+
+Selects the second vowel.
+
+MODE
+
+Adjusts the sensitivity of the
+HUMANIZER.
+SENS
+*1
+
+RATE
+
+0–100
+
+When it is set to a lower value, no
+effect of the humanizer is obtained
+with weaker picking, while stronger
+picking produces the effect. When
+it is set to a higher value, the effect
+of the humanizer can be obtained
+whether the picking is weak or
+strong.
+
+*3
+
+0–100, BPM
+Œ–`
+
+Adjusts the cycle for changing the
+two vowels.
+
+DEPTH
+
+0–100
+
+Adjusts the depth of the effect.
+
+0–100
+
+This determines the point where the
+two vowels are switched. When it is
+set to 50, VOWEL1 and VOWEL2 are
+switched in the same length of time.
+When it is set to lower than 50, the
+time for VOWEL1 is shorter. When it
+is set to higher than 50, the time for
+VOWEL1 is longer.
+
+MANUAL
+*2
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume.
+
+BPM
+
+Adjusts the BPM value for each
+patch.
+
+40–250
+
+HUMANIZER settings can be saved/
+loaded as ten variations.
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+LIMITER
+Attenuates loud input levels to prevent distortion.
+Parameter
+
+Value
+
+Explanation
+
+Selects the limiter type.
+TYPE
+
+BOSS LIMITER Selects a stereo limiter.
+RACK 160D
+
+Models a dbx 160X.
+
+VTG RACK U
+
+Models an UREI 1178.
+
+THRESHOLD
+
+0–100
+
+Adjust this as appropriate for the
+input signal. When the input signal
+level exceeds this threshold level,
+compression will be applied.
+
+RATIO
+
+1:1, 1.2:1,
+1.4:1, 1.6:1,
+1.8:1, 2:1,
+2.3:1, 2.6:1,
+3:1, 3.5:1, 4:1,
+5:1, 6:1, 8:1,
+10:1, 12:1,
+20:1, INF:1
+
+Selects the compression ratio
+used with signals in excess of the
+threshold level.
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume.
+
+ATTACK
+
+0–100
+
+Adjusts the strength of the attack
+when picking. Higher values result
+in sharper attack, creating a more
+clearly defined sound.
+
+RELEASE
+
+0–100
+
+Adjusts the release time.
+LIMITER settings can be saved/
+loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Setting available when MODE is set to PICKING.
+*2 Setting available when MODE is set to AUTO.
+*3 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+ISOLATOR
+
+LO-FI
+This deliberately degrades the audio quality to create a distinctive
+impression.
+Parameter
+
+Value
+
+Explanation
+
+An effect that cuts the sound of the specified region.
+
+BIT DEPTH
+
+OFF, 15–1
+
+Specifies the bit depth.
+
+Parameter
+
+Value
+
+SAMPLE RATE OFF, 1/2–1/32 Specifies the sample rate.
+
+BAND
+
+LOW, MIDDLE,
+Selects the frequency region to cut.
+HIGH
+
+RATE
+
+Explanation
+
+*1
+
+0–100, BPM
+Œ–`
+
+Adjusts the rate of the modulation.
+
+DEPTH
+
+0–100
+
+Adjusts the depth of the
+modulation.
+
+BAND LEVEL
+
+0–100
+
+Specifies the amount to cut.
+
+48
+
+BALANCE
+
+D100:E0–
+D0:E100
+
+Adjusts the volume balance
+between the direct sound and the
+effect sound.
+
+

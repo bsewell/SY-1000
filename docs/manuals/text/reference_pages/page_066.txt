@@ -1,0 +1,154 @@
+EFFECT Parameters > MASTER
+
+MASTER
+
+NORMAL INPUT
+
+These settings are applied to the overall patch.
+
+These are the settings for the normal (conventional) guitar signal that
+is input to the GUITAR INPUT jack.
+
+Parameter
+
+Value
+
+Explanation
+
+PATCH LEVEL
+
+0–200
+
+Adjusts the volume of the patch.
+Adjusts the BPM value for each
+patch.
+
+BPM
+
+40–250
+
+C (Am)–B
+(G#m)
+
+* BPM (beats per minute) indicates
+the number of quarter note beats
+that occur each minute
+
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+LEVEL
+
+0–200
+
+Adjusts the volume of the normal
+guitar.
+
+This sets the key for the FX
+HARMONIST.
+
+Major
+KEY
+
+Minor
+Major
+
+CABLE SIM
+
+Minor
+TEMPO HOLD OFF, ON
+
+Specifies whether the tempo (BPM)
+changes or is maintained when you
+switch patches.
+
+PATCH TYPE
+
+Specifies whether this patch is for
+GK or NORMAL.
+
+GK SET
+
+NORMAL SET
+
+GK, NORMAL
+
+SYSTEM,
+SET1-SET10
+
+SYSTEM,
+SET1-SET10
+
+Selects which GK setting to use
+when playing the GK PATCH.
+If you select SYSTEM, the GK setting
+selected by the system parameter
+GK SET is used.
+Selects which NORMAL setting to
+use when playing a NORMAL PATCH.
+If you select SYSTEM, the NORMAL
+setting selected by the system
+parameter NORMAL SET is used.
+
+MEMO
+For details on the GK settings parameter, refer to “GK SETTING” (p.
+81).
+
+About effects when a note value is selected as a
+setting
+* When you specify a note value as the setting for a parameter
+(such as a RATE parameter in INST or EFFECTS), this specifies
+the length (time) of one note. Since this time is calculated
+based on the “BPM” (tempo) of the MASTER block, you can
+easily design the sound to match the tempo of the song.
+* If the note length (time) specified for a RATE or DELAY TIME
+parameter is longer than the allowable range of the setting, a
+time that is 1/2 or 1/4 of the specified time is assigned.
+
+66
+
+OFF, 1m/3ft,
+3m/10ft,
+5m/16ft,
+7m/23ft,
+9m/30ft,
+12m/40ft
+
+Since the guitar signal that is
+detected by the divided pickup
+passes through an active buffer
+and is connected via a cable
+approximately 20 cm (7”) long,
+it will have less high-frequency
+attenuation. For this reason, the
+high-frequency range will be
+different than when you perform
+using a conventional guitar cable.
+By setting this parameter to the
+length of the guitar cable that you
+typically use, you can compensate
+for the difference in tonal character
+between the sound of the divided
+pickup and the normal guitar sound.
+If you connect a conventional guitar
+to the GUITAR INPUT jack, set this
+“OFF.”
+
+PHASE
+
+NORMAL,
+INVERT
+
+Specifies the phase of the normal
+pickup signal.
+
+

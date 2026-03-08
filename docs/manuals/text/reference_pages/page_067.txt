@@ -1,0 +1,341 @@
+CONTROL ASSIGN Parameters
+CONTROL FUNCTION
+
+Value
+
+Explanation
+
+INST 3
+
+Switches the INST3 on and off.
+
+You can control the parameters of the SY-1000 by using the
+SY-1000’s switches or externally-connected devices. Here you can
+make settings to specify which functions are controlled by which
+controllers.
+
+INST ALL
+
+Switches INST1–INST3 all on/off.
+
+INST1 NOR MIX
+
+Switches the INST1 NORMAL MIX SW on and
+off.
+
+INST2 NOR MIX
+
+Switches the INST2 NORMAL MIX SW on and
+off.
+
+INST3 NOR MIX
+
+Switches the INST3 NORMAL MIX SW on and
+off.
+
+NORMAL
+
+Switches the normal pickup signal on/off.
+
+FUNCTION
+[BANKI], [BANKH], [1]–[4] switch, CTL1–CTL6,
+CUR NUM, MANUAL1–MANUAL4, GK SW1, GK SW2
+
+Value
+
+Explanation
+
+OFF
+
+No assignment.
+Switches to the previous BANK number.
+
+BANK DOWN
+
+*1 * This cannot be assigned to the [BANKH] or
+[1]–[4] switches.
+Switches to the next BANK number.
+
+BANK UP
+
+*1 * This cannot be assigned to the [BANKI] or
+[1]–[4] switches.
+
+1
+
+*1
+
+2
+3
+
+*1
+*1
+
+Selects patch number 1.
+* This can be assigned only to the [1] switch.
+Selects patch number 2.
+* This can be assigned only to the [2] switch.
+Selects patch number 3.
+* This can be assigned only to the [3] switch.
+Selects patch number 4.
+
+1:ALT TUNE
+
+*6 Switches INST1’s ALT TUNE on/off.
+
+2:ALT TUNE
+
+*6 Switches INST2’s ALT TUNE on/off.
+
+3:ALT TUNE
+
+*6 Switches INST3’s ALT TUNE on/off.
+
+ALL:ALT TUNE
+
+*6
+
+1:12STR
+
+*6 Switches INST1’s 12STR on/off.
+
+2:12STR
+
+*6 Switches INST2’s 12STR on/off.
+
+3:12STR
+
+*6 Switches INST3’s 12STR on/off.
+
+ALL:12STR
+
+*6 Switches 12STR on/off for all INST1–INST3.
+
+1:STR BEND
+
+*6 Switches INST1’s STR BEND on/off.
+
+2:STR BEND
+
+*6 Switches INST2’s STR BEND on/off.
+
+3:STR BEND
+
+*6 Switches INST3’s STR BEND on/off.
+
+ALL:STR BEND
+
+*6
+
+INST1 LFO1
+
+*2 Switches INST1’s LFO1 on/off.
+
+INST1 LFO2
+
+*2 Switches INST1’s LFO2 on/off.
+
+INST1 LFO1&2
+
+*2 Switches LFO1 and LFO2 on/off for INST1.
+
+INST2 LFO1
+
+*2 Switches INST2’s LFO1 on/off.
+
+INST2 LFO2
+
+*2 Switches INST2’s LFO2 on/off.
+
+INST2 LFO1&2
+
+*2 Switches LFO1 and LFO2 on/off for INST2.
+
+INST3 LFO1
+
+*2 Switches INST3’s LFO1 on/off.
+
+INST3 LFO2
+
+*2 Switches INST3’s LFO2 on/off.
+
+Switches ALT TUNE on/off for all INST1–
+INST3.
+
+Switches STR BEND on/off for all INST1–
+INST3.
+
+4
+
+*1
+
+PATCH +1
+
+*1 Switches to the next patch number.
+
+INST3 LFO1&2
+
+*2 Switches LFO1 and LFO2 on/off for INST3.
+
+*1 Switches to the previous patch number.
+
+INST ALL LFO
+
+*2 Switches all LFOs on/off for all INST1–INST3.
+
+Increases the patch volume level by 10 units.
+
+INST1 SEQ1
+
+*3 Switches INST1’s SEQ1 on/off.
+
+Increases the patch volume level by 20 units.
+
+INST1 SEQ2
+
+*3 Switches INST1’s SEQ2 on/off.
+
+LEVEL -10
+
+Decreases the patch volume level by 10
+units.
+
+INST1 SEQ1&2
+
+*3 Switches SEQ1 and SEQ2 on/off for INST1.
+
+INST2 SEQ1
+
+*3 Switches INST2’s SEQ1 on/off.
+
+LEVEL -20
+
+Decreases the patch volume level by 20
+units.
+
+INST2 SEQ2
+
+*3 Switches INST2’s SEQ2 on/off.
+
+BPM TAP
+
+Used for tap input of the MASTER BPM.
+
+INST2 SEQ1&2
+
+*3 Switches SEQ1 and SEQ2 on/off for INST2.
+
+DLY1 TAP
+
+Used for tap input of the DELAY 1.
+
+INST3 SEQ1
+
+*3 Switches INST3’s SEQ1 on/off.
+
+DLY2 TAP
+
+Used for tap input of the DELAY 2.
+
+INST3 SEQ2
+
+*3 Switches INST3’s SEQ2 on/off.
+
+MST DLY TAP
+
+Used for tap input of the MASTER DELAY.
+
+INST3 SEQ1&2
+
+*3 Switches SEQ1 and SEQ2 on/off for INST3.
+
+FX1 DLY TAP
+
+Used for tap input of the FX1 DELAY.
+
+INST ALL SEQ
+
+*3 Switches all SEQs on/off for all INST1–INST3.
+
+FX2 DLY TAP
+
+Used for tap input of the FX2 DELAY.
+
+1:SEQ1 TRIG
+
+*3 Retriggers SEQ1 of INST1.
+
+FX3 DLY TAP
+
+Used for tap input of the FX3 DELAY.
+
+1:SEQ2 TRIG
+
+*3 Retriggers SEQ2 of INST1.
+
+TUNER
+
+Switches the TUNER on and off.
+
+1:SEQ1&2 TRIG
+
+*3 Retriggers SEQ1 and SEQ2 for INST1.
+
+MANUAL
+
+Switches the MANUAL on and off.
+
+2:SEQ1 TRIG
+
+*3 Retriggers SEQ1 of INST2.
+*3 Retriggers SEQ2 of INST2.
+
+MANUAL/TUNER
+
+Turns MANUAL on/off when briefly pressed;
+turns TUNER on/off when long-pressed.
+
+2:SEQ2 TRIG
+2:SEQ1&2 TRIG
+
+*3 Retriggers SEQ1 and SEQ2 for INST2.
+
+3:SEQ1 TRIG
+
+*3 Retriggers SEQ1 of INST3.
+
+3:SEQ2 TRIG
+
+*3 Retriggers SEQ2 of INST3.
+*3 Retriggers SEQ1 and SEQ2 for INST3.
+*3
+
+PATCH -1
+LEVEL +10
+LEVEL +20
+
+TUNER/MANUAL
+
+* This can be assigned only to the [4] switch.
+
+Turns TUNER on/off when briefly pressed;
+turns MANUAL on/off when long-pressed.
+
+INST 1
+
+Switches the INST1 on and off.
+
+3:SEQ1&2 TRIG
+
+INST 2
+
+Switches the INST2 on and off.
+
+ALL:SEQ TRIG
+
+Retriggers all SEQs on/off for all INST1–
+INST3.
+
+67
+
+

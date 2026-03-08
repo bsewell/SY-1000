@@ -1,0 +1,715 @@
+2026-03-05 19:39:56 [pid:1390] =======================================================
+2026-03-05 19:39:56 [pid:1390]   SY-1000FloorBoard Startup Log
+2026-03-05 19:39:56 [pid:1390]   Version: 2026.03.05
+2026-03-05 19:39:56 [pid:1390] =======================================================
+2026-03-05 19:39:56 [pid:1390] STEP 0: Crash log initialised.
+2026-03-05 19:39:56 [pid:1390] LAUNCH CONTEXT: pid=1390 cwd=/
+2026-03-05 19:39:56 [pid:1390] STEP 0b: Signal handlers and Qt message handler installed.
+2026-03-05 19:39:56 [pid:1390] STEP 1: About to construct QApplication...
+2026-03-05 19:39:56 [pid:1390] STEP 2: QApplication constructed OK.
+2026-03-05 19:39:56 [pid:1390] STEP 3: App name/org set.
+2026-03-05 19:39:56 [pid:1390] STEP 4: About to load Preferences...
+2026-03-05 19:39:56 [pid:1390] STEP 5: Preferences loaded.
+2026-03-05 19:39:56 [pid:1390] STEP 6: Setting Qt style: Fusion
+2026-03-05 19:39:56 [pid:1390] STEP 6b: Qt style applied.
+2026-03-05 19:39:56 [pid:1390] STEP 7: scale=1.20  font=1.26  screen=1728x1084
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.739)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.739)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.739)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "*"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "*******************************************************"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(56.740)" "Mode=0" "SY-1000FloorBoard INITIALISE !! - Scale Ratio = 1.20 - Font Ratio = 1.26"
+2026-03-05 19:39:56 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:56 [pid:1390] STEP 8: SysxIO initialised.
+2026-03-05 19:39:56 [pid:1390] STEP 9: Loading splash image...
+2026-03-05 19:39:57 [pid:1390] STEP 10: Splash shown.
+2026-03-05 19:39:57 [pid:1390] STEP 11: Constructing mainWindow...
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | MW-A: setFixedSize ratio=1.20
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | MW-B: constructing floorBoard...
+2026-03-05 19:39:57 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(57.533)" "Mode=0" "bankTreeList mode switched to USER"
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:57 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(57.570)" "Mode=0" "Auto connect initiate"
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | MIDI_ROUTE type=identity outPort=1 outName=SY-1000 inPort=1 inName=SY-1000 bytes=6
+2026-03-05 19:39:57 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(57.603)" "Mode=0" "sendSysx device=SY-1000 type=identity  "
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:57 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(57.621)" "Mode=0" "build Normal PU stomp"
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:57 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(57.628)" "Mode=0" "build Instrument1 stomp"
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:57 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(57.640)" "Mode=0" "SY-1000 identity scrubbed from Identity_receive=F07E7F0601F7"
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:57 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(57.653)" "Mode=0" "SY-1000 getMsg = F07E100602416903000000000000F7"
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:57 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(57.781)" "Mode=0" "build Instrument2 stomp"
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:57 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(57.935)" "Mode=0" "build Instrument3 stomp"
+2026-03-05 19:39:57 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.095)" "Mode=0" "build Compressor stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.097)" "Mode=0" "build Distortion stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.099)" "Mode=0" "build Amp stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.103)" "Mode=0" "build Noise Suppressor stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.105)" "Mode=0" "build FX1 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.167)" "Mode=0" "build FX2 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.232)" "Mode=0" "build FX3 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.299)" "Mode=0" "build EQ1 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.302)" "Mode=0" "build EQ2 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.304)" "Mode=0" "build Chorus stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.311)" "Mode=0" "build Delay1 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.313)" "Mode=0" "build Delay2 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.314)" "Mode=0" "build Master Delay stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.326)" "Mode=0" "build Reverb stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.329)" "Mode=0" "build FV1 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.331)" "Mode=0" "build FV2 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.333)" "Mode=0" "build S/R Loop stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.335)" "Mode=0" "build Divider stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.337)" "Mode=0" "build branch_AB"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.338)" "Mode=0" "build Mixer stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.339)" "Mode=0" "build Sub Left stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.346)" "Mode=0" "build Sub Right stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.349)" "Mode=0" "build Main Left stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.357)" "Mode=0" "build Main Right stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.360)" "Mode=0" "build split"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.361)" "Mode=0" "build Balancer1 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.362)" "Mode=0" "build split"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.363)" "Mode=0" "build Balancer2 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.364)" "Mode=0" "build split"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.365)" "Mode=0" "build Balancer3 stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.366)" "Mode=0" "build Master stomp"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.394)" "Mode=0" "build tuner menu"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.400)" "Mode=0" "build setup menu"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.406)" "Mode=0" "build Pedal menu"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.475)" "Mode=0" "build System menu"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(58.535)" "Mode=0" "build Assign menu"
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | MW-C: floorBoard constructed OK
+2026-03-05 19:39:58 [pid:1390] [Qt WARNING] ?:0 ? | MW-D: loading stylesheet colour=1 path=:/qss/black.qss
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | MW-E: stylesheet applied
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | MW-F: createActions...
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | MW-G: createMenus...
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | MW-H: createStatusBar...
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | MW-I: setCentralWidget...
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | MW-J: SysxIO connect...
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | MW-K: mainWindow constructor complete
+2026-03-05 19:40:00 [pid:1390] STEP 12: mainWindow constructed OK.
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.349)" "Mode=0" "Auto connect succeeded, identity reply bytes=15"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.350)" "Mode=0" "REQUEST BULK PATCH NAMES x0 sendSysx(sysxMsg, bulkPatchNamesSize);"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | MIDI_ROUTE type=bulkNames outPort=1 outName=SY-1000 inPort=1 inName=SY-1000 bytes=18
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.370)" "Mode=0" "sendSysx device=SY-1000 type=bulkNames  "
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.408)" "Mode=0" "SY-1000 bulkNames scrubbed from bulk_names= F041100000006911520000000000187F17F7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.421)" "Mode=0" "SY-1000 getMsg = F0411000000069125200000047202D20536F20666172204177617920472050726E7A204F7267616E202020204C657320502044697374202020202020535550455220434C45414E2054452020444F55424C45203132202020202020204C65732050204469737420202020202055532044697374726963742044656C7947202D20446973746F7274696F6E202047202D20536F2066617220417761792047205570746F776E2046756E6B204F7247202D2044657065636865204D6F646544594E414D494320534157204C454144464149525920535452494E4753202020563A21F7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.457)" "Mode=0" "SY-1000 getMsg = F04110000000691252000152204576657279626F64792057545247202D20446973746F7274696F6E2020534341524945522053455155454E4345464C4153484241434B202020202020204D4F4E4F20504F5254412053494E45204F564552544F4E45204C45414420202053415455524E2020202020202020202056494E544147452053594E4252415353464C55545920475549544152202020205741524D2044524541444E4F554748544452414D415449432043554520202020554E444552574154455220424153532053494D504C452053594E2042415353205355504509F7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.542)" "Mode=0" "SY-1000 getMsg = F0411000000069125200032452205348494D4D455220202043484F52442053455155454E4345202047522D53594E5448205041442020202047202D20476574204C75636B7920202050393026544520434C45414E20475452415250454747494F2053544550202020574944452052414E4745204C45414420534C4F57205452454D20455020202020444144474144203132535452494E4720504F4C5946582B5041442B5345512020464F4F4C454420594F5520414741494E5245504C4943414E54202020202020204449414D4F4E4420524F434B2020202057494445204168F7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.609)" "Mode=0" "SY-1000 getMsg = F041100000006912520004765250454747494F20202043415645205357494D20202020202020535745455020535452494E4753202020494E46494E4954452046422043544C315445202B20504144202B2053455120204143524F535320544845204C414B4520564853204252415353202020202020205452492D48494748204741494E20432052494E474348494D452B5351205041444F4E45204E494E45204E494E45204252414D4249454E54205343415045202020504144205048415345204543484F20205345512B444C592047545220202020205350494E20564F5832F7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.691)" "Mode=0" "SY-1000 getMsg = F04110000000691252000648202020202020202053594E43524F54524F4E202020202020535550455220434C45414E2054452020534C49434552204F462046495245202046554E4B59204F534320202020202020534C495020414E4420474C4944452020424C5545535933333520202020202020475233303020262046414E544153494153594E43454420535155415245202020464154204C4159455220425241535320435245414D59204C50264553202020205457494E4B4C452042454C4C2650414E4C4F46492054414C4B4552202020202056494F2D42415353202055F7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] STEP 13: Loading MIDI map...
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.768)" "Mode=0" "SY-1000 getMsg = F0411000000069125200081A20202020202042415249544F4E45205452454D202020484F4C44204F4E2020202020202020204D5953544552494F555320504950452041495220564F4943452050414420202053542653594E544820202020202020204752415353592053594E54482047542035544827532052554C45212020202020535041524B4C452020202020202020204A415A5A59203333352F4C342020202046554E204F4E2043544C20312020202056494F204754202620535420504144204F534320414952204C45414420202020504F4C592046554E4B5920474AF7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.837)" "Mode=0" "SY-1000 getMsg = F0411000000069125200096C54522020574F42424C4520424153532020202020414C49454E20464F4C4B20534F4E472055736865722032202020202020202020444F55424C452031322020202020202050524554545920262047524F53532020534C4F5720544F55434820464C54202050574D204F4354204C45414420202020504F4C5920414D50202020202020202053555045522042454E442053594E5448534F4654204252415353263132414720545249204F534320434F4D424F202020534C4F5720414D4249454E542020202057414C4B20414C534F2052554E202EF7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.912)" "Mode=0" "SY-1000 getMsg = F04110000000691252000B3E20204352595354414C264752202020202020504C55434B2056494F2D47554954415244525620475452203C2D3E4143202020425245415448494E47204F555420202053594E2D4841524D4F4E49434120202053504C495420535452494E4753202020454726414720572F53542050414420205041442F52485954484D204253264848534C4F572052495345203E43544C3120464C59494E47204541474C45202020204455454C494E2042202020202020202057414C4B494E47204F4E204D415253204D4F4E4F204F5343204C45414420202053F7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:00 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(00.980)" "Mode=0" "SY-1000 getMsg = F04110000000691252000D104D4F4E4F2053594E4320535155415245504F4C5920475549544152202020202052455A205345512020202020202020204F534320534157204C4541443E4F442050574D2042454C4C20475452202020204E594C4F4E2B42454C4C205041442020334F53432053455120534C49434520204445455020504144202020202020202046415420504F4C592053594E54482020414456414E434544204C454144204F44582D464144452046494C5445522020204F53432048415250202020202020202046414E54415349412020202020202020524975F7"
+2026-03-05 19:40:00 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.062)" "Mode=0" "SY-1000 getMsg = F04110000000691252000E624348204E594C4F4E20202020202044524956494E2753455126532E504144534F465420464C5420424153532020204D414C4C455420504144202020202020424153532B31325354522053504C495447415244454E20424952444945532020464C4F4154494E472053494E452020205245534F2050574D20202020202020204D4F44554C4154494F4E204D4158202052494E47204D4F44204D4958202020205048415345204F534320455020202020524F424F54205741525A202020202020504F4C5920444953542B4752202020205452454B66F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.135)" "Mode=0" "SY-1000 getMsg = F041100000006912520010344B494E47202020202020202043484F525553204F5343204550202020452E502E205048415345202020202020434849434B454E202020202020202020484F4C4420594F5552204E455256452046422053574545504552532020202020557368657220444A20202020202020204352415A59204449414D4F4E442020204D4F56494E47205345512050414420204641542047522D333030204C454144204352554E434859204F5247414E2020204E594C4F4E20445245414D53202020204C4F46492C57494E4426414C4F4E4520444554554E457DF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.213)" "Mode=0" "SY-1000 getMsg = F04110000000691252001206205448452053594E54485345504152415445204F53432053594E4D414749432042415249544F4E4520204754204F53432050414E2053455120204D414A45535449432043484F4952202050415241474C4944455220202020202042415249544F4E455320202020202020504C4159205448452043484F524421204D454C4C4F572053594E204C4541442034544820534C4F57205041442020202031325354205245534F204F50454E20474155544F2050495443482043484E4720545249504C4520504F4C592046582020494E2054484520522CF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] STEP 14: MIDI map loaded.
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.292)" "Mode=0" "SY-1000 getMsg = F0411000000069125200135841494E2032202020494E20544845205241494E20332020202B43484F50204E4F49534520534551204C4F572053594E54482020202020202053574545502053594E5448202020202041432054595045204348414E474520205351522053484F525420574156452020465249454E445320202020202020202042494720535452494E47532020202020434C45414E2043484F524420202020204155544F2D434152544F4F4E20202020434C45414E2043484F52442020202020434F4E20554B554C454C4520202020204541474C4520434120207FF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] STEP 15: Window geometry set.
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.359)" "Mode=0" "SY-1000 getMsg = F0411000000069125200152A202020202020524F424F5420444953434F2020202020424947205048415345522050414420204C464F2044594E2050554C5345202020535420534F554C20434C45414E202020484F4C442F545749535420202020202050414E20464C5554452020202020202047202D476574204C75636B79205061644249472042414C4C41442020202020204F5343204452554D20534554202020204C4556454C20382020202020202020204252555445202620464C5554452020204A415A5A20434F4D424F20202020202056202D20557365204D65202026F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.438)" "Mode=0" "SY-1000 getMsg = F0411000000069125200167C202020205349544152204E4947485453202020204C656164204775697461722053686F724C6561642047756974617220202020204C6561642043686F70202020202020204E4F523A534157204C454144202020204E4F523A50574D204F4354204C4541444E4F523A53594E43204C4541442020204E4F523A46494C544552204C454144204E4F523A4252415353202020202020204E4F523A4252415353203220202020204E4F523A4F5247414E202020202020204E4F523A4F5247414E203220202020204E4F523A574F42424C452042415362F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.506)" "Mode=0" "SY-1000 getMsg = F0411000000069125200184E53204E4F523A4D4958454420534551202020562056616C6572696520202020202020563A204576657279626F64792057547AF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.596)" "Mode=0" "Bulk names reply size = 3423  sequence = 0"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | MIDI_ROUTE type=system outPort=1 outName=SY-1000 inPort=1 inName=SY-1000 bytes=18
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.617)" "Mode=0" "sendSysx device=SY-1000 type=system  "
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] STEP 16: Window shown. Entering event loop...
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.661)" "Mode=0" "SY-1000 getMsg = F0411000000069120000000001017EF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.674)" "Mode=0" "SY-1000 getMsg = F041100000006912000100000000000201000063010100000000000000000000000200000003000000010000000C00000004000100F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.686)" "Mode=0" "SY-1000 getMsg = F041100000006912000110000100010000000100010001006E00090002000000010000000000000000040003000101000001000000010101000000000000001000110012001700000000000019F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.708)" "Mode=0" "SY-1000 getMsg = F0411000000069120001200000080008000800080008000800080008000800000000000000000017F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.721)" "Mode=0" "SY-1000 getMsg = F04110000000691200013000020010000003010100010102030405060708090A0B0C0B0C00000052F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.733)" "Mode=0" "SY-1000 getMsg = F04110000000691200014000494E495420534554070A021612140F001664646464646400001010002172F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.756)" "Mode=0" "SY-1000 getMsg = F04110000000691200015000494E495420534554000A01101214121416556462485E640000101000200DF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.767)" "Mode=0" "SY-1000 getMsg = F04110000000691200016000494E495420534554000A011012141214164141414141410000101000201CF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.778)" "Mode=0" "SY-1000 getMsg = F04110000000691200017000494E495420534554000A011012141214164141414141410000101000200CF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.802)" "Mode=0" "SY-1000 getMsg = F04110000000691200020000494E495420534554000A011012141214164141414141410000101000207BF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.812)" "Mode=0" "SY-1000 getMsg = F04110000000691200021000494E495420534554000A011012141214164141414141410000101000206BF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.827)" "Mode=0" "SY-1000 getMsg = F04110000000691200022000494E495420534554000A011012141214164141414141410000101000205BF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.846)" "Mode=0" "SY-1000 getMsg = F04110000000691200023000494E495420534554000A011012141214164141414141410000101000204BF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.860)" "Mode=0" "SY-1000 getMsg = F04110000000691200024000494E495420534554000A011012141214164141414141410000101000203BF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.877)" "Mode=0" "SY-1000 getMsg = F04110000000691200025000494E495420534554000A011012141214164141414141410000101000202BF7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.889)" "Mode=0" "SY-1000 getMsg = F04110000000691200026000494E4954205345540032323A40404000F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.902)" "Mode=0" "SY-1000 getMsg = F04110000000691200027000494E4954205345540132323240404077F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.915)" "Mode=0" "SY-1000 getMsg = F04110000000691200030000494E4954205345540032323240404067F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.927)" "Mode=0" "SY-1000 getMsg = F04110000000691200031000494E4954205345540032323240404057F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.940)" "Mode=0" "SY-1000 getMsg = F04110000000691200032000494E4954205345540032323240404047F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.952)" "Mode=0" "SY-1000 getMsg = F04110000000691200033000494E4954205345540032323240404037F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.963)" "Mode=0" "SY-1000 getMsg = F04110000000691200034000494E4954205345540032323240404027F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.974)" "Mode=0" "SY-1000 getMsg = F04110000000691200035000494E4954205345540032323240404017F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:01 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(01.987)" "Mode=0" "SY-1000 getMsg = F04110000000691200036000494E4954205345540032323240404007F7"
+2026-03-05 19:40:01 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.000)" "Mode=0" "SY-1000 getMsg = F04110000000691200037000494E4954205345540032323240404077F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.013)" "Mode=0" "SY-1000 getMsg = F04110000000691200040000000020201101200E021E0B1E20201101200E021E0B1E000020200E01201701200F1E20200E0120170120001E0C080C08080F080F0101010020202020220604646464640007072EF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.024)" "Mode=0" "SY-1000 getMsg = F04110000000691200041000016BF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.037)" "Mode=0" "SY-1000 getMsg = F0411000000069120004200000010B0800100038F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.049)" "Mode=0" "SY-1000 getMsg = F0411000000069120004210000020100000256F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.061)" "Mode=0" "SY-1000 getMsg = F0411000000069120008000000000C0301000063010101010000000000000000000200000003000000010000000C0000000400006BF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.078)" "Mode=0" "SY-1000 getMsg = F041100000006912000810000100010001000100010001006E0009000000000000000000000000000004000300000000000000000000000000000000000000100011001200170000000000001AF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.090)" "Mode=0" "SY-1000 getMsg = F0411000000069120008200000080008000800080008000800080008000800000000000000000010F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.104)" "Mode=0" "SY-1000 getMsg = F0411000000069120008300000001001000000000000000000000000000000000000000000000037F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.117)" "Mode=0" "SY-1000 getMsg = F04110000000691200084000494E495420534554000E090732323232323141414141414100001010002069F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.131)" "Mode=0" "SY-1000 getMsg = F04110000000691200085000494E495420534554000E090732323232323141414141414100001010002059F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.152)" "Mode=0" "SY-1000 getMsg = F04110000000691200086000494E495420534554000E090732323232323141414141414100001010002049F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.170)" "Mode=0" "SY-1000 getMsg = F04110000000691200087000494E495420534554000E090732323232323141414141414100001010002039F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.183)" "Mode=0" "SY-1000 getMsg = F04110000000691200090000494E495420534554000E090732323232323141414141414100001010002028F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.200)" "Mode=0" "SY-1000 getMsg = F04110000000691200091000494E495420534554000E090732323232323141414141414100001010002018F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.216)" "Mode=0" "SY-1000 getMsg = F04110000000691200092000494E495420534554000E090732323232323141414141414100001010002008F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.230)" "Mode=0" "SY-1000 getMsg = F04110000000691200093000494E495420534554000E090732323232323141414141414100001010002078F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.243)" "Mode=0" "SY-1000 getMsg = F04110000000691200094000494E495420534554000E090732323232323141414141414100001010002068F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.254)" "Mode=0" "SY-1000 getMsg = F04110000000691200095000494E495420534554000E090732323232323141414141414100001010002058F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.268)" "Mode=0" "SY-1000 getMsg = F04110000000691200096000494E4954205345540032323240404001F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.283)" "Mode=0" "SY-1000 getMsg = F04110000000691200097000494E4954205345540032323240404071F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.297)" "Mode=0" "SY-1000 getMsg = F041100000006912000A0000494E4954205345540032323240404060F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.310)" "Mode=0" "SY-1000 getMsg = F041100000006912000A1000494E4954205345540032323240404050F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.328)" "Mode=0" "SY-1000 getMsg = F041100000006912000A2000494E4954205345540032323240404040F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.342)" "Mode=0" "SY-1000 getMsg = F041100000006912000A3000494E4954205345540032323240404030F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.353)" "Mode=0" "SY-1000 getMsg = F041100000006912000A4000494E4954205345540032323240404020F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.364)" "Mode=0" "SY-1000 getMsg = F041100000006912000A5000494E4954205345540032323240404010F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.381)" "Mode=0" "SY-1000 getMsg = F041100000006912000A6000494E4954205345540032323240404000F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.396)" "Mode=0" "SY-1000 getMsg = F041100000006912000A7000494E4954205345540032323240404070F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.410)" "Mode=0" "SY-1000 getMsg = F041100000006912000B0000000020200E0120170120001E20200E0120170120001E000020200E0120170120001E20200E0120170120001E0C080C080604060401010101202020202006046464646400070759F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.424)" "Mode=0" "SY-1000 getMsg = F041100000006912000B10000065F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.443)" "Mode=0" "SY-1000 getMsg = F041100000006912000B200000010B0800100031F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.457)" "Mode=0" "SY-1000 getMsg = F041100000006912000B210000000000000252F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.461)" "Mode=0" "SYSTEM MIDI DATA LOADED SUCESSFULLY !!"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.462)" "Mode=0" "SENDING PATCH REQUEST"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | MIDI_ROUTE type=patch outPort=1 outName=SY-1000 inPort=1 inName=SY-1000 bytes=18
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.485)" "Mode=0" "sendSysx device=SY-1000 type=patch  "
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.540)" "Mode=0" "SY-1000 getMsg = F041100000006912100000004C65732050204469737420202020202001000100010001000100010021001D0000000000000000000000000008040003001000110012001700010002000104030000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.555)" "Mode=0" "SY-1000 getMsg = F0411000000069121000020000006EF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.572)" "Mode=0" "SY-1000 getMsg = F04110000000691210000300000800080008000800080008000B0008000800000004000108000015F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.585)" "Mode=0" "SY-1000 getMsg = F0411000000069121000040000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000054F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.598)" "Mode=0" "SY-1000 getMsg = F0411000000069121000044000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000014F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.624)" "Mode=0" "SY-1000 getMsg = F0411000000069121000050000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000053F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.642)" "Mode=0" "SY-1000 getMsg = F0411000000069121000054000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000013F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.653)" "Mode=0" "SY-1000 getMsg = F0411000000069121000060000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000052F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.679)" "Mode=0" "SY-1000 getMsg = F0411000000069121000064000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000012F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.712)" "Mode=0" "SY-1000 getMsg = F0411000000069121000070000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000051F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.726)" "Mode=0" "SY-1000 getMsg = F0411000000069121000074000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000011F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.739)" "Mode=0" "SY-1000 getMsg = F0411000000069121000080000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000050F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.752)" "Mode=0" "SY-1000 getMsg = F0411000000069121000084000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F00000000000010F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.785)" "Mode=0" "SY-1000 getMsg = F0411000000069121000090000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F0000000000004FF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.811)" "Mode=0" "SY-1000 getMsg = F0411000000069121000094000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F0000000000000FF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.825)" "Mode=0" "SY-1000 getMsg = F04110000000691210000A0000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F0000000000004EF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.838)" "Mode=0" "SY-1000 getMsg = F04110000000691210000A4000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F0000000000000EF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.866)" "Mode=0" "SY-1000 getMsg = F04110000000691210000B0000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F0000000000004DF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.880)" "Mode=0" "SY-1000 getMsg = F04110000000691210000B4000000000080800000008000001090000000000030F0F0F00001401000100000000030F0F0F0000000000000DF7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.906)" "Mode=0" "SY-1000 getMsg = F041100000006912100012000000060402000000000000030E0800030E08020000000000030E0800030E080200003232323232323232323232320000060406040000010000010000060400040B000000320001020300040D0518020618101818070E0A18010803090F0B180C1112131415161707F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.936)" "Mode=0" "SY-1000 getMsg = F041100000006912100014000000000100050254F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.949)" "Mode=0" "SY-1000 getMsg = F0411000000069121000150001035000090464646464646432323232323276F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:02 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(02.963)" "Mode=0" "SY-1000 getMsg = F04110000000691210001600010014000120404640404A3232461440402C00000000000000000002010000501440404000001E00003200001E00001E0100043200320000001E01000000202C202C202C202C202C202C202C202C202C202C202C202C202C202C202C202C1E501E501E501E501E501E501E501E501E501E501E501E501E501E501E501E5000640064006400640064006400640064006400640064006400640064006400640101046D0000010101010000000000000000000000000101046D0000020202020000000000000000000000000100430118F7"
+2026-03-05 19:40:02 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.034)" "Mode=0" "SY-1000 getMsg = F041100000006912100018000001204032320A1E103202274032320A1E10320100001E0000020100003200324005140A024A3200282302001E00003200005000000001000432646400000000011EF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.065)" "Mode=0" "SY-1000 getMsg = F0411000000069121000190000004B1E013214001040104000001E1E003232001E49F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.085)" "Mode=0" "SY-1000 getMsg = F04110000000691210001A0003000132003232006464010A4414105D27323F0E00000032010100056400011E1E0000200E0120170120201E203FF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.099)" "Mode=0" "SY-1000 getMsg = F04110000000691210001B000050320232323232323264400000321010323232320000010032010000056400011E1E0000200E0120170120201E2028F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.112)" "Mode=0" "SY-1000 getMsg = F04110000000691210001C0000646400320032320064640117321010323232320000010032010000056400011E1E0000200E0120170120201E203DF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.137)" "Mode=0" "SY-1000 getMsg = F04110000000691210001D00000501320032320064642C3200643200324601321464011E1E0000200E0120170120201E2036F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.150)" "Mode=0" "SY-1000 getMsg = F04110000000691210001E0000643240644001013246051E01013232011E1E18F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.164)" "Mode=0" "SY-1000 getMsg = F04110000000691210001F000000202020202020404040404040000020202C2C2C2C4A4A474747475A5A555A5A5A0F0F0A0A0A0A002020202020200054F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.176)" "Mode=0" "SY-1000 getMsg = F0411000000069121000200000033D00060464646464646432323232323202F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.190)" "Mode=0" "SY-1000 getMsg = F04110000000691210002100010014000120404640404A3232461440402C00000000000000000002010000501440404000001E00003200001E00001E0100043200320000001E01000000202C202C202C202C202C202C202C202C202C202C202C202C202C202C202C202C1E501E501E501E501E501E501E501E501E501E501E501E501E501E501E501E5000640064006400640064006400640064006400640064006400640064006400640101046D0000010101010000000000000000000000000101046D000002020202000000000000000000000000010043010DF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.267)" "Mode=0" "SY-1000 getMsg = F041100000006912100023000001204032320A1E103202274032320A1E10320100001E0000020100003200324005140A024A3200282302001E000032000050000000010004326464000000000113F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.294)" "Mode=0" "SY-1000 getMsg = F0411000000069121000240000004B1E013214001040104000001E1E003232001E3EF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.314)" "Mode=0" "SY-1000 getMsg = F04110000000691210002500000001320032320064640001321010323232320000010032010000056400011E1E01001E0F0322170024241E2007F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.327)" "Mode=0" "SY-1000 getMsg = F041100000006912100026000050320232323232323264400000321010323232320000010032010000056400011E1E0000200E0120170120201E201DF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.352)" "Mode=0" "SY-1000 getMsg = F0411000000069121000270000646400320032320064640117321010323232320000010032010000056400011E1E0000200E0120170120201E2032F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.366)" "Mode=0" "SY-1000 getMsg = F04110000000691210002800000501320032320064642C3200643200324601321464011E1E0000200E0120170120201E202BF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.384)" "Mode=0" "SY-1000 getMsg = F0411000000069121000290000643240644001013246051E01013232011E1E0DF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.398)" "Mode=0" "SY-1000 getMsg = F04110000000691210002A00010B202020202020404040404040010020202C2C2C2C4A4A474747475A5A555A5A5A0F0F0A0A0A0A00202020202020003CF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.410)" "Mode=0" "SY-1000 getMsg = F04110000000691210002B0000006400060464646464646432323232323253F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.436)" "Mode=0" "SY-1000 getMsg = F04110000000691210002C00010014000120404640404A3232461440402C00000000000000000002010000501440404000001E00003200001E00001E0100043200320000001E01000000202C202C202C202C202C202C202C202C202C202C202C202C202C202C202C202C1E501E501E501E501E501E501E501E501E501E501E501E501E501E501E501E5000640064006400640064006400640064006400640064006400640064006400640101046D0000010101010000000000000000000000000101046D0000020202020000000000000000000000000100430102F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.503)" "Mode=0" "SY-1000 getMsg = F04110000000691210002E000001204032320A1E103202274032320A1E10320100001E0000020100003200324005140A024A3200282302001E000032000050000000010004326464000000000108F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.528)" "Mode=0" "SY-1000 getMsg = F04110000000691210002F0000004B1E013214001040104000001E1E003232001E33F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.542)" "Mode=0" "SY-1000 getMsg = F04110000000691210003000000001320032320064640101321010323232320000010032010000056400011E1E0000200E0120170120201E2006F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.567)" "Mode=0" "SY-1000 getMsg = F041100000006912100031000050320232323232323264400000321010323232320000010032010000056400011E1E0000200E0120170120201E2012F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.585)" "Mode=0" "SY-1000 getMsg = F0411000000069121000320000646400320032320064640117321010323232320000010032010000056400011E1E0000200E0120170120201E2027F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.599)" "Mode=0" "SY-1000 getMsg = F04110000000691210003300000501320032320064642C3200643200324601321464011E1E0000200E0120170120201E2020F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.613)" "Mode=0" "SY-1000 getMsg = F0411000000069121000340000643240644001013246051E01013232011E1E02F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.633)" "Mode=0" "SY-1000 getMsg = F041100000006912100035000000202020202020404040404040000020202C2C2C2C4A4A474747475A5A555A5A5A0F0F0A0A0A0A00202020202020003EF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.647)" "Mode=0" "SY-1000 getMsg = F0411000000069121000360001004F2F24645261F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.659)" "Mode=0" "SY-1000 getMsg = F04110000000691210003700000B3240324000003218F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.671)" "Mode=0" "SY-1000 getMsg = F04110000000691210003800010924141045293247000000003201010005640062F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.687)" "Mode=0" "SY-1000 getMsg = F04110000000691210003900011E1E0179F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.703)" "Mode=0" "SY-1000 getMsg = F04110000000691210003A000120200E01180C0120001E2063F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.716)" "Mode=0" "SY-1000 getMsg = F04110000000691210003B000020200E0120170120001E2050F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.730)" "Mode=0" "SY-1000 getMsg = F04110000000691210003C000000010900141E32640161F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.743)" "Mode=0" "SY-1000 getMsg = F04110000000691210003D000000010900141E32640160F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.761)" "Mode=0" "SY-1000 getMsg = F04110000000691210003E00000100010900141E326400000604141E3200010900141E3228320000323232320160F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.776)" "Mode=0" "SY-1000 getMsg = F04110000000691210003F0000022828086400001E2828083200001E3C28083200001E64010CF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.789)" "Mode=0" "SY-1000 getMsg = F0411000000069121000400001022DF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.802)" "Mode=0" "SY-1000 getMsg = F041100000006912100041000032406459F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.820)" "Mode=0" "SY-1000 getMsg = F04110000000691210004200013232643232010000F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.834)" "Mode=0" "SY-1000 getMsg = F041100000006912100043000003163C006400001E163C0052000010163C006400111E640158F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.848)" "Mode=0" "SY-1000 getMsg = F0411000000069121000440046326450F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.865)" "Mode=0" "SY-1000 getMsg = F041100000006912100045000000323232004055F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.880)" "Mode=0" "SY-1000 getMsg = F04110000000691210004600323240644632002AF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.894)" "Mode=0" "SY-1000 getMsg = F0411000000069121000470032464064000DF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.907)" "Mode=0" "SY-1000 getMsg = F04110000000691210004800000100010900141E326400000604141E3200010900141E3228320000323232320156F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.926)" "Mode=0" "SY-1000 getMsg = F041100000006912100049001932504B00001E64003FF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.939)" "Mode=0" "SY-1000 getMsg = F04110000000691210004A001932504B00001E64003EF7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.950)" "Mode=0" "SY-1000 getMsg = F04110000000691210004B000000000000030E0800030E080271F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.963)" "Mode=0" "SY-1000 getMsg = F04110000000691210004C00202020202020202024F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:03 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(03.978)" "Mode=0" "SY-1000 getMsg = F04110000000691210004D00000C1564000000000064640000000018181818181818181818181818181818181818181818181816F7"
+2026-03-05 19:40:03 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.004)" "Mode=0" "SY-1000 getMsg = F04110000000691210004E00010002323264326441F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.020)" "Mode=0" "SY-1000 getMsg = F04110000000691210004F00006D64646CF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.033)" "Mode=0" "SY-1000 getMsg = F04110000000691210005000003C0B1900142CF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.046)" "Mode=0" "SY-1000 getMsg = F04110000000691210005100080F6424F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.061)" "Mode=0" "SY-1000 getMsg = F041100000006912100052003C286456F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.080)" "Mode=0" "SY-1000 getMsg = F041100000006912100053003C286455F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.094)" "Mode=0" "SY-1000 getMsg = F041100000006912100054000000286432322CF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.108)" "Mode=0" "SY-1000 getMsg = F041100000006912100055000020200E0120170120001E2036F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.127)" "Mode=0" "SY-1000 getMsg = F041100000006912100056002C6400000000000AF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.141)" "Mode=0" "SY-1000 getMsg = F04110000000691210005700004632003700640006F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.160)" "Mode=0" "SY-1000 getMsg = F0411000000069121000580000202064014A000000006400013600000000642AF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.174)" "Mode=0" "SY-1000 getMsg = F041100000006912100059000004190100000000230A1708643217F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.187)" "Mode=0" "SY-1000 getMsg = F04110000000691210005A000032320064004EF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.200)" "Mode=0" "SY-1000 getMsg = F04110000000691210005B00011E55323232320059F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.214)" "Mode=0" "SY-1000 getMsg = F04110000000691210005C003232406420280044F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.232)" "Mode=0" "SY-1000 getMsg = F04110000000691210005D000032006432320019F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.248)" "Mode=0" "SY-1000 getMsg = F04110000000691210005E003232327CF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.261)" "Mode=0" "SY-1000 getMsg = F04110000000691210005F003232327BF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.277)" "Mode=0" "SY-1000 getMsg = F041100000006912100060000032647AF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.291)" "Mode=0" "SY-1000 getMsg = F04110000000691210006100010132323232640061F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.304)" "Mode=0" "SY-1000 getMsg = F04110000000691210006200000132323232640061F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.316)" "Mode=0" "SY-1000 getMsg = F04110000000691210006300645532320070F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.328)" "Mode=0" "SY-1000 getMsg = F04110000000691210006400502D013250000CF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.339)" "Mode=0" "SY-1000 getMsg = F04110000000691210006500006400030E080000000000030E080075F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.350)" "Mode=0" "SY-1000 getMsg = F04110000000691210006600010207F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.363)" "Mode=0" "SY-1000 getMsg = F041100000006912100067000032406433F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.376)" "Mode=0" "SY-1000 getMsg = F0411000000069121000680001323264323201005AF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.397)" "Mode=0" "SY-1000 getMsg = F0411000000069121000690000012832085000001E2828083200001E3C28083200001E500101F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.411)" "Mode=0" "SY-1000 getMsg = F04110000000691210006A004632642AF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.423)" "Mode=0" "SY-1000 getMsg = F04110000000691210006B00000032323200402FF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.442)" "Mode=0" "SY-1000 getMsg = F04110000000691210006C003232406446320004F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.456)" "Mode=0" "SY-1000 getMsg = F04110000000691210006D00324640640067F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.469)" "Mode=0" "SY-1000 getMsg = F04110000000691210006E00000100010900141E326400000604141E3200010900141E3228320000323232320130F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.483)" "Mode=0" "SY-1000 getMsg = F04110000000691210006F001932504B00001E640019F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.498)" "Mode=0" "SY-1000 getMsg = F041100000006912100070001932504B00001E640018F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.512)" "Mode=0" "SY-1000 getMsg = F041100000006912100071000000000000030E0800030E08024BF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.528)" "Mode=0" "SY-1000 getMsg = F0411000000069121000720020202020202020207EF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.541)" "Mode=0" "SY-1000 getMsg = F04110000000691210007300000C1564000000000064640000000018181818181818181818181818181818181818181818181870F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.556)" "Mode=0" "SY-1000 getMsg = F0411000000069121000740001000232326432641BF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.582)" "Mode=0" "SY-1000 getMsg = F04110000000691210007500006D646446F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.595)" "Mode=0" "SY-1000 getMsg = F04110000000691210007600003C0B19001406F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.606)" "Mode=0" "SY-1000 getMsg = F04110000000691210007700080F647EF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.619)" "Mode=0" "SY-1000 getMsg = F041100000006912100078003C286430F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.633)" "Mode=0" "SY-1000 getMsg = F041100000006912100079003C28642FF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.645)" "Mode=0" "SY-1000 getMsg = F04110000000691210007A0000002864323206F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.658)" "Mode=0" "SY-1000 getMsg = F04110000000691210007B000020200E0120170120001E2010F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.671)" "Mode=0" "SY-1000 getMsg = F04110000000691210007C002C64000000000064F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.685)" "Mode=0" "SY-1000 getMsg = F04110000000691210007D00004632003700640060F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.697)" "Mode=0" "SY-1000 getMsg = F04110000000691210007E0000202064014A0000000064000136000000006404F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.711)" "Mode=0" "SY-1000 getMsg = F04110000000691210007F000004190100000000230A1708643271F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.725)" "Mode=0" "SY-1000 getMsg = F0411000000069121001000000323200640027F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.736)" "Mode=0" "SY-1000 getMsg = F04110000000691210010100011E55323232320032F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.749)" "Mode=0" "SY-1000 getMsg = F04110000000691210010200323240642028001DF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.763)" "Mode=0" "SY-1000 getMsg = F041100000006912100103000032006432320072F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.775)" "Mode=0" "SY-1000 getMsg = F0411000000069121001040032323255F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.789)" "Mode=0" "SY-1000 getMsg = F0411000000069121001050032323254F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.802)" "Mode=0" "SY-1000 getMsg = F0411000000069121001060000326453F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.820)" "Mode=0" "SY-1000 getMsg = F0411000000069121001070001013232323264003AF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.832)" "Mode=0" "SY-1000 getMsg = F0411000000069121001080000013232323264003AF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.846)" "Mode=0" "SY-1000 getMsg = F04110000000691210010900645532320049F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.858)" "Mode=0" "SY-1000 getMsg = F04110000000691210010A00502D0132500065F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.871)" "Mode=0" "SY-1000 getMsg = F04110000000691210010B00006400030E080000000000030E08004EF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.885)" "Mode=0" "SY-1000 getMsg = F04110000000691210010C0000075CF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.902)" "Mode=0" "SY-1000 getMsg = F04110000000691210010D00003240640CF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.915)" "Mode=0" "SY-1000 getMsg = F04110000000691210010E00013232643232010033F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.928)" "Mode=0" "SY-1000 getMsg = F04110000000691210010F0000032828086400001E2828083200001E3C28083200001E64013AF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.943)" "Mode=0" "SY-1000 getMsg = F0411000000069121001100046326403F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.963)" "Mode=0" "SY-1000 getMsg = F041100000006912100111000000323232004008F7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:04 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(04.991)" "Mode=0" "SY-1000 getMsg = F04110000000691210011200323240644632005DF7"
+2026-03-05 19:40:04 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.003)" "Mode=0" "SY-1000 getMsg = F04110000000691210011300324640640040F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.014)" "Mode=0" "SY-1000 getMsg = F041100000006912100114000002000203000B1E315A00000604141E3200010900141E322832000032323264016FF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.028)" "Mode=0" "SY-1000 getMsg = F041100000006912100115001932504B00001E640072F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.044)" "Mode=0" "SY-1000 getMsg = F041100000006912100116001932504B00001E640071F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.057)" "Mode=0" "SY-1000 getMsg = F041100000006912100117000000000000030E0800030E080224F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.070)" "Mode=0" "SY-1000 getMsg = F04110000000691210011800202020202020202057F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.082)" "Mode=0" "SY-1000 getMsg = F04110000000691210011900000C1564000000000064640000000018181818181818181818181818181818181818181818181849F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.095)" "Mode=0" "SY-1000 getMsg = F04110000000691210011A00010002323264326474F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.107)" "Mode=0" "SY-1000 getMsg = F04110000000691210011B00006D64641FF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.120)" "Mode=0" "SY-1000 getMsg = F04110000000691210011C00003C0B1900145FF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.136)" "Mode=0" "SY-1000 getMsg = F04110000000691210011D00080F6457F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.150)" "Mode=0" "SY-1000 getMsg = F04110000000691210011E003C286409F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.161)" "Mode=0" "SY-1000 getMsg = F04110000000691210011F003C286408F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.173)" "Mode=0" "SY-1000 getMsg = F041100000006912100120000000286432325FF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.186)" "Mode=0" "SY-1000 getMsg = F041100000006912100121000020200E0120170120001E2069F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.200)" "Mode=0" "SY-1000 getMsg = F041100000006912100122002C6400000000003DF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.212)" "Mode=0" "SY-1000 getMsg = F04110000000691210012300004632003700640039F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.226)" "Mode=0" "SY-1000 getMsg = F0411000000069121001240000202064014A000000006400013600000000645DF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.245)" "Mode=0" "SY-1000 getMsg = F041100000006912100125000004190100000000230A170864324AF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.258)" "Mode=0" "SY-1000 getMsg = F0411000000069121001260000323200640001F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.271)" "Mode=0" "SY-1000 getMsg = F04110000000691210012700011E5532323232000CF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.284)" "Mode=0" "SY-1000 getMsg = F041100000006912100128003232406420280077F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.302)" "Mode=0" "SY-1000 getMsg = F04110000000691210012900003200643232004CF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.316)" "Mode=0" "SY-1000 getMsg = F04110000000691210012A003232322FF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.329)" "Mode=0" "SY-1000 getMsg = F04110000000691210012B003232322EF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.343)" "Mode=0" "SY-1000 getMsg = F04110000000691210012C000032642DF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.356)" "Mode=0" "SY-1000 getMsg = F04110000000691210012D00010132323232640014F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.375)" "Mode=0" "SY-1000 getMsg = F04110000000691210012E00000132323232640014F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.389)" "Mode=0" "SY-1000 getMsg = F04110000000691210012F00645532320023F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.402)" "Mode=0" "SY-1000 getMsg = F04110000000691210013000502D013250003FF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.415)" "Mode=0" "SY-1000 getMsg = F04110000000691210013100006400030E080000000000030E080028F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.436)" "Mode=0" "SY-1000 getMsg = F0411000000069121001320001040A010000010F2712180846324CF7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | MIDI_ROUTE type=send only outPort=1 outName=SY-1000 inPort=1 inName=SY-1000 bytes=15
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.506)" "Mode=0" "sendSysx device=SY-1000 type=send only  "
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.658)" "Mode=0" "SET MODE = mode1"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.667)" "Mode=0" "SET MODE REPLY = "
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.668)" "Mode=0" "SY-1000 getData = F041100000006912100015010357F7"
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | MIDI_ROUTE type=command_send_wait_reply outPort=1 outName=SY-1000 inPort=1 inName=SY-1000 bytes=15
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.673)" "Mode=1" "SET MODE = getPNum"
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.673)" "Mode=1" "sendSysx device=SY-1000 type=command_send_wait_reply  "
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | MIDI_ROUTE type=send only outPort=1 outName=SY-1000 inPort=1 inName=SY-1000 bytes=18
+2026-03-05 19:40:05 [pid:1390] [Qt DEBUG] ?:0 ? | "time=(05.699)" "Mode=1" "SET MODE REPLY = "
+2026-03-05 19:40:05 [pid:1390] [Qt WARNING] ?:0 ? | QIODevice::write (QFile, "deBug_data_for_gumtown.txt"): device not open
+2026-03-05 19:41:37 [pid:1390] !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+2026-03-05 19:41:37 [pid:1390] !!! CRASH DETECTED !!!
+2026-03-05 19:41:37 [pid:1390] UNKNOWN SIGNAL
+2026-03-05 19:41:37 [pid:1390] Stack trace (most recent call last):
+0   SY-1000FloorBoard                   0x00000001040d7cd8 _ZL18crashSignalHandleri + 132
+1   libsystem_platform.dylib            0x00000001987ad764 _sigtramp + 56
+2   libsystem_kernel.dylib              0x0000000198773028 mach_msg2_internal + 76
+3   libsystem_kernel.dylib              0x000000019876998c mach_msg_overwrite + 484
+4   libsystem_kernel.dylib              0x0000000198760fb4 mach_msg + 24
+5   CoreFoundation                      0x0000000198842bb0 __CFRunLoopServiceMachPort + 160
+6   CoreFoundation                      0x0000000198841508 __CFRunLoopRun + 1188
+7   CoreFoundation                      0x00000001988fbf3c _CFRunLoopRunSpecificWithOptions + 532
+8   HIToolbox                           0x00000001a537d790 RunCurrentEventLoopInMode + 316
+9   HIToolbox                           0x00000001a5380ab8 ReceiveNextEventCommon + 488
+10  HIToolbox                           0x00000001a550ab64 _BlockUntilNextEventMatchingListInMode + 48
+11  AppKit                              0x000000019d15d014 _DPSBlockUntilNextEventMatchingListInMode + 236
+12  AppKit                              0x000000019cc5ae48 _DPSNextEvent + 588
+13  AppKit                              0x000000019d721e8c -[NSApplication(NSEventRouting) _nextEventMatchingEventMask:untilDate:inMode:dequeue:] + 688
+14  AppKit                              0x000000019d721b98 -[NSApplication(NSEventRouting) nextEventMatchingMask:untilDate:inMode:dequeue:] + 72
+15  AppKit                              0x000000019cc53780 -[NSApplication run] + 368
+16  libqcocoa.dylib                     0x0000000105dc5a4c qt_plugin_instance + 200012
+17  QtCore                              0x00000001066fac78 _ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE + 528
+18  QtCore                              0x00000001066fef24 _ZN16QCoreApplication4execEv + 204
+19  SY-1000FloorBoard                   0x00000001040d6a58 main + 18332
+20  dyld                                0x00000001983d9d54 start + 7184
+
+2026-03-05 19:41:37 [pid:1390] !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

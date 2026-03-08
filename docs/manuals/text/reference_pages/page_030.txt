@@ -1,0 +1,225 @@
+INST Parameters > OSC SYNTH Parameters
+Parameter
+
+Value
+
+Explanation
+Turn this “ON” if you want to play
+tones in semitone increments.
+
+CHROMATIC
+
+OFF, ON
+
+If this is “ON,” the pitch will change
+in semitone steps even when you
+bend notes.
+Specifies whether portamento is
+applied.
+
+PORTA SW
+
+PORTA TIME
+
+OFF, ON
+
+0–100
+
+When this is set to ON, you can
+create a smooth change in pitch
+from one note to the next.
+
+MODE1
+
+MODE2
+
+The portamento effect is applied
+starting at the final pitch sounded,
+regardless of the string that was
+played.
+
+Specifies the operation of the Hold function using
+CONTROL FUNCTION and ASSIGN FUNCTION.
+* In order to use the Hold function, make settings
+for “CONTROL FUNCTION” (p. 67) and “ASSIGN
+SETTING” (p. 70).
+HOLD MODE
+
+MODE1
+
+Notes that are newly played while
+Hold is on will also be held.
+
+MODE2
+
+Newly played notes are not
+accepted while Hold is on.
+
+MODE3
+
+While Hold is on, notes newly
+played on a string that’s being
+held are accepted.
+
+LOW VELO CUT OFF, 1–10
+
+In the FILTER section you can modify the brightness of the sound
+by changing the type of filter and applying various changes to the
+output waveform.
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Switches filter on/off.
+
+Type of filter
+LPF
+
+The region above the cutoff
+frequency will be cut, making the
+sound more mellow.
+
+HPF
+
+The region below the cutoff
+frequency will be cut, emphasizing
+the high-frequency range.
+
+BPF
+
+It passes only the range of
+frequencies in the region of the
+cutoff frequency, cutting the other
+frequencies.
+
+PKG
+
+Boosts the range of frequencies in
+the region of the cutoff frequency.
+
+LADDER LPF
+
+A ladder-type low-pass filter.
+
+LADDER HPF
+
+A ladder-type high-pass filter.
+
+-12 dB, -24 dB
+
+Selects the slope (steepness) of the
+low-pass filter.
+
+CUTOFF
+
+0–100
+
+Adjusts the cutoff frequency.
+
+CUTOFF
+FOLLOW
+
+0–100
+
+Specifies how the cutoff frequency
+will be affected by the note
+position.
+
+Larger values lengthen the time
+during which the pitch of the next
+note is reached.
+The portamento effect is applied
+starting at the final pitch sounded
+by each string.
+
+*2
+
+Sound consists of numerous overtones at various frequencies. By
+using a filter to pass or cut the overtones of specific frequency
+regions, you can modify the brightness of the sound.
+
+Specifies the time required for
+the pitch change when using
+portamento.
+
+Selects how portamento is applied.
+
+PORTA MODE
+
+FILTER
+
+Adjust this if simply touching
+a string causes a note to be
+unintentionally triggered. Raising
+this value will make it more
+difficult to trigger notes.
+
+*1 Valid when the WAVEFORM1 or WAVEFORM2 is set to PWM.
+*2 Valid when the MONO/POLY SW is set to POLY.
+
+TYPE
+
+SLOPE
+*1
+
+Resonance emphasizes the sound
+in the region of the filter cutoff
+frequency.
+RESONANCE
+
+0–100
+
+VELOCITY
+SENS
+
+-50–+50
+
+Increasing the resonance setting
+will increase this emphasis,
+producing a distinctive sound that
+is characteristic of synthesizers.
+Specifies how the filter envelope
+depth is affected by your picking
+dynamics.
+
+F. ENV ATTACK 0–100
+F. ENV DECAY
+
+0–100
+
+F. ENV
+SUSTAIN
+
+0–100
+
+F. ENV
+RELEASE
+
+0–100
+
+Specifies the attack/decay/sustain
+level/ release time of the filter
+envelope.
+
+Specifies the depth and direction of
+the cutoff frequency change.
+F. ENV DEPTH
+
+-50–+50
+
+Higher values make the cutoff
+frequency move upward.
+Lower values make the cutoff
+frequency move downward.
+
+*1 Valid when the TYPE is set to LPF, HPF, BPF, or PKG.
+
+30
+
+

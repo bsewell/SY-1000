@@ -1,0 +1,203 @@
+EFFECT Parameters > CHORUS
+
+CHORUS
+
+Parameter
+
+In this effect, a slightly detuned sound is added to the original sound
+to add depth and breadth.
+
+HIGH CUT 1
+
+Parameter
+
+Value
+
+Explanation
+
+*1
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+MONO
+
+STEREO1
+MODE
+
+This chorus effect outputs the same
+sound from both L channel and R
+channel.
+This stereo chorus uses spatial
+synthesis, with the direct sound
+output in the L channel and the
+effect sound output in the R
+channel.
+
+STEREO2
+
+This is a stereo chorus effect that
+adds different chorus sounds to L
+channel and R channel.
+
+DUAL
+
+This lets you apply chorus
+independently to the L and R
+channels.
+
+RATE
+0–100, BPM
+Œ–`
+
+Adjusts the rate of the chorus
+effect.
+
+DEPTH
+DEPTH 2
+
+0–100
+
+*1
+PRE-DELAY
+PRE-DELAY 1
+PRE-DELAY 2
+
+0.0 ms–40.0
+ms
+
+*1
+
+Adjusts the depth of the chorus
+effect.
+* To use it for doubling effect, set
+the value to 0.
+Adjusts the time needed for the
+effect sound to be output after the
+direct sound has been output. By
+setting a longer pre delay time, you
+can obtain an effect that sounds
+like more than one sound is being
+played at the same time (doubling
+effect).
+
+EFFECT LEVEL
+EFFECT LEVEL
+1
+0–100
+EFFECT LEVEL
+2
+
+Adjusts the volume of the effect
+sound.
+
+*1
+WAVEFORM
+
+Produces a typical chorus effect.
+TRI
+
+WAVEFORM 1
+WAVEFORM 2
+*1
+
+SINE
+
+LOW CUT
+LOW CUT 1
+LOW CUT 2
+*1
+
+56
+
+This sets the frequency at which
+the high cut filter begins to take
+effect. When FLAT is selected, the
+high cut filter will have no effect.
+
+HIGH CUT 2
+
+Adjusts the volume of the direct
+sound.
+
+DIRECT LEVEL
+
+0–100
+
+OUTPUT
+MODE
+
+MONO
+
+*1
+
+STEREO
+
+Produces a rich spaciousness when
+stereo output is used.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+
+Setting this to 0 cuts the direct
+sound.
+This setting is appropriate for mono
+output.
+
+CHORUS settings can be saved/
+loaded as ten variations.
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Valid when the MODE is set to DUAL.
+*2 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+*1 *2
+
+DEPTH 1
+
+20.0 Hz–16.0
+kHz, FLAT
+
+These variations are shared with
+the CHORUS setting in FX1–FX3.
+
+*2
+RATE 2
+
+Explanation
+
+HIGH CUT
+
+Selection for the chorus mode.
+
+RATE 1
+
+Value
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+Produces a deeper sense of
+modulation.
+
+This sets the frequency at which
+the low cut filter begins to take
+effect. When FLAT is selected, the
+low cut filter will have no effect.
+
+

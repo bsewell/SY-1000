@@ -1,0 +1,173 @@
+Getting Ready
+GK PU TYPE
+(GUITAR MODE)
+
+7.	 If using GUITAR MODE, turn the [6] knob.
+If using BASS MODE, turn the [5] knob.
+
+Explanation
+
+GK-3
+
+Choose this if you’re using a Roland GK-3.
+
+Specify the length that is correct for your guitar (bass).
+
+GK-2A
+
+Choose this if you’re using a Roland GK-2A,
+or if you’re using a (commercially available)
+guitar with a built-in divided pickup.
+
+If you’re using GUITAR MODE, choose “ST (648mm)” for a standard
+Stratocaster type, or choose “LP (628mm)” for a Les Paul type.
+
+GC-1
+
+Choose this if you’re using a Roland V-Guitar
+GC-1.
+
+PIEZO
+PIEZO F
+PIEZO G
+PIEZO L
+
+(flat response)
+Piezo
+Pickup
+
+PIEZO R
+GK PU TYPE
+
+If you’re using BASS MODE, For a standard Jazz Bass type or
+Precision Bass type, choose “LONG JB/PB (864 mm).”
+MEMO
+This parameter is not shown if GK PU TYPE is set to “Roland V-Guitar
+GC-1.”
+
+Fishman
+Graph Tech
+
+Specifying the Pickup Position (BASS MODE
+Only)
+
+L.R. Baggs
+RMC
+
+Explanation
+
+Specify the position of the divided pickup that’s installed on your
+bass.
+
+GK-3B
+
+Choose this if you’re using a GK-3B.
+
+MEMO
+
+GK-2B
+
+Choose this if you’re using a Roland GK-2B, or
+if you’re using a (commercially available) bass
+with a built-in divided pickup.
+
+If you’ve installed a divided pickup on your guitar, proceed to step 9
+“Specifying the Distance from the Bridge” (p. 10) (this step is not
+needed).
+
+(BASS MODE)
+
+PIEZO
+PIEZO G
+PIEZO R
+
+Piezo
+Pickup
+
+(flat response)
+
+8.	 Turn the [6] knob
+
+Graph Tech
+
+Specify the GK PU POSITION according to the position of the
+divided pickup that’s installed.
+
+RMC
+
+MEMO
+
+For a 4-string bass
+
+55 A piezo pickup is a type of pickup that is mounted on the bridge
+of the guitar, and uses a piezoelectric element to detect the
+vibrations of the strings.
+55 If you don’t know the type of your piezo pickup, try selecting
+different choices while you play your guitar, and choose the
+setting that produces the most natural sound.
+
+55 If you’ve chosen piezo type, you’ll be able to make further
+adjustments to the tone quality of the high range and low range.
+
+GK PU
+POSITION
+
+4STR-1
+
+4STR-2
+
+5STR-Lo1
+
+5STR-Lo2
+
+4STR-3
+
+1st string
+2nd string
+3rd string
+4th string
+
+For a 5-string bass
+
+Specifying Your Guitar’s (Bass’s) Scale Length
+Specify your guitar’s (bass’s) scale length (the distance from the
+bridge to the nut).
+
+GK PU
+POSITION
+
+5STR-Hi1
+
+5STR-Hi2
+
+High C
+string
+1st string
+2nd string
+3rd string
+4th string
+
+1st string
+2nd string
+3rd string
+4th string
+Low B string
+For a 6-string bass
+GK PU
+POSITION
+
+Guitar
+
+6STR
+High C string
+1st string
+2nd string
+3rd string
+4th string
+Low B string
+
+Bass
+
+9
+
+

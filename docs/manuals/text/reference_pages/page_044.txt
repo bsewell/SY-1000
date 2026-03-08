@@ -1,0 +1,295 @@
+EFFECT Parameters > FX1–FX3
+Parameter
+
+Value
+
+WAVEFORM
+
+Explanation
+
+COMPRESSOR
+
+Produces a typical chorus effect.
+
+This is an effect that produces a long sustain by evening out the
+volume level of the input signal.
+
+TRI
+
+Parameter
+
+WAVEFORM 1
+WAVEFORM 2
+*1
+
+SINE
+
+LOW CUT
+LOW CUT 1
+LOW CUT 2
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+*1
+HIGH CUT
+HIGH CUT 1
+HIGH CUT 2
+
+20.0 Hz–16.0
+kHz, FLAT
+
+*1
+DIRECT LEVEL
+
+0–100
+
+Produces a deeper sense of
+modulation.
+
+This sets the frequency at which
+the low cut filter begins to take
+effect. When FLAT is selected, the
+low cut filter will have no effect.
+This sets the frequency at which
+the high cut filter begins to take
+effect. When FLAT is selected, the
+high cut filter will have no effect.
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Valid when the MODE is set to DUAL.
+*2 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+CLASSIC-VIBE
+Although this resembles a phaser effect, it also provides a unique
+undulation that you can’t get with a regular phaser.
+
+40–250
+
+Explanation
+
+PATCH, 01–10
+
+Adjusts the depth of the effect.
+Adjusts the volume.
+Adjusts the BPM value for each
+patch.
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+44
+
+ORANGE
+
+This is modeled on the sound of the
+Dan Armstrong ORANGE SQUEEZER.
+
+FAT
+
+When applied heavily, this
+compressor effect provides a fat
+tone with a boosted midrange.
+
+MILD
+
+When applied heavily, this
+compressor effect produces a sweet
+tone with the high end cut.
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume.
+
+TONE
+
+Adjusts the tone.
+
+-50–+50
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+COMPRESSOR settings can be
+saved/loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+DEFRETTER
+This simulates a fretless guitar.
+Parameter
+
+Value
+
+Explanation
+
+SENS
+
+0–100
+
+This controls the input sensitivity of
+the defretter.
+
+DEPTH
+
+0–100
+
+This controls the volume of the
+harmonics.
+
+TONE
+
+-50–+50
+
+Adjusts the amount of blurring
+between the notes.
+
+Adjusts the rate of the effect.
+
+CLASSIC-VIBE settings can be saved/
+loaded as ten variations.
+VARIATION
+
+This models a MXR DynaComp.
+
+Adjusts the strength of the attack
+when picking.
+
+CHORUS settings can be saved/
+loaded as ten variations.
+
+BPM
+
+D-COMP
+
+0–100
+
+40–250
+
+0–100, BPM
+Œ–`
+*1
+DEPTH
+0–100
+EFFECT LEVEL 0–100
+
+A compressor with a light effect.
+
+ATTACK
+
+Adjusts the BPM value for each
+patch.
+
+Value
+
+LIGHT
+
+Setting this to 0 cuts the direct
+sound.
+This setting is appropriate for mono
+output.
+
+STEREO
+
+RATE
+
+A compressor that adds an even
+stronger effect in the high end.
+
+Adjusts the range (time) over which
+low-level signals are boosted. Larger
+values will result in longer sustain.
+
+*1
+
+Parameter
+
+Hi-BAND
+
+0–100
+
+Produces a rich spaciousness when
+stereo output is used.
+
+PATCH, 01–10
+
+This models a BOSS CS-3.
+
+SUSTAIN
+
+MONO
+
+VARIATION
+
+Explanation
+
+BOSS COMP
+
+Adjusts the volume of the direct
+sound.
+
+OUTPUT
+MODE
+
+BPM
+
+TYPE
+
+Value
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume of the effect
+sound.
+
+ATTACK
+
+0–100
+
+Adjusts the attack of the picking
+sound.
+
+RESONANCE
+
+0–100
+
+Adds a characteristically resonant
+quality to the sound.
+
+DIRECT LEVEL
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+DEFRETTER settings can be saved/
+loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+

@@ -1,0 +1,862 @@
+|
+00 05 | 0000 aaaa | NUM3 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 06 | 0000 0aaa | NUM4 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 07 | 0000 aaaa | NUM4 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 08 | 0000 0aaa | BANKDOWN OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 09 | 0000 aaaa | BANKDOWN ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0A | 0000 0aaa | BANKUP OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0B | 0000 aaaa | BANKUP ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0C | 0000 0aaa | CTL1 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0D | 0000 aaaa | CTL1 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0E | 0000 0aaa | CTL2 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0F | 0000 aaaa | CTL2 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 10 | 0000 0aaa | CNUM OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 11 | 0000 aaaa | CNUM ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|#
+00 12 | 0000 aaaa |
+|
+|
+00 13 | 0000 bbbb |
+|
+|
+00 14 | 0000 cccc |
+|
+|
+00 15 | 0000 dddd |
+|
+|
+00 16 | 0000 eeee |
+|
+|
+00 17 | 0000 ffff |
+|
+|
+00 18 | 0000 gggg |
+|
+|
+00 19 | 0000 hhhh | ON OFF STATE
+(0 - 2147483647) |
+|
+|
+|
+* TABLE 3 |
+|
+00 1A | 0aaa aaaa | ON OFF STATE
+(0 - 127) |
+|
+|
+|
+* TABLE 4 |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 1B |Total Size
+|
++------------------------------------------------------------------------------+
+
+|
+|
+|
+119, 120, 121, 122, 123, 124, 125, 126, 127,
+|
+|
+|
+|
+128
+|
+|#
+01 15 | 0000 aaaa |
+|
+|
+01 16 | 0000 bbbb | STR6 BANK MSB
+(0 - 128) |
+|
+|
+|
+OFF, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, |
+|
+|
+|
+13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+|
+|
+|
+|
+24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+|
+|
+|
+|
+35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
+|
+|
+|
+|
+46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
+|
+|
+|
+|
+57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67,
+|
+|
+|
+|
+68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78,
+|
+|
+|
+|
+79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89,
+|
+|
+|
+|
+90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100,
+|
+|
+|
+|
+101, 102, 103, 104, 105, 106, 107, 108, 109,
+|
+|
+|
+|
+110, 111, 112, 113, 114, 115, 116, 117, 118,
+|
+|
+|
+|
+119, 120, 121, 122, 123, 124, 125, 126, 127
+|
+|#
+01 17 | 0000 aaaa |
+|
+|
+01 18 | 0000 bbbb | STR6 BANK LSB
+(0 - 128) |
+|
+|
+|
+OFF, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, |
+|
+|
+|
+13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+|
+|
+|
+|
+24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+|
+|
+|
+|
+35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
+|
+|
+|
+|
+46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
+|
+|
+|
+|
+57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67,
+|
+|
+|
+|
+68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78,
+|
+|
+|
+|
+79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89,
+|
+|
+|
+|
+90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100,
+|
+|
+|
+|
+101, 102, 103, 104, 105, 106, 107, 108, 109,
+|
+|
+|
+|
+110, 111, 112, 113, 114, 115, 116, 117, 118,
+|
+|
+|
+|
+119, 120, 121, 122, 123, 124, 125, 126, 127
+|
+|#
+01 19 | 0000 aaaa |
+|
+|
+01 1A | 0000 bbbb | STR6 PC
+(0 - 128) |
+|
+|
+|
+OFF, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+|
+|
+|
+|
+13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+|
+|
+|
+|
+24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+|
+|
+|
+|
+35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
+|
+|
+|
+|
+46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
+|
+|
+|
+|
+57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67,
+|
+|
+|
+|
+68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78,
+|
+|
+|
+|
+79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89,
+|
+|
+|
+|
+90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100,
+|
+|
+|
+|
+101, 102, 103, 104, 105, 106, 107, 108, 109,
+|
+|
+|
+|
+110, 111, 112, 113, 114, 115, 116, 117, 118,
+|
+|
+|
+|
+119, 120, 121, 122, 123, 124, 125, 126, 127,
+|
+|
+|
+|
+128
+|
+|-------------+----------------------------------------------------------------|
+| 00 00 01 1B |Total Size
+|
++------------------------------------------------------------------------------+
+* [PatchCommon2]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 aaaa | GK SET
+(0 - 10) |
+|
+|
+|
+SYSTEM, SET1, SET2, SET3, SET4, SET5, SET6,
+|
+|
+|
+|
+SET7, SET8, SET9, SET10
+|
+|
+00 01 | 0000 aaaa | NORMAL SET
+(0 - 10) |
+|
+|
+|
+SYSTEM, SET1, SET2, SET3, SET4, SET5, SET6,
+|
+|
+|
+|
+SET7, SET8, SET9, SET10
+|
+|-------------+----------------------------------------------------------------|
+| 00 00 00 02 |Total Size
+|
++------------------------------------------------------------------------------+
+* [PatchCommon2Bass]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 aaaa | GK SET
+(0 - 10) |
+|
+|
+|
+SYSTEM, SET1, SET2, SET3, SET4, SET5, SET6,
+|
+|
+|
+|
+SET7, SET8, SET9, SET10
+|
+|
+00 01 | 0000 aaaa | NORMAL SET
+(0 - 10) |
+|
+|
+|
+SYSTEM, SET1, SET2, SET3, SET4, SET5, SET6,
+|
+|
+|
+|
+SET7, SET8, SET9, SET10
+|
+|-------------+----------------------------------------------------------------|
+| 00 00 00 02 |Total Size
+|
++------------------------------------------------------------------------------+
+* [PatchLed]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 0aaa | NUM1 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 01 | 0000 aaaa | NUM1 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 02 | 0000 0aaa | NUM2 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 03 | 0000 aaaa | NUM2 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 04 | 0000 0aaa | NUM3 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+
+* [Assign]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 000a | SW
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|#
+00 01 | 0000 aaaa |
+|
+|
+00 02 | 0000 bbbb |
+|
+|
+00 03 | 0000 cccc |
+|
+|
+00 04 | 0000 dddd | TARGET
+(0 - 2047) |
+|
+|
+|
+* TABLE 5(GUITAR MODE), TABLE 6(BASS MODE) |
+|#
+00 05 | 0000 aaaa |
+|
+|
+00 06 | 0000 bbbb |
+|
+|
+00 07 | 0000 cccc |
+|
+|
+00 08 | 0000 dddd | TARGET MIN
+(0 - 65535) |
+|
+|
+|
+-32768 - 32767 |
+|#
+00 09 | 0000 aaaa |
+|
+|
+00 0A | 0000 bbbb |
+|
+|
+00 0B | 0000 cccc |
+|
+|
+00 0C | 0000 dddd | TARGET MAX
+(0 - 65535) |
+|
+|
+|
+-32768 - 32767 |
+|
+00 0D | 0aaa aaaa | SOURCE
+(0 - 89) |
+|
+|
+|
+NUM1, NUM2, NUM3, NUM4, CUR NUM, BANKDOWN,
+|
+|
+|
+|
+BANKUP, CTL1, CTL2, CTL3, CTL4, CTL5, CTL6,
+|
+|
+|
+|
+EXP1, EXP2, GK SW1, GK SW2, GK VOL,
+|
+|
+|
+|
+WAVE PEDAL, STRING1, STRING2, STRING3,
+|
+|
+|
+|
+STRING4, STRING5, STRING6, STRING ALL,
+|
+|
+|
+|
+NORMAL IN, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5,
+|
+
+28
+
+

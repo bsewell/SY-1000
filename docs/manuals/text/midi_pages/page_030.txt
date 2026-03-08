@@ -1,0 +1,650 @@
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|
+|
+00 0F | 00aa aaaa | PITCH STEP7 MIN
+|
+|
+00 10 | 00aa aaaa | PITCH STEP7 MAX
+|
+|
+00 11 | 00aa aaaa | PITCH STEP8 MIN
+|
+|
+00 12 | 00aa aaaa | PITCH STEP8 MAX
+|
+|
+00 13 | 00aa aaaa | PITCH STEP9 MIN
+|
+|
+00 14 | 00aa aaaa | PITCH STEP9 MAX
+|
+|
+00 15 | 00aa aaaa | PITCH STEP10 MIN
+|
+|
+00 16 | 00aa aaaa | PITCH STEP10 MAX
+|
+|
+00 17 | 00aa aaaa | PITCH STEP11 MIN
+|
+|
+00 18 | 00aa aaaa | PITCH STEP11 MAX
+|
+|
+00 19 | 00aa aaaa | PITCH STEP12 MIN
+|
+|
+00 1A | 00aa aaaa | PITCH STEP12 MAX
+|
+|
+00 1B | 00aa aaaa | PITCH STEP13 MIN
+|
+|
+00 1C | 00aa aaaa | PITCH STEP13 MAX
+|
+|
+00 1D | 00aa aaaa | PITCH STEP14 MIN
+|
+|
+00 1E | 00aa aaaa | PITCH STEP14 MAX
+|
+|
+00 1F | 00aa aaaa | PITCH STEP15 MIN
+|
+|
+00 20 | 00aa aaaa | PITCH STEP15 MAX
+|
+|
+00 21 | 00aa aaaa | PITCH STEP16 MIN
+|
+|
+00 22 | 00aa aaaa | PITCH STEP16 MAX
+|
+|
+00 23 | 0aaa aaaa | FILTER CUTOFF STEP1 MIN
+00 24 | 0aaa aaaa | FILTER CUTOFF STEP1 MAX
+00 25 | 0aaa aaaa | FILTER CUTOFF STEP2 MIN
+00 26 | 0aaa aaaa | FILTER CUTOFF STEP2 MAX
+00 27 | 0aaa aaaa | FILTER CUTOFF STEP3 MIN
+00 28 | 0aaa aaaa | FILTER CUTOFF STEP3 MAX
+00 29 | 0aaa aaaa | FILTER CUTOFF STEP4 MIN
+00 2A | 0aaa aaaa | FILTER CUTOFF STEP4 MAX
+00 2B | 0aaa aaaa | FILTER CUTOFF STEP5 MIN
+00 2C | 0aaa aaaa | FILTER CUTOFF STEP5 MAX
+00 2D | 0aaa aaaa | FILTER CUTOFF STEP6 MIN
+00 2E | 0aaa aaaa | FILTER CUTOFF STEP6 MAX
+00 2F | 0aaa aaaa | FILTER CUTOFF STEP7 MIN
+00 30 | 0aaa aaaa | FILTER CUTOFF STEP7 MAX
+00 31 | 0aaa aaaa | FILTER CUTOFF STEP8 MIN
+00 32 | 0aaa aaaa | FILTER CUTOFF STEP8 MAX
+00 33 | 0aaa aaaa | FILTER CUTOFF STEP9 MIN
+00 34 | 0aaa aaaa | FILTER CUTOFF STEP9 MAX
+00 35 | 0aaa aaaa | FILTER CUTOFF STEP10 MIN
+00 36 | 0aaa aaaa | FILTER CUTOFF STEP10 MAX
+00 37 | 0aaa aaaa | FILTER CUTOFF STEP11 MIN
+00 38 | 0aaa aaaa | FILTER CUTOFF STEP11 MAX
+00 39 | 0aaa aaaa | FILTER CUTOFF STEP12 MIN
+00 3A | 0aaa aaaa | FILTER CUTOFF STEP12 MAX
+00 3B | 0aaa aaaa | FILTER CUTOFF STEP13 MIN
+00 3C | 0aaa aaaa | FILTER CUTOFF STEP13 MAX
+00 3D | 0aaa aaaa | FILTER CUTOFF STEP14 MIN
+00 3E | 0aaa aaaa | FILTER CUTOFF STEP14 MAX
+00 3F | 0aaa aaaa | FILTER CUTOFF STEP15 MIN
+00 40 | 0aaa aaaa | FILTER CUTOFF STEP15 MAX
+00 41 | 0aaa aaaa | FILTER CUTOFF STEP16 MIN
+00 42 | 0aaa aaaa | FILTER CUTOFF STEP16 MAX
+00 43 | 0aaa aaaa | INST LEVEL STEP1 MIN
+00 44 | 0aaa aaaa | INST LEVEL STEP1 MAX
+00 45 | 0aaa aaaa | INST LEVEL STEP2 MIN
+00 46 | 0aaa aaaa | INST LEVEL STEP2 MAX
+00 47 | 0aaa aaaa | INST LEVEL STEP3 MIN
+00 48 | 0aaa aaaa | INST LEVEL STEP3 MAX
+00 49 | 0aaa aaaa | INST LEVEL STEP4 MIN
+00 4A | 0aaa aaaa | INST LEVEL STEP4 MAX
+00 4B | 0aaa aaaa | INST LEVEL STEP5 MIN
+00 4C | 0aaa aaaa | INST LEVEL STEP5 MAX
+00 4D | 0aaa aaaa | INST LEVEL STEP6 MIN
+00 4E | 0aaa aaaa | INST LEVEL STEP6 MAX
+00 4F | 0aaa aaaa | INST LEVEL STEP7 MIN
+00 50 | 0aaa aaaa | INST LEVEL STEP7 MAX
+00 51 | 0aaa aaaa | INST LEVEL STEP8 MIN
+00 52 | 0aaa aaaa | INST LEVEL STEP8 MAX
+00 53 | 0aaa aaaa | INST LEVEL STEP9 MIN
+00 54 | 0aaa aaaa | INST LEVEL STEP9 MAX
+00 55 | 0aaa aaaa | INST LEVEL STEP10 MIN
+00 56 | 0aaa aaaa | INST LEVEL STEP10 MAX
+00 57 | 0aaa aaaa | INST LEVEL STEP11 MIN
+00 58 | 0aaa aaaa | INST LEVEL STEP11 MAX
+00 59 | 0aaa aaaa | INST LEVEL STEP12 MIN
+00 5A | 0aaa aaaa | INST LEVEL STEP12 MAX
+00 5B | 0aaa aaaa | INST LEVEL STEP13 MIN
+00 5C | 0aaa aaaa | INST LEVEL STEP13 MAX
+00 5D | 0aaa aaaa | INST LEVEL STEP14 MIN
+00 5E | 0aaa aaaa | INST LEVEL STEP14 MAX
+00 5F | 0aaa aaaa | INST LEVEL STEP15 MIN
+00 60 | 0aaa aaaa | INST LEVEL STEP15 MAX
+00 61 | 0aaa aaaa | INST LEVEL STEP16 MIN
+00 62 | 0aaa aaaa | INST LEVEL STEP16 MAX
+00 63 | 0000 000a | SEQ1 ON/OFF
+|
+|
+00 64 | 0000 000a | SYNC
+|
+|
+
+|
+00 65 | 000a aaaa | LOOP LENGTH
+(1 - 16) |
+|
+00 66 | 0aaa aaaa | RATE
+(0 - 118) |
+|
+|
+|
+0 - 100, 2/1, 1/1D, 1/1, 1/2D, 1/1T, 1/2,
+|
+|
+|
+|
+1/4D, 1/2T, 1/4, 1/8D, 1/4T, 1/8, 1/16D, 1/8T, |
+|
+|
+|
+1/16, 1/32D, 1/16T, 1/32
+|
+|
+00 67 | 0000 000a | 1 SHOT
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 68 | 0000 000a | TURBO
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 69 | 0000 aaaa | STEP1 CURVE
+(0 - 12) |
+|
+00 6A | 0000 aaaa | STEP2 CURVE
+(0 - 12) |
+|
+00 6B | 0000 aaaa | STEP3 CURVE
+(0 - 12) |
+|
+00 6C | 0000 aaaa | STEP4 CURVE
+(0 - 12) |
+|
+00 6D | 0000 aaaa | STEP5 CURVE
+(0 - 12) |
+|
+00 6E | 0000 aaaa | STEP6 CURVE
+(0 - 12) |
+|
+00 6F | 0000 aaaa | STEP7 CURVE
+(0 - 12) |
+|
+00 70 | 0000 aaaa | STEP8 CURVE
+(0 - 12) |
+|
+00 71 | 0000 aaaa | STEP9 CURVE
+(0 - 12) |
+|
+00 72 | 0000 aaaa | STEP10 CURVE
+(0 - 12) |
+|
+00 73 | 0000 aaaa | STEP11 CURVE
+(0 - 12) |
+|
+00 74 | 0000 aaaa | STEP12 CURVE
+(0 - 12) |
+|
+00 75 | 0000 aaaa | STEP13 CURVE
+(0 - 12) |
+|
+00 76 | 0000 aaaa | STEP14 CURVE
+(0 - 12) |
+|
+00 77 | 0000 aaaa | STEP15 CURVE
+(0 - 12) |
+|
+00 78 | 0000 aaaa | STEP16 CURVE
+(0 - 12) |
+|
+00 79 | 0000 000a | SEQ2 ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 7A | 0000 000a | SYNC
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 7B | 000a aaaa | LOOP LENGTH
+(1 - 16) |
+|
+00 7C | 0aaa aaaa | RATE
+(0 - 118) |
+|
+|
+|
+0 - 100, 2/1, 1/1D, 1/1, 1/2D, 1/1T, 1/2,
+|
+|
+|
+|
+1/4D, 1/2T, 1/4, 1/8D, 1/4T, 1/8, 1/16D, 1/8T, |
+|
+|
+|
+1/16, 1/32D, 1/16T, 1/32
+|
+|
+00 7D | 0000 000a | 1 SHOT
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 7E | 0000 000a | TURBO
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 7F | 0000 aaaa | STEP1 CURVE
+(0 - 12) |
+|
+01 00 | 0000 aaaa | STEP2 CURVE
+(0 - 12) |
+|
+01 01 | 0000 aaaa | STEP3 CURVE
+(0 - 12) |
+|
+01 02 | 0000 aaaa | STEP4 CURVE
+(0 - 12) |
+|
+01 03 | 0000 aaaa | STEP5 CURVE
+(0 - 12) |
+|
+01 04 | 0000 aaaa | STEP6 CURVE
+(0 - 12) |
+|
+01 05 | 0000 aaaa | STEP7 CURVE
+(0 - 12) |
+|
+01 06 | 0000 aaaa | STEP8 CURVE
+(0 - 12) |
+|
+01 07 | 0000 aaaa | STEP9 CURVE
+(0 - 12) |
+|
+01 08 | 0000 aaaa | STEP10 CURVE
+(0 - 12) |
+|
+01 09 | 0000 aaaa | STEP11 CURVE
+(0 - 12) |
+|
+01 0A | 0000 aaaa | STEP12 CURVE
+(0 - 12) |
+|
+01 0B | 0000 aaaa | STEP13 CURVE
+(0 - 12) |
+|
+01 0C | 0000 aaaa | STEP14 CURVE
+(0 - 12) |
+|
+01 0D | 0000 aaaa | STEP15 CURVE
+(0 - 12) |
+|
+01 0E | 0000 aaaa | STEP16 CURVE
+(0 - 12) |
+|-------------+----------------------------------------------------------------|
+| 00 00 01 0F |Total Size
+|
++------------------------------------------------------------------------------+
+
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(8 - 56) |
+-24 - 24 |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 100) |
+(0 - 1) |
+OFF, ON |
+(0 - 1) |
+OFF, ON |
+
+* [EfctVariName]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 01 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 02 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 03 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 04 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 05 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 06 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 07 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 08 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 09 | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 0A | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 0B | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 0C | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 0D | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 0E | 0aaa aaaa | Name
+(32 - 126) |
+|
+00 0F | 0aaa aaaa | Name
+(32 - 126) |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 10 |Total Size
+|
++------------------------------------------------------------------------------+
+* [Padding]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|-------------+----------------------------------------------------------------|
+| 00 00 00 00 |Total Size
+|
++------------------------------------------------------------------------------+
+* [SystemEfct]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 000a | GROUND LIFT
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 01 |Total Size
+|
++------------------------------------------------------------------------------+
+* [SystemInOut]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 aaaa | MAIN:L:OUTPUT SELECT
+(0 - 10) |
+
+30
+
+

@@ -1,0 +1,49 @@
+Editing a Patch
+
+Saving the Edited Effect Settings
+(VARIATION)
+Your preferred settings for each effect can be saved as a “VARIATION.”
+
+Recalling a Saved Effect Variation
+1.	 Press the [EFFECTS] button.
+
+Since a variation can also be used from another patch, it is
+convenient for sound design.
+
+2.	 Use the [6] knob to choose the effect you’re going
+to edit.
+
+1.	 Press the [EFFECTS] button.
+
+3.	 Use the [K] [J] (PAGE) buttons to move to the last
+page.
+
+2.	 Use the [6] knob to choose the effect you’re going
+to edit.
+3.	 Use the [K] [J] (PAGE) buttons to move to the last
+page.
+
+4.	 Press the [5] knob.
+The VARIATION screen appears.
+
+5.	 Turn the [6] knob to select a variation.
+You can also audition the sound while selecting a variation.
+
+4.	 Press the [5] knob.
+The VARIATION screen appears.
+
+6.	 Press the [5] knob to recall the selected variation.
+
+5.	 Press the [2] knob.
+The VARIATION WRITE screen appears.
+
+6.	 Turn the [1] knob to select the save-destination
+number.
+7.	 Use knobs [3]–[6] to name the VARIATION.
+8.	 Press the [WRITE] button.
+The variation is saved.
+To cancel this procedure, press the [4] knob.
+
+17
+
+

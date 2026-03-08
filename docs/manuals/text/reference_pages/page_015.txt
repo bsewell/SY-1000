@@ -1,0 +1,44 @@
+Editing a Patch
+
+Saving the Edited INST Settings
+(VARIATION)
+Your preferred settings for each instrument can be saved as a
+“VARIATION.” Since a variation can also be used from another patch, it
+is convenient for sound design.
+
+Recalling a Saved INST Variation
+1.	 In the INST screen, press any one of the knobs [1]
+(INST1), [3] (INST2), or [5] (INST3).
+The VARIATION screen appears.
+
+Here we explain using the example of the DYNAMIC SYNTH screen of
+INST1.
+
+1.	 In the INST screen, press the [1] knob.
+The VARIATION screen appears.
+
+2.	 Turn the [6] knob to select a variation.
+You can also audition the sound while selecting a variation.
+
+3.	 Press the [5] knob to recall the selected variation.
+MEMO
+From the INST edit screen, you can also access the variation screen
+using the following methods.
+1.	 In the edit screen, select the “COMMON” block.
+
+2.	 Use the [J] (PAGE) button to move to the last page.
+3.	 Press the [5] knob.
+
+2.	 Press the [2] knob.
+The VARIATION WRITE screen appears.
+
+3.	 Turn the [1] knob to select the save-destination
+number.
+4.	 Use the [3]–[6] knobs to specify the variation name.
+5.	 Press the [WRITE] button.
+The variation is saved.
+To cancel this procedure, press the [4] knob.
+
+15
+
+

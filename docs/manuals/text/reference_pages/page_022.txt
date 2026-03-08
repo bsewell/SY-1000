@@ -1,0 +1,299 @@
+INST Parameters
+1. Press the [INST] button.
+The INST screen appears.
+
+The INST screen shows the INST TYPE of INST1–INST3.
+MEMO
+
+55 The parameters shown depend on the type of instrument that you select.
+55 INST1–INST3 are common parameters.
+
+Availability of Functions for Each INST TYPE (GUITAR MODE)
+INST TYPE
+DYNAMIC SYNTH
+OSC SYNTH
+GR-300
+E.GUITAR
+ACOUSTIC
+E.BASS
+VIO GUITAR
+POLY FX
+
+ALT. TUNE
+
+12STR
+
+STR BEND
+
+STRING
+LEVEL
+
+STRING
+PAN
+
+AMP
+Modeling
+
+NS
+
+EQ
+
+(
+
+–
+
+(
+
+(
+
+(
+
+(
+
+–
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+–
+(
+–
+–
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+–
+
+–
+
+–
+
+(
+
+–
+
+–
+
+–
+
+–
+
+–
+
+–
+
+(
+
+( *1
+
+( *1
+
+(
+
+(
+
+(
+
+( *1
+
+( *1
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+( *1
+(
+
+(
+
+( *1
+–
+–
+
+(
+
+(
+
+(
+
+(
+
+(
+–
+
+*1 If AMP Modeling is ON, the PAN effect disappears.
+
+Availability of Functions for Each INST TYPE (BASS MODE)
+INST TYPE
+DYNAMIC SYNTH
+OSC SYNTH
+ANALOG GR
+E.BASS
+AC BASS
+E.GUITAR
+POLY FX
+
+ALT. TUNE
+
+12STR
+
+(
+
+–
+
+(
+
+–
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+–
+(
+–
+
+STR BEND STR LEVEL
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+*1 If AMP Modeling is ON, the PAN effect disappears.
+
+22
+
+(
+
+STR PAN
+
+AMP
+Modeling
+
+NS
+
+EQ
+
+(
+
+–
+
+–
+
+–
+
+(
+
+–
+
+–
+
+–
+
+–
+
+–
+
+–
+
+(
+
+( *1
+
+( *1
+
+(
+
+(
+
+(
+
+( *1
+
+( *1
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+(
+
+( *1
+(
+
+( *1
+–
+
+(
+
+(
+
+(
+–
+
+

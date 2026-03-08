@@ -1,0 +1,198 @@
+SYSTEM Parameters > MIDI
+Parameter
+
+Value
+
+Explanation
+
+Parameter
+
+This setting determines the basis used for
+synchronizing the timing for effect modulation
+rates and other time-based parameters.
+* If SYNC CLOCK is set to AUTO, MIDI (AUTO),
+or USB (AUTO), and an external MIDI device is
+connected, this unit synchronizes to the tempo of
+the external MIDI device. In this case, the patch’s
+BPM parameter (p. 66) is ignored. If you want
+this unit’s BPM setting to be the reference (i.e., if
+you want to enable the BPM parameter), set SYNC
+CLOCK to “INTERNAL.”
+
+SYNC CLOCK
+
+CLOCK OUT
+
+PC OUT
+
+* When synchronizing performances to the MIDI
+Clock signal from an external MIDI device, timing
+problems in the performance may occur due to
+errors in the MIDI Clock.
+Operations are synchronized to
+MIDI clock messages received via
+MIDI or USB. However, operations
+are automatically synchronized to
+AUTO
+the SY-1000’s internal Clock if the
+SY-1000 is unable to receive the
+external Clock.
+Operations are synchronized to the
+INTERNAL
+SY-1000’s internal Clock.
+Operations are synchronized
+to the MIDI Clock received via
+MIDI. However, operations are
+MIDI (AUTO)
+automatically synchronized to
+the SY-1000’s internal Clock if the
+SY-1000 is unable to receive the
+external Clock.
+Operations are synchronized
+to the USB Clock received via
+USB. However, operations are
+USB (AUTO)
+automatically synchronized to
+the SY-1000’s internal Clock if the
+SY-1000 is unable to receive the
+external Clock.
+Specifies whether MIDI clock will be output from
+the SY-1000.
+OFF
+MIDI clock is not output.
+ON
+MIDI clock is output.
+This setting determines whether or not Program
+Change messages are output when the SY-1000’s
+patches are switched.
+MIDI messages for PATCH MIDI
+are not transmitted (PATCH MIDI
+OFF
+control change messages are not
+transmitted either).
+ON
+
+TX PC MAP
+
+90
+
+RX PC MAP
+
+NUM1 CC#
+NUM2 CC#
+NUM3 CC#
+NUM4 CC#
+
+Explanation
+
+When the SY-1000 receives a program change
+message, you can specify whether the SY-1000
+switches to the patch corresponding to the
+received program change message or to the patch
+specified by the “PROGRAM MAP BANK1–BANK4”
+(p. 90).
+Switch to the patch corresponding
+to the received program change
+message.
+FIX
+“PROGRAM MAP BANK1–BANK4” (p.
+90) is ignored.
+The patch specified by “PROGRAM
+PROG
+MAP BANK1–BANK4” (p. 90) will
+be selected.
+Specifies the controller number when transmitting
+pedal operations as control change messages.
+Control Change messages are not
+OFF
+output.
+
+BANK DOWN
+CC#
+BANK UP CC#
+CTL1 CC#
+CTL2 CC#
+CTL3 CC#
+CTL4 CC#
+CTL5 CC#
+
+Pedal operations are transmitted
+CC#1–CC#31,
+using the specified controller
+CC#64–CC#95
+number.
+
+CTL6 CC#
+EXP1 CC#
+EXP2 CC#
+GK VOL CC#
+GK SW1 CC#
+GK SW2 CC#
+
+PROGRAM MAP BANK1–BANK4
+When switching patches using Program Change messages
+transmitted by an external MIDI device, you can freely set the
+correspondence between Program Change messages received by the
+SY-1000 and the patches to be switched to.
+Parameter
+
+Value
+
+PC#1–PC#128
+
+This sets the patch number
+U01-1–U50-4, (U01-1 through P50-4) for the
+P01-1–P50-4 corresponding Program Change
+messages.
+
+Transmit program change
+messages.
+
+This sets the Program Change messages
+transmitted when patches are switched.
+Regardless of the patch settings,
+Program Change messages
+FIX
+predetermined for each patch
+number are sent.
+The MIDI messages specified by the
+PATCH MIDI settings of each patch
+PATCH MIDI
+are transmitted (including control
+change messages).
+
+Value
+
+Explanation
+
+BULK DUMP
+By transmitting exclusive data, you can send the same settings to
+another SY-1000 unit, or save effect settings on your MIDI sequencer.
+Parameter
+
+FROM
+TO
+
+Value
+
+Explanation
+
+SYSTEM
+
+System parameter settings
+
+U01-1–U50-4
+
+Settings for Patch Number U01-1
+through U50-4
+
+VARIATION
+
+Contents of the variation settings
+
+TEMP
+
+Settings for the patch that is
+currently selected
+
+

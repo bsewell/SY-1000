@@ -1,0 +1,65 @@
+Editing a Patch
+
+Assigning Functions to the Foot Switches
+and Expression Pedal
+
+Turning the knob will move the selected item vertically.
+
+A variety of functions can be assigned to each of the top panel
+footswitches, and expression pedals or footswitches that are
+connected to the rear panel CTL3, 4/EXP1 jack and CTL5, 6/EXP2 jack
+(p. 5).
+
+The settings of the selected item can now be edited.
+
+4.	 Turn knobs [2]–[6] to edit the value of the item
+selected for each switch.
+MEMO
+
+55 You can use the [K] [J] (PAGE) buttons to switch between the
+parameters.
+
+55 The footswitch and expression pedal functions must be specified
+for each patch; however, if you set PREFERENCE to SYSTEM, all
+patches will use those functions in common.
+Built-in footswitches
+
+Making Assignments from the Effect Edit
+Screen (Quick Assign)
+In the effect edit screen (p. 16), you can select an effect parameter
+and assign that parameter to the switch of your choice.
+
+EXP1, EXP2
+
+CTL3–CTL6
+
+1.	 Press the [EFFECTS] button.
+1.	 Press the [CTL] button.
+The CONTROL/ASSIGN screen appears.
+
+2.	 Turn the [6] knob to select the block that you want
+to edit.
+3.	 Long-press the [1]–[5] knobs for the parameter that
+you want to assign.
+
+2.	 Press the [1] knob.
+The CONTROL FUNCTION screen appears.
+The ASSIGN MATRIX screen appears.
+
+3.	 Turn the [1] knob to select the item that you want
+to set.
+
+* You can also access the ASSIGN MATRIX screen in the same way
+from the all-parameter list screen (p. 14). You can also access it
+by selecting the [CTL] button0 “ASSIGN SETTING.”
+
+4.	 Press the [1] knob to turn the SW on.
+5.	 Turn knobs [2]–[6] to edit parameters.
+If necessary, use the [K] [J] (PAGE) buttons to switch between
+pages of settings.
+Use SOURCE to specify the pedal or MIDI message that you will
+operate.
+
+18
+
+

@@ -1,0 +1,154 @@
+INST Parameters > VIO GUITAR Parameters
+
+HARMO
+
+Parameter
+
+Value
+
+Emphasizes the sound when single
+notes are played.
+
+Here you can add overtones (harmonics) to the sound specified in the
+GUITAR block.
+Parameter
+
+Value
+
+Explanation
+
+-24–+24
+
+Specifies the pitch of the harmonics
+in semitone units. A setting of -24
+produces a sound two octaves
+below, and a setting of +24
+produces a sound two octaves
+above. With a setting of 0, a
+harmonics sound at the same pitch
+as the original sound is heard.
+
+GAIN
+
+0–100
+
+Specifies the volume of the
+harmonics sound. Larger values
+increase the volume of the
+harmonics sound.
+
+ATTACK
+
+0–100
+
+Emphasizes the attack portion of
+the harmonics sound. Larger values
+emphasize the attack.
+
+PITCH
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound. Larger values increase the
+volume of the direct sound.
+
+FILTER
+Here you can use a filter to add depth to the sound and shape the
+tonal character.
+Parameter
+
+Value
+
+Explanation
+
+OVERTONE
+
+0–100
+
+Modifies the nuances of the
+overtones. Larger values increase
+the overtones, giving the sound
+more depth.
+
+ATTACK
+
+0–100
+
+Varies the nuances of the attack
+portion. Larger values emphasize
+the attack.
+
+POWER BEND 0–100
+
+Increasing this value will darken the
+sound. At the same time, the tone
+and volume will vary more easily in
+response to pitch change such as
+when using the vibrato arm.
+
+SLIDE TIME
+
+0–100
+
+Larger values lengthen the time
+over which the tone changes from
+one note to the next on each string,
+producing an effect of smooth
+change between notes. At the same
+time, it tends to suppress the attack.
+
+OCTAVE
+
+-1, 0, +1
+
+Adjusts the center frequency of the
+filter. A setting of 0 is the normal
+state, and a setting of -1 applies
+the filter at a frequency one octave
+below. A setting of +1 applies the
+filter at a frequency one octave
+above.
+
+COLOR
+
+0–100
+
+Modifies the nuances of the
+overtones. Larger values produce a
+more detailed sound.
+
+0–100
+
+Specifies how your playing
+dynamics on the guitar affect the
+tonal character. With larger values,
+stronger playing gives the sound
+more depth.
+
+TOUCH SENS
+
+40
+
+Explanation
+
+LEAD
+EMPHASIS
+
+0–100
+
+With VIO guitar, single-note (singlestring) playing produces a lower
+output than when chords are
+played. Lead emphasis prevents this.
+Larger values boost the volume
+level of single notes. With a
+setting of 0, single notes are not
+emphasized.
+
+NS
+Refer to “NS” (p. 35).
+
+EQ
+Refer to “EQ” (p. 35).
+
+

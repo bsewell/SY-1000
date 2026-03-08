@@ -1,0 +1,268 @@
+EFFECT Parameters > FX1–FX3
+Parameter
+BPM
+
+VARIATION
+
+Value
+
+Explanation
+
+Parameter
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume of the effect
+sound.
+
+ROTARY settings can be saved/
+loaded as ten variations.
+
+ATTACK
+
+0–100
+
+Adjusts the volume of the attacks
+for the slice pattern (rhythm).
+
+DUTY
+
+1–99
+
+Adjusts the duration of the sound
+for the slice pattern (rhythm).
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+
+BPM
+
+Adjusts the BPM value for each
+patch.
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+SITAR SIM
+
+Value
+
+40–250
+
+SLICER settings can be saved/loaded
+as ten variations.
+VARIATION
+
+PATCH, 01–10
+
+This simulates the sound of the sitar.
+Parameter
+
+SENS
+
+Value
+
+Explanation
+
+0–100
+
+Adjusts the sensitivity of the sitar.
+When it is set to a lower value, no
+effect of the sitar is obtained with
+weaker picking, while stronger
+picking produces the effect. When
+it is set to a higher value, the
+effect of the sitar can be obtained
+whether the picking is weak or
+strong.
+
+DEPTH
+
+0–100
+
+TONE
+
+-50–+50
+
+SLOW GEAR/SLOW GEAR BASS
+This produces a volume-swell effect (“violin-like” sound).
+Parameter
+
+Value
+
+Explanation
+
+SENS
+
+0–100
+
+Adjusts the sensitivity of the slow
+gear. When it is set to a lower value,
+the effect of the slow gear can
+be obtained only with a stronger
+picking, while no effect is obtained
+with a weaker picking. When the
+value is set higher, the effect is
+obtained even with a weak picking.
+
+RISE TIME
+
+0–100
+
+Adjusts the time needed for the
+volume to reach its maximum from
+the moment you begin picking.
+
+LEVEL
+
+0–100
+
+Adjusts the volume of the effect
+sound.
+
+Adjusts the tone character.
+
+EFFECT LEVEL 0–100
+
+Adjust the volume of the sitar
+sound.
+
+RESONANCE
+
+0–100
+
+This adjusts the undulation of the
+resonance.
+
+BUZZ
+
+0–100
+
+Adjusts the amount of
+characteristic buzz produced by
+the “buzz bridge” when the strings
+make contact with it.
+
+DIRECT LEVEL
+
+0–100
+
+Adjusts the volume of the direct
+sound.
+SITAR SIM settings can be saved/
+loaded as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+SLICER
+This consecutively interrupts the sound to create the impression that
+a rhythm backing phrase is being played.
+Parameter
+
+Value
+
+Explanation
+
+PATTERN
+
+P1–P20
+
+Select the slice pattern (rhythm)
+that will be used to cut the sound.
+
+RATE
+
+0–100, BPM
+Œ–`
+
+Adjust the rate at which the sound
+will be cut.
+
+OFF, ON
+
+When you switch this from OFF
+to ON, the slice pattern (rhythm)
+returns to its beginning.
+
+*1
+
+TRIGGER
+
+* Patches are written with the
+TRIGGER parameter set to Off.
+
+52
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+This adjusts the amount of effect
+applied.
+The high end is boosted as the
+value increases.
+
+Explanation
+
+SLOW GEAR and SLOW GEAR BASS
+settings can be saved/loaded as ten
+variations.
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+SOUND HOLD
+You can have sound played on the guitar be held continuously. This
+effect allows you to perform the melody in the upper registers while
+holding a note in the lower registers.
+* This function will not work properly when two or more notes are
+played simultaneously.
+Parameter
+
+Value
+
+Explanation
+Switches the hold sound on and off.
+Normally, this is controlled with the
+CTL pedals.
+
+TRIGGER
+
+OFF, ON
+
+55It is assumed that this parameter
+will be assigned to the footswitch.
+55Patches are written with the
+TRIGGER parameter set to Off.
+
+

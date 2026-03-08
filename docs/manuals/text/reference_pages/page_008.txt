@@ -1,0 +1,90 @@
+Getting Ready
+OUTPUT SELECT Explanation
+COMBO AMP 1
+INPUT
+
+Choose this setting if the SY-1000 is
+connected to the guitar input jack of a
+combo type amp (with amp and speaker in a
+single unit) equipped with one speaker.
+
+COMBO AMP 2
+RETURN
+
+Choose this setting if the SY-1000 is
+connected to the RETURN jack of a combo
+type amp (with amp and speaker in a single
+unit) equipped with two speakers.
+
+COMBO AMP 2
+INPUT
+
+Choose this setting if the SY-1000 is
+connected to the guitar input jack of a
+combo type amp (with amp and speaker in a
+single unit) equipped with two speakers.
+
+STACK AMP
+RETURN
+
+Set this when connecting to the RETURN jack
+on a stack-type amp.
+
+STACK AMP
+INPUT
+
+Set this when connecting to the guitar input
+jack on a stack-type amp.
+
+BASS AMP WITH
+TWEETER
+
+Use this setting when connecting to a
+tweeter-equipped bass amp.
+
+BASS AMP NO
+TWEETER
+
+Use this setting when connecting to a bass
+amp that has no tweeter. The high-frequency
+range is adjusted.
+
+Making Pickup Settings (GK SETTING)
+Make settings for the divided pickup in order to ensure that you’ll
+always be playing the SY-1000 in the optimal state.
+The SY-1000 can save ten types of these settings (GK SETTING).
+Here we explain the example of saving pickup settings in SETTING:
+[1].
+MEMO
+The GK SETTING is saved even when the power is turned off. You
+don’t need to make this setting again each time you perform.
+
+1.	 Press the [SYSTEM] button.
+2.	 Use the [K] [J] (PAGE) buttons to access the “IN/
+OUT SETTING” icon.
+
+3.	 Press the [2] knob.
+7.	 Press the [EXIT] button.
+
+The IN/OUT SETTING screen appears.
+
+You return to the Play screen.
+
+4.	 Press the [1] knob.
+The GK SETTING screen appears.
+
+5.	 Turn the [1] knob to select SETTING: [1].
+The pickup settings will be saved in SETTING: [1].
+MEMO
+Pickup settings are automatically saved in the number (SETTING: [1]–
+[10]) that you selected in step 5.
+
+Specifying the Pickup Type
+Choose the type of pickup that’s installed on your guitar (bass).
+
+6.	 If using GUITAR MODE, turn the [5] knob.
+If using BASS MODE, turn the [4] knob.
+
+8
+
+

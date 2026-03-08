@@ -1,0 +1,67 @@
+EFFECT Parameters > BALANCER 1–BALANCER 3
+
+BALANCER 1–BALANCER 3
+
+MAIN OUT/SUB OUT
+
+This adjusts the volume balance and panning for each of the routes
+INST1–INST3 and NORMAL INPUT.
+
+These are settings for the MAIN OUT and SUB OUT jacks.
+
+BALANCER 1
+
+BALANCER 2
+
+Parameter
+
+Value
+
+Explanation
+
+STEREO LINK
+
+OFF, ON
+
+If this is OFF, L and R can be
+independently positioned in
+the chain; if this is ON, they are
+positioned as a set (stereo).
+
+L:PHASE
+
+NORMAL,
+INVERT
+
+Specify the phase of the output
+signal.
+
+BALANCER 3
+
+R:PHASE
+Parameter
+
+Value
+
+Explanation
+
+A/B BALANCE 100:0–0:100
+
+Adjusts the volume balance of
+channels “A” and “B.”
+
+A:PAN
+
+L50–R50
+
+Adjusts the pan of channel “A.”
+
+B:PAN
+
+L50–R50
+
+Adjusts the pan of channel “B.”
+
+65
+
+

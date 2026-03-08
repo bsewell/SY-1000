@@ -1,0 +1,1006 @@
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|
+|
+MDLY TRIGGER, DIV CH SELECT, MIDI START,
+|
+|
+|
+MMC PLAY
+|
+00 17 | 0000 000a | Ctl6 Mode
+(0 - 1) |
+|
+|
+TOGGLE, MOMENT |
+00 18 | 0aaa aaaa | CNum Function
+(0 - 116) |
+|
+|
+OFF, LEVEL +10, LEVEL +20, LEVEL -10,
+|
+|
+|
+LEVEL -20, BPM TAP, DLY1 TAP, DLY2 TAP,
+|
+|
+|
+MST DLY TAP, FX1 DLY TAP, FX2 DLY TAP,
+|
+|
+|
+FX3 DLY TAP, TUNER, MANUAL, MANUAL/TUNER,
+|
+|
+|
+TUNER/MANUAL, INST1, INST2, INST3, INST ALL,
+|
+|
+|
+INST1 NOR MIX, INST2 NOR MIX, INST3 NOR MIX,
+|
+|
+|
+NORMAL, 1: ALT TUNE, 2: ALT TUNE, 3: ALT TUNE, |
+|
+|
+ALL: ALT TUNE, 1: 12STR, 2: 12STR, 3: 12STR,
+|
+|
+|
+ALL: 12STR, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, INST1 LFO1,
+|
+|
+|
+INST1 LFO2, INST1 LFO1&2, INST2 LFO1,
+|
+|
+|
+INST2 LFO2, INST2 LFO1&2, INST3 LFO1,
+|
+|
+|
+INST3 LFO2, INST3 LFO1&2, INST ALL LFO,
+|
+|
+|
+INST1 SEQ1, INST1 SEQ2, INST1 SEQ1&2,
+|
+|
+|
+INST2 SEQ1, INST2 SEQ2, INST2 SEQ1&2,
+|
+|
+|
+INST3 SEQ1, INST3 SEQ2, INST3 SEQ1&2,
+|
+|
+|
+INST ALL SEQ, 1: SEQ1 TRIG, 1: SEQ2 TRIG,
+|
+|
+|
+1: SEQ1&2 TRIG, 2: SEQ1 TRIG, 2: SEQ2 TRIG,
+|
+|
+|
+2: SEQ1&2 TRIG, 3: SEQ1 TRIG, 3: SEQ2 TRIG,
+|
+|
+|
+3: SEQ1&2 TRIG, ALL SEQ TRIG, 1: SEQ1 TURBO,
+|
+|
+|
+1: SEQ2 TURBO, 1:SEQ1&2 TURBO, 2: SEQ1 TURBO,
+|
+|
+|
+2: SEQ2 TURBO, 2:SEQ1&2 TURBO, 3: SEQ1 TURBO,
+|
+|
+|
+3: SEQ2 TURBO, 3:SEQ1&2 TURBO, ALL: SEQ TURBO, |
+|
+|
+INST1 HOLD, INST2 HOLD, INST3 HOLD,
+|
+|
+|
+INST ALL HOLD, SYNC TRIG, 1: PU SEL UP,
+|
+|
+|
+2: PU SEL UP, 3: PU SEL UP, 1: PU SEL DOWN,
+|
+|
+|
+2: PU SEL DOWN, 3: PU SEL DOWN, INST1 AMP,
+|
+|
+|
+INST2 AMP, INST3 AMP, INST1 AMP SOLO,
+|
+|
+|
+INST2 AMP SOLO, INST3 AMP SOLO, FX1, FX2, FX3, |
+|
+|
+CMP, DS, DS SOLO, AMP, AMP SOLO, EQ1, EQ2, NS, |
+|
+|
+DLY1, DLY2, MST DLY, CHO, REV, S/R,
+|
+|
+|
+FX1 TRIGGER, FX2 TRIGGER, FX3 TRIGGER,
+|
+|
+|
+MDLY TRIGGER, DIV CH SELECT, MIDI START,
+|
+|
+|
+MMC PLAY
+|
+00 19 | 0000 000a | CNum Mode
+(0 - 1) |
+|
+|
+TOGGLE, MOMENT |
+00 1A | 00aa aaaa | Exp1 Function
+(0 - 45) |
+|
+|
+OFF, FV1, FV2, FV1+TUNER, FV2+TUNER,
+|
+|
+|
+FX1 PEDAL POS., FX2 PEDAL POS.,
+|
+|
+|
+FX3 PEDAL POS., PATCH LEVEL100,
+|
+|
+|
+PATCH LEVEL200, INST1 LEVEL, INST2 LEVEL,
+|
+|
+|
+INST3 LEVEL, INST ALL LEVEL, INST1 CUTOFF,
+|
+|
+|
+INST2 CUTOFF, INST3 CUTOFF, INST ALL CUTOFF,
+|
+|
+|
+INST1 RESO, INST2 RESO, INST3 RESO,
+|
+|
+|
+INST ALL RESO, 1:GTR VOL, 2:GTR VOL,
+|
+|
+|
+3:GTR VOL, ALL:GTR VOL, 1:NOR MIX 100,
+|
+|
+|
+1:NOR MIX 200, 2:NOR MIX 100, 2:NOR MIX 200,
+|
+|
+|
+3:NOR MIX 100, 3:NOR MIX 200, ALL:NOR MIX100,
+|
+|
+|
+ALL:NOR MIX200, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, 1: DYNA BEND,
+|
+|
+|
+2: DYNA BEND, 3: DYNA BEND, ALL: DYNA BEND,
+|
+|
+|
+MIXER A/B, BAL1 A/B, BAL2 A/B, BAL3 A/B
+|
+00 1B | 00aa aaaa | Exp2 Function
+(0 - 45) |
+|
+|
+OFF, FV1, FV2, FV1+TUNER, FV2+TUNER,
+|
+|
+|
+FX1 PEDAL POS., FX2 PEDAL POS.,
+|
+|
+|
+FX3 PEDAL POS., PATCH LEVEL100,
+|
+|
+|
+PATCH LEVEL200, INST1 LEVEL, INST2 LEVEL,
+|
+|
+|
+INST3 LEVEL, INST ALL LEVEL, INST1 CUTOFF,
+|
+|
+|
+INST2 CUTOFF, INST3 CUTOFF, INST ALL CUTOFF,
+|
+|
+|
+INST1 RESO, INST2 RESO, INST3 RESO,
+|
+|
+|
+INST ALL RESO, 1:GTR VOL, 2:GTR VOL,
+|
+|
+|
+3:GTR VOL, ALL:GTR VOL, 1:NOR MIX 100,
+|
+|
+|
+1:NOR MIX 200, 2:NOR MIX 100, 2:NOR MIX 200,
+|
+|
+|
+3:NOR MIX 100, 3:NOR MIX 200, ALL:NOR MIX100,
+|
+|
+|
+ALL:NOR MIX200, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, 1: DYNA BEND,
+|
+|
+|
+2: DYNA BEND, 3: DYNA BEND, ALL: DYNA BEND,
+|
+|
+|
+MIXER A/B, BAL1 A/B, BAL2 A/B, BAL3 A/B
+|
+00 1C | 00aa aaaa | GK VOL Function
+(0 - 45) |
+|
+|
+OFF, FV1, FV2, FV1+TUNER, FV2+TUNER,
+|
+|
+|
+FX1 PEDAL POS., FX2 PEDAL POS.,
+|
+|
+|
+FX3 PEDAL POS., PATCH LEVEL100,
+|
+|
+|
+PATCH LEVEL200, INST1 LEVEL, INST2 LEVEL,
+|
+|
+|
+INST3 LEVEL, INST ALL LEVEL, INST1 CUTOFF,
+|
+|
+|
+INST2 CUTOFF, INST3 CUTOFF, INST ALL CUTOFF,
+|
+|
+|
+INST1 RESO, INST2 RESO, INST3 RESO,
+|
+|
+|
+INST ALL RESO, 1:GTR VOL, 2:GTR VOL,
+|
+|
+|
+3:GTR VOL, ALL:GTR VOL, 1:NOR MIX 100,
+|
+|
+|
+1:NOR MIX 200, 2:NOR MIX 100, 2:NOR MIX 200,
+|
+|
+|
+3:NOR MIX 100, 3:NOR MIX 200, ALL:NOR MIX100,
+|
+|
+|
+ALL:NOR MIX200, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, 1: DYNA BEND,
+|
+|
+|
+2: DYNA BEND, 3: DYNA BEND, ALL: DYNA BEND,
+|
+|
+|
+MIXER A/B, BAL1 A/B, BAL2 A/B, BAL3 A/B
+|
+00 1D | 0aaa aaaa | GK SW1 Function
+(0 - 120) |
+|
+|
+OFF, BANK UP, BANK DOWN, PATCH +1, PATCH -1,
+|
+|
+|
+LEVEL +10, LEVEL +20, LEVEL -10, LEVEL -20,
+|
+|
+|
+BPM TAP, DLY1 TAP, DLY2 TAP, MST DLY TAP,
+|
+|
+|
+FX1 DLY TAP, FX2 DLY TAP, FX3 DLY TAP, TUNER,
+|
+|
+|
+MANUAL, MANUAL/TUNER, TUNER/MANUAL, INST1,
+|
+|
+|
+INST2, INST3, INST ALL, INST1 NOR MIX,
+|
+|
+|
+INST2 NOR MIX, INST3 NOR MIX, NORMAL,
+|
+|
+|
+1: ALT TUNE, 2: ALT TUNE, 3: ALT TUNE,
+|
+|
+|
+ALL: ALT TUNE, 1: 12STR, 2: 12STR, 3: 12STR,
+|
+|
+|
+ALL: 12STR, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, INST1 LFO1,
+|
+|
+|
+INST1 LFO2, INST1 LFO1&2, INST2 LFO1,
+|
+|
+|
+INST2 LFO2, INST2 LFO1&2, INST3 LFO1,
+|
+|
+|
+INST3 LFO2, INST3 LFO1&2, INST ALL LFO,
+|
+|
+|
+INST1 SEQ1, INST1 SEQ2, INST1 SEQ1&2,
+|
+|
+|
+INST2 SEQ1, INST2 SEQ2, INST2 SEQ1&2,
+|
+|
+|
+INST3 SEQ1, INST3 SEQ2, INST3 SEQ1&2,
+|
+|
+|
+INST ALL SEQ, 1: SEQ1 TRIG, 1: SEQ2 TRIG,
+|
+|
+|
+1: SEQ1&2 TRIG, 2: SEQ1 TRIG, 2: SEQ2 TRIG,
+|
+
+13
+
+|
+|
+2: SEQ1&2 TRIG, 3: SEQ1 TRIG, 3: SEQ2 TRIG,
+|
+|
+|
+3: SEQ1&2 TRIG, ALL SEQ TRIG, 1: SEQ1 TURBO,
+|
+|
+|
+1: SEQ2 TURBO, 1:SEQ1&2 TURBO, 2: SEQ1 TURBO,
+|
+|
+|
+2: SEQ2 TURBO, 2:SEQ1&2 TURBO, 3: SEQ1 TURBO,
+|
+|
+|
+3: SEQ2 TURBO, 3:SEQ1&2 TURBO, ALL: SEQ TURBO, |
+|
+|
+INST1 HOLD, INST2 HOLD, INST3 HOLD,
+|
+|
+|
+INST ALL HOLD, SYNC TRIG, 1: PU SEL UP,
+|
+|
+|
+2: PU SEL UP, 3: PU SEL UP, 1: PU SEL DOWN,
+|
+|
+|
+2: PU SEL DOWN, 3: PU SEL DOWN, INST1 AMP,
+|
+|
+|
+INST2 AMP, INST3 AMP, INST1 AMP SOLO,
+|
+|
+|
+INST2 AMP SOLO, INST3 AMP SOLO, FX1, FX2, FX3, |
+|
+|
+CMP, DS, DS SOLO, AMP, AMP SOLO, EQ1, EQ2, NS, |
+|
+|
+DLY1, DLY2, MST DLY, CHO, REV, S/R,
+|
+|
+|
+FX1 TRIGGER, FX2 TRIGGER, FX3 TRIGGER,
+|
+|
+|
+MDLY TRIGGER, DIV CH SELECT, MIDI START,
+|
+|
+|
+MMC PLAY
+|
+00 1E | 0000 000a | GK SW1 Mode
+(0 - 1) |
+|
+|
+TOGGLE, MOMENT |
+00 1F | 0aaa aaaa | GK SW2 Function
+(0 - 120) |
+|
+|
+OFF, BANK UP, BANK DOWN, PATCH +1, PATCH -1,
+|
+|
+|
+LEVEL +10, LEVEL +20, LEVEL -10, LEVEL -20,
+|
+|
+|
+BPM TAP, DLY1 TAP, DLY2 TAP, MST DLY TAP,
+|
+|
+|
+FX1 DLY TAP, FX2 DLY TAP, FX3 DLY TAP, TUNER,
+|
+|
+|
+MANUAL, MANUAL/TUNER, TUNER/MANUAL, INST1,
+|
+|
+|
+INST2, INST3, INST ALL, INST1 NOR MIX,
+|
+|
+|
+INST2 NOR MIX, INST3 NOR MIX, NORMAL,
+|
+|
+|
+1: ALT TUNE, 2: ALT TUNE, 3: ALT TUNE,
+|
+|
+|
+ALL: ALT TUNE, 1: 12STR, 2: 12STR, 3: 12STR,
+|
+|
+|
+ALL: 12STR, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, INST1 LFO1,
+|
+|
+|
+INST1 LFO2, INST1 LFO1&2, INST2 LFO1,
+|
+|
+|
+INST2 LFO2, INST2 LFO1&2, INST3 LFO1,
+|
+|
+|
+INST3 LFO2, INST3 LFO1&2, INST ALL LFO,
+|
+|
+|
+INST1 SEQ1, INST1 SEQ2, INST1 SEQ1&2,
+|
+|
+|
+INST2 SEQ1, INST2 SEQ2, INST2 SEQ1&2,
+|
+|
+|
+INST3 SEQ1, INST3 SEQ2, INST3 SEQ1&2,
+|
+|
+|
+INST ALL SEQ, 1: SEQ1 TRIG, 1: SEQ2 TRIG,
+|
+|
+|
+1: SEQ1&2 TRIG, 2: SEQ1 TRIG, 2: SEQ2 TRIG,
+|
+|
+|
+2: SEQ1&2 TRIG, 3: SEQ1 TRIG, 3: SEQ2 TRIG,
+|
+|
+|
+3: SEQ1&2 TRIG, ALL SEQ TRIG, 1: SEQ1 TURBO,
+|
+|
+|
+1: SEQ2 TURBO, 1:SEQ1&2 TURBO, 2: SEQ1 TURBO,
+|
+|
+|
+2: SEQ2 TURBO, 2:SEQ1&2 TURBO, 3: SEQ1 TURBO,
+|
+|
+|
+3: SEQ2 TURBO, 3:SEQ1&2 TURBO, ALL: SEQ TURBO, |
+|
+|
+INST1 HOLD, INST2 HOLD, INST3 HOLD,
+|
+|
+|
+INST ALL HOLD, SYNC TRIG, 1: PU SEL UP,
+|
+|
+|
+2: PU SEL UP, 3: PU SEL UP, 1: PU SEL DOWN,
+|
+|
+|
+2: PU SEL DOWN, 3: PU SEL DOWN, INST1 AMP,
+|
+|
+|
+INST2 AMP, INST3 AMP, INST1 AMP SOLO,
+|
+|
+|
+INST2 AMP SOLO, INST3 AMP SOLO, FX1, FX2, FX3, |
+|
+|
+CMP, DS, DS SOLO, AMP, AMP SOLO, EQ1, EQ2, NS, |
+|
+|
+DLY1, DLY2, MST DLY, CHO, REV, S/R,
+|
+|
+|
+FX1 TRIGGER, FX2 TRIGGER, FX3 TRIGGER,
+|
+|
+|
+MDLY TRIGGER, DIV CH SELECT, MIDI START,
+|
+|
+|
+MMC PLAY
+|
+00 20 | 0000 000a | GK SW2 Mode
+(0 - 1) |
+|
+|
+TOGGLE, MOMENT |
+00 21 | 0000 000a | Num1 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 22 | 0000 000a | Num2 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 23 | 0000 000a | Num3 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 24 | 0000 000a | Num4 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 25 | 0000 000a | BankDown Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 26 | 0000 000a | BankUp Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 27 | 0000 000a | Ctl1 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 28 | 0000 000a | Ctl2 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 29 | 0000 000a | Ctl3 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 2A | 0000 000a | Ctl4 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 2B | 0000 000a | Ctl5 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 2C | 0000 000a | Ctl6 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 2D | 0000 000a | CNum Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 2E | 0000 000a | Exp1 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 2F | 0000 000a | Exp2 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 30 | 0000 000a | GK VOL Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 31 | 0000 000a | GK SW1 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 32 | 0000 000a | GK SW2 Preference
+(0 - 1) |
+|
+|
+PATCH, SYSTEM |
+00 33 | 0aaa aaaa | Manual Num1 Function
+(0 - 116) |
+|
+|
+OFF, LEVEL +10, LEVEL +20, LEVEL -10,
+|
+|
+|
+LEVEL -20, BPM TAP, DLY1 TAP, DLY2 TAP,
+|
+|
+|
+MST DLY TAP, FX1 DLY TAP, FX2 DLY TAP,
+|
+|
+|
+FX3 DLY TAP, TUNER, MANUAL, MANUAL/TUNER,
+|
+|
+|
+TUNER/MANUAL, INST1, INST2, INST3, INST ALL,
+|
+|
+|
+INST1 NOR MIX, INST2 NOR MIX, INST3 NOR MIX,
+|
+|
+|
+NORMAL, 1: ALT TUNE, 2: ALT TUNE, 3: ALT TUNE, |
+|
+|
+ALL: ALT TUNE, 1: 12STR, 2: 12STR, 3: 12STR,
+|
+|
+|
+ALL: 12STR, 1: STR BEND, 2: STR BEND,
+|
+|
+|
+3: STR BEND, ALL: STR BEND, INST1 LFO1,
+|
+|
+|
+INST1 LFO2, INST1 LFO1&2, INST2 LFO1,
+|
+|
+|
+INST2 LFO2, INST2 LFO1&2, INST3 LFO1,
+|
+|
+|
+INST3 LFO2, INST3 LFO1&2, INST ALL LFO,
+|
+|
+|
+INST1 SEQ1, INST1 SEQ2, INST1 SEQ1&2,
+|
+|
+|
+INST2 SEQ1, INST2 SEQ2, INST2 SEQ1&2,
+|
+|
+|
+INST3 SEQ1, INST3 SEQ2, INST3 SEQ1&2,
+|
+
+

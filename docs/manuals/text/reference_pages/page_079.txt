@@ -1,0 +1,216 @@
+CONTROL ASSIGN Parameters > GUITAR TO MIDI/BASS TO MIDI
+
+GUITAR TO MIDI/BASS TO MIDI
+These parameters are set for each individual patch with the GUITAR TO
+MIDI/BASS TO MIDI function.
+
+Parameter
+
+Value
+
+DYNAMICS
+
+This sets the transmission mode for the MIDI
+messages.
+
+MONO
+
+POLY
+
+In this mode, the messages for all six
+strings are transmitted over a single
+channel. While transmitting the
+MIDI messages for all of the strings
+over one channel does simplify
+the settings needed for the sound
+module, it does impose certain
+limitations; for example, permitting
+only one tone to be selected for all of
+the strings.
+
+MODE
+
+ALT TUNE
+
+1–10
+
+PLAY FEEL
+
+LOW VELO
+CUT
+
+FEEL1–
+FEEL4
+
+FEEL1 is the mode that gives sounds
+the broadest variation in volume
+based on the picking dynamics. As
+the setting number is increased, it
+becomes easier to produce high
+volume sounds even with weaker
+picking. This allows you to play with
+consistent volume, whether you tap
+the strings or use rough picking.
+
+NO DYNA
+
+In this mode, sounds are played at
+a fixed volume regardless of the
+picking strength.
+
+OFF, 1–10
+
+This selects the way the Hold function works.
+Note On messages are held when the
+Hold function is switched on with
+the controller.
+
+When you use CHROMATIC, the pitch changes of
+the MIDI messages that are transmitted when you
+gradually change the pitch of your guitar or bass
+(e.g., by bending a string) will be in semitone steps.
+
+TYPE1
+
+HOLD1
+
+Normal Pitch Bend messages are
+output. The pitch varies continuously
+in keeping with the string bending
+or vibrato.
+When the pitch changes, this
+setting applies the results of the
+pitch change information without
+stopping the note that is playing.
+
+HOLD TYPE
+
+This produces a unique effect,
+whereby there is no attack sound
+when the pitches change, similar to
+slurring on a recorder.
+
+TYPE2
+
+HOLD2
+
+HOLD3
+
+The attenuation of the string
+vibration following the moment the
+string is played is reflected in the
+gradual fading of the retriggered
+sound.
+
+TYPE3
+
+However, subsequent Note On
+messages are not output if you
+continue to play the instrument with
+the Hold effect left on.
+Note On messages are held when the
+Hold function is switched on with
+the controller.
+
+As a result, the attack sound plays
+each time the pitch changes.
+
+As with CHROMATIC TYPE 2, sounds
+are retriggered at the changed pitch,
+expressing the pitch changes only in
+semitones. However, the difference
+is that even if the string vibration is
+decreasing, the retriggered note will
+be the same strength as when you
+first played the string.
+
+If the Hold function remains on as
+you continue to play the strings,
+each successive Note On message
+is held, and when a Note message is
+already being played from the same
+string, the previous Note message
+is canceled, and the next Note On
+message is held. This allows you
+to prevent any interruption in the
+sounds, even sounds from releasing
+the strings over the frets.
+Note On messages are held when the
+Hold function is switched on with
+the controller.
+
+When the pitch changes, the SY-1000
+retriggers the sound at the changed
+pitch, producing pitch changes only
+at the semitone increments.
+
+CHROMATIC
+
+Adjust this if simply touching a string
+causes a note to be unintentionally
+triggered.
+Raising this value will make it more
+difficult to trigger notes.
+
+Specifies which ALT TUNE data of
+OFF, INST1,
+INST1–INST3 is applied to GUITAR TO
+INST2, INST3
+MIDI/BASS TO MIDI.
+
+OFF
+
+The further you raise this setting, the
+more easy it becomes to produce
+higher values for velocity.
+
+By selecting the Play Feel setting that’s appropriate
+for your guitar/bass playing technique, you can
+obtain more naturally expressive dynamics.
+
+Explanation
+
+In this mode, one channel per
+string is used, thus using a total of
+six channels. Since each string uses
+a different MIDI channel, you can
+select a different tone for each string,
+using string bending or continuously
+varying the pitch on a specific string;
+however, this requires use of a
+multitimbral sound module.
+
+Explanation
+Adjusts the sensitivity of the tone’s
+volume (velocity) change.
+
+For details on GUITAR TO MIDI/BASS TO MIDI function parameters that
+affect the entire SY-1000, refer to SYSTEM parameters.
+Parameter
+
+Value
+
+CC1 SRC
+CC2 SRC
+
+GK VOL, GK
+SW1, GK
+SW2, CTL1,
+CTL2, CTL3,
+CTL4, CTL5,
+CTL6, EXP1,
+EXP2
+
+If the Hold function remains on as
+you continue to play the strings,
+Note On messages for strings other
+than the one already being held can
+be output, but they are not held.
+
+You can output the actions of the
+controllers specified with SRC as
+Control Change messages.
+
+79
+
+

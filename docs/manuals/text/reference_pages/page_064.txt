@@ -1,0 +1,63 @@
+EFFECT Parameters > DIVIDER
+
+DIVIDER
+
+MIXER
+
+This lets you branch channel “A” and channel “B” within the effect
+chain.
+
+This merges the signals that were branched using DIVIDER.
+Parameter
+
+Value
+
+DIVIDER
+A/B BALANCE 100:0–0:100
+
+MIXER
+Parameter
+MODE
+
+Value
+
+Explanation
+
+SINGLE
+
+Use only one channel, either “A” or
+“B.”
+
+DUAL
+
+Use the two channels “A” and “B.”
+Selects the channel to use.
+
+CH SELECT
+
+64
+
+A, B
+
+* Setting available when MODE is
+set to SINGLE.
+
+Explanation
+Adjusts the volume balance of
+channels “A” and “B.”
+* This is shown only if DIVIDER
+MODE is set to “DUAL.”
+
+A:PAN
+
+L50–R50
+
+Adjusts the pan of channel “A.”
+
+B:PAN
+
+L50–R50
+
+Adjusts the pan of channel “B.”
+
+

@@ -1,0 +1,320 @@
+****************************************
+2. Transmitted data
+****************************************
+
+(*)Start
+Status
+FAH
+
+[*]Channel Voice Messages
+
+* Set the channel voice message transmit MIDI channel number to "MENU:MIDI:MIDI
+SETTING:TX CHANNEL" except Note Off, Note On and Pitch Bend messages.
+
+* This is transmitted at the time of controller operation when "MENU:CONTROL
+ASSIGN:CONTROL FUNCTION:***" is set to "MIDI START."
+
+(*)Note Off
+Status 2nd Byte
+8nH
+kkH
+
+(*)Stop
+Status
+FCH
+
+3rd Byte
+40H
+
+n = MIDI Channel Number
+kk = Note Number
+
+* This is transmitted at the time of controller operation when "MENU:CONTROL
+ASSIGN:CONTROL FUNCTION:***" is set to "MIDI START."
+
+: 0H - FH (0 - 15) 0=ch.1 15=ch.16
+: 00H – 7FH (0 - 127)
+
+-GUITAR MODE
+* When “CTL:GUITAR TO MIDI:MODE” is set to POLY, the transmit channel number is
+the value “MIDI:GUITAR TO MIDI:BASIC CH.”
+* When “CTL:GUITAR TO MIDI:MODE” is set to MONO, the “Basic channel” through
+“Basic channel + 5” are used for each string.
+
+(*)Active Sensing
+Status
+FEH
+* This message is always transmitted at intervals of approximately 250 ms.
+
+-BASS MODE
+* When “CTL:BASS TO MIDI:MODE” is set to POLY, the transmit channel number is
+the value “MIDI:BASS TO MIDI:BASIC CH.”
+* When “CTL: BASS TO MIDI:MODE” is set to MONO, the “Basic channel” through
+“Basic channel + 3” are used for each string.
+(*)Note On
+Status 2nd Byte
+9nH
+kkH
+
+[*]System Exclusive Message
+Status Data Byte
+F0H,
+41H, ddH, ..., eeH,
+Byte
+F0H:
+41H:
+dd,...,ee = data:
+F7H:
+
+3rd Byte
+vvH
+
+n = MIDI Channel Number
+kk = Note Number
+vv = Velocity
+
+: 0H - FH (0 - 15) 0=ch.1 15=ch.16
+: 00H - 03H (0 - 3)
+: 01H – 7FH (1 – 127)
+
+(-)Identity Reply Message
+Status Data Byte
+F0H,
+7EH, dev, 06H, 02H, 41H, 69H, 03H,
+00H, 00H, 00H, 00H, 00H, 00H,
+
+(*)Control Change
+3rd Byte
+mmH
+llH
+
+* This message is transmitted when an identity request message is received.
+
+: 0H - FH (0 - 15) 0=ch.1 15=ch.16
+: 00H - 7FH (0 - 127)
+: 00H - 7FH (0 - 127)
+
+(*)MIDI Machine Control Command STOP (MCS)
+Status Data Byte
+Status
+F0H,
+7FH, Dev, 06H, 01H, F7H
+
+(-)Control Change Number #0 - #127
+Status 2nd Byte 3rd Byte
+BnH
+ccH
+vvH
+
+Byte
+F0H:
+7FH:
+Dev:
+06H:
+01H:
+F7H:
+
+n = MIDI Channel Number
+: 0H - FH (0 - 15) 0=ch.1 15=ch.16
+cc = Control Change Number : 01H - 7FH (0 - 127)
+vv = Value
+: 00H - 7FH (0 - 127)
+* When you operate a controller, the CC# specified by "MENU:MIDI:MIDI
+SETTING:NUM1 CC# - GK SW2 CC#" is transmitted.
+* You can send the CC# messages by setting ASSIGN.
+
+(*)MIDI Machine Control Command PLAY (MCS)
+Status Data Byte
+Status
+F0H,
+7FH, Dev, 06H, 03H, F7H
+
+: 0H - FH (0 - 15) 0 = ch.1 15 = ch.16
+: 00H - 7FH (0 - 127)
+
+Byte
+F0H:
+7FH:
+Dev:
+06H:
+02H:
+F7H:
+
+* Depending on the setting of the "MENU:CONTROL/ASSIGN:PATCH MIDI," this message
+is transmitted when you switch patches.
+(*)Pitch Bend Change
+Status 2nd Byte 3rd Byte
+EnH
+llH
+mmH
+n = MIDI Channel Number
+mm, ll = Value
+
+Explanation
+Exclusive status
+Universal System Exclusive Realtime Header
+Device ID (7FH)
+MMC command message
+STOP (MCS)
+EOX (End of Exclusive)
+
+* This is transmitted at the time of controller operation when "MENU:CONTROL
+ASSIGN:CONTROL FUNCTION:***" is set to "MMC PLAY."
+
+(*)Program Change
+Status 2nd Byte
+CnH
+ppH
+n = MIDI Channel Number
+pp = Program Number
+
+Status
+F7
+
+Byte
+Explanation
+F0H:
+System Exclusive Message status
+7EH:
+ID Number (Universal Non-realtime Message)
+dev:
+Device ID (dev: 00H - 1FH)
+06H:
+Sub ID # 1 (General Information)
+02H:
+Sub ID # 2 (Identity Reply)
+41H:
+Roland's manufacturer ID
+69H,03H: Device family code (SY-1000)
+00H,00H: Device family number code LSB, MSB
+00H:
+Software revision level # 1
+00H:
+Software revision level # 2
+00H:
+Software revision level # 3
+00H:
+Software revision level # 4
+F7H:
+EOX (End of Exclusive)
+
+-BASS MODE
+* When “CTL:BASS TO MIDI:MODE” is set to POLY, the transmit channel number is
+the value “MIDI:BASS TO MIDI:BASIC CH.”
+* When “CTL: BASS TO MIDI:MODE” is set to MONO, the “Basic channel” through
+“Basic channel + 3” are used for each string.
+
+n = MIDI Channel Number
+mm = Bank Number (MSB)
+ll = Bank Number (LSB)
+
+Explanation
+System Exclusive Message status
+Roland's manufacturer ID
+00H-7FH(0-127)
+EOX (End of Exclusive)
+
+(*)Universal Non-realtime System Exclusive Message
+
+-GUITAR MODE
+* When “CTL:GUITAR TO MIDI:MODE” is set to POLY, the transmit channel number is
+the value “MIDI:GUITAR TO MIDI:BASIC CH.”
+* When “CTL:GUITAR TO MIDI:MODE” is set to MONO, the “Basic channel” through
+“Basic channel + 5” are used for each string.
+
+(-)Bank Select
+Status 2nd Byte
+BnH
+00H
+BnH
+20H
+
+Status
+F7H
+
+Explanation
+Exclusive status
+Universal System Exclusive Realtime Header
+Device ID (7FH)
+MMC command message
+PLAY (MCS)
+EOX (End of Exclusive)
+
+* This is transmitted at the time of controller operation when "MENU:CONTROL
+ASSIGN:CONTROL FUNCTION:***" is set to "MMC PLAY."
+
+: 0H – FH (0 – 15) 0=ch.1 15=ch.16
+: 00 00H – 40 00H – 7F 7FH
+
+(*)One Way Communication
+
+-GUITAR MODE
+* When “CTL:GUITAR TO MIDI:MODE” is set to POLY, the transmit channel number is
+the value “MIDI:GUITAR TO MIDI:BASIC CH.”
+* When “CTL:GUITAR TO MIDI:MODE” is set to MONO, the “Basic channel” through
+“Basic channel + 5” are used for each string.
+
+(-)Data Set 1 DT1 (12H)
+Status Data Byte
+F0H,
+41H, dev, 00H, 00H, 00H, 69H, 12H,
+aaH, bbH, ccH, ddH, eeH, ffH,..., sum,
+Byte
+F0H:
+41H:
+dev:
+00H:
+00H:
+00H:
+69H:
+12H:
+aaH:
+bbH:
+ccH:
+ddH:
+eeH:
+ffH:
+:
+sum:
+F7H:
+
+-BASS MODE
+* When “CTL:BASS TO MIDI:MODE” is set to POLY, the transmit channel number is
+the value “MIDI:BASS TO MIDI:BASIC CH.”
+* When “CTL: BASS TO MIDI:MODE” is set to MONO, the “Basic channel” through
+“Basic channel + 3” are used for each string.
+
+[*]System Realtime Message
+(*)Timing Clock
+Status
+F8H
+* If both "MENU:MIDI:MIDI SETTING:SYNC CLOCK" = INTERNAL and "MENU:MIDI:MIDI
+SETTING:CLOCK OUT" = ON, this message is transmitted at intervals corresponding
+to the tempo.
+* If the "MENU:MIDI:SYNC CLOCK" setting is other than INTERNAL, this message is
+transmitted when timing clock messages corresponding to the setting are received.
+
+2
+
+Explanation
+System Exclusive Message status
+Roland's manufacturer ID
+Device ID (00H-1FH)
+Model ID # 1 (SY-1000)
+Model ID # 2 (SY-1000)
+Model ID # 3 (SY-1000)
+Model ID # 4 (SY-1000)
+Command ID (DT1)
+Address MSB
+Address
+Address
+Address LSB
+Data
+
+Checksum
+EOX (End of Exclusive)
+
+Status
+F7H
+
+

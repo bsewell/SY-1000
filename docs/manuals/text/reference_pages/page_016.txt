@@ -1,0 +1,73 @@
+Editing a Patch
+
+Editing the Effects
+
+Editing While Viewing All Parameters
+
+You can edit the effect settings, and change the order of blocks such
+as output and send/return (the effect chain).
+
+You can also edit while viewing a list of all parameters for the
+selected block.
+
+Basic Operation for Effect Editing
+
+1.	 In the edit screen, long-press the [6] knob.
+Shows a list with all parameters of the selected block.
+
+1.	 Press the [EFFECTS] button.
+The edit screen (effect chain) appears.
+
+2.	 Turn the [1]–[6] knobs to edit the parameter
+settings.
+2.	 Turn the [6] knob to select the block that you want
+to edit.
+
+MEMO
+You can use the [K] [J] (PAGE) buttons to switch between the
+parameters.
+
+The selected block is enclosed by a thick frame.
+
+* By pressing the [6] knob you can turn the selected effect on/off.
+Effects that are off are shown in gray. When the effect is turned on,
+it is shown in white.
+Off
+
+On
+
+Use the [K] [J] (PAGE)
+buttons to switch
+
+Changing the Effect Order
+By moving blocks such as effects, output, and send/return, you can
+freely change the order in which the effects are placed, or arrange
+them in parallel.
+
+3.	 Use knobs [1]–[5] to adjust the parameters that are
+shown below the screen.
+
+MEMO
+
+55 You can change the order of the INST1–3 blocks and the NORMAL
+block.
+55 The MST (MASTER) block cannot be moved.
+
+1.	 Press the [EFFECTS] button.
+The effect chain is shown.
+
+2.	 Use the [6] knob to select the block that you want
+to move.
+Use the [K] [J] (PAGE) buttons to switch between the parameters
+that you want to edit. The current page is indicated in the lower
+center of the screen.
+* To change a value in larger steps, turn a knob while pressing it.
+* The number of parameters and pages differ depending on the
+effect.
+
+16
+
+3.	 While pressing the [6] knob, turn it left or right.
+The selected block moves left or right.
+
+

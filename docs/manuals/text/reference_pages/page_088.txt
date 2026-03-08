@@ -1,0 +1,94 @@
+SYSTEM Parameters > PLAY OPTION
+
+OTHER
+Parameter
+
+PLAY OPTION
+Value
+
+Explanation
+
+The SY-1000 can turn off its power automatically. If
+you want to have the power remain on all the time,
+turn it “OFF.”
+
+Here you can specify how the pedals will work during performance.
+Parameter
+
+* With the factory settings, this function is turned
+“ON.”
+* When the power is turned off, any settings you
+were editing will be lost. You must save settings
+that you want to keep.
+AUTO OFF
+
+OFF
+
+ON
+
+LCD
+CONTRAST
+
+88
+
+1–10
+
+Explanation
+
+WAIT
+
+When you press a bank pedal to
+switch banks, the indication in the
+display will change but the patch
+does not yet change at this time.
+When you press a number pedal,
+the bank and number are finalized,
+and the next patch is selected.
+
+BANK MODE
+
+The power will not turn off
+automatically.
+The power will turn off
+automatically when 10 hours have
+passed since you last played or
+operated the unit.
+
+Value
+
+IMMED
+
+The patch switches instantly when
+a BANK pedal or any of the number
+pedals is pressed.
+
+BANK EXTENT U01–U50
+MIN
+P01–P50
+
+Sets the lower limit for the banks.
+
+The display will show a message
+approximately 15 minutes before
+the power turns off.
+
+BANK EXTENT U01–U50
+MAX
+P01–P50
+
+Sets the upper limit for the banks.
+
+Here you can adjust the brightness
+of the characters in the display.
+
+BANK DOWN
+& UP SW
+
+Turns on/off the function that
+switches to the TUNER when the
+BANK [I] and BANK [H] switches are
+pressed simultaneously.
+
+OFF, TUNER
+
+

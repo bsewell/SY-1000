@@ -1,0 +1,248 @@
+INST Parameters > GR-300 (In GUITAR MODE) / ANALOG GR (In BASS MODE) Parameters
+
+GR-300 (In GUITAR MODE) / ANALOG GR
+(In BASS MODE) Parameters
+
+Parameter
+
+Value
+
+Explanation
+
+-50–+50
+
+This finely adjusts the pitch. -50 is
+half a semitone down; +50 is half a
+semitone up.
+
+FINE A
+FINE B
+*1
+
+If this is “ON,” a sawtooth wave
+at the same pitch as the original
+sound will be added to the hexaVCO, making the sound richer.
+
+GR-300/ANALOG GR
+Parameter
+
+Value
+
+Explanation
+
+Specifies whether to sound the hexa-VCO
+(sawtooth wave), the hexa-distortion (square wave),
+or both.
+MODE
+
+COMP SW
+*1
+CUTOFF
+
+RESONANCE
+
+VCO
+
+Only the hexa-VCO will sound.
+
+V+D
+
+The hexa-VCO and hexa-distortion
+will sound together.
+
+DIST
+
+Only the hexa-distortion will sound.
+
+OFF, ON
+
+If this is “ON,” the decay time of the
+hexa-VCO will be extended.
+
+0–100
+
+Adjusts the cutoff frequency at
+which the filter cuts off the sound’s
+harmonic components.
+
+0–100
+
+Adjusts the amount of filter
+resonance (distinctiveness of the
+sound) used.
+
+This automatically changes the VCF cutoff
+frequency according to the amplitude of the string
+vibration. This allows you to change the tone with a
+wah-like effect each time you pick a string.
+OFF
+
+Turns envelope modulation off.
+
+ON
+
+This causes the VCF cutoff
+frequency to change from a high to
+low frequency each time the string
+is picked.
+This produces a wah-like effect,
+with the sound going from high
+frequencies to low.
+
+ENV MOD SW
+
+INV
+
+As opposed to the ON setting, this
+allows you to have the VCF cutoff
+frequency change from a low to
+high frequency each time the string
+is picked.
+This produces a reverse wah-like
+effect, with the sound going from
+low frequencies to high.
+
+ENV MOD
+SENS
+
+ENV MOD
+ATTACK
+
+PITCH SW
+*1
+
+0–100
+
+0–100
+
+*1
+
+32
+
+Adjusts the attack time for the
+change in the envelope modulation
+produced by picking.
+Raising the value slows the attack
+for this change.
+
+OFF, A, B
+
+This setting allows you to switch
+A, B and OFF the pitch shift, which
+enables the pitch of the HEXA-VCO
+sound to shift in response.
+* Pitch shift applies only to the
+hexa-VCO; it does not apply to
+hexa-distortion.
+
+PITCH A
+PITCH B
+
+Adjusts the input sensitivity of
+the envelope modulation. As the
+value is raised, the change from
+the envelope modulation broadens
+with even weaker picking.
+
+-12–+12
+
+This sets the amount of shift in
+pitch from the original sound in
+semitone increments.
+
+MEMO
+DUET SW
+*1
+
+OFF, ON
+
+By setting the hexa-VCO’s pitch
+shift to a PITCH setting such as
++/-12 (an octave up/down), +/- 7
+(a perfect fifth), or +/-5 (a perfect
+fourth), you can create thick,
+synthesizer-like sounds.
+By setting PITCH FINE to about “+/5” to slightly skew the pitch shift
+of the hexa-VCO, you can give the
+sound greater depth.
+
+SWEEP SW
+*1
+
+SWEEP RISE
+*1
+
+SWEEP FALL
+*1
+
+VIBRATO SW
+
+OFF, ON
+
+0–100
+
+This is a Sweep function that
+smoothly changes the amount of
+shift when you use PITCH SW to
+vary the amount of pitch shift.
+Adjusts the amount of time for
+the pitch to shift when the PITCH
+SW parameter is switched and the
+sound changes to a higher pitch.
+If this is “0,” the change will occur
+instantly; higher values produce
+slower change.
+
+0–100
+
+Adjusts the amount of time for
+the pitch to shift when the PITCH
+SW parameter is switched and the
+sound changes to a lower pitch.
+If this is “0,” the change will occur
+instantly; higher values produce
+slower change.
+
+OFF, ON
+
+Allows you to apply electronic
+vibrato to the hexa-VCO.
+
+0–100
+
+Adjusts the rate of the vibrato.
+
+0–100
+
+Adjusts the depth of the vibrato.
+
+LOW CUT
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+Cuts the frequency region below
+the specified frequency. When FLAT
+is selected, the low cut filter will
+have no effect.
+
+HIGH CUT
+
+20.0 Hz–16.0
+kHz, FLAT
+
+Cuts the frequency region above
+the specified frequency. When FLAT
+is selected, the high cut filter will
+have no effect.
+
+*1
+VIBRATO RATE
+*1
+VIBRATO
+DEPTH
+*1
+
+*1 Valid when the MODE is set to VCO or V+D.
+
+

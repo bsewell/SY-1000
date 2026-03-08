@@ -1,0 +1,79 @@
+Saving a Sound (WRITE)
+Saving a Patch (PATCH WRITE)
+
+Exchanging Patches (PATCH EXCHANGE)
+
+If you save the INST settings and effect settings as a patch, you’ll be
+able to recall them whenever you like.
+
+On the SY-1000, you can “swap” or exchange the positions of two
+User patches.
+
+If you select a different patch or turn off the power after editing the
+settings, edited settings will be lost. If you want to keep the data, you
+must save it.
+
+1. Select the exchange source patch.
+
+1. Press the [WRITE] button.
+
+2. Press the [WRITE] button.
+3. Press the [2] knob to select “EXCHANGE” (PATCH
+EXCHANGE).
+4. Use the [1] knob to select the other user patch that
+you want to exchange.
+
+2. Press the [1] knob to select “WRITE” (PATCH WRITE).
+
+* If you decide to cancel without exchanging, press the [EXIT]
+button a several times. You’ll be returned to the Play screen.
+
+5. Press the [WRITE] button once again.
+3. Use the [1] knob to select the save-destination
+(U01-1–U50-4).
+
+A confirmation message appears.
+
+You can use the [3]–[6] knobs to edit the name.
+
+Editing a name
+To edit the patch name, use the [6] knob to move the cursor
+and use the [5] knob to change the character.
+Controller
+Turn the [3] knob
+Press the [3] knob
+
+Function
+
+6. Press the [6] knob.
+The patches will be exchanged. If you decide to cancel the
+exchange operation, press the [5] knob.
+
+Selects the type of
+characters
+Delete one character
+(delete)
+
+Turn the [4] knob
+
+Switch uppercase/lowercase
+
+Press the [4] knob
+
+Insert one space (insert)
+
+Turn the [5] knob
+
+Changes the character
+
+Turn the [6] knob
+
+Moves the cursor
+
+4. Press the [WRITE] button to save.
+The patch is written.
+If you decide to cancel the operation, press the [4] knob.
+
+93
+
+

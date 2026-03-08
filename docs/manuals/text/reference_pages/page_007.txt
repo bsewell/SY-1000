@@ -1,0 +1,93 @@
+Getting Ready
+
+Selecting the Instrument (Guitar/Bass) to
+Use (MODE SETTING)
+
+Specifying the Device Connected to
+OUTPUT Jacks (OUTPUT SELECT)
+
+Here you can select whether you’re connecting a guitar or a bass to
+the SY-1000.
+
+Use this procedure to set the type of device connected to the output
+jacks (MAIN OUTPUT, SUB OUTPUT).
+
+Choose GUITAR MODE (GUITAR) if you’re using a guitar, or choose
+BASS MODE (BASS) if you’re using a bass.
+
+This applies the optimal adjustments for the device that is connected.
+
+1.	 Press the [SYSTEM] button.
+
+2.	 Use the [K] [J] (PAGE) buttons to access the “MODE
+SETTING” icon.
+
+1.	 Press the [SYSTEM] button.
+2.	 Use the [K] [J] (PAGE) buttons to access the “IN/
+OUT SETTING” icon.
+
+3.	 Press the [2] knob.
+The IN/OUT SETTING screen appears.
+
+3.	 Press the [2] knob.
+The message appears.
+
+4.	 Press the [3] knob or [4] knob.
+The MAIN OUT screen or SUB OUT screen appears.
+
+4.	 To change the mode, press the [6] knob.
+If you decide to cancel, press the [5] knob. When you press the [6]
+knob, a message appears.
+
+5.	 Press the [1] knob.
+The OUTPUT SELECT screen appears.
+
+5.	 Turn the power of the SY-1000 off, then on again.
+If you decide to cancel, press the [EXIT] button. Verify that the
+SY-1000 has started with the mode that you specified.
+
+6.	 Turn the [1] knob.
+Select the connected device (type of amp).
+
+MEMO
+
+OUTPUT SELECT Explanation
+
+55 The SY-1000 starts with the specified mode until the next time
+you change the mode.
+
+LINE/PHONES
+
+Choose this setting if you’re using
+headphones, or if the SY-1000 is connected
+to a keyboard amp, mixer, or digital recorder.
+
+JC-120 RETURN
+
+Choose this setting if the SY-1000 is
+connected to the RETURN jack of the Roland
+JC-120 guitar amp.
+
+JC-120 INPUT
+
+Choose this setting if the SY-1000 is
+connected to the guitar input jack of a JC120 guitar amp.
+
+COMBO AMP 1
+RETURN
+
+Choose this setting if the SY-1000 is
+connected to the RETURN jack of a combo
+type amp (with amp and speaker in a single
+unit) equipped with one speaker.
+
+55 With the factory settings, this is set to “GUITAR.”
+
+55 Some parameters are displayed differently depending on the
+selected mode.
+
+55 Patches are saved separately for GUITAR MODE and BASS MODE.
+
+7
+
+

@@ -1,0 +1,148 @@
+Getting Ready
+
+Panel Descriptions
+
+3
+1
+
+2
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+No.
+
+Name
+
+Explanation
+
+Page
+
+1
+
+Display
+
+Various information regarding the SY-1000 is indicated here.
+
+p. 11
+
+2
+
+[1]–[6] knobs
+
+Use this to select or edit the value of the parameter that’s shown in the display.
+
+p. 12
+
+This adjusts the volume level for the MAIN OUTPUT jack.
+
+3
+
+[OUTPUT LEVEL] knob
+
+* Depending on how you switch the settings, you can also adjust the MAIN OUTPUT and
+SUB OUTPUT volumes simultaneously.
+[SYSTEM] button0HARDWARE SETTING0KNOB0OUTPUT LEVEL KNOB
+
+–
+
+4
+
+[INST] button
+
+Specifies the sound of the INST (sound engine).
+
+p. 14
+
+5
+
+[EFFECTS] button
+
+Specifies the effect settings and the order in which effects are connected.
+
+p. 16
+
+6
+
+[CTL] button
+
+Accesses the CTL screen, where you can assign functions to the buttons and switches.
+
+p. 18
+
+7
+
+[EXIT] button
+
+Used to return previous screens and to undo operations.
+
+–
+
+8
+
+[WRITE] button
+
+Use for storing settings in patches and executing operations.
+
+p. 19
+
+9
+
+[SYSTEM] button
+
+Used for making settings related to the SY-1000’s operating
+
+p. 20
+
+10
+
+[K] [J] (PAGE) buttons
+
+This switches the screens displayed in the display.
+
+p. 11
+
+11
+
+BANK [I], BANK [H] switches
+
+Switch banks.
+
+p. 13
+
+12
+
+[CTL 1] [CTL 2] switches
+
+By default, the [CTL 1] and [CTL 2] switches control a function that’s assigned by each
+patch.
+
+–
+
+13
+
+[1]–[4] switches
+
+Switch patches.
+
+–
+
+6
+
+

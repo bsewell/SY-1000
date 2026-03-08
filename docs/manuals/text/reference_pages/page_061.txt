@@ -1,0 +1,162 @@
+EFFECT Parameters > REVERB
+Parameter
+
+REVERB
+
+Value
+
+REVERB settings can be saved/
+loaded as ten variations.
+
+This effect adds reverberation to the sound.
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+This selects the reverb type. Various different
+simulations of space are offered.
+
+AMBIENCE
+
+Simulates an ambience mic (offmic, placed at a distance from the
+sound source) used in recording
+and other applications. Rather than
+emphasizing the reverberation, this
+reverb is used to produce a sense of
+openness and depth.
+
+ROOM
+
+Simulates the reverberation in
+a small room. Provides warm
+reverberations.
+
+HALL1
+
+Simulates the reverberation in a
+concert hall. Provides clear and
+spacious reverberations.
+
+HALL2
+
+Simulates the reverberation in
+a concert hall. Provides mild
+reverberations.
+
+PLATE
+
+Simulates plate reverberation (a
+reverb unit that uses the vibration of
+a metallic plate). Provides a metallic
+sound with a distinct upper range.
+
+SPRING
+
+This simulates the sound of a guitar
+amp’s built-in spring reverb.
+
+MOD
+
+This reverb adds the wavering
+sound found in hall reverb to
+provide an extremely pleasant
+reverb sound.
+
+TIME
+
+0.1 s–10.0 s
+
+Adjusts the length (time) of
+reverberation.
+
+PRE-DELAY
+
+0 ms–500 ms
+
+Adjusts the time until the reverb
+sound appears.
+
+TYPE
+
+EFFECT LEVEL 0–100
+
+LOW CUT
+
+This sets the frequency at which the
+low cut filter begins to take effect.
+When FLAT is selected, the low cut
+filter will have no effect.
+
+HIGH CUT
+
+20.0 Hz–16.0
+kHz, FLAT
+
+This sets the frequency at which the
+high cut filter begins to take effect.
+When FLAT is selected, the high cut
+filter will have no effect.
+
+DENSITY
+
+1–10
+
+Adjusts the density of the reverb
+sound.
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+
+CARRY OVER
+
+OFF, ON
+
+Specifies whether the effect sound
+remains when you turn off the
+effect, or does not remain.
+
+0–100
+
+Adjusts the sensitivity of the spring
+effect. When the value is set higher,
+the effect is obtained even with a
+weak picking.
+
+*1
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+These variations are shared with the
+REVERB setting in FX1–FX3.
+
+*1 Valid when the TYPE is set to SPRING.
+
+Adjusts the volume of the reverb
+sound.
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+SPRING SENS
+
+Explanation
+
+61
+
+

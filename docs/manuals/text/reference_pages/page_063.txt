@@ -1,0 +1,111 @@
+EFFECT Parameters > SEND/RETURN
+Value
+
+SEND/RETURN
+
+Explanation
+The input to SEND/RETURN within the effect chain
+will be output to the SEND jack, and the input
+from the RETURN jack and the input to SEND/
+RETURN (the direct sound) will be mixed and output
+following SEND/RETURN.
+
+You can connect an external effects processor between the SEND
+jack and RETURN jack, and use it as one of the SY-1000’s effects
+processors.
+DIRECT MIX
+
+Use this when you want to mix the SY-1000’s effects
+sounds together with the external effects device
+applied to it.
+
+SEND
+
+RETURN
+
+The input to SEND/RETURN within the effect chain
+will be output to the SEND jack. The input from the
+RETURN jack will be ignored.
+BRANCH OUT
+
+For example, by placing SEND/RETURN in the
+SY-1000’s effect chain in front of reverb or delay, this
+allows you to use the SEND jack as a dry out.
+
+SEND
+
+The sound that is input to SEND/RETURN within the effect chain will
+be output to the SEND jack. The sound that is input via the RETURN
+jack will be input to SEND/RETURN within the effect chain.
+Parameter
+
+Value
+
+Explanation
+
+ON/OFF
+
+OFF, ON
+
+Turns on/off the SEND/RETURN.
+
+MODE
+
+Selects the signal flow “MODE” (p. 63).
+
+SEND LEVEL
+
+0–200
+
+Adjusts the volume of the output to
+the external effects device.
+
+RETURN
+LEVEL
+
+0–200
+
+Adjusts the volume of the input
+from the external effects device.
+
+*1
+ADJUST
+*1
+PHASE
+
+0–100
+NORMAL,
+INVERT
+
+Adjusts the phase between the
+SY-1000’s internal processing and
+an external effect unit connected to
+the SEND/RETURN jacks.
+Specifies the phase of the signal
+that is output from the SEND jack.
+
+*1 You can adjust this if the MODE parameter is set to NORMAL or
+DIRECT MIX.
+
+MODE
+Value
+
+Explanation
+The input to SEND/RETURN within the effect chain
+will be output to the SEND jack, and the input from
+the RETURN jack will be output following SEND/
+RETURN.
+
+NORMAL
+
+Use this setting if you want to connect an external
+effects processor in series within the SY-1000’s effect
+chain.
+
+SEND
+
+RETURN
+
+63
+
+

@@ -1,0 +1,160 @@
+SYSTEM Parameters > MIDI
+Parameter
+
+MIDI
+On the SY-1000, you can use MIDI to perform the following
+operations.
+
+OMNI MODE
+
+Operations from the SY-1000
+What you can do
+
+Explanation
+
+Transmit
+program change
+messages
+
+When you select a patch on the SY-1000, the
+program change message specified by the
+PATCH MIDI setting or the program change
+message corresponding to the selected patch
+number is transmitted. The external MIDI device
+that receives this program change message will
+switch to the corresponding settings.
+
+Operations of the [CTL1] or [CTL2] switch, a foot
+switch or expression pedal connected to the
+CTL3,4/EXP1 or CTL5,6/EXP2 jack, the [S1] or [S2]
+Transmit control
+buttons of the divided pickup, or the GK volume
+change messages
+are transmitted as control change messages.
+These messages can control parameters on an
+external MIDI device.
+Performance data of the guitar (bass) is
+transmitted as note messages and bend
+messages. You can use this to play a connected
+synthesizer sound module.
+
+Outputting
+Performance
+Data
+
+TX CHANNEL
+
+DEVICE ID
+
+MIDI IN THRU
+
+For detailed information, refer to “GUITAR TO
+MIDI/BASS TO MIDI” (p. 79).
+Parameter settings stored in the SY-1000 can be
+transmitted as exclusive messages to another
+MIDI device. This allows you to give another
+SY-1000 the identical settings and to save
+parameter settings to MIDI sequencers and
+other such devices.
+
+Transmitting
+Data
+
+Operations from an External MIDI Device
+What you can do
+
+Explanation
+
+Switching Patch
+Numbers
+
+Program change messages can be received from
+an external MIDI device. SY-1000 patches can be
+switched from an external MIDI device.
+
+USB IN THRU
+
+Value
+
+Explanation
+
+This makes the settings for the channels used for
+MIDI information.
+Information is received on the
+OFF
+channel specified by the RX
+CHANNEL setting.
+Messages are received on all
+ON
+channels, regardless of the MIDI
+channel settings.
+Sets the MIDI channel used for transmitting MIDI
+messages.
+Ch. 1– Ch. 16. Specifies the transmit channel.
+Transmits on the same channel as
+RX
+the RX CHANNEL.
+This sets the MIDI Device ID used for transmitting
+and receiving Exclusive messages.
+1–32
+Sets the MIDI Device ID.
+This specifies the connector from which to output
+the MIDI messages that are received at the MIDI IN
+connector.
+OFF
+MIDI messages are not transmitted.
+Messages are transmitted from the
+MIDI OUT
+MIDI OUT connector.
+Messages are transmitted from the
+USB OUT
+USB port.
+Messages are transmitted from
+USB/MIDI
+the USB port and the MIDI OUT
+connector.
+This specifies the connector from which to output
+the MIDI messages that are received at the USB
+port.
+OFF
+MIDI messages are not transmitted.
+Messages are transmitted from the
+MIDI OUT
+MIDI OUT connector.
+Messages are transmitted from the
+USB OUT
+USB port.
+Messages are transmitted from
+USB/MIDI
+the USB port and the MIDI OUT
+connector.
+
+Control change messages can be received from
+Receive control
+an external MIDI device. SY-1000 parameters can
+change messages
+be controlled from an external MIDI device.
+The SY-1000 can receive data that is transmitted
+from another SY-1000 unit, or data that was
+saved on a MIDI sequencer. All of the SY-1000’s
+parameters can be changed in a single
+operation.
+
+Receiving Data
+
+MIDI SETTING
+Parameter
+
+Value
+
+RX CHANNEL
+
+This sets the MIDI channel used for receiving MIDI
+messages.
+Ch. 1– Ch. 16 Specifies the receive channel.
+
+Explanation
+
+89
+
+

@@ -1,0 +1,772 @@
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 25 | 0000 0aaa | LOW-MID Q
+(0 - 5) |
+|
+|
+|
+0.5, 1, 2, 4, 8, 16 |
+|
+00 26 | 00aa aaaa | LOW-MID GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 27 | 000a aaaa | HIGH-MID FREQ
+(0 - 29) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 28 | 0000 0aaa | HIGH-MID Q
+(0 - 5) |
+|
+|
+|
+0.5, 1, 2, 4, 8, 16 |
+|
+00 29 | 00aa aaaa | HIGH-MID GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 2A | 00aa aaaa | HIGH GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 2B | 000a aaaa | HIGH CUT
+(0 - 30) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz, FLAT
+|
+|
+00 2C | 00aa aaaa | LEVEL
+(12 - 52) |
+|
+|
+|
+[dB] |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 2D |Total Size
+|
++------------------------------------------------------------------------------+
+
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz, FLAT
+|
+|
+00 24 | 00aa aaaa | LEVEL
+(12 - 52) |
+|
+|
+|
+[dB] |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 25 |Total Size
+|
++------------------------------------------------------------------------------+
+* [PatchInst2PolyFx]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 0aaa | TYPE
+(0 - 4) |
+|
+|
+|DISTORTION, CRYSTAL, RICH MOD, SLOW PAD, TOUCH WAH |
+|
+00 01 | 0aaa aaaa | GUITAR VOLUME
+(0 - 100) |
+|
+00 02 | 0aaa aaaa | GAIN
+(0 - 100) |
+|
+00 03 | 0aaa aaaa | GAIN BALANCE
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 04 | 0aaa aaaa | COLOR
+(0 - 100) |
+|
+00 05 | 0aaa aaaa | TONE
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 06 | 0000 000a | FILTER MODE
+(0 - 1) |
+|
+|
+|
+LPF, BPF |
+|
+00 07 | 0000 000a | POLARITY
+(0 - 1) |
+|
+|
+|
+DOWN, UP |
+|
+00 08 | 0aaa aaaa | SENS
+(0 - 100) |
+|
+00 09 | 0aaa aaaa | FREQUENCY
+(0 - 100) |
+|
+00 0A | 0000 aaaa | DECAY
+(0 - 10) |
+|
+00 0B | 0aaa aaaa | PEAK
+(0 - 100) |
+|
+00 0C | 0000 00aa | TONE TYPE
+(0 - 2) |
+|
+|
+|
+MILD, STANDARD, BRIGHT |
+|
+00 0D | 0000 000a | COMP SW
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 0E | 0aaa aaaa | COMP SUSTAIN
+(0 - 100) |
+|
+00 0F | 0aaa aaaa | COMP ATTACK
+(0 - 100) |
+|
+00 10 | 0000 000a | NS ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 11 | 0aaa aaaa | THRESHOLD
+(0 - 100) |
+|
+00 12 | 0aaa aaaa | RELEASE
+(0 - 100) |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 13 |Total Size
+|
++------------------------------------------------------------------------------+
+
+* [PatchInst2VioGtr]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 aaaa | TYPE
+(0 - 11) |
+|
+|
+|
+CLA-ST, MOD-ST, TE, LP, P-90, 335, L4, RICK,
+|
+|
+|
+|
+LIPS, WIDE RANGE, BRIGHT HUM, FRETLESS
+|
+|
+00 01 | 0000 0aaa | PU SELECT
+(0 - 6) |
+|
+|
+|
+REAR, R+C, CENTER, C+F, R+F, FRONT, ALL |
+|
+00 02 | 0000 00aa | TONE TYPE
+(0 - 3) |
+|
+|
+|
+MILD, STANDARD, BRIGHT1, BRIGHT2 |
+|
+00 03 | 0aaa aaaa | SENS
+(0 - 100) |
+|
+00 04 | 0aaa aaaa | DEPTH
+(0 - 100) |
+|
+00 05 | 0aaa aaaa | ATTACK
+(0 - 100) |
+|
+00 06 | 0aaa aaaa | RESONANCE
+(0 - 100) |
+|
+00 07 | 0aaa aaaa | DIRECT LEVEL
+(0 - 100) |
+|
+00 08 | 0aaa aaaa | VOLUME
+(0 - 100) |
+|
+00 09 | 0aaa aaaa | TONE
+(0 - 100) |
+|
+00 0A | 00aa aaaa | PITCH
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 0B | 0aaa aaaa | GAIN
+(0 - 100) |
+|
+00 0C | 0aaa aaaa | ATTACK
+(0 - 100) |
+|
+00 0D | 0aaa aaaa | DIRECT LEVEL
+(0 - 100) |
+|
+00 0E | 0aaa aaaa | OVERTONE
+(0 - 100) |
+|
+00 0F | 0aaa aaaa | ATTACK
+(0 - 100) |
+|
+00 10 | 0aaa aaaa | POWER BEND
+(0 - 100) |
+|
+00 11 | 0aaa aaaa | SLIDE TIME
+(0 - 100) |
+|
+00 12 | 0000 00aa | OCTAVE
+(0 - 2) |
+|
+|
+|
+-1, 0, +1 |
+|
+00 13 | 0aaa aaaa | COLOR
+(0 - 100) |
+|
+00 14 | 0aaa aaaa | TOUCH SENS
+(0 - 100) |
+|
+00 15 | 0aaa aaaa | LEAD EMPHASIS
+(0 - 100) |
+|
+00 16 | 0000 000a | NS ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 17 | 0aaa aaaa | THRESHOLD
+(0 - 100) |
+|
+00 18 | 0aaa aaaa | RELEASE
+(0 - 100) |
+|
+00 19 | 0000 000a | EQ ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 1A | 000a aaaa | LOW CUT
+(0 - 30) |
+|
+|
+|
+FLAT, 20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 1B | 00aa aaaa | LOW GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 1C | 000a aaaa | LOW-MID FREQ
+(0 - 29) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 1D | 0000 0aaa | LOW-MID Q
+(0 - 5) |
+|
+|
+|
+0.5, 1, 2, 4, 8, 16 |
+|
+00 1E | 00aa aaaa | LOW-MID GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 1F | 000a aaaa | HIGH-MID FREQ
+(0 - 29) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 20 | 0000 0aaa | HIGH-MID Q
+(0 - 5) |
+|
+|
+|
+0.5, 1, 2, 4, 8, 16 |
+|
+00 21 | 00aa aaaa | HIGH-MID GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 22 | 00aa aaaa | HIGH GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 23 | 000a aaaa | HIGH CUT
+(0 - 30) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+
+* [PatchInst2AltTune]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 000a | ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 01 | 00aa aaaa | TUNING TYPE
+(0 - 36) |
+|
+|
+|
+OPEN D, OPEN E, OPEN G, OPEN A, DROP D,
+|
+|
+|
+|
+DROP Db, DROP C, DROP B, DROP Bb, DROP A,
+|
+|
+|
+|
+D-MODAL, NASHVL, -12STEP, -11STEP, -10STEP,
+|
+|
+|
+|
+-9STEP, -8STEP, -7STEP, -6STEP, -5STEP,
+|
+|
+|
+|
+-4STEP, -3STEP, -2STEP, -1STEP, +1STEP,
+|
+|
+|
+|
++2STEP, +3STEP, +4STEP, +5STEP, +6STEP,
+|
+|
+|
+|
++7STEP, +8STEP, +9STEP, +10STEP, +11STEP,
+|
+|
+|
+|
++12STEP, USER
+|
+|
+00 02 | 00aa aaaa | PITCH 1
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 03 | 00aa aaaa | PITCH 2
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 04 | 00aa aaaa | PITCH 3
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 05 | 00aa aaaa | PITCH 4
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 06 | 00aa aaaa | PITCH 5
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 07 | 00aa aaaa | PITCH 6
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 08 | 0aaa aaaa | FINE 1
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 09 | 0aaa aaaa | FINE 2
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 0A | 0aaa aaaa | FINE 3
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 0B | 0aaa aaaa | FINE 4
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 0C | 0aaa aaaa | FINE 5
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 0D | 0aaa aaaa | FINE 6
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 0E | 0000 000a | 12STR SW
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 0F | 0000 000a | 12STR TYPE
+(0 - 1) |
+|
+|
+|
+NORMAL, USER |
+|
+00 10 | 00aa aaaa | 12STR PITCH 1
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 11 | 00aa aaaa | 12STR PITCH 2
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 12 | 00aa aaaa | 12STR PITCH 3
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 13 | 00aa aaaa | 12STR PITCH 4
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 14 | 00aa aaaa | 12STR PITCH 5
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 15 | 00aa aaaa | 12STR PITCH 6
+(8 - 56) |
+|
+|
+|
+-24 - 24 |
+|
+00 16 | 0aaa aaaa | 12STR FINE 1
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 17 | 0aaa aaaa | 12STR FINE 2
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 18 | 0aaa aaaa | 12STR FINE 3
+(14 - 114) |
+|
+|
+|
+-50 - 50 |
+|
+00 19 | 0aaa aaaa | 12STR FINE 4
+(14 - 114) |
+
+50
+
+

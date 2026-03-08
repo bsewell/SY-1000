@@ -1,0 +1,208 @@
+SYSTEM Parameters > HARDWARE SETTING
+
+HARDWARE SETTING
+
+Category
+
+Parameter
+LOW CUT
+LOW GAIN
+
+KNOB SETTING
+Parameter
+KNOB 1–
+KNOB 6
+KNOB LOCK
+
+LOW-MID FREQ
+LOW-MID Q
+
+Value
+
+Explanation
+
+Here you can assign the desired parameters to the
+[1]–[6] knobs in the Play screen.
+
+SUB GLOBAL EQ L/S
+
+LOW-MID GAIN
+
+SUB GLOBAL EQ R
+
+HIGH-MID FREQ
+HIGH-MID Q
+
+* The settings you make here are only for the knobs
+in the Play screen.
+
+HIGH-MID GAIN
+HIGH GAIN
+
+If this is ON, knob operations in the
+Play screen will be disabled.
+
+OFF, ON
+
+HIGH CUT
+MAIN MIX LEVEL
+
+Selects the output(s) whose volume is adjusted by
+the OUTPUT LEVEL knob.
+OUTPUT
+LEVEL KNOB
+
+MAIN
+
+Adjusts only the level of the MAIN
+OUTPUT.
+
+SUB
+
+Adjusts only the level of the SUB
+OUTPUT.
+
+MAIN+SUB
+
+Simultaneously adjusts the level of
+both the MAIN OUTPUT and SUB
+OUTPUT.
+
+SUB MIX LEVEL
+IN LEVEL
+USB AUDIO
+
+OUT LEVEL
+AUDIO ROUTING
+IN POSITION
+OUT POSITION
+
+GUITAR TO MIDI
+*1
+BASS TO MIDI
+
+KNOB 1–KNOB 6
+Parameter
+
+PATCH
+
+PATCH SELECT
+
+TUNER
+
+ON/OFF
+BPM
+
+MASTER
+
+KEY
+PATCH LEVEL
+
+CONTROL MODE
+INPUT SETTING
+
+BASS TO MIDI SW
+
+*2
+
+Category
+
+*1 Setting available with GUITAR MODE.
+*2 Setting available with BASS MODE.
+
+ASSIGN HOLD
+Parameter
+
+CONTROL MODE
+GK SET
+
+Value
+
+Explanation
+
+OFF
+
+When you switch patches, the
+values of GK VOL, EXP1, and EXP2
+are set to the values saved in the
+patch.
+
+NORMAL SET
+
+When you switch patches, the
+values of the parameters assigned
+to GK VOL, EXP1, and EXP2 maintain
+their values if the parameters have
+the same assignments as in the
+previously-selected patch.
+
+MAIN OUTPUT-L LEVEL
+MAIN OUTPUT-R LEVEL
+OUTPUT SETTING
+
+MAIN OUTPUT-L SELECT
+
+GK VOL HOLD
+
+MAIN OUTPUT-R SELECT
+
+EXP1 HOLD
+
+SUB OUTPUT-L LEVEL
+
+EXP2 HOLD
+
+SUB OUTPUT-R LEVEL
+
+ON
+
+SUB OUTPUT-L SELECT
+SUB OUTPUT-R SELECT
+TOTAL
+
+GUITAR TO MIDI SW
+
+TOTAL REVERB LEVEL
+TOTAL NS THRESHOLD
+LOW CUT
+
+For example, if the EXP1 parameter
+was “FV1” both for the current
+patch and for the previouslyselected patch, the value of EXP1 is
+maintained even when you switch
+patches. (The FV1 value saved in the
+newly-selected patch is ignored.)
+
+LOW GAIN
+LOW-MID FREQ
+LOW-MID Q
+
+GROUND LIFT
+
+MAIN GLOBAL EQ L/S
+
+LOW-MID GAIN
+
+MAIN GLOBAL EQ R
+
+HIGH-MID FREQ
+
+Parameter
+
+HIGH-MID Q
+HIGH-MID GAIN
+
+Value
+
+GROUND LIFT OFF, ON
+
+Explanation
+Turns GROUND LIFT on/off for the
+RETURN jack.
+
+HIGH GAIN
+HIGH CUT
+
+87
+
+

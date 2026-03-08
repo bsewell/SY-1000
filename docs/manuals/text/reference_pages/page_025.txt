@@ -1,0 +1,189 @@
+INST Parameters > DYNAMIC SYNTH Parameters
+Parameter
+
+BEND CONTROL
+
+Value
+
+Explanation
+
+0–100
+
+Setting this to 0 makes
+for no shift in pitch by
+bend, and setting it to 100
+produces shifting according
+to the settings for BEND
+DEPTH6–BEND DEPTH1
+(LowB–HiC). Normally, this
+pitch bend is set to 0, and
+the setting 0–100 assigned
+with Control Assign is used.
+
+DYNAMIC SYNTH Parameters
+OSC
+In the OSC section you specify the waveform that is the basis of the
+synthesizer sound.
+Parameter
+
+Value
+
+Explanation
+
+Selects the waveform that is the basis of the sound.
+SIN
+
+Sine wave
+
+SAW
+
+Sawtooth wave
+
+TRI
+
+Triangle wave
+
+SQR
+
+Square wave
+
+PWM
+
+Pulse wave (asymmetrical
+rectangular wave)
+
+DETUNE SAW
+
+Two sawtooth waves of slightly
+different pitch
+
+BEND DEPTH HiC
+
+NOISE
+
+Noise
+
+*2
+
+FEEDBACK
+OSC
+
+A sound containing high overtones
+similar to guitar feedback playing.
+Suitable for creating crisply
+aggressive tones that stand out.
+
+BEND DEPTH6–BEND
+DEPTH1
+*1
+BEND DEPTH LowB,
+BEND DEPTH 4th,
+BEND DEPTH 3rd,
+
+-24–+24
+
+BEND DEPTH 2nd,
+BEND DEPTH 1st,
+
+This sets the amount of
+pitch shift in each string
+when the BEND CONTROL is
+set to 100.
+The amount of pitch shift
+from the current pitch is set
+in semitone increments.
+
+*1 Valid in the GUITAR MODE.
+
+WAVEFORM
+
+*1
+
+*2 Valid in the BASS MODE.
+*3 Valid when the TUNING TYPE is set to USER.
+
+SUPER SAW
+
+*4 Valid when the INST TYPE is set to E.GUITAR, E.BASS, ACOUSTIC,
+or AC BASS.
+
+*1
+
+*5 Valid when the 12STR TYPE is set to USER.
+
+The sound of seven sawtooth
+waves playing simultaneously.
+Pitch-shifted sounds are added
+to the center sound. This is
+appropriate when creating rich
+sounds such as strings.
+The input signal is used without
+modification.
+When using a GK PATCH
+
+INPUT
+*2
+
+The signal of the divided pickup is
+used.
+When using a NORMAL PATCH
+The signal of the normal pickup is
+used.
+
+PITCH
+
+-24–+24
+
+Adjusts the pitch.
+
+FINE
+
+-50–+50
+
+Specifies a finer adjustment than
+PITCH.
+Specifies the pulse width. This
+specifies the width of the upper
+portion of the rectangular wave as
+a percentage of the overall cycle.
+
+PULSE WIDTH
+*3
+
+0–100
+
+Smaller values produce a narrower
+pulse, approaching a square wave
+(pulse width = 50%).
+Larger values widen the pulse,
+producing a more distinctive
+sound.
+
+PWM ENV
+ATTACK
+
+Uses the dynamics of the input
+signal to control the pulse width
+of PWM.
+-50–+50
+
+*3
+
+PITCH ENV
+DEPTH
+*3
+
+-50–+50
+
+Values in the positive direction
+speed up the release of the pulse
+width, and values in the negative
+direction slow down the attack of
+the pulse width.
+Specifies the depth to which PWM
+is modulated by the dynamics of
+the input signal.
+
+25
+
+

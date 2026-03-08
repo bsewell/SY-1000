@@ -1,0 +1,53 @@
+SYSTEM Parameters > FACTORY RESET
+
+FACTORY RESET
+
+MODE SETTING
+
+Initializes the SY-1000 to its factory-set condition.
+
+Here you can specify whether you’re using the SY-1000 with a guitar
+connected or with a bass connected.
+
+MEMO
+Only the currently selected mode is initialized. (If you execute Factory
+Reset while in GUITAR MODE, the settings of BASS MODE are not
+initialized.)
+Parameter
+
+FROM, TO
+
+92
+
+Value
+
+Explanation
+
+SYSTEM
+
+System parameter settings
+
+U01-1–U50-4
+
+Settings for Patch Number U01-1
+through U50-4
+
+VARIATION
+
+Contents of the variation settings
+
+Choose GUITAR MODE (GUITAR) if you’re using it with a guitar, or
+choose BASS MODE (BASS) if you’re using it with a bass.
+MEMO
+
+55 With the factory settings, this is set to “GUITAR.”
+
+55 The SY-1000 starts up in the selected mode until you switch the
+mode again.
+55 Some parameters are shown differently depending on the
+selected mode.
+
+55 Patches are saved independently for GUITAR MODE and for BASS
+MODE.
+
+

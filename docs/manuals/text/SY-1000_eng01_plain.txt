@@ -1,0 +1,2013 @@
+Owner’s Manual
+
+Owner’s Manual (this document)
+Read this first. It explains the basic things you need to know in
+order to use the SY-1000.
+
+PDF Manual (download from the Web)
+55 Reference Manual
+This explains the all parameters of the SY-1000.
+55 Sound List
+This is a list of the sounds built into the SY-1000.
+55 MIDI Implementation
+This is detailed information about MIDI messages.
+
+To obtain the PDF manual
+1. Enter the following URL on your computer.
+http://www.boss.info/manuals/
+
+I
+
+2. Choose “SY-1000” as the product name.
+
+Before using this unit, carefully read “USING THE UNIT SAFELY” and “IMPORTANT NOTES” (leaflet “USING THE UNIT SAFELY” and Owner’s
+Manual (p. 21)).
+© 2019 Roland Corporation
+
+Contents
+Getting Ready. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+3
+
+Editing a Patch . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+
+Connecting the Equipment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Turning the Power On/Off. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Auto Off Function. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Panel Descriptions. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Selecting the Instrument (Guitar/Bass) to Use (MODE
+SETTING). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Specifying the Device Connected to OUTPUT Jacks (OUTPUT
+SELECT) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Making Pickup Settings (GK SETTING) . . . . . . . . . . . . . . . . . . . . . .
+Specifying the Pickup Type . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Specifying Your Guitar’s (Bass’s) Scale Length . . . . . . . . . . . . . . .
+Specifying the Pickup Position (Bass Mode Only). . . . . . . . . . . .
+Specifying the Distance from the Bridge. . . . . . . . . . . . . . . . . . . .
+Adjusting the Pickup Sensitivity. . . . . . . . . . . . . . . . . . . . . . . . . . .
+Tuning the Guitar (TUNER) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Making Tuner Settings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+3
+3
+3
+5
+
+Changing the INST. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Editing the INST . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Viewing All Parameters While You Edit. . . . . . . . . . . . . . . . . . . . . .
+Saving the Edited INST Settings (VARIATION) . . . . . . . . . . . . . . .
+Recalled a Saved INST Variation . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Editing the Effects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Basic Operation for Effect Editing . . . . . . . . . . . . . . . . . . . . . . . . . .
+Editing While Viewing All Parameters. . . . . . . . . . . . . . . . . . . . . . .
+Changing the Effect Order. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Saving the Edited Effect Settings (VARIATION) . . . . . . . . . . . . . .
+Recalled a Saved Effect Variation . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Assigning Functions to the Foot Switches and Expression
+Pedal. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Making Assignments from the Effect Edit Screen (Quick
+Assign). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+6
+6
+7
+7
+8
+8
+9
+9
+9
+9
+
+Basic Operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+Display (Play Screen). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+About the Icons. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Screen Operations. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Operating Example 1 (INST Screen) . . . . . . . . . . . . . . . . . . . . . . . .
+Operating Example 2 (INST Edit Screen) . . . . . . . . . . . . . . . . . . . .
+Operating Example 3 (EFFECT Edit Screen). . . . . . . . . . . . . . . . . .
+
+10
+10
+11
+11
+11
+11
+
+Switching Patches (Tone) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+The Structure and Patches of the SY-1000. . . . . . . . . . . . . . . . . .
+Types of Bank. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Types of Patch. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Selecting a Patch . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+2
+
+12
+12
+12
+12
+
+13
+13
+13
+14
+14
+15
+15
+15
+15
+16
+16
+17
+17
+
+Saving a Patch. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+Settings for the Entire SY-1000 (System Parameters). . . . 19
+Settings for the SY-1000 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+Restoring the Factory Default Settings (Factory Reset). . . . . . . 19
+Turning Off the Auto Off Function. . . . . . . . . . . . . . . . . . . . . . . . . . 19
+
+Main Specifications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+USING THE UNIT SAFELY . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+IMPORTANT NOTES . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+
+Getting Ready
+Connecting the Equipment
+* To prevent malfunction and equipment failure, always turn down the volume, and turn off all the units before making any connections.
+
+GK IN connector
+
+GUITAR INPUT jack
+
+DC IN jack
+
+Connect a guitar or bass equipped with the Roland Divided
+Pickup (Roland GK-3/GK-3B) or a GK-compatible guitar such as
+the Roland V-Guitar GC-1 to this connector.
+
+Use this control if you’re directly
+inputting a conventional guitar.
+
+Connect the included AC
+adaptor here.
+
+* If you use a 1/4” phone
+plug to make connections,
+instruments other than
+DYNAMIC SYNTH and the
+alternate tuning function will
+not operate.
+
+* Place the AC adaptor so the
+side with the indicator faces
+upwards. The indicator will
+light when you plug the AC
+adaptor into an AC outlet.
+
+In addition to the signal from the divided pickup, the
+conventional guitar signal (normal pickup) is also input to the
+GK IN connector.
+* Never connect anything other than the dedicated GK cable.
+
+Roland GK-3 users
+
+Roland V-Guitar GC-1 users
+
+You must set this to the center (MIX) position!
+Indicator
+
+SEND/RETURN jacks
+Connect an external effect
+processor here.
+
+(USB) port
+Use a commercially available USB 2.0 cable to
+connect this port to your computer. It can be
+used to transfer USB MIDI and USB audio data.
+You must install the USB driver when
+connecting the unit to your computer.
+Download the USB driver from the BOSS
+website. For details, refer to Readme.htm which
+is included in the download.
+http://www.boss.info/support/
+
+Turning the Power On/Off
+This turns the power on/off.
+* Before turning the unit on/off, always be sure to turn the volume down. Even with
+the volume turned down, you might hear some sound when switching the unit on/
+off. However, this is normal and does not indicate a malfunction.
+
+Auto Off Function
+The power to this unit will be turned off automatically after a predetermined
+amount of time has passed since it was last used for playing music, or its buttons
+or controls were operated (Auto Off function). If you do not want the power to be
+turned off automatically, disengage the Auto Off function.
+* Any settings that you are in the process of editing will be lost when the power is
+turned off. If you have any settings that you want to keep, you should save them
+beforehand.
+* To restore power, turn the power on again.
+For details on the settings, refer to “Reference Manual” (PDF).
+
+For details on the settings, refer to
+“Reference Manual” (PDF).
+
+3
+
+Getting Ready
+MAIN OUTPUT jack / SUB OUTPUT jack
+
+MIDI IN, MIDI OUT/THRU jacks
+
+Connect these jacks to your guitar amp, headphones (sold separately), or to
+PA (LINE).
+
+Connect an external MIDI device here.
+
+* Connect your headphones to the MAIN OUTPUT L/PHONES jack.
+
+For details, refer to “Reference Manual”
+(PDF).
+
+* If your system is mono, use only the R/MONO jack.
+* If you’re using headphones, don’t connect anything to R/MONO jack.
+
+Ground Terminal
+Connect this to an external earth or
+ground if necessary.
+
+CTL 3, 4/EXP 1, CTL 5, 6/EXP 2 jacks
+You can connect an expression pedal (EV-30, FV-500L, FV-500H, or EV-5: sold separately) or footswitch (FS-5U, FS-6, FS-7: sold separately), and
+use it to control various functions.
+For details on the settings, refer to “Reference Manual” (PDF).
+To use these as EXP 1,
+EXP 2 jacks
+Connect an expression
+pedal.
+
+To use these as CTL 3,4 or CTL 5,6 jacks
+Connect a footswitch.
+FS-5U x 1
+
+FS-5U x 2
+
+FS-6
+
+FS-7
+
+1/4” phone type
+
+Stereo 1/4” phone type
+
+Stereo 1/4” phone type
+
+Stereo 1/4” phone type
+
+1/4” phone type
+
+1/4” phone type x 2
+
+Stereo 1/4” phone type
+
+Stereo 1/4” phone type
+
+.
+/
+
+* Use only the
+specified expression
+pedal (EV-30, FV500L, FV-500H, or EV5: sold separately).
+By connecting any
+other expression
+pedals, you risk
+causing malfunction
+and/or damage to
+the unit.
+
+.
+/
+
+.
+/
+
+CTL 4
+CTL 6
+CTL 3
+CTL 5
+
+CTL 4
+CTL 6
+
+CTL 3
+CTL 5
+
+CTL 4
+CTL 6
+
+CTL 3
+CTL 5
+
+MODE / POLARITY switch
+FS-5U
+
+4
+
+.
+/
+
+FS-6
+
+FS-7
+
+CTL 3
+CTL 5
+
+Getting Ready
+
+Panel Descriptions
+
+3
+1
+
+2
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+No.
+
+Name
+
+Explanation
+
+Page
+
+1
+
+Display
+
+Various information regarding the SY-1000 is indicated here.
+
+p. 10
+
+2
+
+[1]–[6] knobs
+
+Use this to select or edit the value of the parameter that’s shown in the display.
+
+p. 11
+
+This adjusts the volume level for the MAIN OUTPUT jack.
+
+3
+
+[OUTPUT LEVEL] knob
+
+* Depending on how you switch the settings, you can also adjust the MAIN OUTPUT and
+SUB OUTPUT volumes simultaneously.
+[SYSTEM] button0HARDWARE SETTING0KNOB0OUTPUT LEVEL KNOB
+
+–
+
+4
+
+[INST] button
+
+Specifies the sound of the INST (sound engine).
+
+p. 13
+
+5
+
+[EFFECTS] button
+
+Specifies the effect settings and the order in which effects are connected.
+
+p. 15
+
+6
+
+[CTL] button
+
+Accesses the CTL screen, where you can assign functions to the buttons and switches.
+
+p. 17
+
+7
+
+[EXIT] button
+
+Used to return previous screens and to undo operations.
+
+–
+
+8
+
+[WRITE] button
+
+Use for storing settings in patches and executing operations.
+
+p. 18
+
+9
+
+[SYSTEM] button
+
+Used for making settings related to the SY-1000’s operating
+
+p. 19
+
+10
+
+[K] [J] (PAGE) buttons
+
+This switches the screens displayed in the display.
+
+p. 10
+
+11
+
+BANK [I], BANK [H] switches
+
+Switch banks.
+
+p. 12
+
+12
+
+[CTL 1] [CTL 2] switches
+
+By default, the [CTL 1] and [CTL 2] pedals control a function that’s assigned by each patch.
+
+–
+
+13
+
+[1]–[4] switches
+
+Switch patches.
+
+–
+
+5
+
+Getting Ready
+
+Selecting the Instrument (Guitar/Bass) to
+Use (MODE SETTING)
+
+Specifying the Device Connected to
+OUTPUT Jacks (OUTPUT SELECT)
+
+Here you can select whether you’re connecting a guitar or a bass to
+the SY-1000.
+
+Use this procedure to set the type of device connected to the output
+jacks (MAIN OUT, SUB OUT).
+
+Choose guitar mode (GUITAR) if you’re using a guitar, or choose bass
+mode (BASS) if you’re using a bass.
+
+This applies the optimal adjustments for the device that is connected.
+
+1. Press the [SYSTEM] button.
+
+2. Use the [K] [J] (PAGE) buttons to access the “MODE
+SETTING” icon.
+
+1. Press the [SYSTEM] button.
+2. Use the [K] [J] (PAGE) buttons to access the “IN/
+OUT SETTING” icon.
+
+3. Press the [2] knob.
+The IN/OUT SETTING screen appears.
+
+3. Press the [2] knob.
+The message appears.
+
+4. Press the [3] knob or [4] knob.
+The MAIN OUT screen or SUB OUT screen appears.
+
+4. To change the mode, press the [6] knob.
+If you decide to cancel, press the [5] knob. When you press the [6]
+knob, a message appears.
+
+5. Turn the power of the SY-1000 off, then on again.
+If you decide to cancel, press the [EXIT] button. Verify that the
+SY-1000 has started with the mode that you specified.
+MEMO
+
+The OUTPUT SELECT screen appears.
+
+5. Turn the [1] knob.
+Select the connected device (type of amp).
+OUTPUT SELECT Explanation
+
+55 With the factory settings, this is set to “GUITAR.”
+
+LINE/PHONES
+
+Choose this setting if you’re using
+headphones, or if the SY-1000 is connected
+to a keyboard amp, mixer, or digital recorder.
+
+55 Some parameters are displayed differently depending on the
+selected mode.
+
+JC-120 RETURN
+
+Choose this setting if the SY-1000 is
+connected to the RETURN jack of the Roland
+JC-120 guitar amp.
+
+JC-120 INPUT
+
+Choose this setting if the SY-1000 is
+connected to the guitar input jack of a JC120 guitar amp.
+
+COMBO AMP 1
+RETURN
+
+Choose this setting if the SY-1000 is
+connected to the RETURN jack of a combo
+type amp (with amp and speaker in a single
+unit) equipped with one speaker.
+
+55 The SY-1000 starts with the specified mode until the next time
+you change the mode.
+
+55 Patches are saved separately for guitar mode and bass mode.
+
+6
+
+Press the [1] knob.
+
+Getting Ready
+OUTPUT SELECT Explanation
+COMBO AMP 1
+INPUT
+
+Choose this setting if the SY-1000 is
+connected to the guitar input jack of a
+combo type amp (with amp and speaker in a
+single unit) equipped with one speaker.
+
+COMBO AMP 2
+RETURN
+
+Choose this setting if the SY-1000 is
+connected to the RETURN jack of a combo
+type amp (with amp and speaker in a single
+unit) equipped with two speakers.
+
+COMBO AMP 2
+INPUT
+
+Choose this setting if the SY-1000 is
+connected to the guitar input jack of a
+combo type amp (with amp and speaker in a
+single unit) equipped with two speakers.
+
+STACK AMP
+RETURN
+
+Set this when connecting to the RETURN jack
+on a stack-type amp.
+
+STACK AMP
+INPUT
+
+Set this when connecting to the guitar input
+jack on a stack-type amp.
+
+BASS AMP WITH
+TWEETER
+
+Use this setting when connecting to a
+tweeter-equipped bass amp.
+
+BASS AMP NO
+TWEETER
+
+Use this setting when connecting to a bass
+amp that has no tweeter. The high-frequency
+range is adjusted.
+
+Making Pickup Settings (GK SETTING)
+Make settings for the divided pickup in order to ensure that you’ll
+always be playing the SY-1000 in the optimal state.
+The SY-1000 can save ten types of these settings (GK SETTING).
+Here we explain the example of saving pickup settings in SETTING:
+[1].
+MEMO
+The GK SETTING is saved even when the power is turned off. You
+don’t need to make this setting again each time you perform.
+
+1. Press the [SYSTEM] button.
+2. Use the [K] [J] (PAGE) buttons to access the “IN/
+OUT SETTING” icon.
+
+3. Press the [2] knob.
+6. Press the [EXIT] button.
+
+The IN/OUT SETTING screen appears.
+
+You’ll be returned to the Play screen.
+
+4. Press the [1] knob.
+The GK SETTING screen appears.
+
+5. Turn the [1] knob to select SETTING: [1].
+The pickup settings will be saved in SETTING: [1].
+MEMO
+Pickup settings are automatically saved in the number (SETTING:
+[1]–[10]) that you selected in step 5.
+
+Specifying the Pickup Type
+Choose the type of pickup that’s installed on your guitar (bass).
+
+6. If using guitar mode, turn the [5] knob.
+If using bass mode, turn the [4] knob.
+
+7
+
+Getting Ready
+GK PU TYPE
+(GUITAR MODE)
+
+7. If using guitar mode, turn the [6] knob.
+If using bass mode, turn the [5] knob.
+
+Explanation
+
+GK-3
+
+Choose this if you’re using a Roland GK-3.
+
+Specify the length that is correct for your guitar (bass).
+
+GK-2A
+
+Choose this if you’re using a Roland GK-2A,
+or if you’re using a (commercially available)
+guitar with a built-in divided pickup.
+
+If you’re using GUITAR MODE, choose “ST (648mm)” for a standard
+Stratocaster type, or choose “LP (628mm)” for a Les Paul type.
+
+GC-1
+
+Choose this if you’re using a Roland V-Guitar
+GC-1.
+
+PIEZO
+
+(flat response)
+
+PIEZO F
+
+Fishman
+
+PIEZO G
+PIEZO L
+
+Piezo
+Pickup
+
+PIEZO R
+GK PU TYPE
+(BASS MODE)
+
+If you’re using BASS MODE, For a standard Jazz Bass type or
+Precision Bass type, choose LONG JB/PB (864 mm).
+MEMO
+This parameter is not shown if GK PU TYPE is set to “Roland V-Guitar
+GC-1.”
+
+Graph Tech
+
+Specifying the Pickup Position
+(Bass Mode Only)
+
+L.R. Baggs
+RMC
+
+Specify the position of the divided pickup that’s installed on your
+bass.
+
+Explanation
+
+GK-3B
+
+Choose this if you’re using a GK-3.
+
+MEMO
+
+GK-2B
+
+Choose this if you’re using a Roland GK-2B, or
+if you’re using a (commercially available) bass
+with a built-in divided pickup.
+
+If you’ve installed a divided pickup on your guitar, proceed to step 9
+“Specifying the Distance from the Bridge” (p. 9) (this step is not
+needed).
+
+PIEZO
+PIEZO G
+PIEZO R
+
+Piezo
+Pickup
+
+(flat response)
+
+8. Turn the [6] knob
+
+Graph Tech
+
+Specify the GK PU POSITION according to the position of the
+divided pickup that’s installed.
+
+RMC
+
+MEMO
+
+For a 4-string bass
+
+55 A piezo pickup is a type of pickup that is mounted on the bridge
+of the guitar, and uses a piezoelectric element to detect the
+vibrations of the strings.
+55 If you don’t know the type of your piezo pickup, try selecting
+different choices while you play your guitar, and choose the
+setting that produces the most natural sound.
+
+55 If you’ve chosen piezo type, you’ll be able to make further
+adjustments to the tone quality of the high range and low range.
+
+Specifying Your Guitar’s (Bass’s) Scale Length
+Specify your guitar’s (bass’s) scale length (the distance from the
+bridge to the nut).
+
+GK PU
+POSITION
+
+4STR-1
+
+4STR-2
+
+5STR-Lo1
+
+5STR-Lo2
+
+1st string
+2nd string
+3rd string
+4th string
+
+For a 5-string bass
+GK PU
+POSITION
+
+GK PU
+POSITION
+
+Bass
+
+8
+
+6STR
+High C string
+1st string
+2nd string
+3rd string
+4th string
+Low B string
+
+5STR-Hi1
+High C
+string
+1st string
+2nd string
+3rd string
+4th string
+
+1st string
+2nd string
+3rd string
+4th string
+Low B string
+For a 6-string bass
+
+Guitar
+
+4STR-3
+
+5STR-Hi2
+
+Getting Ready
+
+Specifying the Distance from the Bridge
+
+Tuning the Guitar (TUNER)
+
+For each string, specify the distance from the bridge to the center of
+the pickup.
+
+Tune the guitar (bass).
+The SY-1000 is equipped with a conventional monophonic
+tuner which lets you tune your instrument one string at a time
+(SINGLE MODE), and a polyphonic tuner which lets you play and tune
+all of your open strings simultaneously (MULTI MODE).
+
+1. Press the BANK [I] switch and BANK [H] switch
+simultaneously.
+The TUNER screen appears.
+
+2. Use the [K] [J] (PAGE) buttons to select the tuner
+mode.
+9. Use the [K] [J] (PAGE) buttons to access the
+DISTANCE screen.
+
+TUNER MODE
+
+Explanation
+
+MULTI MODE
+
+You can play and tune six strings
+simultaneously
+
+SINGLE MODE
+
+You can play one individual string to tune
+that string.
+
+3. Play an open string, and tune it so that only the
+center indicator in the screen is lit.
+10. Turn the [1]–[6] knobs.
+Specify the distance from the bridge to the center of the pickup.
+
+Making Tuner Settings
+
+MEMO
+
+These settings specify how the tuner operates.
+
+This setting is not needed if GK PU TYPE is “Roland V-Guitar GC-1” or if
+you selected a piezo type pickup.
+
+Parameter
+PITCH
+
+Adjusting the Pickup Sensitivity
+
+Value
+435–445Hz
+(default: 440Hz)
+MUTE
+
+The volume will differ if the distances between each string and the
+divided pickup are different. Specify the sensitivity of the pickup to
+compensate for this volume difference.
+
+11. Use the [K] [J] (PAGE) buttons to access the SENS
+
+OUTPUT
+
+BYPASS
+
+Explanation
+Specifies the reference pitch.
+Sound will not be output while
+tuning.
+While tuning, the sound from
+the GK IN connector/GUITAR
+INPUT jack will be output without
+change.
+All modelings and effects will be
+off.
+
+screen.
+
+THRU
+
+Allows you to tune while hearing
+the current effect/modeling
+sound.
+
+12. While playing the strings strongly, turn the [1]–[6]
+
+knobs so that the level meters reach the triangular
+marks.
+
+MEMO
+Depending on the guitar (bass) you’re using, the level meter
+might reach full-scale even if the sensitivity is at minimum. If this
+is the case, adjust the distance between the divided pickup and
+the string so it’s somewhat greater than the recommendation.
+
+9
+
+Basic Operation
+Here we explain how you can use the buttons and knobs to operate
+the SY-1000, and how to switch screens.
+
+About the Icons
+
+Display (Play Screen)
+The screen that appears after you start the SY-1000 is called the “play
+screen.”
+
+Screen 1
+
+Icon
+
+This screen shows the bank number and patch number in especially
+large characters.
+Bank number
+
+Patch number
+
+Explanations
+Indicates the input level of the GK IN
+connector.
+* When using a normal patch (p. 12),
+this indicates the level of the guitar
+signal.
+Indicates the output level of the MAIN
+OUTPUT jacks and SUB OUTPUT jacks.
+Indicates the input level of the
+RETURN jack.
+* Shown in the EFFECTS edit screen.
+
+Patch name
+
+Indicates the output level of the SEND
+jack.
+
+Screen 2
+
+* Shown in the EFFECTS edit screen.
+
+This screen shows the bank number, patch number, and patch name.
+
+* Shown in the EFFECTS edit screen.
+
+Indicates the output level of the
+selected effect block.
+Indicates BALANCER1–3 and MIXER
+BALANCE.
+* Shown in the EFFECTS edit screen.
+Indicates the BPM.
+
+Screen 3
+This screen shows the functions that are assigned to the pedal
+switches of the unit.
+
+Blinks in time with the BPM.
+Shown when a GK patch (p. 12) is
+selected.
+When using a normal patch (p. 12),
+this icon goes dark.
+When the screen contains multiple
+pages, this indicates the position of
+the current page.
+Indicates the page to which you
+navigate using the [K] [J] (PAGE)
+buttons (edit screen).
+
+Screen 4
+This screen shows how the INST and effects are connected (CHAIN).
+
+10
+
+Basic Operation
+
+Operating Example 3 (EFFECT Edit Screen)
+
+Screen Operations
+In the play screen, you can turn or press the [1]–[6] knobs to adjust
+the parameters that are shown in the lower part of the display.
+
+Operating Example 1 (INST Screen)
+Turn operation
+
+Press operation
+Turn operation
+
+Operation
+
+Explanation
+
+Turn the [1]–[5] knobs
+
+Changes the value of the setting for
+the parameter
+
+Turn the [6] knob
+
+Selects the block to edit.
+
+Press the [6] knob
+
+Turns the selected block on/off.
+
+Operation
+
+Explanation
+
+Turn the [1] knob
+
+Changes the INST TYPE of INST1.
+
+Long-press the [6] knob
+
+Shows a list with all parameters of
+the selected block.
+
+Press the [1] knob
+
+Accesses a screen where you can
+switch the INST TYPE variation of
+INST1.
+
+Turn the [6] knob while
+pressing it
+
+Changes the position of the selected
+block.
+
+Turns INST1 on/off.
+
+Turn the [2] knob
+
+When off, the icon is shown in gray.
+
+Press the [2] knob
+
+Accesses the edit screen for INST1.
+
+MEMO
+To change a value in larger steps, turn a [1]–[5] knob while pressing it.
+
+MEMO
+As for INST1, you can operate INST2 with the [3] knob and [4] knob,
+and operate INST3 with the [5] knob and [6] knob.
+
+Operating Example 2 (INST Edit Screen)
+Use the [6] knob to select
+
+Turn operation
+
+Use the PAGE [K] [J]
+buttons to switch
+
+Press operation
+
+Operation
+
+Explanation
+
+Turn the [1]–[5] knobs
+
+Changes the value of the setting for
+the parameter
+
+Turn the [6] knob
+
+Selects the block to edit.
+
+Press the [6] knob
+
+Shows a list with all parameters of
+the selected block.
+
+Press the [K] [J] (PAGE)
+buttons
+
+Switches the parameters to show.
+
+11
+
+Switching Patches (Tone)
+The Structure and Patches of the SY-1000
+The SY-1000 consists of three sound engines (the INST blocks) and effects whose connections you are free to change (the FX block).
+INST1
+
+FX1
+
+INST2
+
+FX2
+
+INST3
+
+FX3
+
+NORMAL
+
+CMP
+
+S/R
+EQ2
+
+DLY1
+
+SUB L/R
+MST DLY
+
+DS
+
+AMP
+
+EQ1
+
+NS
+
+FV1
+
+CHO
+
+REV
+
+FV2
+
+DIV
+
+MIX
+
+MAIN L/R
+
+MST
+
+DLY2
+
+The INST settings together with the combination of effects are collectively called a “patch.”
+A set of four patches is called a “bank.”
+Patches are managed by their bank (1–50) and number (1–4); the SY-1000 can store 200 patches.
+Bank 50
+Bank 3
+Bank 2
+Bank 1
+
+Patch 1
+
+Patch 2
+
+Patch 3
+
+Patch 4
+
+[1]–[4] switch
+
+BANK [I], BANK [H]
+switch
+
+Types of Bank
+
+Selecting a Patch
+
+The SY-1000 has two types of bank.
+Types of bank
+
+Explanation
+
+Preset bank
+(P01–P50)
+
+Cannot be overwritten, however, you can write
+a patch into the User bank, modify the settings
+to your needs and store your modified version in
+the User bank.
+
+User bank
+(U01–U50)
+
+Can be overwritten.
+
+When you switch patches, the tonal character changes.
+BANK [I] [H] switches
+
+Types of Patch
+The SY-1000 has two types of patch.
+Types of patch
+GK patch
+
+[1]–[4] switches
+
+Explanation
+
+1. Use the BANK [I] [H] switches to select a bank.
+
+Patches for a guitar (bass) that uses a divided
+pickup.
+
+2. Use the [1]–[4] switches to select a patch within the
+selected bank.
+
+If these patches are selected, the display shows
+the GK icon
+.
+
+Bank number
+
+Patch number
+
+Patches for a conventional guitar (bass) that is
+connected to the GUITAR INPUT. These can be
+used even if you don’t have a divided pickup.
+
+Normal patch
+
+You can also use these patches with
+the conventional guitar (bass) signal
+(normal pickup) that is routed through the
+divided pickup.
+Patch name
+
+If you’re using Normal patch, the GK icon goes
+dark.
+* DYNAMIC SYNTH is the only INST TYPE that
+can be selected for normal patches.
+
+12
+
+MEMO
+You can also change patches by turning [1] knob below the
+display.
+
+Editing a Patch
+Here’s how to create a patch by editing the parameters of the INST
+blocks and the effect block, and combining them.
+
+Editing the INST
+
+Changing the INST
+
+You can edit each INST in detail.
+
+1. Press the [INST] button.
+
+1. In the INST screen, press the [2] knob.
+
+Here we explain using the example of the DYNAMIC SYNTH screen of
+INST1.
+
+The INST screen appears.
+
+The INST1 screen appears.
+* The pages differs depending on the INST TYPE.
+
+2. Turn the [6] knob to select the block that you want
+to edit.
+
+2. Turn the [1]–[6] knobs.
+The INST screen shows the INST TYPE for INST1–INST3.
+Operation
+
+Explanation
+
+Turn the [1] knob
+
+Changes the INST TYPE of INST1.
+
+Press the [1] knob
+
+Accesses a screen where you can
+switch the INST TYPE variation of
+INST1.
+
+3. Turn the [1]–[5] knobs to edit the setting of the
+parameter.
+
+Turns INST1 on/off.
+
+MEMO
+
+When off, the icon is shown in gray.
+
+55 To change a value in larger steps, turn a knob while pressing it.
+
+Turn the [2] knob
+Press the [2] knob
+
+Accesses the edit screen for INST1.
+
+MEMO
+As for INST1, you can operate INST2 with the [3] knob and [4]
+knob, and operate INST3 with the [5] knob and [6] knob.
+
+The selected block is shown in white.
+
+55 You can use the PAGE [K] [J] buttons to switch between the
+parameters.
+
+55 The number of parameters and pages differs depending on the
+effect.
+
+55 In the edit screen, you can press the [INST] button to switch to the
+edit screen of another INST.
+
+Viewing All Parameters While You Edit
+You can also edit while viewing a list of all parameters for the
+selected block.
+
+1. In the edit screen, press the [6] knob.
+Shows a list with all parameters of the selected block.
+
+2. Turn the [1]–[6] knobs to edit the setting of the
+parameter.
+MEMO
+You can use the PAGE [K] [J] buttons to switch between the
+parameters.
+
+13
+
+Editing a Patch
+
+Saving the Edited INST Settings
+(VARIATION)
+Your preferred settings for each instrument can be saved as a
+“VARIATION.” Since a variation can also be used from another patch, it
+is convenient for sound design.
+
+Recalled a Saved INST Variation
+1. In the INST screen, press any one of the knobs [1]
+(INST1), [3] (INST2), or [5] (INST3).
+The VARIATION screen appears.
+
+1. In the INST screen, press the [1] knob.
+The VARIATION screen appears.
+
+2. Turn the [6] knob to select a variation.
+You can also audition the sound while selecting a variation.
+MEMO
+From the INST edit screen, you can also access the variation screen
+using the following methods.
+1. In the edit screen, select the “COMMON” block.
+
+2. Use the PAGE [J] buttons to move to the last page.
+3. Press the [5] knob.
+
+4. Press the [2] knob.
+The VARIATION WRITE screen appears.
+
+5. Turn the [1] knob to select the save-destination
+number.
+6. Use the [3]–[6] knobs to specify the variation name.
+7. Press the [WRITE] button.
+The variation is saved.
+To cancel this procedure, press the [4] knob.
+
+14
+
+3. Press the [5] knob to recall the selected variation.
+
+Editing a Patch
+
+Editing the Effects
+
+Editing While Viewing All Parameters
+
+You can edit the effect settings, and change the order of blocks such
+as output and send/return (the effect chain).
+
+You can also edit while viewing a list of all parameters for the
+selected block.
+
+Basic Operation for Effect Editing
+
+1. In the edit screen, long-press the [6] knob.
+Shows a list with all parameters of the selected block.
+
+1. Press the [EFFECT] button.
+The edit screen (effect chain) appears.
+
+2. Turn the [1]–[6] knobs to edit the parameter
+settings.
+2. Turn the [6] knob to select the block that you want
+to edit.
+The selected block is enclosed by a thick frame.
+
+MEMO
+You can use the PAGE [K] [J] buttons to switch between the
+parameters.
+
+* By pressing the [6] knob you can turn the selected effect on/off.
+Effects that are off are shown in gray. When the effect is turned on,
+it is shown in white.
+Off
+
+On
+
+Use the PAGE [K] [J]
+buttons to switch
+
+Changing the Effect Order
+By moving blocks such as effects, output, and send/return, you can
+freely change the order in which the effects are placed, or arrange
+them in parallel.
+
+3. Use knobs [1]–[5] to adjust the parameters that are
+shown below the screen.
+
+MEMO
+55 You can change the order of the INST1–3 blocks and the NORMAL
+block.
+55 The MST (MASTER) block cannot be moved.
+
+1. Press the [EFFECT] button.
+The effect chain is shown.
+
+2. Use the [6] knob to select the block that you want
+to move.
+Use the PAGE [K] [J] buttons to switch between the parameters
+that you want to edit. The current page is indicated in the lower
+center of the screen.
+
+3. While pressing the [6] knob, turn it left or right.
+The selected block moves left or right.
+
+* To change a value in larger steps, turn a knob while pressing it.
+* The number of parameters and pages differs depending on the
+effect.
+
+15
+
+Editing a Patch
+
+Saving the Edited Effect Settings
+(VARIATION)
+Your preferred settings for each effect can be saved as a “VARIATION.”
+
+Recalled a Saved Effect Variation
+1. Press the [EFFECT] button.
+
+Since a variation can also be used from another patch, it is
+convenient for sound design.
+
+2. Use the [6] knob to choose the effect you’re going
+to edit.
+
+1. Press the [EFFECT] button.
+
+3. Use the PAGE [K] [J] buttons to move to the last
+page.
+
+2. Use the [6] knob to choose the effect you’re going
+to edit.
+3. Use the PAGE [K] [J] buttons to move to the last
+page.
+
+4. Press the [5] knob.
+The VARIATION screen appears.
+
+5. Turn the [6] knob to select a variation.
+4. Press the [5] knob.
+The VARIATION screen appears.
+
+5. Press the [2] knob.
+The VARIATION WRITE screen appears.
+
+6. Turn the [1] knob to select the save-destination
+number.
+7. Use knobs [3]–[6] to name the VARIATION.
+8. Press the [WRITE] button.
+The variation is saved.
+To cancel this procedure, press the [4] knob.
+
+16
+
+You can also audition the sound while selecting a variation.
+
+6. Press the [5] knob to recall the selected variation.
+
+Editing a Patch
+
+Assigning Functions to the Foot Switches
+and Expression Pedal
+A variety of functions can be assigned to each of the top panel
+footswitches, and expression pedals or footswitches that are
+connected to the rear panel CTL3, 4/EXP1 jack and CTL5, 6/EXP2 jack
+(p. 4).
+
+4. Turn knobs [2]–[6] to edit the value of the item
+selected for each switch.
+MEMO
+55 You can use the PAGE [K] [J] buttons to switch between the
+parameters.
+
+55 The footswitch and expression pedal functions must be specified
+for each patch; however, if you set PREFERENCE to SYSTEM, all
+patches will use those functions in common.
+
+Making Assignments from the Effect Edit
+Screen (Quick Assign)
+In the effect edit screen (p. 15), you can select an effect parameter
+and assign that parameter to the switch of your choice.
+
+1. Press the [EFFECT] button.
+2. Turn the [6] knob to select the block that you want
+to edit.
+Built-in footswitches
+
+EXP1, EXP2
+
+CTL3–CTL6
+
+3. Long-press the [1]–[5] knobs for the parameter that
+you want to assign.
+
+The ASSIGN MATRIX screen appears.
+
+1. Press the [CTL] button.
+The CONTROL/ASSIGN screen appears.
+
+* You can also access the ASSIGN MATRIX screen in the same way
+from the all-parameter list screen (p. 13). You can also access it
+by selecting the [CTL] button0 “ASSIGN SETTING.”
+
+2. Press the [1] knob.
+The CONTROL FUNCTION screen appears.
+
+4. Press the [1] knob to turn the SW on.
+5. Turn knobs [2]–[6] to edit parameters.
+If necessary, use the PAGE [K] [J] buttons to switch between
+pages of settings.
+Use SOURCE to specify the pedal or MIDI message that you will
+operate.
+
+3. Turn the [1] knob to select the item that you want
+to set.
+Turning the knob will move the selected item vertically.
+
+The settings of the selected item can now be edited.
+
+17
+
+Saving a Patch
+The INST settings and the combination of effects can be saved in a
+patch, and recalled at any time.
+If you select a different patch or turn off the power after editing the
+settings, edited settings will be lost. If you want to keep the data, you
+must save it.
+
+1. Press the [WRITE] button.
+
+2. Press the [1] knob to select “WRITE” (PATCH WRITE).
+
+3. Use the [1] knob to select the save-destination
+(U01-1–U50-4).
+You can use knobs [3]–[6] to edit the name.
+
+Editing a name
+To edit the patch name, use the [6] knob to move the cursor
+and use the [5] knob to change the character.
+Operation
+
+Explanation
+
+Turn the [3] knob
+
+Selects the type of characters
+
+Press the [3] knob
+
+Delete one character (delete)
+
+Turn the [4] knob
+
+Switch uppercase/lowercase
+
+Press the [4] knob
+
+Insert one space (insert)
+
+Turn the [5] knob
+
+Changes the character
+
+Turn the [6] knob
+
+Moves the cursor
+
+4. Press the [WRITE] button.
+The patch is written.
+To cancel this procedure, press the [4] knob.
+
+18
+
+Settings for the Entire SY-1000 (System Parameters)
+Settings for the SY-1000
+Here you can make settings that are common to the entire SY-1000
+(system parameters).
+For details on each parameter, refer to “SY-1000 Reference Manual” (PDF).
+
+1. Press the [SYSTEM] button.
+
+Restoring the Factory Default Settings
+(Factory Reset)
+Restoring the SY-1000’s settings to their original factory default
+settings is referred to as “Factory Reset.”
+Not only can you return all of the settings to the values in effect when
+the SY-1000 was shipped from the factory, you can also specify the
+items to be reset.
+* When you execute “Factory Reset,” the settings you made will
+be lost. Save the data you need to your computer using the
+dedicated software.
+
+1. Press the [SYSTEM] button.
+
+MEMO
+
+2. Use the [K] [J] (PAGE) buttons to select “FACTORY
+RESET.”
+
+You can use the PAGE [K] [J] buttons to see additional items.
+
+2. Press a [1]–[6] knob to select the item that you want
+to edit.
+A sub-menu appears.
+
+3. Choose the type of settings to be restored to the
+factory default settings with knobs [1] and [6].
+Knob
+
+Explanation
+
+[1]
+
+Specifies FROM.
+
+[6]
+
+Specifies TO.
+
+3. Once again press a [1]–[6] knob to select the item
+that you want to edit.
+
+Value
+
+Explanation
+
+SYSTEM
+
+System parameter settings
+
+4. Use knobs [1]–[6] to select parameters or edit the
+values.
+
+U01-1–U50-4
+VARIATION
+
+Settings for Patch Numbers
+U01-1–U50-4
+Settings for VARIATION
+
+MEMO
+The method of selecting parameters and editing their value will
+differ depending on the item.
+
+4. Press the [WRITE] button.
+Press the [6] knob to execute the factory reset.
+To cancel factory reset, press the [5] knob.
+Once the Factory Reset is complete, you are returned to the Play
+screen.
+
+Turning Off the Auto Off Function
+The SY-1000 can turn off its power automatically. The power will turn
+off automatically when 10 hours have passed since you last played or
+operated the unit. The display will show a message approximately 15
+minutes before the power turns off.
+With the factory settings, this function is turned “ON” (power-off in 10
+hours). If you want to have the power remain on all the time, turn it
+“OFF.”
+
+1. Press the [SYSTEM] button.
+2. Choose “HARDWARE SETTING” 0 “OTHER.”
+3. Use the [1] knob to select “OFF.”
+4. Press the [EXIT] button a number of times to return
+to the play screen.
+
+19
+
+Main Specifications
+BOSS SY-1000: Guitar Synthesizer
+Patch Memory
+
+Guitar mode
+
+200 (preset) + 200 (user)
+
+Bass mode
+
+200 (preset) + 200 (user)
+
+Divided pickup
+
+32 bits + AF method
+
+Normal pickup
+
+32 bits + AF method
+
+AD Conversion
+
+DA Conversion
+
+32 bits
+
+Sample Rate
+
+48 kHz
+
+Normal Input Level
+Maximum Input Level
+Input Impedance
+
+Normal Output Level
+
+Output Impedance
+
+Recommended Load
+Impedance
+Display
+
+Connectors
+
+* AF method (Adaptive Focus
+method) is a proprietary method
+from Roland & BOSS that vastly
+improves the signal-to-noise
+(SN) ratio of the AD and DA
+converters.
+
+GUITAR INPUT
+
+-10 dBu
+
+RETURN
+
+-10 dBu
+
+GUITAR INPUT
+
++16 dBu
+
+RETURN
+
++8 dBu
+
+GUITAR INPUT
+
+1 MΩ
+
+RETURN
+
+1 MΩ
+
+MAIN OUTPUT (L/PHONES, R/MONO)
+
+-10 dBu
+
+SUB OUTPUT (L, R/MONO)
+
+-10 dBu
+
+SEND
+
+-10 dBu
+
+MAIN OUTPUT (L/PHONES, R/MONO)
+
+44 Ω
+
+SUB OUTPUT (L, R/MONO)
+
+1 kΩ
+
+SEND
+
+1 kΩ
+
+MAIN OUTPUT (L/PHONES, R/MONO)
+
+10 kΩ or greater (when using headphones: 44 Ω or
+greater)
+
+SUB OUTPUT (L, R/MONO)
+
+10 kΩ or greater
+
+SEND
+
+10 kΩ or greater
+
+Graphic LCD (512 x 160 dots, backlit LCD)
+GK IN connector
+
+13-pin DIN type
+
+GUITAR INPUT jack, SEND jack, RETURN jack, MAIN
+OUTPUT (L/PHONES, R/MONO) jacks, SUB OUTPUT
+(L, R/MONO) jacks
+
+1/4-inch phone type
+
+CTL3, 4/EXP1 jack, CTL5, 6/EXP2 jack
+
+1/4-inch TRS phone type
+
+USB COMPUTER port
+
+USB B type (supports High-Speed USB, USB Audio, and
+USB MIDI)
+
+MIDI (IN, OUT/THRU) connectors
+DC IN jack
+Power Supply
+
+AC adaptor
+
+Current Draw
+
+800 mA
+
+Dimensions
+Weight (excluding AC
+adaptor)
+
+345 (W) x 245 (D) x 67 (H) mm
+13-5/8 (W) x 9-11/16 (D) x 2-11/16 (H) inches
+2.5 kg
+5 lbs 9 oz
+AC Adaptor
+
+Accessories
+
+Owner’s Manual
+Leaflet “USING THE UNIT SAFELY”
+Divided pickup: GK-3 (for guitar), GK-3B (for bass guitar)
+
+Options
+(sold separately)
+
+GK cable: GKC-5 (5 m, 15 feet), GKC-10 (10 m, 30 feet)
+Footswitch: FS-5U, FS-5L, FS-6, FS-7
+Expression Pedal: EV-30, FV-500L, FV-500H, Roland EV-5
+Unit selector: Roland US-20
+
+* 0 dBu = 0.775 Vrms
+* This document explains the specifications of the product at the time that the document was issued. For the latest information, refer to the Roland
+website.
+
+20
+
+USING THE UNIT SAFELY
+WARNING
+
+WARNING
+
+Concerning the Auto Off function
+The power to this unit will be
+turned off automatically after a
+predetermined amount of time
+has passed since it was last used
+for playing music, or its buttons or controls
+were operated (Auto Off function). If you
+do not want the power to be turned off
+automatically, disengage the Auto Off
+function (p. 3).
+
+Use only the supplied AC adaptor and the correct
+voltage
+Be sure to use only the AC adaptor
+supplied with the unit. Also,
+make sure the line voltage at the
+installation matches the input
+voltage specified on the AC adaptor’s body.
+Other AC adaptors may use a different
+polarity, or be designed for a different
+voltage, so their use could result in damage,
+malfunction, or electric shock.
+
+CAUTION
+Handle the ground terminal carefully
+If you remove the screw from the
+ground terminal, be sure to replace
+it; don’t leave it lying around where
+it could accidentally be swallowed
+by small children. When refastening the
+screw, make that it is firmly fastened, so it
+won’t come loose.
+
+Use only the supplied power cord
+Use only the attached power cord.
+Also, the supplied power cord must
+not be used with any other device.
+
+IMPORTANT NOTES
+Repairs and Data
+
+Additional Precautions
+
+Intellectual Property Right
+
+• Before sending the unit away for repairs,
+be sure to make a backup of the data
+stored within it; or you may prefer to write
+down the needed information. Although
+we will do our utmost to preserve the data
+stored in your unit when we carry out
+repairs, in some cases, such as when the
+memory section is physically damaged,
+restoration of the stored content may be
+impossible. Roland assumes no liability
+concerning the restoration of any stored
+content that has been lost.
+
+• Any data stored within the unit can be
+lost as the result of equipment failure,
+incorrect operation, etc. To protect
+yourself against the irretrievable loss
+of data, try to make a habit of creating
+regular backups of the data you’ve stored
+in the unit.
+
+• ASIO is a trademark and software of
+Steinberg Media Technologies GmbH.
+
+• Roland assumes no liability concerning
+the restoration of any stored content that
+has been lost.
+• Never strike or apply strong pressure to
+the display.
+• Do not use connection cables that contain
+a built-in resistor.
+
+• This product contains eParts integrated
+software platform of eSOL Co.,Ltd. eParts
+is a trademark of eSOL Co., Ltd. in Japan.
+• This Product uses the Source Code of μTKernel under T-License 2.0 granted by the
+T-Engine Forum (www.tron.org).
+• Roland and BOSS are either registered
+trademarks or trademarks of Roland
+Corporation in the United States and/or
+other countries.
+• Company names and product names
+appearing in this document are registered
+trademarks or trademarks of their
+respective owners.
+• In this manual, company names and
+product names of the respective owners
+are used because it is the most practical
+way of describing the sounds that are
+emulated using DSP technology.
+For the U.K.
+
+IMPORTANT: THE WIRES IN THIS MAINS LEAD ARE COLOURED IN ACCORDANCE WITH THE FOLLOWING CODE.
+BLUE:
+NEUTRAL
+BROWN: LIVE
+As the colours of the wires in the mains lead of this apparatus may not correspond with the coloured markings identifying
+the terminals in your plug, proceed as follows:
+The wire which is coloured BLUE must be connected to the terminal which is marked with the letter N or coloured BLACK.
+The wire which is coloured BROWN must be connected to the terminal which is marked with the letter L or coloured RED.
+Under no circumstances must either of the above wires be connected to the earth terminal of a three pin plug.
+For the USA
+
+SUPPLIER’S DECLARATION OF CONFORMITY
+Compliance Information Statement
+Model Name :
+Type of Equipment :
+Responsible Party :
+Address :
+Telephone :
+
+SY-1000
+Guitar Synthesizer
+Roland Corporation U.S.
+5100 S. Eastern Avenue Los Angeles, CA 90040-2938
+(323) 890-3700
+
+21
+
+

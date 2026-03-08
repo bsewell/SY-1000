@@ -1,0 +1,817 @@
+|
+00 24 | 00aa aaaa | LOW-MID GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 25 | 000a aaaa | HIGH-MID FREQ
+(0 - 29) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 26 | 0000 0aaa | HIGH-MID Q
+(0 - 5) |
+|
+|
+|
+0.5, 1, 2, 4, 8, 16 |
+|
+00 27 | 00aa aaaa | HIGH-MID GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 28 | 00aa aaaa | HIGH GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 29 | 000a aaaa | HIGH CUT
+(0 - 30) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz, FLAT
+|
+|
+00 2A | 00aa aaaa | LEVEL
+(12 - 52) |
+|
+|
+|
+[dB] |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 2B |Total Size
+|
++------------------------------------------------------------------------------+
+
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 26 | 0000 0aaa | LOW-MID Q
+(0 - 5) |
+|
+|
+|
+0.5, 1, 2, 4, 8, 16 |
+|
+00 27 | 00aa aaaa | LOW-MID GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 28 | 000a aaaa | HIGH-MID FREQ
+(0 - 29) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 29 | 0000 0aaa | HIGH-MID Q
+(0 - 5) |
+|
+|
+|
+0.5, 1, 2, 4, 8, 16 |
+|
+00 2A | 00aa aaaa | HIGH-MID GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 2B | 00aa aaaa | HIGH GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 2C | 000a aaaa | HIGH CUT
+(0 - 30) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz, FLAT
+|
+|
+00 2D | 00aa aaaa | LEVEL
+(12 - 52) |
+|
+|
+|
+[dB] |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 2E |Total Size
+|
++------------------------------------------------------------------------------+
+
+* [PatchInst2EBass]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 00aa | TYPE
+(0 - 2) |
+|
+|
+|
+JB, PB, FRETLESS |
+|
+00 01 | 0aaa aaaa | FRONT VOLUME
+(0 - 100) |
+|
+00 02 | 0aaa aaaa | REAR VOLUME
+(0 - 100) |
+|
+00 03 | 0000 00aa | TONE TYPE
+(0 - 3) |
+|
+|
+|
+JB(REAR), JB(REAR+FRONT), JB(FRONT), PB |
+|
+00 04 | 0aaa aaaa | SENS
+(0 - 100) |
+|
+00 05 | 0aaa aaaa | DEPTH
+(0 - 100) |
+|
+00 06 | 0aaa aaaa | ATTACK
+(0 - 100) |
+|
+00 07 | 0aaa aaaa | RESONANCE
+(0 - 100) |
+|
+00 08 | 0aaa aaaa | DIRECT LEVEL
+(0 - 100) |
+|
+00 09 | 0aaa aaaa | VOLUME
+(0 - 100) |
+|
+00 0A | 0aaa aaaa | TONE
+(0 - 100) |
+|
+00 0B | 0000 000a | AMP ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 0C | 000a aaaa | TYPE
+(0 - 30) |
+|
+|
+|
+TRANSPARENT, NATURAL, BOUTIQUE, SUPREME,
+|
+|
+|
+|
+MAXIMUM, JUGGERNAUT, X-CRUNCH, X-HI GAIN,
+|
+|
+|
+|
+X-MODDED, JC-120, TWIN COMBO, DELUXE COMBO,
+|
+|
+|
+|
+TWEED COMBO, DIAMOND AMP, BRIT STACK,
+|
+|
+|
+|
+RECTI STACK, MATCH COMBO, BG COMBO,
+|
+|
+|
+|
+ORNG STACK, BGNR UB METAL, NATURAL BASS,
+|
+|
+|
+|
+X-DRIVE BASS, CONCERT, SUPER FLAT, FLIP TOP,
+|
+|
+|
+|
+B MAN, BASS 360, SW-TOUR, AC BASS, GK BASS,
+|
+|
+|
+|
+MARK
+|
+|
+00 0D | 0aaa aaaa | GAIN
+(0 - 120) |
+|
+00 0E | 000a aaaa | SAG
+(6 - 26) |
+|
+|
+|
+-10 - 10 |
+|
+00 0F | 000a aaaa | RESONANCE
+(6 - 26) |
+|
+|
+|
+-10 - 10 |
+|
+00 10 | 0aaa aaaa | LEVEL
+(0 - 100) |
+|
+00 11 | 0aaa aaaa | BASS
+(0 - 100) |
+|
+00 12 | 0aaa aaaa | MIDDLE
+(0 - 100) |
+|
+00 13 | 0aaa aaaa | TREBLE
+(0 - 100) |
+|
+00 14 | 0aaa aaaa | PRESENCE
+(0 - 100) |
+|
+00 15 | 0000 000a | BRIGHT
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 16 | 0000 00aa | GAIN SW
+(0 - 2) |
+|
+|
+|
+LOW, MIDDLE, HIGH |
+|
+00 17 | 0000 000a | SOLO SW
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 18 | 0aaa aaaa | SOLO LEVEL
+(0 - 100) |
+|
+00 19 | 0000 aaaa | SP TYPE
+(0 - 13) |
+|
+|
+|
+OFF, ORIGINAL, 1x8", 1x10", 1x12", 2x12",
+|
+|
+|
+|
+4x10", 4x12", 8x12", B1x15", B1x18", B2x15",
+|
+|
+|
+|
+B4x10", B8x10"
+|
+|
+00 1A | 0000 0aaa | MIC TYPE
+(0 - 4) |
+|
+|
+|
+DYN57, DYN421, CND451, CND87, FLAT |
+|
+00 1B | 0000 00aa | MIC DISTANCE
+(0 - 2) |
+|
+|
+|
+SHORT, MEDIUM, LONG |
+|
+00 1C | 0000 aaaa | MIC POSITION
+(0 - 10) |
+|
+|
+|
+CENTER, 1cm, 2cm, 3cm, 4cm, 5cm, 6cm, 7cm,
+|
+|
+|
+|
+8cm, 9cm, 10cm
+|
+|
+00 1D | 0aaa aaaa | MIC LEVEL
+(0 - 100) |
+|
+00 1E | 0aaa aaaa | DIRECT LEVEL
+(0 - 100) |
+|
+00 1F | 0000 000a | NS ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 20 | 0aaa aaaa | THRESHOLD
+(0 - 100) |
+|
+00 21 | 0aaa aaaa | RELEASE
+(0 - 100) |
+|
+00 22 | 0000 000a | EQ ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 23 | 000a aaaa | LOW CUT
+(0 - 30) |
+|
+|
+|
+FLAT, 20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 24 | 00aa aaaa | LOW GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 25 | 000a aaaa | LOW-MID FREQ
+(0 - 29) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+
+* [PatchInst2EGtrBass]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 00aa | TYPE
+(0 - 2) |
+|
+|
+|
+ST, LP, FRETLESS |
+|
+00 01 | 0000 0aaa | PU SELECT
+(0 - 5) |
+|
+|
+|
+REAR, R+C, CENTER, C+F, R+F, FRONT |
+|
+00 02 | 0000 00aa | TONE TYPE
+(0 - 3) |
+|
+|
+|
+MILD, STANDARD, BRIGHT1, BRIGHT2 |
+|
+00 03 | 0aaa aaaa | SENS
+(0 - 100) |
+|
+00 04 | 0aaa aaaa | DEPTH
+(0 - 100) |
+|
+00 05 | 0aaa aaaa | ATTACK
+(0 - 100) |
+|
+00 06 | 0aaa aaaa | RESONANCE
+(0 - 100) |
+|
+00 07 | 0aaa aaaa | DIRECT LEVEL
+(0 - 100) |
+|
+00 08 | 0aaa aaaa | VOLUME
+(0 - 100) |
+|
+00 09 | 0aaa aaaa | TONE
+(0 - 100) |
+|
+00 0A | 0000 000a | AMP ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 0B | 000a aaaa | TYPE
+(0 - 30) |
+|
+|
+|
+TRANSPARENT, NATURAL, BOUTIQUE, SUPREME,
+|
+|
+|
+|
+MAXIMUM, JUGGERNAUT, X-CRUNCH, X-HI GAIN,
+|
+|
+|
+|
+X-MODDED, JC-120, TWIN COMBO, DELUXE COMBO,
+|
+|
+|
+|
+TWEED COMBO, DIAMOND AMP, BRIT STACK,
+|
+|
+|
+|
+RECTI STACK, MATCH COMBO, BG COMBO,
+|
+|
+|
+|
+ORNG STACK, BGNR UB METAL, NATURAL BASS,
+|
+|
+|
+|
+X-DRIVE BASS, CONCERT, SUPER FLAT, FLIP TOP,
+|
+|
+|
+|
+B MAN, BASS 360, SW-TOUR, AC BASS, GK BASS,
+|
+|
+|
+|
+MARK
+|
+|
+00 0C | 0aaa aaaa | GAIN
+(0 - 120) |
+|
+00 0D | 000a aaaa | SAG
+(6 - 26) |
+|
+|
+|
+-10 - 10 |
+|
+00 0E | 000a aaaa | RESONANCE
+(6 - 26) |
+|
+|
+|
+-10 - 10 |
+|
+00 0F | 0aaa aaaa | LEVEL
+(0 - 100) |
+|
+00 10 | 0aaa aaaa | BASS
+(0 - 100) |
+|
+00 11 | 0aaa aaaa | MIDDLE
+(0 - 100) |
+|
+00 12 | 0aaa aaaa | TREBLE
+(0 - 100) |
+|
+00 13 | 0aaa aaaa | PRESENCE
+(0 - 100) |
+|
+00 14 | 0000 000a | BRIGHT
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 15 | 0000 00aa | GAIN SW
+(0 - 2) |
+|
+|
+|
+LOW, MIDDLE, HIGH |
+|
+00 16 | 0000 000a | SOLO SW
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 17 | 0aaa aaaa | SOLO LEVEL
+(0 - 100) |
+|
+00 18 | 0000 aaaa | SP TYPE
+(0 - 13) |
+|
+|
+|
+OFF, ORIGINAL, 1x8", 1x10", 1x12", 2x12",
+|
+|
+|
+|
+4x10", 4x12", 8x12", B1x15", B1x18", B2x15",
+|
+|
+|
+|
+B4x10", B8x10"
+|
+|
+00 19 | 0000 0aaa | MIC TYPE
+(0 - 4) |
+|
+|
+|
+DYN57, DYN421, CND451, CND87, FLAT |
+|
+00 1A | 0000 00aa | MIC DISTANCE
+(0 - 2) |
+|
+|
+|
+SHORT, MEDIUM, LONG |
+|
+00 1B | 0000 aaaa | MIC POSITION
+(0 - 10) |
+|
+|
+|
+CENTER, 1cm, 2cm, 3cm, 4cm, 5cm, 6cm, 7cm,
+|
+|
+|
+|
+8cm, 9cm, 10cm
+|
+|
+00 1C | 0aaa aaaa | MIC LEVEL
+(0 - 100) |
+|
+00 1D | 0aaa aaaa | DIRECT LEVEL
+(0 - 100) |
+|
+00 1E | 0000 000a | NS ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 1F | 0aaa aaaa | THRESHOLD
+(0 - 100) |
+|
+00 20 | 0aaa aaaa | RELEASE
+(0 - 100) |
+|
+00 21 | 0000 000a | EQ ON/OFF
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 22 | 000a aaaa | LOW CUT
+(0 - 30) |
+|
+|
+|
+FLAT, 20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+|
+|
+|
+250Hz, 315Hz, 400Hz, 500Hz, 630Hz, 800Hz,
+|
+|
+|
+|
+1.00kHz, 1.25kHz, 1.60kHz, 2.00kHz, 2.50kHz,
+|
+|
+|
+|
+3.15kHz, 4.00kHz, 5.00kHz, 6.30kHz, 8.00kHz,
+|
+|
+|
+|
+10.0kHz, 12.5kHz, 16.0kHz
+|
+|
+00 23 | 00aa aaaa | LOW GAIN
+(12 - 52) |
+|
+|
+|
+[dB] |
+|
+00 24 | 000a aaaa | LOW-MID FREQ
+(0 - 29) |
+|
+|
+|
+20.0Hz, 25.0Hz, 31.5Hz, 40.0Hz, 50.0Hz,
+|
+|
+|
+|
+63.0Hz, 80.0Hz, 100Hz, 125Hz, 160Hz, 200Hz,
+|
+
+49
+
+

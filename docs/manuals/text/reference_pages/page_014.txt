@@ -1,0 +1,86 @@
+Editing a Patch
+Here’s how to create a patch by editing the parameters of the INST
+blocks and the effect block, and combining them.
+
+Editing the INST
+
+Changing the INST
+
+You can edit each INST in detail.
+
+1.	 Press the [INST] button.
+
+1.	 In the INST screen, press the [2] knob.
+
+Here we explain using the example of the DYNAMIC SYNTH screen of
+INST1.
+
+The INST screen appears.
+
+The INST1 screen appears.
+* The screen differs depending on the INST TYPE.
+
+2.	 Turn the [6] knob to select the block that you want
+to edit.
+The INST screen shows the INST TYPE for INST1–INST3.
+
+2.	 Turn the [1]–[6] knobs.
+Operation
+
+Explanation
+
+Turn the [1] knob
+
+Changes the INST TYPE of INST1.
+
+Press the [1] knob
+
+Accesses a screen where you can
+switch the INST TYPE variation of
+INST1.
+
+3.	 Turn the [1]–[5] knobs to edit the setting of the
+parameter.
+
+Turns INST1 on/off.
+
+MEMO
+
+Turn the [2] knob
+Press the [2] knob
+
+* When off, the icon is shown in gray.
+Accesses the edit screen for INST1.
+
+MEMO
+As for INST1, you can operate INST2 with the [3] knob and [4]
+knob, and operate INST3 with the [5] knob and [6] knob.
+
+The selected block is shown in white.
+
+55 To change a value in larger steps, turn a knob while pressing it.
+55 You can use the [K] [J] (PAGE) buttons to switch between the
+parameters.
+
+55 The number of parameters and pages differ depending on the
+block you edit.
+
+55 In the edit screen, you can press the [INST] button to switch to the
+edit screen of another INST.
+
+Viewing All Parameters While You Edit
+You can also edit while viewing a list of all parameters for the
+selected block.
+
+1.	 In the edit screen, press the [6] knob.
+Shows a list with all parameters of the selected block.
+
+2.	 Turn the [1]–[6] knobs to edit the setting of the
+parameter.
+MEMO
+You can use the [K] [J] (PAGE) buttons to switch between the
+parameters.
+
+14
+
+

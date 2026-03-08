@@ -1,0 +1,251 @@
+INST Parameters > INST TYPE
+
+Parameters Common to Each INST TYPE (ALT
+TUNE)
+Without changing the tuning of the guitar (bass) on which the
+divided pickup is installed, you can instantly switch to a variety of
+other tunings.
+By using the ALT TUNE function for each INST, you can simultaneously
+play a 6-string guitar and a 12-string guitar, create harmonies by
+yourself, or play rich unison sounds.
+Parameter
+ON/OFF
+
+Value
+
+Explanation
+
+OFF, ON
+
+Switches the alternate
+tuning function on/off.
+
+OPEN D, OPEN
+Tuning that produces a
+E, OPEN G,
+major chord when you play
+OPEN A
+the open strings.
+*1
+
+DROP D–
+DROP A
+*1
+
+TUNING TYPE
+
+D-MODAL
+*1
+
+NASHVL
+*1
+
+Parameter
+
+12STR SW
+*4
+
+*4
+
+User tuning in which each
+string can be specified
+individually.
+
+12PITCH 3rd,
+
+12LEVEL 4th
+12LEVEL 3rd
+12LEVEL 2nd
+12LEVEL 1st
+12LEVEL HiC
+*2 *4 *5
+12STR FINE 6–12STR
+FINE 1
+
+12FINE 3rd,
+
+PITCH HiC
+
+*2 *4 *5
+
+*2 *3
+
+12STR DELAY
+6–12STR DELAY 1
+12DELAY LowB,
+
+FINE LowB,
+FINE 4th,
+
+FINE HiC
+*2 *3
+
+-50–+50
+
+Finely adjusts the pitch of
+each string. -50 is half a
+semitone down; +50 is half
+a semitone up.
+
+12DELAY 4th,
+12DELAY 3rd,
+
+0ms–100ms
+
+Adjusts the time the sound
+of each secondary string
+is delayed relative to the
+respective main string.
+
+OFF, ON
+
+Turns the String Bend
+function on/off.
+
+12DELAY 2nd,
+12DELAY 1st,
+12DELAY HiC
+*2 *4 *5
+STR BEND SW
+
+24
+
+-50 is half a semitone down;
++50 is half a semitone up.
+
+*1 *4 *5
+
+*1 *3
+
+FINE 1st,
+
+Finely adjusts the pitch of
+the secondary strings.
+
+12FINE 1st,
+12FINE HiC
+
+FINE 2nd,
+
+-50–+50
+
+12FINE 2nd,
+
+PITCH 1st,
+
+FINE 3rd,
+
+Specifies the volume of the
+secondary strings.
+
+12LEVEL LowB
+
+12FINE 4th,
+
+FINE 6–FINE 1
+
+0–100
+
+*1 *4 *5
+
+PITCH LowB,
+
+PITCH 2nd,
+
+This sets the amount of
+pitch shift for secondary
+strings, in semitone steps.
+
+*2 *4 *5
+
+12FINE LowB,
+
+-24–+24
+
+-24–+24
+
+12PITCH HiC
+
+*1 *4 *5
+
+PITCH 3rd,
+
+A user tuning that specifies
+the pitch of each secondary
+string.
+
+12PITCH 1st,
+
+*1 *3
+Specifies the amount of
+pitch shift in semitones for
+each string.
+
+USER
+
+12PITCH 2nd,
+
+PITCH 6–PITCH 1
+
+PITCH 4th,
+
+The conventional tuning of
+a 12-string guitar.
+
+12PITCH LowB,
+
+12STR LEVEL
+6–12STR LEVEL 1
+
+USER
+
+NORMAL
+
+*1 *4 *5
+
+Tuning that drops the 6th,
+2nd, and 1st string by a
+whole step to create an
+ethnic feel.
+
+Raises/lowers the tuning of
+all strings in semitone steps.
+
+OFF, ON
+
+Turn this on if you want the
+sound of a 12-string guitar.
+This changes the sound of
+a regular six-string guitar
+to that of a twelve-string
+guitar featuring secondary
+strings.
+
+12STR PITCH
+6–12STR PITCH 1
+
+12PITCH 4th,
+
+-12–+12 STEP
+
+Explanation
+
+12STR TYPE
+
+DROP-D is a tuning in
+which only the 6th string
+is dropped to D. The other
+tunings are the variations
+that are transposed
+downward parallel to Drop
+D.
+
+Tuning that raises the 6th,
+5th, 4th, and 3rd strings by
+one octave; like a 12-string
+guitar’s secondary strings by
+themselves.
+
+Value
+
+

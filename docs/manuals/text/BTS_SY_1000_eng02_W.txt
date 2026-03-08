@@ -1,0 +1,692 @@
+     Using BOSS TONE STUDIO for SY-1000
+This document explains basic operation of BOSS TONE STUDIO for SY-1000 (subsequently referred to as “TONE STUDIO”).
+
+
+
+Getting Ready to Use TONE STUDIO                                                 Starting TONE STUDIO
+                                                                                 1. Use a USB cable to connect the SY-1000 to your computer,
+Installing the USB Driver                                                           and then turn on the power of the SY-1000.
+                                                                                 MEMO
+Before you use TONE STUDIO, the appropriate USB driver for the                    You can edit livesets and download livesets from BOSS TONE
+product you’re using must be installed on your computer.                          CENTRAL even if the SY-1000 is not connected to your computer via
+                                                                                  a USB cable.
+1. From the product support page, download the SY-1000 Driver.                    However, you can’t save the result of editing a patch. In order
+    To obtain the latest USB driver, access the following URL, and                to save the edited patch, you’ll need to be connected to your
+    download the appropriate driver for the product you’re using.                 computer.
+
+    http://www.boss.info/support/                                                2. In the [Start] menu, choose [All Programs]Ø[BOSS TONE
+                                                                                    STUDIO for SY-1000]Ø[BOSS TONE STUDIO for SY-1000].
+2. Double-click the downloaded SY-1000 Driver.                                      The first time you start up, the dialog box “Choose a device connect
+    Installation begins.                                                            with.” appears.
+    Proceed with the installation as directed by the installation screens.       * On the second and subsequent startups, the device is selected
+    When the screen indicates “Installation has been completed.” click             automatically.
+    the [Close] button.
+    The SY-1000 Driver has been installed on your computer.                      Mac OS users
+                                                                                  From the Finder, in the application/BOSS/SY-1000 folder, double-
+                                                                                  click [BOSS TONE STUDIO for SY-1000 (.app)].
+
+                                                                                 3. Choose “SY-1000,” and click the [OK] button.
+Installing TONE STUDIO
+ MEMO
+Before you install TONE STUDIO, the USB driver must be installed in
+your computer as described in “Installing the USB Driver” (p. 1).
+
+
+Windows Users
+1. Unpack the Zip file.
+2. Double-click “BOSS TONE STUDIO for SY-1000 Installer.exe.”
+    Installation begins.
+
+3. Proceed with installation as directed by the install screens.
+4. When the screen indicates “Completing the BOSS TONE
+    STUDIO for SY-1000 Setup Wizard,” click the [Finish] button.
+
+                                                                                    TONE STUDIO starts.
+Mac Users
+                                                                                 MEMO
+                                                                                  Since data will be loaded from the SY-1000, it may take some time
+1. Unpack the Zip file.                                                           until you can use TONE STUDIO.
+
+2. Double-click “BOSS TONE STUDIO for SY-1000 Installer.pkg.”
+    Installation begins.
+
+3. Proceed with installation as directed by the install screens.
+4. When the screen indicates “The installation was successful.
+    The software was installed.,” click the [Close] button.
+
+
+
+
+© 2020 Roland Corporation                                                    1                                                                       02
+Using BOSS TONE STUDIO for SY-1000
+
+Editor Basic Screen
+                                       2                                                                                           3
+
+
+                                                           4
+
+
+
+                                                                                                                                             5
+
+
+
+                                             6                                                                                7
+  1
+
+
+
+
+                                                                                                                                             8
+
+
+
+
+1 Patch select area
+  The patches that are shown differ depending on the mode of the SY-1000 unit.
+  When switching between guitar mode and bass mode, first switch the mode on the SY-1000 unit, and then restart TONE STUDIO.
+
+2 Function select area
+
+3 [CTL/EXP] button
+  Click this to access the CONTROL FUNCTION, ASSIGN, PATCH MIDI, CONTROL LED COLOR, and GUITAR TO MIDI (BASS TO MIDI) popup screen.
+
+4 [WRITE] button
+  Click this to access the WRITE or CLEAR list.
+
+5 Effect select area
+  Click a block once to select an effect. The parameters of the selected effect are shown at the bottom of the screen. The second and subsequent
+  clicks turn the effect on/off.
+  The selected block indicates          , and you can move the effect by dragging and dropping it.
+
+6 Effect ON/OFF button
+
+7 [VARIATION] button
+  Click this to access the VARIATION menu.
+
+8 Parameter editing area
+  Drag the dial of each parameter up or down to edit its value (you can also use the mouse wheel to edit the value).
+  You can double-click, and then enter a numeric value from your computer keyboard, or directly select a value from a list.
+  When you click the [TYPE] box, a list appears, allowing you to choose the TYPE.
+
+
+
+
+                                                                        2
+Using BOSS TONE STUDIO for SY-1000
+
+                                                                              • You can also change the placement of the various effect types in
+Editing a Patch                                                                 the effect chain screen. Drag and drop the effect that you want to
+                                                                                move. (You can move it to the location shown in red.)
+As an example, we’ll explain how to edit the user patch “U01-1
+DYNAMIC SAW LEAD.”
+
+1. At the top of TONE STUDIO screen, click the [EDITOR] button.
+2. Click the [USER] button
+3. Click the patch that you want to edit. In this example, click
+   “U01-1 DYNAMIC SAW LEAD.”                                                  • You can drag a parameter’s dial up or down to edit its value (you
+                                                                                can also use the mouse wheel to edit the value). You can also
+                                                                                double-click, and then enter a numeric value from your computer
+                                                                                keyboard.
+
+
+
+
+                                                                             6. If you want to edit another effect, repeat steps 4–5.
+4. In the effect blocks of the effect chain screen (the upper part
+   of the screen), click the effect block that you want to edit.
+   Here we will click the [REV] block.
+   A frame is shown on the effect block that you click, and the effect
+   settings are shown in the lower part of the screen.
+
+
+
+
+5. Edit the effect.
+ • If you want to change the type of reverb, click the [TYPE] box and
+   choose from the list.
+
+
+
+
+                                                                         3
+Using BOSS TONE STUDIO for SY-1000
+
+                                                                             5. Click the [WRITE] button.
+Saving an Edited Patch to the SY-1000 (WRITE)                                   The settings of the new user patch are saved in TONE STUDIO’s
+                                                                                patch list and in the SY-1000.
+Here’s how to save the edited patch to the SY-1000.
+
+1. In the upper right of the TONE STUDIO screen, click the
+   [WRITE] button.
+
+
+
+
+2. Click “WRITE.”
+                                                                             Editing the Controller Settings
+   The “WRITE” dialog box appears.                                           Here you can make settings for CONTROL FUNCTION, ASSIGN, PATCH
+                                                                             MIDI, CONTROL LED COLOR, and GUITAR TO MIDI(BASS TO MIDI).
+3. Select the save-destination user patch number.
+   In this example, select “U01-1.”                                          1. In the TONE STUDIO screen, click the [CTL/EXP] button.
+                                                                                                                              [CTL/EXP] button
+
+
+
+
+NOTE
+ When you save, the user patch of the selected number is                        The controller assignment screen appears.
+ overwritten; the original settings cannot be recovered. Select a user
+ patch that you don’t mind overwriting.
+                                                                             2. Assign the function.
+4. If you want to change the name of the user patch, click the
+   user patch name field. You can use your computer keyboard
+   to enter a user patch name.
+
+
+
+
+                                                                         4
+Using BOSS TONE STUDIO for SY-1000
+
+LIBRARIAN Basic Screen
+
+                   1
+                                         2                  3                                                                    5           6
+
+
+                                                                                4
+
+
+
+
+1 [CREATE LIVESET] button
+  Press this button to create a new empty liveset.
+
+2 Liveset name
+  Shows the name of the liveset and the number of patches.
+
+3 Liveset name edit button
+  Click this to edit the name of the liveset. You can click the trash can symbol to delete the liveset.
+
+4 PATCH name edit button
+  Click this to edit the name of the patch. You can click the trash can symbol to delete the patch.
+
+5 [Import] button
+  This lets you import all of the SY-1000 unit’s patches into the LIBRARIAN, or import a LIBRARIAN file from your computer into the LIBRARIAN.
+
+6 [Export] button
+  This lets you export a liveset to the SY-1000 unit, or export a liveset and save it on your computer.
+
+
+MEMO
+ TONE STUDIO has a separate LIBRARIAN for guitar mode and bass mode. The LIBRARIAN corresponding to the mode of the connected SY-1000 is
+ shown.
+
+
+
+
+                                                                            5
+Using BOSS TONE STUDIO for SY-1000
+
+                                                                             5. Click the [OK] button.
+Importing All the SY-1000’s User Patches                                        The user patches are saved as a liveset in the LIBRARIAN.
+
+into the LIBRARIAN (Import from SY-1000)
+Here’s how to import all of the SY-1000’s user patches into LIBRARIAN.
+All user patches are saved as a liveset.
+
+1. In TONE STUDIO screen, click the [LIBRARIAN] button.
+
+
+
+
+2. At the top of the TONE STUDIO screen, click the [Import]
+   button.
+                                                                             Exporting a LIBRARIAN Liveset to the
+                                                                             SY-1000 (EXPORT TO SY-1000)
+                                                                             Here’s how a liveset that you saved can be restored to the SY-1000’s
+                                                                             user patch.
+
+                                                                              NOTE
+                                                                             Patches 201 and higher are not restored.
+
+                                                                             1. At the top of the TONE STUDIO screen, click the [Export]
+3. Click the [        ] button.                                                 button.
+
+
+
+
+                                                                             2. From SELECT LIVESET, select the liveset that you want to
+                                                                                export.
+
+   The CREATE LIVESET screen appears.
+                                                                             3. Click the [       ] button.
+
+
+
+
+4. Enter the liveset name, and click the [OK] button.
+   Import begins. If you decide to cancel during the operation, click
+   the [CANCEL] button.
+   It will take some time to import all of the SY-1000’s user patches.
+   When import is finished, the message “Completed.” appears.
+
+
+                                                                                Export begins. If you decide to cancel during the operation, click
+                                                                                the [CANCEL] button.
+                                                                                When export is finished, the message “Completed.” appears.
+
+                                                                             4. Click the [OK] button.
+                                                                                The selected liveset is written back into the SY-1000.
+
+
+
+                                                                         6
+Using BOSS TONE STUDIO for SY-1000
+
+Restoring a Patch to the SY-1000                                              Saving a Liveset to a Computer (EXPORT TO FILE)
+Here’s how to select a patch from a liveset that you saved, and restore       A liveset that you backed up can be exported to your computer
+it back to the SY-1000.                                                       (Export).
+
+1. Drag the patch that you want to restore and drop it onto the               1. At the top of the TONE STUDIO screen, click the [Export]
+   desired user patch number of the SY-1000.                                     button.
+NOTE
+ When you drop a patch, it overwrites the user patch of the selected
+                                                                              2. From SELECT LIVESET, select the liveset that you want to
+ number; the original settings cannot be recovered. Select a user                export.
+ patch that you don’t mind overwriting.
+                                                                              3. Click the [FILE] button.
+                                                                                 The “Save As” dialog box appears.
+   In this example, drag and drop the patch “U01-1 DYNAMIC SAW
+   LEAD” onto “U01-3 12STR ORCH*.”                                            4. Enter a name and save-destination, and click the [Save]
+                                                                                 button.
+                                                                                 A liveset file (.tsl) is created at the save-destination.
+
+
+
+                                                                              Ways to use an exported liveset
+                                                                              • Use a USB flash drive to copy the liveset to a different computer.
+                                                                              • Sent the liveset via email to another SY-1000 user.
+
+
+
+
+   On the SY-1000, select user patch “U01-3” and you’ll be able to use
+   the restored patch.
+
+MEMO
+ You can also select multiple patches as described in “Selecting
+ multiple patches” (p. 9).
+
+
+
+
+                                                                          7
+Using BOSS TONE STUDIO for SY-1000
+
+Importing a Liveset from a Computer into                                   Creating an Original Liveset
+the LIBRARIAN (IMPORT FROM FILE)                                           You can collect your favorite patches to create an original liveset.
+
+A liveset that you exported to a computer can be imported into a
+TONE STUDIO library (Import).
+                                                                           1. At the top of the TONE STUDIO screen, click the [CREATE
+                                                                              LIVESET] button.
+
+1. At the top of the TONE STUDIO screen, click the [Import]
+   button.
+
+
+
+
+                                                                           2. Input a name for the liveset.
+
+2. Click the [FILE] button.
+   The “Open” dialog box appears.
+
+3. Select the liveset file (extension: .tsl) that you want to import
+   into the library, and click the [Open] button.
+   The liveset is imported into the LIBRARIAN.
+
+
+
+                                                                           3. Click the [OK] button.
+                                                                              An empty liveset containing no patches is created.
+
+
+
+
+                                                                           4. From the patch list at the left of the TONE STUDIO screen,
+                                                                              drag and drop your favorite patches into the new liveset.
+
+
+
+
+                                                                              The selected patches are registered in the new liveset.
+
+                                                                           MEMO
+                                                                            • A maximum of 300 patches can be registered in one liveset. If
+                                                                              inserting patches would cause the liveset to exceed 300 patches,
+                                                                              the patches that exceed 300 are not inserted (a message is
+                                                                              displayed).
+                                                                            • Patches that are registered in another liveset can also be dragged
+                                                                              and dropped into the new liveset.
+                                                                            • You can drag and drop the patches in the liveset to change their
+                                                                              order.
+                                                                            • TONE STUDIO lets you create up to 30 livesets. If you want to create
+                                                                              and save more than 30 livesets, use the EXPORT TO FILE function to
+                                                                              save existing livesets on your computer.
+
+
+
+
+                                                                       8
+Using BOSS TONE STUDIO for SY-1000
+
+Copying Patches                                                             Selecting multiple patches
+Here’s how to copy a patch to another liveset or to an SY-1000 patch.       By using your computer’s mouse and keyboard together, you can
+                                                                            select multiple patches.
+1. Click the patch that you want to copy.
+                                                                            Selecting a range of patches
+MEMO                                                                        Here’s how to select a range of consecutive patches.
+ You can also select and copy multiple patches as described in
+ “Selecting multiple patches” (p. 9).
+                                                                            1. Click the first patch that you want to select.
+2. Drag and drop the selected patches onto the desired copy-                2. While holding down your computer keyboard’s [Shift] key,
+   destination.                                                                click the last patch that you want to select.
+NOTE                                                                           The first through last patches that you click are selected.
+ When you drop the patches, they are overwritten onto the patches
+ of the selected red area, and the original settings cannot be
+ recovered. Select patches that you don’t mind overwriting.                 Selecting patches individually
+                                                                            Here’s how to select just the individual patches that you click.
+
+                                                                            1. While holding down your computer keyboard’s [Ctrl] key,
+                                                                               click a patch that you want to select.
+                                                                               The patch you click is selected. The selected patch is highlighted.
+                                                                             Mac OS users
+                                                                              While holding down your computer keyboard’s [command] key,
+                                                                              click a patch that you want to select.
+
+                                                                            2. If you want to select other patches, repeat step 1.
+                                                                               If you hold down the [Ctrl] key and click a selected (highlighted)
+                                                                               patch once again, the selection is cleared (that patch is no longer
+                                                                               highlighted).
+
+MEMO
+ • If you select non-consecutive patches and copy them, they are
+   copied as successive patches.
+
+
+
+
+ • A maximum of 300 patches can be registered in one liveset. If
+   inserting patches would cause the liveset to exceed 300 patches,
+   the patches that exceed 300 are not inserted (a message is
+   displayed).
+ • Patches that are registered in a liveset can be copied to your own
+   liveset or to a new liveset.
+
+
+
+
+                                                                        9
+Using BOSS TONE STUDIO for SY-1000
+
+
+ The difference between operations when                                 Moving Patches
+ selecting and copying multiple patches                                 Here’s how to move a patch to another liveset or to an SY-1000 patch.
+                                                                        When you move a patch, it disappears from its previous location.
+  When you drag and drop the selected patches, the copy result
+  will differ depending on your mouse operation.                        1. Click the patch that you want to move.
+                                                                        MEMO
+  Drag and drop when a red area is shown at the copy-                    You can also select and move multiple patches as described in
+  destination (overwrite copy)                                           “Selecting multiple patches” (p. 9).
+
+                                                                        2. While holding down your computer keyboard’s [Alt] key, drag
+                                                                           and drop the selected patch to the desired copy-destination.
+
+                                                                        Mac OS users
+                                                                         While holding down your computer keyboard’s [option] key, drag
+                                                                         and drop.
+
+
+
+
+  The patches are copied to the area indicated by the red color.        Deleting Patches
+  Drag and drop between copy-destination patches (insert)                  Here’s how to delete an unwanted patch.
+
+                                                                        1. Click the patch that you want to delete.
+                                                                        MEMO
+                                                                         You can also select and delete multiple patches as described in
+                                                                         “Selecting multiple patches” (p. 9).
+
+                                                                        2. Press your computer keyboard’s [Delete] key.
+                                                                           The “DELETE PATCH” message appears.
+
+
+
+  The patches are inserted at the position of the red line.
+  Subsequent patches are moved backward.
+
+
+
+
+                                                                        NOTE
+                                                                         Deleted patches cannot be recovered. If you decide not to delete,
+                                                                         click the [CANCEL] button.
+
+                                                                        3. Click the [OK] button.
+                                                                           The selected patches are deleted.
+
+
+
+
+                                                                   10
+Using BOSS TONE STUDIO for SY-1000
+
+Editing a Liveset Name                                                   Deleting a Liveset
+                                                                         Here’s how to delete a liveset that you no longer need.
+1. Click the [   ] button located at the right of the name of the
+   liveset that you want to edit.
+                                                                         1. Click the [   ] button located at the right of the name of the
+                                                                            liveset that you want to delete.
+
+
+
+
+                                                                         2. Click the [    ] button.
+                                                                            The “Delete liveset” message appears.
+
+
+
+
+Rearranging Livesets
+Here’s how to rearrange the livesets that are displayed.
+                                                                         NOTE
+                                                                          The deleted liveset cannot be recovered. If you decide to cancel
+1. Click the liveset that you want to rearrange.                          without deleting, click the [CANCEL] button.
+2. Drag and drop the liveset name.
+   The liveset moves to the position indicated by the red line.          3. Click the [OK] button.
+                                                                            The selected liveset is deleted.
+
+
+
+
+                                                                    11
+Using BOSS TONE STUDIO for SY-1000
+
+                                                                            4. Select the liveset you want to upload, and click the [NEXT]
+What You Can Do with BOSS TONE                                                 button.
+
+EXCHANGE                                                                    5. Input the liveset information, and click “Upload”.
+                                                                               This starts the upload.
+BOSS TONE EXCHANGE is a sound sharing service that lets users from
+around the world share the livesets that they have created in BOSS
+TONE STUDIO.
+Here’s what you can do with BOSS TONE EXCHANGE.
+ • Upload and share your livesets to BOSS TONE EXCHANGE.
+ • Download livesets created by BOSS users from around the world.
+
+MEMO
+ You must sign in with your Roland account to use BOSS TONE
+ EXCHANGE.
+
+
+
+Signing in to BOSS TONE EXCHANGE
+                                                                            Downloading Livesets from BOSS TONE
+1. Click the [        ] button.
+                                                                            EXCHANGE
+2. Click “Sign in” at the top of the screen.
+                                                                            1. Click the [         ] button.
+
+                                                                            2. Click the product name of the liveset you want to download.
+                                                                            3. Search for a liveset by inputting a keyword or genre.
+3. Enter the e-mail address and password you registered for
+   your Roland account.                                                     MEMO
+                                                                             Downloads from BOSS TONE EXCHANGE are done per liveset.
+                                     Click here if you don’t want to         Individual memories can’t be downloaded, and individual
+                                     sign in. You can sign in later.         memories can’t be added to the library.
+
+                                                                            4. Select the liveset you want to download, and click the
+                                                                               [Download] button.
+                                                                               The liveset is added to LIBRARIAN.
+
+
+                                      Click here to create a new
+                                      Roland account.
+
+
+                                     Click here if you’ve forgotten
+                                     your password.
+
+
+* Your computer must be connected to the Internet in order to sign
+  in.
+
+
+
+
+Uploading Livesets to BOSS TONE EXCHANGE
+1. Click the [LIBRARIAN] button.
+2. Click the [        ] button at the top of the screen.
+
+
+
+3. Click          and then click the [NEXT] button.
+   You aren’t signed in to BOSS TONE EXCHANGE if “Please SignIn “
+
+   (     ) is shown. Sign in to BOSS TONE EXCHANGE.
+   The app is checking your sign-in status to BOSS TONE EXCHANGE if
+
+   “Checking“ (      ) is shown, so wait for a little while.
+
+
+
+
+                                                                       12
+Using BOSS TONE STUDIO for SY-1000
+
+                                                                            4. Input a name and save-destination, and click the [Save]
+Selecting the Device Controlled by                                             button.
+
+TONE STUDIO                                                                    Export begins. When it is finished, the message “Completed.” appears.
+
+                                                                            5. Click the [OK] button.
+Here’s how to select the device controlled by TONE STUDIO.                     A variation file (.vrb file) is created in the save-destination.
+
+1. At the top of the TONE STUDIO screen, click the [SYSTEM]
+   button.
+   The SYSTEM screen appears.
+                                                                            Restoring a Saved Variation File from the Computer
+                                                                            to the SY-1000 (VARIATION DATA RESTORE)
+                                                                            Here’s how a variation file written to the computer can be restored
+2. Click the [DEVICE SETTING] button.                                       back to the SY-1000.
+   The “Device” screen appears.
+                                                                             NOTE
+3. Click SELECT DEVICE, and from the list choose [SY-1000].
+                                                                            When you restore, the variation data is overwritten, and cannot be
+                                                                            returned to its previous settings.
+
+                                                                            1. At the top of the TONE STUDIO screen, click the [SYSTEM]
+                                                                               button.
+
+                                                                            2. Click [VARIATION DATA BACKUP].
+                                                                               The VARIATION DATA BACKUP screen appears.
+
+                                                                            3. Click the [FROM FILE] button.
+
+
+
+
+Saving VARIATION Settings to the
+Computer (VARIATION DATA BACKUP)
+Here’s how variation data saved in the SY-1000 can be written to the
+computer.
+                                                                               The “Open” dialog box appears.
+1. At the top of the TONE STUDIO screen, click the [SYSTEM]
+   button.
+                                                                            4. Select the variation file (extension: .vrb) that you want to
+2. Click [VARIATION DATA BACKUP].                                              restore, and click the [Open] button.
+   The VARIATION DATA BACKUP screen appears.                                   Import begins. When it is finished, the message “Completed.”
+                                                                               appears.
+3. Click the [TO FILE] button.
+                                                                            5. Click the [OK] button.
+                                                                               The variation data is restored to the SY-1000.
+
+
+
+
+   The “Save As” dialog box appears.
+
+                                                                       13
+Using BOSS TONE STUDIO for SY-1000
+
+Saving SY-1000 System Settings to the                                        Restoring a System Data File from the
+Computer (SYSTEM DATA BACKUP)                                                Computer to the SY-1000 (SYSTEM DATA RESTORE)
+Here’s how system settings data saved in the SY-1000 can be backed-          Here’s how a system data file previously saved on the computer can be
+up to the computer.                                                          restored to the SY-1000.
+ MEMO
+                                                                              NOTE
+Only the data of the current mode is saved to the computer.
+                                                                             When you restore, all data is overwritten, and cannot be returned to its
+If you want to save the data of guitar mode and bass mode, switch
+                                                                             previous settings.
+modes on the SY-1000 unit, and execute this operation in each mode.
+
+1. At the top of the TONE STUDIO screen, click the [SYSTEM]                  1. At the top of the TONE STUDIO screen, click the [SYSTEM]
+                                                                                button.
+   button.
+
+2. Click [SYSTEM DATA BACKUP].                                               2. Click [SYSTEM DATA BACKUP].
+                                                                                The SYSTEM DATA BACKUP screen appears.
+   The SYSTEM DATA BACKUP screen appears.
+
+3. Click the [TO FILE] button.                                               3. Click the [FROM FILE] button.
+
+
+
+
+                                                                                The “Open” dialog box appears.
+   The “Save As” dialog box appears.
+
+4. Input a name and save-destination, and click the [Save]                   4. Select the system data file (extension: .syb) that you want to
+                                                                                restore, and click the [Open] button.
+   button.
+                                                                                Import begins.
+   Export begins.
+                                                                                Since all data is being imported, this will take some time. When the
+   It will take some time for all data to be exported.
+                                                                                operation is finished, the message “Completed.” appears.
+   When the operation is finished, the message “Completed.” appears.
+                                                                             5. Click the [OK] button.
+5. Click the [OK] button.
+                                                                                The system settings data are restored to the SY-1000.
+   A system data file (.syb file) is created in the save-destination.
+
+
+
+
+                                                                        14
+

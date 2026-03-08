@@ -1,0 +1,108 @@
+EFFECT Parameters > DELAY 1, DELAY 2
+Value
+ANALOG
+
+TAPE
+MOD
+WARP
+
+TWIST
+
+Explanation
+This gives a mild analog delay sound.
+This setting provides the characteristic wavering
+sound of the tape echo.
+
+DELAY 1, DELAY 2
+Adds delayed sound to the direct sound, giving more body to the
+sound or creating special effects.
+Parameter
+
+Value
+
+Explanation
+
+A delay with a pleasant amount of modulation
+added.
+
+ON/OFF
+
+OFF, ON
+
+Turns this effect on/off.
+
+TIME
+
+Produces a dream-like sound.
+
+*1
+
+1 ms–2000
+ms, BPM `–Œ
+
+Adjusts the delay time.
+
+0–100
+
+This sets the amount of delay sound
+returned to the input. A higher
+value will increase the number of
+the delay repeats.
+
+Produces an aggressive sense of rotation.
+Using this in conjunction with distortion will
+produce an even wilder sense of rotation.
+
+FEEDBACK
+
+EFFECT LEVEL 0–120
+
+HIGH CUT
+
+20.0 Hz–16.0
+kHz, FLAT
+
+Adjusts the volume of the delay
+sound.
+This sets the frequency at which the
+high cut filter begins to take effect.
+When FLAT is selected, the high cut
+filter will have no effect.
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+
+CARRY OVER
+
+OFF, ON
+
+Specifies whether the effect sound
+remains when you turn off the
+effect, or does not remain.
+
+BPM
+
+40–250
+
+Adjusts the BPM value for each
+patch.
+DELAY settings can be saved/loaded
+as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+60
+
+

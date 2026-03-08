@@ -1,0 +1,249 @@
+SYSTEM Parameters > IN/OUT SETTING
+Parameter
+
+Value
+
+Explanation
+
+LINE/PHONES
+
+Choose this setting if you’re
+using headphones, or if the
+SY-1000 is connected to a
+keyboard amp, mixer, or digital
+recorder.
+
+Choose this setting if the
+SY-1000 is connected to the
+JC-120 RETURN
+RETURN jack of the Roland JC120 guitar amp.
+JC-120 INPUT
+
+COMBO AMP 1
+RETURN
+
+L:SUB OUTPUT
+SELECT
+
+Use this setting when
+connecting to the RETURN of
+a combo-type guitar amp (in
+which the amp and speakers
+are in a single unit) equipped
+with one speaker.
+
+84
+
+Explanation
+
+STEREO LINK
+
+OFF, ON
+
+If this is ON, the L and R
+settings are made at the
+same time.
+
+FLAT, 20.0
+Hz–16.0 kHz
+
+This sets the frequency
+at which the low cut filter
+begins to take effect. When
+FLAT is selected, the low cut
+filter will have no effect.
+
+-20–+20 dB
+
+Adjusts the tone for the low
+frequency range.
+
+20.0 Hz–16.0
+kHz
+
+Specifies the center of the
+frequency range that will be
+adjusted by the LOW-MID
+GAIN.
+
+0.5–16
+
+Adjusts the width of the
+area affected by the EQ
+centered at the LOW-MID
+FREQ. Higher values will
+narrow the area.
+
+-20–+20 dB
+
+Adjusts the tone for the lowmiddle frequency range.
+
+20.0Hz–
+16.0kHz
+
+Specifies the center of the
+frequency range that will be
+adjusted by the HIGH-MID
+GAIN.
+
+0.5–16
+
+Adjusts the width of the
+area affected by the EQ
+centered at the HIGH-MID
+FREQ. Higher values will
+narrow the area.
+
+LOW CUT
+*1
+L: LOW CUT
+*2
+R: LOW CUT
+*2
+LOW GAIN
+*1
+L: LOW GAIN
+
+L: LOW-MID FREQ
+
+COMBO AMP 2
+RETURN
+
+Use this setting when
+connecting to the RETURN of
+a combo-type amp (in which
+the amp and speakers are in a
+single unit) equipped with two
+speakers.
+
+*1
+
+COMBO AMP 2
+INPUT
+
+Use this setting when
+connecting to the guitar input
+of a combo-type amp (in which
+the amp and speakers are in a
+single unit) equipped with two
+speakers.
+Use this setting when
+connecting to the RETURN of
+a stack-type amp (in which
+the amp and speaker are in
+separate units).
+
+LOW-MID GAIN
+
+R: LOW GAIN
+*2
+LOW-MID FREQ
+*1
+*2
+R: LOW-MID FREQ
+*2
+LOW-MID Q
+L: LOW-MID Q
+*2
+R: LOW-MID Q
+*2
+*1
+L: LOW-MID GAIN
+*2
+R: LOW-MID GAIN
+
+STACK AMP
+INPUT
+
+Use this setting when
+connecting to the guitar input
+of a stack-type amp (in which
+the amp and speaker are in
+separate units).
+
+BASS AMP
+WITH TWEETER
+
+Use this setting when
+connecting to a bass amp that
+has a tweeter.
+
+L: HIGH-MID FREQ
+
+BASS AMP NO
+TWEETER
+
+Use this setting when
+connecting to a bass amp that
+does not have a tweeter. The
+high-frequency range will be
+corrected.
+
+L:MAIN OUTPUT
+LEVEL
+
+R:SUB OUTPUT
+LEVEL
+
+Value
+
+COMBO AMP 1
+INPUT
+
+STACK AMP
+RETURN
+
+L:SUB OUTPUT
+LEVEL
+
+Parameter
+
+*2
+
+R:SUB OUTPUT
+SELECT
+
+R:MAIN OUTPUT
+LEVEL
+
+This adjusts the tone of the OUTPUT regardless of the equalizer on/
+off settings of individual patches.
+
+Use this setting when
+connecting to the guitar input
+of a combo-type amp (in which
+the amp and speakers are in a
+single unit) equipped with one
+speaker.
+
+L:MAIN OUTPUT
+SELECT
+R:MAIN OUTPUT
+SELECT
+
+Choose this setting if the
+SY-1000 is connected to the
+guitar input of a JC-120 guitar
+amp.
+
+GLOBAL EQ
+
+*2
+HIGH-MID FREQ
+*1
+*2
+R: HIGH-MID FREQ
+*2
+HIGH-MID Q
+*1
+L: HIGH-MID Q
+*2
+R: HIGH-MID Q
+
+0–200
+
+Adjusts the output level.
+
+*2
+
+

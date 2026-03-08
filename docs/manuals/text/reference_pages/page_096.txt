@@ -1,0 +1,92 @@
+Troubleshooting
+When Using the SY-1000 on Its Own
+Problem
+
+No sound/Low volume
+
+Items to check
+
+Action
+
+Is the [OUTPUT LEVEL] knob turned down completely?
+
+Adjust the knob to an appropriate setting.
+
+Could the volume of the GK pickup be turned down?
+
+Raise the volume of the GK pickup to an appropriate
+level.
+
+Could the select switch of the GK pickup be set to
+“GUITAR”?
+
+Set the switch of the GK pickup to “MIX.”
+
+Could the PATCH LEVEL be turned down?
+
+Raise the PATCH LEVEL.
+
+Are the SY-1000 and other devices connected properly?
+
+Check the connections with the other devices.
+
+Is the power to the connected amp or mixer not turned
+on, or is the volume turned down?
+
+Check the settings for the connected device.
+
+Is there a short in any connecting cable?
+
+Try replacing the connecting cable.
+
+If there are no sounds through USB, are the [SYSTEM] - USB
+Adjust the settings to the appropriate values.
+AUDIO settings correct?
+Was the GK pickup sensitivity setting adjusted correctly for
+Perform the adjustment.
+Volume is uneven among the each string?
+strings
+Refer to the manual of your GK pickup, and attach
+Is the GK pickup attached correctly?
+the GK pickup correctly.
+When using the SY-1000’s
+expression pedal, the result
+is different for each patch
+Oscillation occurs
+
+The effect produced using the expression pedal is different
+Check the effect of each patch beforehand.
+for each sound (patch).
+Are any gain values or volume-related parameter values in
+Decrease the value.
+the effect settings set too high?
+Are any feedback values in the effect settings such as
+DELAY set too high?
+
+Decrease the value.
+
+Patches not switching
+
+Is some screen other than the Play screen shown in the
+display?
+
+With the SY-1000, you cannot switch patches in any
+screen other than the Play screen. Press the [EXIT]
+button one or more times to return to the Play
+screen.
+
+Knobs don’t work
+
+Could the system parameter KNOB LOCK be “ON”?
+
+Turn the system parameter KNOB LOCK “OFF.”
+
+Can’t enter Tuner mode
+
+Could the system parameter BANKDOWN&UP SW (TUNER) Turn the system parameter BANKDOWN&UP SW
+be “OFF”?
+(TUNER) “ON.”
+
+96
+
+

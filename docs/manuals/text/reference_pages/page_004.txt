@@ -1,0 +1,83 @@
+Getting Ready
+Connecting the Equipment
+* To prevent malfunction and equipment failure, always turn down the volume, and turn off all the units before making any connections.
+
+GK IN connector
+
+GUITAR INPUT jack
+
+DC IN jack
+
+Connect a guitar or bass equipped with the Roland Divided
+Pickup (Roland GK-3/GK-3B) or a GK-compatible guitar such as
+the Roland V-Guitar GC-1 to this connector.
+
+Use this control if you’re directly
+inputting a conventional guitar.
+
+Connect the included AC
+adaptor here.
+
+* The guitar connected to the
+GUITAR INPUT jack can only
+use a NORMAL PATCH.
+
+* Place the AC adaptor so the
+side with the indicator faces
+upwards. The indicator will
+light when you plug the AC
+adaptor into an AC outlet.
+
+In addition to the signal from the divided pickup, the
+conventional guitar signal (normal pickup) is also input to the
+GK IN connector.
+* Never connect anything other than the dedicated GK cable.
+
+Roland GK-3 users
+
+* Use the “PATCH TYPE”
+parameter (p. 66) to switch
+to a NORMAL PATCH.
+
+Roland V-Guitar GC-1 users
+
+You must set this to the center (MIX) position!
+Indicator
+
+SEND/RETURN jacks
+Connect an external effect
+processor here.
+
+(USB) port
+Use a commercially available USB 2.0 cable to
+connect this port to your computer. It can be
+used to transfer USB MIDI and USB audio data.
+You must install the USB driver when
+connecting the unit to your computer.
+Download the USB driver from the BOSS
+website. For details, refer to Readme.htm which
+is included in the download.
+https://www.boss.info/global/support/
+For details on the settings, refer to
+“Connecting to a Computer” (p. 95).
+
+4
+
+Turning the Power On/Off ([POWER] switch)
+This turns the power on/off.
+* Before turning the unit on/off, always be sure to turn the volume down. Even with
+the volume turned down, you might hear some sound when switching the unit on/
+off. However, this is normal and does not indicate a malfunction.
+
+Auto Off Function
+The power to this unit will be turned off automatically after a predetermined
+amount of time has passed since it was last used for playing music, or its buttons
+or controls were operated (Auto Off function). If you do not want the power to be
+turned off automatically, disengage the Auto Off function.
+* Any settings that you make in the process of editing will be lost when the power
+is turned off. If you have any settings that you want to keep, you should save them
+beforehand.
+* To restore power, turn the power on again.
+For details on the settings, refer to “AUTO OFF” (p. 88).
+
+

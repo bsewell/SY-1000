@@ -1,0 +1,962 @@
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0E | 0000 0aaa | CTL2 OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 0F | 0000 aaaa | CTL2 ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 10 | 0000 0aaa | CNUM OFF
+(0 - 7) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 11 | 0000 aaaa | CNUM ON
+(0 - 15) |
+|
+|
+|
+OFF, RED, BLUE, LIGHT BLUE, GREEN, YELLOW,
+|
+|
+|
+|
+WHITE, PURPLE, AUTO, AUTORED, AUTOBLUE,
+|
+|
+|
+|
+AUTOLIGHT BLUE, AUTOGREEN, AUTOYELLOW,
+|
+|
+|
+|
+AUTOWHITE, AUTOPURPLE
+|
+|
+00 12 | 0000 000a | NUM1 PREFERENCE
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 13 | 0000 000a | NUM2 PREFERENCE
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 14 | 0000 000a | NUM3 PREFERENCE
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 15 | 0000 000a | NUM4 PREFERENCE
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 16 | 0000 000a | BANKDOWN PREFERENCE
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 17 | 0000 000a | BANKUP PREFERENCE
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 18 | 0000 000a | CTL1 PREFERENCE
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 19 | 0000 000a | CTL2 PREFERENCE
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|
+00 1A | 0000 000a | CNUM PREFERENCE
+(0 - 1) |
+|
+|
+|
+PATCH, SYSTEM |
+|-------------+----------------------------------------------------------------|
+| 00 00 00 1B |Total Size
+|
++------------------------------------------------------------------------------+
+* [SystemMidi]
++------------------------------------------------------------------------------+
+| Offset
+|
+|
+|
+Address |
+Description
+|
+|-------------+----------------------------------------------------------------|
+|
+00 00 | 0000 aaaa | RX CHANNEL
+(0 - 15) |
+|
+|
+|
+Ch.1, Ch.2, Ch.3, Ch.4, Ch.5, Ch.6, Ch.7,
+|
+|
+|
+|
+Ch.8, Ch.9, Ch.10, Ch.11, Ch.12, Ch.13, Ch.14, |
+|
+|
+|
+Ch.15, Ch.16
+|
+|
+00 01 | 0000 000a | OMNI MODE
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 02 | 000a aaaa | TX CHANNEL
+(0 - 16) |
+|
+|
+|
+Ch.1, Ch.2, Ch.3, Ch.4, Ch.5, Ch.6, Ch.7,
+|
+|
+|
+|
+Ch.8, Ch.9, Ch.10, Ch.11, Ch.12, Ch.13, Ch.14, |
+|
+|
+|
+Ch.15, Ch.16, RX
+|
+|
+00 03 | 0000 00aa | SYNC CLOCK
+(0 - 3) |
+|
+|
+|
+AUTO, INTERNAL, MIDI(AUTO), USB(AUTO) |
+|
+00 04 | 0000 00aa | MIDI IN THRU
+(0 - 3) |
+|
+|
+|
+OFF, MIDI OUT, USB OUT, USB/MIDI |
+|
+00 05 | 0000 00aa | USB IN THRU
+(0 - 3) |
+|
+|
+|
+OFF, MIDI OUT, USB OUT, USB/MIDI |
+|
+00 06 | 0000 000a | CLOCK OUT
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 07 | 0000 000a | PC OUT
+(0 - 1) |
+|
+|
+|
+OFF, ON |
+|
+00 08 | 0000 000a | TX PC MAP
+(0 - 1) |
+|
+|
+|
+FIX, PATCH MIDI |
+|
+00 09 | 0000 000a | RX PC MAP
+(0 - 1) |
+|
+|
+|
+FIX, PROG |
+|
+00 0A | 00aa aaaa | NUM1 CC#
+(0 - 63) |
+|
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+|
+00 0B | 00aa aaaa | NUM2 CC#
+(0 - 63) |
+|
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+|
+00 0C | 00aa aaaa | NUM3 CC#
+(0 - 63) |
+|
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+
+15
+
+00 0D | 00aa aaaa | NUM4 CC#
+(0 - 63) |
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+00 0E | 00aa aaaa | BANKDOWN CC#
+(0 - 63) |
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+00 0F | 00aa aaaa | BANKUP CC#
+(0 - 63) |
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+00 10 | 00aa aaaa | CTL1 CC#
+(0 - 63) |
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+00 11 | 00aa aaaa | CTL2 CC#
+(0 - 63) |
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+00 12 | 00aa aaaa | CTL3 CC#
+(0 - 63) |
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+00 13 | 00aa aaaa | CTL4 CC#
+(0 - 63) |
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+00 14 | 00aa aaaa | CTL5 CC#
+(0 - 63) |
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+00 15 | 00aa aaaa | CTL6 CC#
+(0 - 63) |
+|
+|
+OFF, CC# 1, CC# 2, CC# 3, CC# 4, CC# 5, CC# 6, |
+|
+|
+CC# 7, CC# 8, CC# 9, CC#10, CC#11, CC#12,
+|
+|
+|
+CC#13, CC#14, CC#15, CC#16, CC#17, CC#18,
+|
+|
+|
+CC#19, CC#20, CC#21, CC#22, CC#23, CC#24,
+|
+|
+|
+CC#25, CC#26, CC#27, CC#28, CC#29, CC#30,
+|
+|
+|
+CC#31, CC#64, CC#65, CC#66, CC#67, CC#68,
+|
+|
+|
+CC#69, CC#70, CC#71, CC#72, CC#73, CC#74,
+|
+|
+|
+CC#75, CC#76, CC#77, CC#78, CC#79, CC#80,
+|
+|
+|
+CC#81, CC#82, CC#83, CC#84, CC#85, CC#86,
+|
+|
+|
+CC#87, CC#88, CC#89, CC#90, CC#91, CC#92,
+|
+|
+|
+CC#93, CC#94, CC#95
+|
+00 16 | 00aa aaaa | EXP1 CC#
+(0 - 63) |
+
+

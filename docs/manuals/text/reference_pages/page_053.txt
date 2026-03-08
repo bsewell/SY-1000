@@ -1,0 +1,262 @@
+EFFECT Parameters > FX1–FX3
+Parameter
+
+Value
+
+Explanation
+
+RISE TIME
+
+0–100
+
+Adjusts how rapidly the Sound Hold
+sound is produced.
+
+EFFECT LEVEL 0–120
+
+VARIATION
+
+PATCH, 01–10
+
+TREMOLO
+Tremolo is an effect that creates a cyclic change in volume.
+
+Adjusts the volume of the hold
+sound.
+
+Parameter
+
+Value
+
+Explanation
+
+SOUND HOLD settings can be
+saved/loaded as ten variations.
+
+WAVE SHAPE
+
+0–100
+
+Adjusts changes in volume level.
+A higher value will steepen wave’s
+shape.
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+RATE
+*1
+
+0–100, BPM
+Œ–`
+
+Adjusts the frequency (speed) of the
+change.
+
+DEPTH
+
+0–100
+
+Adjusts the depth of the effect.
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume.
+
+TOUCH WAH/TOUCH WAH BASS
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+
+You can produce a wah effect with the filter changing in response to
+the guitar/bass level.
+
+BPM
+
+Adjusts the BPM value for each
+patch.
+
+Parameter
+
+Value
+
+POLARITY
+
+LPF
+
+Low pass filter. Passes only the lowfrequency region.
+
+BPF
+
+Band pass filter. Passes only the
+specified frequency region.
+
+HPF
+
+High pass filter. Passes only the
+high-frequency region.
+
+Selects the direction in which the filter will change
+in response to the input.
+DOWN
+
+The frequency of the filter will fall.
+
+UP
+
+The frequency of the filter will rise.
+Specifies the sensitivity with which
+the filter moves in the direction
+specified by the POLARITY setting.
+
+SENS
+
+FREQUENCY
+
+0–100
+
+0–100
+
+Higher values will result in a
+stronger response. With a setting of
+0, the strength of picking will have
+no effect.
+Adjusts the center frequency of the
+Wah effect.
+Adjusts the amount of wah effect
+applied in the range near the
+reference frequency.
+
+RESONANCE
+
+DECAY
+
+0–100
+
+0–100
+
+EFFECT LEVEL 0–100
+DIRECT LEVEL
+
+0–100
+
+VARIATION
+
+PATCH, 01–10
+
+TREMOLO settings can be saved/
+loaded as ten variations.
+
+Explanation
+
+Selects the wah mode.
+
+FILTER MODE
+
+40–250
+
+Higher values will produce a
+stronger tone which emphasizes
+the wah effect more. With a value
+of 50, a standard wah sound will be
+produced.
+Adjusts the rate at which the filter
+is moved.
+Adjusts the volume of the effect
+sound.
+Adjusts the volume of the direct
+sound.
+TOUCH WAH and TOUCH WAH
+BASS settings can be saved/loaded
+as ten variations.
+
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+VIBRATO
+This effect creates vibrato by slightly modulating the pitch.
+Parameter
+
+Value
+
+Explanation
+
+RATE
+*1
+
+0–100, BPM
+Œ–`
+
+Adjusts the rate of the vibrato.
+
+DEPTH
+
+0–100
+
+Adjusts the depth of the vibrato.
+
+TRIGGER
+
+OFF, ON
+
+This selects on/off of the vibrato.
+
+RISE TIME
+
+0–100
+
+This sets the time passing from the
+moment the Trigger is turned on
+until the set vibrato is obtained.
+
+EFFECT LEVEL 0–100
+
+Adjusts the volume.
+
+DIRECT LEVEL 0–100
+
+Adjusts the volume of the direct
+sound.
+
+BPM
+
+Adjusts the BPM value for each
+patch.
+
+40–250
+
+VIBRATO settings can be saved/
+loaded as ten variations.
+VARIATION
+
+PATCH, 01–10
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+*1 Refer to “About effects when a note value is selected as a setting”
+(p. 66).
+
+A saved VARIATION can be loaded
+into a different patch, which is
+convenient when you’re creating
+sounds.
+
+53
+
+

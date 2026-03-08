@@ -1,0 +1,123 @@
+The Internal Structure of the SY-1000
+INST (Instrument) Block
+This is the sound engine section that generates sound based on the performance data from the divided pickup and the audio input from the
+guitar (bass).
+This can produce a variety of tones, synthesizers such as DYNAMIC SYNTH and the POLY FX which can apply effects independently to each string.
+The SY-1000 lets you freely specify and combine three INST blocks.
+
+INST1
+
+FX1
+
+INST2
+
+FX2
+
+INST3
+
+FX3
+
+NORMAL
+
+CMP
+
+S/R
+EQ2
+
+DLY1
+
+SUB L/R
+MST DLY
+
+DS
+
+AMP
+
+EQ1
+
+NS
+
+FV1
+
+CHO
+
+REV
+
+FV2
+
+DIV
+
+MIX
+
+MAIN L/R
+
+MST
+
+DIV
+
+MIX
+
+MAIN L/R
+
+MST
+
+DLY2
+
+EFFECT (Effects) Block
+The SY-1000 is equipped with high-quality effects.
+You can change the order in which the effects are connected.
+You are also free to select the signals that are output from the MAIN OUTPUT jacks and the SUB OUTPUT jacks.
+
+INST1
+
+FX1
+
+INST2
+
+FX2
+
+INST3
+
+FX3
+
+NORMAL
+
+CMP
+
+S/R
+EQ2
+
+DLY1
+
+SUB L/R
+MST DLY
+
+DS
+
+AMP
+
+EQ1
+
+NS
+
+FV1
+
+CHO
+
+REV
+
+FV2
+
+DLY2
+
+MEMO
+
+55 In order to distinguish between the divided pickup and the conventional pickup installed on your guitar (bass), this manual uses the term
+“normal pickup” when referring to the conventional pickup of your guitar (bass).
+
+55 The sound of the normal pickup directly connected to the GUITAR INPUT jack or the sound of the normal pickup routed through the divided
+pickup is input to the NORMAL block. You can mix this into the INST1–INST3 blocks.
+
+21
+
+

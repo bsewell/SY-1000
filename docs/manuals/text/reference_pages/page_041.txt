@@ -1,0 +1,239 @@
+INST Parameters > POLY FX Parameters
+
+POLY FX Parameters
+
+Parameter
+
+POLY FX
+
+POLARITY
+
+Parameter
+
+Explanation
+
+DOWN
+
+The frequency of the filter will
+fall.
+
+UP
+
+The frequency of the filter will
+rise.
+
+This selects the POLY FX type.
+
+TYPE
+
+DISTORTION
+
+Distortion that allows chords to
+resonate clearly and beautifully
+
+CRYSTAL
+
+A sound with a metallic
+resonance and a transparent
+character
+
+RICH MOD
+
+Rich and spacious modulation
+sound
+
+SLOW PAD
+
+Deep, fantasy-like pad-type
+sound
+
+FREQUENCY
+
+You can produce a wah effect
+with the filter changing in
+response to the input level.
+
+DECAY
+
+TOUCH WAH
+
+Adjusts the input volume.
+
+PEAK
+
+SENS
+*3
+
+*3
+*3
+
+0–100
+
+0–100
+
+Adjusts the center frequency of
+the Wah effect.
+
+0–10
+
+This sets the time needed for the
+filter to finish its sweep.
+
+0–100
+
+*2
+GAIN
+*1
+
+GAIN
+BALANCE
+
+0–100
+
+-50–+50
+
+*1
+
+Positive values make the lower
+strings distort more.
+Negative values make the higher
+strings distort more.
+
+0–100
+
+Specifies the amount of
+the effect. The effect differs
+depending on the selected TYPE.
+
+DISTORTION:
+Adjusts the amount of separation for chords. Higher
+settings produce chords less muddy.
+COLOR
+*2
+
+Higher values will produce a
+stronger tone which emphasizes
+the wah effect more.
+With a value of 50, a standard
+wah sound will be produced.
+
+Adjusts the amount of distortion.
+Adjusts the distortion balance
+between the low and high
+strings.
+
+Higher values will result in a
+stronger response. With a setting
+of 0, the strength of picking will
+have no effect.
+
+Adjusts the way in which the
+wah effect applies to the area
+around the center frequency.
+*3
+
+BASS VOLUME
+
+Specifies the sensitivity with
+which the filter moves in the
+direction specified by the
+POLARITY setting.
+
+0–100
+
+GUITAR
+VOLUME
+*2
+
+Explanation
+
+Selects the direction in which the filter will change
+in response to the input.
+*3
+
+Value
+
+Value
+
+TONE TYPE
+*3
+COMP SW
+*3
+COMP
+SUSTAIN
+
+MILD,
+STANDARD,
+BRIGHT
+
+Selects the tone type.
+
+OFF, ON
+
+Turns the compressor on/off.
+
+0–100
+
+Larger values will result in longer
+sustain.
+
+0–100
+
+Adjusts the strength of the
+picking attack when the strings
+are played.
+
+*3
+COMP ATTACK
+*3
+
+*1 Valid when the TYPE is set to DISTORTION.
+
+CRYSTAL:
+
+*2 Valid when the TYPE is set to other than TOUCH WAH.
+
+Adjusts the tone for the high frequency range.
+Higher settings make the tonal character more
+metallic.
+
+*3 Valid when the TYPE is set to TOUCH WAH.
+
+RICH MODULATION:
+Adjusts the depth of the effect. Higher settings
+make the modulation effect stronger.
+
+NS
+Refer to “NS” (p. 35).
+
+SLOW PAD:
+Adjusts the strength of the attack. Higher settings
+strengthen the attack.
+TONE
+*2
+
+-50–+50
+
+Adjusts the brightness of the
+sound.
+
+Selects the wah mode.
+FILTER MODE
+
+LPF
+
+Low pass filter. Creates a wah
+effect over a wide frequency
+range.
+
+BPF
+
+Band pass filter. Creates a wah
+effect in a narrow frequency
+range.
+
+*3
+
+41
+
+

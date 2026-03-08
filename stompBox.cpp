@@ -295,12 +295,15 @@ void stompBox::paintEvent(QPaintEvent *)
         Preferences *preferences = &AppServices::instance().preferences();
         bool ok;
         double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
-        QPainter painter(this);
         // Cap flow-block widget height to 96 px so the signal line passes through
         // the visual centre of every block (output blocks have taller decorative art).
+        // Compute and apply size BEFORE creating QPainter — calling setFixedSize while
+        // a QPainter is active triggers geometry invalidation on all siblings, causing
+        // Qt to re-enter paintSiblingsRecursive recursively until stack overflow (SIGSEGV 0x28).
         QSize paintSize = QPixmap(imagePathOn).size();
         if(id >= 4) { paintSize.setHeight(qMin(paintSize.height(), 96)); }
         setSize(paintSize*ratio/scale);
+        QPainter painter(this);
         painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
         if(this->hovered==true)
         {
@@ -541,6 +544,7 @@ void stompBox::setSelectedImage(QString imagePathSelected)
 
 void stompBox::setSize(QSize newSize)
 {
+    if(newSize == this->stompSize) return;  // no-op: avoids spurious geometry invalidation
     this->stompSize = newSize;
     this->setFixedSize(stompSize);
     // NOTE: do NOT call positionFlowDescriptionLabel here.

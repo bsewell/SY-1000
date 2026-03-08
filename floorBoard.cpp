@@ -1646,8 +1646,11 @@ void floorBoard::update_structure()
     const int rowCenter3    = lev3 + inst3MidY;
     const int rowCenter4    = lev4 + normalMidY;
     const int rowCenterBal1 = bal1MidY;
-    const int rowCenterBal2 = lev2 + balMidYOffset;
-    const int rowCenterBal3 = lev3 + balMidYOffset;
+    // BAL2/3 centres are the actual midpoints of their input signal lines, not hardcoded lev2/3.
+    // BAL2 collects BAL1 output (bal1MidY) and INST3 (rowCenter3); its output is their midpoint.
+    // BAL3 collects BAL2 output (rowCenterBal2) and NORMAL (rowCenter4); its output is their midpoint.
+    const int rowCenterBal2 = qRound((bal1MidY + rowCenter3) / 2.0);
+    const int rowCenterBal3 = qRound((rowCenterBal2 + rowCenter4) / 2.0);
     // topForRowCenter: return the widget top-left Y that centres stompId on a given signal-line Y.
     // Using the row centre directly avoids ambiguity when balTopYOffset==0 (which would make the
     // BAL output row top equal to the INST row top, breaking row-top comparisons).
@@ -1705,9 +1708,9 @@ void floorBoard::update_structure()
         else if(stomp>27 && incr==0)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev2; rowCenterCurrent=rowCenter2; }  // fill lev2
         else if(stomp>27 && incr==1)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal1xpos*flowStep)), bal1TopY)); x_axis=flowStep+(bal1xpos*flowStep); y_axis=bal1TopY; rowCenterCurrent=rowCenterBal1; }  // Bal1 out
         else if(stomp>27 && incr==2)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev3; rowCenterCurrent=rowCenter3; }  // fill lev3
-        else if(stomp>27 && incr==3)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal2xpos*flowStep)), lev2+balTopYOffset)); x_axis=flowStep+(bal2xpos*flowStep); y_axis=lev2+balTopYOffset; rowCenterCurrent=rowCenterBal2; }  // Bal2 out
+        else if(stomp>27 && incr==3)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal2xpos*flowStep)), rowCenterBal2 - balancerHalfHeight)); x_axis=flowStep+(bal2xpos*flowStep); y_axis=rowCenterBal2 - balancerHalfHeight; rowCenterCurrent=rowCenterBal2; }  // Bal2 out
         else if(stomp>27 && incr==4)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev4; rowCenterCurrent=rowCenter4; }  // fill lev4
-        else if(stomp>27 && incr==5)      { newFxPos.append(QPoint(offset+((40*ratio)+(bal3xpos*flowStep)), lev3+balTopYOffset)); x_axis=flowStep+(bal3xpos*flowStep); y_axis=lev3+balTopYOffset; rowCenterCurrent=rowCenterBal3; }  // Bal3 out
+        else if(stomp>27 && incr==5)      { newFxPos.append(QPoint(offset+((40*ratio)+(bal3xpos*flowStep)), rowCenterBal3 - balancerHalfHeight)); x_axis=flowStep+(bal3xpos*flowStep); y_axis=rowCenterBal3 - balancerHalfHeight; rowCenterCurrent=rowCenterBal3; }  // Bal3 out
         else
         {
             const int alignedY = topForRowCenter(stomp, rowCenterCurrent);
@@ -1761,11 +1764,11 @@ void floorBoard::update_structure()
     polygon.append( QPoint(offset+(65*ratio)+(bal2xpos*flowStep),  bal1MidY));         //index3 right   5
     polygon.append( QPoint(offset+(78*ratio),                      lev3+inst3MidY));  //index4 left    6
     polygon.append( QPoint(offset+(65*ratio)+(bal2xpos*flowStep),  lev3+inst3MidY));  //index4 right   7
-    polygon.append( QPoint(offset+(58*ratio)+(bal2xpos*flowStep),  lev2+balMidYOffset));    //index5 left    8
-    polygon.append( QPoint(offset+(58*ratio)+(bal3xpos*flowStep),  lev2+balMidYOffset));    //index5 right   9
+    polygon.append( QPoint(offset+(58*ratio)+(bal2xpos*flowStep),  rowCenterBal2));    //index5 left    8  (BAL2 out; corrected by placeBalancerOnRiser)
+    polygon.append( QPoint(offset+(58*ratio)+(bal3xpos*flowStep),  rowCenterBal2));    //index5 right   9  (BAL3 A in = BAL2 out level)
     polygon.append( QPoint(offset+(78*ratio),                      lev4+normalMidY)); //index6 left    10
     polygon.append( QPoint(offset+(58*ratio)+(bal3xpos*flowStep),  lev4+normalMidY)); //index6 right   11
-    polygon.append( QPoint(offset+(58*ratio)+(bal3xpos*flowStep),  lev3+balMidYOffset));    //index7 left    12
+    polygon.append( QPoint(offset+(58*ratio)+(bal3xpos*flowStep),  rowCenterBal3));    //index7 left    12 (BAL3 out; corrected by placeBalancerOnRiser)
     polygon.append(fxPos.at(dividerChainIndex)+QPoint(flowMidX, dividerMidY));   // at divider    13
     polygon.append(fxPos.at(dividerChainIndex)+QPoint(flowMidX, dividerTopY));   // above divider 14
     polygon.append(fxPos.at(mixerChainIndex)+QPoint(flowMidX, mixerTopY));       // above mixer   15

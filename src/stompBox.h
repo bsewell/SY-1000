@@ -59,6 +59,7 @@ public:
     void brushColor(QString BarColor);
     void setLed();
     QRect signalBounds(double ratio) const;
+    QRect flowLayoutBounds(double ratio) const;
     int signalCenterYOffset(double ratio) const;
     void updateButton(QString hex0, QString hex1, QString hex2, QString hex3);
     void updateSwitch(QString hex0, QString hex1, QString hex2, QString hex3);

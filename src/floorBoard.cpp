@@ -1601,21 +1601,33 @@ void floorBoard::update_structure()
         bounds.translate(-this->stompBoxes.at(stompId)->pos());
         return bounds.isValid() ? bounds.center().x() : fallback;
     };
-    auto topOffsetYForId = [this](int stompId, int fallback) -> int
+    const int branchStemExtension = qRound(10 * ratio);
+    auto flowRectForId = [this, ratio](int stompId) -> QRect
     {
         if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
         {
-            return fallback;
+            return QRect();
         }
-        return 0;
+        return this->stompBoxes.at(stompId)->flowLayoutBounds(ratio);
     };
-    auto bottomOffsetYForId = [this](int stompId, int fallback) -> int
+    auto topOffsetYForId = [this, ratio, branchStemExtension](int stompId, int fallback) -> int
     {
         if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
         {
             return fallback;
         }
-        return this->stompBoxes.at(stompId)->height();
+        Q_UNUSED(fallback);
+        Q_UNUSED(ratio);
+        return -branchStemExtension;
+    };
+    auto bottomOffsetYForId = [this, ratio, branchStemExtension](int stompId, int fallback) -> int
+    {
+        if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
+        {
+            return fallback;
+        }
+        const QRect flowRect = this->stompBoxes.at(stompId)->flowLayoutBounds(ratio);
+        return flowRect.height() + branchStemExtension;
     };
     // ── All per-row centre helpers must be defined BEFORE alignedRowTop so the lambda
     //    can correctly centre blocks on every row type, including BAL output rows.
@@ -1635,7 +1647,7 @@ void floorBoard::update_structure()
     const int masterMidY     = centerOffsetYForId(34, flowMidY);
     int balancerHalfHeight = qRound((96.0*ratio)/(2.0*2.4)); // fallback for 96x96 balancer art at flow scale.
     if(this->stompBoxes.size() > 29 && this->stompBoxes.at(29))
-        balancerHalfHeight = this->stompBoxes.at(29)->height()/2;
+        balancerHalfHeight = flowRectForId(29).height() / 2;
     // BAL1 sits centred between the INST1 and INST2 signal lines.
     const int bal1MidY      = qRound(((lev1 + inst1MidY) + (lev2 + inst2MidY)) / 2.0);
     const int bal1TopY      = bal1MidY - balancerHalfHeight;
@@ -1780,21 +1792,23 @@ void floorBoard::update_structure()
     // Keep branch riser lines visually clear from the right edge of the
     // source-FX squares when the user reorders blocks.
     const int minBranchGap = qRound(50 * ratio);
-    auto rightEdgeForId = [this](int stompId) -> int
+    auto rightEdgeForId = [flowRectForId](int stompId) -> int
     {
-        if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
+        const QRect flowRect = flowRectForId(stompId);
+        if(!flowRect.isValid())
         {
             return -1;
         }
-        return this->stompBoxes.at(stompId)->x() + this->stompBoxes.at(stompId)->width();
+        return flowRect.right();
     };
-    auto centerXForId = [this](int stompId) -> int
+    auto centerXForId = [flowRectForId](int stompId) -> int
     {
-        if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
+        const QRect flowRect = flowRectForId(stompId);
+        if(!flowRect.isValid())
         {
             return -1;
         }
-        return this->stompBoxes.at(stompId)->x() + (this->stompBoxes.at(stompId)->width() / 2);
+        return flowRect.center().x();
     };
 
     if(polygon.size() >= 12)
@@ -1831,7 +1845,7 @@ void floorBoard::update_structure()
     if(polygon.size() >= 14)
     {
         const int minFxSideGap = qRound(12 * ratio);
-        auto placeBalancerOnRiser = [this, hiddenFlowY, minFxSideGap](int stompId, int riserTopIdx, int riserBottomIdx, int centerPointIdx) -> bool
+        auto placeBalancerOnRiser = [this, ratio, hiddenFlowY, minFxSideGap](int stompId, int riserTopIdx, int riserBottomIdx, int centerPointIdx) -> bool
         {
             if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
             {
@@ -1839,8 +1853,9 @@ void floorBoard::update_structure()
             }
 
             stompBox *bal = this->stompBoxes.at(stompId);
-            const int halfW = bal->width() / 2;
-            const int halfH = bal->height() / 2;
+            const QRect balRect = bal->flowLayoutBounds(ratio);
+            const int halfW = balRect.width() / 2;
+            const int halfH = balRect.height() / 2;
             const int centerY = (this->polygon.at(riserTopIdx).y() + this->polygon.at(riserBottomIdx).y()) / 2;
             int centerX = this->polygon.at(riserTopIdx).x();
 
@@ -1866,7 +1881,7 @@ void floorBoard::update_structure()
                     continue;
                 }
 
-                const QRect r(other->x(), other->y(), other->width(), other->height());
+                const QRect r = other->flowLayoutBounds(ratio);
                 if(r.bottom() < balTop || r.top() > balBottom)
                 {
                     continue;

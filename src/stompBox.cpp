@@ -45,6 +45,12 @@ const int kUniformLabelOffsetPx = 10;
 // Input source descriptors (NORMAL + INST 1-3) sit close under the block.
 const int kInputLabelOffsetPx = 10;
 
+bool hidesFlowDescriptionLabel(unsigned int id)
+{
+    return id == 7 || id == 11 || id == 12 || id == 14 || id == 15 ||
+           id == 18 || id == 19 || id == 20 || id == 21 || id == 23 || id > 27;
+}
+
 }
 
 stompBox::stompBox(QWidget *parent, uint id, QString imagePathOn, QString imagePathOff, QString imagePathHover, QString imagePathSelected, QPoint stompPos)
@@ -201,6 +207,25 @@ QRect stompBox::signalBounds(double ratio) const
     return scaledOpaqueBounds(ratio).translated(this->pos());
 }
 
+QRect stompBox::flowLayoutBounds(double ratio) const
+{
+    const double scale = (this->id < 4) ? kInstBlockScale : kFlowBlockScale;
+    QPixmap onPix(this->imagePathOn);
+    if(!onPix.isNull() && onPix.height() > 0)
+    {
+        QSize drawSize = onPix.size();
+        if(this->id >= 4)
+        {
+            drawSize.setHeight(qMin(drawSize.height(), 96));
+        }
+        const QSize scaled(qMax(1, qRound(drawSize.width() * ratio / scale)),
+                           qMax(1, qRound(drawSize.height() * ratio / scale)));
+        return QRect(this->pos(), scaled);
+    }
+
+    return QRect(this->pos(), this->size());
+}
+
 int stompBox::signalCenterYOffset(double ratio) const
 {
     // The signal line passes through the vertical centre of the standard 96-pixel-tall
@@ -223,9 +248,9 @@ int stompBox::signalCenterYOffset(double ratio) const
 void stompBox::positionFlowDescriptionLabel(double ratio)
 {
     if(!this->effectLabel) { return; }
-    if(this->id==7 || this->id==11 || this->id==12 || this->id==14 || this->id==15 ||
-       this->id==18 || this->id==19 || this->id==20 || this->id==21 || this->id==23 || this->id>27)
+    if(hidesFlowDescriptionLabel(this->id))
     {
+        this->effectLabel->setText(QString());
         this->effectLabel->hide();
         return;
     }
@@ -270,6 +295,11 @@ void stompBox::updateFlowLabelLayoutDefaults()
     if(this->effectLabel)
     {
         this->effectLabel->setProperty("fxId", QVariant::fromValue<int>(this->id));
+        if(hidesFlowDescriptionLabel(this->id))
+        {
+            this->effectLabel->setText(QString());
+            this->effectLabel->hide();
+        }
     }
 }
 
@@ -374,6 +404,7 @@ void stompBox::mousePressEvent(QMouseEvent *event)
     emit this->ns1_statusSignal(true);                                                                             // clear all 'selected' icon except this one.
     QObject::connect(this->parent(), SIGNAL(ns1_statusSignal(bool)), this, SLOT(ns1_ButtonSignal(bool) ));
     //this->repaint();
+    this->editDialog->setPowerState(this->sw);
     this->editDialog->setWindow(this->fxName);
     emit setEditDialog(this->editDialog);
     emit this->mod_statusSignal(true);             // hide old edit page.
@@ -625,6 +656,7 @@ void stompBox::setButton(QString hex0, QString hex1, QString hex2, QString hex3)
     this->hex1 = hex1;
     this->hex2 = hex2;
     this->hex3 = hex3;
+    this->editDialog->setPowerAddress(hex0, hex1, hex2, hex3);
 }
 
 void stompBox::updateButton(QString hex0, QString hex1, QString hex2, QString hex3)
@@ -634,6 +666,10 @@ void stompBox::updateButton(QString hex0, QString hex1, QString hex2, QString he
         SysxIO *sysxIO = &AppServices::instance().sysx();
         int value = sysxIO->getSourceValue(hex0, hex1, hex2, hex3);
         this->sw = value;
+        if(this->editDialog)
+        {
+            this->editDialog->setPowerState(this->sw);
+        }
         update();
     };
 }
@@ -677,6 +713,10 @@ void stompBox::valueChanged(bool value)
 {
     if(hex0!="void" && hex1!="void" &&  hex2!="void" && hex3!="void")
     {
+        if(this->editDialog)
+        {
+            this->editDialog->setPowerState(value);
+        }
         valueChanged(value, this->hex0, this->hex1, this->hex2, this->hex3);
         emit updateStompBoxes();
         if(this->editDialog)

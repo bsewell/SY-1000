@@ -1758,6 +1758,8 @@ void floorBoard::update_structure()
     const int masterLeftX = masterRightX;
 
     QList<QPoint> newFxPos;
+    QList<int> rowCenterByOrder;
+    rowCenterByOrder.reserve(34);
     fxChain = sysxIO->getFileSource("10", hex1, "12", "void");
     _last_chain = fxChain.mid(sysxDataOffset+69, sysxDataOffset+69+34);
     if(_last_chain.size() < 34)
@@ -1784,20 +1786,21 @@ void floorBoard::update_structure()
         if(stomp==21){ab_y_axis = y_axis; ab_rowCenter = rowCenterCurrent; }; // record divider row
         if(stomp==23){y_axis = ab_y_axis; x_axis=ab_end+((ab_count-1)*flowStep); rowCenterCurrent = ab_rowCenter;}; // mixer is same row as divider.
 
-        if     (i==0)                     { newFxPos.append(QPoint(offset+(15*ratio), lev1)); }  // instrument 1 – fixed start positions
-        else if(i==1)                     { newFxPos.append(QPoint(offset+(15*ratio), lev2)); }  // instrument 2
-        else if(i==2)                     { newFxPos.append(QPoint(offset+(15*ratio), lev3)); }  // instrument 3
-        else if(i==3)                     { newFxPos.append(QPoint(offset+(15*ratio), lev4));    x_axis=firstFlowX; y_axis=lev1; rowCenterCurrent=rowCenter1; }  // normal input
-        else if(stomp>27 && incr==0)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev2; rowCenterCurrent=rowCenter2; }  // fill lev2
-        else if(stomp>27 && incr==1)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal1xpos*flowStep)), bal1TopY)); x_axis=flowStep+(bal1xpos*flowStep); y_axis=bal1TopY; rowCenterCurrent=rowCenterBal1; }  // Bal1 out
-        else if(stomp>27 && incr==2)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev3; rowCenterCurrent=rowCenter3; }  // fill lev3
-        else if(stomp>27 && incr==3)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal2xpos*flowStep)), rowCenterBal2 - balancerHalfHeight)); x_axis=flowStep+(bal2xpos*flowStep); y_axis=rowCenterBal2 - balancerHalfHeight; rowCenterCurrent=rowCenterBal2; }  // Bal2 out
-        else if(stomp>27 && incr==4)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev4; rowCenterCurrent=rowCenter4; }  // fill lev4
-        else if(stomp>27 && incr==5)      { newFxPos.append(QPoint(offset+((40*ratio)+(bal3xpos*flowStep)), rowCenterBal3 - balancerHalfHeight)); x_axis=flowStep+(bal3xpos*flowStep); y_axis=rowCenterBal3 - balancerHalfHeight; rowCenterCurrent=rowCenterBal3; }  // Bal3 out
+        if     (i==0)                     { newFxPos.append(QPoint(offset+(15*ratio), lev1)); rowCenterByOrder.append(rowCenter1); }  // instrument 1 – fixed start positions
+        else if(i==1)                     { newFxPos.append(QPoint(offset+(15*ratio), lev2)); rowCenterByOrder.append(rowCenter2); }  // instrument 2
+        else if(i==2)                     { newFxPos.append(QPoint(offset+(15*ratio), lev3)); rowCenterByOrder.append(rowCenter3); }  // instrument 3
+        else if(i==3)                     { newFxPos.append(QPoint(offset+(15*ratio), lev4)); rowCenterByOrder.append(rowCenter4);    x_axis=firstFlowX; y_axis=lev1; rowCenterCurrent=rowCenter1; }  // normal input
+        else if(stomp>27 && incr==0)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY)); rowCenterByOrder.append(rowCenter2);     x_axis=firstFlowX-flowStep; y_axis=lev2; rowCenterCurrent=rowCenter2; }  // fill lev2
+        else if(stomp>27 && incr==1)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal1xpos*flowStep)), bal1TopY)); rowCenterByOrder.append(rowCenterBal1); x_axis=flowStep+(bal1xpos*flowStep); y_axis=bal1TopY; rowCenterCurrent=rowCenterBal1; }  // Bal1 out
+        else if(stomp>27 && incr==2)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY)); rowCenterByOrder.append(rowCenter3);     x_axis=firstFlowX-flowStep; y_axis=lev3; rowCenterCurrent=rowCenter3; }  // fill lev3
+        else if(stomp>27 && incr==3)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal2xpos*flowStep)), rowCenterBal2 - balancerHalfHeight)); rowCenterByOrder.append(rowCenterBal2); x_axis=flowStep+(bal2xpos*flowStep); y_axis=rowCenterBal2 - balancerHalfHeight; rowCenterCurrent=rowCenterBal2; }  // Bal2 out
+        else if(stomp>27 && incr==4)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY)); rowCenterByOrder.append(rowCenter4);     x_axis=firstFlowX-flowStep; y_axis=lev4; rowCenterCurrent=rowCenter4; }  // fill lev4
+        else if(stomp>27 && incr==5)      { newFxPos.append(QPoint(offset+((40*ratio)+(bal3xpos*flowStep)), rowCenterBal3 - balancerHalfHeight)); rowCenterByOrder.append(rowCenterBal3); x_axis=flowStep+(bal3xpos*flowStep); y_axis=rowCenterBal3 - balancerHalfHeight; rowCenterCurrent=rowCenterBal3; }  // Bal3 out
         else
         {
             const int alignedY = topForRowCenter(stomp, rowCenterCurrent);
             const bool isVisibleFxBlock = (stomp >= 4 && stomp <= 27 && stomp != 22);
+            rowCenterByOrder.append(rowCenterCurrent);
             newFxPos.append(QPoint(offset+(x_axis), alignedY + (isVisibleFxBlock ? fxLineBiasY : 0)));
         };
 
@@ -2079,6 +2082,38 @@ void floorBoard::update_structure()
         compactSegmentAfterBalancer(29, 31, false);
         compactSegmentAfterBalancer(31, 33, false);
         compactSegmentAfterBalancer(33, -1, true);
+    }
+
+    // Final invariant: every visible chain block sits on its assigned signal row
+    // after all branch and compaction adjustments so a line always enters and exits it.
+    for(int order = 0; order < qMin(qMin(this->fxPos.size(), this->fx.size()), rowCenterByOrder.size()); ++order)
+    {
+        const int stompId = this->fx.at(order);
+        if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
+        {
+            continue;
+        }
+        if(this->stompBoxes.at(stompId)->y() >= hiddenFlowY - 8)
+        {
+            continue;
+        }
+
+        const QPoint currentPos = this->fxPos.at(order);
+        const int snappedTop = topForRowCenter(stompId, rowCenterByOrder.at(order));
+        const QPoint snappedPos(currentPos.x(), snappedTop);
+        this->fxPos[order] = snappedPos;
+        this->stompBoxes.at(stompId)->setPos(snappedPos);
+    }
+
+    if(dividerChainIndex < this->fxPos.size() && mixerChainIndex < this->fxPos.size())
+    {
+        polygon[13] = fxPos.at(dividerChainIndex)+QPoint(flowMidX, dividerMidY);
+        polygon[14] = fxPos.at(dividerChainIndex)+QPoint(flowMidX, dividerTopY);
+        polygon[15] = fxPos.at(mixerChainIndex)+QPoint(flowMidX, mixerTopY);
+        polygon[16] = fxPos.at(dividerChainIndex)+QPoint(flowMidX, dividerBottomY);
+        polygon[17] = fxPos.at(mixerChainIndex)+QPoint(flowMidX, mixerBottomY);
+        polygon[18] = fxPos.at(mixerChainIndex)+QPoint(flowMidX, mixerMidY);
+        polygon[19] = this->master_pos+QPoint(masterLeftX, masterMidY);
     }
 
     update();

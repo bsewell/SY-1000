@@ -1917,11 +1917,11 @@ void floorBoard::update_structure()
         }
     }
 
-    // BAL nodes must stay on branch risers and keep horizontal spacing from
-    // nearby square FX blocks so icons never overlap after drag/drop.
+    // BAL nodes must stay on branch risers and keep the same minimum side
+    // clearance as the branch spacing from nearby square FX blocks.
     if(polygon.size() >= 14)
     {
-        const int minFxSideGap = qRound(12 * ratio);
+        const int minFxSideGap = qRound(50 * ratio);
         auto placeBalancerOnRiser = [this, ratio, hiddenFlowY, minFxSideGap](int stompId, int riserTopIdx, int riserBottomIdx, int centerPointIdx, int minCenterXBound, int maxCenterXBound) -> bool
         {
             if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))

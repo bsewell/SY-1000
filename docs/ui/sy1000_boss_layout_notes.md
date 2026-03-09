@@ -91,6 +91,15 @@ Recommended layout values from screenshot proportions:
 - Inactive ring: neutral gray.
 - Disabled controls: keep layout; reduce alpha to ~35-45%.
 
+## 5a) Signal-Chain Geometry Rules
+
+- Treat the upper signal chain as a separate geometry system from the lower edit pages.
+- Patch changes may rebuild the upper signal chain; lower-page parameter edits must not disturb upper signal-chain geometry.
+- Balancers must preserve chain order left-to-right: `BAL1`, then `BAL2`, then `BAL3`.
+- Balancers must stay on their branch risers; only the riser can move them.
+- Any balancer icon and any square stomp block on the same vertical band must keep at least `50 px` horizontal clearance edge-to-edge.
+- Reduce available branch span or move the riser before allowing a balancer to overlap an adjacent square FX block.
+
 ## 6) Concrete FloorBoard changes (high impact)
 
 1. Standardize `QGridLayout` spacing/margins in edit pages (`editPage.cpp`) to tokens above.

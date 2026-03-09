@@ -86,6 +86,7 @@ stompBox::stompBox(QWidget *parent, uint id, QString imagePathOn, QString imageP
     Cfont.setStretch(85);
     this->effectLabel->setFont(Cfont);
     this->effectLabel->setText(this->effectType);
+    this->flowLabelText = this->effectType;
     if(this->id>4)
     {
         //this->effectLabel->setFixedSize(45*ratio,10*ratio);
@@ -273,11 +274,14 @@ void stompBox::positionFlowDescriptionLabel(double ratio)
     const QPoint topLeft = this->pos();
     const int visualBottomY = topLeft.y() + visualRect.bottom();
     const int visualCenterX = topLeft.x() + visualRect.center().x();
-    const int textWidth = QFontMetrics(this->effectLabel->font()).horizontalAdvance(this->effectLabel->text());
+    const QFontMetrics metrics(this->effectLabel->font());
+    const int textWidth = metrics.horizontalAdvance(this->flowLabelText);
     const int minWidth = qMax(8, visualRect.width());
-    const int labelWidth = isInputSource ? qMax(minWidth, textWidth + qMax(8, qRound(8 * ratio)))
-                                         : minWidth;
+    const int labelWidth = isInputSource
+        ? qMax(minWidth, textWidth + qMax(8, qRound(8 * ratio)))
+        : qMax(minWidth, qMin(textWidth + qMax(10, qRound(10 * ratio)), qRound(84 * ratio)));
     const int labelX = visualCenterX - (labelWidth / 2);
+    this->effectLabel->setText(metrics.elidedText(this->flowLabelText, Qt::ElideRight, labelWidth));
     this->effectLabel->setGeometry(labelX, visualBottomY + gap,
                                    labelWidth, labelHeight);
     this->effectLabel->setAlignment(flowLabelAlignment);
@@ -297,6 +301,7 @@ void stompBox::updateFlowLabelLayoutDefaults()
         this->effectLabel->setProperty("fxId", QVariant::fromValue<int>(this->id));
         if(hidesFlowDescriptionLabel(this->id))
         {
+            this->flowLabelText.clear();
             this->effectLabel->setText(QString());
             this->effectLabel->hide();
         }
@@ -686,9 +691,10 @@ void stompBox::updateLabel(QString hex0, QString hex1, QString hex2, QString hex
         // Input source tiles: show only the type descriptor.
         // The image already colour-codes which instrument it is, so the
         // source prefix is redundant here.
+        this->flowLabelText = valueStr;
         this->effectLabel->setText(valueStr);
     } else {
-        if(id > 4) { valueStr.truncate(10); }
+        this->flowLabelText = valueStr;
         this->effectLabel->setText(valueStr);
     }
 }

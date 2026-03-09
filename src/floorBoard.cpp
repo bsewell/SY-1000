@@ -1860,9 +1860,13 @@ void floorBoard::update_structure()
     polygon.append(fxPos.at(mixerChainIndex)+QPoint(flowMidX, mixerMidY));       // at mixer      18
     polygon.append(this->master_pos+QPoint(masterLeftX, masterMidY));                        // left-mid of MST 19
 
-    // Keep branch riser lines visually clear from the right edge of the
-    // source-FX squares when the user reorders blocks.
-    const int minBranchGap = qRound(50 * ratio);
+    // Keep branch riser lines visually aligned to the same spacing rhythm as
+    // the standard square FX blocks so the right side does not over-stretch.
+    const QRect referenceFxRect = flowRectForId(8);
+    const int standardFxGap = referenceFxRect.isValid()
+        ? qMax(qRound(8 * ratio), flowStep - referenceFxRect.width())
+        : qRound(12 * ratio);
+    const int minBranchGap = standardFxGap;
     auto rightEdgeForId = [flowRectForId](int stompId) -> int
     {
         const QRect flowRect = flowRectForId(stompId);
@@ -1921,10 +1925,6 @@ void floorBoard::update_structure()
     // as the standard gap between adjacent square FX blocks.
     if(polygon.size() >= 14)
     {
-        const QRect referenceFxRect = flowRectForId(8);
-        const int standardFxGap = referenceFxRect.isValid()
-            ? qMax(qRound(8 * ratio), flowStep - referenceFxRect.width())
-            : qRound(12 * ratio);
         const int minFxSideGap = standardFxGap;
         auto placeBalancerOnRiser = [this, ratio, hiddenFlowY, minFxSideGap](int stompId, int riserTopIdx, int riserBottomIdx, int centerPointIdx, int minCenterXBound, int maxCenterXBound) -> bool
         {
@@ -2005,6 +2005,80 @@ void floorBoard::update_structure()
         placeBalancerOnRiser(29, 1, 3, 4, INT_MIN / 4, this->polygon.at(5).x() - minBalancerOrderGap);
         placeBalancerOnRiser(31, 5, 7, 8, this->polygon.at(4).x() + minBalancerOrderGap, this->polygon.at(9).x() - minBalancerOrderGap);
         placeBalancerOnRiser(33, 9, 11, 12, this->polygon.at(8).x() + minBalancerOrderGap, INT_MAX / 4);
+
+        auto compactSegmentAfterBalancer = [this, ratio, hiddenFlowY, standardFxGap](int balancerId, int nextBalancerId, bool shiftTailPolygon) -> void
+        {
+            const int balancerOrder = this->fx.indexOf(balancerId);
+            if(balancerOrder < 0 || balancerId >= this->stompBoxes.size() || !this->stompBoxes.at(balancerId))
+            {
+                return;
+            }
+
+            int segmentEndOrder = this->fx.size() - 1;
+            if(nextBalancerId >= 0)
+            {
+                const int nextOrder = this->fx.indexOf(nextBalancerId);
+                if(nextOrder > balancerOrder)
+                {
+                    segmentEndOrder = nextOrder - 1;
+                }
+            }
+
+            int firstVisibleOrder = -1;
+            for(int order = balancerOrder + 1; order <= segmentEndOrder && order < this->fx.size(); ++order)
+            {
+                const int stompId = this->fx.at(order);
+                if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
+                {
+                    continue;
+                }
+                if(this->stompBoxes.at(stompId)->y() >= hiddenFlowY - 8)
+                {
+                    continue;
+                }
+                firstVisibleOrder = order;
+                break;
+            }
+
+            if(firstVisibleOrder < 0 || firstVisibleOrder >= this->fxPos.size())
+            {
+                return;
+            }
+
+            const QRect balancerRect = this->stompBoxes.at(balancerId)->flowLayoutBounds(ratio);
+            const int actualLeft = this->fxPos.at(firstVisibleOrder).x();
+            const int desiredLeft = balancerRect.right() + standardFxGap + 1;
+            const int shiftX = desiredLeft - actualLeft;
+            if(shiftX == 0)
+            {
+                return;
+            }
+
+            const int maxOrder = qMin(segmentEndOrder, this->fxPos.size() - 1);
+            for(int order = firstVisibleOrder; order <= maxOrder; ++order)
+            {
+                this->fxPos[order] += QPoint(shiftX, 0);
+                const int stompId = this->fx.at(order);
+                if(stompId >= 0 && stompId < this->stompBoxes.size() && this->stompBoxes.at(stompId))
+                {
+                    this->stompBoxes.at(stompId)->setPos(this->fxPos.at(order));
+                }
+            }
+
+            if(shiftTailPolygon && 34 < this->stompBoxes.size() && this->stompBoxes.at(34))
+            {
+                this->master_pos += QPoint(shiftX, 0);
+                this->stompBoxes.at(34)->setPos(this->master_pos);
+                for(int idx = 13; idx < this->polygon.size(); ++idx)
+                {
+                    this->polygon[idx] += QPoint(shiftX, 0);
+                }
+            }
+        };
+
+        compactSegmentAfterBalancer(29, 31, false);
+        compactSegmentAfterBalancer(31, 33, false);
+        compactSegmentAfterBalancer(33, -1, true);
     }
 
     update();

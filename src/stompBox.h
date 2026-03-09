@@ -153,6 +153,7 @@ private:
     QString stompOrderHex;
     int last_value;
     QString effectType;
+    QString flowLabelText;
     //customControlLabel* effectLabel;
     QLabel* effectLabel;
     int flowLabelGapPx = 10;

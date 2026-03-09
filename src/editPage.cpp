@@ -203,6 +203,23 @@ void editPage::hideInlinePowerControl()
     this->powerSwitchControl->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
+void editPage::clearPowerControl()
+{
+    this->powerSwitchControl = nullptr;
+    this->powerHex0 = "void";
+    this->powerHex1 = "void";
+    this->powerHex2 = "void";
+    this->powerHex3 = "void";
+}
+
+void editPage::setExternalPowerAddress(QString hex0, QString hex1, QString hex2, QString hex3)
+{
+    this->externalPowerHex0 = hex0;
+    this->externalPowerHex1 = hex1;
+    this->externalPowerHex2 = hex2;
+    this->externalPowerHex3 = hex3;
+}
+
 void editPage::paintEvent(QPaintEvent *)
 {
     /*DRAWS RED BACKGROUND FOR DEBUGGING PURPOSE */
@@ -994,6 +1011,21 @@ void editPage::compactCurrentStackField(int horizontalSpacing, int verticalSpaci
     this->stackFieldLockWidth = true;
 }
 
+void editPage::setStackCurrentIndex(int id, int index)
+{
+    if(id < 0 || id >= this->stackedFields.size() || this->stackedFields.at(id) == nullptr)
+    {
+        return;
+    }
+
+    if(index < 0 || index >= this->stackedFields.at(id)->count())
+    {
+        return;
+    }
+
+    this->stackedFields.at(id)->setCurrentIndex(index);
+}
+
 void editPage::addStackField()
 {
     this->stackFieldMode = false;
@@ -1021,15 +1053,30 @@ void editPage::updateDisplay(QString text)
 
 void editPage::syncPowerState()
 {
-    if(this->powerSwitchControl == nullptr ||
-       this->powerHex0 == "void" || this->powerHex1 == "void" ||
-       this->powerHex2 == "void" || this->powerHex3 == "void")
+    QString activeHex0 = this->powerHex0;
+    QString activeHex1 = this->powerHex1;
+    QString activeHex2 = this->powerHex2;
+    QString activeHex3 = this->powerHex3;
+    QWidget *exemptControl = this->powerSwitchControl;
+
+    if(activeHex0 == "void" || activeHex1 == "void" ||
+       activeHex2 == "void" || activeHex3 == "void")
+    {
+        activeHex0 = this->externalPowerHex0;
+        activeHex1 = this->externalPowerHex1;
+        activeHex2 = this->externalPowerHex2;
+        activeHex3 = this->externalPowerHex3;
+        exemptControl = nullptr;
+    }
+
+    if(activeHex0 == "void" || activeHex1 == "void" ||
+       activeHex2 == "void" || activeHex3 == "void")
     {
         return;
     }
 
     SysxIO *sysxIO = SysxIO::Instance();
-    const bool enabled = (sysxIO->getSourceValue(powerHex0, powerHex1, powerHex2, powerHex3) > 0);
+    const bool enabled = (sysxIO->getSourceValue(activeHex0, activeHex1, activeHex2, activeHex3) > 0);
     const QList<QWidget*> &controls = this->managedControls;
     for(QWidget *widget : controls)
     {
@@ -1038,7 +1085,7 @@ void editPage::syncPowerState()
             continue;
         }
 
-        if(widget == this->powerSwitchControl)
+        if(widget == exemptControl)
         {
             widget->setEnabled(true);
             continue;

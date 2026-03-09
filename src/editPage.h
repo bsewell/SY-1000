@@ -39,6 +39,8 @@ public:
     QString powerAddress2() const;
     QString powerAddress3() const;
     void hideInlinePowerControl();
+    void clearPowerControl();
+    void setExternalPowerAddress(QString hex0, QString hex1, QString hex2, QString hex3);
     
     void addParaEQ(int row, int column, int rowSpan, int columnSpan,
                    QString hex0 = "void",
@@ -164,6 +166,7 @@ public:
                           Qt::Alignment alignment = Qt::AlignCenter);
     void newStackField(int id, Qt::Alignment alignment = Qt::AlignTop | Qt::AlignLeft);
     void compactCurrentStackField(int horizontalSpacing, int verticalSpacing = -1);
+    void setStackCurrentIndex(int id, int index);
     void addStackField();
 
 protected:
@@ -216,6 +219,10 @@ private:
     QString powerHex1 = "void";
     QString powerHex2 = "void";
     QString powerHex3 = "void";
+    QString externalPowerHex0 = "void";
+    QString externalPowerHex1 = "void";
+    QString externalPowerHex2 = "void";
+    QString externalPowerHex3 = "void";
     int groupBoxPresetMinimumHeight(const QString &preset) const;
 };
 

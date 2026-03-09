@@ -105,7 +105,7 @@ void soundsource_inst1::setEditPages()
     editDetails()->page()->newStackField(10, Qt::AlignVCenter | Qt::AlignLeft);
     editDetails()->page()->addStaticTabBar(0, 0, 1, 1,
                                            QStringList() << "COMMON" << "ALT TUNE" << "OSC" << "FILTER" << "AMP" << "LFO1" << "LFO2" << "SEQ" << "LAYER",
-                                           QList<int>() << 6 << 5 << 0 << 1 << 7 << 2 << 8 << 3 << 4,
+                                           QList<int>() << 7 << 6 << 0 << 1 << 8 << 2 << 9 << 3 << 5,
                                            "boss_inst");
     editDetails()->page()->addStackField();
     editDetails()->page()->addStackControl();
@@ -557,6 +557,7 @@ void soundsource_inst1::setEditPages()
     editDetails()->page()->addKnob(2, 0, 1, 1, "10", hex1, "16", "39", "normal_ratio1.25");  // fade time
     editDetails()->page()->addKnob(2, 1, 1, 1, "10", hex1, "16", "3A", "normal_ratio1.25");  // sync
     editDetails()->page()->addStackField();
+    editDetails()->page()->setStackCurrentIndex(1, 7);
 
 
     // *********************************************************************************************************** OSC SYNTH ***********************
@@ -1022,6 +1023,7 @@ void soundsource_inst1::setEditPages()
         editDetails()->page()->addGroupBox(0, 0, 1, 1);
     }
     editDetails()->page()->addStackField();
+    editDetails()->page()->setStackCurrentIndex(4, 3);
 
 
     // *********************************************************************************************************** ACOUSTIC GUITAR ********************
@@ -1540,6 +1542,7 @@ void soundsource_inst1::setEditPages()
 
     };
 
+    editDetails()->page()->clearPowerControl();
     editDetails()->addPage();
 };
 

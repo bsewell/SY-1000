@@ -72,8 +72,19 @@ editWindow::editWindow(QWidget *parent)
         this->image = QPixmap(mesh);
     };
 
+    this->headerBar = new QWidget;
+    this->headerBar->setObjectName("editHeaderBar");
+
     this->title = new QLabel;
     this->title->setObjectName("title");
+    QFont titleFont = this->title->font();
+    titleFont.setPixelSize(qRound(18 * ratio));
+    titleFont.setBold(true);
+    this->title->setFont(titleFont);
+    this->title->setStyleSheet("color: white;");
+
+    this->headerPowerButton = new customSwitch(false, this, "void", "void", "void", "void", ":/images/ampswitch.png");
+    this->headerPowerButton->hide();
 
     this->comboBoxLabel = new QLabel(tr("Select"));
     this->comboBoxLabel->setObjectName("selectlabel");
@@ -233,6 +244,9 @@ editWindow::editWindow(QWidget *parent)
     buttonLayout->addLayout(bottom4buttonLayout);
 
     QHBoxLayout *headerLayout = new QHBoxLayout;
+    headerLayout->setContentsMargins(qRound(5*ratio), qRound(4*ratio), qRound(6*ratio), qRound(4*ratio));
+    headerLayout->setSpacing(qRound(6*ratio));
+    headerLayout->addWidget(this->headerPowerButton, 0, Qt::AlignLeft | Qt::AlignVCenter);
     headerLayout->addWidget(this->title);
     headerLayout->addStretch();
     headerLayout->addWidget(this->comboBoxLabel);
@@ -241,14 +255,14 @@ editWindow::editWindow(QWidget *parent)
     headerLayout->addLayout(buttonLayout);
     headerLayout->addStretch();
     headerLayout->addWidget(this->closeButton);
-    headerLayout->addSpacing(20*ratio);
+    this->headerBar->setLayout(headerLayout);
 
     this->pagesWidget = new QStackedWidget;
 
     QHBoxLayout *pagesLayout = new QHBoxLayout;
     pagesLayout->setContentsMargins(0, 0, 0, 0);
     pagesLayout->setSpacing(0);
-    pagesLayout->addSpacing(singleWindow ? qRound(2*ratio) : qRound(14*ratio));
+    pagesLayout->addSpacing(0);
     pagesLayout->addWidget(this->pagesWidget, 0, Qt::AlignTop | Qt::AlignLeft);
     if(!singleWindow)
     {
@@ -258,8 +272,8 @@ editWindow::editWindow(QWidget *parent)
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(0);
-    mainLayout->addLayout(headerLayout);
-    mainLayout->addSpacing(8*ratio);
+    mainLayout->addWidget(this->headerBar);
+    mainLayout->addSpacing(0);
     mainLayout->addLayout(pagesLayout);
     mainLayout->addStretch();
     setLayout(mainLayout);
@@ -286,6 +300,8 @@ editWindow::editWindow(QWidget *parent)
     QObject::connect(this->assign8_Button, SIGNAL(mouseReleased()), this, SLOT(assign8_paste()));*/
 
     QObject::connect(this->closeButton, SIGNAL(mousePressed()), this, SLOT(hide()));
+    QObject::connect(this->headerPowerButton, SIGNAL(valueChanged(bool, QString, QString, QString, QString)),
+                     this, SLOT(headerPowerChanged(bool, QString, QString, QString, QString)));
 
     QObject::connect(this, SIGNAL( closeWindow() ), this, SLOT(hide()));
 
@@ -313,6 +329,8 @@ editWindow::editWindow(QWidget *parent)
     this->assign6_Button->hide();
     this->assign7_Button->hide();
     this->assign8_Button->hide();
+    this->comboBoxLabel->hide();
+    refreshHeaderBar();
 }
 
 void editWindow::paintEvent(QPaintEvent *)
@@ -346,6 +364,7 @@ editWindow::~editWindow()
 void editWindow::BrushColor(QBrush setBrush){
 
     this->setBrush = setBrush;
+    refreshHeaderBar();
 }
 
 void editWindow::setLSB(QString hex1, QString hex2)
@@ -354,10 +373,26 @@ void editWindow::setLSB(QString hex1, QString hex2)
     this->hex2 = hex2;
 }
 
+void editWindow::setPowerAddress(QString hex0, QString hex1, QString hex2, QString hex3)
+{
+    this->explicitPowerHex0 = hex0;
+    this->explicitPowerHex1 = hex1;
+    this->explicitPowerHex2 = hex2;
+    this->explicitPowerHex3 = hex3;
+}
+
+void editWindow::setPowerState(bool enabled)
+{
+    this->explicitPowerState = enabled;
+    this->explicitPowerStateValid = true;
+}
+
 void editWindow::setWindow(QString title)
 {
     this->title->setText(title);
     this->pagesWidget->setCurrentIndex(0);
+    configureHeaderPower(qobject_cast<editPage*>(this->pagesWidget->currentWidget()));
+    refreshHeaderBar();
 }
 
 QString editWindow::getTitle()
@@ -381,6 +416,16 @@ void editWindow::addPage(QString area, QString hex1, QString hex2, QString hex3,
 
     QObject::connect(editPages.last(), SIGNAL( updateSignal() ),
                      this, SIGNAL( updateSignal() ));
+    if(this->explicitPowerHex0 != "void" &&
+       this->explicitPowerHex1 != "void" &&
+       this->explicitPowerHex2 != "void" &&
+       this->explicitPowerHex3 != "void")
+    {
+        editPages.last()->setExternalPowerAddress(this->explicitPowerHex0,
+                                                  this->explicitPowerHex1,
+                                                  this->explicitPowerHex2,
+                                                  this->explicitPowerHex3);
+    }
 
     // if (this->area != "Structure" || this->temp_hex1.isEmpty() || this->temp_hex1.contains("void"))
     // {
@@ -458,9 +503,10 @@ void editWindow::addPage(QString area, QString hex1, QString hex2, QString hex3,
 
 void editWindow::valueChanged(int index)
 {
+    this->pageIndex = index;
     if(hex1 != "void" && hex2 != "void")
     {
-        this->pageIndex = index;
+        pageUpdateSignal();
     };
 }
 
@@ -511,11 +557,109 @@ void editWindow::pageUpdateSignal()
             if(sysxIO->getSourceValue("10", hexx, "0B", "40")>0) this->pageComboBox->setTabTextColor(15, QColor(255,108,0));
         };
     };
+
+    editPage *activePage = qobject_cast<editPage*>(this->pagesWidget->currentWidget());
+    configureHeaderPower(activePage);
 }
 
 editPage* editWindow::page()
 {
     return this->tempPage;
+}
+
+void editWindow::refreshHeaderBar()
+{
+    QColor color = this->setBrush.color();
+    if(!color.isValid())
+    {
+        color = QColor(80, 80, 80);
+    }
+
+    const QString headerStyle = QString(
+        "QWidget#editHeaderBar { background-color: rgba(%1, %2, %3, 210); }"
+        "QTabBar::tab { color: rgba(255,255,255,190); background: transparent; padding: 5px 10px; font-weight: 700; }"
+        "QTabBar::tab:selected { color: rgb(255,255,255); border-bottom: 3px solid rgb(54, 214, 255); }"
+        "QTabBar::tab:hover { color: rgb(255,255,255); }")
+        .arg(color.red()).arg(color.green()).arg(color.blue());
+    this->headerBar->setStyleSheet(headerStyle);
+    this->headerPowerButton->setAccentColor(color);
+}
+
+void editWindow::configureHeaderPower(editPage *page)
+{
+    if(this->explicitPowerHex0 != "void" &&
+       this->explicitPowerHex1 != "void" &&
+       this->explicitPowerHex2 != "void" &&
+       this->explicitPowerHex3 != "void")
+    {
+        this->headerPowerHex0 = this->explicitPowerHex0;
+        this->headerPowerHex1 = this->explicitPowerHex1;
+        this->headerPowerHex2 = this->explicitPowerHex2;
+        this->headerPowerHex3 = this->explicitPowerHex3;
+
+        bool enabled = this->explicitPowerState;
+        if(!this->explicitPowerStateValid)
+        {
+            SysxIO *sysxIO = SysxIO::Instance();
+            enabled = (sysxIO->getSourceValue(headerPowerHex0, headerPowerHex1, headerPowerHex2, headerPowerHex3) > 0);
+        }
+        this->headerPowerButton->setValue(enabled);
+        this->headerPowerButton->show();
+        return;
+    }
+
+    editPage *powerPage = page;
+    if(powerPage == nullptr || !powerPage->hasPowerControl())
+    {
+        for(editPage *candidate : this->editPages)
+        {
+            if(candidate != nullptr && candidate->hasPowerControl())
+            {
+                powerPage = candidate;
+                break;
+            }
+        }
+    }
+
+    if(powerPage == nullptr || !powerPage->hasPowerControl())
+    {
+        this->headerPowerHex0 = "void";
+        this->headerPowerHex1 = "void";
+        this->headerPowerHex2 = "void";
+        this->headerPowerHex3 = "void";
+        this->headerPowerButton->hide();
+        return;
+    }
+
+    this->headerPowerHex0 = powerPage->powerAddress0();
+    this->headerPowerHex1 = powerPage->powerAddress1();
+    this->headerPowerHex2 = powerPage->powerAddress2();
+    this->headerPowerHex3 = powerPage->powerAddress3();
+    powerPage->hideInlinePowerControl();
+
+    SysxIO *sysxIO = SysxIO::Instance();
+    const bool enabled = (sysxIO->getSourceValue(headerPowerHex0, headerPowerHex1, headerPowerHex2, headerPowerHex3) > 0);
+    this->headerPowerButton->setValue(enabled);
+    this->headerPowerButton->show();
+}
+
+void editWindow::headerPowerChanged(bool value, QString hex0, QString hex1, QString hex2, QString hex3)
+{
+    Q_UNUSED(hex0);
+    Q_UNUSED(hex1);
+    Q_UNUSED(hex2);
+    Q_UNUSED(hex3);
+
+    SysxIO *sysxIO = SysxIO::Instance();
+    if(this->headerPowerHex0 == "void" || this->headerPowerHex1 == "void" ||
+       this->headerPowerHex2 == "void" || this->headerPowerHex3 == "void")
+    {
+        return;
+    }
+
+    sysxIO->setFileSource(headerPowerHex0, headerPowerHex1, headerPowerHex2, headerPowerHex3, value ? "01" : "00");
+    emit dialogUpdateSignal();
+    emit updateSignal();
 }
 
 void editWindow::patchPos(int pos, int len, QString t_hex1, QString t_hex3)

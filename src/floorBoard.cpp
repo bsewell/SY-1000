@@ -1882,6 +1882,8 @@ void floorBoard::update_structure()
         return flowRect.center().x();
     };
 
+    const int minBalancerOrderGap = qRound(24 * ratio);
+
     if(polygon.size() >= 12)
     {
         const int branch1SourceRight = qMax(rightEdgeForId(8), rightEdgeForId(9));   // FX1/FX2
@@ -1893,6 +1895,7 @@ void floorBoard::update_structure()
             {
                 branch1X = qMax(branch1X, bal1CenterX);
             }
+            branch1X = qMin(branch1X, polygon.at(5).x() - minBalancerOrderGap);
             polygon[1].setX(branch1X);
             polygon[3].setX(branch1X);
         }
@@ -1906,6 +1909,9 @@ void floorBoard::update_structure()
             {
                 branch2X = qMax(branch2X, bal2CenterX);
             }
+            branch2X = qBound(polygon.at(4).x() + minBalancerOrderGap,
+                              branch2X,
+                              polygon.at(9).x() - minBalancerOrderGap);
             polygon[5].setX(branch2X);
             polygon[7].setX(branch2X);
         }
@@ -1916,7 +1922,7 @@ void floorBoard::update_structure()
     if(polygon.size() >= 14)
     {
         const int minFxSideGap = qRound(12 * ratio);
-        auto placeBalancerOnRiser = [this, ratio, hiddenFlowY, minFxSideGap](int stompId, int riserTopIdx, int riserBottomIdx, int centerPointIdx) -> bool
+        auto placeBalancerOnRiser = [this, ratio, hiddenFlowY, minFxSideGap](int stompId, int riserTopIdx, int riserBottomIdx, int centerPointIdx, int minCenterXBound, int maxCenterXBound) -> bool
         {
             if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
             {
@@ -1968,6 +1974,9 @@ void floorBoard::update_structure()
                 }
             }
 
+            minCenterX = qMax(minCenterX, minCenterXBound);
+            maxCenterX = qMin(maxCenterX, maxCenterXBound);
+
             if(minCenterX <= maxCenterX)
             {
                 centerX = qBound(minCenterX, centerX, maxCenterX);
@@ -1989,9 +1998,9 @@ void floorBoard::update_structure()
             return true;
         };
 
-        placeBalancerOnRiser(29, 1, 3, 4);
-        placeBalancerOnRiser(31, 5, 7, 8);
-        placeBalancerOnRiser(33, 9, 11, 12);
+        placeBalancerOnRiser(29, 1, 3, 4, INT_MIN / 4, this->polygon.at(5).x() - minBalancerOrderGap);
+        placeBalancerOnRiser(31, 5, 7, 8, this->polygon.at(4).x() + minBalancerOrderGap, this->polygon.at(9).x() - minBalancerOrderGap);
+        placeBalancerOnRiser(33, 9, 11, 12, this->polygon.at(8).x() + minBalancerOrderGap, INT_MAX / 4);
     }
 
     update();

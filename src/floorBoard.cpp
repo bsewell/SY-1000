@@ -1917,11 +1917,15 @@ void floorBoard::update_structure()
         }
     }
 
-    // BAL nodes must stay on branch risers and keep the same minimum side
-    // clearance as the branch spacing from nearby square FX blocks.
+    // BAL nodes must stay on branch risers and keep the same side clearance
+    // as the standard gap between adjacent square FX blocks.
     if(polygon.size() >= 14)
     {
-        const int minFxSideGap = qRound(50 * ratio);
+        const QRect referenceFxRect = flowRectForId(8);
+        const int standardFxGap = referenceFxRect.isValid()
+            ? qMax(qRound(8 * ratio), flowStep - referenceFxRect.width())
+            : qRound(12 * ratio);
+        const int minFxSideGap = standardFxGap;
         auto placeBalancerOnRiser = [this, ratio, hiddenFlowY, minFxSideGap](int stompId, int riserTopIdx, int riserBottomIdx, int centerPointIdx, int minCenterXBound, int maxCenterXBound) -> bool
         {
             if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))

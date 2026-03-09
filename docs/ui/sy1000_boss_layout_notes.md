@@ -97,7 +97,7 @@ Recommended layout values from screenshot proportions:
 - Patch changes may rebuild the upper signal chain; lower-page parameter edits must not disturb upper signal-chain geometry.
 - Balancers must preserve chain order left-to-right: `BAL1`, then `BAL2`, then `BAL3`.
 - Balancers must stay on their branch risers; only the riser can move them.
-- Any balancer icon and any square stomp block on the same vertical band must keep at least `50 px` horizontal clearance edge-to-edge.
+- Any balancer icon and any square stomp block on the same vertical band must keep the same horizontal clearance as the standard gap between adjacent stomp-box squares.
 - Reduce available branch span or move the riser before allowing a balancer to overlap an adjacent square FX block.
 
 ## 6) Concrete FloorBoard changes (high impact)

@@ -27,6 +27,7 @@
 #include <QWidget>
 #include <QPixmap>
 #include <QMimeData>
+#include <QTimer>
 #include "stompBox.h"
 #include "menuPage.h"
 #include "editWindow.h"
@@ -59,6 +60,7 @@ public slots:
     void setWidth(int dist);
     void setCollapse();
     void updateStompBoxes();
+    void scheduleStructureRefresh();
     void setEditDialog(editWindow* editDialog);
     void menuButtonSignal();
     void structure(bool value);
@@ -162,6 +164,8 @@ private:
     int B_channel;
     QList<QString> _lastDrop;
     QList<QString> _last_chain;
+    QString _lastStructureSignature;
+    QTimer *structureRefreshTimer;
     bool dropIndicatorVisible = false;
     int dropIndicatorX = 0;
     int dropIndicatorTopY = 0;

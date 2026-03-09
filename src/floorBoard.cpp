@@ -132,9 +132,12 @@ floorBoard::floorBoard(QWidget *parent,
 
     this->editDialog = new editWindow(this);
     this->oldDialog = this->editDialog;
+    this->structureRefreshTimer = new QTimer(this);
+    this->structureRefreshTimer->setSingleShot(true);
     //QObject::connect(this, SIGNAL( pageUpdateSignal() ), this->editDialog, SIGNAL(  update() ));
 
     QObject::connect(sysxIO, SIGNAL(updateSignal()), this, SIGNAL(updateSignal()));
+    QObject::connect(this->structureRefreshTimer, SIGNAL(timeout()), this, SLOT(updateStompBoxes()));
 
     QObject::connect(this, SIGNAL( resizeSignal(QRect) ), bankList, SLOT( updateSize(QRect) ) );
     QObject::connect(display, SIGNAL(connectedSignal()), bankList, SLOT(connectedSignal()));
@@ -142,7 +145,7 @@ floorBoard::floorBoard(QWidget *parent,
     QObject::connect(this, SIGNAL(setDisplayPos(QPoint)), display, SLOT(setPos(QPoint)));
     //QObject::connect(this, SIGNAL(setFloorPanelBarPos(QPoint)), panelBar, SLOT(setPos(QPoint)));
     QObject::connect(this->parent(), SIGNAL(updateSignal()), this, SIGNAL(updateSignal()));
-    QObject::connect(this, SIGNAL(updateSignal()), this, SLOT(updateStompBoxes()));
+    QObject::connect(this, SIGNAL(updateSignal()), this, SLOT(scheduleStructureRefresh()));
     QObject::connect(sysxIO, SIGNAL(updateSignal()), this, SLOT(updateDrop()));
     //QObject::connect(this, SIGNAL(updateSignal()), this, SLOT(update_structure()));
     QObject::connect(bankList, SIGNAL(patchSelectSignal(int, int)), display, SLOT(patchSelectSignal(int, int)));
@@ -1436,14 +1439,32 @@ void floorBoard::structure(bool value)
     Q_UNUSED(value);
 }
 
+void floorBoard::scheduleStructureRefresh()
+{
+    if(!this->structureRefreshTimer)
+    {
+        updateStompBoxes();
+        return;
+    }
+
+    // Patch loads arrive as a burst of SysEx updates. Refresh the upper flow only
+    // after that burst settles so the signal chain does not re-layout progressively.
+    this->structureRefreshTimer->start(180);
+}
+
 void floorBoard::updateStompBoxes()
 {
     QString hex1 = "00";
+    QString sys1 = "04";
     Preferences *preferences = Preferences::Instance();
-    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; };
+    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; sys1 = "0B"; };
 
     SysxIO *sysxIO = SysxIO::Instance();
     QList<QString> fxChain = sysxIO->getFileSource("10", hex1, "12", "void");
+    if(fxChain.size() < (sysxDataOffset + 69 + 34))
+    {
+        return;
+    }
 
     MidiTable *midiTable = MidiTable::Instance();
     QList<QString> stompOrder;
@@ -1462,7 +1483,19 @@ void floorBoard::updateStompBoxes()
         stompOrder.append(stomp);
         //debug.append( stomp + " ");
     };
-    setStomps(stompOrder);
+    const QList<QString> normalizedOrder = normalizeInputOrder(stompOrder);
+    const QString structureSignature =
+        normalizedOrder.join(",") +
+        "|" + QString::number(sysxIO->getSourceValue("00", sys1, "00", "34")) +
+        "|" + QString::number(sysxIO->getSourceValue("00", sys1, "00", "35"));
+
+    if(!this->fxPos.isEmpty() && !this->fx.isEmpty() && this->_lastStructureSignature == structureSignature)
+    {
+        return;
+    }
+
+    this->_lastStructureSignature = structureSignature;
+    setStomps(normalizedOrder);
     update_structure();
     emit master_pos_Signal(master_pos);
     //std::string st = QString("Stomp order = "+debug).toStdString();
@@ -1984,5 +2017,5 @@ void floorBoard::updateDrop()
     {
         sysxIO->setFileSource("10", hex1, "12", "45", hexData);
     };
-    updateStompBoxes();
+    scheduleStructureRefresh();
 }

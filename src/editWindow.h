@@ -30,6 +30,7 @@
 #include <QCloseEvent>
 #include "editPage.h"
 #include "customControlLabel.h"
+#include "customSwitch.h"
 
 class editWindow : public QDialog
 {
@@ -39,6 +40,8 @@ public:
     editWindow(QWidget *parent = 0);
     ~editWindow();
     void setLSB(QString hex1, QString hex2);
+    void setPowerAddress(QString hex0, QString hex1, QString hex2, QString hex3);
+    void setPowerState(bool enabled);
     void setWindow(QString title);
     QString getTitle();
     void addPage(QString area = "Structure", QString hex1 = "void", QString hex2 = "void", QString hex3 = "void", QString hex4 = "void" );
@@ -73,6 +76,7 @@ public slots:
     void assign7_paste();
     void assign8_paste();
     void assign_paste();
+    void headerPowerChanged(bool value, QString hex0, QString hex1, QString hex2, QString hex3);
 
 protected:
     void paintEvent(QPaintEvent *event);
@@ -85,6 +89,7 @@ private:
     QString hex3;
     QString area;
     int pages;
+    QWidget* headerBar;
     QLabel* title;
     QLabel* comboBoxLabel;
     QStackedWidget* pagesWidget;
@@ -106,6 +111,7 @@ private:
     customControlLabel* assign7_Button;
     customControlLabel* assign8_Button;
     customControlLabel* closeButton;
+    customSwitch* headerPowerButton;
     editPage* tempPage;
     QList<editPage*> editPages;
     int position;
@@ -117,6 +123,18 @@ private:
     int length_int;
     int pageIndex;
     QBrush setBrush = Qt::white;
+    QString headerPowerHex0 = "void";
+    QString headerPowerHex1 = "void";
+    QString headerPowerHex2 = "void";
+    QString headerPowerHex3 = "void";
+    QString explicitPowerHex0 = "void";
+    QString explicitPowerHex1 = "void";
+    QString explicitPowerHex2 = "void";
+    QString explicitPowerHex3 = "void";
+    bool explicitPowerState = false;
+    bool explicitPowerStateValid = false;
+    void refreshHeaderBar();
+    void configureHeaderPower(editPage *page);
 };
 
 #endif // EDITWINDOW_H

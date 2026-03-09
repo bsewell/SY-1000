@@ -33,6 +33,12 @@ class editPage : public QWidget
 
 public:
     editPage(QWidget *parent = 0);
+    bool hasPowerControl() const;
+    QString powerAddress0() const;
+    QString powerAddress1() const;
+    QString powerAddress2() const;
+    QString powerAddress3() const;
+    void hideInlinePowerControl();
     
     void addParaEQ(int row, int column, int rowSpan, int columnSpan,
                    QString hex0 = "void",
@@ -98,6 +104,11 @@ public:
                    QString hex3 = "void",
                    QString direction = "bottom",
                    Qt::Alignment alignment = Qt::AlignCenter);
+    void addStaticTabBar(int row, int column, int rowSpan, int columnSpan,
+                         const QStringList &labels,
+                         const QList<int> &mappedIndexes = QList<int>(),
+                         QString direction = "bottom",
+                         Qt::Alignment alignment = Qt::AlignCenter);
     void addMultiComboBox(int row, int column, int rowSpan, int columnSpan,
                           QString hex1 = "void",
                           QString hex2 = "void",
@@ -140,15 +151,19 @@ public:
                  int lenght = 45,
                  Qt::Alignment alignment = Qt::AlignCenter);
     void addLabel(int row, int column, int rowSpan, int columnSpan, QString text, Qt::Alignment alignment = Qt::AlignCenter);
+    void addDivider(int row, int column, int rowSpan, int columnSpan, Qt::Alignment alignment = Qt::AlignVCenter | Qt::AlignLeft);
     void newGroupBox(QString title, Qt::Alignment alignment = Qt::AlignTop | Qt::AlignLeft);
+    void newGroupBox(QString title, QString preset, Qt::Alignment alignment = Qt::AlignTop | Qt::AlignLeft);
     void addGroupBox(int row, int column, int rowSpan, int columnSpan);
     void setGridLayout();
     void newStackControl(int id);
+    void linkStackControl(int id);
     void addStackControl();
     void insertStackField(int id,
                           int row, int column, int rowSpan, int columnSpan,
                           Qt::Alignment alignment = Qt::AlignCenter);
     void newStackField(int id, Qt::Alignment alignment = Qt::AlignTop | Qt::AlignLeft);
+    void compactCurrentStackField(int horizontalSpacing, int verticalSpacing = -1);
     void addStackField();
 
 protected:
@@ -168,6 +183,10 @@ signals:
 
 private:
     void registerManagedControl(QWidget *widget);
+    QGridLayout *targetGridLayout() const;
+    void applyControlCellMetrics(QWidget *widget, QGridLayout *grid, int row, int rowSpan,
+                                 int column, int columnSpan,
+                                 const QString &direction, int minWidth) const;
     int currentIndex;
     QGridLayout* layout;
     QList<QGridLayout*> groupBoxLayouts;
@@ -185,15 +204,19 @@ private:
     bool stackFieldMode;
     int stackFieldId;
     int stackControlId;
+    QList<int> stackControlIds;
+    bool stackFieldLockWidth;
     QList<int> fieldIndexes;
     int fieldItems;
     QTimer* timer;
     QList<QWidget*> managedControls;
+    QList<int> groupBoxMinHeights;
     QWidget *powerSwitchControl = nullptr;
     QString powerHex0 = "void";
     QString powerHex1 = "void";
     QString powerHex2 = "void";
     QString powerHex3 = "void";
+    int groupBoxPresetMinimumHeight(const QString &preset) const;
 };
 
 #endif // EDITPAGE_H

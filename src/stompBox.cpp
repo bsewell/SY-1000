@@ -718,7 +718,6 @@ void stompBox::valueChanged(bool value)
             this->editDialog->setPowerState(value);
         }
         valueChanged(value, this->hex0, this->hex1, this->hex2, this->hex3);
-        emit updateStompBoxes();
         if(this->editDialog)
         {
             QMetaObject::invokeMethod(this->editDialog, "dialogUpdateSignal", Qt::DirectConnection);

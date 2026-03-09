@@ -137,7 +137,7 @@ floorBoard::floorBoard(QWidget *parent,
     //QObject::connect(this, SIGNAL( pageUpdateSignal() ), this->editDialog, SIGNAL(  update() ));
 
     QObject::connect(sysxIO, SIGNAL(updateSignal()), this, SIGNAL(updateSignal()));
-    QObject::connect(this->structureRefreshTimer, SIGNAL(timeout()), this, SLOT(updateStompBoxes()));
+    QObject::connect(this->structureRefreshTimer, SIGNAL(timeout()), this, SLOT(applyStructureRefresh()));
 
     QObject::connect(this, SIGNAL( resizeSignal(QRect) ), bankList, SLOT( updateSize(QRect) ) );
     QObject::connect(display, SIGNAL(connectedSignal()), bankList, SLOT(connectedSignal()));
@@ -146,7 +146,8 @@ floorBoard::floorBoard(QWidget *parent,
     //QObject::connect(this, SIGNAL(setFloorPanelBarPos(QPoint)), panelBar, SLOT(setPos(QPoint)));
     QObject::connect(this->parent(), SIGNAL(updateSignal()), this, SIGNAL(updateSignal()));
     QObject::connect(this, SIGNAL(updateSignal()), this, SLOT(scheduleStructureRefresh()));
-    QObject::connect(sysxIO, SIGNAL(updateSignal()), this, SLOT(updateDrop()));
+    QObject::connect(this->parent(), SIGNAL(updateSignal()), this, SLOT(schedulePatchStructureRefresh()));
+    QObject::connect(bankList, SIGNAL(updateSignal()), this, SLOT(schedulePatchStructureRefresh()));
     //QObject::connect(this, SIGNAL(updateSignal()), this, SLOT(update_structure()));
     QObject::connect(bankList, SIGNAL(patchSelectSignal(int, int)), display, SLOT(patchSelectSignal(int, int)));
     QObject::connect(bankList, SIGNAL(patchLoadSignal(int, int)), display, SLOT(patchLoadSignal(int, int)));
@@ -184,6 +185,7 @@ floorBoard::floorBoard(QWidget *parent,
     // are never swallowed by overlapping transparent child widgets.
     bankList->raise();
     emit updateSignal();
+    schedulePatchStructureRefresh();
 }
 
 floorBoard::~floorBoard()
@@ -1203,7 +1205,7 @@ void floorBoard::dropEvent(QDropEvent *event)
                 else
                 {
                     sysxIO->setFileSource("10", hex1, "12", "45", hexData);
-                    updateStompBoxes();
+                    scheduleChainStructureRefresh();
                 };
             };
         }
@@ -1447,9 +1449,45 @@ void floorBoard::scheduleStructureRefresh()
         return;
     }
 
+    this->structureRefreshTimer->start(120);
+}
+
+void floorBoard::schedulePatchStructureRefresh()
+{
+    if(!this->structureRefreshTimer)
+    {
+        updateStompBoxes();
+        return;
+    }
+
+    this->structureRefreshNeedsNormalization = true;
     // Patch loads arrive as a burst of SysEx updates. Refresh the upper flow only
     // after that burst settles so the signal chain does not re-layout progressively.
     this->structureRefreshTimer->start(180);
+}
+
+void floorBoard::scheduleChainStructureRefresh()
+{
+    if(!this->structureRefreshTimer)
+    {
+        updateStompBoxes();
+        return;
+    }
+
+    this->structureRefreshNeedsNormalization = true;
+    this->structureRefreshTimer->start(80);
+}
+
+void floorBoard::applyStructureRefresh()
+{
+    if(this->structureRefreshNeedsNormalization)
+    {
+        this->structureRefreshNeedsNormalization = false;
+        updateDrop();
+        return;
+    }
+
+    updateStompBoxes();
 }
 
 void floorBoard::updateStompBoxes()
@@ -2017,5 +2055,5 @@ void floorBoard::updateDrop()
     {
         sysxIO->setFileSource("10", hex1, "12", "45", hexData);
     };
-    scheduleStructureRefresh();
+    updateStompBoxes();
 }

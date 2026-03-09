@@ -61,6 +61,9 @@ public slots:
     void setCollapse();
     void updateStompBoxes();
     void scheduleStructureRefresh();
+    void schedulePatchStructureRefresh();
+    void scheduleChainStructureRefresh();
+    void applyStructureRefresh();
     void setEditDialog(editWindow* editDialog);
     void menuButtonSignal();
     void structure(bool value);
@@ -166,6 +169,7 @@ private:
     QList<QString> _last_chain;
     QString _lastStructureSignature;
     QTimer *structureRefreshTimer;
+    bool structureRefreshNeedsNormalization = false;
     bool dropIndicatorVisible = false;
     int dropIndicatorX = 0;
     int dropIndicatorTopY = 0;

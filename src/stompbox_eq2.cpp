@@ -64,10 +64,8 @@ void stompbox_eq2::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "38";};
 
-    editDetails()->page()->newGroupBox("Effect", Qt::AlignTop | Qt::AlignHCenter);
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
     editDetails()->page()->addParaEQ(0, 1, 2, 4, "10", hex1, hex2, "01");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
 
     editDetails()->addPage();    
 }

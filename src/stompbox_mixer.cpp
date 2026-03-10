@@ -52,11 +52,9 @@ void stompbox_mixer::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
-    editDetails()->page()->newGroupBox("MIXER");
     editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "12", "23", "normal_ratio1.5", "bottom", 60);
     editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, "12", "22", "normal_ratio2", "bottom", 70);
     editDetails()->page()->addKnob(2, 0, 1, 1, "10", hex1, "12", "24", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
     editDetails()->addPage();
 
 }

@@ -66,26 +66,15 @@ void stompbox_ds::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "34";};
 
-    editDetails()->page()->newGroupBox("Effect");
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox("Drive");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "turbo_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.25");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-
-    editDetails()->page()->newGroupBox("Level");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-
-    editDetails()->page()->newGroupBox("Solo");
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "07");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 3, 1, 1);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "02", "turbo_ratio1.5");   // drive
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.25"); // bass
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25"); // treble
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75"); // level
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75"); // direct level
+    editDetails()->page()->addSwitch(0, 6, 1, 1, "10", hex1, hex2, "07");                   // solo sw
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.25"); // solo level
 
     editDetails()->addPage();
 }

@@ -43,7 +43,7 @@ stompbox_ns::stompbox_ns(QWidget *parent)
     setSelectedImage(":/images/effect_select.png");
     setLSB(hex1, hex2);
     brushColor("green");
-    setButton("10", hex1, "39", "00");
+    setButton("10", hex1, hex2, "00");
   /*editDetails()->patchPos(1660, 6, "07", "5A"); */
     setEditPages();
 }
@@ -65,15 +65,10 @@ void stompbox_ns::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "36";};
 
-    editDetails()->page()->newGroupBox("Effect");
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00", "middle");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox("Noise Suppressor");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, hex2, "03", "bottom");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
+    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, hex2, "03", "bottom");
     editDetails()->addPage();
 
 }

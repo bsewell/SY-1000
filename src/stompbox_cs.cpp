@@ -66,22 +66,13 @@ void stompbox_cs::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "33";};
 
-	editDetails()->page()->newGroupBox("Effect");
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");
-	editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-	// COMPRESSOR 
-	editDetails()->page()->newGroupBox("Compressor");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5"); // attack
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5"); // sustain
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5"); // tone
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-
-	editDetails()->page()->newGroupBox("Effect");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "04", "normal_ratio2");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5"); // attack
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5"); // sustain
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5"); // tone
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio2");   // effect level
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75"); // direct level
 
 
 	editDetails()->addPage();

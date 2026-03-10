@@ -53,12 +53,10 @@ void stompbox_divider::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
-    editDetails()->page()->newGroupBox("DIVIDER");
     editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "12", "20", "large");
     editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, "12", "21", "large");
     editDetails()->page()->addSystemOverride(0, 2, 1, 1, "10", hex1, "12", "20", "00", "not_equals");
     //editDetails()->page()->addSystemOverride(0, 1, 1, 1, "10", hex1, "12", "20", "02", "not_equals");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
     editDetails()->addPage();
 
 }

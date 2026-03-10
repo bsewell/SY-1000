@@ -65,21 +65,13 @@ void stompbox_dd1::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "39";};
 
-    editDetails()->page()->newGroupBox("Effect");
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00"); //sw
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox("Delay");
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "01", "DELAY2000_ratio1.75", "bottom", 60); // 4 byte time
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");  //feedback
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5", "bottom", 60);  //hi cut
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); //carry over
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-
-    editDetails()->page()->newGroupBox("Level");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "turbo_ratio1.75"); //effect
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5"); //direct
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "DELAY2000_ratio1.75", "bottom", 60); // time
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");  //feedback
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5", "bottom", 60);  //hi cut
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); //carry over
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "07", "turbo_ratio1.75"); //effect level
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5"); //direct level
 
     editDetails()->addPage();
 

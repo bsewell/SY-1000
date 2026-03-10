@@ -53,11 +53,9 @@ void stompbox_balancer3::setEditPages()
     QString hex1 = "00";
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; };
-    editDetails()->page()->newGroupBox("BALANCER 3");
     editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "12", "2C", "normal_ratio1.5", "bottom", 60);
     editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, "12", "2B", "normal_ratio2", "bottom", 70);
     editDetails()->page()->addKnob(2, 0, 1, 1, "10", hex1, "12", "2D", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
     editDetails()->addPage();
 
 }

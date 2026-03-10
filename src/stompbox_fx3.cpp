@@ -16,13 +16,78 @@
 **
 ** You should have received a copy of the GNU General Public License along
 ** with this program; if not, write to the Free Software Foundation, Inc.,
-** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
+** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 **
 ****************************************************************************/
 
 #include "stompbox_fx3.h"
 #include "Preferences.h"
 #include "SysxIO.h"
+
+namespace {
+
+// formerly addKnobSection: removed newGroupBox/addGroupBox; colOffset shifts knob cols into flat page grid
+void addKnobSection(editPage *page,
+                    const QString &hex1,
+                    const QString &hex2,
+                    const QStringList &addresses,
+                    const QStringList &backgrounds,
+                    int colOffset)
+{
+    for(int i = 0; i < addresses.size(); ++i)
+    {
+        page->addKnob(0, colOffset + i, 1, 1, "10", hex1, hex2, addresses.at(i),
+                      backgrounds.value(i, "normal_ratio1.5"), "bottom", 60);
+    }
+}
+
+// formerly addFilterSection: removed newGroupBox/addGroupBox; colOffset shifts controls into flat page grid
+void addFilterSection(editPage *page,
+                      const QString &hex1,
+                      const QString &hex2,
+                      const QString &waveAddr,
+                      const QString &lowAddr,
+                      const QString &highAddr,
+                      int colOffset)
+{
+    page->addComboBox(0, colOffset, 1, 1, "10", hex1, hex2, waveAddr);
+    page->addKnob(0, colOffset + 1, 1, 1, "10", hex1, hex2, lowAddr, "normal_ratio1.25", "bottom", 60);
+    page->addKnob(0, colOffset + 2, 1, 1, "10", hex1, hex2, highAddr, "normal_ratio1.25", "bottom", 60);
+}
+
+// addStereoChorusPage: knob section at colOffset=0, filter section at colOffset=4 (sequential after 4 knobs)
+void addStereoChorusPage(editPage *page,
+                         const QString &hex1,
+                         const QString &hex2,
+                         const QString &chorusPrefix,
+                         const QString &waveAddr,
+                         const QString &lowAddr,
+                         const QString &highAddr)
+{
+    page->newStackField(1);
+    addKnobSection(page, hex1, hex2,
+                   QStringList{chorusPrefix, QString::number(chorusPrefix.toInt(nullptr, 16) + 1, 16).rightJustified(2, '0').toUpper(),
+                               QString::number(chorusPrefix.toInt(nullptr, 16) + 2, 16).rightJustified(2, '0').toUpper(),
+                               QString::number(chorusPrefix.toInt(nullptr, 16) + 3, 16).rightJustified(2, '0').toUpper()},
+                   QStringList{"normal_ratio1.5", "normal_ratio1.5", "normal_ratio1.5", "normal_ratio1.75"},
+                   0);
+    addFilterSection(page, hex1, hex2, waveAddr, lowAddr, highAddr, 4);
+    page->addStackField();
+}
+
+// formerly addLevelSection: removed newGroupBox/addGroupBox; colOffset=1 since LEVEL always placed at parentCol=1
+void addLevelSection(editPage *page,
+                     const QString &hex1,
+                     const QString &hex2,
+                     const QString &directAddr,
+                     const QString &outputAddr)
+{
+    // formerly addGroupBox(0, 1, 1, 1) — parentCol=1
+    page->addKnob(0, 1, 1, 1, "10", hex1, hex2, directAddr, "normal_ratio1.5");
+    page->addComboBox(0, 2, 1, 1, "10", hex1, hex2, outputAddr, "large");
+}
+
+}
 
 stompbox_fx3::stompbox_fx3(QWidget *parent)
     : stompBox(parent)
@@ -68,6 +133,7 @@ void stompbox_fx3::updateSignal()
 
 void stompbox_fx3::setEditPages()
 {
+    editPage *page = editDetails()->page();
     QString hex1 = "01";
     QString hex2 = "0C";
     Preferences *preferences = Preferences::Instance();
@@ -77,16 +143,15 @@ void stompbox_fx3::setEditPages()
         hex2 = "09";
     };
 
-    editDetails()->page()->newGroupBox("Select");
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
-    editDetails()->page()->newStackControl(0);
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");            //type
-    editDetails()->page()->addStackControl();
-    editDetails()->page()->addGroupBox(0, 0, 2, 1);
-    editDetails()->page()->insertStackField(0, 0, 1, 3, 2);
+    // formerly "Select" groupBox at addGroupBox(0, 0, 2, 1) — parentCol=0
+    page->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
+    page->newStackControl(0);
+    page->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");            //type
+    page->addStackControl();
+    page->insertStackField(0, 0, 1, 3, 2);
 
     // AC Reso
-    editDetails()->page()->newStackField(0);
+    page->newStackField(0);
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true")
     {
         hex2 = "0A";
@@ -95,12 +160,11 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "0D";
     };
-    editDetails()->page()->newGroupBox("AC RESONANCE");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio2");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "AC RESONANCE" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio2");
     editDetails()->page()->addStackField();
 
     // Auto Wah
@@ -113,18 +177,16 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "0E";
     };
-    editDetails()->page()->newGroupBox("AUTO WAH");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75");
-    editDetails()->page()->addComboBox(0, 5, 1, 1, "10", hex1, hex2, "06", "large");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio2");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "AUTO WAH" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75");
+    editDetails()->page()->addComboBox(0, 6, 1, 1, "10", hex1, hex2, "06", "large");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 1, 1) — sequential cols 7-8
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "03", "normal_ratio2");
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
     //Chorus
@@ -137,83 +199,40 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "0F";
     };
-    editDetails()->page()->newGroupBox(tr("EFFECT"));
-    editDetails()->page()->newStackControl(1);
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");           //mode
-    editDetails()->page()->addStackControl();
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->insertStackField(1, 1, 0, 1, 2);
-    editDetails()->page()->newGroupBox(tr("LEVEL"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.5");     //direct
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "18", "large");           //output
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->addStackField();
+    // formerly "EFFECT" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
+    page->newStackControl(1);
+    page->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");           //mode
+    page->addStackControl();
+    page->insertStackField(1, 1, 0, 1, 2);
+    // formerly addLevelSection: LEVEL groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    addLevelSection(page, hex1, hex2, "17", "18");
+    page->addStackField();
 
-    editDetails()->page()->newStackField(1);
-    editDetails()->page()->newGroupBox(tr("CHORUS"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5", "bottom", 60); //rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5", "bottom", 60); //depth
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5", "bottom", 60); //predelay
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox(tr("FILTER"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "06"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->addStackField();
+    // Chorus stackField 1 entries (single chorus × 3)
+    addStereoChorusPage(page, hex1, hex2, "02", "06", "07", "08");
+    addStereoChorusPage(page, hex1, hex2, "02", "06", "07", "08");
+    addStereoChorusPage(page, hex1, hex2, "02", "06", "07", "08");
 
+    // DUAL Chorus
     editDetails()->page()->newStackField(1);
-    editDetails()->page()->newGroupBox(tr("CHORUS"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5", "bottom", 60); //rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5", "bottom", 60); //depth
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5", "bottom", 60); //predelay
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox(tr("FILTER"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "06"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(1);
-    editDetails()->page()->newGroupBox(tr("CHORUS"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5", "bottom", 60); //rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5", "bottom", 60); //depth
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5", "bottom", 60); //predelay
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox(tr("FILTER"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "06"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(1);
-    editDetails()->page()->newGroupBox(tr("CHORUS 1"));
+    // formerly "CHORUS 1" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5", "bottom", 60); //rate
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.5", "bottom", 60); //depth
     editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.5", "bottom", 60); //predelay
     editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "0C", "normal_ratio1.75", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox(tr("FILTER 1"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "0D"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox(tr("CHORUS 2"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.5", "bottom", 60); //rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "11", "normal_ratio1.5", "bottom", 60); //depth
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "12", "normal_ratio1.5", "bottom", 60); //predelay
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "13", "normal_ratio1.75", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(1, 0, 1, 1);
-    editDetails()->page()->newGroupBox(tr("FILTER 2"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "14"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "15", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(1, 1, 1, 1);
+    // formerly "FILTER 1" groupBox at addGroupBox(0, 1, 1, 1) — sequential cols 4-6
+    editDetails()->page()->addComboBox(0, 4, 1, 1, "10", hex1, hex2, "0D"); //waveform
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
+    // formerly "CHORUS 2" groupBox at addGroupBox(1, 0, 1, 1) — parentRow=1, parentCol=0
+    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.5", "bottom", 60); //rate
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "11", "normal_ratio1.5", "bottom", 60); //depth
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "12", "normal_ratio1.5", "bottom", 60); //predelay
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "13", "normal_ratio1.75", "bottom", 60); //effect
+    // formerly "FILTER 2" groupBox at addGroupBox(1, 1, 1, 1) — row 1 sequential cols 4-6
+    editDetails()->page()->addComboBox(1, 4, 1, 1, "10", hex1, hex2, "14"); //waveform
+    editDetails()->page()->addKnob(1, 5, 1, 1, "10", hex1, hex2, "15", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(1, 6, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
     editDetails()->page()->addStackField();
 
 
@@ -227,11 +246,10 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "10";
     };
-    editDetails()->page()->newGroupBox("CLASSIC VIBE");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio2");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "CLASSIC VIBE" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio2");
     editDetails()->page()->addStackField();
 
 
@@ -245,14 +263,13 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "11";
     };
-    editDetails()->page()->newGroupBox("COMPRESSOR");
-    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, hex2, "01", "large");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio2");
-    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "COMPRESSOR" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 2, "10", hex1, hex2, "01", "large");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio2");
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -266,15 +283,14 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "12";
     };
-    editDetails()->page()->newGroupBox("DEFRETTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio2");
-    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "DEFRETTER" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio2");
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -288,13 +304,12 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "13";
     };
-    editDetails()->page()->newGroupBox("DEFRETTER BASS");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio2");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "DEFRETTER BASS" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio2");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -308,253 +323,201 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "14";
     };
-    editDetails()->page()->newGroupBox("EFFECT");
+    // formerly "EFFECT" groupBox at addGroupBox(0, 0, 2, 1) — parentCol=0
     editDetails()->page()->newStackControl(2);
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");
     editDetails()->page()->addStackControl();
-    editDetails()->page()->addGroupBox(0, 0, 2, 1);
-
     editDetails()->page()->insertStackField(2, 0, 1, 2, 1);
     editDetails()->page()->addStackField();
 
     // STEREO 1
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY");
+    // formerly "DELAY" groupBox at addGroupBox(0, 0, 4, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 4, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 1, 4, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 2, 4, 1);
+    // formerly "FILTER" groupBox at addGroupBox(0, 1, 4, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 4, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // STEREO 2
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY");
+    // formerly "DELAY" groupBox at addGroupBox(0, 0, 4, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 4, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 1, 4, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 2, 4, 1);
+    // formerly "FILTER" groupBox at addGroupBox(0, 1, 4, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 4, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // PAN
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY");
+    // formerly "DELAY" groupBox at addGroupBox(0, 0, 4, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
     editDetails()->page()->addKnob(1, 0, 1, 2, "10", hex1, hex2, "1F", "normal_ratio1.25"); //tap time %
-    editDetails()->page()->addGroupBox(0, 0, 4, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 1, 4, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 2, 4, 1);
+    // formerly "FILTER" groupBox at addGroupBox(0, 1, 4, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 4, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // DUAL SERIES
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY 1");
+    // formerly "DELAY 1" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox("DELAY 2");
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(1, 0, 1, 1);
-    editDetails()->page()->newGroupBox("FILTER 1");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("FILTER 2");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(1, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL 1");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL 2");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(1, 2, 1, 1);
-    editDetails()->page()->newGroupBox("Direct");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 3, 2, 1);
+    // formerly "DELAY 2" groupBox at addGroupBox(1, 0, 1, 1) — parentRow=1, parentCol=0
+    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    // formerly "FILTER 1" groupBox at addGroupBox(0, 1, 1, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
+    // formerly "FILTER 2" groupBox at addGroupBox(1, 1, 1, 1) — row 1 sequential col 2
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
+    // formerly "LEVEL 1" groupBox at addGroupBox(0, 2, 1, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.75");
+    // formerly "LEVEL 2" groupBox at addGroupBox(1, 2, 1, 1) — row 1 sequential col 3
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.75");
+    // formerly "Direct" groupBox at addGroupBox(0, 3, 2, 1) — sequential col 4
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // DUAL PARALLEL
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY 1");
+    // formerly "DELAY 1" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox("DELAY 2");
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(1, 0, 1, 1);
-    editDetails()->page()->newGroupBox("FILTER 1");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("FILTER 2");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(1, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL 1");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL 2");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(1, 2, 1, 1);
-    editDetails()->page()->newGroupBox("Direct");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 3, 2, 1);
+    // formerly "DELAY 2" groupBox at addGroupBox(1, 0, 1, 1) — parentRow=1, parentCol=0
+    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    // formerly "FILTER 1" groupBox at addGroupBox(0, 1, 1, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
+    // formerly "FILTER 2" groupBox at addGroupBox(1, 1, 1, 1) — row 1 sequential col 2
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
+    // formerly "LEVEL 1" groupBox at addGroupBox(0, 2, 1, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.75");
+    // formerly "LEVEL 2" groupBox at addGroupBox(1, 2, 1, 1) — row 1 sequential col 3
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.75");
+    // formerly "Direct" groupBox at addGroupBox(0, 3, 2, 1) — sequential col 4
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // DUAL L/R
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY 1");
+    // formerly "DELAY 1" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox("DELAY 2");
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(1, 0, 1, 1);
-    editDetails()->page()->newGroupBox("FILTER 1");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("FILTER 2");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(1, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL 1");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL 2");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(1, 2, 1, 1);
-    editDetails()->page()->newGroupBox("Direct");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 3, 2, 1);
+    // formerly "DELAY 2" groupBox at addGroupBox(1, 0, 1, 1) — parentRow=1, parentCol=0
+    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    // formerly "FILTER 1" groupBox at addGroupBox(0, 1, 1, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
+    // formerly "FILTER 2" groupBox at addGroupBox(1, 1, 1, 1) — row 1 sequential col 2
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
+    // formerly "LEVEL 1" groupBox at addGroupBox(0, 2, 1, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.75");
+    // formerly "LEVEL 2" groupBox at addGroupBox(1, 2, 1, 1) — row 1 sequential col 3
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.75");
+    // formerly "Direct" groupBox at addGroupBox(0, 3, 2, 1) — sequential col 4
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // REVERSE
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY");
+    // formerly "DELAY" groupBox at addGroupBox(0, 0, 4, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 4, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 1, 4, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 2, 4, 1);
+    // formerly "FILTER" groupBox at addGroupBox(0, 1, 4, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 4, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // ANALOG
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY");
+    // formerly "DELAY" groupBox at addGroupBox(0, 0, 4, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 4, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 1, 4, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 2, 4, 1);
+    // formerly "FILTER" groupBox at addGroupBox(0, 1, 4, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 4, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // TAPE
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY");
+    // formerly "DELAY" groupBox at addGroupBox(0, 0, 4, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 4, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 1, 4, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 2, 4, 1);
+    // formerly "FILTER" groupBox at addGroupBox(0, 1, 4, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 4, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
-    // MODULATE
+    // MODULATE — Delay(0-1), Modulate(2-4 collapsed to row 0), Filter(5), Level(6-8)
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY");
+    // formerly "DELAY" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox("MODULATE");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "18", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "19", "normal_ratio1.5");
+    // formerly "MODULATE" groupBox at addGroupBox(1, 0, 1, 4) — sequential cols 2-4 (collapsed to row 0)
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "18", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "19", "normal_ratio1.5");
     editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "1A", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(1, 0, 1, 4);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "FILTER" groupBox at addGroupBox(0, 1, 1, 1) — sequential col 5
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 1, 1) — sequential col 6
+    editDetails()->page()->addKnob(0, 6, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
+    editDetails()->page()->addKnob(1, 6, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
+    editDetails()->page()->addKnob(1, 7, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // WARP
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY");
+    // formerly "DELAY" groupBox at addGroupBox(0, 0, 4, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 4, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 1, 4, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 2, 4, 1);
+    // formerly "FILTER" groupBox at addGroupBox(0, 1, 4, 1) — sequential col 2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 4, 1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     // TWIST
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("DELAY");
+    // formerly "DELAY" groupBox at addGroupBox(0, 0, 1, 2) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60); //4 byte time
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
-    editDetails()->page()->addGroupBox(0, 0, 1, 2);
-    editDetails()->page()->newGroupBox("TWIST");
+    // formerly "TWIST" groupBox at addGroupBox(1, 0, 1, 5) — sequential cols 2+ (collapsed to row 0)
     editDetails()->page()->newStackControl(3);
-    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, hex2, "1B", "large");
+    editDetails()->page()->addComboBox(0, 2, 1, 2, "10", hex1, hex2, "1B", "large");
     editDetails()->page()->addStackControl();
     editDetails()->page()->insertStackField(3, 0, 2, 1, 2);
-    editDetails()->page()->addGroupBox(1, 0, 1, 5);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
-    editDetails()->page()->addGroupBox(0, 3, 1, 2);
+    // formerly "FILTER" groupBox at addGroupBox(0, 2, 1, 1) — sequential col 4
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 3, 1, 2) — sequential col 5
+    editDetails()->page()->addKnob(0, 5, 1, 2, "10", hex1, hex2, "08", "turbo_ratio1.75"); //EFFECT
+    editDetails()->page()->addKnob(1, 5, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); // direct
+    editDetails()->page()->addKnob(1, 6, 1, 1, "10", hex1, hex2, "20", "normal_ratio1.25"); //carry over
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(3);
@@ -579,21 +542,18 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "15";
     };
-    editDetails()->page()->newGroupBox("FLANGER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 3, 1, 1);
+    // formerly "FLANGER" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    // formerly "FILTER" groupBox at addGroupBox(0, 2, 1, 1) — sequential cols 6-7
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5", "bottom", 60);
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5", "bottom", 60);
+    // formerly "LEVEL" groupBox at addGroupBox(0, 3, 1, 1) — sequential cols 8-9
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 9, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -607,21 +567,18 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "16";
     };
-    editDetails()->page()->newGroupBox("FLANGER BASS");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 3, 1, 1);
+    // formerly "FLANGER BASS" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    // formerly "FILTER" groupBox at addGroupBox(0, 2, 1, 1) — sequential cols 6-7
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5", "bottom", 60);
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5", "bottom", 60);
+    // formerly "LEVEL" groupBox at addGroupBox(0, 3, 1, 1) — sequential cols 8-9
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 9, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -635,12 +592,11 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "17";
     };
-    editDetails()->page()->newGroupBox("FOOT VOLUME");
+    // formerly "FOOT VOLUME" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "0~1000_ratio2");
     editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "04", "0~1000_ratio2");
     editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, hex2, "08", "0~1000_ratio1.75");
     editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "0C", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
     editDetails()->page()->addStackField();
 
 
@@ -654,18 +610,16 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "18";
     };
-    editDetails()->page()->newGroupBox("EQUALIZER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 2, 1, 7);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 8, 1, 1);
+    // formerly "EQUALIZER" groupBox at addGroupBox(0, 2, 1, 7) — parentCol=2
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 8, 1, 1) — sequential col 9
+    editDetails()->page()->addKnob(0, 9, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -681,97 +635,83 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "19";
     };
-    editDetails()->page()->newGroupBox("Effect");
+    // formerly "Effect" groupBox at addGroupBox(0, 0, 2, 3) — parentCol=0
     editDetails()->page()->newStackControl(4);
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "00", "large");
     editDetails()->page()->addStackControl();
-    editDetails()->page()->addGroupBox(0, 0, 2, 3);
     editDetails()->page()->insertStackField(4, 0, 3, 3, 9);
-    editDetails()->page()->newGroupBox("User Harmony 1");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "0F");
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "10");
-    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, hex2, "11");
-    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, hex2, "12");
-    editDetails()->page()->addComboBox(0, 4, 1, 1, "10", hex1, hex2, "13");
-    editDetails()->page()->addComboBox(0, 5, 1, 1, "10", hex1, hex2, "14");
-    editDetails()->page()->addComboBox(0, 6, 1, 1, "10", hex1, hex2, "15");
-    editDetails()->page()->addComboBox(0, 7, 1, 1, "10", hex1, hex2, "16");
-    editDetails()->page()->addComboBox(0, 8, 1, 1, "10", hex1, hex2, "17");
-    editDetails()->page()->addComboBox(0, 9, 1, 1, "10", hex1, hex2, "18");
-    editDetails()->page()->addComboBox(0, 10, 1, 1, "10", hex1, hex2, "19");
-    editDetails()->page()->addComboBox(0, 11, 1, 1, "10", hex1, hex2, "1A");
-    editDetails()->page()->addSystemOverride(0, 0, 1, 12, "10", hex1, hex2, "01", "1D", "not_equal"); //
-    editDetails()->page()->addGroupBox(3, 0, 1, 12);
-    editDetails()->page()->newGroupBox("User Harmony 2");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "1B");
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "1C");
-    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, hex2, "1D");
-    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, hex2, "1E");
-    editDetails()->page()->addComboBox(0, 4, 1, 1, "10", hex1, hex2, "1F");
-    editDetails()->page()->addComboBox(0, 5, 1, 1, "10", hex1, hex2, "20");
-    editDetails()->page()->addComboBox(0, 6, 1, 1, "10", hex1, hex2, "21");
-    editDetails()->page()->addComboBox(0, 7, 1, 1, "10", hex1, hex2, "22");
-    editDetails()->page()->addComboBox(0, 8, 1, 1, "10", hex1, hex2, "23");
-    editDetails()->page()->addComboBox(0, 9, 1, 1, "10", hex1, hex2, "24");
-    editDetails()->page()->addComboBox(0, 10, 1, 1, "10", hex1, hex2, "25");
-    editDetails()->page()->addComboBox(0, 11, 1, 1, "10", hex1, hex2, "26");
-    editDetails()->page()->addSystemOverride(0, 0, 1, 12, "10", hex1, hex2, "02", "1D", "not_equal"); //
-    editDetails()->page()->addGroupBox(4, 0, 1, 12);
+    // formerly "User Harmony 1" groupBox at addGroupBox(3, 0, 1, 12) — parentRow=3, parentCol=0
+    editDetails()->page()->addComboBox(3, 0, 1, 1, "10", hex1, hex2, "0F");
+    editDetails()->page()->addComboBox(3, 1, 1, 1, "10", hex1, hex2, "10");
+    editDetails()->page()->addComboBox(3, 2, 1, 1, "10", hex1, hex2, "11");
+    editDetails()->page()->addComboBox(3, 3, 1, 1, "10", hex1, hex2, "12");
+    editDetails()->page()->addComboBox(3, 4, 1, 1, "10", hex1, hex2, "13");
+    editDetails()->page()->addComboBox(3, 5, 1, 1, "10", hex1, hex2, "14");
+    editDetails()->page()->addComboBox(3, 6, 1, 1, "10", hex1, hex2, "15");
+    editDetails()->page()->addComboBox(3, 7, 1, 1, "10", hex1, hex2, "16");
+    editDetails()->page()->addComboBox(3, 8, 1, 1, "10", hex1, hex2, "17");
+    editDetails()->page()->addComboBox(3, 9, 1, 1, "10", hex1, hex2, "18");
+    editDetails()->page()->addComboBox(3, 10, 1, 1, "10", hex1, hex2, "19");
+    editDetails()->page()->addComboBox(3, 11, 1, 1, "10", hex1, hex2, "1A");
+    editDetails()->page()->addSystemOverride(3, 0, 1, 12, "10", hex1, hex2, "01", "1D", "not_equal"); //
+    // formerly "User Harmony 2" groupBox at addGroupBox(4, 0, 1, 12) — parentRow=4, parentCol=0
+    editDetails()->page()->addComboBox(4, 0, 1, 1, "10", hex1, hex2, "1B");
+    editDetails()->page()->addComboBox(4, 1, 1, 1, "10", hex1, hex2, "1C");
+    editDetails()->page()->addComboBox(4, 2, 1, 1, "10", hex1, hex2, "1D");
+    editDetails()->page()->addComboBox(4, 3, 1, 1, "10", hex1, hex2, "1E");
+    editDetails()->page()->addComboBox(4, 4, 1, 1, "10", hex1, hex2, "1F");
+    editDetails()->page()->addComboBox(4, 5, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addComboBox(4, 6, 1, 1, "10", hex1, hex2, "21");
+    editDetails()->page()->addComboBox(4, 7, 1, 1, "10", hex1, hex2, "22");
+    editDetails()->page()->addComboBox(4, 8, 1, 1, "10", hex1, hex2, "23");
+    editDetails()->page()->addComboBox(4, 9, 1, 1, "10", hex1, hex2, "24");
+    editDetails()->page()->addComboBox(4, 10, 1, 1, "10", hex1, hex2, "25");
+    editDetails()->page()->addComboBox(4, 11, 1, 1, "10", hex1, hex2, "26");
+    editDetails()->page()->addSystemOverride(4, 0, 1, 12, "10", hex1, hex2, "02", "1D", "not_equal"); //
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(4);
-    editDetails()->page()->newGroupBox("Harmonist");
-    editDetails()->page()->newGroupBox("Voice 1");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "01", "large");
-    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "04", "PREDELAY_ratio1.25","bottom", 70);
-    editDetails()->page()->addGroupBox(0, 0, 2, 1);
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 1, 2, 2);
-
-    editDetails()->page()->newGroupBox("Level");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 3, 2, 1);
+    // formerly "Harmonist" groupBox at addGroupBox(0, 1, 2, 2) — parentCol=1
+    //   formerly "Voice 1" groupBox at addGroupBox(0, 0, 2, 1) inside Harmonist — parentCol=0+1=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "01", "large");
+    editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "PREDELAY_ratio1.25","bottom", 70);
+    //   knob "08" at Harmonist(0,1) — sequential col 3
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.25");
+    // formerly "Level" groupBox at addGroupBox(0, 3, 2, 1) — sequential col 4
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(4);
-    editDetails()->page()->newGroupBox("Harmonist");
-    editDetails()->page()->newGroupBox("Voice 1");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "01", "large");
-    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "04", "PREDELAY_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox("Voice 2");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "02", "large");
-    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "0B", "PREDELAY_ratio1.25");
-    editDetails()->page()->addGroupBox(2, 0, 1, 1);
-    editDetails()->page()->addKnob(0, 1, 2, 1, "10", hex1, hex2, "08", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 2, 2);
-
-    editDetails()->page()->newGroupBox("Level");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 2, 1, "10", hex1, hex2, "09", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 3, 2, 1);
+    // formerly "Harmonist" groupBox at addGroupBox(0, 1, 2, 2) — parentCol=1
+    //   formerly "Voice 1" groupBox at addGroupBox(0, 0, 1, 1) inside Harmonist — parentCol=0+1=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "01", "large");
+    editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "PREDELAY_ratio1.25");
+    //   formerly "Voice 2" groupBox at addGroupBox(2, 0, 1, 1) inside Harmonist — parentRow=2+0=2, parentCol=0+1=1
+    editDetails()->page()->addComboBox(2, 1, 1, 1, "10", hex1, hex2, "02", "large");
+    editDetails()->page()->addDataKnob(2, 2, 1, 1, "10", hex1, hex2, "0B", "PREDELAY_ratio1.25");
+    //   knob "08" at Harmonist(0,1,2,1) — sequential col 3, rowSpan=2
+    editDetails()->page()->addKnob(0, 3, 2, 1, "10", hex1, hex2, "08", "normal_ratio1.5");
+    // formerly "Level" groupBox at addGroupBox(0, 3, 2, 1) — sequential col 4
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 2, 1, "10", hex1, hex2, "09", "normal_ratio1.25");
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(4);
-    editDetails()->page()->newGroupBox("Harmonist");
-    editDetails()->page()->newGroupBox("Voice 1");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "01", "large");
-    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "04", "PREDELAY_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox("Voice 2");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "02", "large");
-    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "0B", "PREDELAY_ratio1.25");
-    editDetails()->page()->addGroupBox(2, 0, 1, 1);
-    editDetails()->page()->addKnob(0, 1, 2, 1, "10", hex1, hex2, "08", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 2, 2);
-
-    editDetails()->page()->newGroupBox("Level");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 2, 1, "10", hex1, hex2, "09", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 3, 2, 1);
+    // formerly "Harmonist" groupBox at addGroupBox(0, 1, 2, 2) — parentCol=1
+    //   formerly "Voice 1" groupBox at addGroupBox(0, 0, 1, 1) inside Harmonist — parentCol=0+1=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "01", "large");
+    editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "PREDELAY_ratio1.25");
+    //   formerly "Voice 2" groupBox at addGroupBox(2, 0, 1, 1) inside Harmonist — parentRow=2+0=2, parentCol=0+1=1
+    editDetails()->page()->addComboBox(2, 1, 1, 1, "10", hex1, hex2, "02", "large");
+    editDetails()->page()->addDataKnob(2, 2, 1, 1, "10", hex1, hex2, "0B", "PREDELAY_ratio1.25");
+    //   knob "08" at Harmonist(0,1,2,1) — sequential col 3, rowSpan=2
+    editDetails()->page()->addKnob(0, 3, 2, 1, "10", hex1, hex2, "08", "normal_ratio1.5");
+    // formerly "Level" groupBox at addGroupBox(0, 3, 2, 1) — sequential col 4
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 2, 1, "10", hex1, hex2, "09", "normal_ratio1.25");
     editDetails()->page()->addStackField();
 
 
@@ -785,18 +725,16 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "1A";
     };
-    editDetails()->page()->newGroupBox("HUMANIZER");
-    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, hex2, "01", "large");
-    editDetails()->page()->addComboBox(1, 2, 1, 1, "10", hex1, hex2, "02", "large");
-    editDetails()->page()->addKnob(0, 4, 2, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 5, 2, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 6, 2, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 7, 2, 1, "10", hex1, hex2, "06", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 2, 1, 8);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 9, 1, 1);
+    // formerly "HUMANIZER" groupBox at addGroupBox(0, 2, 1, 8) — parentCol=2
+    editDetails()->page()->addComboBox(0, 2, 1, 2, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addComboBox(0, 4, 1, 1, "10", hex1, hex2, "01", "large");
+    editDetails()->page()->addComboBox(1, 4, 1, 1, "10", hex1, hex2, "02", "large");
+    editDetails()->page()->addKnob(0, 6, 2, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 7, 2, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 8, 2, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 9, 2, 1, "10", hex1, hex2, "06", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 9, 1, 1) — sequential col 10
+    editDetails()->page()->addKnob(0, 10, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -810,12 +748,11 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "1B";
     };
-    editDetails()->page()->newGroupBox("ISOLATOR");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "ISOLATOR" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5", "bottom", 60);
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -829,17 +766,14 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "1C";
     };
-    // Limiter
-    editDetails()->page()->newGroupBox("LIMITER");
-    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 6);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 7, 1, 1);
+    // formerly "LIMITER" groupBox at addGroupBox(0, 1, 1, 6) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 2, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 7, 1, 1) — sequential col 7
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -853,11 +787,10 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "1D";
     };
-    editDetails()->page()->newGroupBox("LOFI");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio2","bottom", 70);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "LOFI" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio2","bottom", 70);
     editDetails()->page()->addStackField();
 
 
@@ -871,11 +804,10 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "1E";
     };
-    editDetails()->page()->newGroupBox("OCTAVE");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "OCTAVE" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -889,11 +821,10 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "1F";
     };
-    editDetails()->page()->newGroupBox("OCTAVE BASS");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "OCTAVE BASS" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -907,16 +838,14 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "20";
     };
-    editDetails()->page()->newGroupBox("AUTO PAN");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "AUTO PAN" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 1, 1) — sequential col 6
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -930,9 +859,8 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "21";
     };
-    editDetails()->page()->newGroupBox("PARAMETRIC EQUALIZER", Qt::AlignTop | Qt::AlignHCenter);
+    // formerly "PARAMETRIC EQUALIZER" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addParaEQ(0, 1, 2, 4, "10", hex1, hex2, "01");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
     editDetails()->page()->addStackField();
 
 
@@ -946,12 +874,11 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "22";
     };
-    editDetails()->page()->newGroupBox("PEDAL BEND");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "0~1000_ratio1.75","bottom", 70);
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "PEDAL BEND" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addDataKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "0~1000_ratio1.75","bottom", 70);
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -965,18 +892,16 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "23";
     };
-    editDetails()->page()->newGroupBox("PHASER");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "PHASER" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 1, 1) — sequential cols 7-8
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 
@@ -990,74 +915,65 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "24";
     };
-    editDetails()->page()->newGroupBox("Effect");
+    // formerly "Effect" groupBox at addGroupBox(0, 0, 2, 1) — parentCol=0
     editDetails()->page()->newStackControl(5);
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "00", "large");
     editDetails()->page()->addStackControl();
-    editDetails()->page()->addGroupBox(0, 0, 2, 1);
     editDetails()->page()->insertStackField(5, 0, 1, 3, 1);
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(5);
-    editDetails()->page()->newGroupBox("PITCH SHIFTER");
-    editDetails()->page()->newGroupBox("VOICE 1");
-    editDetails()->page()->addComboBox(0, 0, 1, 3, "10", hex1, hex2, "04", "large");
-    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "06", "PREDELAY_ratio1.5","bottom", 70);
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 0, 3, 3);
-    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 2, 4);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 5, 2, 1);
+    // formerly "PITCH SHIFTER" groupBox at addGroupBox(0, 1, 2, 4) — parentCol=1
+    //   formerly "VOICE 1" groupBox at addGroupBox(0, 0, 3, 3) — parentCol=0+1=1
+    editDetails()->page()->addComboBox(0, 1, 1, 3, "10", hex1, hex2, "04", "large");
+    editDetails()->page()->addDataKnob(1, 1, 1, 1, "10", hex1, hex2, "06", "PREDELAY_ratio1.5","bottom", 70);
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25");
+    //   knob "0B" at PITCH SHIFTER(1,4) → stackField(1,1+4)=(1,5)
+    editDetails()->page()->addKnob(1, 5, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 5, 2, 1) — sequential col 6
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 6, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.25");
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(5);
-    editDetails()->page()->newGroupBox("PITCH SHIFTER");
-    editDetails()->page()->newGroupBox("VOICE 1");
-    editDetails()->page()->addComboBox(0, 0, 1, 3, "10", hex1, hex2, "04", "large");
-    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "06", "PREDELAY_ratio1.5","bottom", 70);
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 0, 3, 3);
-    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.5");
-    editDetails()->page()->newGroupBox("VOICE 2");
-    editDetails()->page()->addComboBox(0, 0, 1, 3, "10", hex1, hex2, "0C", "large");
-    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "0E", "PREDELAY_ratio1.5","bottom", 70);
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "0D", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(4, 0, 1, 3);
-    editDetails()->page()->addGroupBox(0, 1, 2, 4);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.75");
-    editDetails()->page()->addKnob(2, 0, 1, 1, "10", hex1, hex2, "12", "normal_ratio1.75");
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 5, 2, 1);
+    // formerly "PITCH SHIFTER" groupBox at addGroupBox(0, 1, 2, 4) — parentCol=1
+    //   formerly "VOICE 1" groupBox at addGroupBox(0, 0, 3, 3) — parentCol=0+1=1
+    editDetails()->page()->addComboBox(0, 1, 1, 3, "10", hex1, hex2, "04", "large");
+    editDetails()->page()->addDataKnob(1, 1, 1, 1, "10", hex1, hex2, "06", "PREDELAY_ratio1.5","bottom", 70);
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25");
+    //   knob "0B" at PS(1,4) → stackField(1,5)
+    editDetails()->page()->addKnob(1, 5, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.5");
+    //   formerly "VOICE 2" groupBox at addGroupBox(3, 0, 1, 3) — parentRow=3+0=3, parentCol=0+1=1
+    editDetails()->page()->addComboBox(3, 1, 1, 3, "10", hex1, hex2, "0C", "large");
+    editDetails()->page()->addDataKnob(4, 1, 1, 1, "10", hex1, hex2, "0E", "PREDELAY_ratio1.5","bottom", 70);
+    editDetails()->page()->addKnob(4, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(4, 3, 1, 1, "10", hex1, hex2, "0D", "normal_ratio1.25");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 5, 2, 1) — sequential col 6
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.75");
+    editDetails()->page()->addKnob(2, 6, 1, 1, "10", hex1, hex2, "12", "normal_ratio1.75");
+    editDetails()->page()->addKnob(1, 6, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(5);
-    editDetails()->page()->newGroupBox("PITCH SHIFTER");
-    editDetails()->page()->newGroupBox("VOICE 1");
-    editDetails()->page()->addComboBox(0, 0, 1, 3, "10", hex1, hex2, "04", "large");
-    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "06", "PREDELAY_ratio1.5","bottom", 70);
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(0, 0, 3, 3);
-    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.5");
-    editDetails()->page()->newGroupBox("VOICE 2");
-    editDetails()->page()->addComboBox(0, 0, 1, 3, "10", hex1, hex2, "0C", "large");
-    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "0E", "PREDELAY_ratio1.5","bottom", 70);
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "0D", "normal_ratio1.25");
-    editDetails()->page()->addGroupBox(4, 0, 1, 3);
-    editDetails()->page()->addGroupBox(0, 1, 2, 4);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.75");
-    editDetails()->page()->addKnob(2, 0, 1, 1, "10", hex1, hex2, "12", "normal_ratio1.75");
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 5, 2, 1);
+    // formerly "PITCH SHIFTER" groupBox at addGroupBox(0, 1, 2, 4) — parentCol=1
+    //   formerly "VOICE 1" groupBox at addGroupBox(0, 0, 3, 3) — parentCol=0+1=1
+    editDetails()->page()->addComboBox(0, 1, 1, 3, "10", hex1, hex2, "04", "large");
+    editDetails()->page()->addDataKnob(1, 1, 1, 1, "10", hex1, hex2, "06", "PREDELAY_ratio1.5","bottom", 70);
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25");
+    //   knob "0B" at PS(1,4) → stackField(1,5)
+    editDetails()->page()->addKnob(1, 5, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.5");
+    //   formerly "VOICE 2" groupBox at addGroupBox(3, 0, 1, 3) — parentRow=3+0=3, parentCol=0+1=1
+    editDetails()->page()->addComboBox(3, 1, 1, 3, "10", hex1, hex2, "0C", "large");
+    editDetails()->page()->addDataKnob(4, 1, 1, 1, "10", hex1, hex2, "0E", "PREDELAY_ratio1.5","bottom", 70);
+    editDetails()->page()->addKnob(4, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(4, 3, 1, 1, "10", hex1, hex2, "0D", "normal_ratio1.25");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 5, 2, 1) — sequential col 6
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.75");
+    editDetails()->page()->addKnob(2, 6, 1, 1, "10", hex1, hex2, "12", "normal_ratio1.75");
+    editDetails()->page()->addKnob(1, 6, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -1071,25 +987,21 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "25";
     };
-    editDetails()->page()->newGroupBox("EFFECT");
+    // formerly "EFFECT" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");   //type
     editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, hex2, "03", "large");   //carry over
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox("REVERB");
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "04", "0~500_ratio1.5");  //predelay
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");  //time
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.5");  //density
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "0D", "normal_ratio1.5");  //spring sense
-    editDetails()->page()->addSystemOverride(0, 3, 1, 1, "10", hex1, hex2, "01", "05", "not_equal");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("FILTER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5", "bottom", 60);  //low cut
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.5", "bottom", 60);  //high cut
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.75");  //effect
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0C", "normal_ratio1.5");  //direct
-    editDetails()->page()->addGroupBox(0, 3, 1, 1);
+    // formerly "REVERB" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "04", "0~500_ratio1.5");  //predelay
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");  //time
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.5");  //density
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "0D", "normal_ratio1.5");  //spring sense
+    editDetails()->page()->addSystemOverride(0, 4, 1, 1, "10", hex1, hex2, "01", "05", "not_equal");
+    // formerly "FILTER" groupBox at addGroupBox(0, 2, 1, 1) — sequential cols 5-6
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5", "bottom", 60);  //low cut
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.5", "bottom", 60);  //high cut
+    // formerly "LEVEL" groupBox at addGroupBox(0, 3, 1, 1) — sequential cols 7-8
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.75");  //effect
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, hex2, "0C", "normal_ratio1.5");  //direct
     editDetails()->page()->addStackField();
 
     // Ring Modulator
@@ -1102,16 +1014,14 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "26";
     };
-    editDetails()->page()->newGroupBox("RING MODULATOR");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 4);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 5, 1, 2);
+    // formerly "RING MODULATOR" groupBox at addGroupBox(0, 1, 1, 4) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 5, 1, 2) — parentCol=5
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -1125,18 +1035,16 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "27";
     };
-    editDetails()->page()->newGroupBox("ROTARY");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 6);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 7, 1, 2);
+    // formerly "ROTARY" groupBox at addGroupBox(0, 1, 1, 6) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 7, 1, 2) — parentCol=7
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -1150,17 +1058,15 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "28";
     };
-    editDetails()->page()->newGroupBox("SITAR SIMULATOR");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 5);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 6, 1, 2);
+    // formerly "SITAR SIMULATOR" groupBox at addGroupBox(0, 1, 1, 5) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 6, 1, 2) — parentCol=6
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -1174,17 +1080,15 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "29";
     };
-    editDetails()->page()->newGroupBox("SLICER");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 5);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 6, 1, 2);
+    // formerly "SLICER" groupBox at addGroupBox(0, 1, 1, 5) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 6, 1, 2) — parentCol=6
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -1198,11 +1102,10 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "2A";
     };
-    editDetails()->page()->newGroupBox("SLOW GEAR");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio2");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "SLOW GEAR" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio2");
     editDetails()->page()->addStackField();
 
 
@@ -1216,11 +1119,10 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "2B";
     };
-    editDetails()->page()->newGroupBox("SLOW GEAR BASS");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio2");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "SLOW GEAR BASS" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio2");
     editDetails()->page()->addStackField();
 
 
@@ -1234,11 +1136,10 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "2C";
     };
-    editDetails()->page()->newGroupBox("SOUND HOLD");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio2");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "SOUND HOLD" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio2");
     editDetails()->page()->addStackField();
 
 
@@ -1252,18 +1153,16 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "2D";
     };
-    editDetails()->page()->newGroupBox("T-WAH");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "01", "large");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 6);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1,hex2, "07", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 7, 1, 2);
+    // formerly "T-WAH" groupBox at addGroupBox(0, 1, 1, 6) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, hex2, "01", "large");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 7, 1, 2) — parentCol=7
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1,hex2, "07", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -1277,18 +1176,16 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "2E";
     };
-    editDetails()->page()->newGroupBox("T-WAH BASS");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "01", "large");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 6);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 7, 1, 2);
+    // formerly "T-WAH BASS" groupBox at addGroupBox(0, 1, 1, 6) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, hex2, "01", "large");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 7, 1, 2) — parentCol=7
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -1303,15 +1200,13 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "2F";
     };
-    editDetails()->page()->newGroupBox("TREMOLO");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "TREMOLO" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 1, 1) — sequential cols 4-5
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -1325,16 +1220,14 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "30";
     };
-    editDetails()->page()->newGroupBox("VIBRATO");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
-    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, hex2, "02", "large");
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "VIBRATO" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "00", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.5");
+    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, hex2, "02", "large");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5");
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 1, 1) — sequential cols 5-6
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");
     editDetails()->page()->addStackField();
 
 
@@ -1348,16 +1241,14 @@ void stompbox_fx3::setEditPages()
     {
         hex2 = "31";
     };
-    editDetails()->page()->newGroupBox("WAH");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
-    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "02", "0~1000_ratio1.5","bottom", 70);
-    editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, hex2, "06", "0~1000_ratio1.75","bottom", 70);
-    editDetails()->page()->addDataKnob(0, 3, 1, 1, "10", hex1, hex2, "0A", "0~1000_ratio1.75","bottom", 70);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("LEVEL");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "01", "normal_ratio2");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.75");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "WAH" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "0~1000_ratio1.5","bottom", 70);
+    editDetails()->page()->addDataKnob(0, 3, 1, 1, "10", hex1, hex2, "06", "0~1000_ratio1.75","bottom", 70);
+    editDetails()->page()->addDataKnob(0, 4, 1, 1, "10", hex1, hex2, "0A", "0~1000_ratio1.75","bottom", 70);
+    // formerly "LEVEL" groupBox at addGroupBox(0, 2, 1, 1) — sequential cols 5-6
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "01", "normal_ratio2");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.75");
     editDetails()->page()->addStackField();
 
 

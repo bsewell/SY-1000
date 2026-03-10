@@ -60,7 +60,6 @@ void stompbox_master::setEditPages()
         hex2B = "29";
     };
 
-    editDetails()->page()->newGroupBox("Master");
     editDetails()->page()->addDataKnob(0, 0, 2, 1, "10", hex1, "12", "3C", "0~200_ratio3");              // patch level
     editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, "12", "3E", "BPM_ratio2", "bottom", 70);  // tempo BPM
     editDetails()->page()->addComboBox(1, 2, 1, 1, "10", hex1, "12", "43", "large");                     // tempo hold
@@ -73,11 +72,10 @@ void stompbox_master::setEditPages()
     editDetails()->page()->addSystemOverride(0, 5, 1, 1, "10", hex1, "12", "00", "01");
     editDetails()->page()->addComboBox(1, 5, 1, 1, "10", hex1, "02", "01", "large");                     // normal set
     editDetails()->page()->addSystemOverride(1, 5, 1, 1, "10", hex1, "12", "00", "00");
-    editDetails()->page()->addGroupBox(0, 0, 1, 6);
 
     editDetails()->addPage("Tables", "00", "02", "03", "00");       // ******************************************************************
 
-    editDetails()->page()->newGroupBox("Patch Midi 1");
+    // Patch Midi 1 — col 0
     editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "00", "39");  // channel
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "00", "3E");  // patch
     editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "00", "3A");  // msb
@@ -87,59 +85,53 @@ void stompbox_master::setEditPages()
     editDetails()->page()->addComboBox(5, 0, 1, 1, "10", hex1, "00", "42");  // cc# 1 value
     editDetails()->page()->addComboBox(6, 0, 1, 1, "10", hex1, "00", "43");  // cc#2
     editDetails()->page()->addComboBox(7, 0, 1, 1, "10", hex1, "00", "45");  // cc#2 value
-    editDetails()->page()->addGroupBox(1, 0, 7, 1);
 
-    editDetails()->page()->newGroupBox("Patch Midi 2");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "00", "46");  // channel
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "00", "4B");  // patch
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "00", "47");  // msb
-    editDetails()->page()->addComboBox(3, 0, 1, 1, "10", hex1, "00", "49");  // lsb
-    editDetails()->page()->addSystemOverride(2, 0, 2, 1, "10", hex1, "00", "4B", "00", "more_than");
-    editDetails()->page()->addComboBox(4, 0, 1, 1, "10", hex1, "00", "4D");  // cc#1
-    editDetails()->page()->addComboBox(5, 0, 1, 1, "10", hex1, "00", "4F");  // cc# 1 value
-    editDetails()->page()->addComboBox(6, 0, 1, 1, "10", hex1, "00", "50");  // cc#2
-    editDetails()->page()->addComboBox(7, 0, 1, 1, "10", hex1, "00", "52");  // cc#2 value    
-    editDetails()->page()->addGroupBox(1, 1, 7, 1);
+    // Patch Midi 2 — col 1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, "00", "46");  // channel
+    editDetails()->page()->addComboBox(1, 1, 1, 1, "10", hex1, "00", "4B");  // patch
+    editDetails()->page()->addComboBox(2, 1, 1, 1, "10", hex1, "00", "47");  // msb
+    editDetails()->page()->addComboBox(3, 1, 1, 1, "10", hex1, "00", "49");  // lsb
+    editDetails()->page()->addSystemOverride(2, 1, 2, 1, "10", hex1, "00", "4B", "00", "more_than");
+    editDetails()->page()->addComboBox(4, 1, 1, 1, "10", hex1, "00", "4D");  // cc#1
+    editDetails()->page()->addComboBox(5, 1, 1, 1, "10", hex1, "00", "4F");  // cc# 1 value
+    editDetails()->page()->addComboBox(6, 1, 1, 1, "10", hex1, "00", "50");  // cc#2
+    editDetails()->page()->addComboBox(7, 1, 1, 1, "10", hex1, "00", "52");  // cc#2 value
 
-    editDetails()->page()->newGroupBox("Patch Midi 3");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "00", "53");  // channel
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "00", "58");  // patch
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "00", "54");  // msb
-    editDetails()->page()->addComboBox(3, 0, 1, 1, "10", hex1, "00", "56");  // lsb
-    editDetails()->page()->addSystemOverride(2, 0, 2, 1, "10", hex1, "00", "58", "00", "more_than");
-    editDetails()->page()->addComboBox(4, 0, 1, 1, "10", hex1, "00", "5A");  // cc#1
-    editDetails()->page()->addComboBox(5, 0, 1, 1, "10", hex1, "00", "5C");  // cc# 1 value
-    editDetails()->page()->addComboBox(6, 0, 1, 1, "10", hex1, "00", "5D");  // cc#2
-    editDetails()->page()->addComboBox(7, 0, 1, 1, "10", hex1, "00", "5F");  // cc#2 value    
-    editDetails()->page()->addGroupBox(1, 2, 7, 1);
+    // Patch Midi 3 — col 2
+    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, "00", "53");  // channel
+    editDetails()->page()->addComboBox(1, 2, 1, 1, "10", hex1, "00", "58");  // patch
+    editDetails()->page()->addComboBox(2, 2, 1, 1, "10", hex1, "00", "54");  // msb
+    editDetails()->page()->addComboBox(3, 2, 1, 1, "10", hex1, "00", "56");  // lsb
+    editDetails()->page()->addSystemOverride(2, 2, 2, 1, "10", hex1, "00", "58", "00", "more_than");
+    editDetails()->page()->addComboBox(4, 2, 1, 1, "10", hex1, "00", "5A");  // cc#1
+    editDetails()->page()->addComboBox(5, 2, 1, 1, "10", hex1, "00", "5C");  // cc# 1 value
+    editDetails()->page()->addComboBox(6, 2, 1, 1, "10", hex1, "00", "5D");  // cc#2
+    editDetails()->page()->addComboBox(7, 2, 1, 1, "10", hex1, "00", "5F");  // cc#2 value
 
-    editDetails()->page()->newGroupBox("Patch Midi 4");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "00", "60");  // channel
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "00", "65");  // patch
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "00", "61");  // msb
-    editDetails()->page()->addComboBox(3, 0, 1, 1, "10", hex1, "00", "63");  // lsb
-    editDetails()->page()->addSystemOverride(2, 0, 2, 1, "10", hex1, "00", "65", "00", "more_than");
-    editDetails()->page()->addComboBox(4, 0, 1, 1, "10", hex1, "00", "67");  // cc#1
-    editDetails()->page()->addComboBox(5, 0, 1, 1, "10", hex1, "00", "69");  // cc# 1 value
-    editDetails()->page()->addComboBox(6, 0, 1, 1, "10", hex1, "00", "6A");  // cc#2
-    editDetails()->page()->addComboBox(7, 0, 1, 1, "10", hex1, "00", "6C");  // cc#2 value    
-    editDetails()->page()->addGroupBox(1, 3, 7, 1);
+    // Patch Midi 4 — col 3
+    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, "00", "60");  // channel
+    editDetails()->page()->addComboBox(1, 3, 1, 1, "10", hex1, "00", "65");  // patch
+    editDetails()->page()->addComboBox(2, 3, 1, 1, "10", hex1, "00", "61");  // msb
+    editDetails()->page()->addComboBox(3, 3, 1, 1, "10", hex1, "00", "63");  // lsb
+    editDetails()->page()->addSystemOverride(2, 3, 2, 1, "10", hex1, "00", "65", "00", "more_than");
+    editDetails()->page()->addComboBox(4, 3, 1, 1, "10", hex1, "00", "67");  // cc#1
+    editDetails()->page()->addComboBox(5, 3, 1, 1, "10", hex1, "00", "69");  // cc# 1 value
+    editDetails()->page()->addComboBox(6, 3, 1, 1, "10", hex1, "00", "6A");  // cc#2
+    editDetails()->page()->addComboBox(7, 3, 1, 1, "10", hex1, "00", "6C");  // cc#2 value
 
-    editDetails()->page()->newGroupBox("Midi CC# A Controller");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "00", "6D");  // cc#1 source
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "00", "6E");  // cc#1 value
-    editDetails()->page()->addGroupBox(1, 4, 7, 1);
+    // Midi CC# A Controller — col 4
+    editDetails()->page()->addComboBox(0, 4, 1, 1, "10", hex1, "00", "6D");  // cc#1 source
+    editDetails()->page()->addComboBox(1, 4, 1, 1, "10", hex1, "00", "6E");  // cc#1 value
 
-    editDetails()->page()->newGroupBox("Midi CC# B Controller");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "00", "6F");  // cc#2 source
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "00", "70");  // cc#2 value
-    editDetails()->page()->addGroupBox(1, 5, 7, 1);
+    // Midi CC# B Controller — col 5
+    editDetails()->page()->addComboBox(0, 5, 1, 1, "10", hex1, "00", "6F");  // cc#2 source
+    editDetails()->page()->addComboBox(1, 5, 1, 1, "10", hex1, "00", "70");  // cc#2 value
 
 
     editDetails()->addPage("Tables", "00", "02", "03", "01");       // ******************************************************************
 
 
-    editDetails()->page()->newGroupBox("Guitar to Midi");
+    // Guitar to Midi — col 0
     editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "14", "00");  // mode
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "14", "01");  // alt tune
     editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "14", "02");  // play feel
@@ -147,56 +139,44 @@ void stompbox_master::setEditPages()
     editDetails()->page()->addComboBox(4, 0, 1, 1, "10", hex1, "14", "04");  // hold type
     editDetails()->page()->addComboBox(5, 0, 1, 1, "10", hex1, "14", "05");  // dynamics
     editDetails()->page()->addComboBox(6, 0, 1, 1, "10", hex1, "14", "06");  // low velo cut
-    editDetails()->page()->addGroupBox(1, 0, 7, 1);
 
-    editDetails()->page()->newGroupBox("Poly Mode Midi Patch");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "00", "71");  // msb
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "00", "73");  // lsb
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "00", "75");  // patch
-    editDetails()->page()->addSystemOverride(0, 0, 7, 1, "10", hex1, "14", "00", "00", "more_than");
-    editDetails()->page()->addGroupBox(1, 1, 7, 1);
+    // Poly Mode Midi Patch — col 1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, "00", "71");  // msb
+    editDetails()->page()->addComboBox(1, 1, 1, 1, "10", hex1, "00", "73");  // lsb
+    editDetails()->page()->addComboBox(2, 1, 1, 1, "10", hex1, "00", "75");  // patch
+    editDetails()->page()->addSystemOverride(0, 1, 7, 1, "10", hex1, "14", "00", "00", "more_than");
 
-    editDetails()->page()->newGroupBox("Mono Mode String Midi Patch");
+    // String 1 Patch — col 2
+    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, "00", "77");  // msb
+    editDetails()->page()->addComboBox(1, 2, 1, 1, "10", hex1, "00", "79");  // lsb
+    editDetails()->page()->addComboBox(2, 2, 1, 1, "10", hex1, "00", "7B");  // patch
 
-    editDetails()->page()->newGroupBox("String 1 Patch");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "00", "77");  // msb
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "00", "79");  // lsb
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "00", "7B");  // patch
+    // String 2 Patch — col 3
+    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, "00", "7D");  // msb
+    //editDetails()->page()->addComboBox(1, 3, 1, 1, "10", hex1, "00", "7F");  // lsb
+    editDetails()->page()->addComboBox(2, 3, 1, 1, "10", hex1, "01", "01");  // patch
 
-    editDetails()->page()->addGroupBox(1, 2, 7, 1);
+    // String 3 Patch — col 4
+    editDetails()->page()->addComboBox(0, 4, 1, 1, "10", hex1, "01", "03");  // msb
+    editDetails()->page()->addComboBox(1, 4, 1, 1, "10", hex1, "01", "05");  // lsb
+    editDetails()->page()->addComboBox(2, 4, 1, 1, "10", hex1, "01", "07");  // patch
 
-    editDetails()->page()->newGroupBox("String 2 Patch");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "00", "7D");  // msb
-    //editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "00", "7F");  // lsb
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "01", "01");  // patch
-    editDetails()->page()->addGroupBox(1, 3, 7, 1);
+    // String 4 Patch — col 5
+    editDetails()->page()->addComboBox(0, 5, 1, 1, "10", hex1, "01", "09");  // msb
+    editDetails()->page()->addComboBox(1, 5, 1, 1, "10", hex1, "01", "0B");  // lsb
+    editDetails()->page()->addComboBox(2, 5, 1, 1, "10", hex1, "01", "0D");  // patch
 
-    editDetails()->page()->newGroupBox("String 3 Patch");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "01", "03");  // msb
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "01", "05");  // lsb
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "01", "07");  // patch
-    editDetails()->page()->addGroupBox(1, 4, 7, 1);
+    // String 5 Patch — col 6
+    editDetails()->page()->addComboBox(0, 6, 1, 1, "10", hex1, "01", "0F");  // msb
+    editDetails()->page()->addComboBox(1, 6, 1, 1, "10", hex1, "01", "11");  // lsb
+    editDetails()->page()->addComboBox(2, 6, 1, 1, "10", hex1, "01", "13");  // patch
 
-    editDetails()->page()->newGroupBox("String 4 Patch");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "01", "09");  // msb
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "01", "0B");  // lsb
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "01", "0D");  // patch
-    editDetails()->page()->addGroupBox(1, 5, 7, 1);
-
-    editDetails()->page()->newGroupBox("String 5 Patch");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "01", "0F");  // msb
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "01", "11");  // lsb
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "01", "13");  // patch
-    editDetails()->page()->addGroupBox(1, 6, 7, 1);
-
-    editDetails()->page()->newGroupBox("String 6 Patch");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "01", "15");  // msb
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "01", "17");  // lsb
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, "01", "19");  // patch
-    editDetails()->page()->addGroupBox(1, 7, 7, 1);
+    // String 6 Patch — col 7
+    editDetails()->page()->addComboBox(0, 7, 1, 1, "10", hex1, "01", "15");  // msb
+    editDetails()->page()->addComboBox(1, 7, 1, 1, "10", hex1, "01", "17");  // lsb
+    editDetails()->page()->addComboBox(2, 7, 1, 1, "10", hex1, "01", "19");  // patch
 
     editDetails()->page()->addSystemOverride(0, 0, 8, 8, "10", hex1, "14", "00", "01", "less_than");
-    editDetails()->page()->addGroupBox(1, 7, 7, 7);
 
 
     editDetails()->addPage("Tables", "00", "02", "03", "03");       // ******************************************************************

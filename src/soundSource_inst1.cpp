@@ -90,13 +90,14 @@ void soundsource_inst1::setEditPages()
         str6 = "String Lo B";
     };
 
+    editDetails()->page()->setFlatGroupBoxes(true);
     editDetails()->page()->newStackControl(10);
     editDetails()->page()->addStackControl();
     editDetails()->page()->newStackControl(0);
     editDetails()->page()->linkStackControl(10);
-    editDetails()->page()->addComboBox(0, 0, 1, 3, "10", hex1, "15", "01", "large_inst"); //type
+    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, "15", "01", "left_large"); //type
     editDetails()->page()->addStackControl();
-    editDetails()->page()->insertStackField(10, 0, 3, 1, 7, Qt::AlignVCenter | Qt::AlignLeft);
+    editDetails()->page()->insertStackField(10, 0, 2, 1, 8, Qt::AlignVCenter | Qt::AlignLeft);
     editDetails()->page()->addDivider(1, 0, 1, 10, Qt::AlignTop | Qt::AlignLeft);
     editDetails()->page()->insertStackField(0, 2, 0, 1, 10, Qt::AlignTop | Qt::AlignLeft);
 
@@ -116,7 +117,7 @@ void soundsource_inst1::setEditPages()
 
     editDetails()->page()->newStackField(1, Qt::AlignTop | Qt::AlignLeft);
     editDetails()->page()->compactCurrentStackField(20, 24);
-    editDetails()->page()->addComboBox(0, 0, 1, 3, "10", hex1, "16", "04", "large"); //wave type
+    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, "16", "04", "left_large"); //wave type
     editDetails()->page()->addKnob(1, 0, 1, 1, "10", hex1, "16", "05", "normal_ratio1.5");   // pitch
     editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, "16", "06", "normal_ratio1.25");  // fine
     editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, "16", "0A", "normal_ratio1.25");  // detune
@@ -138,6 +139,8 @@ void soundsource_inst1::setEditPages()
     editDetails()->page()->addKnob(2, 3, 1, 1, "10", hex1, "16", "10", "normal_ratio1.25");  // p env depth
     editDetails()->page()->addKnob(2, 4, 1, 1, "10", hex1, "16", "11", "normal_ratio1.25");  // p bend depth
     editDetails()->page()->addKnob(2, 5, 1, 1, "10", hex1, "16", "12", "normal_ratio1.25");  // p bend ctl
+    editDetails()->page()->addSwitch(2, 6, 1, 1, "10", hex1, "16", "13");                    // sync sw
+    editDetails()->page()->addComboBox(2, 7, 1, 1, "10", hex1, "16", "17", "bottom");        // ring sw (OFF/ON/INV)
     editDetails()->page()->addSystemOverride(2, 2, 1, 4, "10", hex1, "16", "04", "09");
     editDetails()->page()->addStackField();
 
@@ -573,123 +576,90 @@ void soundsource_inst1::setEditPages()
 
 
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("OSC Synth");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "18", "00"); //wave type
-    editDetails()->page()->addGroupBox(0, 0, 2, 1);
-
-    editDetails()->page()->newGroupBox("OSC 1");
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, "18", "01"); //wave type 1
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "18", "02", "normal_ratio1.25"); //pitch
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "18", "03", "normal"); //fine
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("Pulse Width 1");
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "18", "04", "normal_ratio1.25"); //wave type
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, "18", "05", "normal_ratio1.25"); //wave type
-    editDetails()->page()->addSystemOverride(0, 4, 1, 2, "10", hex1, "18", "01", "04", "not_equal"); // pwm
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-    editDetails()->page()->newGroupBox("Pitch Envelope 1");
-    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, "18", "06", "normal"); //wave type
-    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, "18", "07", "normal"); //wave type
-    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, "18", "08", "normal"); //wave type
-    editDetails()->page()->addGroupBox(0, 3, 1, 1);
-    editDetails()->page()->newGroupBox("Level 1");
-    editDetails()->page()->addKnob(0, 9, 1, 1, "10", hex1, "18", "09", "normal_ratio1.25"); //level
-    editDetails()->page()->addGroupBox(0, 4, 1, 1);
-
-    editDetails()->page()->newGroupBox("OSC 2");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "18", "0A"); //wave type 2
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "18", "0B", "normal_ratio1.25"); //pitch
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "18", "0C", "normal"); //fine
-    editDetails()->page()->addSystemOverride(0, 0, 1, 3, "10", hex1, "18", "00", "00");
-    editDetails()->page()->addGroupBox(1, 1, 1, 1);
-    editDetails()->page()->newGroupBox("Pulse Width 2");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "18", "0D", "normal_ratio1.25"); //wave type
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "18", "0E", "normal_ratio1.25"); //wave type
-    editDetails()->page()->addSystemOverride(0, 0, 1, 2, "10", hex1, "18", "00", "00");
-    editDetails()->page()->addSystemOverride(0, 0, 1, 2, "10", hex1, "18", "0A", "04", "not_equal"); // pwm
-    editDetails()->page()->addGroupBox(1, 2, 1, 1);
-    editDetails()->page()->newGroupBox("Pitch Envelope 2");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "18", "0F", "normal"); //wave type
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "18", "10", "normal"); //wave type
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "18", "11", "normal"); //wave type
-    editDetails()->page()->addSystemOverride(0, 0, 1, 3, "10", hex1, "18", "00", "00");
-    editDetails()->page()->addGroupBox(1, 3, 1, 1);
-    editDetails()->page()->newGroupBox("Level 2");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "18", "12", "normal_ratio1.25"); //level
-    editDetails()->page()->addSystemOverride(0, 0, 1, 1, "10", hex1, "18", "00", "00");
-    editDetails()->page()->addGroupBox(1, 4, 1, 1);
-
-    editDetails()->page()->newGroupBox("OSC CONTROL");
-    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, "18", "13"); // mono/poly
-    editDetails()->page()->addComboBox(3, 1, 1, 2, "10", hex1, "18", "17"); // porta mode
-    editDetails()->page()->addSystemOverride(2, 0, 1, 1, "10", hex1, "18", "13", "00"); //porta mode
-    editDetails()->page()->addComboBox(0, 2, 1, 2, "10", hex1, "18", "18"); // hold mode
-    editDetails()->page()->addSwitch(1, 1, 1, 1, "10", hex1, "18", "15"); // porta sw
-    editDetails()->page()->addKnob(2, 1, 1, 1, "10", hex1, "18", "16", "normal_ratio1.25"); // porta time
-    editDetails()->page()->addSwitch(1, 2, 1, 1, "10", hex1, "18", "14"); // chromatic
-    editDetails()->page()->addKnob(2, 2, 1, 1, "10", hex1, "18", "19", "normal_ratio1.25"); // low vel cut
-    editDetails()->page()->addGroupBox(0, 5, 2, 1);
+    editDetails()->page()->compactCurrentStackField(18, 18);
+    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, "18", "00", "left_large"); // wave type
+    editDetails()->page()->addComboBox(0, 2, 1, 2, "10", hex1, "18", "01", "left_large"); // wave type 1
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "18", "02", "normal_ratio1.25"); // pitch 1
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, "18", "03", "normal"); // fine 1
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, "18", "04", "normal_ratio1.25"); // pw 1
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, "18", "05", "normal_ratio1.25"); // pwm env 1
+    editDetails()->page()->addSystemOverride(0, 6, 1, 2, "10", hex1, "18", "01", "04", "not_equal");
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, "18", "06", "normal"); // env 1 a
+    editDetails()->page()->addKnob(0, 9, 1, 1, "10", hex1, "18", "07", "normal"); // env 1 b
+    editDetails()->page()->addKnob(0, 10, 1, 1, "10", hex1, "18", "08", "normal"); // env 1 c
+    editDetails()->page()->addKnob(0, 11, 1, 1, "10", hex1, "18", "09", "normal_ratio1.25"); // level 1
+    editDetails()->page()->addDivider(1, 0, 1, 14);
+    editDetails()->page()->addComboBox(2, 0, 1, 2, "10", hex1, "18", "13", "left_large"); // mono/poly
+    editDetails()->page()->addComboBox(2, 2, 1, 2, "10", hex1, "18", "18", "left_large"); // hold mode
+    editDetails()->page()->addSwitch(2, 4, 1, 1, "10", hex1, "18", "15"); // porta sw
+    editDetails()->page()->addKnob(2, 5, 1, 1, "10", hex1, "18", "16", "normal_ratio1.25"); // porta time
+    editDetails()->page()->addSwitch(2, 6, 1, 1, "10", hex1, "18", "14"); // chromatic
+    editDetails()->page()->addKnob(2, 7, 1, 1, "10", hex1, "18", "19", "normal_ratio1.25"); // low vel cut
+    editDetails()->page()->addComboBox(2, 8, 1, 2, "10", hex1, "18", "0A", "left_large"); // wave type 2
+    editDetails()->page()->addKnob(2, 10, 1, 1, "10", hex1, "18", "0B", "normal_ratio1.25"); // pitch 2
+    editDetails()->page()->addKnob(2, 11, 1, 1, "10", hex1, "18", "0C", "normal"); // fine 2
+    editDetails()->page()->addSystemOverride(2, 8, 1, 4, "10", hex1, "18", "00", "00");
+    editDetails()->page()->addComboBox(3, 0, 1, 2, "10", hex1, "18", "17", "left_large"); // porta mode
+    editDetails()->page()->addSystemOverride(3, 0, 1, 2, "10", hex1, "18", "13", "00");
+    editDetails()->page()->addKnob(3, 8, 1, 1, "10", hex1, "18", "0D", "normal_ratio1.25"); // pw 2
+    editDetails()->page()->addKnob(3, 9, 1, 1, "10", hex1, "18", "0E", "normal_ratio1.25"); // pwm env 2
+    editDetails()->page()->addSystemOverride(3, 8, 1, 2, "10", hex1, "18", "00", "00");
+    editDetails()->page()->addSystemOverride(3, 8, 1, 2, "10", hex1, "18", "0A", "04", "not_equal");
+    editDetails()->page()->addKnob(3, 10, 1, 1, "10", hex1, "18", "0F", "normal"); // env 2 a
+    editDetails()->page()->addKnob(3, 11, 1, 1, "10", hex1, "18", "10", "normal"); // env 2 b
+    editDetails()->page()->addKnob(3, 12, 1, 1, "10", hex1, "18", "11", "normal"); // env 2 c
+    editDetails()->page()->addKnob(3, 13, 1, 1, "10", hex1, "18", "12", "normal_ratio1.25"); // level 2
+    editDetails()->page()->addSystemOverride(3, 10, 1, 4, "10", hex1, "18", "00", "00");
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("Filter");
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "18", "1A"); //off/on
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, "18", "1B");  // type
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "18", "1C", "normal_ratio1.25");  // slope
-    editDetails()->page()->addSystemOverride(0, 2, 1, 1, "10", hex1, "18", "1B", "04", "less_than"); // slope
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "18", "1D", "normal_ratio1.25");  // cutoff
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "18", "1E", "normal_ratio1.25");  // cutoff follow
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, "18", "1F", "normal_ratio1.25");  // resonance
-    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, "18", "20", "normal_ratio1.25");  // velocity sense
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->newGroupBox("Filter Envelope");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "18", "21", "normal_ratio1.25");  // attack
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "18", "22", "normal_ratio1.25");  // decay
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "18", "23", "normal_ratio1.25");  // sustain
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "18", "24", "normal_ratio1.25");  // release
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "18", "25", "normal_ratio1.25");  // depth
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("Amp Envelope");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "18", "27", "normal_ratio1.25");  // attack
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "18", "28", "normal_ratio1.25");  // decay
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "18", "29", "normal_ratio1.25");  // sustain
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "18", "2A", "normal_ratio1.25");  // release
-    editDetails()->page()->addGroupBox(1, 0, 1, 1);
-    editDetails()->page()->newGroupBox("Amp");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "18", "26", "normal_ratio1.25");  // velocity sense
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "18", "2B", "normal_ratio1.25", "bottom", 70);  // low cut
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "18", "2C", "normal_ratio1.25", "bottom", 70);  // high cut
-    editDetails()->page()->addGroupBox(1, 1, 1, 1);
+    editDetails()->page()->compactCurrentStackField(18, 18);
+    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "18", "1A"); // off/on
+    editDetails()->page()->addComboBox(0, 1, 1, 2, "10", hex1, "18", "1B", "left_large"); // type
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "18", "1C", "normal_ratio1.25"); // slope
+    editDetails()->page()->addSystemOverride(0, 3, 1, 1, "10", hex1, "18", "1B", "04", "less_than");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "18", "1D", "normal_ratio1.25"); // cutoff
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, "18", "1E", "normal_ratio1.25"); // cutoff follow
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, "18", "1F", "normal_ratio1.25"); // resonance
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, "18", "20", "normal_ratio1.25"); // velocity sense
+    editDetails()->page()->addDivider(1, 0, 1, 8);
+    editDetails()->page()->addKnob(2, 0, 1, 1, "10", hex1, "18", "21", "normal_ratio1.25"); // f env attack
+    editDetails()->page()->addKnob(2, 1, 1, 1, "10", hex1, "18", "22", "normal_ratio1.25"); // f env decay
+    editDetails()->page()->addKnob(2, 2, 1, 1, "10", hex1, "18", "23", "normal_ratio1.25"); // f env sustain
+    editDetails()->page()->addKnob(2, 3, 1, 1, "10", hex1, "18", "24", "normal_ratio1.25"); // f env release
+    editDetails()->page()->addKnob(2, 4, 1, 1, "10", hex1, "18", "25", "normal_ratio1.25"); // f env depth
+    editDetails()->page()->addKnob(3, 0, 1, 1, "10", hex1, "18", "27", "normal_ratio1.25"); // a env attack
+    editDetails()->page()->addKnob(3, 1, 1, 1, "10", hex1, "18", "28", "normal_ratio1.25"); // a env decay
+    editDetails()->page()->addKnob(3, 2, 1, 1, "10", hex1, "18", "29", "normal_ratio1.25"); // a env sustain
+    editDetails()->page()->addKnob(3, 3, 1, 1, "10", hex1, "18", "2A", "normal_ratio1.25"); // a env release
+    editDetails()->page()->addKnob(3, 4, 1, 1, "10", hex1, "18", "26", "normal_ratio1.25"); // amp vel sense
+    editDetails()->page()->addKnob(3, 5, 1, 1, "10", hex1, "18", "2B", "normal_ratio1.25", "bottom", 70); // low cut
+    editDetails()->page()->addKnob(3, 6, 1, 1, "10", hex1, "18", "2C", "normal_ratio1.25", "bottom", 70); // high cut
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("LFO 1");
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "18", "2D"); // 1 off/on
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, "18", "2E");  // shape
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "18", "2F", "normal_ratio1.25");  // rate
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "18", "30", "normal_ratio1.25");  //
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "18", "31", "normal_ratio1.25");  // pitch 2 depth
-    editDetails()->page()->addSystemOverride(0, 4, 1, 1, "10", hex1, "18", "00", "00"); //
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, "18", "32", "normal_ratio1.25");  //
-    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, "18", "33", "normal_ratio1.25");  //
-    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, "18", "34", "normal_ratio1.25");  //
-    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, "18", "35", "normal_ratio1.25");  //
-    editDetails()->page()->addComboBox(0, 9, 1, 1, "10", hex1, "18", "36");  //pitch sync
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox("LFO 2");
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "18", "37"); // 2 off/on
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, "18", "38");  // shape
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "18", "39", "normal_ratio1.25");  // rate
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "18", "3A", "normal_ratio1.25");  //
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "18", "3B", "normal_ratio1.25");  // pitch 2 depth
-    editDetails()->page()->addSystemOverride(0, 4, 1, 1, "10", hex1, "18", "00", "00"); //
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, "18", "3C", "normal_ratio1.25");  //
-    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, "18", "3D", "normal_ratio1.25");  //
-    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, "18", "3E", "normal_ratio1.25");  //
-    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, "18", "3F", "normal_ratio1.25");  //
-    editDetails()->page()->addComboBox(0, 9, 1, 1, "10", hex1, "18", "40");  //pitch sync
-    editDetails()->page()->addGroupBox(1, 0, 1, 1);
+    editDetails()->page()->compactCurrentStackField(18, 18);
+    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "18", "2D"); // lfo1 on/off
+    editDetails()->page()->addComboBox(0, 1, 1, 2, "10", hex1, "18", "2E", "left_large"); // lfo1 shape
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "18", "2F", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "18", "30", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, "18", "31", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, "18", "32", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, "18", "33", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, "18", "34", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 9, 1, 1, "10", hex1, "18", "35", "normal_ratio1.25");
+    editDetails()->page()->addComboBox(0, 10, 1, 2, "10", hex1, "18", "36", "left_large");
+    editDetails()->page()->addDivider(1, 0, 1, 12);
+    editDetails()->page()->addSwitch(2, 0, 1, 1, "10", hex1, "18", "37"); // lfo2 on/off
+    editDetails()->page()->addComboBox(2, 1, 1, 2, "10", hex1, "18", "38", "left_large"); // lfo2 shape
+    editDetails()->page()->addKnob(2, 3, 1, 1, "10", hex1, "18", "39", "normal_ratio1.25");
+    editDetails()->page()->addKnob(2, 4, 1, 1, "10", hex1, "18", "3A", "normal_ratio1.25");
+    editDetails()->page()->addKnob(2, 5, 1, 1, "10", hex1, "18", "3B", "normal_ratio1.25");
+    editDetails()->page()->addKnob(2, 6, 1, 1, "10", hex1, "18", "3C", "normal_ratio1.25");
+    editDetails()->page()->addKnob(2, 7, 1, 1, "10", hex1, "18", "3D", "normal_ratio1.25");
+    editDetails()->page()->addKnob(2, 8, 1, 1, "10", hex1, "18", "3E", "normal_ratio1.25");
+    editDetails()->page()->addKnob(2, 9, 1, 1, "10", hex1, "18", "3F", "normal_ratio1.25");
+    editDetails()->page()->addComboBox(2, 10, 1, 2, "10", hex1, "18", "40", "left_large");
     editDetails()->page()->addStackField();
 
 
@@ -714,40 +684,31 @@ void soundsource_inst1::setEditPages()
     // ***********************************************************************************************************************************
 
 
-    editDetails()->page()->newStackField(3);
-    editDetails()->page()->newGroupBox("GR-300 Synth");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "19", "00"); //mode
-    editDetails()->page()->addSwitch(1, 0, 1, 1, "10", hex1, "19", "01", "middle"); //comp
-    editDetails()->page()->addKnob(1, 1, 2, 1, "10", hex1, "19", "02", "normal_ratio1.25");  //filter cutoff
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "19", "03", "normal_ratio1.25");  //filter reso
-    editDetails()->page()->addGroupBox(0, 0, 2, 1);
-    editDetails()->page()->newGroupBox("Envelope Modulation");
-    editDetails()->page()->addComboBox(1, 0, 1, 2, "10", hex1, "19", "04"); //env mod sw
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "19", "05", "normal_ratio1.25");  //env mod sens
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "19", "06", "normal_ratio1.25");  //env mod attack
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
-    editDetails()->page()->newGroupBox("Pitch");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "19", "07");  //pitch sw
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "19", "08", "normal_ratio1.5");  //pitch A
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, "19", "09", "normal_ratio1.25");  //pitch A fine
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "19", "0A", "normal_ratio1.5");  //pitch B
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "19", "0B", "normal_ratio1.25");  //pitch B fine
-    editDetails()->page()->addSwitch(1, 4, 1, 1, "10", hex1, "19", "0C", "middle"); //duet sw
-    editDetails()->page()->addSwitch(1, 0, 1, 1, "10", hex1, "19", "0D", "middle"); //sweep sw
-    editDetails()->page()->addKnob(1, 1, 2, 1, "10", hex1, "19", "0E", "normal_ratio1.25"); //sweep rise
-    editDetails()->page()->addKnob(1, 3, 2, 1, "10", hex1, "19", "0F", "normal_ratio1.25"); //sweep fall
-    editDetails()->page()->addSystemOverride(0, 0, 3, 5, "10", hex1, "19", "00", "02"); // mode
-    editDetails()->page()->addGroupBox(0, 3, 2, 2);
-    editDetails()->page()->newGroupBox("Vibrato");
-    editDetails()->page()->addSwitch(1, 0, 1, 2, "10", hex1, "19", "10", "middle"); //vibrato sw
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "19", "11", "normal_ratio1.25");  //vibrato rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "19", "12", "normal_ratio1.25");  //vibrato depth
-    editDetails()->page()->addSystemOverride(0, 0, 2, 2, "10", hex1, "19", "00", "02", "equal"); // mode
-    editDetails()->page()->addGroupBox(1, 2, 1, 1);
-    editDetails()->page()->newGroupBox("Filter");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "19", "13", "normal_ratio1.25", "bottom", 70);  //low cut
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "19", "14", "normal_ratio1.25", "bottom", 70);  //high cut
-    editDetails()->page()->addGroupBox(0, 5, 2, 1);
+    editDetails()->page()->newStackField(3, Qt::AlignTop | Qt::AlignLeft);
+    editDetails()->page()->compactCurrentStackField(14, 10);
+    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hex1, "19", "00", "left"); // mode
+    editDetails()->page()->addSwitch(0, 2, 1, 1, "10", hex1, "19", "01", "middle"); // comp
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "19", "02", "normal_ratio1.25"); // filter cutoff
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, "19", "03", "normal_ratio1.25"); // filter resonance
+    editDetails()->page()->addComboBox(0, 5, 1, 2, "10", hex1, "19", "04", "left"); // env mod sw
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, "19", "05", "normal_ratio1.25"); // env mod sens
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, "19", "06", "normal_ratio1.25"); // env mod attack
+    editDetails()->page()->addKnob(0, 9, 1, 1, "10", hex1, "19", "13", "normal_ratio1.25", "bottom", 70); // low cut
+    editDetails()->page()->addKnob(0, 10, 1, 1, "10", hex1, "19", "14", "normal_ratio1.25", "bottom", 70); // high cut
+    editDetails()->page()->addDivider(1, 0, 1, 11);
+    editDetails()->page()->addComboBox(2, 0, 1, 2, "10", hex1, "19", "07", "left"); // pitch sw
+    editDetails()->page()->addKnob(2, 2, 1, 1, "10", hex1, "19", "08", "normal_ratio1.5"); // pitch A
+    editDetails()->page()->addKnob(2, 3, 1, 1, "10", hex1, "19", "09", "normal_ratio1.25"); // pitch A fine
+    editDetails()->page()->addKnob(2, 4, 1, 1, "10", hex1, "19", "0A", "normal_ratio1.5"); // pitch B
+    editDetails()->page()->addKnob(2, 5, 1, 1, "10", hex1, "19", "0B", "normal_ratio1.25"); // pitch B fine
+    editDetails()->page()->addSwitch(2, 6, 1, 1, "10", hex1, "19", "0C", "middle"); // duet sw
+    editDetails()->page()->addSwitch(2, 7, 1, 1, "10", hex1, "19", "0D", "middle"); // sweep sw
+    editDetails()->page()->addKnob(2, 8, 1, 1, "10", hex1, "19", "0E", "normal_ratio1.25"); // sweep rise
+    editDetails()->page()->addKnob(2, 9, 1, 1, "10", hex1, "19", "0F", "normal_ratio1.25"); // sweep fall
+    editDetails()->page()->addKnob(2, 10, 1, 1, "10", hex1, "19", "11", "normal_ratio1.25"); // vibrato rate
+    editDetails()->page()->addKnob(2, 11, 1, 1, "10", hex1, "19", "12", "normal_ratio1.25"); // vibrato depth
+    editDetails()->page()->addSwitch(2, 12, 1, 1, "10", hex1, "19", "10", "middle"); // vibrato sw
+    editDetails()->page()->addSystemOverride(2, 0, 1, 13, "10", hex1, "19", "00", "02"); // mode
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(3);
@@ -1582,61 +1543,29 @@ void soundsource_inst1::altTuning()
         hexA = "02";
         hexB = "1E";
     };
-    editDetails()->page()->newGroupBox("Alternate Tuning");
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hexA, hexB, "00");                  // off/on
-    editDetails()->page()->addKnob(1, 0, 1, 1, "10", hexA, hexB, "01", "normal_ratio1.5", "bottom", 90); // type
-    editDetails()->page()->newGroupBox(str6+" Tuning");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hexA, hexB, "07", "large");       // pitch 6
-    editDetails()->page()->addKnob(1, 0, 2, 1, "10", hexA, hexB, "0D");                    // fine 6
-    editDetails()->page()->addGroupBox(0, 1, 3, 1);
-    editDetails()->page()->newGroupBox(str5+" Tuning");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hexA, hexB, "06", "large");       // pitch 5
-    editDetails()->page()->addKnob(1, 0, 2, 1, "10", hexA, hexB, "0C");                    // fine 5
-    editDetails()->page()->addGroupBox(0, 2, 3, 1);
-    editDetails()->page()->newGroupBox(str4+" Tuning");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hexA, hexB, "05", "large");       // pitch 4
-    editDetails()->page()->addKnob(1, 0, 2, 1, "10", hexA, hexB, "0B");                    // fine 4
-    editDetails()->page()->addGroupBox(0, 3, 3, 1);
-    editDetails()->page()->newGroupBox(str3+" Tuning");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hexA, hexB, "04", "large");       // pitch 3
-    editDetails()->page()->addKnob(1, 0, 2, 1, "10", hexA, hexB, "0A");                    // fine 3
-    editDetails()->page()->addGroupBox(0, 4, 3, 1);
-    editDetails()->page()->newGroupBox(str2+" Tuning");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hexA, hexB, "03", "large");       // pitch 2
-    editDetails()->page()->addKnob(1, 0, 2, 1, "10", hexA, hexB, "09");                    // fine 2
-    editDetails()->page()->addGroupBox(0, 5, 3, 1);
-    editDetails()->page()->newGroupBox(str1+" Tuning");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hexA, hexB, "02", "large");       // pitch 1
-    editDetails()->page()->addKnob(1, 0, 2, 1, "10", hexA, hexB, "08");                    // fine 1
-    editDetails()->page()->addGroupBox(0, 6, 3, 1);
-    QString usr = "24";
-    if(preferences->getPreferences("Window", "BassMode", "bool")=="true")
-    {
-        usr = "18";
-    };
-    editDetails()->page()->addSystemOverride(0, 1, 3, 6, "10", hexA, hexB, "01", usr, "not_equals");
-
-    editDetails()->page()->addSwitch(2, 0, 1, 1, "10", hexA, hexB, "28");                    // off/on
-    editDetails()->page()->addKnob(3, 0, 1, 1, "10", hexA, hexB, "2F", "normal_ratio1.25");  // bend control
-    editDetails()->page()->newGroupBox(str6+" Bend");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hexA, hexB, "2E", "normal_ratio1.25");  // bend 6
-    editDetails()->page()->addGroupBox(2, 1, 2, 1);
-    editDetails()->page()->newGroupBox(str5+" Bend");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hexA, hexB, "2D", "normal_ratio1.25");  // bend 5
-    editDetails()->page()->addGroupBox(2, 2, 2, 1);
-    editDetails()->page()->newGroupBox(str4+" Bend");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hexA, hexB, "2C", "normal_ratio1.25");  // bend 4
-    editDetails()->page()->addGroupBox(2, 3, 2, 1);
-    editDetails()->page()->newGroupBox(str3+" Bend");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hexA, hexB, "2B", "normal_ratio1.25");  // bend 3
-    editDetails()->page()->addGroupBox(2, 4, 2, 1);
-    editDetails()->page()->newGroupBox(str2+" Bend");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hexA, hexB, "2A", "normal_ratio1.25");  // bend 2
-    editDetails()->page()->addGroupBox(2, 5, 2, 1);
-    editDetails()->page()->newGroupBox(str1+" Bend");
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hexA, hexB, "29", "normal_ratio1.25");  // bend 1
-    editDetails()->page()->addGroupBox(2, 6, 2, 1);
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
+    editDetails()->page()->compactCurrentStackField(20, 24);
+    editDetails()->page()->addComboBox(0, 0, 1, 2, "10", hexA, hexB, "01", "left_large");    // tuning type
+    editDetails()->page()->addDivider(1, 0, 1, 10, Qt::AlignTop | Qt::AlignLeft);
+    editDetails()->page()->addKnob(2, 0, 1, 1, "10", hexA, hexB, "28", "normal_ratio1.25");  // str bend sw
+    editDetails()->page()->addKnob(2, 1, 1, 1, "10", hexA, hexB, "2F", "normal_ratio1.25");  // bend control
+    editDetails()->page()->addKnob(2, 2, 1, 1, "10", hexA, hexB, "07", "normal_ratio1.25");  // pitch 6
+    editDetails()->page()->addKnob(2, 3, 1, 1, "10", hexA, hexB, "06", "normal_ratio1.25");  // pitch 5
+    editDetails()->page()->addKnob(2, 4, 1, 1, "10", hexA, hexB, "05", "normal_ratio1.25");  // pitch 4
+    editDetails()->page()->addKnob(2, 5, 1, 1, "10", hexA, hexB, "04", "normal_ratio1.25");  // pitch 3
+    editDetails()->page()->addKnob(2, 6, 1, 1, "10", hexA, hexB, "03", "normal_ratio1.25");  // pitch 2
+    editDetails()->page()->addKnob(2, 7, 1, 1, "10", hexA, hexB, "02", "normal_ratio1.25");  // pitch 1
+    editDetails()->page()->addKnob(3, 2, 1, 1, "10", hexA, hexB, "2E", "normal_ratio1.25");  // bend depth 6
+    editDetails()->page()->addKnob(3, 3, 1, 1, "10", hexA, hexB, "2D", "normal_ratio1.25");  // bend depth 5
+    editDetails()->page()->addKnob(3, 4, 1, 1, "10", hexA, hexB, "2C", "normal_ratio1.25");  // bend depth 4
+    editDetails()->page()->addKnob(3, 5, 1, 1, "10", hexA, hexB, "2B", "normal_ratio1.25");  // bend depth 3
+    editDetails()->page()->addKnob(3, 6, 1, 1, "10", hexA, hexB, "2A", "normal_ratio1.25");  // bend depth 2
+    editDetails()->page()->addKnob(3, 7, 1, 1, "10", hexA, hexB, "29", "normal_ratio1.25");  // bend depth 1
+    editDetails()->page()->addKnob(4, 2, 1, 1, "10", hexA, hexB, "0D", "normal_ratio1.25");  // fine 6
+    editDetails()->page()->addKnob(4, 3, 1, 1, "10", hexA, hexB, "0C", "normal_ratio1.25");  // fine 5
+    editDetails()->page()->addKnob(4, 4, 1, 1, "10", hexA, hexB, "0B", "normal_ratio1.25");  // fine 4
+    editDetails()->page()->addKnob(4, 5, 1, 1, "10", hexA, hexB, "0A", "normal_ratio1.25");  // fine 3
+    editDetails()->page()->addKnob(4, 6, 1, 1, "10", hexA, hexB, "09", "normal_ratio1.25");  // fine 2
+    editDetails()->page()->addKnob(4, 7, 1, 1, "10", hexA, hexB, "08", "normal_ratio1.25");  // fine 1
 }
 
 void soundsource_inst1::twelveString()

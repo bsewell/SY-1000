@@ -69,8 +69,8 @@ void stompbox_ds::setEditPages()
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");
     editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "02", "turbo_ratio1.5");   // drive
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.25"); // bass
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25"); // treble
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.25"); // tone
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.25"); // bottom
     editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.75"); // level
     editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.75"); // direct level
     editDetails()->page()->addSwitch(0, 6, 1, 1, "10", hex1, hex2, "07");                   // solo sw

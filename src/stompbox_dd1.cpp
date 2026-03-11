@@ -56,6 +56,7 @@ void stompbox_dd1::updateSignal()
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "39";};
 
    updateButton("10", hex1, hex2, "00");
+   updateLabel("10", hex1, hex2, "01");
 }
 
 void stompbox_dd1::setEditPages()
@@ -65,13 +66,162 @@ void stompbox_dd1::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "39";};
 
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00"); //sw
-    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "DELAY2000_ratio1.75", "bottom", 60); // time
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.5");  //feedback
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.5", "bottom", 60);  //hi cut
-    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); //carry over
-    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "07", "turbo_ratio1.75"); //effect level
-    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5"); //direct level
+    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
+    editDetails()->page()->newStackControl(0);
+    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large"); // type
+    editDetails()->page()->addStackControl();
+
+    editDetails()->page()->insertStackField(0, 0, 1, 2, 1);
+
+    // STEREO 1
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60); //high cut
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75"); //effect
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5"); //direct
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "20"); //carry over
+    editDetails()->page()->addStackField();
+
+    // STEREO 2
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // PAN
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "1F", "normal_ratio1.25"); //tap time %
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // DUAL SERIES
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.25"); //d1 feedback
+    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "15", "normal_ratio1.25"); //d2 feedback
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.75");
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // DUAL PARALLEL
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.25"); //d1 feedback
+    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "15", "normal_ratio1.25"); //d2 feedback
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.75");
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // DUAL L/R
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.25"); //d1 feedback
+    editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "15", "normal_ratio1.25"); //d2 feedback
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(1, 2, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.75");
+    editDetails()->page()->addKnob(1, 3, 1, 1, "10", hex1, hex2, "17", "normal_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(1, 4, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // REVERSE
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // ANALOG
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // TAPE
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // MODULATE
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "18", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "19", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "1A", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75");
+    editDetails()->page()->addKnob(0, 7, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 8, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // WARP
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25");
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75");
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    // TWIST
+    editDetails()->page()->newStackField(0);
+    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "DELAY2000_ratio1.75","bottom", 60);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25");
+    editDetails()->page()->newStackControl(1);
+    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, hex2, "1B", "large");
+    editDetails()->page()->addStackControl();
+    editDetails()->page()->insertStackField(1, 0, 2, 1, 2);
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.25", "bottom", 60);
+    editDetails()->page()->addKnob(0, 4, 1, 1, "10", hex1, hex2, "08", "turbo_ratio1.75");
+    editDetails()->page()->addKnob(0, 5, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.5");
+    editDetails()->page()->addKnob(0, 6, 1, 1, "10", hex1, hex2, "20");
+    editDetails()->page()->addStackField();
+
+    editDetails()->page()->newStackField(1);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "1C", "normal_ratio1.5"); //rise
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "1D", "normal_ratio1.5"); //fall
+    editDetails()->page()->addStackField();
+
+    editDetails()->page()->newStackField(1);
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "1C", "normal_ratio1.5"); //rise
+    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "1E", "normal_ratio1.5"); //fade
+    editDetails()->page()->addStackField();
 
     editDetails()->addPage();
 

@@ -56,7 +56,7 @@ void stompbox_fv1::setEditPages()
         editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, "12", "06", "0~1000_ratio1.75");
         editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, "12", "0A", "0~1000_ratio1.75");
         editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, "12", "0E", "0~1000_ratio1.5");
-        editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "12", "12", "normal_ratio1.5", "bottom", 60);
+        editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, "12", "12", "bottom"); // volume curve (LINEAR/FAST RISE/FAST FALL/SLOW)
         
         editDetails()->addPage();    
 };

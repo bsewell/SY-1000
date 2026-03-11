@@ -338,10 +338,10 @@ void stompbox_fx2::setEditPages()
     editDetails()->page()->newStackField(2);
     // formerly "DELAY 1" groupBox at addGroupBox(0, 0, 1, 1) — row 0 cols 0-1
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.25"); //d1 feedback
     // formerly "DELAY 2" groupBox at addGroupBox(1, 0, 1, 1) — row 1 cols 0-1
     editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "15", "normal_ratio1.25"); //d2 feedback
     // formerly "FILTER 1" groupBox at addGroupBox(0, 1, 1, 1) — sequential col 2 row 0
     editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
     // formerly "FILTER 2" groupBox at addGroupBox(1, 1, 1, 1) — sequential col 2 row 1
@@ -359,10 +359,10 @@ void stompbox_fx2::setEditPages()
     editDetails()->page()->newStackField(2);
     // formerly "DELAY 1" groupBox at addGroupBox(0, 0, 1, 1) — row 0 cols 0-1
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.25"); //d1 feedback
     // formerly "DELAY 2" groupBox at addGroupBox(1, 0, 1, 1) — row 1 cols 0-1
     editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "15", "normal_ratio1.25"); //d2 feedback
     // formerly "FILTER 1" groupBox at addGroupBox(0, 1, 1, 1) — sequential col 2 row 0
     editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
     // formerly "FILTER 2" groupBox at addGroupBox(1, 1, 1, 1) — sequential col 2 row 1
@@ -380,10 +380,10 @@ void stompbox_fx2::setEditPages()
     editDetails()->page()->newStackField(2);
     // formerly "DELAY 1" groupBox at addGroupBox(0, 0, 1, 1) — row 0 cols 0-1
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, hex2, "0A", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.25"); //d1 feedback
     // formerly "DELAY 2" groupBox at addGroupBox(1, 0, 1, 1) — row 1 cols 0-1
     editDetails()->page()->addDataKnob(1, 0, 1, 1, "10", hex1, hex2, "11", "DELAY2000_ratio1.25","bottom", 60); //4 byte time
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "06", "normal_ratio1.25"); //feedback
+    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, hex2, "15", "normal_ratio1.25"); //d2 feedback
     // formerly "FILTER 1" groupBox at addGroupBox(0, 1, 1, 1) — sequential col 2 row 0
     editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
     // formerly "FILTER 2" groupBox at addGroupBox(1, 1, 1, 1) — sequential col 2 row 1

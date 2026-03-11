@@ -1,7 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2007~2025 Colin Willcocks.
-** Copyright (C) 2005~2007 Uco Mesdag. 
+** Copyright (C) 2005~2007 Uco Mesdag.
 ** All rights reserved.
 ** This file is part of "VG-99 Fx FloorBoard".
 **
@@ -17,7 +17,7 @@
 **
 ** You should have received a copy of the GNU General Public License along
 ** with this program; if not, write to the Free Software Foundation, Inc.,
-** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
+** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 **
 ****************************************************************************/
 
@@ -63,31 +63,20 @@ void stompbox_lp::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
-    editDetails()->page()->newGroupBox("Effect");
+    // formerly "Effect" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "12", "2E"); //on/off
     editDetails()->page()->newStackControl(0);
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "12", "2F", "large"); //mode
     editDetails()->page()->addStackControl();
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
 
-    editDetails()->page()->newGroupBox("Level");
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, "12", "30", "0~200_ratio1.5"); //send
-    editDetails()->page()->insertStackField(0, 0, 1, 1, 2);
-    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, "12", "35", "large"); //phase
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, "12", "32", "0~200_ratio1.5"); //return
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "12", "34", "normal_ratio1.5"); //adjust
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, "12", "32", "0~200_ratio1.5"); //return
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, "12", "34", "normal_ratio1.5"); //adjust
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->addStackField();
+    // Send level — always visible
+    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, "12", "30", "0~200_ratio1.5"); //send
+    // Return level + Adjust — disabled when Mode = OUT (value 2)
+    editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, "12", "32", "0~200_ratio1.5"); //return
+    editDetails()->page()->addSystemOverride(0, 2, 1, 1, "10", hex1, "12", "2F", "02", "equals"); //hide return on OUT
+    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "12", "34", "normal_ratio1.5"); //adjust
+    editDetails()->page()->addSystemOverride(0, 3, 1, 1, "10", hex1, "12", "2F", "02", "equals"); //hide adjust on OUT
+    editDetails()->page()->addComboBox(0, 4, 1, 1, "10", hex1, "12", "35", "large"); //phase
 
     editDetails()->addPage();
 }

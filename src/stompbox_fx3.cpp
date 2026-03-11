@@ -144,11 +144,11 @@ void stompbox_fx3::setEditPages()
     };
 
     // formerly "Select" groupBox at addGroupBox(0, 0, 2, 1) — parentCol=0
-    page->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
     page->newStackControl(0);
-    page->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");            //type
+    page->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "01", "large");            //type
     page->addStackControl();
-    page->insertStackField(0, 0, 1, 3, 2);
+    page->addSwitch(0, 1, 1, 1, "10", hex1, hex2, "00");
+    page->insertStackField(0, 0, 2, 3, 5);
 
     // AC Reso
     page->newStackField(0);

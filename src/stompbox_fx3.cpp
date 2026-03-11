@@ -637,9 +637,9 @@ void stompbox_fx3::setEditPages()
     };
     // formerly "Effect" groupBox at addGroupBox(0, 0, 2, 3) — parentCol=0
     editDetails()->page()->newStackControl(4);
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "00", "large");
+    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "00", "large");
     editDetails()->page()->addStackControl();
-    editDetails()->page()->insertStackField(4, 0, 3, 3, 9);
+    editDetails()->page()->insertStackField(4, 0, 1, 3, 9);
     // formerly "User Harmony 1" groupBox at addGroupBox(3, 0, 1, 12) — parentRow=3, parentCol=0
     editDetails()->page()->addComboBox(3, 0, 1, 1, "10", hex1, hex2, "0F");
     editDetails()->page()->addComboBox(3, 1, 1, 1, "10", hex1, hex2, "10");
@@ -988,8 +988,8 @@ void stompbox_fx3::setEditPages()
         hex2 = "25";
     };
     // formerly "EFFECT" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");   //type
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, hex2, "03", "large");   //carry over
+    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "01", "large");   //type
+    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "03", "large");   //carry over
     // formerly "REVERB" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
     editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, hex2, "04", "0~500_ratio1.5");  //predelay
     editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");  //time

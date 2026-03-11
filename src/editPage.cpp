@@ -52,7 +52,8 @@ editPage::editPage(QWidget *parent)
     const bool singleWindow = (preferences->getPreferences("Window", "Single", "bool")=="true");
 
     this->layout = new QGridLayout;
-    this->layout->setAlignment(Qt::AlignTop | (singleWindow ? Qt::AlignLeft : Qt::AlignHCenter));
+    // Embedded instrument/effect pages must stay anchored to the shared left shell guide.
+    this->layout->setAlignment(Qt::AlignTop | Qt::AlignLeft);
     this->layout->setContentsMargins(singleWindow ? qRound(1*ratio) : qRound(3*ratio),
                                      qRound(1*ratio),
                                      singleWindow ? qRound(1*ratio) : qRound(3*ratio),
@@ -147,7 +148,14 @@ void editPage::applyControlCellMetrics(QWidget *widget, QGridLayout *grid, int r
 
     if(direction.contains("left") || direction.contains("right"))
     {
+        const int resolvedWidth = qMax(qRound(88 * ratio), minWidth);
+        widget->setMinimumWidth(resolvedWidth);
         widget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        const int perColumnWidth = qMax(qRound(80 * ratio), resolvedWidth / qMax(1, columnSpan));
+        for(int idx = 0; idx < qMax(1, columnSpan); ++idx)
+        {
+            grid->setColumnMinimumWidth(column + idx, perColumnWidth);
+        }
         return;
     }
 
@@ -457,7 +465,11 @@ void editPage::addComboBox(int row, int column, int rowSpan, int columnSpan,
     };
     const double ratio = Preferences::Instance()->getPreferences("Window", "Scale", "ratio").toDouble();
     int comboMinWidth = qRound(148 * ratio);
-    if(direction.contains("large_inst"))
+    if(direction.contains("left_large") || direction.contains("right_large"))
+    {
+        comboMinWidth = qRound(220 * ratio);
+    }
+    else if(direction.contains("large_inst"))
     {
         comboMinWidth = qRound(240 * ratio);
     }
@@ -564,7 +576,9 @@ void editPage::addStaticTabBar(int row, int column, int rowSpan, int columnSpan,
         tabBar->setObjectName("bossinsttabs");
         tabBar->setDrawBase(false);
         tabBar->setDocumentMode(true);
-        tabBar->setExpanding(false);
+        tabBar->setExpanding(true);
+        tabBar->setUsesScrollButtons(false);
+        tabBar->setElideMode(Qt::ElideNone);
 #ifdef Q_OS_MAC
         QFont font("Arial", qRound(15 * ratio), QFont::Bold);
 #else
@@ -574,7 +588,7 @@ void editPage::addStaticTabBar(int row, int column, int rowSpan, int columnSpan,
         tabBar->setStyleSheet(
             "QTabBar#bossinsttabs { background: transparent; border: none; }"
             "QTabBar#bossinsttabs::tab { color: rgba(255,255,255,190); background: transparent; "
-            "padding: 5px 18px 8px 18px; border: none; }"
+            "padding: 5px 10px 8px 10px; border: none; }"
             "QTabBar#bossinsttabs::tab:selected { color: rgb(54,214,255); border-bottom: 3px solid rgb(54,214,255); }"
             "QTabBar#bossinsttabs::tab:hover { color: rgb(255,255,255); }");
     }
@@ -818,10 +832,16 @@ void editPage::newGroupBox(QString title, QString preset, Qt::Alignment alignmen
     this->groupBoxMinHeights.append(groupBoxPresetMinimumHeight(preset));
 
     this->groupBoxLayout = new QGridLayout;
-    const int groupMargin = singleWindow ? qRound(4*ratio) : qRound(8*ratio);
+    const int groupMargin = this->flatGroupBoxes
+                                ? (singleWindow ? qRound(1*ratio) : qRound(2*ratio))
+                                : (singleWindow ? qRound(4*ratio) : qRound(8*ratio));
     this->groupBoxLayout->setContentsMargins(groupMargin, groupMargin, groupMargin, groupMargin);
-    this->groupBoxLayout->setHorizontalSpacing(singleWindow ? qRound(8*ratio) : qRound(10*ratio));
-    this->groupBoxLayout->setVerticalSpacing(singleWindow ? qRound(4*ratio) : qRound(6*ratio));
+    this->groupBoxLayout->setHorizontalSpacing(this->flatGroupBoxes
+                                                   ? (singleWindow ? qRound(5*ratio) : qRound(6*ratio))
+                                                   : (singleWindow ? qRound(8*ratio) : qRound(10*ratio)));
+    this->groupBoxLayout->setVerticalSpacing(this->flatGroupBoxes
+                                                 ? (singleWindow ? qRound(2*ratio) : qRound(3*ratio))
+                                                 : (singleWindow ? qRound(4*ratio) : qRound(6*ratio)));
     this->groupBoxLayout->setSizeConstraint(QLayout::SetMinimumSize);
     this->groupBoxLayout->setAlignment(alignment | Qt::AlignTop);
     this->groupBoxLayouts.append(this->groupBoxLayout);
@@ -830,6 +850,13 @@ void editPage::newGroupBox(QString title, QString preset, Qt::Alignment alignmen
     this->groupBox->setObjectName("groupbox");
     this->groupBox->setFont(Sfont);
     this->groupBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    if(this->flatGroupBoxes)
+    {
+        this->groupBox->setFlat(true);
+        this->groupBox->setStyleSheet(
+            "QGroupBox#groupbox { border: none; margin-top: 0px; padding-top: 0px; }"
+            "QGroupBox#groupbox::title { subcontrol-origin: margin; left: 0px; top: 0px; padding: 0px 0px 2px 0px; color: rgba(255,255,255,180); }");
+    }
     this->groupBoxMode = true;
 }
 
@@ -855,7 +882,7 @@ void editPage::addGroupBox(int row, int column, int rowSpan, int columnSpan)
     QGroupBox *currentBox = this->groupBoxes.at(boxesIndex);
     currentBox->setLayout(this->groupBoxLayouts.at(layoutIndex));
     currentBox->layout()->activate();
-    const int titlePad = qRound(14 * ratio);
+    const int titlePad = this->flatGroupBoxes ? qRound(6 * ratio) : qRound(14 * ratio);
     const int presetMinHeight = this->groupBoxMinHeights.value(boxesIndex, 0);
     const int boxMinHeight = qMax(currentBox->layout()->sizeHint().height() + titlePad, presetMinHeight);
     currentBox->setMinimumHeight(boxMinHeight);
@@ -898,6 +925,11 @@ void editPage::addGroupBox(int row, int column, int rowSpan, int columnSpan)
     };
 }
 
+void editPage::setFlatGroupBoxes(bool enabled)
+{
+    this->flatGroupBoxes = enabled;
+}
+
 void editPage::setGridLayout()
 {
     Preferences *preferences = Preferences::Instance();
@@ -908,10 +940,6 @@ void editPage::setGridLayout()
     QHBoxLayout *strechedLayout = new QHBoxLayout;
     strechedLayout->setContentsMargins(0, 0, 0, 0);
     strechedLayout->setSpacing(0);
-    if(!singleWindow)
-    {
-        strechedLayout->addStretch();
-    }
     strechedLayout->addLayout(this->layout);
     strechedLayout->addStretch();
 
@@ -990,7 +1018,7 @@ void editPage::newStackField(int id, Qt::Alignment alignment)
     this->stackFieldLockWidth = false;
     this->stackField = new QGridLayout;
     this->stackField->setContentsMargins(2*ratio, 2*ratio, 2*ratio, 2*ratio);
-    this->stackField->setHorizontalSpacing(qRound(8*ratio));
+    this->stackField->setHorizontalSpacing(qRound(4*ratio));
     this->stackField->setVerticalSpacing(qRound(4*ratio));
     this->stackField->setSizeConstraint(QLayout::SetMinimumSize);
     this->stackField->setAlignment(alignment);

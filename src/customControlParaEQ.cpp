@@ -393,6 +393,13 @@ customControlParaEQ::customControlParaEQ(QWidget *parent,
         this->label_1, this->label_2, this->label_3, this->label_4, this->label_5, this->label_6,
         this->label_7, this->label_8, this->label_9, this->label_10, this->label_11
     };
+    // Enable word wrap + compact font so long names like "Low Mid Frequency" fit in knob columns
+    const int compactLabelWidth = qRound(lenght * ratio);
+    for(customControlLabel *lbl : labels)
+    {
+        lbl->setFontPointDelta(-2);
+        lbl->setTextWidth(compactLabelWidth);
+    }
     customKnob *knobs[] = {
         this->knob_1, this->knob_2, this->knob_3, this->knob_4, this->knob_5, this->knob_6,
         this->knob_7, this->knob_8, this->knob_9, this->knob_10, this->knob_11

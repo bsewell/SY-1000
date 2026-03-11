@@ -143,12 +143,13 @@ void stompbox_fx3::setEditPages()
         hex2 = "09";
     };
 
-    // formerly "Select" groupBox at addGroupBox(0, 0, 2, 1) — parentCol=0
+    page->addLabel(0, 0, 1, 1, "FX TYPE", Qt::AlignVCenter | Qt::AlignLeft);
     page->newStackControl(0);
-    page->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "01", "large");            //type
+    page->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "01", "large");            //type
     page->addStackControl();
-    page->addSwitch(0, 1, 1, 1, "10", hex1, hex2, "00");
-    page->insertStackField(0, 0, 2, 3, 5);
+    page->addSwitch(0, 2, 1, 1, "10", hex1, hex2, "00");
+    page->addDivider(1, 0, 1, 8);
+    page->insertStackField(0, 2, 0, 2, 8);
 
     // AC Reso
     page->newStackField(0);

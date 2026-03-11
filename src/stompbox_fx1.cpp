@@ -78,12 +78,13 @@ void stompbox_fx1::setEditPages()
         hex2 = "3D";
     };
 
-    // formerly "Select" groupBox at addGroupBox(0, 0, 2, 1) — parentCol=0
+    editDetails()->page()->addLabel(0, 0, 1, 1, "FX TYPE", Qt::AlignVCenter | Qt::AlignLeft);
     editDetails()->page()->newStackControl(0);
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "01", "large");  //type
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "01", "large");  //type
     editDetails()->page()->addStackControl();
-    editDetails()->page()->addSwitch(0, 1, 1, 1, "10", hex1, hex2, "00");
-    editDetails()->page()->insertStackField(0, 0, 2, 3, 5);
+    editDetails()->page()->addSwitch(0, 2, 1, 1, "10", hex1, hex2, "00");
+    editDetails()->page()->addDivider(1, 0, 1, 8);
+    editDetails()->page()->insertStackField(0, 2, 0, 2, 8);
 
     // AC Reso
     editDetails()->page()->newStackField(0);

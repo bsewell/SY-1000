@@ -55,12 +55,16 @@ customControlKnob::customControlKnob(QWidget *parent,
     this->background = background;
     this->lenght = lenght;
     _lastValue = -1;
+    const int verticalGap = qRound(5 * ratio);
+    const int sideGap = qRound(4 * ratio);
+    const int stackedControlMinHeight = qRound(78 * ratio);
+    const int sideControlMinHeight = qRound(60 * ratio);
 
     MidiTable *midiTable = MidiTable::Instance();
     Midi items = midiTable->getMidiMap(hex0, hex1, hex2, hex3);
+    this->label->setFontRole("setting");
     this->label->setText(items.customdesc);
     this->label->setUpperCase(true);
-    this->label->setFontPointDelta(2);
     this->label->setTextRaise(5);
 
     this->knob = new customKnob(this, hex0, hex1, hex2, hex3, background, direction);
@@ -96,6 +100,9 @@ customControlKnob::customControlKnob(QWidget *parent,
         stackLayout->addWidget(this->displayBTS);
         //stackLayout->addWidget(knobbg);
 
+        this->label->setAlignment(Qt::AlignCenter);
+        this->label->setTextWidth(qRound(80 * ratio));
+
         QVBoxLayout *mainLayout = new QVBoxLayout;
         //mainLayout->addStretch(1);
         mainLayout->addLayout(stackLayout);
@@ -125,8 +132,8 @@ customControlKnob::customControlKnob(QWidget *parent,
             this->display->setFixedWidth(lenght*ratio);
 
             QVBoxLayout *displayLayout = new QVBoxLayout;
-            //displayLayout->setContentsMargins(0, 0, 0, 0);
-            displayLayout->setSpacing(0);
+            displayLayout->setContentsMargins(0, verticalGap, 0, verticalGap);
+            displayLayout->setSpacing(verticalGap);
             displayLayout->addStretch(0);
             displayLayout->addWidget(this->label, 0, Qt::AlignRight);
             displayLayout->addWidget(this->display, 0, Qt::AlignRight);
@@ -134,11 +141,12 @@ customControlKnob::customControlKnob(QWidget *parent,
 
             QHBoxLayout *mainLayout = new QHBoxLayout;
             mainLayout->setContentsMargins(0, 0, 0, 0);
-            mainLayout->setSpacing(0);
+            mainLayout->setSpacing(sideGap);
             mainLayout->addLayout(displayLayout);
             mainLayout->addWidget(this->knob, 0, Qt::AlignCenter);
 
             this->setLayout(mainLayout);
+            this->setMinimumHeight(sideControlMinHeight);
             //this->setFixedHeight(this->knob->height()*ratio);
         }
         else if(direction.contains("right"))
@@ -147,8 +155,8 @@ customControlKnob::customControlKnob(QWidget *parent,
             this->display->setFixedWidth(lenght*ratio);
 
             QVBoxLayout *displayLayout = new QVBoxLayout;
-            //displayLayout->setContentsMargins(0, 0, 0, 0);
-            displayLayout->setSpacing(0);
+            displayLayout->setContentsMargins(0, verticalGap, 0, verticalGap);
+            displayLayout->setSpacing(verticalGap);
             displayLayout->addStretch(0);
             displayLayout->addWidget(this->label, 0, Qt::AlignLeft);
             displayLayout->addWidget(this->display, 0, Qt::AlignLeft);
@@ -156,38 +164,42 @@ customControlKnob::customControlKnob(QWidget *parent,
 
             QHBoxLayout *mainLayout = new QHBoxLayout;
             mainLayout->setContentsMargins(0, 0, 0, 0);
-            mainLayout->setSpacing(0);
+            mainLayout->setSpacing(sideGap);
             mainLayout->addWidget(this->knob, 0, Qt::AlignCenter);
             mainLayout->addLayout(displayLayout);
 
             this->setLayout(mainLayout);
+            this->setMinimumHeight(sideControlMinHeight);
             //this->setFixedHeight(this->knob->height()*ratio);
         }
         else if(direction.contains("bottom"))
         {
             this->label->setAlignment(Qt::AlignCenter);
+            this->label->setTextWidth(qRound(118 * ratio));
             this->display->setFixedWidth(lenght*ratio);
 
             QVBoxLayout *mainLayout = new QVBoxLayout;
-            mainLayout->setContentsMargins(0, 0, 0, 0);
-            mainLayout->setSpacing(0);
+            mainLayout->setContentsMargins(0, verticalGap, 0, verticalGap);
+            mainLayout->setSpacing(verticalGap);
             mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->knob, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->display, 0, Qt::AlignCenter);
             mainLayout->addStretch(0);
 
             this->setLayout(mainLayout);
+            this->setMinimumHeight(stackedControlMinHeight);
             //this->setFixedHeight((this->knob->height() + 16 + 12)*ratio);
 
         }
         else if(direction.contains("System"))
         {
             this->label->setAlignment(Qt::AlignCenter);
+            this->label->setTextWidth(qRound(118 * ratio));
             this->display->setFixedWidth(lenght*ratio);
 
             QVBoxLayout *mainLayout = new QVBoxLayout;
-            mainLayout->setContentsMargins(0, 0, 0, 0);
-            mainLayout->setSpacing(0);
+            mainLayout->setContentsMargins(0, verticalGap, 0, verticalGap);
+            mainLayout->setSpacing(verticalGap);
             mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->knob, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->display, 0, Qt::AlignCenter);
@@ -195,16 +207,18 @@ customControlKnob::customControlKnob(QWidget *parent,
 
 
             this->setLayout(mainLayout);
+            this->setMinimumHeight(stackedControlMinHeight);
             //this->setFixedHeight((this->knob->height() + 16 + 12)*ratio);
         }
         else
         {
             this->label->setAlignment(Qt::AlignCenter);
+            this->label->setTextWidth(qRound(118 * ratio));
             this->display->setFixedWidth(lenght*ratio);
 
             QVBoxLayout *mainLayout = new QVBoxLayout;
-            mainLayout->setContentsMargins(0, 0, 0, 0);
-            mainLayout->setSpacing(0);
+            mainLayout->setContentsMargins(0, verticalGap, 0, verticalGap);
+            mainLayout->setSpacing(verticalGap);
             mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->knob, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->display, 0, Qt::AlignCenter);
@@ -212,6 +226,7 @@ customControlKnob::customControlKnob(QWidget *parent,
 
 
             this->setLayout(mainLayout);
+            this->setMinimumHeight(stackedControlMinHeight);
             //this->setFixedHeight((this->knob->height() + 16 + 12)*ratio);
         };
     };

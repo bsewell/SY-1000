@@ -1018,7 +1018,7 @@ void editPage::newStackField(int id, Qt::Alignment alignment)
     this->stackFieldLockWidth = false;
     this->stackField = new QGridLayout;
     this->stackField->setContentsMargins(2*ratio, 2*ratio, 2*ratio, 2*ratio);
-    this->stackField->setHorizontalSpacing(qRound(4*ratio));
+    this->stackField->setHorizontalSpacing(qRound(8*ratio));
     this->stackField->setVerticalSpacing(qRound(4*ratio));
     this->stackField->setSizeConstraint(QLayout::SetMinimumSize);
     this->stackField->setAlignment(alignment);

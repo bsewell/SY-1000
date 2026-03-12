@@ -114,7 +114,7 @@ void customPanelButton::customPanelLabel(QString text){
 
     textLabel = new QLabel(this);
     textLabel->setObjectName("panelButton");
-    QFont Mfont( "Arial", 9*fratio, QFont::Normal);
+    QFont Mfont( "Roboto Condensed", 9*fratio, QFont::Normal);
     textLabel->setFont(Mfont);
     textLabel->setText(text);
     textLabel->setAlignment(Qt::AlignCenter);

@@ -157,6 +157,7 @@ public:
     void newGroupBox(QString title, Qt::Alignment alignment = Qt::AlignTop | Qt::AlignLeft);
     void newGroupBox(QString title, QString preset, Qt::Alignment alignment = Qt::AlignTop | Qt::AlignLeft);
     void addGroupBox(int row, int column, int rowSpan, int columnSpan);
+    void setFlatGroupBoxes(bool enabled);
     void setGridLayout();
     void newStackControl(int id);
     void linkStackControl(int id);
@@ -223,6 +224,7 @@ private:
     QString externalPowerHex1 = "void";
     QString externalPowerHex2 = "void";
     QString externalPowerHex3 = "void";
+    bool flatGroupBoxes = false;
     int groupBoxPresetMinimumHeight(const QString &preset) const;
 };
 

@@ -580,9 +580,9 @@ void editPage::addStaticTabBar(int row, int column, int rowSpan, int columnSpan,
         tabBar->setUsesScrollButtons(false);
         tabBar->setElideMode(Qt::ElideNone);
 #ifdef Q_OS_MAC
-        QFont font("Arial", qRound(15 * ratio), QFont::Bold);
+        QFont font("Roboto Condensed", qRound(15 * ratio), QFont::Bold);
 #else
-        QFont font("Arial", qRound(11 * ratio), QFont::Bold);
+        QFont font("Roboto Condensed", qRound(11 * ratio), QFont::Bold);
 #endif
         tabBar->setFont(font);
         tabBar->setStyleSheet(
@@ -808,7 +808,7 @@ void editPage::newGroupBox(QString title, QString preset, Qt::Alignment alignmen
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
     const bool singleWindow = (preferences->getPreferences("Window", "Single", "bool")=="true");
-    QFont Sfont( "Arial", 8*fratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
 
     if(this->groupBoxMode)
     {

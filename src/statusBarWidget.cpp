@@ -42,7 +42,7 @@ statusBarWidget::statusBarWidget(QWidget *parent)
     this->symbol->setValue(0);
 
     QFont labelFont;
-    labelFont.setFamily("Arial");
+    labelFont.setFamily("Roboto Condensed");
     labelFont.setPixelSize(11*ratio);
 
     this->label = new QLabel(this);

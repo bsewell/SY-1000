@@ -61,7 +61,7 @@ bankTreeList::bankTreeList(QWidget *parent)
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
 
-    QFont font( "Arial", 10*ratio, QFont::Normal);
+    QFont font( "Roboto Condensed", 10*ratio, QFont::Normal);
     font.setStretch(90);
     this->treeList = newTreeList();
     this->treeList->setObjectName("banklist");
@@ -235,7 +235,7 @@ QTreeWidget* bankTreeList::newTreeList()
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
 
-    QFont Lfont( "Arial", 10*ratio, QFont::Normal);
+    QFont Lfont( "Roboto Condensed", 10*ratio, QFont::Normal);
     const int rowHeight = QFontMetrics(Lfont).height() + 10;
     const QSize rowSizeHint(0, rowHeight);
 

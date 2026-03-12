@@ -29,10 +29,11 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <utility>
 
 customSystemOverride::customSystemOverride(QWidget *parent,
                                            QString hex0, QString hex1, QString hex2, QString hex3,
-                                           QString index, QString type, int rowSpan, int columnSpan,
+                                           QString index, QString type, int row, int column, int rowSpan, int columnSpan,
                                            QString hex_0, QString hex_1, QString hex_2, QString hex_3, QString value)
     : QWidget(parent)
 {
@@ -40,7 +41,7 @@ customSystemOverride::customSystemOverride(QWidget *parent,
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-    QFont Sfont( "Arial", 8*fratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
 
     this->label = new customControlLabel(this);
     this->label2 = new customControlLabel(this);
@@ -50,6 +51,8 @@ customSystemOverride::customSystemOverride(QWidget *parent,
     this->hex3 = hex3;
     this->index = index;
     this->type = type;
+    this->row = row;
+    this->column = column;
     this->rowSpan =rowSpan;
     this->columnSpan = columnSpan;
     this->hex_0 = hex_0;
@@ -89,26 +92,16 @@ customSystemOverride::customSystemOverride(QWidget *parent,
     QObject::connect(this, SIGNAL( command_update() ), this->parent(), SIGNAL( dialogUpdateSignal() ));
 
     disable = false;
+    this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+    this->hide();
 
     dialogUpdateSignal();
 }
 
 void customSystemOverride::paintEvent(QPaintEvent *)
 {
-    if(!this->type.contains("command")){
-        Preferences *preferences = Preferences::Instance();
-        bool ok;
-        const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
-
-        /*DRAWS BLACK BACKGROUND FOR MASKING */
-        QPixmap image(":/images/override.png");
-
-        QRectF target(0.0, 0.0, (this->width()*(this->columnSpan))*ratio, (this->height()*(this->rowSpan))*ratio);
-        QRectF source(0.0, 0.0, this->width(), this->height());
-
-        QPainter painter(this);
-        painter.drawPixmap(target, image, source);
-    };
+    // Override widgets now only manage visibility of covered controls.
+    // They should not paint a mask over the UI.
 }
 
 void customSystemOverride::dialogUpdateSignal()
@@ -131,10 +124,13 @@ void customSystemOverride::dialogUpdateSignal()
                 };
             }else
             {
-                if(type.contains("equal")){if(val != indexValue){this->hide();} else {this->show();}; };
-                if(type.contains("not_equal")){if(val == indexValue){this->hide();} else {this->show();}; };
-                if(type.contains("more_than")){if(val > indexValue){this->hide();} else {this->show();}; };
-                if(type.contains("less_than")){if(val < indexValue){this->hide();} else {this->show();}; };
+                bool shouldMask = false;
+                if(type.contains("equal")) { shouldMask = (val == indexValue); };
+                if(type.contains("not_equal")) { shouldMask = (val != indexValue); };
+                if(type.contains("more_than")) { shouldMask = (val <= indexValue); };
+                if(type.contains("less_than")) { shouldMask = (val >= indexValue); };
+                updateMaskedWidgets(shouldMask);
+                this->hide();
             };
          };
     };
@@ -150,6 +146,76 @@ void customSystemOverride::cmd_update()
     sysxIO->setFileSource("Stucture", sysxIO->getFileSource());
     sysxIO->relayUpdateSignal();
     disable = false;
-    previous = val;
+   previous = val;
    };
+}
+
+bool customSystemOverride::overlapsCell(int otherRow, int otherColumn, int otherRowSpan, int otherColumnSpan) const
+{
+    const int rowEnd = this->row + this->rowSpan;
+    const int columnEnd = this->column + this->columnSpan;
+    const int otherRowEnd = otherRow + otherRowSpan;
+    const int otherColumnEnd = otherColumn + otherColumnSpan;
+
+    return this->row < otherRowEnd &&
+           rowEnd > otherRow &&
+           this->column < otherColumnEnd &&
+           columnEnd > otherColumn;
+}
+
+void customSystemOverride::updateMaskedWidgets(bool maskActive)
+{
+    QGridLayout *grid = qobject_cast<QGridLayout*>(this->parentWidget() ? this->parentWidget()->layout() : nullptr);
+    if(grid == nullptr)
+    {
+        currentlyMasking = false;
+        return;
+    }
+
+    if(maskedWidgets.isEmpty())
+    {
+        for(int index = 0; index < grid->count(); ++index)
+        {
+            int itemRow = 0;
+            int itemColumn = 0;
+            int itemRowSpan = 0;
+            int itemColumnSpan = 0;
+            grid->getItemPosition(index, &itemRow, &itemColumn, &itemRowSpan, &itemColumnSpan);
+            if(!overlapsCell(itemRow, itemColumn, itemRowSpan, itemColumnSpan))
+            {
+                continue;
+            }
+
+            QWidget *widget = grid->itemAt(index)->widget();
+            if(widget == nullptr || widget == this)
+            {
+                continue;
+            }
+            maskedWidgets.append(widget);
+        }
+    }
+
+    if(maskActive == currentlyMasking)
+    {
+        return;
+    }
+
+    for(const QPointer<QWidget> &widget : std::as_const(maskedWidgets))
+    {
+        if(widget.isNull())
+        {
+            continue;
+        }
+
+        int maskCount = widget->property("systemOverrideMaskCount").toInt();
+        maskCount += maskActive ? 1 : -1;
+        if(maskCount < 0)
+        {
+            maskCount = 0;
+        }
+        widget->setProperty("systemOverrideMaskCount", maskCount);
+        widget->setVisible(maskCount == 0);
+    }
+
+    currentlyMasking = maskActive;
 }

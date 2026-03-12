@@ -47,7 +47,7 @@ void customDisplay::paintEvent(QPaintEvent *)
     bool ok;
    /* const double ratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
 
-    QFont Sfont( "Arial", 10*ratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 10*ratio, QFont::Normal);
     this->font = Sfont;
     this->mainLabel->setFont(Sfont);
    
@@ -144,21 +144,21 @@ void customDisplay::setLabelPosition(bool invert)
 
     this->mainLabel = new QLabel(this);
     this->mainLabel->setObjectName("displayLarge");
-    QFont Mfont( "Arial", 9*fratio, QFont::Normal);
+    QFont Mfont( "Roboto Condensed", 9*fratio, QFont::Normal);
     this->mainLabel->setFont(Mfont);
     this->mainLabel->setAlignment(Qt::AlignLeft);
     this->mainLabel->setGeometry(mainGeometry);
 
     this->subLabelLeft = new QLabel(this);
     this->subLabelLeft->setObjectName("displaySmall");
-    QFont SLfont( "Arial", 8*fratio, QFont::Normal);
+    QFont SLfont( "Roboto Condensed", 8*fratio, QFont::Normal);
     this->subLabelLeft->setFont(SLfont);
     this->subLabelLeft->setAlignment(Qt::AlignLeft);
     this->subLabelLeft->setGeometry(subGeometry);
 
     this->subLabelRight = new QLabel(this);
     this->subLabelRight->setObjectName("displaySmall");
-    QFont SRfont( "Arial", 8*fratio, QFont::Normal);
+    QFont SRfont( "Roboto Condensed", 8*fratio, QFont::Normal);
     this->subLabelRight->setFont(SRfont);
     this->subLabelRight->setAlignment(Qt::AlignRight);
     this->subLabelRight->setGeometry(subGeometry);
@@ -176,7 +176,7 @@ void customDisplay::setMainText(QString mainText, Qt::Alignment alignment)
     if(alignment==Qt::AlignCenter)
     {
         QFont splashFont;
-        splashFont.setFamily("Arial");
+        splashFont.setFamily("Roboto Condensed");
         splashFont.setBold(false);
         splashFont.setPixelSize(13*ratio);
         splashFont.setStretch(90);

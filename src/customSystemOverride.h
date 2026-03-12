@@ -26,6 +26,7 @@
 
 #include <QWidget>
 #include <QtWidgets>
+#include <QPointer>
 #include "customControlLabel.h"
 
 class customSystemOverride : public QWidget
@@ -37,9 +38,11 @@ public:
         QString hex0 = "void",
         QString hex1 = "void",
 		QString hex2 = "void",
-		QString hex3 = "void",
+        QString hex3 = "void",
         QString index = "01",
         QString type = "equals",
+        int row = 0,
+        int column = 0,
         int rowSpan = 1,
         int columnSpan = 1,
         QString hex_0 = "void",
@@ -59,6 +62,8 @@ public slots:
     void cmd_update();
 
 private:
+    void updateMaskedWidgets(bool maskActive);
+    bool overlapsCell(int otherRow, int otherColumn, int otherRowSpan, int otherColumnSpan) const;
 	customControlLabel* label;
     customControlLabel* label2;
     QString hex0;
@@ -67,6 +72,8 @@ private:
 	QString hex3;
     QString index;
     QString type;
+    int row;
+    int column;
     int rowSpan;
     int columnSpan;
     QString hex_0;
@@ -77,6 +84,8 @@ private:
     int previous;
     int _lastValue;
     bool disable = false;
+    bool currentlyMasking = false;
+    QList<QPointer<QWidget>> maskedWidgets;
 };
 
 #endif // CUSTOMSYSTEMOVERRIDE_H

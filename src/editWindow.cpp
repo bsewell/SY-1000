@@ -35,6 +35,7 @@ editWindow::editWindow(QWidget *parent)
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const bool singleWindow = (preferences->getPreferences("Window", "Single", "bool")=="true");
+    const int shellLeftInset = qRound(22 * ratio);
 
     this->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     if(singleWindow)
@@ -244,7 +245,7 @@ editWindow::editWindow(QWidget *parent)
     buttonLayout->addLayout(bottom4buttonLayout);
 
     QHBoxLayout *headerLayout = new QHBoxLayout;
-    headerLayout->setContentsMargins(qRound(5*ratio), qRound(4*ratio), qRound(6*ratio), qRound(4*ratio));
+    headerLayout->setContentsMargins(shellLeftInset, qRound(4*ratio), qRound(6*ratio), qRound(4*ratio));
     headerLayout->setSpacing(qRound(6*ratio));
     headerLayout->addWidget(this->headerPowerButton, 0, Qt::AlignLeft | Qt::AlignVCenter);
     headerLayout->addWidget(this->title);
@@ -260,7 +261,7 @@ editWindow::editWindow(QWidget *parent)
     this->pagesWidget = new QStackedWidget;
 
     QHBoxLayout *pagesLayout = new QHBoxLayout;
-    pagesLayout->setContentsMargins(0, 0, 0, 0);
+    pagesLayout->setContentsMargins(shellLeftInset, 0, 0, 0);
     pagesLayout->setSpacing(0);
     pagesLayout->addSpacing(0);
     pagesLayout->addWidget(this->pagesWidget, 0, Qt::AlignTop | Qt::AlignLeft);

@@ -76,7 +76,7 @@ mainWindow::mainWindow()
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-    QFont Mfont( "Arial", 12*fratio, QFont::Normal);
+    QFont Mfont( "Roboto Condensed", 12*fratio, QFont::Normal);
     this->setFont(Mfont);
 
     /*int current_version = preferences->getPreferences("General", "Application", "version").toInt(&ok, 10);
@@ -378,7 +378,7 @@ void mainWindow::createMenus()
     Preferences *preferences = &AppServices::instance().preferences();
     bool ok;
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-    QFont Mfont( "Arial", 12*fratio, QFont::Normal);
+    QFont Mfont( "Roboto Condensed", 12*fratio, QFont::Normal);
     
     fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->setFont(Mfont);

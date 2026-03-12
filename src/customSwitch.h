@@ -40,6 +40,7 @@ public:
 		QString hex3 = "void",
                 QString imagePath = ":/images/ledbutton.png");
 	void setValue(bool value);
+    void setAccentColor(const QColor &color);
 
 signals:
     void valueChanged(bool newValue, QString hex0, QString hex1, QString hex2, QString hex3);
@@ -63,6 +64,8 @@ private:
 	bool m_value;
 	bool pressed;
 	bool useModernToggle;
+	bool usePowerButtonStyle;
+    QColor accentColor;
 	QString imagePath;
 	QSize switchSize;
 	unsigned int imageRange;

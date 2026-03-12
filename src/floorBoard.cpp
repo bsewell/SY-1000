@@ -1708,7 +1708,6 @@ void floorBoard::update_structure()
     const int inst2MidY      = centerOffsetYForId(2, flowMidY);
     const int inst3MidY      = centerOffsetYForId(3, flowMidY);
     const int normalMidY     = centerOffsetYForId(0, flowMidY);
-    const int balMidYOffset  = centerOffsetYForId(29, flowMidY);
     const int dividerMidY    = centerOffsetYForId(21, flowMidY);
     const int dividerTopY    = topOffsetYForId(21, qRound(1*ratio));
     const int dividerBottomY = bottomOffsetYForId(21, qRound(36*ratio));
@@ -1722,7 +1721,6 @@ void floorBoard::update_structure()
     // BAL1 sits centred between the INST1 and INST2 signal lines.
     const int bal1MidY      = qRound(((lev1 + inst1MidY) + (lev2 + inst2MidY)) / 2.0);
     const int bal1TopY      = bal1MidY - balancerHalfHeight;
-    const int balTopYOffset = balMidYOffset - balancerHalfHeight;
     // Row centres – four INST rows + three BAL output rows.
     const int rowCenter1    = lev1 + inst1MidY;
     const int rowCenter2    = lev2 + inst2MidY;
@@ -1744,11 +1742,13 @@ void floorBoard::update_structure()
         const int ownCenterOffset = centerOffsetYForId(stompId, this->stompBoxes.at(stompId)->height() / 2);
         return rowCenter - ownCenterOffset;
     };
-    auto leftOffsetXForId = [this](int stompId, int fallback) -> int
+    auto leftFlowOffsetXForId = [this, ratio](int stompId, int fallback) -> int
     {
         if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
             return fallback;
-        return 0;
+        QRect bounds = this->stompBoxes.at(stompId)->flowLayoutBounds(ratio);
+        bounds.translate(-this->stompBoxes.at(stompId)->pos());
+        return bounds.isValid() ? bounds.left() : fallback;
     };
     // Use the right edge of MST so the signal line passes *through* S LR, M LR, and MST
     // rather than stopping at their left edges.
@@ -1798,7 +1798,8 @@ void floorBoard::update_structure()
         {
             const int alignedY = topForRowCenter(stomp, rowCenterCurrent);
             const bool isVisibleFxBlock = (stomp >= 4 && stomp <= 27 && stomp != 22);
-            newFxPos.append(QPoint(offset+(x_axis), alignedY + (isVisibleFxBlock ? fxLineBiasY : 0)));
+            const int alignedX = offset + x_axis - (isVisibleFxBlock ? leftFlowOffsetXForId(stomp, 0) : 0);
+            newFxPos.append(QPoint(alignedX, alignedY + (isVisibleFxBlock ? fxLineBiasY : 0)));
         };
 
         if(main_link==1 && stomp==27){goto skip;};  // if main is linked as a singled unit
@@ -1867,14 +1868,32 @@ void floorBoard::update_structure()
         ? qMax(qRound(8 * ratio), flowStep - referenceFxRect.width())
         : qRound(12 * ratio);
     const int minBranchGap = standardFxGap;
-    auto rightEdgeForId = [flowRectForId](int stompId) -> int
+    auto signalRectForId = [this, ratio](int stompId) -> QRect
     {
-        const QRect flowRect = flowRectForId(stompId);
-        if(!flowRect.isValid())
+        if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
+        {
+            return QRect();
+        }
+        return this->stompBoxes.at(stompId)->signalBounds(ratio);
+    };
+    auto localSignalRectForId = [this, ratio](int stompId) -> QRect
+    {
+        if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
+        {
+            return QRect();
+        }
+        QRect signalRect = this->stompBoxes.at(stompId)->signalBounds(ratio);
+        signalRect.translate(-this->stompBoxes.at(stompId)->pos());
+        return signalRect;
+    };
+    auto rightEdgeForId = [signalRectForId](int stompId) -> int
+    {
+        const QRect signalRect = signalRectForId(stompId);
+        if(!signalRect.isValid())
         {
             return -1;
         }
-        return flowRect.right();
+        return signalRect.right();
     };
     auto centerXForId = [flowRectForId](int stompId) -> int
     {
@@ -1884,6 +1903,69 @@ void floorBoard::update_structure()
             return -1;
         }
         return flowRect.center().x();
+    };
+    auto centerYForId = [flowRectForId](int stompId) -> int
+    {
+        const QRect flowRect = flowRectForId(stompId);
+        if(!flowRect.isValid())
+        {
+            return -1;
+        }
+        return flowRect.center().y();
+    };
+    auto leftAnchorXForId = [signalRectForId](int stompId) -> int
+    {
+        const QRect signalRect = signalRectForId(stompId);
+        if(!signalRect.isValid())
+        {
+            return -1;
+        }
+        return signalRect.left();
+    };
+    auto centerAnchorXForId = [signalRectForId](int stompId) -> int
+    {
+        const QRect signalRect = signalRectForId(stompId);
+        if(!signalRect.isValid())
+        {
+            return -1;
+        }
+        return signalRect.center().x();
+    };
+    auto rightAnchorXForId = [signalRectForId](int stompId) -> int
+    {
+        const QRect signalRect = signalRectForId(stompId);
+        if(!signalRect.isValid())
+        {
+            return -1;
+        }
+        return signalRect.right();
+    };
+    auto centerAnchorYForId = [signalRectForId](int stompId) -> int
+    {
+        const QRect signalRect = signalRectForId(stompId);
+        if(!signalRect.isValid())
+        {
+            return -1;
+        }
+        return signalRect.center().y();
+    };
+    auto topStemYForId = [signalRectForId, branchStemExtension](int stompId) -> int
+    {
+        const QRect signalRect = signalRectForId(stompId);
+        if(!signalRect.isValid())
+        {
+            return -1;
+        }
+        return signalRect.top() - branchStemExtension;
+    };
+    auto bottomStemYForId = [signalRectForId, branchStemExtension](int stompId) -> int
+    {
+        const QRect signalRect = signalRectForId(stompId);
+        if(!signalRect.isValid())
+        {
+            return -1;
+        }
+        return signalRect.bottom() + branchStemExtension;
     };
 
     const int minBalancerOrderGap = qRound(24 * ratio);
@@ -1926,7 +2008,7 @@ void floorBoard::update_structure()
     if(polygon.size() >= 14)
     {
         const int minFxSideGap = standardFxGap;
-        auto placeBalancerOnRiser = [this, ratio, hiddenFlowY, minFxSideGap](int stompId, int riserTopIdx, int riserBottomIdx, int centerPointIdx, int minCenterXBound, int maxCenterXBound) -> bool
+        auto placeBalancerOnRiser = [this, hiddenFlowY, minFxSideGap, localSignalRectForId, signalRectForId](int stompId, int riserTopIdx, int riserBottomIdx, int centerPointIdx, int minCenterXBound, int maxCenterXBound) -> bool
         {
             if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
             {
@@ -1934,14 +2016,16 @@ void floorBoard::update_structure()
             }
 
             stompBox *bal = this->stompBoxes.at(stompId);
-            const QRect balRect = bal->flowLayoutBounds(ratio);
-            const int halfW = balRect.width() / 2;
-            const int halfH = balRect.height() / 2;
+            const QRect balSignalLocal = localSignalRectForId(stompId);
+            if(!balSignalLocal.isValid())
+            {
+                return false;
+            }
             const int centerY = (this->polygon.at(riserTopIdx).y() + this->polygon.at(riserBottomIdx).y()) / 2;
             int centerX = this->polygon.at(riserTopIdx).x();
 
-            const int balTop = centerY - halfH;
-            const int balBottom = centerY + halfH;
+            const int balTop = centerY - balSignalLocal.center().y() + balSignalLocal.top();
+            const int balBottom = centerY - balSignalLocal.center().y() + balSignalLocal.bottom();
             int minCenterX = INT_MIN / 4;
             int maxCenterX = INT_MAX / 4;
 
@@ -1962,7 +2046,7 @@ void floorBoard::update_structure()
                     continue;
                 }
 
-                const QRect r = other->flowLayoutBounds(ratio);
+                const QRect r = signalRectForId(otherId);
                 if(r.bottom() < balTop || r.top() > balBottom)
                 {
                     continue;
@@ -1970,11 +2054,11 @@ void floorBoard::update_structure()
 
                 if(r.center().x() <= centerX)
                 {
-                    minCenterX = qMax(minCenterX, r.right() + minFxSideGap + halfW);
+                    minCenterX = qMax(minCenterX, r.right() + minFxSideGap + (balSignalLocal.width() / 2));
                 }
                 else
                 {
-                    maxCenterX = qMin(maxCenterX, r.left() - minFxSideGap - halfW);
+                    maxCenterX = qMin(maxCenterX, r.left() - minFxSideGap - (balSignalLocal.width() / 2));
                 }
             }
 
@@ -1994,7 +2078,9 @@ void floorBoard::update_structure()
                 centerX = maxCenterX;
             }
 
-            bal->setPos(QPoint(centerX - halfW, centerY - halfH));
+            const int widgetX = centerX - balSignalLocal.center().x();
+            const int widgetY = centerY - balSignalLocal.center().y();
+            bal->setPos(QPoint(widgetX, widgetY));
             this->polygon[riserTopIdx].setX(centerX);
             this->polygon[riserBottomIdx].setX(centerX);
             this->polygon[centerPointIdx].setX(centerX);
@@ -2006,7 +2092,7 @@ void floorBoard::update_structure()
         placeBalancerOnRiser(31, 5, 7, 8, this->polygon.at(4).x() + minBalancerOrderGap, this->polygon.at(9).x() - minBalancerOrderGap);
         placeBalancerOnRiser(33, 9, 11, 12, this->polygon.at(8).x() + minBalancerOrderGap, INT_MAX / 4);
 
-        auto compactSegmentAfterBalancer = [this, ratio, hiddenFlowY, standardFxGap](int balancerId, int nextBalancerId, bool shiftTailPolygon) -> void
+        auto compactSegmentAfterBalancer = [this, hiddenFlowY, standardFxGap, leftAnchorXForId, rightAnchorXForId](int balancerId, int nextBalancerId, bool shiftTailPolygon) -> void
         {
             const int balancerOrder = this->fx.indexOf(balancerId);
             if(balancerOrder < 0 || balancerId >= this->stompBoxes.size() || !this->stompBoxes.at(balancerId))
@@ -2045,9 +2131,14 @@ void floorBoard::update_structure()
                 return;
             }
 
-            const QRect balancerRect = this->stompBoxes.at(balancerId)->flowLayoutBounds(ratio);
-            const int actualLeft = this->fxPos.at(firstVisibleOrder).x();
-            const int desiredLeft = balancerRect.right() + standardFxGap + 1;
+            const int firstVisibleId = this->fx.at(firstVisibleOrder);
+            const int actualLeft = leftAnchorXForId(firstVisibleId);
+            const int balancerSignalRight = rightAnchorXForId(balancerId);
+            if(actualLeft < 0 || balancerSignalRight < 0)
+            {
+                return;
+            }
+            const int desiredLeft = balancerSignalRight + standardFxGap;
             const int shiftX = desiredLeft - actualLeft;
             if(shiftX == 0)
             {
@@ -2079,6 +2170,105 @@ void floorBoard::update_structure()
         compactSegmentAfterBalancer(29, 31, false);
         compactSegmentAfterBalancer(31, 33, false);
         compactSegmentAfterBalancer(33, -1, true);
+
+        const int bal1CenterX = centerXForId(29);
+        const int bal1RightX = rightAnchorXForId(29);
+        const int bal1AnchorY = centerYForId(29);
+        const int bal2CenterX = centerXForId(31);
+        const int bal2RightX = rightAnchorXForId(31);
+        const int bal2AnchorY = centerYForId(31);
+        const int bal3CenterX = centerXForId(33);
+        const int bal3RightX = rightAnchorXForId(33);
+        const int bal3AnchorY = centerYForId(33);
+
+        if(bal1CenterX >= 0 && bal1RightX >= 0 && bal1AnchorY >= 0)
+        {
+            polygon[1] = QPoint(bal1CenterX, polygon.at(1).y());
+            polygon[3] = QPoint(bal1CenterX, polygon.at(3).y());
+            polygon[4] = QPoint(bal1RightX, bal1AnchorY);
+        }
+
+        if(bal2CenterX >= 0 && bal2RightX >= 0 && bal2AnchorY >= 0)
+        {
+            polygon[5] = QPoint(bal2CenterX, polygon.at(5).y());
+            polygon[7] = QPoint(bal2CenterX, polygon.at(7).y());
+            polygon[8] = QPoint(bal2RightX, bal2AnchorY);
+        }
+
+        if(bal3CenterX >= 0 && bal3RightX >= 0 && bal3AnchorY >= 0)
+        {
+            polygon[9] = QPoint(bal3CenterX, polygon.at(9).y());
+            polygon[11] = QPoint(bal3CenterX, polygon.at(11).y());
+            polygon[12] = QPoint(bal3RightX, bal3AnchorY);
+        }
+
+        const int inst1RightX = rightAnchorXForId(1);
+        const int inst1AnchorY = centerAnchorYForId(1);
+        const int inst2RightX = rightAnchorXForId(2);
+        const int inst2AnchorY = centerAnchorYForId(2);
+        const int inst3RightX = rightAnchorXForId(3);
+        const int inst3AnchorY = centerAnchorYForId(3);
+        const int normalRightX = rightAnchorXForId(0);
+        const int normalAnchorY = centerAnchorYForId(0);
+        const int dividerLeftX = leftAnchorXForId(21);
+        const int dividerCenterX = centerAnchorXForId(21);
+        const int dividerAnchorY = centerAnchorYForId(21);
+        const int dividerStemTopY = topStemYForId(21);
+        const int dividerStemBottomY = bottomStemYForId(21);
+        const int mixerCenterX = centerAnchorXForId(23);
+        const int mixerRightX = rightAnchorXForId(23);
+        const int mixerAnchorY = centerAnchorYForId(23);
+        const int mixerStemTopY = topStemYForId(23);
+        const int mixerStemBottomY = bottomStemYForId(23);
+        const int masterLeftSignalX = leftAnchorXForId(34);
+        const int masterAnchorY = centerAnchorYForId(34);
+
+        if(inst1RightX >= 0 && inst1AnchorY >= 0)
+        {
+            polygon[0] = QPoint(inst1RightX, inst1AnchorY);
+        }
+        if(inst2RightX >= 0 && inst2AnchorY >= 0)
+        {
+            polygon[2] = QPoint(inst2RightX, inst2AnchorY);
+        }
+        if(inst3RightX >= 0 && inst3AnchorY >= 0)
+        {
+            polygon[6] = QPoint(inst3RightX, inst3AnchorY);
+        }
+        if(normalRightX >= 0 && normalAnchorY >= 0)
+        {
+            polygon[10] = QPoint(normalRightX, normalAnchorY);
+        }
+
+        if(dividerLeftX >= 0 && dividerAnchorY >= 0)
+        {
+            polygon[13] = QPoint(dividerLeftX, dividerAnchorY);
+        }
+        if(dividerCenterX >= 0 && dividerStemTopY >= 0)
+        {
+            polygon[14] = QPoint(dividerCenterX, dividerStemTopY);
+        }
+        if(dividerCenterX >= 0 && dividerStemBottomY >= 0)
+        {
+            polygon[16] = QPoint(dividerCenterX, dividerStemBottomY);
+        }
+
+        if(mixerCenterX >= 0 && mixerStemTopY >= 0)
+        {
+            polygon[15] = QPoint(mixerCenterX, mixerStemTopY);
+        }
+        if(mixerCenterX >= 0 && mixerStemBottomY >= 0)
+        {
+            polygon[17] = QPoint(mixerCenterX, mixerStemBottomY);
+        }
+        if(mixerRightX >= 0 && mixerAnchorY >= 0)
+        {
+            polygon[18] = QPoint(mixerRightX, mixerAnchorY);
+        }
+        if(masterLeftSignalX >= 0 && masterAnchorY >= 0)
+        {
+            polygon[19] = QPoint(masterLeftSignalX, masterAnchorY);
+        }
     }
 
     update();

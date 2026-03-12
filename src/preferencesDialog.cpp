@@ -34,7 +34,7 @@ preferencesDialog::preferencesDialog(bool mode)
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
 
-    QFont Mfont( "Arial", 9*fratio, QFont::Normal);
+    QFont Mfont( "Roboto Condensed", 9*fratio, QFont::Normal);
 
     contentsWidget = new QListWidget;
     contentsWidget->setViewMode(QListView::IconMode);

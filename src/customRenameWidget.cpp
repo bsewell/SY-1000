@@ -45,7 +45,7 @@ customRenameWidget::customRenameWidget(QWidget *parent, QString hex0, QString he
     this->label = new customControlLabel(this);
     this->catagoryDisplay = new QLineEdit(this);
 
-    QFont Sfont( "Arial", 9*ratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 9*ratio, QFont::Normal);
     catagoryDisplay->setFont(Sfont);
     
     this->catagoryDisplay->setObjectName("catalogdisplay");

@@ -45,10 +45,16 @@ customSwitch::customSwitch(bool active, QWidget *parent,QString hex0, QString he
     this->hex3 = hex3;
     this->active = active;
     this->pressed = false;
+    this->accentColor = QColor(244, 82, 104);
+    this->usePowerButtonStyle = this->imagePath.contains("ampswitch");
+    this->useModernToggle = !this->imagePath.contains("_invert") && !this->usePowerButtonStyle;
 
-    this->useModernToggle = !this->imagePath.contains("_invert");
-
-    if(useModernToggle)
+    if(usePowerButtonStyle)
+    {
+        this->switchSize = QSize(34, 34);
+        this->setFixedSize(QSize(qRound(34*ratio), qRound(34*ratio)));
+    }
+    else if(useModernToggle)
     {
         this->switchSize = QSize(28, 28);
         this->setFixedSize(QSize(qRound(28*ratio), qRound(28*ratio)));
@@ -66,6 +72,15 @@ customSwitch::customSwitch(bool active, QWidget *parent,QString hex0, QString he
                      this->parent(), SLOT( valueChanged(bool, QString, QString, QString, QString) ));
 }
 
+void customSwitch::setAccentColor(const QColor &color)
+{
+    if(color.isValid())
+    {
+        this->accentColor = color;
+        update();
+    }
+}
+
 void customSwitch::paintEvent(QPaintEvent *)
 {
     Preferences *preferences = Preferences::Instance();
@@ -75,7 +90,32 @@ void customSwitch::paintEvent(QPaintEvent *)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    if(useModernToggle)
+    if(usePowerButtonStyle)
+    {
+        QRectF outer(1.5 * ratio, 1.5 * ratio, this->width() - 3.0 * ratio, this->height() - 3.0 * ratio);
+        QColor fill = active ? this->accentColor : QColor(18, 18, 20);
+        if(pressed)
+        {
+            fill = fill.darker(118);
+        }
+
+        QRadialGradient buttonGrad(outer.center(), outer.width() * 0.6);
+        buttonGrad.setColorAt(0.0, fill.lighter(118));
+        buttonGrad.setColorAt(1.0, fill.darker(120));
+        painter.setPen(QPen(QColor(255, 255, 255, active ? 180 : 70), 1.2 * ratio));
+        painter.setBrush(buttonGrad);
+        painter.drawEllipse(outer);
+
+        const QPointF center = outer.center();
+        const qreal radius = outer.width() * 0.26;
+        QRectF iconRect(center.x() - radius, center.y() - radius, radius * 2.0, radius * 2.0);
+        QPen iconPen(Qt::white, qMax(1.6, 2.2 * ratio), Qt::SolidLine, Qt::RoundCap);
+        painter.setPen(iconPen);
+        painter.drawArc(iconRect, 130 * 16, 280 * 16);
+        painter.drawLine(QPointF(center.x(), iconRect.top() - 1.5 * ratio),
+                         QPointF(center.x(), center.y() - radius * 0.08));
+    }
+    else if(useModernToggle)
     {
         const qreal w = this->width();
         const qreal h = this->height();
@@ -153,7 +193,7 @@ void customSwitch::mousePressEvent(QMouseEvent *event)
     {
         this->dragStartPosition = event->position().toPoint();
         setFocus();
-        if(useModernToggle)
+        if(usePowerButtonStyle || useModernToggle)
         {
             this->pressed = true;
             update();
@@ -172,12 +212,12 @@ void customSwitch::mouseReleaseEvent(QMouseEvent *event)
         this->pressed = false;
         if(active)
         {
-            if(!useModernToggle) setOffset(0);
+            if(!useModernToggle && !usePowerButtonStyle) setOffset(0);
             emitValue(false);
         }
         else
         {
-            if(!useModernToggle) setOffset(1);
+            if(!useModernToggle && !usePowerButtonStyle) setOffset(1);
             emitValue(true);
         };
         update();
@@ -203,7 +243,7 @@ void customSwitch::mouseMoveEvent(QMouseEvent *event)
 void customSwitch::setValue(bool value)
 {
     this->active = value;
-    if(useModernToggle)
+    if(usePowerButtonStyle || useModernToggle)
     {
         update();
     }

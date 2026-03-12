@@ -80,7 +80,7 @@ customRenameDialog::customRenameDialog(QWidget *parent, QString hex0, QString he
     Preferences *preferences = Preferences::Instance();
     const double ratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
 
-    QFont Sfont( "Arial", 9*ratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 9*ratio, QFont::Normal);
     nameEdit->setFont(Sfont);
 
     charLabel = new QLabel(tr("Insert :"));

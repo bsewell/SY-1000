@@ -36,7 +36,7 @@ customTargetListMenu::customTargetListMenu(QWidget *parent,
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-    QFont Sfont( "Arial", 9*fratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 9*fratio, QFont::Normal);
 
     this->controlListComboBox = new QComboBox(this);
     this->controlListComboBox->setObjectName("smallcombo");

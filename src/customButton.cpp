@@ -81,7 +81,7 @@ customButton::customButton(QString text, bool active, QPoint buttonPos, QWidget 
 
     this->textLabel = new QLabel(this);
     this->textLabel->setObjectName("button");
-    QFont Mfont( "Arial", 9*fratio, QFont::Normal);
+    QFont Mfont( "Roboto Condensed", 9*fratio, QFont::Normal);
     this->textLabel->setFont(Mfont);
     this->textLabel->setText(this->text1);
     this->textLabel->setAlignment(Qt::AlignCenter);

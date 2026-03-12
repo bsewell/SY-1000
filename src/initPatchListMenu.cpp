@@ -96,7 +96,7 @@ void initPatchListMenu::setInitPatchComboBox(QRect geometry)
     this->initPatchComboBox = new QComboBox(this);
     this->available = true;
     this->initPatchComboBox->setObjectName("smallcombo");
-    QFont Sfont( "Arial", 8*ratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 8*ratio, QFont::Normal);
     this->initPatchComboBox->setFont(Sfont);
     initPatchComboBox->addItem(tr("[ Quick load patches ]"));
     initPatchComboBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);

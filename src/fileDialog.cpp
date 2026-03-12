@@ -31,7 +31,7 @@ fileDialog::fileDialog(QString fileName, QList<QString> patchList)
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-    QFont Sfont( "Arial", 9*fratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 9*fratio, QFont::Normal);
     this->setFont(Sfont);
 
     QLabel *patchLabel = new QLabel(tr("Select patch file to open<br><br>Double click to load"));

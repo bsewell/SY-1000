@@ -82,7 +82,7 @@ stompBox::stompBox(QWidget *parent, uint id, QString imagePathOn, QString imageP
     this->effectType = "effect";
     this->effectLabel = new QLabel(this); //new customControlLabel();
     this->effectLabel->setObjectName("stomplabel");
-    QFont Cfont( "Arial", 9*fratio);
+    QFont Cfont( "Roboto Condensed", 9*fratio);
     Cfont.setStretch(85);
     this->effectLabel->setFont(Cfont);
     this->effectLabel->setText(this->effectType);

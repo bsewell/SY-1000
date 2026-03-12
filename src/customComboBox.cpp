@@ -38,7 +38,7 @@ void customComboBox::showPopup()
  		QString item = this->itemText(i);
  		if(longestItem.size() < item.size()) longestItem = item;
  	};
-    int popupWidth = QFontMetrics( this->font() ).width( longestItem );
+    int popupWidth = QFontMetrics(this->font()).horizontalAdvance(longestItem);
 
 #ifdef Q_OS_MAC
         popupWidth = popupWidth*1.2;

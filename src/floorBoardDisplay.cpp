@@ -63,26 +63,27 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-    //QFont Lfont( "Arial", 16*fratio, QFont::Normal);
-    QFont Mfont( "Arial", 9*fratio, QFont::Normal);
+    //QFont Lfont( "Roboto Condensed", 16*fratio, QFont::Normal);
+    QFont Mfont( "Roboto Condensed", 9*fratio, QFont::Normal);
     const int headerFontPointSize = qMax(9, int(9 * fratio));
+    const int headerTitlePointSize = qMax(14, int(14 * fratio));
     const int headerTop = int(5 * ratio);
     const int headerHeight = int(34 * ratio);
-    //QFont Sfont( "Arial", 8*fratio, QFont::Normal);
+    //QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
 
     this->pos = pos;
     this->timer = new QTimer(this);
     this->patchLoadError = false;
     this->blinkCount = 0;
 
-    this->patchNumDisplay = new customDisplay(QRect(20*ratio, 5*ratio, 60*ratio, 34*ratio), this);
+    this->patchNumDisplay = new customDisplay(QRect(20*ratio, 5*ratio, 74*ratio, 34*ratio), this);
     this->patchNumDisplay->setLabelPosition(true);
     this->patchNumDisplay->setMainObjectName("bankMain");
     this->patchNumDisplay->setSubObjectName("bankSub");
     this->patchNumDisplay->setFrameVisible(false);
     this->patchNumDisplay->setAttribute(Qt::WA_TranslucentBackground, true);
     this->patchNumDisplay->setWhatsThis(tr("Patch Number Display.<br>displays the currently selected patch<br>and patch write memory location."));
-    this->patchDisplay = new customDisplay(QRect(100*ratio, 5*ratio, 145*ratio, 34*ratio), this);
+    this->patchDisplay = new customDisplay(QRect(108*ratio, 5*ratio, 145*ratio, 34*ratio), this);
     this->patchDisplay->setMainObjectName("nameMain");
     this->patchDisplay->setSubObjectName("nameSub");
     this->patchDisplay->setFrameVisible(false);
@@ -127,7 +128,7 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     initPatch->setWhatsThis(tr("Clicking on this will load a patch from a predefined selection.<br>patches place in the init_patches folder will appear in this list at the start of the next session."));
 
     renameWidget *nameEdit = new renameWidget(this);
-    nameEdit->setGeometry(100*ratio, 5*ratio, 150*ratio, 34*ratio);
+    nameEdit->setGeometry(108*ratio, 5*ratio, 150*ratio, 34*ratio);
     nameEdit->setWhatsThis(tr("Clicking on this will open<br>a text dialog window<br>allowing user text input."));
 
     this->writeDialog = new patchWriteDialog();
@@ -170,7 +171,7 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
 
     // Restore the SY-1000 top header label.
     this->deviceHeader = new QLabel(deviceType, this);
-    QFont headerTitleFont("Arial", qMax(14, int(14 * fratio)), QFont::Bold);
+    QFont headerTitleFont("Roboto Condensed", headerTitlePointSize, QFont::Bold);
     this->deviceHeader->setFont(headerTitleFont);
     this->deviceHeader->setAlignment(Qt::AlignCenter);
     this->deviceHeader->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -228,6 +229,18 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
 
     normalizeDisplayFonts(this->patchNumDisplay);
     normalizeDisplayFonts(this->patchDisplay);
+    const QList<QLabel*> patchNumberLabels = this->patchNumDisplay->findChildren<QLabel*>();
+    for(QLabel *label : patchNumberLabels)
+    {
+        if(label->objectName() != "bankSub")
+        {
+            continue;
+        }
+
+        QFont font = label->font();
+        font.setPointSize(headerTitlePointSize);
+        label->setFont(font);
+    }
     if(QComboBox *quickLoadCombo = initPatch->findChild<QComboBox*>())
     {
         QFont comboFont = quickLoadCombo->font();

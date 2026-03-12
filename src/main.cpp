@@ -48,6 +48,7 @@
 
 #include <QApplication>
 #include <QStyleFactory>
+#include <QFontDatabase>
 #include "mainWindow.h"
 #include "Preferences.h"
 #include "MidiTable.h"
@@ -387,6 +388,11 @@ int main(int argc, char *argv[])
     app.setApplicationName("SY-1000FloorBoard");
     //app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
+    // Load Boss-reference Roboto Condensed fonts from embedded resources.
+    QFontDatabase::addApplicationFont(":/fonts/RobotoCondensed-Bold.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/RobotoCondensed-Regular.ttf");
+    writeRawLog("STEP 2b: Roboto Condensed fonts loaded.");
+
     writeRawLog("STEP 3: App name/org set.");
 
 #ifdef Q_OS_ANDROID
@@ -548,7 +554,7 @@ int main(int argc, char *argv[])
     preferences->setPreferences("Window", "Font", "base_ratio", QString::number(baseFratio, 'f', 2));
     preferences->setPreferences("Window", "Font", "ratio", QString::number(fratio, 'f', 2));
     preferences->setPreferences("Window", "Font", "ui_boost", "true");
-    QFont Wfont("Arial", 10 * fratio);
+    QFont Wfont("Roboto Condensed", 10 * fratio);
     QApplication::setFont(Wfont);
 
     {
@@ -587,7 +593,7 @@ int main(int argc, char *argv[])
     splash->setMessageRect(QRect(7 * ratio, 253 * ratio, 415 * ratio, 14 * ratio), Qt::AlignCenter);
 
     QFont splashFont;
-    splashFont.setFamily("Arial");
+    splashFont.setFamily("Roboto Condensed");
     splashFont.setBold(true);
     splashFont.setPixelSize(10 * fratio);
     splash->setFont(splashFont);

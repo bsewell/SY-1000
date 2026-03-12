@@ -36,7 +36,7 @@ patchWriteDialog::patchWriteDialog() : QWidget()
     bool ok;
     double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-    QFont Sfont( "Arial", 12*fratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 12*fratio, QFont::Normal);
     this->setFont(Sfont);
 
     SysxIO *sysxIO = SysxIO::Instance();

@@ -37,7 +37,7 @@ customLabelDisplay::customLabelDisplay(QRect geometry, QWidget *parent)
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
 
-    QFont Sfont( "Arial", 10*ratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 10*ratio, QFont::Normal);
     this->font = Sfont;
     this->mainLabel->setFont(Sfont);
     /* Set the default font. */
@@ -124,21 +124,21 @@ void customLabelDisplay::setLabelPosition(bool invert)
 
     this->mainLabel = new QLabel(this);
     this->mainLabel->setObjectName("displaySmall");
-    QFont Mfont( "Arial", 10*fratio, QFont::Normal);
+    QFont Mfont( "Roboto Condensed", 10*fratio, QFont::Normal);
     this->mainLabel->setFont(Mfont);
     this->mainLabel->setAlignment(Qt::AlignCenter);
     this->mainLabel->setGeometry(mainGeometry);
 
     this->subLabelLeft = new QLabel(this);
     this->subLabelLeft->setObjectName("displaySmall");
-    QFont SLfont( "Arial", 10*fratio, QFont::Normal);
+    QFont SLfont( "Roboto Condensed", 10*fratio, QFont::Normal);
     this->subLabelLeft->setFont(SLfont);
     this->subLabelLeft->setAlignment(Qt::AlignLeft);
     this->subLabelLeft->setGeometry(subGeometry);
 
     this->subLabelRight = new QLabel(this);
     this->subLabelRight->setObjectName("displaySmall");
-    QFont SRfont( "Arial", 10*fratio, QFont::Normal);
+    QFont SRfont( "Roboto Condensed", 10*fratio, QFont::Normal);
     this->subLabelRight->setFont(SRfont);
     this->subLabelRight->setAlignment(Qt::AlignRight);
     this->subLabelRight->setGeometry(subGeometry);

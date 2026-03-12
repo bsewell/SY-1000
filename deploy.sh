@@ -2,7 +2,7 @@
 # deploy.sh — macdeployqt + deterministic bottom-up signing.
 set -euo pipefail
 
-APP="/Users/bsewell/010 MUSIC STUDIO /SY-1000/packager/SY-1000FloorBoard.app"
+APP="/Users/bsewell/010 MUSIC STUDIO /SY-1000/build/packager/SY-1000FloorBoard.app"
 DEST="/Applications/SY-1000FloorBoard.app"
 
 if [ ! -d "$APP" ]; then
@@ -21,27 +21,11 @@ fi
 
 sign_bundle() {
   local bundle="$1"
-  local contents="$bundle/Contents"
-
-  echo "=== Signing Mach-O files in $bundle ==="
-  while IFS= read -r -d '' f; do
-    if file "$f" | grep -q "Mach-O"; then
-      codesign --force --sign - "$f"
-    fi
-  done < <(find "$contents" -type f -print0)
-
-  echo "=== Signing framework directories ==="
-  while IFS= read -r -d '' fw; do
-    codesign --force --sign - "$fw"
-  done < <(find "$contents/Frameworks" -type d -name "*.framework" -print0 2>/dev/null || true)
-
-  echo "=== Signing plugin bundles (if any) ==="
-  while IFS= read -r -d '' plug; do
-    codesign --force --sign - "$plug"
-  done < <(find "$contents/PlugIns" -type d \( -name "*.plugin" -o -name "*.bundle" \) -print0 2>/dev/null || true)
-
-  echo "=== Signing app bundle ==="
-  codesign --force --sign - "$bundle"
+  echo "=== Signing bundle ==="
+  # Use one deep ad-hoc signing pass after all path rewrites are complete.
+  # The prior bottom-up file signing flow was leaving framework bundles in an
+  # invalid state on macOS 26, which then crashed at launch with Code 2.
+  codesign --force --deep --sign - "$bundle"
 
   echo "=== Verifying signature ==="
   codesign --verify --deep --strict --verbose=2 "$bundle"

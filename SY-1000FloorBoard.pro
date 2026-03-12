@@ -27,12 +27,13 @@ CONFIG += c++17
 #CONFIG += release
 TARGET = "SY-1000FloorBoard"
 VERSION = 2026.03.05
-DESTDIR = ./packager
-OBJECTS_DIR += release
-UI_DIR += ./generatedfiles
-MOC_DIR += ./generatedfiles/release
-INCLUDEPATH += ./generatedfiles \
-./generatedfiles/release \
+DESTDIR = ./build/packager
+OBJECTS_DIR += build/release
+UI_DIR += ./build/generatedfiles
+MOC_DIR += ./build/generatedfiles/release
+INCLUDEPATH += ./build/generatedfiles \
+./build/generatedfiles/release \
+./src \
 .
 
 # Require Qt 6
@@ -46,7 +47,7 @@ TRANSLATIONS = language_fr.ts \
                language_pt.ts \
                language_pl.ts
 
-DEPENDPATH += .
+DEPENDPATH += . ./src
 QT += xml widgets printsupport
 
 #Platform dependent file(s)
@@ -115,12 +116,11 @@ DISTFILES += \
     android/gradlew.bat
 
 FORMS += \
-    consoletoolbar.ui
+    src/consoletoolbar.ui
 
 HEADERS += \
-    consoletoolbar.h
+    src/consoletoolbar.h
 
 SOURCES += \
-    consoletoolbar.cpp
-
+    src/consoletoolbar.cpp
 

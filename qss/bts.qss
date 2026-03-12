@@ -40,7 +40,7 @@ bankTreeList#banklist {
     background-color: #1A1C1F;
 }
 QTreeWidget#banklist {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: Normal;
     color: #FFFFFF;
     background-color: #1A1C1F;
@@ -52,7 +52,7 @@ QTreeWidget#banklist {
     border-color: rgb(82, 82, 82);
 }
 QTreeWidget#banklist QHeaderView::section:only-one {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: Normal;
     border-style: solid;
     border-width: 1px;
@@ -100,7 +100,7 @@ QTreeWidget#banklist QScrollBar::sub-page:vertical {
 /* CUSTOM QCOMBOBOX STYLE */
 
 QComboBox#smallcombo {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
     background-color: #1A1C1F;
@@ -123,7 +123,7 @@ QComboBox#smallcombo::down-arrow {
     image-position: center right;
 }
 QComboBox#smallcombo QFrame {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
     background-color: #1A1C1F;
@@ -162,7 +162,7 @@ QComboBox#smallcombo QScrollBar::sub-page:vertical {
 }
 
 QComboBox#largecombo {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
     background-color: #1A1C1F;
@@ -185,7 +185,7 @@ QComboBox#largecombo::down-arrow {
     image-position: center right;
 }
 QComboBox#largecombo QFrame {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
     background-color: #1A1C1F;
@@ -232,32 +232,32 @@ QComboBox#largecombo QScrollBar::sub-page:vertical {
     border-color: rgb(82, 82, 82);
 }
 QLabel#bankMain {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: bold;
     color: #FFFFFF;
 }
 QLabel#bankSub {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: rgb(163, 163, 163);
 }
 QLabel#nameMain {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: bold;
     color: #FFFFFF;
 }
 QLabel#nameSub {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: rgb(163, 163, 163);
 }
 QLabel#valueMain {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: bold;
     color: #33D6FF;
 }
 QLabel#valueSub {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: rgb(163, 163, 163);
 }
@@ -266,27 +266,27 @@ QLabel#valueSub {
 /* CUSTOM LABEL STYLES */
 
 QLabel#display {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
 }
 QLabel#title {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: bold;
     color: #FFFFFF;
 }
 QLabel#selectlabel {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: rgb(163, 163, 163);
 }
 QLabel#button {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
 }
 QLabel#panelButton {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
 }
@@ -304,12 +304,12 @@ QGroupBox#groupbox::title {
     left: 4px;
     padding: 0 2px;
     color: rgb(100, 120, 130);
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     font-size: 10px;
 }
 QGroupBox#groupbox {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
     border-width: 0px;
@@ -325,13 +325,13 @@ QGroupBox#groupbox {
 /* CUSTOM CONTROLLABEL STYLE */
 
 QLabel#customlabel {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
 }
 
 QLabel#stomplabel {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: rgb(163, 163, 163);
 }
@@ -340,7 +340,7 @@ QLabel#stomplabel {
 /* CONTROL VALUE DISPLAYS */
 
 QLineEdit#editdisplay {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #33D6FF;
     background-color: #1A1C1F;
@@ -351,7 +351,7 @@ QLineEdit#editdisplay {
 }
 
 QTextEdit#btsdisplay {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #33D6FF;
     background-color: #1A1C1F;
@@ -359,7 +359,7 @@ QTextEdit#btsdisplay {
 }
 
 QLineEdit#targetdisplay {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #33D6FF;
     background-color: #1A1C1F;
@@ -370,7 +370,7 @@ QLineEdit#targetdisplay {
 }
 
 QLineEdit#catalogdisplay {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #FFFFFF;
     background-color: #1A1C1F;
@@ -387,7 +387,7 @@ QLineEdit#catalogdisplay {
    Hover:      subtle brighten. */
 
 QTabBar#pagecombobox {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: rgb(163, 163, 163);
     background-color: #1A1C1F;
@@ -422,7 +422,7 @@ QTabBar#pagecombobox::tab:hover {
 /* SPINBOX */
 
 QSpinBox#spinbox {
-    font-family: Arial;
+    font-family: "Roboto Condensed";
     font-weight: normal;
     color: #33D6FF;
     background-color: #1A1C1F;

@@ -181,5 +181,7 @@
         <file>images/geq_slider_knob.png</file>
         <file>images/knob_bts_aqua.png</file>
         <file>images/knobbg_inv.png</file>
+        <file>fonts/RobotoCondensed-Bold.ttf</file>
+        <file>fonts/RobotoCondensed-Regular.ttf</file>
     </qresource>
 </RCC>

@@ -1,8 +1,10 @@
 # Build artifacts
+build/
 release/
+generatedfiles/
+packager/
 Makefile
 .qmake.stash
-generatedfiles/
 qrc_*.cpp
 moc_*.cpp
 *.o
@@ -12,9 +14,6 @@ moc_*.cpp
 .qtc_clangd/
 .qtcreator/
 *.pro.user
-
-# Packager (built app)
-packager/
 
 # macOS
 .DS_Store

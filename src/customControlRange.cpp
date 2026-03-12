@@ -35,10 +35,12 @@ customControlRange::customControlRange(QWidget *parent,
     bool ok;
     double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
+    const int verticalGap = qRound(5 * ratio);
+    const int controlMargin = qRound(4 * ratio);
 #ifdef Q_OS_MAC
     fratio = fratio*1.4;
 #endif
-    QFont Sfont( "Arial", 8*fratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
 
     this->displayMin = new QLineEdit(this);
     this->labelMin = new customControlLabel(this);
@@ -57,6 +59,7 @@ customControlRange::customControlRange(QWidget *parent,
     _last_max = -1;
 
     this->labelMin->setText("Act Rng LO");
+    this->labelMin->setFontRole("setting");
     this->labelMin->setUpperCase(true);
     this->knobMin = new customKnobRange(this, hex0, hex1, hex2, this->hexMin, this->hexMax, "Min");
     this->knobMin->setWhatsThis(tr("hold down mouse button and drag up/down for quick adjustment")
@@ -69,6 +72,7 @@ customControlRange::customControlRange(QWidget *parent,
     this->displayMin->setDisabled(true);
 
     this->labelMax->setText("Act Rng HI");
+    this->labelMax->setFontRole("setting");
     this->labelMax->setUpperCase(true);
     this->knobMax = new customKnobRange(this, hex0, hex1, hex2, this->hexMin, this->hexMax, "Max");
     this->knobMax->setWhatsThis(tr("hold down mouse button and drag up/down for quick adjustment")
@@ -81,26 +85,25 @@ customControlRange::customControlRange(QWidget *parent,
     this->displayMax->setDisabled(true);
 
     QVBoxLayout *minLayout = new QVBoxLayout;
-    //minLayout->setContentsMargins(0, 0, 0, 0);
-    minLayout->setSpacing(0);
+    minLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+    minLayout->setSpacing(verticalGap);
     minLayout->addWidget(this->labelMin, 0, Qt::AlignCenter);
     minLayout->addWidget(this->knobMin, 0, Qt::AlignCenter);
     minLayout->addWidget(this->displayMin, 0, Qt::AlignCenter);
     minLayout->addStretch(0);
 
     QVBoxLayout *maxLayout = new QVBoxLayout;
-    //maxLayout->setContentsMargins(0, 0, 0, 0);
-    maxLayout->setSpacing(0);
+    maxLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+    maxLayout->setSpacing(verticalGap);
     maxLayout->addWidget(this->labelMax, 0, Qt::AlignCenter);
     maxLayout->addWidget(this->knobMax, 0, Qt::AlignCenter);
     maxLayout->addWidget(this->displayMax, 0, Qt::AlignCenter);
     maxLayout->addStretch(0);
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
-    mainLayout->setContentsMargins(0, 0, 0, 0);
-    mainLayout->setSpacing(0);
+    mainLayout->setContentsMargins(controlMargin, 0, controlMargin, 0);
+    mainLayout->setSpacing(qRound(10 * ratio));
     mainLayout->addLayout(minLayout);
-    mainLayout->setSpacing(10*ratio);
     mainLayout->addLayout(maxLayout);
     mainLayout->addStretch(0);
 

@@ -35,31 +35,25 @@ customControlListMenu::customControlListMenu(QWidget *parent,
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
+    const int verticalGap = qRound(5 * ratio);
+    const int controlMargin = qRound(4 * ratio);
 
     this->direction = direction;
     this->label = new customControlLabel(this);
-    this->controlListComboBox = new QComboBox(this);
+    this->controlListComboBox = new customComboBox(this);
     this->controlListComboBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    int largeFont = 13;
-    int smallFont = 8;
-#ifdef Q_OS_MAC
-    largeFont = 14;
-    smallFont = 9;
-#endif
     byteSize = 2;
     if(direction.contains("4Byte")){ byteSize = 4; };
 
     if(direction.contains("Tables") || direction.contains("large"))
     {
         this->controlListComboBox->setObjectName("largecombo");
-        QFont Cfont( "Arial", largeFont*fratio, QFont::Normal);
-        this->controlListComboBox->setFont(Cfont);
+        applyComboFont(true, fratio);
     }
     else
     {
         this->controlListComboBox->setObjectName("smallcombo");
-        QFont Cfont( "Arial", smallFont*fratio, QFont::Normal);
-        this->controlListComboBox->setFont(Cfont);
+        applyComboFont(false, fratio);
     };
     this->hex0 = hex0;
     this->hex1 = hex1;
@@ -77,29 +71,53 @@ customControlListMenu::customControlListMenu(QWidget *parent,
     QString labeltxt = items.customdesc;
 
     this->label->setUpperCase(true);
+    this->label->setFontRole("setting");
     this->label->setText(labeltxt);
 
     setComboBox();
 
-    if(direction == "left")
+    if(direction.contains("left"))
     {
+        this->label->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
 
+        QHBoxLayout *mainLayout = new QHBoxLayout;
+        mainLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+        mainLayout->setSpacing(qRound(12 * ratio));
+        mainLayout->addWidget(this->label, 0, Qt::AlignVCenter | Qt::AlignLeft);
+        mainLayout->addWidget(this->controlListComboBox, 0, Qt::AlignVCenter | Qt::AlignLeft);
+        mainLayout->addStretch(1);
+        this->setLayout(mainLayout);
     }
-    else if(direction == "right")
+    else if(direction.contains("right"))
     {
+        this->label->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
 
+        QHBoxLayout *mainLayout = new QHBoxLayout;
+        mainLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+        mainLayout->setSpacing(qRound(12 * ratio));
+        mainLayout->addStretch(1);
+        mainLayout->addWidget(this->controlListComboBox, 0, Qt::AlignVCenter | Qt::AlignRight);
+        mainLayout->addWidget(this->label, 0, Qt::AlignVCenter | Qt::AlignRight);
+        this->setLayout(mainLayout);
     }
-    else if(direction == "top")
+    else if(direction.contains("top"))
     {
+        this->label->setAlignment(Qt::AlignCenter);
 
+        QVBoxLayout *mainLayout = new QVBoxLayout;
+        mainLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+        mainLayout->setSpacing(verticalGap);
+        mainLayout->addWidget(this->controlListComboBox, 0, Qt::AlignCenter);
+        mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
+        this->setLayout(mainLayout);
     }
     else if(direction.contains("bottom"))
     {
         this->label->setAlignment(Qt::AlignLeft);
 
         QVBoxLayout *mainLayout = new QVBoxLayout;
-        if(direction.contains("icon_seq")){mainLayout->setSpacing(1);}else{mainLayout->setSpacing(10);};
-        mainLayout->setSpacing(0);
+        mainLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+        if(direction.contains("icon_seq")){mainLayout->setSpacing(qMax(1, verticalGap / 2));}else{mainLayout->setSpacing(verticalGap);};
         mainLayout->addStretch(0);
         mainLayout->addWidget(this->label, 0, Qt::AlignLeft);
         mainLayout->addWidget(this->controlListComboBox, 0, Qt::AlignLeft);
@@ -110,8 +128,8 @@ customControlListMenu::customControlListMenu(QWidget *parent,
         this->label->setAlignment(Qt::AlignCenter);
 
         QVBoxLayout *mainLayout = new QVBoxLayout;
-        if(direction.contains("icon_seq")){mainLayout->setSpacing(1);}else{mainLayout->setSpacing(10);};
-        mainLayout->setSpacing(0);
+        mainLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+        if(direction.contains("icon_seq")){mainLayout->setSpacing(qMax(1, verticalGap / 2));}else{mainLayout->setSpacing(verticalGap);};
         mainLayout->addStretch(0);
         mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
         mainLayout->addWidget(this->controlListComboBox, 0, Qt::AlignCenter);
@@ -120,15 +138,15 @@ customControlListMenu::customControlListMenu(QWidget *parent,
 
     if(midiTable->isData(this->area, hex1, hex2, hex3))
     {
-        this->setFixedHeight((12 + 25 + 10)*ratio);
+        this->setFixedHeight((12 + 23 + 8)*ratio);
     }
     else if(direction.contains("Tables") || direction.contains("large"))
     {
-        this->setFixedHeight((12 + 30 + 10)*ratio);
+        this->setFixedHeight((12 + 26 + 8)*ratio);
     }
     else
     {
-        this->setFixedHeight((12 + 20 + 10)*ratio);
+        this->setFixedHeight((12 + 18 + 8)*ratio);
     };
 
     hover = false;
@@ -156,16 +174,27 @@ customControlListMenu::customControlListMenu(QWidget *parent,
     };
 }
 
+void customControlListMenu::applyComboFont(bool largeVariant, double fratio)
+{
+    int baseFont = largeVariant ? 13 : 8;
+#ifdef Q_OS_MAC
+    baseFont = largeVariant ? 14 : 9;
+#endif
+    // Keep the selected dropdown text slightly smaller than the label stack so
+    // effect detail pages read as one control instead of a heavy menu block.
+    baseFont = qMax(6, baseFont - 2);
+    QFont comboFont("Roboto Condensed", baseFont * fratio, QFont::Normal);
+    this->controlListComboBox->setFont(comboFont);
+    if(this->controlListComboBox->view())
+    {
+        this->controlListComboBox->view()->setFont(comboFont);
+    }
+}
+
 void customControlListMenu::paintEvent(QPaintEvent *)
 {
-    /* DRAWS RED BACKGROUND  */
-    if(hover==true){
-        QPixmap image(":/images/dragbar.png");
-        QRectF target(0.0, 0.0, this->width(), this->height());
-        QRectF source(0.0, 0.0, 600, 600);
-        QPainter painter(this);
-        painter.drawPixmap(target, image, source);
-    };
+    // Suppress the legacy red hover wash behind selectors. It adds no state
+    // information and competes with the actual control styling.
 }
 
 void customControlListMenu::mouseMoveEvent(QMouseEvent *event)
@@ -274,28 +303,30 @@ void customControlListMenu::setComboBox()
                 };
             };
             this->controlListComboBox->addItems(list);
-            int popupWidth = QFontMetrics( this->font() ).horizontalAdvance(longestItem)+(20*fratio);
+            // Size the collapsed control from the same reduced combo font used
+            // for the visible selector text and popup rows.
+            int popupWidth = QFontMetrics(this->controlListComboBox->font()).horizontalAdvance(longestItem) + (20 * fratio);
             if(popupWidth<60){popupWidth=60;};
             this->controlListComboBox->setMaxVisibleItems(itemcount+1);
             if(this->direction.contains("Tables") || this->direction.contains("large"))
             {
-                this->controlListComboBox->setFixedHeight(28*ratio);
-                this->controlListComboBox->setFixedWidth(popupWidth*1.5);
+                this->controlListComboBox->setFixedHeight(26*ratio);
+                this->controlListComboBox->setFixedWidth(qMax(int(popupWidth * 1.35), qRound(190 * ratio)));
             }
             else if(this->direction.contains("seq"))
             {
-                this->controlListComboBox->setFixedHeight(20*ratio);
+                this->controlListComboBox->setFixedHeight(18*ratio);
                 this->controlListComboBox->setFixedWidth(38*ratio);
             }
             else
             {
 
 #ifdef Q_OS_MAC
-                this->controlListComboBox->setFixedWidth(controlListComboBox->width()*0.9);
+                this->controlListComboBox->setFixedWidth(qMax(popupWidth, qRound(88 * ratio)));
 #else
                 this->controlListComboBox->setFixedWidth(popupWidth);
 #endif
-                this->controlListComboBox->setFixedHeight(20*ratio);
+                this->controlListComboBox->setFixedHeight(18*ratio);
             };
         };
     this->controlListComboBox->setEditable(false);

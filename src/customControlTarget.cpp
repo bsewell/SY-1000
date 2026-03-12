@@ -37,7 +37,9 @@ customControlTarget::customControlTarget(QWidget *parent,
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-    QFont Sfont( "Arial", 9*fratio, QFont::Normal);
+    const int verticalGap = qRound(5 * ratio);
+    const int controlMargin = qRound(4 * ratio);
+    QFont Sfont( "Roboto Condensed", 9*fratio, QFont::Normal);
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){mode = "02";}else{mode = "00";};
 
     this->displayMin = new QLineEdit(this);
@@ -99,6 +101,7 @@ customControlTarget::customControlTarget(QWidget *parent,
     //this->knobTarget = new customKnobTarget(this, hex0, hex1, hex2, hex3, hexMsb, hexLsb, "target");  // create knob with target address
 
     this->label->setText("TARGET");
+    this->label->setFontRole("setting");
     this->label->setAlignment(Qt::AlignCenter);
 
     this->knobMin = new customKnobTarget(this, hex0, hex1, hex2, hexMin, hexMsb, hexLsb, "min");      // create knob with target address
@@ -109,6 +112,7 @@ customControlTarget::customControlTarget(QWidget *parent,
     this->displayMin->setAlignment(Qt::AlignCenter);
     this->displayMin->setDisabled(true);
     this->labelMin->setText("MINIMUM");
+    this->labelMin->setFontRole("setting");
     this->labelMin->setAlignment(Qt::AlignCenter);
 
     this->knobMax = new customKnobTarget(this, hex0, hex1, hex2, hexMax, hexMsb, hexLsb, "max");      // create knob with target address
@@ -119,36 +123,37 @@ customControlTarget::customControlTarget(QWidget *parent,
     this->displayMax->setAlignment(Qt::AlignCenter);
     this->displayMax->setDisabled(true);
     this->labelMax->setText("MAXIMUM");
+    this->labelMax->setFontRole("setting");
     this->labelMax->setAlignment(Qt::AlignCenter);
 
     QVBoxLayout *targetLayout = new QVBoxLayout;
-    //targetLayout->setMargin(10);
-    targetLayout->setSpacing(0);
+    targetLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+    targetLayout->setSpacing(verticalGap);
     targetLayout->addWidget(this->label, 0, Qt::AlignCenter);
-    targetLayout->addSpacing(3*ratio);
+    targetLayout->addSpacing(qRound(3*ratio));
     //targetLayout->addWidget(this->knobTarget, 0, Qt::AlignCenter);
     targetLayout->addWidget(this->displayCombo, 0, Qt::AlignCenter);
     targetLayout->addStretch(0);
 
     QVBoxLayout *minLayout = new QVBoxLayout;
-    //minLayout->setMargin(1);
-    minLayout->setSpacing(0);
+    minLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+    minLayout->setSpacing(verticalGap);
     minLayout->addWidget(this->labelMin, 0, Qt::AlignCenter);
     minLayout->addWidget(this->knobMin, 0, Qt::AlignCenter);
     minLayout->addWidget(this->displayMin, 0, Qt::AlignCenter);
     minLayout->addStretch(0);
 
     QVBoxLayout *maxLayout = new QVBoxLayout;
-    //maxLayout->setMargin(1);
-    maxLayout->setSpacing(0);
+    maxLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+    maxLayout->setSpacing(verticalGap);
     maxLayout->addWidget(this->labelMax, 0, Qt::AlignCenter);
     maxLayout->addWidget(this->knobMax, 0, Qt::AlignCenter);
     maxLayout->addWidget(this->displayMax, 0, Qt::AlignCenter);
     maxLayout->addStretch(0);
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
-    //mainLayout->setMargin(10);
-    mainLayout->setSpacing(5);
+    mainLayout->setContentsMargins(controlMargin, 0, controlMargin, 0);
+    mainLayout->setSpacing(verticalGap);
     mainLayout->addLayout(targetLayout);
     mainLayout->addLayout(minLayout);
     mainLayout->addLayout(maxLayout);

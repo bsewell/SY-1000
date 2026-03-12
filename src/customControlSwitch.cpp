@@ -37,6 +37,9 @@ customControlSwitch::customControlSwitch(QWidget *parent,
     Preferences *preferences = Preferences::Instance();
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
+    const int verticalGap = qRound(5 * ratio);
+    const int sideGap = qRound(8 * ratio);
+    const int controlMargin = qRound(4 * ratio);
 
     this->label = new customControlLabel(this);
     this->hex0 = hex0;
@@ -49,6 +52,7 @@ customControlSwitch::customControlSwitch(QWidget *parent,
     Midi items = midiTable->getMidiMap(hex0, hex1, hex2, hex3);
     QString labeltxt = items.customdesc;
 
+    this->label->setFontRole("setting");
     this->label->setUpperCase(true);
     this->label->setText(labeltxt);
     QString imagePath  = ":/images/ledbutton.png";
@@ -61,8 +65,8 @@ customControlSwitch::customControlSwitch(QWidget *parent,
         this->label->setTextRaise(qRound(1 * ratio));
 
         QHBoxLayout *mainLayout = new QHBoxLayout;
-        mainLayout->setContentsMargins(0, 0, 0, 0);
-        mainLayout->setSpacing(qRound(8 * ratio));
+        mainLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+        mainLayout->setSpacing(sideGap);
         mainLayout->addWidget(this->switchbutton, 0, Qt::AlignLeft | Qt::AlignVCenter);
         mainLayout->addWidget(this->label, 0, Qt::AlignLeft | Qt::AlignVCenter);
         mainLayout->addStretch(1);
@@ -81,8 +85,8 @@ customControlSwitch::customControlSwitch(QWidget *parent,
     {
         this->label->setAlignment(Qt::AlignCenter);
         QVBoxLayout *mainLayout = new QVBoxLayout;
-        mainLayout->setContentsMargins(0, 0, 0, 0);
-        mainLayout->setSpacing(5*ratio);
+        mainLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+        mainLayout->setSpacing(verticalGap);
         mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
         mainLayout->addWidget(this->switchbutton, 0, Qt::AlignCenter);
         mainLayout->addStretch(0);
@@ -95,8 +99,8 @@ customControlSwitch::customControlSwitch(QWidget *parent,
         this->label->setAlignment(Qt::AlignCenter);
 
         QVBoxLayout *mainLayout = new QVBoxLayout;
-        mainLayout->setContentsMargins(0, 0, 0, 0);
-        mainLayout->setSpacing(0);
+        mainLayout->setContentsMargins(controlMargin, verticalGap, controlMargin, verticalGap);
+        mainLayout->setSpacing(verticalGap);
         mainLayout->addStretch(0);
         mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
         mainLayout->addWidget(this->switchbutton, 0, Qt::AlignCenter);
@@ -116,6 +120,11 @@ customControlSwitch::customControlSwitch(QWidget *parent,
 
 
     setMouseTracking(true);
+}
+
+void customControlSwitch::setLabelText(const QString &text)
+{
+    this->label->setText(text);
 }
 
 void customControlSwitch::paintEvent(QPaintEvent *)
@@ -143,7 +152,6 @@ void customControlSwitch::valueChanged(bool value, QString hex0, QString hex1, Q
 void customControlSwitch::dialogUpdateSignal()
 {
     SysxIO *sysxIO = SysxIO::Instance();
-    if(!sysxIO->deviceReady()) { return; }
     int value = sysxIO->getSourceValue(this->hex0, this->hex1, this->hex2, this->hex3);
     if(value != _last){
         _last = value;

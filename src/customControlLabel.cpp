@@ -37,11 +37,15 @@ customControlLabel::customControlLabel(QWidget *parent)
 	this->button = false;
 	this->isImage = false;
 	this->offset = 0;
+    this->textWidth = 0;
+    this->fontRole = "detail";
+    this->fontPointDelta = 0;
     this->textRaise = 0;
 
 	this->label->setObjectName("customlabel");
-    QFont Sfont( "Arial", 8*fratio, QFont::Normal);
-    this->label->setFont(Sfont);
+    this->label->setWordWrap(false);
+    Q_UNUSED(fratio);
+    applyFont();
 
 	QHBoxLayout *layout = new QHBoxLayout;
 	layout->addWidget(this->label);
@@ -83,12 +87,84 @@ void customControlLabel::setAlignment(Qt::Alignment flag)
 	this->label->setAlignment(flag);
 }
 
-void customControlLabel::setFontPointDelta(int delta)
+void customControlLabel::setFontRole(const QString &role)
 {
-    QFont font = this->label->font();
-    font.setPointSizeF(qMax(1.0, font.pointSizeF() + delta));
+    this->fontRole = role;
+    applyFont();
+    setSize();
+}
+
+void customControlLabel::applyFont()
+{
+    Preferences *preferences = Preferences::Instance();
+    bool ok;
+    const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
+
+    int basePointSize = 8;
+    if(this->fontRole == "setting")
+    {
+        basePointSize = 11;
+    }
+    else if(this->fontRole == "detail")
+    {
+        basePointSize = 10;
+    }
+    else if(this->fontRole == "compact")
+    {
+        basePointSize = 8;
+    }
+    else if(this->fontRole == "header")
+    {
+        basePointSize = 12;
+    }
+#ifdef Q_OS_MAC
+    if(this->fontRole == "setting")
+    {
+        basePointSize = 12;
+    }
+    else if(this->fontRole == "detail")
+    {
+        basePointSize = 11;
+    }
+    else if(this->fontRole == "header")
+    {
+        basePointSize = 13;
+    }
+    else
+    {
+        basePointSize = 9;
+    }
+#endif
+    QFont font("Roboto Condensed", qMax(1, basePointSize + this->fontPointDelta) * fratio, QFont::Normal);
     this->label->setFont(font);
     updateControlHeight();
+}
+
+void customControlLabel::setFontPointDelta(int delta)
+{
+    this->fontPointDelta = delta;
+    applyFont();
+    setSize();
+}
+
+void customControlLabel::setTextWidth(int pixels)
+{
+    this->textWidth = qMax(0, pixels);
+    if(this->textWidth > 0)
+    {
+        this->label->setWordWrap(true);
+        this->label->setFixedWidth(this->textWidth);
+        this->setFixedWidth(this->textWidth);
+    }
+    else
+    {
+        this->label->setWordWrap(false);
+        this->label->setMinimumWidth(0);
+        this->label->setMaximumWidth(QWIDGETSIZE_MAX);
+        this->setMinimumWidth(0);
+        this->setMaximumWidth(QWIDGETSIZE_MAX);
+    }
+    setSize();
 }
 
 void customControlLabel::setTextRaise(int pixels)
@@ -114,13 +190,25 @@ void customControlLabel::setText(QString text)
 
 void customControlLabel::setSize()
 {
-    Preferences *preferences = Preferences::Instance();
-    bool ok;
-    const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-
-    int pixelWidth = QFontMetrics(this->label->font()).horizontalAdvance(this->label->text())*fratio;
+    QFontMetrics metrics(this->label->font());
+    int pixelWidth = 0;
+    if(this->textWidth > 0)
+    {
+        const QRect wrapped = metrics.boundingRect(QRect(0, 0, this->textWidth, 1000),
+                                                   Qt::TextWordWrap | Qt::AlignHCenter,
+                                                   this->label->text());
+        pixelWidth = this->textWidth;
+        this->label->setFixedHeight(qMax(1, wrapped.height()));
+    }
+    else
+    {
+        pixelWidth = metrics.horizontalAdvance(this->label->text());
+        this->label->setMinimumHeight(0);
+        this->label->setMaximumHeight(QWIDGETSIZE_MAX);
+    }
 	if(pixelWidth<1) {pixelWidth = 1; };
 	this->labelWidth = pixelWidth;
+    updateControlHeight();
 }
 
 void customControlLabel::updateControlHeight()
@@ -128,7 +216,15 @@ void customControlLabel::updateControlHeight()
     Preferences *preferences = Preferences::Instance();
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
-    const int textHeight = QFontMetrics(this->label->font()).height() + 2 + this->textRaise;
+    int textHeight = QFontMetrics(this->label->font()).height() + 2;
+    if(this->textWidth > 0)
+    {
+        const QRect wrapped = QFontMetrics(this->label->font()).boundingRect(QRect(0, 0, this->textWidth, 1000),
+                                                                             Qt::TextWordWrap | Qt::AlignHCenter,
+                                                                             this->label->text());
+        textHeight = wrapped.height() + 2;
+    }
+    textHeight += this->textRaise;
     this->setFixedHeight(qMax(int(12*ratio), textHeight));
 }
 

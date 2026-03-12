@@ -42,6 +42,7 @@ public:
 		QString hex2 = "void",
 		QString hex3 = "void",
 		QString direction = "bottom");
+    void setLabelText(const QString &text);
 
 protected:
 	void paintEvent(QPaintEvent *event);

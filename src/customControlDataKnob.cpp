@@ -48,6 +48,10 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
     this->hex2 = hex2;
     this->hex3 = hex3;
     this->area = "Structure";
+    const int verticalGap = qRound(5 * ratio);
+    const int sideGap = qRound(4 * ratio);
+    const int stackedControlMinHeight = qRound(78 * ratio);
+    const int sideControlMinHeight = qRound(60 * ratio);
 
     MidiTable *midiTable = MidiTable::Instance();
     this->hex_a = "00";
@@ -71,10 +75,9 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
     if (background.contains("SCALE_B"))    { this->hex_c = "76"; this->byteSize = "2"; this->area = "System"; };
 
     Midi items = midiTable->getMidiMap(hex0, hex1, hex2, hex3);
-
+    this->label->setFontRole("setting");
     this->label->setText(items.customdesc);
     this->label->setUpperCase(true);
-    this->label->setFontPointDelta(2);
     this->label->setTextRaise(5);
 
     this->knob = new customDataKnob(this, hex0, hex1, hex2, hex3, background, this->area);
@@ -85,7 +88,7 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
     {
         this->displayBTS = new QTextEdit(this);
         this->displayBTS->setObjectName("btsdisplayBTS");
-        QFont Sfont( "Arial", 8*fratio, QFont::Normal);
+        QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
         this->displayBTS->setFont(Sfont);
         //this->displayBTS->setDisabled(true);
         this->displayBTS->setAlignment(Qt::AlignCenter);
@@ -116,7 +119,7 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
     {
         this->display = new QLineEdit(this);
         this->display->setObjectName("editdisplay");
-        QFont Sfont( "Arial", 8*fratio, QFont::Normal);
+        QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
         this->display->setFont(Sfont);
         this->display->setFixedWidth(lenght*ratio);
         this->display->setFixedHeight(20*ratio);
@@ -129,8 +132,8 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
             this->display->setFixedWidth(lenght*ratio);
 
             QVBoxLayout *displayLayout = new QVBoxLayout;
-            //displayLayout->setContentsMargins(0, 0, 0, 0);
-            displayLayout->setSpacing(0);
+            displayLayout->setContentsMargins(0, verticalGap, 0, verticalGap);
+            displayLayout->setSpacing(verticalGap);
             displayLayout->addStretch(0);
             displayLayout->addWidget(this->label, 0, Qt::AlignRight);
             displayLayout->addWidget(this->display, 0, Qt::AlignRight);
@@ -138,11 +141,12 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
 
             QHBoxLayout *mainLayout = new QHBoxLayout;
             mainLayout->setContentsMargins(0, 0, 0, 0);
-            mainLayout->setSpacing(0);
+            mainLayout->setSpacing(sideGap);
             mainLayout->addLayout(displayLayout);
             mainLayout->addWidget(this->knob, 0, Qt::AlignCenter);
 
             this->setLayout(mainLayout);
+            this->setMinimumHeight(sideControlMinHeight);
             //this->setFixedHeight(this->knob->height()*ratio);
         }
         else if(direction.contains("right"))
@@ -151,8 +155,8 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
             this->display->setFixedWidth(lenght*ratio);
 
             QVBoxLayout *displayLayout = new QVBoxLayout;
-            //displayLayout->setContentsMargins(0, 0, 0, 0);
-            displayLayout->setSpacing(0);
+            displayLayout->setContentsMargins(0, verticalGap, 0, verticalGap);
+            displayLayout->setSpacing(verticalGap);
             displayLayout->addStretch(0);
             displayLayout->addWidget(this->label, 0, Qt::AlignLeft);
             displayLayout->addWidget(this->display, 0, Qt::AlignLeft);
@@ -160,12 +164,13 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
 
             QHBoxLayout *mainLayout = new QHBoxLayout;
             mainLayout->setContentsMargins(0, 0, 0, 0);
-            mainLayout->setSpacing(0);
+            mainLayout->setSpacing(sideGap);
             mainLayout->addWidget(this->knob, 0, Qt::AlignCenter);
             mainLayout->addLayout(displayLayout);
 
 
             this->setLayout(mainLayout);
+            this->setMinimumHeight(sideControlMinHeight);
             //this->setFixedHeight(this->knob->height()*ratio);
         }
         else if(direction.contains("top"))
@@ -178,14 +183,15 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
             this->display->setFixedWidth(lenght*ratio);
 
             QVBoxLayout *mainLayout = new QVBoxLayout;
-            mainLayout->setContentsMargins(0, 0, 0, 0);
-            mainLayout->setSpacing(0);
+            mainLayout->setContentsMargins(0, verticalGap, 0, verticalGap);
+            mainLayout->setSpacing(verticalGap);
             mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->knob, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->display, 0, Qt::AlignCenter);
             mainLayout->addStretch(0);
 
             this->setLayout(mainLayout);
+            this->setMinimumHeight(stackedControlMinHeight);
             //this->setFixedHeight((this->knob->height() + 16 + 12)*ratio);
 
         }
@@ -195,14 +201,15 @@ customControlDataKnob::customControlDataKnob(QWidget *parent,
             this->display->setFixedWidth(lenght*ratio);
 
             QVBoxLayout *mainLayout = new QVBoxLayout;
-            mainLayout->setContentsMargins(0, 0, 0, 0);
-            mainLayout->setSpacing(0);
+            mainLayout->setContentsMargins(0, verticalGap, 0, verticalGap);
+            mainLayout->setSpacing(verticalGap);
             mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->knob, 0, Qt::AlignCenter);
             mainLayout->addWidget(this->display, 0, Qt::AlignCenter);
             mainLayout->addStretch(0);
 
             this->setLayout(mainLayout);
+            this->setMinimumHeight(stackedControlMinHeight);
             //this->setFixedHeight((this->knob->height() + 16 + 12)*ratio);
         };
     };

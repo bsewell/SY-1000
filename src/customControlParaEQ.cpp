@@ -134,7 +134,7 @@ customControlParaEQ::customControlParaEQ(QWidget *parent,
 
     MidiTable *midiTable = MidiTable::Instance();
     if (this->area.contains("System")) {this->area = "System";} else {this->area = "Structure";};
-    QFont Sfont( "Arial", 9*fratio, QFont::Normal);
+    QFont Sfont( "Roboto Condensed", 9*fratio, QFont::Normal);
 
     if(type.contains("inst"))
     {QString temp=hex_2; hex_2=hex_9; hex_9=hex_1;  hex_1=temp;};

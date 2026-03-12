@@ -28,8 +28,8 @@
 #include <QtWidgets>
 #include <QHoverEvent>
 #include "customControlLabel.h"
+#include "customComboBox.h"
 #include <QIcon>
-#include <QComboBox>
 #include <QTimer>
 
 class customControlListMenu : public QWidget
@@ -44,7 +44,7 @@ public:
 		QString hex3 = "void",
 		QString direction = "bottom");
 
-    QComboBox* controlListComboBox;
+    customComboBox* controlListComboBox;
 
 protected:
     void paintEvent(QPaintEvent *event);
@@ -65,7 +65,8 @@ signals:
 	void currentIndexChanged(int index);
 
 private:
-	void setComboBox();    
+	void setComboBox();
+    void applyComboFont(bool largeVariant, double fratio);
 	customControlLabel* label;
     QVBoxLayout *mainLayout;
     QString hex0;

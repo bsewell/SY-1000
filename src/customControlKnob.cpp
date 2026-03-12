@@ -74,7 +74,7 @@ customControlKnob::customControlKnob(QWidget *parent,
     {
         this->displayBTS = new QTextEdit(this);
         this->displayBTS->setObjectName("btsdisplay");
-        QFont Sfont( "Arial", 8*fratio, QFont::Normal);
+        QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
         this->displayBTS->setFont(Sfont);
         this->displayBTS->setDisabled(true);
         this->displayBTS->setAlignment(Qt::AlignCenter);
@@ -119,7 +119,7 @@ customControlKnob::customControlKnob(QWidget *parent,
     {
         this->display = new QLineEdit(this);
         this->display->setObjectName("editdisplay");
-        QFont Sfont( "Arial", 8*fratio, QFont::Normal);
+        QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
         this->display->setFont(Sfont);
         this->display->setFixedWidth(lenght*ratio);
         this->display->setFixedHeight(20*ratio);

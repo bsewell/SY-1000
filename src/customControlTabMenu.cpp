@@ -46,13 +46,13 @@ customControlTabMenu::customControlTabMenu(QWidget *parent,
     if(direction.contains("Tables") || direction.contains("large"))
     {
         this->controlListTab->setObjectName("pagecombobox");
-        QFont Cfont( "Arial", largeFont*ratio, QFont::Normal);
+        QFont Cfont( "Roboto Condensed", largeFont*ratio, QFont::Normal);
         this->controlListTab->setFont(Cfont);
     }
     else
     {
         this->controlListTab->setObjectName("pagecombobox");
-        QFont Cfont( "Arial", smallFont*ratio, QFont::Normal);
+        QFont Cfont( "Roboto Condensed", smallFont*ratio, QFont::Normal);
         this->controlListTab->setFont(Cfont);
     };
     this->hex0 = hex0;

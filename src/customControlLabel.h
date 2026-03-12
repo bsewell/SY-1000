@@ -35,7 +35,9 @@ public:
     customControlLabel(QWidget *parent = 0);
 	void setUpperCase(bool active);
 	void setAlignment(Qt::Alignment flag);
+    void setFontRole(const QString &role);
     void setFontPointDelta(int delta);
+    void setTextWidth(int pixels);
     void setTextRaise(int pixels);
 	void setButton(bool button);
 	void setImage(QString imagePath);
@@ -57,6 +59,7 @@ signals:
 	void mousePressed();
 
 private:
+    void applyFont();
 	void setSize();
     void updateControlHeight();
 	QLabel* label;
@@ -66,8 +69,11 @@ private:
 	bool button;
 	int lenght;
 	int offset;
-	int imageHeight;
-	int labelWidth;
+    int imageHeight;
+    int labelWidth;
+    int textWidth;
+    QString fontRole;
+    int fontPointDelta;
     int textRaise;
 };
 

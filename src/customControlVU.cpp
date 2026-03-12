@@ -307,7 +307,7 @@ customControlVU::customControlVU(QWidget *parent,
     else if(type=="poly_tuner")
     {
         int lenght = 50*ratio;
-        QFont Sfont( "Arial", 14*fratio, QFont::Normal);
+        QFont Sfont( "Roboto Condensed", 14*fratio, QFont::Normal);
 
         this->label_1 = new customControlLabel(this);
         this->label_1->setText("STRING 1");
@@ -503,7 +503,7 @@ customControlVU::customControlVU(QWidget *parent,
     else
     {  // mono_tuner.
         int lenght = 200*ratio;
-        QFont Sfont( "Arial", 96*fratio, QFont::Bold);
+        QFont Sfont( "Roboto Condensed", 96*fratio, QFont::Bold);
         this->vu_1 = new customVU(this, type);
         this->display_1 = new QLineEdit(this);
         this->display_1->setObjectName("editdisplay");

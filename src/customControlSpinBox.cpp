@@ -49,13 +49,13 @@ customControlSpinBox::customControlSpinBox(QWidget *parent,
     if(direction.contains("Tables") || direction.contains("large"))
     {
         this->controlSpinBox->setObjectName("spinbox");
-        QFont Cfont( "Arial", largeFont*ratio, QFont::Normal);
+        QFont Cfont( "Roboto Condensed", largeFont*ratio, QFont::Normal);
         this->controlSpinBox->setFont(Cfont);
     }
     else
     {
         this->controlSpinBox->setObjectName("spinbox");
-        QFont Cfont( "Arial", smallFont*ratio, QFont::Normal);
+        QFont Cfont( "Roboto Condensed", smallFont*ratio, QFont::Normal);
         this->controlSpinBox->setFont(Cfont);
     };
     this->hex0 = hex0;

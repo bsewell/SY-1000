@@ -91,6 +91,28 @@ Recommended layout values from screenshot proportions:
 - Inactive ring: neutral gray.
 - Disabled controls: keep layout; reduce alpha to ~35-45%.
 
+## 5b) No-Cutoff / No-Overlap Contract
+
+- No visible UI item may be partially hidden, overlapped, or cut off by the page viewport.
+- This applies to:
+  - knob rings
+  - value boxes
+  - labels
+  - dropdowns
+  - tab bars
+  - header text
+  - page footer rows such as `PAN`, `LEVEL`, and similar last-row controls
+- If a page body becomes taller than the embedded edit viewport:
+  - first use the available width to the right before introducing more rows
+  - then reduce row gaps and unused padding within the existing page contract
+  - do not clip the last row and do not collapse controls into overlapping positions
+- Overflow handling rules:
+  - do not introduce vertical scrolling for normal instrument/effect pages unless the user explicitly approves it
+  - no nested white panels, default Qt frames, or background fills may appear
+  - horizontal scrolling is not allowed for normal parameter pages; content must still fit the page width contract
+- Acceptance rule:
+  - before a page layout change is considered complete, confirm that the first visible row, the lowest visible row, and all labels/value boxes between them are fully readable in the installed app
+
 ## 5a) Signal-Chain Geometry Rules
 
 - Treat the upper signal chain as a separate geometry system from the lower edit pages.
@@ -99,6 +121,108 @@ Recommended layout values from screenshot proportions:
 - Balancers must stay on their branch risers; only the riser can move them.
 - Any balancer icon and any square stomp block on the same vertical band must keep the same horizontal clearance as the standard gap between adjacent stomp-box squares.
 - Reduce available branch span or move the riser before allowing a balancer to overlap an adjacent square FX block.
+- Vertical flow columns are based on the visible signal rectangle, not the raw widget left edge, so `FX1`, `FX2`, `FX3`, `CMP`, and other square flow blocks line up by their square bodies even when asset padding differs.
+- Balancer collision and downstream spacing must be measured from the visible balancer circle/signal rect, not the full widget frame, so a balancer does not reserve more horizontal room than the adjacent stomp square.
+- When compacting the segment after a balancer, compare the balancer's visible right signal anchor to the next visible stomp's visible left signal anchor. Never compare against the stomp widget origin, because square artwork padding will falsely add extra space.
+
+### Signal-Chain Vertical Column Contract
+
+- Define shared vertical columns from visible signal geometry, not widget origin geometry.
+- Use these columns as layout guides for all patches so repeated block families land in the same visual channels whenever topology permits.
+
+- Column `C0`: source blocks
+  - `INST1`, `INST2`, `INST3`, `NORMAL`
+  - All source rectangles share one visible left edge.
+
+- Column `C1`: first branch FX lane
+  - `FX1`, `FX2`, `FX3`, `CMP`
+  - These square blocks must share one visible left edge.
+  - This is the first major guide the eye reads after the source column.
+
+- Column `C2`: first merge lane
+  - `BAL1`
+  - `BAL1` sits on the first merge riser, visually centered between the `INST1/INST2` inputs and its output.
+
+- Column `C3`: second branch processing lane
+  - Hidden branch marker / optional square block immediately after `BAL1`
+  - If no visible square block exists here, do not create fake width; keep the next visible block compact.
+
+- Column `C4`: second merge lane
+  - `BAL2`
+  - `BAL2` sits on the second merge riser and must read as the next structural merge after `BAL1`.
+
+- Column `C5..Cn`: post-merge serial FX lanes
+  - `EQ1`, `FV1`, `DLY1`, `M DLY`, `REV`, `CHO`, `FX1`, etc.
+  - Visible square blocks in this region use the standard stomp gap and occupy one column each.
+
+- Column `Cb3`: final merge lane
+  - `BAL3`
+  - `BAL3` is the last merge before the divider/output section.
+  - The branch riser for `BAL3` must be vertical and centered through the balancer artwork.
+
+- Column `Cd..Co`: output section
+  - divider, mixer, stereo/sub outputs, master
+  - Divider/mixer circles may be visually different, but their left-to-right cadence should still match the serial stomp spacing as closely as the artwork allows.
+
+- Placement rules
+  - A visible square stomp block always snaps to the nearest legal shared column for its lane family.
+  - Balancers occupy dedicated merge columns; square blocks may not steal merge columns.
+  - If a patch omits a block in a column, the next visible block may compact left, but it should compact to the next legal column, not to an arbitrary x offset.
+  - The left edge used for column snapping is the painted flow body / visible signal rect, not transparent asset padding.
+  - Column spacing should feel uniform from `C1` forward; balancers should not visually consume more horizontal room than the adjacent square stomp columns.
+
+### Signal-Chain Topology Contract
+
+- Treat the signal chain as a directed graph, not a loose list of widget positions.
+- Each visible node must have:
+  - a stable `id`
+  - a node kind: `source`, `fx`, `balancer`, `divider`, `mixer`, `output`
+  - an assigned lane
+  - an assigned column/order
+  - a visible signal rectangle
+  - explicit input/output anchors derived from that visible signal rectangle
+- Geometry must flow in one direction only:
+  - patch data -> normalized topology -> lane/column assignment -> node geometry -> routed connector lines -> paint
+- Widget geometry must not be used as the source of truth for topology.
+
+### Signal-Chain Anchor Rules
+
+- Every visible non-source node must show at least one incoming connector at its input-side anchor.
+- Every visible non-terminal node must show at least one outgoing connector at its output-side anchor.
+- Connector lines must terminate on signal anchors, not hidden node centers.
+- For normal square stomp blocks, the signal anchors are the mid-left and mid-right points of the visible signal rectangle.
+- For balancers:
+  - the vertical branch riser passes through the balancer's painted flow-rect centerline so the top and bottom connectors enter vertically into the visible circle
+  - the merged output starts from the balancer output-side anchor
+  - the visible balancer icon must sit between those two anchor sides, not hide the whole connection
+- Divider and mixer routing may still use center routing internally, but their incoming and outgoing chain links must be anchored from visible signal geometry.
+
+### Signal-Chain Structural Invariants
+
+- `BAL1` merges `INST1` and `INST2`.
+- `BAL2` merges `BAL1` output and `INST3`.
+- `BAL3` merges `BAL2` output and `NORMAL`.
+- Therefore the balancer X ordering is structural and must never invert:
+  - `BAL1.x < BAL2.x < BAL3.x`
+- Hidden branch markers do not participate in collision checks or visible connector routing.
+- Patch changes may rebuild the topology and geometry.
+- Lower-page edits may repaint labels or values but must not rebuild the upper topology unless the actual chain structure changed.
+
+### Signal-Chain Validation Loop
+
+- Validate the upper chain from live patch loads, not from one static screenshot.
+- For regression checks:
+  - capture the first visible loaded patch as the baseline
+  - move eight patches up in the left browser and load that patch
+  - capture the loaded result after the patch request settles
+  - repeat one more patch jump if needed, because some geometry bugs only appear on the second patch switch
+- On every captured comparison, verify:
+  - the loaded patch name/number changed in the header, not just the browser highlight
+  - `BAL1 -> BAL2 -> BAL3` still reads left-to-right
+  - every visible source or stomp node has a connector entering or leaving at a visible signal anchor
+  - incoming chain links land on the divider's left-side signal anchor
+  - outgoing chain links leave from the mixer's right-side signal anchor
+  - the final master/output block stays on-page without stretching the preceding segment disproportionately
 
 ## 6) Concrete FloorBoard changes (high impact)
 
@@ -204,6 +328,224 @@ Use the CHO rewrite as the reference implementation for converting the other sto
   - No red selector backplates or decorative hover blocks.
   - No boxed sub-sections unless the hardware UI clearly presents a separate section.
   - No clipping, no overlap, no ad-hoc per-page spacing constants outside the documented token scale.
+
+## 6c) Instrument Page Family Contract
+
+Use `INST 1` as the canonical layout source for `INST 2` and `INST 3`. Instrument pages should share one shell and one page-family contract per instrument type rather than each file defining its own variant.
+
+- Reference-derived shell rules from Boss screenshots
+  - The instrument shell is a 4-band layout:
+    - band 1: colored header rail with power icon, title at left, optional variation dropdown at far right
+    - band 2: thin selector strip with `INST TYPE` at left and the family subnav immediately to its right
+    - band 3: one divider line spanning the working width
+    - band 4: the selected page body, left-anchored and using the full remaining width
+  - No band may be skipped by inserting blank vertical space.
+  - The shell is compact vertically:
+    - header rail stays visually shallow
+    - selector strip sits close under the header
+    - divider sits close under the selector strip
+    - the first control row starts soon after the divider, not after a large empty gutter
+  - The body uses width before it uses height.
+    - If a page is tall, reduce horizontal gaps first by using the available right-side real estate.
+    - Do not stack controls downward while large unused space remains to the right.
+  - No scroll containers for normal instrument pages.
+    - The intended layout is a single page-sized composition.
+    - `SEQ` data tables and long curve strips still fit the page width contract rather than introducing nested viewports.
+
+- Shell rules
+  - Use one instrument header rail with the shared header power button only.
+  - Put `INST TYPE` on the thin selector strip under the header.
+  - Put the instrument-family subtab row on the same strip to the right of `INST TYPE`.
+  - `INST TYPE` owns a fixed left block; the family subnav starts immediately to its right and takes the remaining width.
+  - The `INST TYPE` selector text may not clip, and the first tab may not overlap or underlap the selector hit area.
+  - Add one divider below the selector strip.
+  - The selected family page body renders below the divider with no outer `QGroupBox`.
+  - All shell content aligns to one left guide under the stomp/instrument tile body; nothing on the page body should start farther right without a reason.
+  - Labels on the selector strip are compact and close to their controls.
+    - Do not leave a large blank gap between `INST TYPE` and its dropdown.
+    - `TUNING TYPE`, `WAVEFORM`, `SHAPE`, `TYPE`, and similar selector labels must sit close to their dropdowns on the same strip.
+  - The family subnav must always remain visible and clickable.
+    - No overlap from the `INST TYPE` combo.
+    - No hidden tab arrows.
+    - No clipping at the right edge of the strip.
+
+- Reference-derived body rules from Boss screenshots
+  - Use explicit page types, not one generic spacing recipe for every page:
+    - compact knob matrix page
+    - selector row + compact knob matrix page
+    - selector row + two-row matrix page
+    - wide sequencer/grid page
+  - Knob pages use tight, even spacing.
+    - Controls feel evenly distributed left-to-right.
+    - Top and bottom label/value boxes remain readable without needing extra whitespace.
+  - Wide pages such as `SEQ` use almost the full width and divide it intentionally:
+    - target row / global row across the top
+    - section headers centered over each block (`SEQ1`, `SEQ2`)
+    - data table spans the available width
+    - lower curve strip spans the available width
+  - Sparse pages such as `LAYER` and `AMP` do not expand controls to fake-fill the page.
+    - Keep controls left-anchored and compact.
+    - Empty space can remain at the right if the Boss reference does the same.
+  - Selector-heavy rows still use compact dropdown widths.
+    - Dropdown width should fit the expected text plus icon, not consume a whole page column.
+    - Do not let dropdowns become wider than the content they commonly display.
+  - No control may look stranded.
+    - Every control belongs to a visible row or region.
+    - No floating knobs in the middle of unused space.
+    - No hidden last row, clipped value box, or truncated label.
+
+- Dynamic Synth family rules
+  - `INST 1`, `INST 2`, and `INST 3` must expose the same page order:
+    - `OSC`, `FILTER`, `LFO1`, `SEQ1`, `SEQ2`, `LAYER`, `ALT TUNE`, `COMMON`, `AMP`, `LFO2`
+  - The visible static tabs map to that fixed order:
+    - `COMMON -> 7`
+    - `ALT TUNE -> 6`
+    - `OSC -> 0`
+    - `FILTER -> 1`
+    - `AMP -> 8`
+    - `LFO1 -> 2`
+    - `LFO2 -> 9`
+    - `SEQ -> 3`
+    - `LAYER -> 5`
+  - `COMMON`, `AMP`, `LFO1`, `LFO2`, and `LAYER` must use the same compact flat layout on all three instrument pages.
+
+- Shared helper rules
+  - `stringLevels()` must render one flat two-row matrix with no per-string boxes.
+  - `altTuning()` should be treated as a shared family page and kept visually consistent across all three instrument files.
+  - Legacy instrument-type bodies that still use `newGroupBox()/addGroupBox()` may keep the logical grouping, but they must render as flat titled regions:
+    - no framed decorative border
+    - no oversized title gutter
+    - compact margins and spacing so the page uses the full width before adding rows
+  - This flat-group treatment applies across all instrument types in `INST 1`, `INST 2`, and `INST 3`:
+    - `DYNAMIC SYNTH`
+    - `OSC SYNTH`
+    - `GR-300`
+    - `E.GUITAR`
+    - `ACOUSTIC`
+    - `E.BASS`
+    - `VIO GUITAR`
+    - `POLY FX`
+  - `altTuning()` should use one compact matrix:
+    - top selector row for `TUNING TYPE`
+    - divider
+    - one compact control row with `STR BEND SW`, `BEND CONTROL`, then per-string `PITCH` knobs
+    - one per-string `BEND DEPTH` row directly under the matching `PITCH` knobs
+    - one per-string `FINE` row below the bend row
+  - `ALT TUNE` should not render a separate inline `ON/OFF`; the page relies on the header power treatment instead.
+  - The custom pitch/fine/bend grid stays gated by the existing `USER` tuning type override, but the grid position must remain fixed.
+  - Shared helper pages should not own header power behavior.
+
+- Implementation rules
+  - Add pages in the same stack order across `soundSource_inst1.cpp`, `soundSource_inst2.cpp`, and `soundSource_inst3.cpp`.
+  - After building the family stack, set the default Dynamic Synth page to `COMMON`.
+  - Call `clearPowerControl()` before `addPage()` so the shared header power button remains the only power affordance.
+
+### GR-300 Family Contract
+
+- Apply the same `GR-300` body layout in `INST 1`, `INST 2`, and `INST 3`; only the SysEx page address may differ.
+- Do not use decorative `QGroupBox` sections for:
+  - `GR-300 Synth`
+  - `Envelope Modulation`
+  - `Pitch`
+  - `Vibrato`
+  - `Filter`
+- Use one compact left-anchored matrix instead:
+  - row 1:
+    - `MODE`
+    - `COMP`
+    - `FILTER CUTOFF`
+    - `FILTER RESONANCE`
+    - `ENV MOD SW`
+    - `ENV MOD SENS`
+    - `ENV MOD ATTACK`
+    - `LOW CUT`
+    - `HIGH CUT`
+  - divider
+  - row 2, mode-gated by the existing `MODE == 02` override:
+    - `PITCH SW`
+    - `PITCH A`
+    - `PITCH A FINE`
+    - `PITCH B`
+    - `PITCH B FINE`
+    - `DUET SW`
+    - `SWEEP SW`
+    - `SWEEP RISE`
+    - `SWEEP FALL`
+  - row 3, also gated by the existing `MODE == 02` override:
+    - `VIBRATO RATE`
+    - `VIBRATO DEPTH`
+    - `VIBRATO SW`
+- Preserve the existing overrides and addresses exactly; only the visual structure changes.
+
+### Family Rewrite Workflow
+
+- Fix one instrument family at a time.
+- For that family only:
+  - inventory every existing control and override in all three instrument files
+  - confirm the family body order is the same in `INST 1`, `INST 2`, and `INST 3`
+  - define one compact row/column contract before editing code
+  - replace the boxed body with one flat left-anchored matrix
+  - preserve all original SysEx addresses and override rules
+  - build, deploy, kill, and reopen the installed app
+  - verify the exact family live before touching the next family
+- Do not count shared style/helper changes as completion for a family rewrite.
+- Do not mix signal-chain edits into an instrument-family pass.
+
+### Instrument Page Audit Queue
+
+- Audit and fix `INST 1`, then mirror to `INST 2`, then `INST 3`.
+- For each instrument type family, verify:
+  - shell row is intact: `INST TYPE` visible, family subnav visible, no overlap
+  - all family tabs switch correctly
+  - no controls are cut off
+  - dropdown widths are content-sized
+  - body uses width before height
+  - no decorative boxes remain unless the hardware clearly shows a separate region
+
+- Current family queue
+  - `DYNAMIC SYNTH`
+    - pages: `COMMON`, `ALT TUNE`, `OSC`, `FILTER`, `AMP`, `LFO1`, `LFO2`, `SEQ`, `LAYER`
+  - `OSC SYNTH`
+    - body tabs/pages from table `12`
+    - plus shared `STRING` and `ALT TUNE`
+  - `GR-300`
+    - body tabs/pages from table `13`
+    - plus shared `STRING` and `ALT TUNE`
+  - `E.GUITAR`
+    - `COMMON`, `ALT TUNE`, `GUITAR`, `AMP`, `NS`, `EQ`
+  - `ACOUSTIC`
+    - body tabs/pages from table `15`
+    - plus shared `STRING` and `ALT TUNE`
+  - `E.BASS`
+    - bass-mode guitar/bass family pages plus shared `COMMON`, `ALT TUNE`, `AMP`, `NS`, `EQ`
+  - `VIO GUITAR`
+    - body tabs/pages from table `17`
+    - plus shared `STRING` and `ALT TUNE`
+  - `POLY FX`
+    - body tabs/pages from table `18`
+    - plus shared `STRING` and `ALT TUNE`
+
+### Morning Working Order
+
+- Continue with one page at a time, in this order:
+  - `INST 1 DYNAMIC SYNTH`
+    - `SEQ`
+    - `LAYER`
+    - `LFO1`
+    - `LFO2`
+    - `OSC`
+    - `FILTER`
+    - `AMP`
+    - `ALT TUNE`
+    - `COMMON`
+  - mirror each corrected page to `INST 2` and `INST 3`
+  - then move to `OSC SYNTH`
+  - then `GR-300`
+  - then `E.GUITAR`
+  - then `ACOUSTIC`
+  - then `E.BASS`
+  - then `VIO GUITAR`
+  - then `POLY FX`
 
 ## 7) File targets in this repo
 

@@ -1,7 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2007~2025 Colin Willcocks.
-** Copyright (C) 2005~2007 Uco Mesdag. 
+** Copyright (C) 2005~2007 Uco Mesdag.
 ** All rights reserved.
 ** This file is part of "VG-99 FloorBoard".
 **
@@ -17,7 +17,7 @@
 **
 ** You should have received a copy of the GNU General Public License along
 ** with this program; if not, write to the Free Software Foundation, Inc.,
-** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
+** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 **
 ****************************************************************************/
 
@@ -57,25 +57,21 @@ void stompbox_main_out_right::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){sys1 = "0B"; hex1 = "02";};
 
-    editDetails()->page()->newGroupBox("Global Main Output Right");
-    editDetails()->page()->addDataKnob(1, 0, 1, 1, "00", sys1, "00", "2E", "0~200_ratio1.75"); // l output
+    // formerly "Global Main Output Right" groupBox at addGroupBox(0, 0, 2, 1) — parentCol=0
+    editDetails()->page()->addDataKnob(1, 0, 1, 1, "00", sys1, "00", "2E", "0~200_ratio1.75"); // r output
     editDetails()->page()->addSystemOverride(0, 0, 3, 1, "00", sys1, "00", "34", "01", "equals");
-    editDetails()->page()->addGroupBox(0, 0, 2, 1);
 
-    editDetails()->page()->newGroupBox("Global Main Output Select Right");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "00", sys1, "00", "01", "large"); // output select
-    editDetails()->page()->addSystemOverride(0, 0, 1, 1, "00", sys1, "00", "34", "01", "equals");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    // formerly "Global Main Output Select Right" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "00", sys1, "00", "01", "large"); // output select
+    editDetails()->page()->addSystemOverride(0, 1, 1, 1, "00", sys1, "00", "34", "01", "equals");
 
-    editDetails()->page()->newGroupBox("Patch Main Out Phase Right");
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, "12", "38", "large");  // phase right
-    editDetails()->page()->addSystemOverride(0, 0, 1, 1, "00", sys1, "00", "34", "01", "equals");
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "Patch Main Out Phase Right" groupBox at addGroupBox(0, 2, 1, 1) — parentCol=2
+    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, "12", "38", "large");  // phase right (inner col 1 + parentCol 2 = 3)
+    editDetails()->page()->addSystemOverride(0, 2, 1, 1, "00", sys1, "00", "34", "01", "equals");
 
-    editDetails()->page()->newGroupBox("Main Out Global EQ Right");
-    editDetails()->page()->addParaEQ(0, 0, 2, 4, "00", sys1, "00", "0C", "System_output", "39");
-    editDetails()->page()->addSystemOverride(0, 0, 4, 6, "00", sys1, "00", "36", "01", "equals");
-    editDetails()->page()->addGroupBox(1, 1, 1, 2);
+    // formerly "Main Out Global EQ Right" groupBox at addGroupBox(1, 1, 1, 2) — parentRow=1, parentCol=1
+    editDetails()->page()->addParaEQ(1, 1, 2, 4, "00", sys1, "00", "0C", "System_output", "39");
+    editDetails()->page()->addSystemOverride(1, 1, 4, 6, "00", sys1, "00", "36", "01", "equals");
     editDetails()->addPage();
 
 

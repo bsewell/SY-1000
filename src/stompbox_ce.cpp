@@ -25,6 +25,71 @@
 #include "Preferences.h"
 #include "SysxIO.h"
 
+namespace {
+
+constexpr int kChoKnobLength = 60;
+const char * const kChoComboDirection = "left_large";
+
+struct ChoControlSpec
+{
+    int row;
+    int column;
+    const char *address;
+    const char *background;
+};
+
+void addChoKnob(editPage *page,
+                const QString &hex1,
+                const QString &hex2,
+                const ChoControlSpec &spec)
+{
+    page->addKnob(spec.row, spec.column, 1, 1, "10", hex1, hex2, spec.address, spec.background, "bottom", kChoKnobLength, Qt::AlignTop | Qt::AlignHCenter);
+}
+
+void addChoSimpleMatrixPage(editPage *page,
+                            int stackId,
+                            const QString &hex1,
+                            const QString &hex2)
+{
+    page->newStackField(stackId, Qt::AlignTop | Qt::AlignLeft);
+    page->compactCurrentStackField(20);
+
+    const QList<ChoControlSpec> knobControls = {
+        {0, 0, "02", "normal_ratio1.5"},
+        {0, 1, "03", "normal_ratio1.5"},
+        {0, 2, "04", "normal_ratio1.5"},
+        {0, 3, "05", "normal_ratio1.75"},
+        {0, 4, "06", "normal_ratio1.5"},
+        {0, 5, "07", "normal_ratio1.25"},
+        {0, 6, "08", "normal_ratio1.25"},
+        {0, 7, "09", "normal_ratio1.5"},
+        {0, 8, "18", "normal_ratio1.5"}
+    };
+
+    for(const ChoControlSpec &control : knobControls)
+    {
+        addChoKnob(page, hex1, hex2, control);
+    }
+    page->addStackField();
+}
+
+void addChoDualModePage(editPage *page,
+                        int stackId,
+                        const QString &hex1,
+                        const QString &hex2,
+                        const QList<ChoControlSpec> &controls)
+{
+    page->newStackField(stackId, Qt::AlignTop | Qt::AlignLeft);
+    page->compactCurrentStackField(20);
+    for(const ChoControlSpec &control : controls)
+    {
+        page->addKnob(control.row, control.column, 1, 1, "10", hex1, hex2, control.address, control.background, "bottom", kChoKnobLength, Qt::AlignTop | Qt::AlignHCenter);
+    }
+    page->addStackField();
+}
+
+}
+
 stompbox_ce::stompbox_ce(QWidget *parent)
     : stompBox(parent)
 {
@@ -61,99 +126,44 @@ void stompbox_ce::updateSignal()
 
 void stompbox_ce::setEditPages()
 {
+    editPage *page = editDetails()->page();
     QString hex1 = "00";
     QString hex2 = "3F";
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "3C";};
 
-    editDetails()->page()->newGroupBox(tr("Effect"));
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00", "middle");
-    editDetails()->page()->newStackControl(0);
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large"); //mode
-    editDetails()->page()->addStackControl();
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
+    const QList<ChoControlSpec> dualModeControls = {
+        {0, 0, "0A", "normal_ratio1.5"},
+        {0, 1, "0B", "normal_ratio1.5"},
+        {0, 2, "0C", "normal_ratio1.5"},
+        {0, 3, "0D", "normal_ratio1.75"},
+        {0, 4, "0E", "normal_ratio1.5"},
+        {0, 5, "0F", "normal_ratio1.25"},
+        {0, 6, "10", "normal_ratio1.25"},
+        {0, 7, "09", "normal_ratio1.5"},
+        {1, 0, "11", "normal_ratio1.5"},
+        {1, 1, "12", "normal_ratio1.5"},
+        {1, 2, "13", "normal_ratio1.5"},
+        {1, 3, "14", "normal_ratio1.75"},
+        {1, 4, "15", "normal_ratio1.5"},
+        {1, 5, "16", "normal_ratio1.25"},
+        {1, 6, "17", "normal_ratio1.25"},
+        {1, 7, "18", "normal_ratio1.5"}
+    };
 
-    editDetails()->page()->insertStackField(0, 1, 0, 1, 2);
+    // CHO contract: MODE is the only dropdown; every other Chorus parameter
+    // stays in the flat knob matrix below the divider.
+    page->newStackControl(0);
+    page->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "01", kChoComboDirection, Qt::AlignTop | Qt::AlignLeft);
+    page->addStackControl();
 
+    page->addDivider(1, 0, 1, 1, Qt::AlignTop | Qt::AlignLeft);
 
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->newGroupBox(tr("Chorus"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5", "bottom", 60); //rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5", "bottom", 60); //depth
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5", "bottom", 60); //predelay
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox(tr("Filter"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "06"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->newGroupBox(tr("Chorus"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5", "bottom", 60); //rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5", "bottom", 60); //depth
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5", "bottom", 60); //predelay
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox(tr("Filter"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "06"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->newGroupBox(tr("Chorus"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.5", "bottom", 60); //rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "03", "normal_ratio1.5", "bottom", 60); //depth
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "04", "normal_ratio1.5", "bottom", 60); //predelay
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "05", "normal_ratio1.75", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox(tr("Filter"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "06"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "07", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "08", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->addStackField();
-
-
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->newGroupBox(tr("Chorus 1"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "09", "normal_ratio1.25", "bottom", 60); //rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0A", "normal_ratio1.25", "bottom", 60); //depth
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0B", "normal_ratio1.25", "bottom", 60); //predelay
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "0C", "normal_ratio1.5", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox(tr("Filter 1"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "0D"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "0E", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "0F", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-
-    editDetails()->page()->newGroupBox(tr("Chorus 2"));
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, hex2, "10", "normal_ratio1.25", "bottom", 60); //rate
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "11", "normal_ratio1.25", "bottom", 60); //depth
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "12", "normal_ratio1.25", "bottom", 60); //predelay
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, hex2, "13", "normal_ratio1.5", "bottom", 60); //effect
-    editDetails()->page()->addGroupBox(1, 0, 1, 1);
-
-    editDetails()->page()->newGroupBox(tr("Filter 2"));
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, hex2, "14"); //waveform
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "15", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "16", "normal_ratio1.25", "bottom", 60);
-    editDetails()->page()->addGroupBox(1, 1, 1, 1);
-    editDetails()->page()->addStackField();
-
-	editDetails()->page()->newGroupBox(tr("Level"));
-    editDetails()->page()->addKnob(0, 0, 2, 1, "10", hex1, hex2, "17", "normal_ratio1.5"); //direct
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "18", "large"); //output
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
+    addChoSimpleMatrixPage(page, 0, hex1, hex2);
+    addChoSimpleMatrixPage(page, 0, hex1, hex2);
+    addChoSimpleMatrixPage(page, 0, hex1, hex2);
+    addChoDualModePage(page, 0, hex1, hex2, dualModeControls);
+    page->insertStackField(0, 2, 0, 1, 1, Qt::AlignTop | Qt::AlignLeft);
 
 	editDetails()->addPage();
 }

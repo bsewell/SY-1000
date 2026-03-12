@@ -17,7 +17,7 @@
 **
 ** You should have received a copy of the GNU General Public License along
 ** with this program; if not, write to the Free Software Foundation, Inc.,
-** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
+** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 **
 ****************************************************************************/
 
@@ -54,14 +54,10 @@ void stompbox_main_out_stereo::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "0B"; hex2 = "37";};
 
-    editDetails()->page()->newGroupBox("Effect");
+    // formerly "Effect" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0 (empty, no controls)
 
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-
-    editDetails()->page()->newGroupBox("Main Global EQ");
+    // formerly "Main Global EQ" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
     editDetails()->page()->addParaEQ(0, 1, 2, 4, "00", hex1, "00", "02", "System_output", "38");
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
     editDetails()->addPage();
 
 }

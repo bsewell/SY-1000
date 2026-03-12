@@ -145,8 +145,8 @@ void soundsource_inst3::setEditPages()
     editDetails()->page()->addKnob(2, 3, 1, 1, "10", hex1,  hex2, "10", "normal_ratio1.25");  // p env depth
     editDetails()->page()->addKnob(2, 4, 1, 1, "10", hex1,  hex2, "11", "normal_ratio1.25");  // p bend depth
     editDetails()->page()->addKnob(2, 5, 1, 1, "10", hex1,  hex2, "12", "normal_ratio1.25");  // p bend ctl
-    editDetails()->page()->addSwitch(2, 6, 1, 1, "10", hex1,  hex2, "13");                    // sync sw
-    editDetails()->page()->addComboBox(2, 7, 1, 1, "10", hex1,  hex2, "17", "bottom");        // ring sw (OFF/ON/INV)
+    editDetails()->page()->addSwitch(3, 4, 1, 1, "10", hex1,  hex2, "13");                    // sync sw
+    editDetails()->page()->addComboBox(3, 5, 1, 1, "10", hex1,  hex2, "17", "bottom");        // ring sw (OFF/ON/INV)
     editDetails()->page()->addSystemOverride(2, 2, 1, 4, "10", hex1,  hex2, "04", "09");
     editDetails()->page()->addStackField();
 

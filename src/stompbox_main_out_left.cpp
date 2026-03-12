@@ -1,7 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2007~2025 Colin Willcocks.
-** Copyright (C) 2005~2007 Uco Mesdag. 
+** Copyright (C) 2005~2007 Uco Mesdag.
 ** All rights reserved.
 ** This file is part of "VG-99 FloorBoard".
 **
@@ -17,7 +17,7 @@
 **
 ** You should have received a copy of the GNU General Public License along
 ** with this program; if not, write to the Free Software Foundation, Inc.,
-** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
+** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 **
 ****************************************************************************/
 
@@ -57,7 +57,7 @@ void stompbox_main_out_left::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){sys1 = "0B"; hex1 = "02";};
 
-    editDetails()->page()->newGroupBox("Global Main Output");
+    // formerly "Global Main Output" groupBox at addGroupBox(0, 0, 4, 1) — parentCol=0
     editDetails()->page()->addDataKnob(0, 0, 1, 1, "00", sys1, "00", "2C", "0~200_ratio1.75"); // l output
     editDetails()->page()->newStackControl(0);
     editDetails()->page()->addComboBox(1, 0, 1, 1, "00", sys1, "00", "34", "large"); // stereo link
@@ -65,34 +65,28 @@ void stompbox_main_out_left::setEditPages()
     editDetails()->page()->newStackControl(1);
     editDetails()->page()->addComboBox(2, 0, 1, 1, "00", sys1, "00", "36", "large"); // eq link
     editDetails()->page()->addStackControl();
-    editDetails()->page()->addGroupBox(0, 0, 4, 1);
 
-    editDetails()->page()->newGroupBox("Global Main Out EQ Select");
+    // formerly "Global Main Out EQ Select" groupBox at addGroupBox(4, 0, 1, 1) — parentCol=0
     editDetails()->page()->newStackControl(2);
-    editDetails()->page()->addTabBar(0, 0, 1, 1, "Tables", "00", "02", "04"); // eq L/R
-    editDetails()->page()->addSystemOverride(0, 0, 1, 1, "00", sys1, "00", "36", "01", "equals");
+    editDetails()->page()->addTabBar(4, 0, 1, 1, "Tables", "00", "02", "04"); // eq L/R
+    editDetails()->page()->addSystemOverride(4, 0, 1, 1, "00", sys1, "00", "36", "01", "equals");
     editDetails()->page()->addStackControl();
-    editDetails()->page()->addGroupBox(4, 0, 1, 1);
 
     editDetails()->page()->insertStackField(0, 0, 1, 1, 1);  // stereo link
     editDetails()->page()->insertStackField(1, 1, 1, 4, 1);  // eq link
 
     editDetails()->page()->newStackField(0);  // stereo link
-    editDetails()->page()->newGroupBox("Global Main Output Select Left");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "00", sys1, "00", "00", "large"); // output select
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("Patch Main Out Phase Left");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "12", "37", "large");  // phase left
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "Global Main Output Select Left" at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "00", sys1, "00", "00", "large"); // output select
+    // formerly "Patch Main Out Phase Left" at addGroupBox(0, 2, 1, 1) — parentCol=2
+    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, "12", "37", "large");  // phase left
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(0);  // stereo link
-    editDetails()->page()->newGroupBox("Global Main Output Select Stereo");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "00", sys1, "00", "00", "large"); // output select
-    editDetails()->page()->addGroupBox(0, 1, 1, 1);
-    editDetails()->page()->newGroupBox("Patch Main Out Phase Stereo");
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "12", "37", "large");  // phase left
-    editDetails()->page()->addGroupBox(0, 2, 1, 1);
+    // formerly "Global Main Output Select Stereo" at addGroupBox(0, 1, 1, 1) — parentCol=1
+    editDetails()->page()->addComboBox(0, 1, 1, 1, "00", sys1, "00", "00", "large"); // output select
+    // formerly "Patch Main Out Phase Stereo" at addGroupBox(0, 2, 1, 1) — parentCol=2
+    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, "12", "37", "large");  // phase left
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(1);  // eq link
@@ -100,22 +94,19 @@ void stompbox_main_out_left::setEditPages()
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(1);  // eq link
-    editDetails()->page()->newGroupBox("Main Out Global EQ Stereo Linked");
+    // formerly "Main Out Global EQ Stereo Linked" at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addParaEQ(1, 0, 1, 1, "00", sys1, "00", "02", "System_output", "38");  // left EQ
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
     editDetails()->page()->addStackField();
 
 
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("Main Out Global EQ Left");
+    // formerly "Main Out Global EQ Left" at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addParaEQ(0, 0, 1, 1, "00", sys1, "00", "02", "System_output", "38");  // left EQ
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
     editDetails()->page()->addStackField();
 
     editDetails()->page()->newStackField(2);
-    editDetails()->page()->newGroupBox("Main Out Global EQ Right");
+    // formerly "Main Out Global EQ Right" at addGroupBox(0, 0, 1, 1) — parentCol=0
     editDetails()->page()->addParaEQ(0, 0, 1, 1, "00", sys1, "00", "0C", "System_output", "39");  // right EQ
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
     editDetails()->page()->addStackField();
 
     editDetails()->addPage();

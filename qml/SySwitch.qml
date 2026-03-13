@@ -1,6 +1,4 @@
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
 
 Item {
     id: root
@@ -14,7 +12,7 @@ Item {
     property int value: 0
 
     implicitWidth: 70
-    implicitHeight: 90
+    implicitHeight: 100
 
     Component.onCompleted: {
         if (hex0 !== "") {
@@ -23,57 +21,57 @@ Item {
         }
     }
 
-    ColumnLayout {
+    Column {
         anchors.fill: parent
-        spacing: 2
+        spacing: 4
 
-        Switch {
-            id: sw
-            Layout.alignment: Qt.AlignHCenter
-            checked: root.value !== 0
+        // Toggle switch
+        Rectangle {
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: 40
+            height: 22
+            radius: 11
+            color: root.value !== 0 ? "#00ccff" : "#444"
+            border.color: "#555"
+            border.width: 1
 
-            indicator: Rectangle {
-                implicitWidth: 36
-                implicitHeight: 18
-                x: sw.leftPadding
-                y: parent.height / 2 - height / 2
-                radius: 9
-                color: sw.checked ? "#00ccff" : "#444"
-                border.color: "#555"
-
-                Rectangle {
-                    x: sw.checked ? parent.width - width - 2 : 2
-                    y: 2
-                    width: 14
-                    height: 14
-                    radius: 7
-                    color: "#eee"
-                    Behavior on x { NumberAnimation { duration: 100 } }
-                }
+            Rectangle {
+                x: root.value !== 0 ? parent.width - width - 3 : 3
+                y: 3
+                width: 16
+                height: 16
+                radius: 8
+                color: "#eee"
+                Behavior on x { NumberAnimation { duration: 100 } }
             }
 
-            onToggled: {
-                root.value = checked ? 1 : 0
-                paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.hex3, root.value)
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    root.value = root.value !== 0 ? 0 : 1
+                    paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.hex3, root.value)
+                }
             }
         }
 
+        // State text
         Text {
-            Layout.alignment: Qt.AlignHCenter
+            anchors.horizontalCenter: parent.horizontalCenter
             text: root.value !== 0 ? "ON" : "OFF"
             color: root.value !== 0 ? "#00ccff" : "#666"
             font.pixelSize: 10
             font.family: "Roboto Condensed"
         }
 
+        // Label
         Text {
-            Layout.alignment: Qt.AlignHCenter
+            anchors.horizontalCenter: parent.horizontalCenter
             text: root.label
             color: "#aaaaaa"
             font.pixelSize: 9
             font.family: "Roboto Condensed"
+            width: root.implicitWidth
             elide: Text.ElideRight
-            Layout.maximumWidth: root.implicitWidth
             horizontalAlignment: Text.AlignHCenter
         }
     }

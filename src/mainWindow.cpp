@@ -39,6 +39,7 @@
 #include "globalVariables.h"
 #include "consoletoolbar.h"
 #include "qmlHost.h"
+#include "diagnosticServer.h"
 
 // Platform-dependent sleep routines.
 #ifdef Q_OS_WIN
@@ -167,6 +168,16 @@ mainWindow::mainWindow()
     qWarning("MW-J: SysxIO connect...");
     SysxIO *sysxIO = &AppServices::instance().sysx();
     QObject::connect(sysxIO, &SysxIO::restart, this, &mainWindow::restart);
+
+    // Start diagnostic server on localhost:47321
+    DiagnosticServer *diagServer = new DiagnosticServer(this);
+    connect(diagServer, &DiagnosticServer::commandReceived, this, [this](const QString &cmd) {
+        if (cmd == "open-qml-preview") {
+            showQmlPreview();
+        }
+    });
+    diagServer->start();
+
     qWarning("MW-K: mainWindow constructor complete");
 }
 

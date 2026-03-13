@@ -3,6 +3,6 @@
         <file>CommonTab.qml</file>
         <file>SyKnob.qml</file>
         <file>SySwitch.qml</file>
-        <file>SyComboBox.qml</file>
+        <file>TestMinimal.qml</file>
     </qresource>
 </RCC>

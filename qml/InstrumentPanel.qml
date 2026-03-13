@@ -15,7 +15,7 @@ Rectangle {
         anchors.fill: parent
         spacing: 0
 
-        // Header bar
+        // Header bar with dropdown + tabs in one row
         Rectangle {
             width: parent.width
             height: 32
@@ -24,35 +24,26 @@ Rectangle {
             Row {
                 anchors.fill: parent
                 anchors.leftMargin: 12
-                anchors.rightMargin: 12
-                spacing: 12
+                spacing: 0
 
                 // INST TYPE dropdown
                 SyComboBox {
                     hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "01"
                     anchors.verticalCenter: parent.verticalCenter
                 }
-            }
-        }
 
-        // Tab bar
-        Rectangle {
-            width: parent.width
-            height: 32
-            color: "#222222"
+                // Spacer
+                Item { width: 16; height: 1 }
 
-            Row {
-                anchors.fill: parent
-                anchors.leftMargin: 4
-                spacing: 0
-
+                // Tab bar
                 Repeater {
                     model: root.tabNames
 
                     Rectangle {
-                        width: tabText.implicitWidth + 24
+                        width: tabText.implicitWidth + 20
                         height: 32
                         color: "transparent"
+                        anchors.verticalCenter: parent.verticalCenter
 
                         Rectangle {
                             anchors.bottom: parent.bottom
@@ -91,7 +82,7 @@ Rectangle {
         // Tab content area
         Item {
             width: parent.width
-            height: parent.height - 65  // header + tab bar + divider
+            height: parent.height - 33  // header + divider
 
             // COMMON tab
             CommonTab {

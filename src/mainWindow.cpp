@@ -38,6 +38,7 @@
 #include "appservices.h"
 #include "globalVariables.h"
 #include "consoletoolbar.h"
+#include "qmlHost.h"
 
 // Platform-dependent sleep routines.
 #ifdef Q_OS_WIN
@@ -330,6 +331,10 @@ void mainWindow::createActions()
     summaryPatchListAct->setWhatsThis(tr("Display the SY-1000 User patch listing names<br>in a readable text format, which<br>can be printed or saved to file."));
     connect(summaryPatchListAct, SIGNAL(triggered()), this, SLOT(summaryPatchList()));
 
+    qmlPreviewAct = new QAction(tr("QML Preview (COMMON)"), this);
+    qmlPreviewAct->setStatusTip(tr("Open a QML-rendered preview of the COMMON tab"));
+    connect(qmlPreviewAct, SIGNAL(triggered()), this, SLOT(showQmlPreview()));
+
     helpAct = new QAction(QIcon(":/images/help.png"), tr("SY-1000 FloorBoard &Help"), this);
     helpAct->setShortcut(tr("Ctrl+F1"));
     helpAct->setStatusTip(tr("Help page to assist with SY-1000 FloorBoard functions."));
@@ -404,6 +409,8 @@ void mainWindow::createMenus()
     toolsMenu->addAction(summaryAct);
     toolsMenu->addAction(summarySystemAct);
     toolsMenu->addAction(summaryPatchListAct);
+    toolsMenu->addSeparator();
+    toolsMenu->addAction(qmlPreviewAct);
 
     settingsMenu = menuBar()->addMenu(tr("&Settings"));
     settingsMenu->setFont(Mfont);
@@ -1048,4 +1055,15 @@ void mainWindow::restart()
     qWarning("APP_RESTART detached=%d reason=%s", started ? 1 : 0, reason.constData());
     qunsetenv("SY1000_RESTART_REASON");
     QCoreApplication::exit(0);
+}
+
+void mainWindow::showQmlPreview()
+{
+    QmlHost *preview = new QmlHost("qrc:/qml/CommonTab.qml", this);
+    preview->setInstHex("00");  // INST 1
+    preview->setWindowFlag(Qt::Window);
+    preview->setWindowTitle("QML Preview — COMMON (INST 1)");
+    preview->resize(700, 400);
+    preview->setAttribute(Qt::WA_DeleteOnClose);
+    preview->show();
 }

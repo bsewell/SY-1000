@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>CommonTab.qml</file>
+        <file>SyKnob.qml</file>
+        <file>SySwitch.qml</file>
+        <file>SyComboBox.qml</file>
+    </qresource>
+</RCC>

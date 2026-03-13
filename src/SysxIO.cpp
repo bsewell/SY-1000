@@ -332,14 +332,20 @@ void SysxIO::setFileSource(QString hex0, QString hex1, QString hex2, QString hex
     int index = hex3.toInt(&ok, 16) + sysxDataOffset;
 
     QList<QString> sysxList;
+    int addrIdx = -1;
     if(area.contains("System"))
     {
-        sysxList = this->systemSource.hex.at(this->systemSource.address.indexOf(address));
+        addrIdx = this->systemSource.address.indexOf(address);
+        if(addrIdx == -1) { return; }
+        sysxList = this->systemSource.hex.at(addrIdx);
     }
     else
     {
-        sysxList = this->fileSource.hex.at(this->fileSource.address.indexOf(address));
+        addrIdx = this->fileSource.address.indexOf(address);
+        if(addrIdx == -1) { return; }
+        sysxList = this->fileSource.hex.at(addrIdx);
     };
+    if(index < 0 || index >= sysxList.size()) { return; }
     sysxList.replace(index, hex4);
 
     int dataSize = 0;
@@ -351,11 +357,11 @@ void SysxIO::setFileSource(QString hex0, QString hex1, QString hex2, QString hex
 
     if(area.contains("System"))
     {
-        this->systemSource.hex.replace(this->systemSource.address.indexOf(address), sysxList);
+        this->systemSource.hex.replace(addrIdx, sysxList);
     }
     else
     {
-        this->fileSource.hex.replace(this->fileSource.address.indexOf(address), sysxList);
+        this->fileSource.hex.replace(addrIdx, sysxList);
     };
     if(send == true)
     {

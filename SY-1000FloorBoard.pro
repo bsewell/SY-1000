@@ -48,7 +48,7 @@ TRANSLATIONS = language_fr.ts \
                language_pl.ts
 
 DEPENDPATH += . ./src
-QT += xml widgets printsupport
+QT += xml widgets printsupport quick quickwidgets
 
 #Platform dependent file(s)
 win32-g++:contains(QMAKE_HOST.arch, x86):{
@@ -119,8 +119,15 @@ FORMS += \
     src/consoletoolbar.ui
 
 HEADERS += \
-    src/consoletoolbar.h
+    src/consoletoolbar.h \
+    src/parameterBridge.h \
+    src/qmlHost.h
 
 SOURCES += \
-    src/consoletoolbar.cpp
+    src/consoletoolbar.cpp \
+    src/parameterBridge.cpp \
+    src/qmlHost.cpp
+
+RESOURCES += \
+    qml/qml.qrc
 

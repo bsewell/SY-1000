@@ -73,6 +73,7 @@ public slots:
         void license();
         void about();
         void restart();
+        void showQmlPreview();
 
 private:
         void createActions();
@@ -111,6 +112,7 @@ private:
         QAction *licenseAct;
         QAction *aboutAct;
         QAction *aboutQtAct;
+        QAction *qmlPreviewAct;
 
         sysxWriter file;
         floorBoard *fxsBoard;

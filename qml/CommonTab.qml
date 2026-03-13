@@ -12,6 +12,8 @@ Rectangle {
         contentWidth: grid.width
         contentHeight: grid.height
         clip: true
+        // Only allow scrolling when content overflows, so knob drags aren't hijacked
+        interactive: contentWidth > width || contentHeight > height
 
         Grid {
             id: grid

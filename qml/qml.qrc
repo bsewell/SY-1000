@@ -1,8 +1,12 @@
 <RCC>
     <qresource prefix="/qml">
+        <file>InstrumentPanel.qml</file>
         <file>CommonTab.qml</file>
+        <file>AmpTab.qml</file>
+        <file>Lfo1Tab.qml</file>
         <file>SyKnob.qml</file>
         <file>SySwitch.qml</file>
+        <file>SyComboBox.qml</file>
         <file>FilmstripKnob.qml</file>
         <file>TestMinimal.qml</file>
         <file>knobs/knob_48.png</file>

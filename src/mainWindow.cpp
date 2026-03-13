@@ -1070,11 +1070,11 @@ void mainWindow::restart()
 
 void mainWindow::showQmlPreview()
 {
-    QmlHost *preview = new QmlHost("qrc:/qml/CommonTab.qml", this);
+    QmlHost *preview = new QmlHost("qrc:/qml/InstrumentPanel.qml", this);
     preview->setInstHex("00");  // INST 1
     preview->setWindowFlag(Qt::Window);
-    preview->setWindowTitle("QML Preview — COMMON (INST 1)");
-    preview->resize(700, 400);
+    preview->setWindowTitle("INST 1 — QML");
+    preview->resize(800, 500);
     preview->setAttribute(Qt::WA_DeleteOnClose);
     preview->show();
 }

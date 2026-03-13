@@ -98,39 +98,6 @@ void DiagnosticServer::handleCommand(QTcpSocket *socket, const QString &command)
             response["message"] = "usage: get hex0 hex1 hex2 hex3";
         }
     }
-    else if (command.startsWith("screenshot")) {
-        // screenshot [filename]
-        QString filename = command.mid(11).trimmed();
-        if (filename.isEmpty()) {
-            filename = QDir::homePath() + "/010-MUSIC-STUDIO/SY-1000/screenshot.png";
-        }
-
-        QWidget *mainWin = nullptr;
-        for (QWidget *w : QApplication::topLevelWidgets()) {
-            if (w->isVisible() && w->windowTitle().contains("FloorBoard")) {
-                mainWin = w;
-                break;
-            }
-        }
-
-        if (mainWin) {
-            QPixmap pixmap = mainWin->grab();
-            pixmap.save(filename);
-            response["status"] = "ok";
-            response["file"] = filename;
-            response["width"] = pixmap.width();
-            response["height"] = pixmap.height();
-        } else {
-            response["status"] = "error";
-            response["message"] = "No visible main window found";
-        }
-    }
-    else if (command == "open-qml-preview") {
-        // Find mainWindow and call showQmlPreview
-        emit commandReceived("open-qml-preview");
-        response["status"] = "ok";
-        response["message"] = "QML preview triggered";
-    }
     else if (command.startsWith("screenshot-window ")) {
         // Format: screenshot-window <search> [filepath]
         // or:     screenshot-window <search>
@@ -168,6 +135,39 @@ void DiagnosticServer::handleCommand(QTcpSocket *socket, const QString &command)
             response["status"] = "error";
             response["message"] = "Window not found: " + title;
         }
+    }
+    else if (command.startsWith("screenshot")) {
+        // screenshot [filename]
+        QString filename = command.mid(11).trimmed();
+        if (filename.isEmpty()) {
+            filename = QDir::homePath() + "/010-MUSIC-STUDIO/SY-1000/screenshot.png";
+        }
+
+        QWidget *mainWin = nullptr;
+        for (QWidget *w : QApplication::topLevelWidgets()) {
+            if (w->isVisible() && w->windowTitle().contains("FloorBoard")) {
+                mainWin = w;
+                break;
+            }
+        }
+
+        if (mainWin) {
+            QPixmap pixmap = mainWin->grab();
+            pixmap.save(filename);
+            response["status"] = "ok";
+            response["file"] = filename;
+            response["width"] = pixmap.width();
+            response["height"] = pixmap.height();
+        } else {
+            response["status"] = "error";
+            response["message"] = "No visible main window found";
+        }
+    }
+    else if (command == "open-qml-preview") {
+        // Find mainWindow and call showQmlPreview
+        emit commandReceived("open-qml-preview");
+        response["status"] = "ok";
+        response["message"] = "QML preview triggered";
     }
     else if (command == "help") {
         response["status"] = "ok";

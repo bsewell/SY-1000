@@ -91,18 +91,11 @@ Rectangle {
                 visible: root.currentTab === 0
             }
 
-            // ALT TUNE tab (stub)
-            Rectangle {
+            // ALT TUNE tab
+            AltTuneTab {
                 anchors.fill: parent
-                color: "#1a1a1a"
+                hex1: root.hex1
                 visible: root.currentTab === 1
-                Text {
-                    anchors.centerIn: parent
-                    text: "ALT TUNE"
-                    color: "#444"
-                    font.pixelSize: 18
-                    font.family: "Roboto Condensed"
-                }
             }
 
             // OSC tab (stub)

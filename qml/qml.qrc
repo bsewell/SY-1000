@@ -2,6 +2,7 @@
     <qresource prefix="/qml">
         <file>InstrumentPanel.qml</file>
         <file>CommonTab.qml</file>
+        <file>AltTuneTab.qml</file>
         <file>AmpTab.qml</file>
         <file>Lfo1Tab.qml</file>
         <file>SyKnob.qml</file>

@@ -108,7 +108,8 @@ PY
 }
 
 echo "=== Running macdeployqt ==="
-"$MACDEPLOYQT" "$APP" -always-overwrite -verbose=1
+QMLDIR="/Users/bsewell/010-MUSIC-STUDIO/SY-1000/qml"
+"$MACDEPLOYQT" "$APP" -always-overwrite -verbose=1 -qmldir="$QMLDIR"
 rewrite_bundle_paths "$APP"
 
 sign_bundle "$APP"

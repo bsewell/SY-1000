@@ -14,14 +14,13 @@ Item {
     property int maxValue: 127
     property string displayValue: ""
 
-    property string filmstrip: "knobs/knob_default_60x60_128f.png"
+    // Filmstrip config — set filmstrip + frameSize to match the PNG
+    property string filmstrip: "knobs/knob_48.png"
     property int frameCount: 128
-    property int frameWidth: 60
-    property int frameHeight: 60
-    property real knobScale: 1.0
+    property int frameSize: 48   // logical display size (PNG is 2x for Retina)
 
-    implicitWidth: frameWidth * knobScale
-    implicitHeight: (frameHeight + 30) * knobScale
+    implicitWidth: frameSize
+    implicitHeight: frameSize + 28
 
     Component.onCompleted: {
         if (hex0 !== "") {
@@ -37,20 +36,18 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 2
 
-        // Filmstrip knob image
         Item {
-            width: root.frameWidth * root.knobScale
-            height: root.frameHeight * root.knobScale
+            width: root.frameSize
+            height: root.frameSize
             anchors.horizontalCenter: parent.horizontalCenter
             clip: true
 
             Image {
-                id: filmstripImage
+                id: knobImage
                 source: root.filmstrip
-                fillMode: Image.PreserveAspectFit
-                width: root.frameWidth * root.knobScale
-                height: root.frameHeight * root.frameCount * root.knobScale
-                smooth: true
+                // Native 2x pixels, displayed at logical frameSize
+                width: root.frameSize
+                height: root.frameSize * root.frameCount
 
                 property int currentFrame: {
                     var range = root.maxValue - root.minValue
@@ -59,11 +56,16 @@ Item {
                     return Math.round(ratio * (root.frameCount - 1))
                 }
 
-                y: -currentFrame * root.frameHeight * root.knobScale
+                y: -currentFrame * root.frameSize
+
+                fillMode: Image.Stretch
+                smooth: true
+                mipmap: true
             }
 
             MouseArea {
                 anchors.fill: parent
+                preventStealing: true
                 property real lastY: 0
 
                 onPressed: function(mouse) { lastY = mouse.y }
@@ -89,7 +91,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.displayValue
             color: "#00ccff"
-            font.pixelSize: 10 * root.knobScale
+            font.pixelSize: 10
             font.family: "Roboto Condensed"
         }
 
@@ -98,9 +100,9 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.label
             color: "#aaaaaa"
-            font.pixelSize: 9 * root.knobScale
+            font.pixelSize: 9
             font.family: "Roboto Condensed"
-            width: root.frameWidth * root.knobScale
+            width: root.frameSize
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
         }

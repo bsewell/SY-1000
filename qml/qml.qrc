@@ -5,8 +5,8 @@
         <file>SySwitch.qml</file>
         <file>FilmstripKnob.qml</file>
         <file>TestMinimal.qml</file>
-        <file>knobs/knob_default_60x60_128f.png</file>
-        <file>knobs/knob_gain_69x69_128f.png</file>
-        <file>knobs/knob_small_40x40_64f.png</file>
+        <file>knobs/knob_48.png</file>
+        <file>knobs/knob_56.png</file>
+        <file>knobs/knob_48_gain.png</file>
     </qresource>
 </RCC>

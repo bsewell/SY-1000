@@ -16,76 +16,39 @@ Rectangle {
         Grid {
             id: grid
             columns: 6
-            columnSpacing: 20
-            rowSpacing: 14
+            columnSpacing: 14
+            rowSpacing: 10
 
             // Row 0: Inst Level, Nor Mix SW, Nor Mix Level
             FilmstripKnob {
                 hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "02"
-                knobScale: 1.5
+                filmstrip: "knobs/knob_56.png"; frameSize: 56
             }
             SySwitch {
                 hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "03"
             }
             FilmstripKnob {
                 hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "04"
-                knobScale: 1.25
             }
-            Item { width: 90; height: 1 }  // spacers
-            Item { width: 90; height: 1 }
-            Item { width: 90; height: 1 }
+            Item { width: 48; height: 1 }
+            Item { width: 48; height: 1 }
+            Item { width: 48; height: 1 }
 
             // Row 1: String Levels 6-1
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0B"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0A"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "09"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "08"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "07"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "06"
-                knobScale: 1.25
-            }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0B" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0A" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "09" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "08" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "07" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "06" }
 
             // Row 2: String Pans 6-1
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "11"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "10"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0F"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0E"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0D"
-                knobScale: 1.25
-            }
-            FilmstripKnob {
-                hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0C"
-                knobScale: 1.25
-            }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "11" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "10" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0F" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0E" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0D" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "0C" }
         }
     }
 }

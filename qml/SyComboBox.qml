@@ -31,6 +31,12 @@ Item {
         return String(value)
     }
 
+    // Find the top-level ancestor for popup reparenting
+    function findRoot(item) {
+        while (item.parent) item = item.parent
+        return item
+    }
+
     Row {
         anchors.verticalCenter: parent.verticalCenter
         spacing: 8
@@ -77,24 +83,31 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: popup.visible = !popup.visible
+                onClicked: {
+                    if (!popup.visible) {
+                        // Position popup in global coordinates
+                        var globalPos = comboButton.mapToItem(null, 0, comboButton.height + 2)
+                        popup.parent = findRoot(root)
+                        popup.x = globalPos.x
+                        popup.y = globalPos.y
+                    }
+                    popup.visible = !popup.visible
+                }
             }
         }
     }
 
-    // Dropdown popup
+    // Dropdown popup - reparented to top-level when opened
     Rectangle {
         id: popup
         visible: false
-        x: comboButton.x
-        y: root.height + 2
         width: comboButton.width
         height: Math.min(optionsList.contentHeight + 4, 300)
         radius: 4
         color: "#2a2a2a"
         border.color: "#555"
         border.width: 1
-        z: 100
+        z: 10000
         clip: true
 
         ListView {

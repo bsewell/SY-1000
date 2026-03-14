@@ -10,6 +10,24 @@
         <file>Lfo2Tab.qml</file>
         <file>SeqTab.qml</file>
         <file>LayerTab.qml</file>
+        <file>OscSynthOscTab.qml</file>
+        <file>OscSynthFilterAmpTab.qml</file>
+        <file>OscSynthLfoTab.qml</file>
+        <file>Gr300Tab.qml</file>
+        <file>EGuitarTab.qml</file>
+        <file>EGuitarAmpTab.qml</file>
+        <file>EGuitarNsTab.qml</file>
+        <file>EGuitarEqTab.qml</file>
+        <file>AcousticTab.qml</file>
+        <file>AcousticAmpTab.qml</file>
+        <file>AcousticEqTab.qml</file>
+        <file>EBassTab.qml</file>
+        <file>EBassAmpTab.qml</file>
+        <file>EBassEqTab.qml</file>
+        <file>VioGuitarTab.qml</file>
+        <file>VioGuitarHarmonyTab.qml</file>
+        <file>VioGuitarEqTab.qml</file>
+        <file>PolyFxTab.qml</file>
         <file>SyKnob.qml</file>
         <file>SySwitch.qml</file>
         <file>SyComboBox.qml</file>

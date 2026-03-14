@@ -6,10 +6,33 @@ Rectangle {
 
     property string hex1: "00"  // inst1="00", inst2="01", inst3="02"
     property string instLabel: "INST 1"
-
-    // Tab definitions
-    readonly property var tabNames: ["COMMON", "ALT TUNE", "OSC", "FILTER", "AMP", "LFO1", "LFO2", "SEQ", "LAYER"]
+    property int instType: 0
     property int currentTab: 0
+
+    // Tab definitions per instrument type
+    readonly property var tabSets: [
+        ["COMMON", "ALT TUNE", "OSC", "FILTER", "AMP", "LFO1", "LFO2", "SEQ", "LAYER"],  // 0: DYNAMIC SYNTH
+        ["COMMON", "ALT TUNE", "OSC", "FILTER/AMP", "LFO"],                                // 1: OSC SYNTH
+        ["COMMON", "ALT TUNE", "GR-300"],                                                   // 2: GR-300
+        ["COMMON", "ALT TUNE", "GUITAR", "AMP", "NS", "EQ"],                                // 3: E.GUITAR
+        ["COMMON", "ALT TUNE", "ACOUSTIC", "AMP", "EQ"],                                    // 4: ACOUSTIC
+        ["COMMON", "ALT TUNE", "E.BASS", "AMP", "EQ"],                                      // 5: E.BASS
+        ["COMMON", "ALT TUNE", "VIO GUITAR", "HARMONY", "EQ"],                              // 6: VIO GUITAR
+        ["COMMON", "ALT TUNE", "POLY FX"]                                                   // 7: POLY FX
+    ]
+
+    property var tabNames: {
+        var idx = instType
+        if (idx < 0 || idx >= tabSets.length) idx = 0
+        return tabSets[idx]
+    }
+
+    onInstTypeChanged: currentTab = 0
+
+    Connections {
+        target: instTypeCombo
+        function onValueChanged() { root.instType = instTypeCombo.value }
+    }
 
     Column {
         anchors.fill: parent
@@ -28,6 +51,7 @@ Rectangle {
 
                 // INST TYPE dropdown
                 SyComboBox {
+                    id: instTypeCombo
                     hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "01"
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -82,69 +106,160 @@ Rectangle {
         // Tab content area
         Item {
             width: parent.width
-            height: parent.height - 33  // header + divider
+            height: parent.height - 33
 
-            // COMMON tab
+            // ====== Shared tabs (all inst types have COMMON at 0, ALT TUNE at 1) ======
             CommonTab {
                 anchors.fill: parent
                 hex1: root.hex1
                 visible: root.currentTab === 0
             }
 
-            // ALT TUNE tab
             AltTuneTab {
                 anchors.fill: parent
                 hex1: root.hex1
                 visible: root.currentTab === 1
             }
 
-            // OSC tab
+            // ====== DYNAMIC SYNTH (type 0) ======
             OscTab {
                 anchors.fill: parent
                 hex1: root.hex1
-                visible: root.currentTab === 2
+                visible: root.instType === 0 && root.currentTab === 2
             }
-
-            // FILTER tab
             FilterTab {
                 anchors.fill: parent
                 hex1: root.hex1
-                visible: root.currentTab === 3
+                visible: root.instType === 0 && root.currentTab === 3
             }
-
-            // AMP tab
             AmpTab {
                 anchors.fill: parent
                 hex1: root.hex1
-                visible: root.currentTab === 4
+                visible: root.instType === 0 && root.currentTab === 4
             }
-
-            // LFO1 tab
             Lfo1Tab {
                 anchors.fill: parent
                 hex1: root.hex1
-                visible: root.currentTab === 5
+                visible: root.instType === 0 && root.currentTab === 5
             }
-
-            // LFO2 tab
             Lfo2Tab {
                 anchors.fill: parent
                 hex1: root.hex1
-                visible: root.currentTab === 6
+                visible: root.instType === 0 && root.currentTab === 6
             }
-
-            // SEQ tab
             SeqTab {
                 anchors.fill: parent
                 hex1: root.hex1
-                visible: root.currentTab === 7
+                visible: root.instType === 0 && root.currentTab === 7
             }
-
-            // LAYER tab
             LayerTab {
                 anchors.fill: parent
                 hex1: root.hex1
-                visible: root.currentTab === 8
+                visible: root.instType === 0 && root.currentTab === 8
+            }
+
+            // ====== OSC SYNTH (type 1) ======
+            OscSynthOscTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 1 && root.currentTab === 2
+            }
+            OscSynthFilterAmpTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 1 && root.currentTab === 3
+            }
+            OscSynthLfoTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 1 && root.currentTab === 4
+            }
+
+            // ====== GR-300 (type 2) ======
+            Gr300Tab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 2 && root.currentTab === 2
+            }
+
+            // ====== E.GUITAR (type 3) ======
+            EGuitarTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 3 && root.currentTab === 2
+            }
+            EGuitarAmpTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 3 && root.currentTab === 3
+            }
+            EGuitarNsTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 3 && root.currentTab === 4
+            }
+            EGuitarEqTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 3 && root.currentTab === 5
+            }
+
+            // ====== ACOUSTIC (type 4) ======
+            AcousticTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 4 && root.currentTab === 2
+            }
+            AcousticAmpTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 4 && root.currentTab === 3
+            }
+            AcousticEqTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 4 && root.currentTab === 4
+            }
+
+            // ====== E.BASS (type 5) ======
+            EBassTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 5 && root.currentTab === 2
+            }
+            EBassAmpTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 5 && root.currentTab === 3
+            }
+            EBassEqTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 5 && root.currentTab === 4
+            }
+
+            // ====== VIO GUITAR (type 6) ======
+            VioGuitarTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 6 && root.currentTab === 2
+            }
+            VioGuitarHarmonyTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 6 && root.currentTab === 3
+            }
+            VioGuitarEqTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 6 && root.currentTab === 4
+            }
+
+            // ====== POLY FX (type 7) ======
+            PolyFxTab {
+                anchors.fill: parent
+                hex1: root.hex1
+                visible: root.instType === 7 && root.currentTab === 2
             }
         }
     }

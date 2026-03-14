@@ -3,7 +3,6 @@ import QtQuick
 Rectangle {
     id: root
     color: "#1a1a1a"
-
     property string hex1: "00"
 
     Flickable {
@@ -20,7 +19,7 @@ Rectangle {
 
             // Shape dropdown
             SyComboBox {
-                hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "32"
+                hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "28"
             }
 
             Grid {
@@ -28,18 +27,18 @@ Rectangle {
                 columnSpacing: 14
                 rowSpacing: 10
 
-                // LFO1 SW, Rate, Dynamic Depth, Pitch Depth, Filter Depth, Amp Depth, PWM Depth
-                SySwitch  { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "31" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "33" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "34" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "35" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "36" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "37" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "38" }
+                // Row 0: SW, Rate, Dynamic Depth, Pitch Depth, Filter Depth, Amp Depth, PWM Depth
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "27" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "29" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "2A" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "2B" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "2C" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "2D" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "2E" }
 
-                // Fade Time, Sync
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "39" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "3A" }
+                // Row 1: Fade Time, Sync
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "2F" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "30" }
             }
         }
     }

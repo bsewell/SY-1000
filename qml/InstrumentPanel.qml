@@ -98,32 +98,18 @@ Rectangle {
                 visible: root.currentTab === 1
             }
 
-            // OSC tab (stub)
-            Rectangle {
+            // OSC tab
+            OscTab {
                 anchors.fill: parent
-                color: "#1a1a1a"
+                hex1: root.hex1
                 visible: root.currentTab === 2
-                Text {
-                    anchors.centerIn: parent
-                    text: "OSC"
-                    color: "#444"
-                    font.pixelSize: 18
-                    font.family: "Roboto Condensed"
-                }
             }
 
-            // FILTER tab (stub)
-            Rectangle {
+            // FILTER tab
+            FilterTab {
                 anchors.fill: parent
-                color: "#1a1a1a"
+                hex1: root.hex1
                 visible: root.currentTab === 3
-                Text {
-                    anchors.centerIn: parent
-                    text: "FILTER"
-                    color: "#444"
-                    font.pixelSize: 18
-                    font.family: "Roboto Condensed"
-                }
             }
 
             // AMP tab
@@ -140,46 +126,25 @@ Rectangle {
                 visible: root.currentTab === 5
             }
 
-            // LFO2 tab (stub)
-            Rectangle {
+            // LFO2 tab
+            Lfo2Tab {
                 anchors.fill: parent
-                color: "#1a1a1a"
+                hex1: root.hex1
                 visible: root.currentTab === 6
-                Text {
-                    anchors.centerIn: parent
-                    text: "LFO2"
-                    color: "#444"
-                    font.pixelSize: 18
-                    font.family: "Roboto Condensed"
-                }
             }
 
-            // SEQ tab (stub)
-            Rectangle {
+            // SEQ tab
+            SeqTab {
                 anchors.fill: parent
-                color: "#1a1a1a"
+                hex1: root.hex1
                 visible: root.currentTab === 7
-                Text {
-                    anchors.centerIn: parent
-                    text: "SEQ"
-                    color: "#444"
-                    font.pixelSize: 18
-                    font.family: "Roboto Condensed"
-                }
             }
 
-            // LAYER tab (stub)
-            Rectangle {
+            // LAYER tab
+            LayerTab {
                 anchors.fill: parent
-                color: "#1a1a1a"
+                hex1: root.hex1
                 visible: root.currentTab === 8
-                Text {
-                    anchors.centerIn: parent
-                    text: "LAYER"
-                    color: "#444"
-                    font.pixelSize: 18
-                    font.family: "Roboto Condensed"
-                }
             }
         }
     }

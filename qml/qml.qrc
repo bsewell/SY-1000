@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/qml">
         <file>InstrumentPanel.qml</file>
+        <file>NormalInputPanel.qml</file>
         <file>CommonTab.qml</file>
         <file>AltTuneTab.qml</file>
         <file>OscTab.qml</file>

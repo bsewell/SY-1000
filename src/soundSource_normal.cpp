@@ -1,7 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2007~2025 Colin Willcocks.
-** Copyright (C) 2005~2007 Uco Mesdag. 
+** Copyright (C) 2005~2007 Uco Mesdag.
 ** All rights reserved.
 ** This file is part of "SY-1000 FloorBoard".
 **
@@ -17,13 +17,14 @@
 **
 ** You should have received a copy of the GNU General Public License along
 ** with this program; if not, write to the Free Software Foundation, Inc.,
-** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
+** 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 **
 ****************************************************************************/
 
 #include "soundSource_normal.h"
 #include "Preferences.h"
 #include "SysxIO.h"
+#include "editWindow.h"
 
 soundsource_normal::soundsource_normal(QWidget *parent)
     : stompBox(parent)
@@ -62,17 +63,9 @@ void soundsource_normal::updateSignal()
 
 void soundsource_normal::setEditPages()
 {
-
     QString hex1 = "00";
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
-    editDetails()->page()->newGroupBox(tr("Normal Input"));
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "12", "01", "left");   // off/on effect
-    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, "12", "02", "0~200_ratio1.75");  //level
-    editDetails()->page()->addComboBox(0, 2, 1, 1, "10", hex1, "12", "04", "large");   //cable
-    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, "12", "05", "large");   //phase
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->addPage();
+    editDetails()->setQmlPage("qrc:/qml/NormalInputPanel.qml", hex1, "12");
 }

@@ -4,6 +4,7 @@ Rectangle {
     id: root
     color: "#1a1a1a"
     property string hex1: "00"
+    property string hex2: "17"
 
     Flickable {
         anchors.fill: parent
@@ -22,12 +23,12 @@ Rectangle {
 
                 // Lower Layer dropdown
                 SyComboBox {
-                    hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "4B"
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "4B"
                 }
 
                 // Upper Layer dropdown
                 SyComboBox {
-                    hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "4C"
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "4C"
                 }
             }
 
@@ -35,10 +36,10 @@ Rectangle {
                 spacing: 14
 
                 // Lower Fade knob
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "4A" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "4A" }
 
                 // Upper Fade knob
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "4D" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "4D" }
             }
         }
     }

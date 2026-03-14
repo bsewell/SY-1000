@@ -4,6 +4,18 @@ Rectangle {
     id: root
     color: "#1a1a1a"
     property string hex1: "00"
+    // SeqTab spans two hex2 pages: hex2a (DynSynth) and hex2b (DynSynthCont)
+    property string hex2a: "16"
+    property string hex2b: "17"
+
+    // Compute hex2 for level steps that straddle the page boundary
+    function levelStepHex(index) {
+        var addr = 0x7E + index * 2
+        if (addr > 0x7F) {
+            return { hex2: root.hex2b, hex3: (addr - 0x80).toString(16).toUpperCase().padStart(2, '0') }
+        }
+        return { hex2: root.hex2a, hex3: addr.toString(16).toUpperCase().padStart(2, '0') }
+    }
 
     Flickable {
         anchors.fill: parent
@@ -29,15 +41,15 @@ Rectangle {
             Row {
                 spacing: 14
 
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "1E" }  // SEQ1 SW
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "3B"; implicitWidth: 140 }  // Pitch Target
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "3C"; implicitWidth: 140 }  // Cutoff Target
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "3D"; implicitWidth: 140 }  // Level Target
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "1F" }  // Sync1
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "22" }  // 1Shot1
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "23" }  // Turbo1
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "21" }  // Rate1
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "20" }  // Length1
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "1E" }  // SEQ1 SW
+                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3B"; implicitWidth: 140 }  // Pitch Target
+                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3C"; implicitWidth: 140 }  // Cutoff Target
+                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3D"; implicitWidth: 140 }  // Level Target
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "1F" }  // Sync1
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "22" }  // 1Shot1
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "23" }  // Turbo1
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "21" }  // Rate1
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "20" }  // Length1
             }
 
             // SEQ1 Pitch Steps
@@ -47,7 +59,7 @@ Rectangle {
                 Repeater {
                     model: 16
                     FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: "16"
+                        hex0: "10"; hex1: root.hex1; hex2: root.hex2a
                         hex3: {
                             var base = 0x3E + index * 2
                             return base.toString(16).toUpperCase().padStart(2, '0')
@@ -65,7 +77,7 @@ Rectangle {
                 Repeater {
                     model: 16
                     FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: "16"
+                        hex0: "10"; hex1: root.hex1; hex2: root.hex2a
                         hex3: {
                             var base = 0x5E + index * 2
                             return base.toString(16).toUpperCase().padStart(2, '0')
@@ -84,15 +96,8 @@ Rectangle {
                     model: 16
                     FilmstripKnob {
                         hex0: "10"; hex1: root.hex1
-                        hex2: {
-                            var addr = 0x7E + index * 2
-                            return addr > 0x7F ? "17" : "16"
-                        }
-                        hex3: {
-                            var addr = 0x7E + index * 2
-                            if (addr > 0x7F) addr = addr - 0x80
-                            return addr.toString(16).toUpperCase().padStart(2, '0')
-                        }
+                        hex2: root.levelStepHex(index).hex2
+                        hex3: root.levelStepHex(index).hex3
                         frameSize: 32
                         filmstrip: "knobs/knob_48.png"
                     }
@@ -114,12 +119,12 @@ Rectangle {
             Row {
                 spacing: 14
 
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "34" }  // SEQ2 SW
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "35" }  // Sync2
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "38" }  // 1Shot2
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "39" }  // Turbo2
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "37" }  // Rate2
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "17"; hex3: "36" }  // Length2
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "34" }  // SEQ2 SW
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "35" }  // Sync2
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "38" }  // 1Shot2
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "39" }  // Turbo2
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "37" }  // Rate2
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "36" }  // Length2
             }
         }
     }

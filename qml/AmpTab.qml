@@ -5,6 +5,7 @@ Rectangle {
     color: "#1a1a1a"
 
     property string hex1: "00"
+    property string hex2: "16"
 
     Flickable {
         anchors.fill: parent
@@ -21,9 +22,9 @@ Rectangle {
             rowSpacing: 10
 
             // Amp Env Attack, Low Cut, High Cut
-            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "23" }
-            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "25" }
-            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "26" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "23" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "25" }
+            FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "26" }
         }
     }
 }

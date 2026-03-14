@@ -4,6 +4,7 @@ Rectangle {
     id: root
     color: "#1a1a1a"
     property string hex1: "00"
+    property string hex2: "16"
 
     Flickable {
         anchors.fill: parent
@@ -22,12 +23,12 @@ Rectangle {
 
                 // Filter Type dropdown
                 SyComboBox {
-                    hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "1D"
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1D"
                 }
 
                 // Slope dropdown
                 SyComboBox {
-                    hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "1E"
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1E"
                 }
             }
 
@@ -37,11 +38,11 @@ Rectangle {
                 rowSpacing: 10
 
                 // SW, Cutoff, Resonance, Flt Env Attack, Flt Env Depth
-                SySwitch     { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "1C" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "1F" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "20" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "21" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "16"; hex3: "22" }
+                SySwitch     { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1C" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1F" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "21" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "22" }
             }
         }
     }

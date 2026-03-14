@@ -13,6 +13,30 @@ Rectangle {
     property int instType: 0
     property int currentTab: 0
 
+    // Compute page-specific hex2 from base hex2 + offset
+    // Guitar mode offsets: +0=COMMON, +1=DynSynth, +2=DynSynthCont, +3=OscSynth,
+    //   +4=GR300, +5=EGuitar, +6=Acoustic, +7=EBass, +8=VioGuitar, +9=PolyFX, +10=AltTune
+    // Bass mode: VioGuitar page doesn't exist, so PolyFX=+8, AltTune=+9
+    function pageHex2(offset) {
+        var base = parseInt(hex2, 16)
+        var val = base + offset
+        var h = val.toString(16).toUpperCase()
+        return h.length < 2 ? "0" + h : h
+    }
+
+    // Guitar-mode offsets (used for most pages)
+    readonly property string hex2DynSynth:     pageHex2(1)
+    readonly property string hex2DynSynthCont: pageHex2(2)
+    readonly property string hex2OscSynth:     pageHex2(3)
+    readonly property string hex2Gr300:        pageHex2(4)
+    readonly property string hex2EGuitar:      pageHex2(5)
+    readonly property string hex2Acoustic:     pageHex2(6)
+    readonly property string hex2EBass:        pageHex2(7)
+    readonly property string hex2VioGuitar:    pageHex2(8)
+    // PolyFX and AltTune shift in bass mode (no VioGuitar page)
+    readonly property string hex2PolyFx:       hex1 === "02" ? pageHex2(8) : pageHex2(9)
+    readonly property string hex2AltTune:      hex1 === "02" ? pageHex2(9) : pageHex2(10)
+
     // Power switch: "10", hex1, hex2, "00"
     property int powerValue: 0
     Component.onCompleted: {
@@ -186,122 +210,124 @@ Rectangle {
             AltTuneTab {
                 anchors.fill: parent
                 hex1: root.hex1
+                hex2: root.hex2AltTune
                 visible: root.currentTab === 1
             }
 
             // DYNAMIC SYNTH (type 0)
             OscTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2DynSynth
                 visible: root.instType === 0 && root.currentTab === 2
             }
             FilterTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2DynSynth
                 visible: root.instType === 0 && root.currentTab === 3
             }
             AmpTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2DynSynth
                 visible: root.instType === 0 && root.currentTab === 4
             }
             Lfo1Tab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2DynSynth
                 visible: root.instType === 0 && root.currentTab === 5
             }
             Lfo2Tab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2DynSynth
                 visible: root.instType === 0 && root.currentTab === 6
             }
             SeqTab {
                 anchors.fill: parent; hex1: root.hex1
+                hex2a: root.hex2DynSynth; hex2b: root.hex2DynSynthCont
                 visible: root.instType === 0 && root.currentTab === 7
             }
             LayerTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2DynSynthCont
                 visible: root.instType === 0 && root.currentTab === 8
             }
 
             // OSC SYNTH (type 1)
             OscSynthOscTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2OscSynth
                 visible: root.instType === 1 && root.currentTab === 2
             }
             OscSynthFilterAmpTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2OscSynth
                 visible: root.instType === 1 && root.currentTab === 3
             }
             OscSynthLfoTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2OscSynth
                 visible: root.instType === 1 && root.currentTab === 4
             }
 
             // GR-300 (type 2)
             Gr300Tab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2Gr300
                 visible: root.instType === 2 && root.currentTab === 2
             }
 
             // E.GUITAR (type 3)
             EGuitarTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2EGuitar
                 visible: root.instType === 3 && root.currentTab === 2
             }
             EGuitarAmpTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2EGuitar
                 visible: root.instType === 3 && root.currentTab === 3
             }
             EGuitarNsTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2EGuitar
                 visible: root.instType === 3 && root.currentTab === 4
             }
             EGuitarEqTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2EGuitar
                 visible: root.instType === 3 && root.currentTab === 5
             }
 
             // ACOUSTIC (type 4)
             AcousticTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2Acoustic
                 visible: root.instType === 4 && root.currentTab === 2
             }
             AcousticAmpTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2Acoustic
                 visible: root.instType === 4 && root.currentTab === 3
             }
             AcousticEqTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2Acoustic
                 visible: root.instType === 4 && root.currentTab === 4
             }
 
             // E.BASS (type 5)
             EBassTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2EBass
                 visible: root.instType === 5 && root.currentTab === 2
             }
             EBassAmpTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2EBass
                 visible: root.instType === 5 && root.currentTab === 3
             }
             EBassEqTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2EBass
                 visible: root.instType === 5 && root.currentTab === 4
             }
 
             // VIO GUITAR (type 6)
             VioGuitarTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2VioGuitar
                 visible: root.instType === 6 && root.currentTab === 2
             }
             VioGuitarHarmonyTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2VioGuitar
                 visible: root.instType === 6 && root.currentTab === 3
             }
             VioGuitarEqTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2VioGuitar
                 visible: root.instType === 6 && root.currentTab === 4
             }
 
             // POLY FX (type 7)
             PolyFxTab {
-                anchors.fill: parent; hex1: root.hex1
+                anchors.fill: parent; hex1: root.hex1; hex2: root.hex2PolyFx
                 visible: root.instType === 7 && root.currentTab === 2
             }
         }

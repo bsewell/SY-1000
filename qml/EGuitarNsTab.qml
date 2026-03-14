@@ -4,6 +4,7 @@ Rectangle {
     id: root
     color: "#1a1a1a"
     property string hex1: "00"
+    property string hex2: "1A"
 
     Flickable {
         anchors.fill: parent
@@ -21,9 +22,9 @@ Rectangle {
 
             Row {
                 spacing: 14
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: "1A"; hex3: "1E" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "1A"; hex3: "1F" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "1A"; hex3: "20" }
+                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1E" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1F" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20" }
             }
         }
     }

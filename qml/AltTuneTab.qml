@@ -5,8 +5,7 @@ Rectangle {
     color: "#1a1a1a"
 
     property string hex1: "00"
-    // ALT TUNE uses hex2="1F" for guitar, "1E" for bass
-    property string hex2: "1F"
+    property string hex2: "1F"  // computed by InstrumentPanel: +10 guitar, +9 bass
 
     Flickable {
         anchors.fill: parent

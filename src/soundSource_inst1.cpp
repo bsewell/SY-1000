@@ -77,5 +77,5 @@ void soundsource_inst1::setEditPages()
         hex1 = "02";
     };
 
-    editDetails()->setQmlPage("qrc:/qml/InstrumentPanel.qml", hex1);
+    editDetails()->setQmlPage("qrc:/qml/InstrumentPanel.qml", hex1, hex2);
 }

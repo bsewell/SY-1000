@@ -4,6 +4,7 @@ Rectangle {
     id: root
     color: "#1a1a1a"
     property string hex1: "00"
+    property string hex2: "1C"
 
     Flickable {
         anchors.fill: parent
@@ -19,16 +20,16 @@ Rectangle {
 
             Text { text: "EQUALIZER"; color: "#00ccff"; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
 
-            SySwitch { hex0: "10"; hex1: root.hex1; hex2: "1C"; hex3: "22" }
+            SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "22" }
 
             Grid {
                 columns: 4
                 columnSpacing: 14
                 rowSpacing: 10
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "1C"; hex3: "23" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "1C"; hex3: "24" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "1C"; hex3: "25" }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "1C"; hex3: "26" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "23" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "24" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "25" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "26" }
             }
         }
     }

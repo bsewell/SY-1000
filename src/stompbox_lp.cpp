@@ -60,23 +60,9 @@ void stompbox_lp::updateSignal()
 void stompbox_lp::setEditPages()
 {
     QString hex1 = "00";
+    QString hex2 = "12";
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
-    // formerly "Effect" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, "12", "2E"); //on/off
-    editDetails()->page()->newStackControl(0);
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, "12", "2F", "large"); //mode
-    editDetails()->page()->addStackControl();
-
-    // Send level — always visible
-    editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, "12", "30", "0~200_ratio1.5"); //send
-    // Return level + Adjust — disabled when Mode = OUT (value 2)
-    editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, "12", "32", "0~200_ratio1.5"); //return
-    editDetails()->page()->addSystemOverride(0, 2, 1, 1, "10", hex1, "12", "2F", "02", "equals"); //hide return on OUT
-    editDetails()->page()->addKnob(0, 3, 1, 1, "10", hex1, "12", "34", "normal_ratio1.5"); //adjust
-    editDetails()->page()->addSystemOverride(0, 3, 1, 1, "10", hex1, "12", "2F", "02", "equals"); //hide adjust on OUT
-    editDetails()->page()->addComboBox(0, 4, 1, 1, "10", hex1, "12", "35", "large"); //phase
-
-    editDetails()->addPage();
+    editDetails()->setQmlPage("qrc:/qml/LpPanel.qml", hex1, hex2);
 }

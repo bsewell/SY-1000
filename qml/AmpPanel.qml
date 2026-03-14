@@ -23,11 +23,10 @@ Rectangle {
 
         Rectangle { width: parent.width; height: 1; color: "#333333" }
 
-        // Content area
         Flickable {
             width: parent.width
             height: parent.height - 37
-            contentHeight: contentCol.height
+            contentHeight: contentCol.height + 24
             clip: true
 
             Column {
@@ -36,10 +35,21 @@ Rectangle {
                 spacing: 8
                 topPadding: 12
 
+                // Section label
+                Text {
+                    x: 12
+                    text: "AMP"
+                    color: "#666666"
+                    font.pixelSize: 10
+                    font.family: "Roboto Condensed"
+                    font.capitalization: Font.AllUppercase
+                }
+
                 // Row 1: Amp type + effect level + bright + solo
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 16
+                Flow {
+                    width: parent.width - 24
+                    x: 12
+                    spacing: 12
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
@@ -65,11 +75,22 @@ Rectangle {
                 }
 
                 // Divider
-                Rectangle { width: parent.width - 24; height: 1; color: "#333333"; anchors.horizontalCenter: parent.horizontalCenter }
+                Rectangle { width: parent.width - 24; height: 1; color: "#333333"; x: 12 }
+
+                // Section label
+                Text {
+                    x: 12
+                    text: "TONE"
+                    color: "#666666"
+                    font.pixelSize: 10
+                    font.family: "Roboto Condensed"
+                    font.capitalization: Font.AllUppercase
+                }
 
                 // Row 2: Gain section + tone stack
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
+                Flow {
+                    width: parent.width - 24
+                    x: 12
                     spacing: 12
 
                     SyComboBox {
@@ -113,11 +134,22 @@ Rectangle {
                 }
 
                 // Divider
-                Rectangle { width: parent.width - 24; height: 1; color: "#333333"; anchors.horizontalCenter: parent.horizontalCenter }
+                Rectangle { width: parent.width - 24; height: 1; color: "#333333"; x: 12 }
+
+                // Section label
+                Text {
+                    x: 12
+                    text: "SPEAKER"
+                    color: "#666666"
+                    font.pixelSize: 10
+                    font.family: "Roboto Condensed"
+                    font.capitalization: Font.AllUppercase
+                }
 
                 // Row 3: Speaker section
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
+                Flow {
+                    width: parent.width - 24
+                    x: 12
                     spacing: 12
 
                     SyComboBox {

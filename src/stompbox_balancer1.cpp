@@ -51,11 +51,9 @@ void stompbox_balancer1::updateSignal()
 void stompbox_balancer1::setEditPages()
 {
     QString hex1 = "00";
+    QString hex2 = "12";
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; };
-    editDetails()->page()->addKnob(0, 0, 1, 1, "10", hex1, "12", "26", "normal_ratio1.5", "bottom", 60);
-    editDetails()->page()->addKnob(1, 1, 1, 1, "10", hex1, "12", "25", "normal_ratio2", "bottom", 70);
-    editDetails()->page()->addKnob(2, 0, 1, 1, "10", hex1, "12", "27", "normal_ratio1.5", "bottom", 60);
-    editDetails()->addPage();
 
+    editDetails()->setQmlPage("qrc:/qml/Balancer1Panel.qml", hex1, hex2);
 }

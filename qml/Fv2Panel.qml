@@ -7,8 +7,8 @@ Rectangle {
     implicitHeight: 480
 
     property string hex1: "00"
-    property string hex2: "39"
-    property color accentColor: Qt.rgba(0, 0.7, 0.2, 1)
+    property string hex2: "12"
+    property color accentColor: Qt.rgba(0.5, 0.5, 0.5, 1)
 
     Column {
         anchors.fill: parent
@@ -17,8 +17,7 @@ Rectangle {
         StompHeader {
             width: parent.width
             accentColor: root.accentColor
-            title: "NOISE SUPPRESSOR"
-            powerHex0: "10"; powerHex1: root.hex1; powerHex2: root.hex2; powerHex3: "00"
+            title: "FOOT VOLUME 2"
         }
 
         Rectangle { width: parent.width; height: 1; color: "#333333" }
@@ -34,17 +33,22 @@ Rectangle {
                 spacing: 16
 
                 FilmstripKnob {
-                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                    hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "13"
                     filmstrip: "knobs/knob_56.png"; frameSize: 56
                 }
 
                 FilmstripKnob {
-                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"
+                    hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "17"
+                    filmstrip: "knobs/knob_56.png"; frameSize: 56
+                }
+
+                FilmstripKnob {
+                    hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "1B"
                     filmstrip: "knobs/knob_56.png"; frameSize: 56
                 }
 
                 SyComboBox {
-                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"
+                    hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "1F"
                 }
             }
         }

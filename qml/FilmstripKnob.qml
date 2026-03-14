@@ -19,7 +19,7 @@ Item {
     property int frameCount: 128
     property int frameSize: 48   // logical display size (PNG is 2x for Retina)
 
-    implicitWidth: frameSize
+    implicitWidth: frameSize + 24
     implicitHeight: frameSize + 28
 
     Component.onCompleted: {
@@ -102,7 +102,7 @@ Item {
             color: "#aaaaaa"
             font.pixelSize: 9
             font.family: "Roboto Condensed"
-            width: root.frameSize
+            width: root.implicitWidth
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
         }

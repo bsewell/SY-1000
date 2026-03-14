@@ -47,6 +47,22 @@
         <file>fx1/PitchShifterView.qml</file>
         <file>Fx2Panel.qml</file>
         <file>Fx3Panel.qml</file>
+        <file>RvPanel.qml</file>
+        <file>CePanel.qml</file>
+        <file>Eq1Panel.qml</file>
+        <file>Eq2Panel.qml</file>
+        <file>Dd1Panel.qml</file>
+        <file>Dd2Panel.qml</file>
+        <file>Dd3Panel.qml</file>
+        <file>DdTypeData.js</file>
+        <file>LpPanel.qml</file>
+        <file>Fv1Panel.qml</file>
+        <file>Fv2Panel.qml</file>
+        <file>DividerPanel.qml</file>
+        <file>MixerPanel.qml</file>
+        <file>Balancer1Panel.qml</file>
+        <file>Balancer2Panel.qml</file>
+        <file>Balancer3Panel.qml</file>
         <file>knobs/knob_48.png</file>
         <file>knobs/knob_56.png</file>
         <file>knobs/knob_48_gain.png</file>

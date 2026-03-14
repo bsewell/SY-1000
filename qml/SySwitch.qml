@@ -11,8 +11,8 @@ Item {
     property string label: ""
     property int value: 0
 
-    implicitWidth: 70
-    implicitHeight: 100
+    implicitWidth: 72
+    implicitHeight: 80
 
     Component.onCompleted: {
         if (hex0 !== "") {

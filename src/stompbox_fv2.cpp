@@ -53,13 +53,9 @@ void stompbox_fv2::updateSignal()
 void stompbox_fv2::setEditPages()
 {
     QString hex1 = "00";
+    QString hex2 = "12";
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
-        editDetails()->page()->addDataKnob(0, 0, 1, 1, "10", hex1, "12", "13", "0~1000_ratio1.75");
-        editDetails()->page()->addDataKnob(0, 1, 1, 1, "10", hex1, "12", "17", "0~1000_ratio1.75");
-        editDetails()->page()->addDataKnob(0, 2, 1, 1, "10", hex1, "12", "1B", "0~1000_ratio1.5");
-        editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, "12", "1F", "bottom"); // volume curve (LINEAR/FAST RISE/FAST FALL/SLOW)
-        
-        editDetails()->addPage();    
-};
+    editDetails()->setQmlPage("qrc:/qml/Fv2Panel.qml", hex1, hex2);
+}

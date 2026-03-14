@@ -25,7 +25,7 @@ Item {
 
     property string displayText: {
         for (var i = 0; i < options.length; i++) {
-            if (options[i].value === value)
+            if (Number(options[i].value) == Number(value))
                 return options[i].label
         }
         return String(value)
@@ -105,14 +105,14 @@ Item {
             delegate: Rectangle {
                 width: optionsList.width
                 height: 24
-                color: modelData.value === root.value ? "#00ccff" : optionMouse.containsMouse ? "#3a3a3a" : "transparent"
+                color: Number(modelData.value) == Number(root.value) ? "#00ccff" : optionMouse.containsMouse ? "#3a3a3a" : "transparent"
                 radius: 2
 
                 Text {
                     anchors.fill: parent
                     anchors.leftMargin: 8
                     text: modelData.label
-                    color: modelData.value === root.value ? "#1a1a1a" : "#dddddd"
+                    color: Number(modelData.value) == Number(root.value) ? "#1a1a1a" : "#dddddd"
                     font.pixelSize: 11
                     font.family: "Roboto Condensed"
                     verticalAlignment: Text.AlignVCenter
@@ -123,7 +123,7 @@ Item {
                     anchors.fill: parent
                     hoverEnabled: true
                     onClicked: {
-                        root.value = modelData.value
+                        root.value = Number(modelData.value)
                         paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.hex3, root.value)
                         popup.visible = false
                     }

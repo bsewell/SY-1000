@@ -93,6 +93,17 @@ void DiagnosticServer::handleCommand(QTcpSocket *socket, const QString &command)
             response["display"] = display;
             response["min"] = pb->getMin(parts[0], parts[1], parts[2], parts[3]);
             response["max"] = pb->getMax(parts[0], parts[1], parts[2], parts[3]);
+            QVariantList opts = pb->getOptions(parts[0], parts[1], parts[2], parts[3]);
+            QJsonArray optArr;
+            for (const auto &o : opts) {
+                QVariantMap m = o.toMap();
+                QJsonObject jo;
+                jo["label"] = m["label"].toString();
+                jo["value"] = m["value"].toInt();
+                optArr.append(jo);
+            }
+            response["options"] = optArr;
+            response["optionCount"] = opts.size();
         } else {
             response["status"] = "error";
             response["message"] = "usage: get hex0 hex1 hex2 hex3";

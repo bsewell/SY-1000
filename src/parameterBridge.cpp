@@ -89,11 +89,18 @@ QVariantList ParameterBridge::getOptions(const QString &hex0, const QString &hex
     for(int i = 0; i < items.level.size(); ++i)
     {
         QVariantMap option;
-        option["label"] = items.level.at(i).customdesc.isEmpty()
+        QString label = items.level.at(i).customdesc.isEmpty()
                           ? items.level.at(i).desc
                           : items.level.at(i).customdesc;
         bool ok;
-        option["value"] = items.level.at(i).value.toInt(&ok, 16);
+        int val = items.level.at(i).value.toInt(&ok, 16);
+        // If desc is empty, use getDisplayValue to get the formatted label
+        if (label.isEmpty()) {
+            QString hex4 = QString::number(val, 16).toUpper().rightJustified(2, '0');
+            label = midiTable->getValue(hex0, hex1, hex2, hex3, hex4).trimmed();
+        }
+        option["label"] = label;
+        option["value"] = val;
         options.append(option);
     }
     return options;

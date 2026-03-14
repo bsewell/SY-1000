@@ -66,6 +66,10 @@ void stompbox_dd1::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "39";};
 
+    editDetails()->setQmlPage("qrc:/qml/Dd1Panel.qml", hex1, hex2);
+}
+
+#if 0 // Original setEditPages body — preserved for reference
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
     editDetails()->page()->newStackControl(0);
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large"); // type
@@ -224,5 +228,4 @@ void stompbox_dd1::setEditPages()
     editDetails()->page()->addStackField();
 
     editDetails()->addPage();
-
-}
+#endif

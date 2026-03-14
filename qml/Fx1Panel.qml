@@ -184,17 +184,21 @@ Rectangle {
         }
     }
 
-    // Complex component: loads dedicated sub-panel
+    // Complex component: loads dedicated sub-panel with initial properties
     Component {
         id: complexComponent
 
         Loader {
+            id: complexLoader
             anchors.fill: parent
-            source: Fx1Data.getComplexSource(root.fxTypeIndex)
-
-            onLoaded: {
-                item.hex1 = root.typeEffectiveHex1(root.fxTypeIndex)
-                item.hex2 = root.typeEffectiveHex2(root.fxTypeIndex)
+            Component.onCompleted: {
+                complexLoader.setSource(
+                    Fx1Data.getComplexSource(root.fxTypeIndex),
+                    {
+                        "hex1": root.typeEffectiveHex1(root.fxTypeIndex),
+                        "hex2": root.typeEffectiveHex2(root.fxTypeIndex)
+                    }
+                )
             }
         }
     }

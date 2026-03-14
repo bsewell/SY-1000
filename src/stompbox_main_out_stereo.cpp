@@ -54,10 +54,6 @@ void stompbox_main_out_stereo::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "0B"; hex2 = "37";};
 
-    // formerly "Effect" groupBox at addGroupBox(0, 0, 1, 1) — parentCol=0 (empty, no controls)
-
-    // formerly "Main Global EQ" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
-    editDetails()->page()->addParaEQ(0, 1, 2, 4, "00", hex1, "00", "02", "System_output", "38");
-    editDetails()->addPage();
+    editDetails()->setQmlPage("qrc:/qml/MainOutStereoPanel.qml", hex1, hex2);
 
 }

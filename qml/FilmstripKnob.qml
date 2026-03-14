@@ -91,7 +91,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.displayValue
             color: "#00ccff"
-            font.pixelSize: 10
+            font.pixelSize: 11
             font.family: "Roboto Condensed"
         }
 
@@ -100,7 +100,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.label
             color: "#aaaaaa"
-            font.pixelSize: 9
+            font.pixelSize: 10
             font.family: "Roboto Condensed"
             width: root.implicitWidth
             elide: Text.ElideRight

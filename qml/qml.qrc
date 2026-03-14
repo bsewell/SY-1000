@@ -63,6 +63,14 @@
         <file>Balancer1Panel.qml</file>
         <file>Balancer2Panel.qml</file>
         <file>Balancer3Panel.qml</file>
+        <file>MainOutLeftPanel.qml</file>
+        <file>MainOutRightPanel.qml</file>
+        <file>MainOutStereoPanel.qml</file>
+        <file>SubOutLeftPanel.qml</file>
+        <file>SubOutRightPanel.qml</file>
+        <file>MasterPanel.qml</file>
+        <file>ParaEqGraph.qml</file>
+        <file>ParaEqBands.qml</file>
         <file>knobs/knob_48.png</file>
         <file>knobs/knob_56.png</file>
         <file>knobs/knob_48_gain.png</file>

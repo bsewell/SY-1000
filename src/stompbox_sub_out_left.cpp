@@ -51,63 +51,10 @@ void stompbox_sub_out_left::updateSignal()
 
 void stompbox_sub_out_left::setEditPages()
 {
-    QString sys1 = "04";
     QString hex1 = "00";
     Preferences *preferences = Preferences::Instance();
-    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){sys1 = "0B"; hex1 = "02";};
+    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
-    // formerly "Global Sub Output" groupBox at addGroupBox(0, 0, 4, 1) — parentCol=0
-    editDetails()->page()->addDataKnob(0, 0, 1, 1, "00", sys1, "00", "30", "0~200_ratio1.75"); // l output
-    editDetails()->page()->newStackControl(0);
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "00", sys1, "00", "35", "large"); // stereo link
-    editDetails()->page()->addStackControl();
-    editDetails()->page()->newStackControl(1);
-    editDetails()->page()->addComboBox(2, 0, 1, 1, "00", sys1, "00", "37", "large"); // eq link
-    editDetails()->page()->addStackControl();
-
-    // formerly "Global Sub EQ Select" groupBox at addGroupBox(4, 0, 1, 1) — parentCol=0
-    editDetails()->page()->newStackControl(2);
-    editDetails()->page()->addTabBar(4, 0, 1, 1, "Tables", "00", "02", "04"); // eq L/R
-    editDetails()->page()->addSystemOverride(4, 0, 1, 1, "00", sys1, "00", "37", "01", "equals");
-    editDetails()->page()->addStackControl();
-
-    editDetails()->page()->insertStackField(0, 0, 1, 1, 4);  // stereo link
-    editDetails()->page()->insertStackField(1, 1, 1, 4, 4);  // eq link
-
-    editDetails()->page()->newStackField(0);  // stereo link
-    // formerly "Global Sub Output Select Left" at addGroupBox(0, 0, 1, 2) — parentCol=0
-    editDetails()->page()->addComboBox(0, 0, 1, 2, "00", sys1, "00", "16", "large"); // output select
-    // formerly "Patch Sub Phase Left" at addGroupBox(0, 2, 1, 2) — parentCol=2
-    editDetails()->page()->addComboBox(0, 2, 1, 2, "10", hex1, "12", "3A", "large");  // phase left
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(0);  // stereo link
-    // formerly "Global Sub Output Select Stereo" at addGroupBox(0, 0, 1, 2) — parentCol=0
-    editDetails()->page()->addComboBox(0, 0, 1, 2, "00", sys1, "00", "16", "large"); // output select
-    // formerly "Patch Sub Phase Stereo" at addGroupBox(0, 2, 1, 2) — parentCol=2
-    editDetails()->page()->addComboBox(0, 2, 1, 2, "10", hex1, "12", "3A", "large");  // phase left
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(1);  // eq link
-    editDetails()->page()->insertStackField(2, 0, 0, 1, 1);
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(1);  // eq link
-    // formerly "Sub Out Global EQ Stereo Linked" at addGroupBox(0, 0, 1, 1) — parentCol=0
-    editDetails()->page()->addParaEQ(1, 0, 1, 1, "00", sys1, "00", "18", "System_output", "3A");  // left EQ
-    editDetails()->page()->addStackField();
-
-
-    editDetails()->page()->newStackField(2);
-    // formerly "Sub Out Global EQ Left" at addGroupBox(0, 0, 1, 1) — parentCol=0
-    editDetails()->page()->addParaEQ(0, 0, 1, 1, "00", sys1, "00", "18", "System_output", "3A");  // left EQ
-    editDetails()->page()->addStackField();
-
-    editDetails()->page()->newStackField(2);
-    // formerly "Sub Out Global EQ Right" at addGroupBox(0, 0, 1, 1) — parentCol=0
-    editDetails()->page()->addParaEQ(0, 0, 1, 1, "00", sys1, "00", "22", "System_output", "3B");  // right EQ
-    editDetails()->page()->addStackField();
-
-    editDetails()->addPage();
+    editDetails()->setQmlPage("qrc:/qml/SubOutLeftPanel.qml", hex1, "00");
 
 }

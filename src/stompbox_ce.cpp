@@ -126,11 +126,16 @@ void stompbox_ce::updateSignal()
 
 void stompbox_ce::setEditPages()
 {
-    editPage *page = editDetails()->page();
     QString hex1 = "00";
     QString hex2 = "3F";
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "3C";};
+
+    editDetails()->setQmlPage("qrc:/qml/CePanel.qml", hex1, hex2);
+}
+
+#if 0 // Original setEditPages body — preserved for reference
+    editPage *page = editDetails()->page();
 
     const QList<ChoControlSpec> dualModeControls = {
         {0, 0, "0A", "normal_ratio1.5"},
@@ -166,4 +171,4 @@ void stompbox_ce::setEditPages()
     page->insertStackField(0, 2, 0, 1, 1, Qt::AlignTop | Qt::AlignLeft);
 
 	editDetails()->addPage();
-}
+#endif

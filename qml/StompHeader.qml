@@ -20,6 +20,17 @@ Item {
         }
     }
 
+    // Sync power state when changed externally (e.g. stompbox tile click)
+    Connections {
+        target: paramBridge
+        function onParameterChanged(h0, h1, h2, h3, val) {
+            if (h0 === root.powerHex0 && h1 === root.powerHex1 &&
+                h2 === root.powerHex2 && h3 === root.powerHex3) {
+                root.powerValue = val
+            }
+        }
+    }
+
     Rectangle {
         anchors.fill: parent
         color: Qt.rgba(root.accentColor.r, root.accentColor.g, root.accentColor.b, 0.82)

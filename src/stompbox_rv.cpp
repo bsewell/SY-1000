@@ -66,6 +66,10 @@ void stompbox_rv::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "03"; hex2 = "2F";};
 
+    editDetails()->setQmlPage("qrc:/qml/RvPanel.qml", hex1, hex2);
+}
+
+#if 0 // Original setEditPages body — preserved for reference
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00"); //sw
     editDetails()->page()->addComboBox(1, 0, 1, 1, "10", hex1, hex2, "01", "large");   //type
     editDetails()->page()->addComboBox(2, 0, 1, 1, "10", hex1, hex2, "03");   //carry over
@@ -81,5 +85,4 @@ void stompbox_rv::setEditPages()
 
 
     editDetails()->addPage();
-
-}
+#endif

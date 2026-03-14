@@ -52,27 +52,11 @@ void stompbox_main_out_right::updateSignal()
 
 void stompbox_main_out_right::setEditPages()
 {
-    QString sys1 = "04";
     QString hex1 = "00";
     Preferences *preferences = Preferences::Instance();
-    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){sys1 = "0B"; hex1 = "02";};
+    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
-    // formerly "Global Main Output Right" groupBox at addGroupBox(0, 0, 2, 1) — parentCol=0
-    editDetails()->page()->addDataKnob(1, 0, 1, 1, "00", sys1, "00", "2E", "0~200_ratio1.75"); // r output
-    editDetails()->page()->addSystemOverride(0, 0, 3, 1, "00", sys1, "00", "34", "01", "equals");
-
-    // formerly "Global Main Output Select Right" groupBox at addGroupBox(0, 1, 1, 1) — parentCol=1
-    editDetails()->page()->addComboBox(0, 1, 1, 1, "00", sys1, "00", "01", "large"); // output select
-    editDetails()->page()->addSystemOverride(0, 1, 1, 1, "00", sys1, "00", "34", "01", "equals");
-
-    // formerly "Patch Main Out Phase Right" groupBox at addGroupBox(0, 2, 1, 1) — parentCol=2
-    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, "12", "38", "large");  // phase right (inner col 1 + parentCol 2 = 3)
-    editDetails()->page()->addSystemOverride(0, 2, 1, 1, "00", sys1, "00", "34", "01", "equals");
-
-    // formerly "Main Out Global EQ Right" groupBox at addGroupBox(1, 1, 1, 2) — parentRow=1, parentCol=1
-    editDetails()->page()->addParaEQ(1, 1, 2, 4, "00", sys1, "00", "0C", "System_output", "39");
-    editDetails()->page()->addSystemOverride(1, 1, 4, 6, "00", sys1, "00", "36", "01", "equals");
-    editDetails()->addPage();
+    editDetails()->setQmlPage("qrc:/qml/MainOutRightPanel.qml", hex1, "00");
 
 
 

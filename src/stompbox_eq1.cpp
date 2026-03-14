@@ -65,8 +65,12 @@ void stompbox_eq1::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "37";};
 
+    editDetails()->setQmlPage("qrc:/qml/Eq1Panel.qml", hex1, hex2);
+}
+
+#if 0 // Original setEditPages body — preserved for reference
     editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00");
     editDetails()->page()->addParaEQ(0, 1, 2, 4, "10", hex1, hex2, "01");
 
-    editDetails()->addPage();    
-}
+    editDetails()->addPage();
+#endif

@@ -34,6 +34,17 @@
         <file>SyComboBox.qml</file>
         <file>FilmstripKnob.qml</file>
         <file>TestMinimal.qml</file>
+        <file>StompHeader.qml</file>
+        <file>NsPanel.qml</file>
+        <file>CsPanel.qml</file>
+        <file>DsPanel.qml</file>
+        <file>AmpPanel.qml</file>
+        <file>Fx1Panel.qml</file>
+        <file>Fx1TypeData.js</file>
+        <file>fx1/ChorusView.qml</file>
+        <file>fx1/DelayView.qml</file>
+        <file>fx1/HarmonizerView.qml</file>
+        <file>fx1/PitchShifterView.qml</file>
         <file>knobs/knob_48.png</file>
         <file>knobs/knob_56.png</file>
         <file>knobs/knob_48_gain.png</file>

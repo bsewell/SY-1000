@@ -11,73 +11,15 @@ Rectangle {
     property string instLabel: "NORMAL INPUT"
     property color accentColor: Qt.rgba(0.2, 0.4, 1.0, 1)
 
-    // Power switch: "10", hex1, "12", "01"
-    property int powerValue: 0
-    Component.onCompleted: {
-        powerValue = paramBridge.getValue("10", hex1, "12", "01")
-    }
-
     Column {
         anchors.fill: parent
         spacing: 0
 
-        // Header
-        Rectangle {
+        StompHeader {
             width: parent.width
-            height: 36
-            color: Qt.rgba(root.accentColor.r, root.accentColor.g, root.accentColor.b, 0.82)
-
-            Row {
-                anchors.fill: parent
-                anchors.leftMargin: 10
-                anchors.rightMargin: 10
-                spacing: 8
-
-                // Power button
-                Item {
-                    width: 40
-                    height: 36
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    Rectangle {
-                        anchors.centerIn: parent
-                        width: 28
-                        height: 18
-                        radius: 9
-                        color: root.powerValue !== 0 ? "#ffffff" : Qt.rgba(0, 0, 0, 0.3)
-                        border.color: Qt.rgba(1, 1, 1, 0.4)
-                        border.width: 1
-
-                        Rectangle {
-                            x: root.powerValue !== 0 ? parent.width - width - 2 : 2
-                            y: 2
-                            width: 14
-                            height: 14
-                            radius: 7
-                            color: root.powerValue !== 0 ? root.accentColor : "#888"
-                            Behavior on x { NumberAnimation { duration: 100 } }
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                root.powerValue = root.powerValue !== 0 ? 0 : 1
-                                paramBridge.setValue("10", root.hex1, "12", "01", root.powerValue)
-                            }
-                        }
-                    }
-                }
-
-                // Title
-                Text {
-                    text: root.instLabel
-                    color: "#ffffff"
-                    font.pixelSize: 15
-                    font.family: "Roboto Condensed"
-                    font.bold: true
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-            }
+            accentColor: root.accentColor
+            title: root.instLabel
+            powerHex0: "10"; powerHex1: root.hex1; powerHex2: "12"; powerHex3: "01"
         }
 
         // Divider

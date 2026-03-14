@@ -78,6 +78,21 @@ void stompbox_fx1::setEditPages()
         hex2 = "3D";
     };
 
+    editDetails()->setQmlPage("qrc:/qml/Fx1Panel.qml", hex1, hex2);
+}
+
+#if 0  // Original C++ UI — preserved for reference
+void stompbox_fx1::setEditPages_ORIGINAL()
+{
+    QString hex1 = "00";
+    QString hex2 = "40";
+    Preferences *preferences = Preferences::Instance();
+    if(preferences->getPreferences("Window", "BassMode", "bool")=="true")
+    {
+        hex1 = "02";
+        hex2 = "3D";
+    };
+
     editDetails()->page()->addLabel(0, 0, 1, 1, "FX TYPE", Qt::AlignVCenter | Qt::AlignLeft);
     editDetails()->page()->newStackControl(0);
     editDetails()->page()->addComboBox(0, 1, 1, 1, "10", hex1, hex2, "01", "large");  //type
@@ -1219,3 +1234,4 @@ void stompbox_fx1::setEditPages()
     editDetails()->addPage();
 
 }
+#endif

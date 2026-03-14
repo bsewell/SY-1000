@@ -65,10 +65,5 @@ void stompbox_ns::setEditPages()
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "36";};
 
-    editDetails()->page()->addSwitch(0, 0, 1, 1, "10", hex1, hex2, "00", "middle");
-    editDetails()->page()->addKnob(0, 1, 1, 1, "10", hex1, hex2, "01", "normal_ratio1.75");
-    editDetails()->page()->addKnob(0, 2, 1, 1, "10", hex1, hex2, "02", "normal_ratio1.75");
-    editDetails()->page()->addComboBox(0, 3, 1, 1, "10", hex1, hex2, "03", "bottom");
-    editDetails()->addPage();
-
+    editDetails()->setQmlPage("qrc:/qml/NsPanel.qml", hex1, hex2);
 }

@@ -5,6 +5,10 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QString>
+#include <QList>
+#include <QPointer>
+
+class QmlHost;
 
 class DiagnosticServer : public QObject
 {
@@ -24,6 +28,7 @@ private slots:
 private:
     void handleCommand(QTcpSocket *socket, const QString &command);
     QTcpServer *server;
+    QList<QPointer<QmlHost>> qmlPreviews;
 };
 
 #endif // DIAGNOSTICSERVER_H

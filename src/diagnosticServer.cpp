@@ -174,6 +174,163 @@ void DiagnosticServer::handleCommand(QTcpSocket *socket, const QString &command)
             response["message"] = "No visible main window found";
         }
     }
+    else if (command.startsWith("set ")) {
+        // set hex0 hex1 hex2 hex3 value
+        QStringList parts = command.mid(4).split(' ');
+        if (parts.size() == 5) {
+            bool ok;
+            int value = parts[4].toInt(&ok);
+            if (ok) {
+                ParameterBridge *pb = ParameterBridge::Instance();
+                pb->setValue(parts[0], parts[1], parts[2], parts[3], value);
+                response["status"] = "ok";
+                response["value"] = value;
+                response["display"] = pb->getDisplayValue(parts[0], parts[1], parts[2], parts[3], value);
+                response["label"] = pb->getLabel(parts[0], parts[1], parts[2], parts[3]);
+            } else {
+                response["status"] = "error";
+                response["message"] = "value must be an integer";
+            }
+        } else {
+            response["status"] = "error";
+            response["message"] = "usage: set hex0 hex1 hex2 hex3 value";
+        }
+    }
+    else if (command.startsWith("dump ")) {
+        // dump hex0 hex1 hex2 startHex3 endHex3
+        QStringList parts = command.mid(5).split(' ');
+        if (parts.size() >= 4) {
+            bool ok;
+            QString hex0 = parts[0], hex1 = parts[1], hex2 = parts[2];
+            int start = parts[3].toInt(&ok, 16);
+            int end = (parts.size() >= 5) ? parts[4].toInt(&ok, 16) : start + 0x1F;
+            ParameterBridge *pb = ParameterBridge::Instance();
+            QJsonArray params;
+            for (int i = start; i <= end; ++i) {
+                QString hex3 = QString::number(i, 16).toUpper().rightJustified(2, '0');
+                int value = pb->getValue(hex0, hex1, hex2, hex3);
+                QString label = pb->getLabel(hex0, hex1, hex2, hex3);
+                QString display = pb->getDisplayValue(hex0, hex1, hex2, hex3, value);
+                int minVal = pb->getMin(hex0, hex1, hex2, hex3);
+                int maxVal = pb->getMax(hex0, hex1, hex2, hex3);
+                QJsonObject p;
+                p["hex3"] = hex3;
+                p["label"] = label;
+                p["value"] = value;
+                p["display"] = display;
+                p["min"] = minVal;
+                p["max"] = maxVal;
+                params.append(p);
+            }
+            response["status"] = "ok";
+            response["hex0"] = hex0;
+            response["hex1"] = hex1;
+            response["hex2"] = hex2;
+            response["parameters"] = params;
+        } else {
+            response["status"] = "error";
+            response["message"] = "usage: dump hex0 hex1 hex2 startHex3 [endHex3]";
+        }
+    }
+    else if (command.startsWith("open-qml ")) {
+        // open-qml <qmlFile> <hex1> <hex2>
+        // e.g. open-qml InstrumentPanel.qml 00 15
+        // e.g. open-qml NormalInputPanel.qml 00 12
+        QStringList parts = command.mid(9).split(' ');
+        if (parts.size() >= 3) {
+            QString qmlFile = parts[0];
+            QString hex1 = parts[1];
+            QString hex2 = parts[2];
+
+            // Build qrc path if not already prefixed
+            QString qmlSource = qmlFile;
+            if (!qmlSource.startsWith("qrc:")) {
+                qmlSource = "qrc:/qml/" + qmlFile;
+            }
+
+            // Find the parent mainWindow
+            QWidget *mainWin = nullptr;
+            for (QWidget *w : QApplication::topLevelWidgets()) {
+                if (w->windowTitle().contains("FloorBoard")) {
+                    mainWin = w;
+                    break;
+                }
+            }
+
+            QmlHost *preview = new QmlHost(qmlSource, mainWin);
+            preview->setInstHex(hex1, hex2);
+            preview->setWindowFlag(Qt::Window);
+            preview->setWindowTitle(qmlFile + " [" + hex1 + "," + hex2 + "]");
+            preview->resize(800, 500);
+            preview->setAttribute(Qt::WA_DeleteOnClose);
+            preview->show();
+
+            qmlPreviews.append(preview);
+
+            response["status"] = "ok";
+            response["source"] = qmlSource;
+            response["hex1"] = hex1;
+            response["hex2"] = hex2;
+            response["title"] = preview->windowTitle();
+        } else {
+            response["status"] = "error";
+            response["message"] = "usage: open-qml <file.qml> <hex1> <hex2>";
+        }
+    }
+    else if (command == "close-qml") {
+        int closed = 0;
+        for (auto &p : qmlPreviews) {
+            if (p) { p->close(); ++closed; }
+        }
+        qmlPreviews.clear();
+        response["status"] = "ok";
+        response["closed"] = closed;
+    }
+    else if (command == "list-qml") {
+        response["status"] = "ok";
+        QJsonArray panels;
+        // Instrument panels
+        QJsonObject inst;
+        inst["file"] = "InstrumentPanel.qml";
+        inst["description"] = "Full instrument panel with all type tabs";
+        QJsonArray instPresets;
+        QJsonObject i1; i1["name"] = "INST1 Guitar"; i1["hex1"] = "00"; i1["hex2"] = "15"; instPresets.append(i1);
+        QJsonObject i2g; i2g["name"] = "INST2 Guitar"; i2g["hex1"] = "00"; i2g["hex2"] = "20"; instPresets.append(i2g);
+        QJsonObject i3g; i3g["name"] = "INST3 Guitar"; i3g["hex1"] = "00"; i3g["hex2"] = "2B"; instPresets.append(i3g);
+        QJsonObject i1b; i1b["name"] = "INST1 Bass"; i1b["hex1"] = "02"; i1b["hex2"] = "15"; instPresets.append(i1b);
+        QJsonObject i2b; i2b["name"] = "INST2 Bass"; i2b["hex1"] = "02"; i2b["hex2"] = "1F"; instPresets.append(i2b);
+        QJsonObject i3b; i3b["name"] = "INST3 Bass"; i3b["hex1"] = "02"; i3b["hex2"] = "29"; instPresets.append(i3b);
+        inst["presets"] = instPresets;
+        panels.append(inst);
+
+        QJsonObject normal;
+        normal["file"] = "NormalInputPanel.qml";
+        normal["description"] = "Normal pickup input panel";
+        QJsonArray normalPresets;
+        QJsonObject ng; ng["name"] = "Guitar"; ng["hex1"] = "00"; ng["hex2"] = "12"; normalPresets.append(ng);
+        QJsonObject nb; nb["name"] = "Bass"; nb["hex1"] = "02"; nb["hex2"] = "12"; normalPresets.append(nb);
+        normal["presets"] = normalPresets;
+        panels.append(normal);
+
+        // Individual tabs (for standalone testing)
+        QStringList tabs = {
+            "CommonTab.qml", "AltTuneTab.qml", "OscTab.qml", "FilterTab.qml",
+            "AmpTab.qml", "Lfo1Tab.qml", "Lfo2Tab.qml", "SeqTab.qml", "LayerTab.qml",
+            "OscSynthOscTab.qml", "OscSynthFilterAmpTab.qml", "OscSynthLfoTab.qml",
+            "Gr300Tab.qml", "EGuitarTab.qml", "EGuitarAmpTab.qml", "EGuitarNsTab.qml",
+            "EGuitarEqTab.qml", "AcousticTab.qml", "AcousticAmpTab.qml", "AcousticEqTab.qml",
+            "EBassTab.qml", "EBassAmpTab.qml", "EBassEqTab.qml",
+            "VioGuitarTab.qml", "VioGuitarHarmonyTab.qml", "VioGuitarEqTab.qml",
+            "PolyFxTab.qml"
+        };
+        for (const auto &tab : tabs) {
+            QJsonObject t;
+            t["file"] = tab;
+            t["type"] = "tab";
+            panels.append(t);
+        }
+        response["panels"] = panels;
+    }
     else if (command == "open-qml-preview") {
         // Find mainWindow and call showQmlPreview
         emit commandReceived("open-qml-preview");
@@ -185,10 +342,15 @@ void DiagnosticServer::handleCommand(QTcpSocket *socket, const QString &command)
         response["commands"] = QJsonArray({
             "ping - check connectivity",
             "status - app state + window list",
-            "get hex0 hex1 hex2 hex3 - read parameter",
+            "get hex0 hex1 hex2 hex3 - read parameter with metadata",
+            "set hex0 hex1 hex2 hex3 value - write parameter value",
+            "dump hex0 hex1 hex2 startHex3 [endHex3] - bulk read parameter range",
+            "open-qml file.qml hex1 hex2 - open QML panel in standalone window",
+            "close-qml - close all QML preview windows",
+            "list-qml - list available QML panels with preset addresses",
             "screenshot [file] - capture main window",
-            "screenshot-window title - capture specific window",
-            "open-qml-preview - open QML preview window",
+            "screenshot-window title [file] - capture specific window",
+            "open-qml-preview - open default QML preview window",
             "help - this message"
         });
     }

@@ -4,6 +4,7 @@
 #include <QQuickWidget>
 #include <QQmlContext>
 #include <QString>
+#include <QColor>
 
 class QmlHost : public QQuickWidget
 {
@@ -12,6 +13,8 @@ class QmlHost : public QQuickWidget
 public:
     explicit QmlHost(const QString &qmlSource, QWidget *parent = nullptr);
     void setInstHex(const QString &hex1);
+    void setTitle(const QString &title);
+    void setAccentColor(const QColor &color);
 
 private:
     void setupContext();

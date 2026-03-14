@@ -27,6 +27,9 @@
 #include "globalVariables.h"
 #include "bulkEditDialog.h"
 #include "Preferences.h"
+#include "qmlHost.h"
+#include "parameterBridge.h"
+#include <QQuickItem>
 
 editWindow::editWindow(QWidget *parent)
     : QDialog(parent)
@@ -386,6 +389,11 @@ void editWindow::setPowerState(bool enabled)
 {
     this->explicitPowerState = enabled;
     this->explicitPowerStateValid = true;
+
+    // Forward power state to QML
+    if (this->qmlHost && this->qmlHost->rootObject()) {
+        this->qmlHost->rootObject()->setProperty("powerValue", enabled ? 1 : 0);
+    }
 }
 
 void editWindow::setWindow(QString title)
@@ -394,6 +402,15 @@ void editWindow::setWindow(QString title)
     this->pagesWidget->setCurrentIndex(0);
     configureHeaderPower(qobject_cast<editPage*>(this->pagesWidget->currentWidget()));
     refreshHeaderBar();
+
+    // Forward title and accent color to QML host if present
+    if (this->qmlHost) {
+        this->qmlHost->setTitle(title);
+        QColor color = this->setBrush.color();
+        if (color.isValid()) {
+            this->qmlHost->setAccentColor(color);
+        }
+    }
 }
 
 QString editWindow::getTitle()
@@ -896,4 +913,32 @@ void editWindow::assign_paste()
     sysxIO->setFileSource("Structure", this->temp_hex1, "00", this->temp_hex3, temp);
     sysxIO->setFileSource("Structure", sysxMsg );
     emit dialogUpdateSignal();
+}
+
+void editWindow::setQmlPage(const QString &qmlSource, const QString &hex1)
+{
+    this->qmlHost = new QmlHost(qmlSource, this);
+    this->qmlHost->setInstHex(hex1);
+    this->qmlHost->setMinimumSize(800, 460);
+    this->qmlHost->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    this->pagesWidget->addWidget(this->qmlHost);
+    this->pagesWidget->setMinimumSize(800, 460);
+    this->pagesWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    // Hide the C++ header — QML renders its own header with power button and tabs
+    this->headerBar->setVisible(false);
+    this->pageComboBox->setVisible(false);
+    this->comboBoxLabel->setVisible(false);
+
+    // Pass accent color to QML (will be set after setWindow is called)
+    QColor color = this->setBrush.color();
+    if (color.isValid()) {
+        this->qmlHost->setAccentColor(color);
+    }
+
+    // When QML changes a parameter, propagate updateSignal so stompBox refreshes
+    QObject::connect(ParameterBridge::Instance(), &ParameterBridge::parameterChanged,
+                     this, [this](const QString &, const QString &, const QString &, const QString &, int) {
+        emit updateSignal();
+    });
 }

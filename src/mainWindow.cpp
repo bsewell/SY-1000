@@ -148,7 +148,7 @@ mainWindow::mainWindow()
     QString version = preferences->getPreferences("General", "Application", "version");
     QString mode = "Guitar mode";
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true") mode = "Bass Mode";
-    setWindowTitle(deviceType + " FloorBoard - version:" + version + " - " + mode);
+    setWindowTitle(deviceType + " FloorBoard " + version + " - " + mode);
     qWarning("MW-F: createActions...");
     createActions();
     qWarning("MW-G: createMenus...");

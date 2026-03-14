@@ -31,6 +31,7 @@
 #include "editPage.h"
 #include "customControlLabel.h"
 #include "customSwitch.h"
+class QmlHost;
 
 class editWindow : public QDialog
 {
@@ -48,6 +49,7 @@ public:
     editPage* page();
     void patchPos(int pos, int len, QString t_hex1, QString t_hex3);
     void BrushColor(QBrush setBrush);
+    void setQmlPage(const QString &qmlSource, const QString &hex1);
 
 signals:
     void dialogUpdateSignal();
@@ -135,6 +137,7 @@ private:
     bool explicitPowerStateValid = false;
     void refreshHeaderBar();
     void configureHeaderPower(editPage *page);
+    QmlHost *qmlHost = nullptr;
 };
 
 #endif // EDITWINDOW_H

@@ -31,10 +31,87 @@ Item {
         return String(value)
     }
 
-    // Find the top-level ancestor for popup reparenting
-    function findRoot(item) {
-        while (item.parent) item = item.parent
-        return item
+    function openPopup() {
+        // Find the scene root (top-level item in QQuickWidget)
+        var topItem = root
+        while (topItem.parent) topItem = topItem.parent
+
+        // Create overlay + popup at scene root level
+        var overlay = overlayComponent.createObject(topItem)
+        if (!overlay) return
+
+        // Position the dropdown below the comboButton in scene coordinates
+        var globalPos = comboButton.mapToItem(topItem, 0, comboButton.height + 2)
+        overlay.popupX = globalPos.x
+        overlay.popupY = globalPos.y
+        overlay.popupWidth = comboButton.width
+    }
+
+    Component {
+        id: overlayComponent
+
+        Item {
+            id: overlay
+            anchors.fill: parent
+            z: 10000
+
+            property real popupX: 0
+            property real popupY: 0
+            property real popupWidth: 160
+
+            // Dismiss backdrop — clicking anywhere outside closes the popup
+            MouseArea {
+                anchors.fill: parent
+                onClicked: overlay.destroy()
+            }
+
+            Rectangle {
+                x: overlay.popupX
+                y: overlay.popupY
+                width: overlay.popupWidth
+                height: Math.min(popupList.contentHeight + 4, 300)
+                radius: 4
+                color: "#2a2a2a"
+                border.color: "#555"
+                border.width: 1
+                clip: true
+
+                ListView {
+                    id: popupList
+                    anchors.fill: parent
+                    anchors.margins: 2
+                    model: root.options
+                    delegate: Rectangle {
+                        width: popupList.width
+                        height: 24
+                        color: Number(modelData.value) === Number(root.value) ? "#00ccff"
+                             : delegateMouse.containsMouse ? "#3a3a3a" : "transparent"
+                        radius: 2
+
+                        Text {
+                            anchors.fill: parent
+                            anchors.leftMargin: 8
+                            text: modelData.label
+                            color: Number(modelData.value) === Number(root.value) ? "#1a1a1a" : "#dddddd"
+                            font.pixelSize: 11
+                            font.family: "Roboto Condensed"
+                            verticalAlignment: Text.AlignVCenter
+                        }
+
+                        MouseArea {
+                            id: delegateMouse
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onClicked: {
+                                root.value = Number(modelData.value)
+                                paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.hex3, root.value)
+                                overlay.destroy()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     Row {
@@ -56,7 +133,7 @@ Item {
             height: 26
             radius: 4
             color: "#2a2a2a"
-            border.color: popup.visible ? "#00ccff" : "#555"
+            border.color: "#555"
             border.width: 1
             anchors.verticalCenter: parent.verticalCenter
 
@@ -83,64 +160,7 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: {
-                    if (!popup.visible) {
-                        // Position popup in global coordinates
-                        var globalPos = comboButton.mapToItem(null, 0, comboButton.height + 2)
-                        popup.parent = findRoot(root)
-                        popup.x = globalPos.x
-                        popup.y = globalPos.y
-                    }
-                    popup.visible = !popup.visible
-                }
-            }
-        }
-    }
-
-    // Dropdown popup - reparented to top-level when opened
-    Rectangle {
-        id: popup
-        visible: false
-        width: comboButton.width
-        height: Math.min(optionsList.contentHeight + 4, 300)
-        radius: 4
-        color: "#2a2a2a"
-        border.color: "#555"
-        border.width: 1
-        z: 10000
-        clip: true
-
-        ListView {
-            id: optionsList
-            anchors.fill: parent
-            anchors.margins: 2
-            model: root.options
-            delegate: Rectangle {
-                width: optionsList.width
-                height: 24
-                color: Number(modelData.value) == Number(root.value) ? "#00ccff" : optionMouse.containsMouse ? "#3a3a3a" : "transparent"
-                radius: 2
-
-                Text {
-                    anchors.fill: parent
-                    anchors.leftMargin: 8
-                    text: modelData.label
-                    color: Number(modelData.value) == Number(root.value) ? "#1a1a1a" : "#dddddd"
-                    font.pixelSize: 11
-                    font.family: "Roboto Condensed"
-                    verticalAlignment: Text.AlignVCenter
-                }
-
-                MouseArea {
-                    id: optionMouse
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: {
-                        root.value = Number(modelData.value)
-                        paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.hex3, root.value)
-                        popup.visible = false
-                    }
-                }
+                onClicked: root.openPopup()
             }
         }
     }

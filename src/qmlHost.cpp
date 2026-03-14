@@ -84,3 +84,17 @@ void QmlHost::setInstHex(const QString &hex1)
         rootObject()->setProperty("hex1", hex1);
     }
 }
+
+void QmlHost::setTitle(const QString &title)
+{
+    if (rootObject()) {
+        rootObject()->setProperty("instLabel", title);
+    }
+}
+
+void QmlHost::setAccentColor(const QColor &color)
+{
+    if (rootObject()) {
+        rootObject()->setProperty("accentColor", color);
+    }
+}

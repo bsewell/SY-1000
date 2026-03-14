@@ -2,7 +2,7 @@
 <!-- Preferences of the SY-1000 FloorBoard application. -->
 <Preferences>
 	<General>
-		<Application version="20250519"/>
+		<Application version="20260313.1"/>
 		<Donate url=""/>
 		<Files dir=""/>
 		<Help url="http:SY-1000-Help-HTML/SY-1000_HTML_Help.html"/>

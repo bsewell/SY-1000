@@ -49,7 +49,7 @@ public:
     editPage* page();
     void patchPos(int pos, int len, QString t_hex1, QString t_hex3);
     void BrushColor(QBrush setBrush);
-    void setQmlPage(const QString &qmlSource, const QString &hex1);
+    void setQmlPage(const QString &qmlSource, const QString &hex1, const QString &hex2 = "15");
 
 signals:
     void dialogUpdateSignal();

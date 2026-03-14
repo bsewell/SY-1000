@@ -915,10 +915,10 @@ void editWindow::assign_paste()
     emit dialogUpdateSignal();
 }
 
-void editWindow::setQmlPage(const QString &qmlSource, const QString &hex1)
+void editWindow::setQmlPage(const QString &qmlSource, const QString &hex1, const QString &hex2)
 {
     this->qmlHost = new QmlHost(qmlSource, this);
-    this->qmlHost->setInstHex(hex1);
+    this->qmlHost->setInstHex(hex1, hex2);
     this->qmlHost->setMinimumSize(800, 460);
     this->qmlHost->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->pagesWidget->addWidget(this->qmlHost);

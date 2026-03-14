@@ -6,16 +6,17 @@ Rectangle {
     implicitWidth: 800
     implicitHeight: 480
 
-    property string hex1: "00"  // inst1="00", inst2="01", inst3="02"
+    property string hex1: "00"  // guitar="00", bass="02"
+    property string hex2: "15"  // inst1="15", inst2="20"/"1F", inst3="2B"/"29"
     property string instLabel: "INSTRUMENT 1"
     property color accentColor: Qt.rgba(1, 0, 0, 1)
     property int instType: 0
     property int currentTab: 0
 
-    // Power switch: "10", hex1, "15", "00"
+    // Power switch: "10", hex1, hex2, "00"
     property int powerValue: 0
     Component.onCompleted: {
-        powerValue = paramBridge.getValue("10", hex1, "15", "00")
+        powerValue = paramBridge.getValue("10", hex1, hex2, "00")
     }
 
     // Tab definitions per instrument type
@@ -88,7 +89,7 @@ Rectangle {
                             anchors.fill: parent
                             onClicked: {
                                 root.powerValue = root.powerValue !== 0 ? 0 : 1
-                                paramBridge.setValue("10", root.hex1, "15", "00", root.powerValue)
+                                paramBridge.setValue("10", root.hex1, root.hex2, "00", root.powerValue)
                             }
                         }
                     }
@@ -120,7 +121,7 @@ Rectangle {
                 // INST TYPE dropdown
                 SyComboBox {
                     id: instTypeCombo
-                    hex0: "10"; hex1: root.hex1; hex2: "15"; hex3: "01"
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
@@ -179,6 +180,7 @@ Rectangle {
             CommonTab {
                 anchors.fill: parent
                 hex1: root.hex1
+                hex2: root.hex2
                 visible: root.currentTab === 0
             }
             AltTuneTab {

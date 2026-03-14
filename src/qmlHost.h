@@ -12,7 +12,7 @@ class QmlHost : public QQuickWidget
 
 public:
     explicit QmlHost(const QString &qmlSource, QWidget *parent = nullptr);
-    void setInstHex(const QString &hex1);
+    void setInstHex(const QString &hex1, const QString &hex2 = "15");
     void setTitle(const QString &title);
     void setAccentColor(const QColor &color);
 

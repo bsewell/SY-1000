@@ -77,11 +77,13 @@ void QmlHost::setupContext()
     logToFile("Context property 'paramBridge' set");
 }
 
-void QmlHost::setInstHex(const QString &hex1)
+void QmlHost::setInstHex(const QString &hex1, const QString &hex2)
 {
     rootContext()->setContextProperty("instHex1", hex1);
+    rootContext()->setContextProperty("instHex2", hex2);
     if (rootObject()) {
         rootObject()->setProperty("hex1", hex1);
+        rootObject()->setProperty("hex2", hex2);
     }
 }
 

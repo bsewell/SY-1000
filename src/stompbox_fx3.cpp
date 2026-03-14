@@ -133,6 +133,21 @@ void stompbox_fx3::updateSignal()
 
 void stompbox_fx3::setEditPages()
 {
+    QString hex1 = "01";
+    QString hex2 = "0C";
+    Preferences *preferences = Preferences::Instance();
+    if(preferences->getPreferences("Window", "BassMode", "bool")=="true")
+    {
+        hex1 = "03";
+        hex2 = "09";
+    };
+
+    editDetails()->setQmlPage("qrc:/qml/Fx3Panel.qml", hex1, hex2);
+}
+
+#if 0  // Original C++ UI — preserved for reference
+void stompbox_fx3::setEditPages_ORIGINAL()
+{
     editPage *page = editDetails()->page();
     QString hex1 = "01";
     QString hex2 = "0C";
@@ -1256,3 +1271,4 @@ void stompbox_fx3::setEditPages()
     editDetails()->addPage();
 
 }
+#endif

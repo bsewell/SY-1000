@@ -7,10 +7,10 @@ Rectangle {
     implicitWidth: 800
     implicitHeight: 480
 
-    property string hex1: "00"
-    property string hex2: "40"   // base hex2: guitar="40", bass="3D"
+    property string hex1: "01"
+    property string hex2: "0C"   // base hex2: guitar="0C", bass="09"
     property color accentColor: Qt.rgba(0.8, 0.2, 0.8, 1)  // magenta
-    property string fxTitle: "FX1"
+    property string fxTitle: "FX3"
 
     // Current FX type selection
     property int fxTypeIndex: 0
@@ -40,7 +40,6 @@ Rectangle {
         fxTypeIndex = paramBridge.getValue("10", hex1, hex2, "01")
     }
 
-    // Listen for type combo changes
     Connections {
         target: fxTypeCombo
         function onValueChanged() {
@@ -59,7 +58,6 @@ Rectangle {
             powerHex0: "10"; powerHex1: root.hex1; powerHex2: root.hex2; powerHex3: "00"
         }
 
-        // FX TYPE row
         Rectangle {
             width: parent.width
             height: 32
@@ -89,12 +87,10 @@ Rectangle {
 
         Rectangle { width: parent.width; height: 1; color: "#333333" }
 
-        // Dynamic content area
         Item {
             width: parent.width
             height: parent.height - 70
 
-            // Generic view for simple types
             Loader {
                 id: contentLoader
                 anchors.fill: parent
@@ -109,7 +105,6 @@ Rectangle {
         }
     }
 
-    // Generic component: renders controls from Fx1TypeData
     Component {
         id: genericComponent
 
@@ -184,7 +179,6 @@ Rectangle {
         }
     }
 
-    // Complex component: loads dedicated sub-panel
     Component {
         id: complexComponent
 

@@ -66,6 +66,21 @@ void stompbox_fx2::updateSignal()
 void stompbox_fx2::setEditPages()
 {
     QString hex1 = "00";
+    QString hex2 = "66";
+    Preferences *preferences = Preferences::Instance();
+    if(preferences->getPreferences("Window", "BassMode", "bool")=="true")
+    {
+        hex1 = "02";
+        hex2 = "63";
+    };
+
+    editDetails()->setQmlPage("qrc:/qml/Fx2Panel.qml", hex1, hex2);
+}
+
+#if 0  // Original C++ UI — preserved for reference
+void stompbox_fx2::setEditPages_ORIGINAL()
+{
+    QString hex1 = "00";
     QString hex1A = "01";
     QString hex2 = "66";
     Preferences *preferences = Preferences::Instance();
@@ -1243,3 +1258,4 @@ void stompbox_fx2::setEditPages()
     editDetails()->addPage();
 
 }
+#endif

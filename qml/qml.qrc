@@ -45,6 +45,8 @@
         <file>fx1/DelayView.qml</file>
         <file>fx1/HarmonizerView.qml</file>
         <file>fx1/PitchShifterView.qml</file>
+        <file>Fx2Panel.qml</file>
+        <file>Fx3Panel.qml</file>
         <file>knobs/knob_48.png</file>
         <file>knobs/knob_56.png</file>
         <file>knobs/knob_48_gain.png</file>

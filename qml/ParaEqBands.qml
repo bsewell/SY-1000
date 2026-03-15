@@ -1,7 +1,7 @@
 import QtQuick
 
-// Reusable ParaEQ band columns aligned to match graph frequency layout
-// Columns positioned under their corresponding frequency regions
+// ParaEQ knob columns aligned under graph frequency regions
+// 4 columns: LOW | LOW MID | HIGH MID | HIGH (cut + gain stacked)
 Item {
     id: root
 
@@ -10,12 +10,10 @@ Item {
     property string hex2: "00"
     property string baseHex3: "01"
 
-    // Optional reference to ParaEqGraph for bidirectional sync
     property var eqGraph: null
     property bool _ready: false
     Component.onCompleted: _ready = true
 
-    // Graph → Knob: when graph nodes are dragged, update knob values
     Connections {
         target: root.eqGraph
         enabled: root._ready && root.eqGraph !== null
@@ -59,35 +57,25 @@ Item {
             highCutKnob.value = root.eqGraph.highCut
             highCutKnob.displayValue = paramBridge.getDisplayValue(highCutKnob.hex0, highCutKnob.hex1, highCutKnob.hex2, highCutKnob.hex3, root.eqGraph.highCut)
         }
-        function onLevelChanged() {
-            levelKnob.value = root.eqGraph.level
-            levelKnob.displayValue = paramBridge.getDisplayValue(levelKnob.hex0, levelKnob.hex1, levelKnob.hex2, levelKnob.hex3, root.eqGraph.level)
-        }
     }
 
     function hexAdd(base, offset) {
         return (parseInt(base, 16) + offset).toString(16).toUpperCase().padStart(2, '0')
     }
 
-    implicitHeight: lowCol.height
+    implicitHeight: lowMidCol.height
 
-    // Match graph coordinate system:
-    // Graph is at x:12, width: parent.width-24, marginLeft:44, marginRight:12
-    // So plot area within ParaEqBands starts at 12+44=56, width=parent.width-80
+    // Graph coordinate system:
+    // Plot area starts at plotLeft, width = plotW
+    // Log-scale: 100Hz=0.233, 1kHz=0.566, 5kHz=0.799
     readonly property real plotLeft: 56
     readonly property real plotW: Math.max(1, width - 80)
+    readonly property real knobW: 108
 
-    // Band center positions (matching ParaEqGraph curve computation)
-    // Low shelf node: ~0.10 of plotW
-    // Low mid center: 0.20 + (freq/30)*0.18, midpoint ~0.29
-    // High mid center: 0.58 + (freq/30)*0.18, midpoint ~0.67
-    // High shelf node: ~0.90 of plotW
-    readonly property real knobW: 72  // approx knob column width
-
-    // LOW band: centered at 0.10 of plotW
+    // === LOW: centered under 20-100Hz (0 to 0.233) ===
     Column {
         id: lowCol
-        x: Math.max(0, root.plotLeft + root.plotW * 0.10 - root.knobW / 2)
+        x: Math.max(0, root.plotLeft + root.plotW * 0.117 - root.knobW / 2)
         width: root.knobW
         spacing: 2
         Text {
@@ -96,6 +84,7 @@ Item {
         }
         FilmstripKnob {
             id: lowCutKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 8)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
@@ -103,6 +92,7 @@ Item {
         }
         FilmstripKnob {
             id: lowGainKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 0)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
@@ -110,16 +100,16 @@ Item {
         }
     }
 
-    // Divider after LOW
+    // Divider at 100Hz
     Rectangle {
-        x: root.plotLeft + root.plotW * 0.195
-        width: 1; height: lowCol.height; color: "#2a2a2a"
+        x: root.plotLeft + root.plotW * 0.233
+        width: 1; height: lowMidCol.height; color: "#2a2a2a"
     }
 
-    // LOW MID band: centered at 0.29 of plotW
+    // === LOW MID: centered under 100Hz-1kHz (0.233 to 0.566) ===
     Column {
         id: lowMidCol
-        x: root.plotLeft + root.plotW * 0.29 - root.knobW / 2
+        x: root.plotLeft + root.plotW * 0.40 - root.knobW / 2
         width: root.knobW
         spacing: 2
         Text {
@@ -128,6 +118,7 @@ Item {
         }
         FilmstripKnob {
             id: lowMidFreqKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 2)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
@@ -135,6 +126,7 @@ Item {
         }
         FilmstripKnob {
             id: lowMidQKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 3)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
@@ -142,6 +134,7 @@ Item {
         }
         FilmstripKnob {
             id: lowMidGainKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 4)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
@@ -149,16 +142,16 @@ Item {
         }
     }
 
-    // Divider after LOW MID
+    // Divider at 1kHz
     Rectangle {
-        x: root.plotLeft + root.plotW * 0.48
-        width: 1; height: lowCol.height; color: "#2a2a2a"
+        x: root.plotLeft + root.plotW * 0.566
+        width: 1; height: lowMidCol.height; color: "#2a2a2a"
     }
 
-    // HIGH MID band: centered at 0.67 of plotW
+    // === HIGH MID: centered under 1kHz-5kHz (0.566 to 0.799) ===
     Column {
         id: highMidCol
-        x: root.plotLeft + root.plotW * 0.67 - root.knobW / 2
+        x: root.plotLeft + root.plotW * 0.683 - root.knobW / 2
         width: root.knobW
         spacing: 2
         Text {
@@ -167,6 +160,7 @@ Item {
         }
         FilmstripKnob {
             id: highMidFreqKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 5)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
@@ -174,6 +168,7 @@ Item {
         }
         FilmstripKnob {
             id: highMidQKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 6)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
@@ -181,6 +176,7 @@ Item {
         }
         FilmstripKnob {
             id: highMidGainKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 7)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
@@ -188,54 +184,41 @@ Item {
         }
     }
 
-    // Divider after HIGH MID
+    // Divider at 5kHz
     Rectangle {
-        x: root.plotLeft + root.plotW * 0.805
-        width: 1; height: lowCol.height; color: "#2a2a2a"
+        x: root.plotLeft + root.plotW * 0.799
+        width: 1; height: lowMidCol.height; color: "#2a2a2a"
     }
 
-    // HIGH band: centered at 0.90 of plotW
+    // === HIGH: cut on top, gain below — centered between 5kHz divider and right edge ===
     Column {
         id: highCol
-        x: Math.min(root.plotLeft + root.plotW * 0.90 - root.knobW / 2, root.width - root.knobW * 2 - 8)
+        x: root.plotLeft + root.plotW * 0.799 + (root.width - (root.plotLeft + root.plotW * 0.799) - root.knobW) / 2
         width: root.knobW
         spacing: 2
         Text {
-            text: "HIGH"; color: "#666666"; anchors.horizontalCenter: parent.horizontalCenter
+            text: "HIGH CUT"; color: "#666666"; anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 10; font.family: "Roboto Condensed"
         }
         FilmstripKnob {
             id: highCutKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 9)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
             onValueChanged: if (root.eqGraph) root.eqGraph.highCut = value
         }
+        Text {
+            text: "HIGH GAIN"; color: "#666666"
+            font.pixelSize: 10; font.family: "Roboto Condensed"
+        }
         FilmstripKnob {
             id: highGainKnob
+            labelPosition: "left"
             hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
             hex3: root.hexAdd(root.baseHex3, 1)
             filmstrip: "knobs/knob_48.png"; frameSize: 48
             onValueChanged: if (root.eqGraph) root.eqGraph.highGain = value
-        }
-    }
-
-    // LEVEL: right edge
-    Column {
-        id: levelCol
-        x: root.width - root.knobW - 4
-        width: root.knobW
-        spacing: 2
-        Text {
-            text: "LEVEL"; color: "#666666"; anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 10; font.family: "Roboto Condensed"
-        }
-        FilmstripKnob {
-            id: levelKnob
-            hex0: root.hex0; hex1: root.hex1; hex2: root.hex2
-            hex3: root.hexAdd(root.baseHex3, 10)
-            filmstrip: "knobs/knob_48.png"; frameSize: 48
-            onValueChanged: if (root.eqGraph) root.eqGraph.level = value
         }
     }
 }

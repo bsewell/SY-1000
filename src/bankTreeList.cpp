@@ -27,6 +27,8 @@
 #include <QDataStream>
 #include <QByteArray>
 #include "bankTreeList.h"
+#include "patchListModel.h"
+#include "qmlHost.h"
 #include "Preferences.h"
 #include "MidiTable.h"
 #include "SysxIO.h"
@@ -124,29 +126,48 @@ bankTreeList::bankTreeList(QWidget *parent)
     QObject::connect(sysxIO, &SysxIO::updateTreeSignal, this, &bankTreeList::updateTree);
     QObject::connect(sysxIO, &SysxIO::updateNameSignal, this, &bankTreeList::updateNameSignal);
 
-    QHBoxLayout *modeLayout = new QHBoxLayout;
-    modeLayout->setContentsMargins(1, 1, 1, 1);
-    modeLayout->setSpacing(4);
-    modeLayout->addWidget(btnPreset);
-    modeLayout->addWidget(btnUser);
+    // Hide old widgets — QML browser replaces them
+    this->treeList->setVisible(false);
+    this->btnPreset->setVisible(false);
+    this->btnUser->setVisible(false);
+
+    // Set up PatchListModel with initial data
+    this->m_patchModel = PatchListModel::Instance();
+    {
+        QStringList userTexts, presetTexts;
+        for (int i = 0; i < this->userItems.size(); ++i)
+            userTexts.append(this->userItems.at(i)->text(0));
+        for (int i = 0; i < this->presetItems.size(); ++i)
+            presetTexts.append(this->presetItems.at(i)->text(0));
+        m_patchModel->setUserItems(userTexts);
+        m_patchModel->setPresetItems(presetTexts);
+    }
+
+    // Connect QML model's patchClicked to existing MIDI click handler
+    QObject::connect(m_patchModel, &PatchListModel::patchClicked, this, [this](int bank, int patch) {
+        qWarning("PatchListModel patchClicked bank=%d patch=%d", bank, patch);
+        // Find matching QTreeWidgetItem and delegate to existing handler
+        const QList<QTreeWidgetItem*> &source = (bank > 50) ? this->presetItems : this->userItems;
+        int index = (bank > 50) ? ((bank - 51) * 4 + (patch - 1)) : ((bank - 1) * 4 + (patch - 1));
+        if (index >= 0 && index < source.size()) {
+            setItemClicked(source.at(index), 0);
+        }
+    });
+
+    // Sync QML preset/user mode with the C++ mode
+    QObject::connect(m_patchModel, &PatchListModel::presetModeChanged, this, [this]() {
+        bool preset = m_patchModel->presetMode();
+        setBankListMode(preset ? 0 : 1);
+    });
+
+    // QML browser
+    this->m_qmlBrowser = new QmlHost("qrc:/qml/PatchBrowser.qml", this);
 
     QVBoxLayout *treeListLayout = new QVBoxLayout;
-    treeListLayout->addLayout(modeLayout);
-    treeListLayout->addWidget(treeList);
+    treeListLayout->addWidget(m_qmlBrowser);
     treeListLayout->setContentsMargins(0, 0, 0, 0);
-    treeListLayout->setSpacing(2);
+    treeListLayout->setSpacing(0);
     setLayout(treeListLayout);
-
-    QTimer::singleShot(2000, this, [this]() {
-        qWarning("bankTreeList tabs state widgetVisible=%d presetVisible=%d userVisible=%d presetGeom=%d,%d %dx%d userGeom=%d,%d %dx%d",
-                 this->isVisible() ? 1 : 0,
-                 this->btnPreset->isVisible() ? 1 : 0,
-                 this->btnUser->isVisible() ? 1 : 0,
-                 this->btnPreset->geometry().x(), this->btnPreset->geometry().y(),
-                 this->btnPreset->geometry().width(), this->btnPreset->geometry().height(),
-                 this->btnUser->geometry().x(), this->btnUser->geometry().y(),
-                 this->btnUser->geometry().width(), this->btnUser->geometry().height());
-    });
 
     QObject::connect(this, &bankTreeList::setStatusSymbol, sysxIO, &SysxIO::setStatusSymbol);
     QObject::connect(this, &bankTreeList::setStatusProgress, sysxIO, &SysxIO::setStatusProgress);
@@ -693,6 +714,15 @@ void bankTreeList::updatePatchNames(QString name)
     }
     // If presetModeActive is true the userItems are already updated in memory;
     // they will be shown correctly when the user switches back to USER mode.
+
+    // Update QML model with new user names
+    {
+        QStringList userTexts;
+        for (int i = 0; i < this->userItems.size(); ++i)
+            userTexts.append(this->userItems.at(i)->text(0));
+        m_patchModel->setUserItems(userTexts);
+    }
+
     updateTree();
 }
 
@@ -712,6 +742,8 @@ void bankTreeList::updateNameSignal(QString name, int bank, int patch)
         {
             this->treeList->topLevelItem(index)->setText(0, this->userItems.at(index)->text(0));
         }
+        // Update QML model
+        m_patchModel->updateUserItem(index, this->userItems.at(index)->text(0));
     }
 
     SysxIO *sysxIO = &AppServices::instance().sysx();
@@ -754,6 +786,8 @@ void bankTreeList::updateTree()
         this->treeList->topLevelItem(index)->setSelected(true);
         this->treeList->scrollToItem(this->treeList->topLevelItem(index));
     }
+    // Sync QML model selection
+    m_patchModel->setSelectedIndex(index);
 }
 
 void bankTreeList::setBankListMode(int index)

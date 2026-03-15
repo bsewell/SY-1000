@@ -29,6 +29,9 @@
 #include <QList>
 #include <QTreeWidget>
 
+class QmlHost;
+class PatchListModel;
+
 class bankTreeList : public QWidget
 {
     Q_OBJECT
@@ -81,6 +84,8 @@ private:
     QTreeWidget* treeList;
     QPushButton* btnPreset;
     QPushButton* btnUser;
+    QmlHost* m_qmlBrowser;
+    PatchListModel* m_patchModel;
     int itemIndex;
     int listIndex;
     int b;

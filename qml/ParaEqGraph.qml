@@ -126,8 +126,8 @@ Canvas {
         ctx.rect(px + 1, py + 1, pw - 2, ph - 2)
         ctx.clip()
 
-        // Frequency grid lines
-        var freqStops = [0.04, 0.09, 0.16, 0.25, 0.36, 0.50, 0.64, 0.76, 0.86, 0.93, 0.98]
+        // Frequency grid lines — log-spaced: 50,100,200,500,1k,2k,5k,10k
+        var freqStops = [0.133, 0.233, 0.333, 0.466, 0.566, 0.633, 0.799, 0.90]
         ctx.strokeStyle = "rgba(185, 197, 214, 0.10)"
         ctx.lineWidth = 1
         for (var fi = 0; fi < freqStops.length; fi++) {
@@ -162,47 +162,48 @@ Canvas {
             ctx.fillText(gains[li].toString(), px - 6, ly)
         }
 
-        // Frequency labels along bottom — contiguous ranges matching ParaEQ bands
+        // Frequency labels along bottom — contiguous ranges: 20-100, 100-1k, 1k-5k, 5k-20k
+        // Log-scale positions: 100Hz=0.233, 1kHz=0.566, 5kHz=0.799
         ctx.font = "9px 'Roboto Condensed'"
         ctx.textBaseline = "top"
         var flY = py + ph + 4
 
-        // Individual frequency markers
+        // Crossover frequency markers (band boundaries)
         ctx.fillStyle = "rgba(185, 197, 214, 0.59)"
         ctx.textAlign = "center"
         var freqLabels = [
             { pos: 0.00, text: "20" },
-            { pos: 0.16, text: "100" },
-            { pos: 0.36, text: "500" },
-            { pos: 0.50, text: "1k" },
-            { pos: 0.76, text: "5k" },
-            { pos: 0.98, text: "20k" }
+            { pos: 0.233, text: "100" },
+            { pos: 0.566, text: "1k" },
+            { pos: 0.799, text: "5k" },
+            { pos: 1.00, text: "20k" }
         ]
         for (var fli = 0; fli < freqLabels.length; fli++) {
             var flx = px + pw * freqLabels[fli].pos
             ctx.fillText(freqLabels[fli].text, flx, flY)
         }
 
-        // Band range labels (brighter, centered in each band region)
+        // Band range labels centered in each region
         ctx.fillStyle = "rgba(185, 197, 214, 0.35)"
         ctx.font = "8px 'Roboto Condensed'"
         ctx.textAlign = "center"
-        ctx.fillText("LOW", px + pw * 0.10, flY + 10)
-        ctx.fillText("LOW MID", px + pw * 0.29, flY + 10)
-        ctx.fillText("HIGH MID", px + pw * 0.67, flY + 10)
+        ctx.fillText("LOW", px + pw * 0.117, flY + 10)
+        ctx.fillText("LOW MID", px + pw * 0.40, flY + 10)
+        ctx.fillText("HIGH MID", px + pw * 0.683, flY + 10)
         ctx.fillText("HIGH", px + pw * 0.90, flY + 10)
 
-        // Compute curve
+        // Compute curve — band ranges: LOW 20-100, LOW MID 100-1k, HIGH MID 1k-5k, HIGH 5k-20k
+        // Log positions: 100Hz=0.233, 1kHz=0.566, 5kHz=0.799
         var lowCutAmount = Math.max(0, Math.min(1, lowCut / 30.0))
         var highCutAmount = Math.max(0, Math.min(1, highCut / 30.0))
-        var lowCutX = px + pw * (0.02 + lowCutAmount * 0.16)
+        var lowCutX = px + pw * (0.02 + lowCutAmount * 0.20)
         var highCutX = px + pw * (0.82 + highCutAmount * 0.14)
-        var lowMidCenter = px + pw * (0.20 + Math.max(0, Math.min(1, lowMidFreq / 30.0)) * 0.18)
-        var highMidCenter = px + pw * (0.58 + Math.max(0, Math.min(1, highMidFreq / 30.0)) * 0.18)
-        var lowMidWidth = pw * (0.14 - Math.max(0, Math.min(1, lowMidQ / 5.0)) * 0.08)
-        var highMidWidth = pw * (0.14 - Math.max(0, Math.min(1, highMidQ / 5.0)) * 0.08)
-        var lowShelfStart = px + pw * 0.16
-        var highShelfStart = px + pw * 0.76
+        var lowMidCenter = px + pw * (0.233 + Math.max(0, Math.min(1, lowMidFreq / 30.0)) * 0.333)
+        var highMidCenter = px + pw * (0.566 + Math.max(0, Math.min(1, highMidFreq / 30.0)) * 0.233)
+        var lowMidWidth = pw * (0.16 - Math.max(0, Math.min(1, lowMidQ / 5.0)) * 0.10)
+        var highMidWidth = pw * (0.12 - Math.max(0, Math.min(1, highMidQ / 5.0)) * 0.07)
+        var lowShelfStart = px + pw * 0.233
+        var highShelfStart = px + pw * 0.799
 
         var points = []
         var lowShelfPt, lowMidPt, highMidPt, highShelfPt
@@ -211,8 +212,8 @@ Canvas {
             var t = i / 160.0
             var x = px + pw * t
             var gain = 0.0
-            gain += gainValue(lowGain) * (1.0 - smoothStep(lowShelfStart, lowShelfStart + pw * 0.18, x))
-            gain += gainValue(highGain) * smoothStep(highShelfStart - pw * 0.18, highShelfStart, x)
+            gain += gainValue(lowGain) * (1.0 - smoothStep(lowShelfStart, lowShelfStart + pw * 0.15, x))
+            gain += gainValue(highGain) * smoothStep(highShelfStart - pw * 0.10, highShelfStart, x)
             gain += gainValue(lowMidGain) * bellShape(x, lowMidCenter, lowMidWidth)
             gain += gainValue(highMidGain) * bellShape(x, highMidCenter, highMidWidth)
             if (lowCutAmount > 0) {
@@ -224,10 +225,11 @@ Canvas {
             var y = Math.max(py, Math.min(py + ph, zeroY - gain * gainScale))
             points.push({x: x, y: y})
 
-            if (i === 26) lowShelfPt = {x: x, y: y}
+            // Node positions: LOW at ~0.117 (i≈19), HIGH at ~0.90 (i≈144)
+            if (i === 19) lowShelfPt = {x: x, y: y}
             if (Math.abs(x - lowMidCenter) < pw / 160.0) lowMidPt = {x: x, y: y}
             if (Math.abs(x - highMidCenter) < pw / 160.0) highMidPt = {x: x, y: y}
-            if (i === 134) highShelfPt = {x: x, y: y}
+            if (i === 144) highShelfPt = {x: x, y: y}
         }
 
         // Fill under curve
@@ -319,7 +321,7 @@ Canvas {
                 paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.h3LowGain, rawGain)
             } else if (dragNode === 1) {
                 var norm1 = Math.max(0, Math.min(1, (mouse.x - root.plotX) / root.plotW))
-                var frac1 = Math.max(0, Math.min(1, (norm1 - 0.20) / 0.18))
+                var frac1 = Math.max(0, Math.min(1, (norm1 - 0.233) / 0.333))
                 var freq1 = Math.round(frac1 * 30)
                 root.lowMidFreq = freq1
                 root.lowMidGain = rawGain
@@ -327,7 +329,7 @@ Canvas {
                 paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.h3LowMidGain, rawGain)
             } else if (dragNode === 2) {
                 var norm2 = Math.max(0, Math.min(1, (mouse.x - root.plotX) / root.plotW))
-                var frac2 = Math.max(0, Math.min(1, (norm2 - 0.58) / 0.18))
+                var frac2 = Math.max(0, Math.min(1, (norm2 - 0.566) / 0.233))
                 var freq2 = Math.round(frac2 * 30)
                 root.highMidFreq = freq2
                 root.highMidGain = rawGain

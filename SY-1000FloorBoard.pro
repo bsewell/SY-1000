@@ -122,13 +122,15 @@ HEADERS += \
     src/consoletoolbar.h \
     src/parameterBridge.h \
     src/qmlHost.h \
-    src/diagnosticServer.h
+    src/diagnosticServer.h \
+    src/patchListModel.h
 
 SOURCES += \
     src/consoletoolbar.cpp \
     src/parameterBridge.cpp \
     src/qmlHost.cpp \
-    src/diagnosticServer.cpp
+    src/diagnosticServer.cpp \
+    src/patchListModel.cpp
 
 RESOURCES += \
     qml/qml.qrc

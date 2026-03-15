@@ -62,7 +62,7 @@ Item {
             // Dismiss backdrop — clicking anywhere outside closes the popup
             MouseArea {
                 anchors.fill: parent
-                onClicked: overlay.destroy()
+                onClicked: Qt.callLater(overlay.destroy)
             }
 
             Rectangle {
@@ -105,7 +105,7 @@ Item {
                             onClicked: {
                                 root.value = Number(modelData.value)
                                 paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.hex3, root.value)
-                                overlay.destroy()
+                                Qt.callLater(overlay.destroy)
                             }
                         }
                     }

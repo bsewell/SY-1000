@@ -4,127 +4,344 @@ Rectangle {
     id: root
     color: "#1a1a1a"
     property string hex1: "00"
-    // SeqTab spans two hex2 pages: hex2a (DynSynth) and hex2b (DynSynthCont)
     property string hex2a: "16"
     property string hex2b: "17"
 
-    // Compute hex2 for level steps that straddle the page boundary
-    function levelStepHex(index) {
-        var addr = 0x7E + index * 2
+    // Tab state: 0=PITCH, 1=CUTOFF, 2=LEVEL
+    property int stepTab: 0
+    // Curve tab: 0=SEQ1, 1=SEQ2
+    property int curveTab: 0
+
+    // Dynamic step cell width — fits 16 cells + label into available width
+    readonly property real labelW: 36
+    readonly property real gridSpacing: 1
+    readonly property real stepCellW: Math.max(38, Math.floor((width - 16 - labelW - 15 * gridSpacing) / 16))
+
+    // Compute hex2/hex3 for level steps that straddle the page boundary
+    function levelStepAddr(byteOffset) {
+        var addr = 0x7E + byteOffset
         if (addr > 0x7F) {
             return { hex2: root.hex2b, hex3: (addr - 0x80).toString(16).toUpperCase().padStart(2, '0') }
         }
         return { hex2: root.hex2a, hex3: addr.toString(16).toUpperCase().padStart(2, '0') }
     }
 
+    // Step address helpers
+    function pitchMaxHex3(step) { return (0x3E + step * 2).toString(16).toUpperCase().padStart(2, '0') }
+    function pitchMinHex3(step) { return (0x3F + step * 2).toString(16).toUpperCase().padStart(2, '0') }
+    function cutoffMaxHex3(step) { return (0x5E + step * 2).toString(16).toUpperCase().padStart(2, '0') }
+    function cutoffMinHex3(step) { return (0x5F + step * 2).toString(16).toUpperCase().padStart(2, '0') }
+
+    // Curve address: SEQ1 = hex2b 0x24+step, SEQ2 = hex2b 0x3A+step
+    function curveHex3(seq, step) {
+        var base = seq === 0 ? 0x24 : 0x3A
+        return (base + step).toString(16).toUpperCase().padStart(2, '0')
+    }
+
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
-        contentWidth: col.width
-        contentHeight: col.height
+        anchors.margins: 8
+        contentWidth: mainCol.width
+        contentHeight: mainCol.height
         clip: true
-        interactive: contentWidth > width || contentHeight > height
+        interactive: contentHeight > height
 
         Column {
-            id: col
-            spacing: 14
+            id: mainCol
+            width: root.width - 16
+            spacing: 8
 
-            // ---- SEQ 1 ----
-            Text {
-                text: "SEQ 1"
-                color: "#00ccff"
-                font.pixelSize: 12
-                font.family: "Roboto Condensed"
-                font.bold: true
+            // ======== SECTION 1: Target selectors + BPM ========
+            // Boss ref: 3 target combos + BPM knob in a row at top
+            Row {
+                spacing: 12
+
+                SyComboBox {
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3B"
+                    implicitWidth: 180
+                }
+                SyComboBox {
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3C"
+                    implicitWidth: 180
+                }
+                SyComboBox {
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3D"
+                    implicitWidth: 180
+                }
+                FilmstripKnob {
+                    hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "3E"
+                    filmstrip: "knobs/knob_48.png"; frameSize: 48
+                }
             }
 
+            // ======== SECTION 2: SEQ1 + SEQ2 side by side ========
+            // Boss ref: SEQ1 left half, SEQ2 right half, each with header line
             Row {
-                spacing: 14
+                spacing: 12
+                width: parent.width
 
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "1E" }  // SEQ1 SW
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3B"; implicitWidth: 140 }  // Pitch Target
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3C"; implicitWidth: 140 }  // Cutoff Target
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3D"; implicitWidth: 140 }  // Level Target
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "1F" }  // Sync1
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "22" }  // 1Shot1
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "23" }  // Turbo1
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "21" }  // Rate1
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "20" }  // Length1
-            }
+                // --- SEQ1 ---
+                Column {
+                    width: (parent.width - 12) / 2
+                    spacing: 4
 
-            // SEQ1 Pitch Steps
-            Text { text: "PITCH STEPS"; color: "#666"; font.pixelSize: 9; font.family: "Roboto Condensed" }
-            Row {
-                spacing: 4
-                Repeater {
-                    model: 16
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2a
-                        hex3: {
-                            var base = 0x3E + index * 2
-                            return base.toString(16).toUpperCase().padStart(2, '0')
+                    Row {
+                        width: parent.width
+                        spacing: 8
+                        Text {
+                            text: "SEQ1"; color: "#00ccff"
+                            font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true
+                            anchors.verticalCenter: parent.verticalCenter
                         }
-                        frameSize: 32
-                        filmstrip: "knobs/knob_48.png"
-                    }
-                }
-            }
-
-            // SEQ1 Cutoff Steps
-            Text { text: "CUTOFF STEPS"; color: "#666"; font.pixelSize: 9; font.family: "Roboto Condensed" }
-            Row {
-                spacing: 4
-                Repeater {
-                    model: 16
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2a
-                        hex3: {
-                            var base = 0x5E + index * 2
-                            return base.toString(16).toUpperCase().padStart(2, '0')
+                        Rectangle {
+                            height: 1; width: parent.width - 50; color: "#444"
+                            anchors.verticalCenter: parent.verticalCenter
                         }
-                        frameSize: 32
-                        filmstrip: "knobs/knob_48.png"
+                    }
+
+                    Row {
+                        spacing: 4
+                        SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "1E"; implicitWidth: 52 }
+                        SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "1F"; implicitWidth: 52 }
+                        SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "22"; implicitWidth: 52 }
+                        SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "23"; implicitWidth: 52 }
+                        FilmstripKnob {
+                            hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "21"
+                            filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        }
+                        FilmstripKnob {
+                            hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "20"
+                            filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        }
+                    }
+                }
+
+                // --- SEQ2 ---
+                Column {
+                    width: (parent.width - 12) / 2
+                    spacing: 4
+
+                    Row {
+                        width: parent.width
+                        spacing: 8
+                        Text {
+                            text: "SEQ2"; color: "#00ccff"
+                            font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                        Rectangle {
+                            height: 1; width: parent.width - 50; color: "#444"
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                    }
+
+                    Row {
+                        spacing: 4
+                        SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "34"; implicitWidth: 52 }
+                        SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "35"; implicitWidth: 52 }
+                        SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "38"; implicitWidth: 52 }
+                        SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "39"; implicitWidth: 52 }
+                        FilmstripKnob {
+                            hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "37"
+                            filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        }
+                        FilmstripKnob {
+                            hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "36"
+                            filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        }
                     }
                 }
             }
 
-            // SEQ1 Level Steps
-            Text { text: "LEVEL STEPS"; color: "#666"; font.pixelSize: 9; font.family: "Roboto Condensed" }
+            // ======== SECTION 3: PITCH / CUTOFF / LEVEL tab bar ========
+            // Boss ref: tab underline style, PITCH selected cyan
             Row {
-                spacing: 4
+                spacing: 0
+                Repeater {
+                    model: ["PITCH", "CUTOFF", "LEVEL"]
+                    Rectangle {
+                        width: tabLabel.implicitWidth + 24
+                        height: 26
+                        color: "transparent"
+                        Rectangle {
+                            anchors.bottom: parent.bottom
+                            width: parent.width; height: 2; color: "#00ccff"
+                            visible: index === root.stepTab
+                        }
+                        Text {
+                            id: tabLabel
+                            anchors.centerIn: parent
+                            text: modelData
+                            color: index === root.stepTab ? "#00ccff" : "#888"
+                            font.pixelSize: 11; font.family: "Roboto Condensed"
+                            font.bold: index === root.stepTab
+                        }
+                        MouseArea { anchors.fill: parent; onClicked: root.stepTab = index }
+                    }
+                }
+            }
+
+            // ======== SECTION 4: Step grid — 16 columns, dynamic width ========
+            // Boss ref: numbered columns 1-16, MAX row, MIN row
+            Column {
+                spacing: 1
+                width: parent.width
+
+                // Step numbers
+                Row {
+                    spacing: root.gridSpacing
+                    Item { width: root.labelW; height: 1 }
+                    Repeater {
+                        model: 16
+                        Text {
+                            width: root.stepCellW
+                            text: String(index + 1)
+                            color: "#888"
+                            font.pixelSize: 9; font.family: "Roboto Condensed"
+                            horizontalAlignment: Text.AlignHCenter
+                        }
+                    }
+                }
+
+                // MAX row
+                Row {
+                    spacing: root.gridSpacing
+                    Text {
+                        width: root.labelW; text: "MAX"
+                        color: "#aaa"; font.pixelSize: 10; font.family: "Roboto Condensed"; font.bold: true
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                    Repeater {
+                        model: 16
+                        SeqStepValue {
+                            width: root.stepCellW
+                            hex0: "10"; hex1: root.hex1
+                            hex2: {
+                                if (root.stepTab === 2) {
+                                    var a = root.levelStepAddr(index * 2)
+                                    return a.hex2
+                                }
+                                return root.hex2a
+                            }
+                            hex3: {
+                                if (root.stepTab === 0) return root.pitchMaxHex3(index)
+                                if (root.stepTab === 1) return root.cutoffMaxHex3(index)
+                                var a = root.levelStepAddr(index * 2)
+                                return a.hex3
+                            }
+                        }
+                    }
+                }
+
+                // MIN row
+                Row {
+                    spacing: root.gridSpacing
+                    Text {
+                        width: root.labelW; text: "MIN"
+                        color: "#aaa"; font.pixelSize: 10; font.family: "Roboto Condensed"; font.bold: true
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                    Repeater {
+                        model: 16
+                        SeqStepValue {
+                            width: root.stepCellW
+                            hex0: "10"; hex1: root.hex1
+                            hex2: {
+                                if (root.stepTab === 2) {
+                                    var a = root.levelStepAddr(index * 2 + 1)
+                                    return a.hex2
+                                }
+                                return root.hex2a
+                            }
+                            hex3: {
+                                if (root.stepTab === 0) return root.pitchMinHex3(index)
+                                if (root.stepTab === 1) return root.cutoffMinHex3(index)
+                                var a = root.levelStepAddr(index * 2 + 1)
+                                return a.hex3
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ======== SECTION 5: SEQ1 / SEQ2 curve tab bar ========
+            // Boss ref: SEQ1/SEQ2 tabs switch the curve strip
+            Row {
+                spacing: 0
+                Repeater {
+                    model: ["SEQ1", "SEQ2"]
+                    Rectangle {
+                        width: curveTabLabel.implicitWidth + 24
+                        height: 26
+                        color: "transparent"
+                        Rectangle {
+                            anchors.bottom: parent.bottom
+                            width: parent.width; height: 2; color: "#00ccff"
+                            visible: index === root.curveTab
+                        }
+                        Text {
+                            id: curveTabLabel
+                            anchors.centerIn: parent
+                            text: modelData
+                            color: index === root.curveTab ? "#00ccff" : "#888"
+                            font.pixelSize: 11; font.family: "Roboto Condensed"
+                            font.bold: index === root.curveTab
+                        }
+                        MouseArea { anchors.fill: parent; onClicked: root.curveTab = index }
+                    }
+                }
+            }
+
+            // ======== SECTION 6: Curve visualization — 16 cells ========
+            // Boss ref: "CURVE" label + 16 rectangular cells showing transition shapes
+            Row {
+                spacing: root.gridSpacing
+
+                Text {
+                    width: root.labelW; text: "CURVE"
+                    color: "#aaa"; font.pixelSize: 9; font.family: "Roboto Condensed"; font.bold: true
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
                 Repeater {
                     model: 16
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1
-                        hex2: root.levelStepHex(index).hex2
-                        hex3: root.levelStepHex(index).hex3
-                        frameSize: 32
-                        filmstrip: "knobs/knob_48.png"
+                    Rectangle {
+                        id: curveCell
+                        width: root.stepCellW
+                        height: 40
+                        color: "#222"
+                        border.color: "#444"
+                        border.width: 1
+                        radius: 2
+
+                        property string curveAddr: root.curveHex3(root.curveTab, index)
+                        property int curveVal: 0
+
+                        function reload() {
+                            curveVal = paramBridge.getValue("10", root.hex1, root.hex2b, curveAddr)
+                        }
+
+                        Component.onCompleted: reload()
+                        onCurveAddrChanged: reload()
+
+                        Image {
+                            anchors.centerIn: parent
+                            width: parent.width - 4
+                            height: parent.height - 4
+                            source: "qrc:/images/seq_curve_" + curveCell.curveVal + ".png"
+                            fillMode: Image.PreserveAspectFit
+                            opacity: 0.8
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                curveCell.curveVal = (curveCell.curveVal + 1) % 13
+                                paramBridge.setValue("10", root.hex1, root.hex2b, curveCell.curveAddr, curveCell.curveVal)
+                            }
+                        }
                     }
                 }
-            }
-
-            // Divider
-            Rectangle { width: 800; height: 1; color: "#333" }
-
-            // ---- SEQ 2 ----
-            Text {
-                text: "SEQ 2"
-                color: "#00ccff"
-                font.pixelSize: 12
-                font.family: "Roboto Condensed"
-                font.bold: true
-            }
-
-            Row {
-                spacing: 14
-
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "34" }  // SEQ2 SW
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "35" }  // Sync2
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "38" }  // 1Shot2
-                SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "39" }  // Turbo2
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "37" }  // Rate2
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "36" }  // Length2
             }
         }
     }

@@ -74,5 +74,7 @@
         <file>knobs/knob_48.png</file>
         <file>knobs/knob_56.png</file>
         <file>knobs/knob_48_gain.png</file>
+        <file>PatchBrowser.qml</file>
+        <file>SeqStepValue.qml</file>
     </qresource>
 </RCC>

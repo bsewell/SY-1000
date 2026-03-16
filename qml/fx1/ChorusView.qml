@@ -74,9 +74,9 @@ Item {
                 // Main row (always visible): RATE, DEPTH, PRE-DELAY, EFFECT LEVEL,
                 // WAVE FORM, LOW CUT, HIGH CUT, DIRECT LEVEL, BPM
                 Flow {
-                    width: parent.width - 24
-                    x: 12
-                    spacing: 12
+                    width: parent.width - 16
+                    x: 8
+                    spacing: 8
 
                     FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
                     FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
@@ -95,13 +95,13 @@ Item {
                     spacing: 12
                     visible: root.choMode >= 3
 
-                    Rectangle { width: parent.width - 24; height: 1; color: "#333333"; x: 12 }
+                    Rectangle { width: parent.width - 16; height: 1; color: "#333333"; x: 8 }
 
                     // Chorus 1: RATE 1, DEPTH 1, PRE-DELAY 1, EFFECT LEVEL 1, WAVE FORM 1, LOW CUT 1, HIGH CUT 1
                     Flow {
-                        width: parent.width - 24
-                        x: 12
-                        spacing: 12
+                        width: parent.width - 16
+                        x: 8
+                        spacing: 8
 
                         FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
                         FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0B"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
@@ -114,9 +114,9 @@ Item {
 
                     // Chorus 2: RATE 2, DEPTH 2, PRE-DELAY 2, EFFECT LEVEL 2, WAVE FORM 2, LOW CUT 2, HIGH CUT 2, OUTPUT MODE
                     Flow {
-                        width: parent.width - 24
-                        x: 12
-                        spacing: 12
+                        width: parent.width - 16
+                        x: 8
+                        spacing: 8
 
                         FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "11"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
                         FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "12"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }

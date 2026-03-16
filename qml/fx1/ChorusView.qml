@@ -1,4 +1,5 @@
 import QtQuick
+import ".."
 
 // Chorus complex view — matches Boss Tone Studio layout
 // Row 1: MODE dropdown (full-width bar)

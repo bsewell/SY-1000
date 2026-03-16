@@ -91,5 +91,12 @@
         <file>system/SysNormalSetSelect.qml</file>
         <file>system/SysGuitarToMidi.qml</file>
         <file>system/SysAutoPowerOff.qml</file>
+        <file>PedalPanel.qml</file>
+        <file>pedal/PdlNumbers.qml</file>
+        <file>pedal/PdlBanks.qml</file>
+        <file>pedal/PdlCtl.qml</file>
+        <file>pedal/PdlExp.qml</file>
+        <file>pedal/PdlGk.qml</file>
+        <file>pedal/PdlLeds.qml</file>
     </qresource>
 </RCC>

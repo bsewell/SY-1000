@@ -45,6 +45,16 @@ void menuPage_pdl::updateSignal()
 void menuPage_pdl::setEditPages()
 {
     QString hex1 = "00";
+    Preferences *preferences = Preferences::Instance();
+    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; };
+
+    editDetails()->setQmlPage("qrc:/qml/PedalPanel.qml", hex1, "00");
+}
+
+#if 0 // Original C++ widget code replaced by QML
+void menuPage_pdl::setEditPages_OLD()
+{
+    QString hex1 = "00";
     QString sys1 = "01";
     Preferences *preferences = Preferences::Instance();
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; sys1 = "08"; };
@@ -671,3 +681,4 @@ void menuPage_pdl::setEditPages()
     editDetails()->addPage("Tables", "00", "02", "02", "05"); // *********************************************************************
 
 }
+#endif

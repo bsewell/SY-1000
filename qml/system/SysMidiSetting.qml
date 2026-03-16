@@ -94,7 +94,7 @@ Item {
                     ]
 
                     Item {
-                        width: s1Col.width; height: 44
+                        width: s1Col.width; height: modelData.type === "switch" ? 50 : 44; clip: true
                         Text {
                             x: 32; anchors.verticalCenter: parent.verticalCenter
                             text: modelData.label
@@ -102,7 +102,7 @@ Item {
                             font.family: "Roboto Condensed"
                         }
                         Loader {
-                            x: 240; y: modelData.type === "switch" ? -12 : 8
+                            x: 240; y: modelData.type === "switch" ? 4 : 8
                             sourceComponent: modelData.type === "combo" ? midiCombo : midiSwitch
                             property string mHex3: modelData.hex3
                         }
@@ -188,7 +188,7 @@ Item {
 
                 // On/Off switch
                 Item {
-                    width: parent.width; height: 60
+                    width: parent.width; height: 56; clip: true
                     Text {
                         x: 32; anchors.verticalCenter: parent.verticalCenter
                         text: "GUITAR TO MIDI"
@@ -196,7 +196,7 @@ Item {
                         font.family: "Roboto Condensed"
                     }
                     SySwitch {
-                        x: 240; y: -4
+                        x: 240; y: 6
                         hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "00"
                     }
                 }

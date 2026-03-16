@@ -340,13 +340,13 @@ Item {
 
                 // COMP ON/OFF
                 Item {
-                    width: parent.width; height: 60
+                    width: parent.width; height: 56; clip: true
                     Text {
                         x: 32; anchors.verticalCenter: parent.verticalCenter
                         text: "COMP ON/OFF"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed"
                     }
                     SySwitch {
-                        x: 200; y: -4
+                        x: 200; y: 6
                         hex0: "00"; hex1: nFlick.h1; hex2: nFlick.h2; hex3: "08"
                     }
                 }

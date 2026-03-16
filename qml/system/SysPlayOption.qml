@@ -30,7 +30,7 @@ Item {
 
             // BANK CHANGE MODE
             Item {
-                width: parent.width; height: 44
+                width: parent.width; height: 50; clip: true
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "BANK CHANGE MODE"
@@ -38,7 +38,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
-                    x: 240; y: -12
+                    x: 240; y: 4
                     hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "05"
                 }
             }
@@ -88,7 +88,7 @@ Item {
             }
 
             Item {
-                width: parent.width; height: 44
+                width: parent.width; height: 50; clip: true
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "BANK UP/DOWN SW"
@@ -96,7 +96,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
-                    x: 240; y: -12
+                    x: 240; y: 4
                     hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "08"
                 }
             }

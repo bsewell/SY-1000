@@ -30,7 +30,7 @@ Item {
 
             // GK VOL HOLD
             Item {
-                width: parent.width; height: 44
+                width: parent.width; height: 50; clip: true
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "GK VOL HOLD"
@@ -38,14 +38,14 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
-                    x: 240; y: -12
+                    x: 240; y: 4
                     hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "09"
                 }
             }
 
             // EXP1 HOLD
             Item {
-                width: parent.width; height: 44
+                width: parent.width; height: 50; clip: true
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "EXP1 HOLD"
@@ -53,14 +53,14 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
-                    x: 240; y: -12
+                    x: 240; y: 4
                     hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "0A"
                 }
             }
 
             // EXP2 HOLD
             Item {
-                width: parent.width; height: 44
+                width: parent.width; height: 50; clip: true
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "EXP2 HOLD"
@@ -68,7 +68,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
-                    x: 240; y: -12
+                    x: 240; y: 4
                     hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "0B"
                 }
             }
@@ -88,7 +88,7 @@ Item {
             }
 
             Item {
-                width: parent.width; height: 44
+                width: parent.width; height: 50; clip: true
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "GROUND LIFT"
@@ -96,7 +96,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
-                    x: 240; y: -12
+                    x: 240; y: 4
                     hex0: "00"; hex1: panelHex1b; hex2: "10"; hex3: "00"
                 }
             }

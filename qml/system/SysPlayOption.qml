@@ -5,63 +5,99 @@ Item {
     property string panelHex1: parent ? parent.panelHex1 : "01"
     property string panelHex1b: parent ? parent.panelHex1b : "04"
 
-    Column {
+    Flickable {
         anchors.fill: parent
-        spacing: 0
-        topPadding: 16
+        contentHeight: col.height + 32
+        clip: true
 
-        // BANK section
-        Text {
-            x: 16
-            text: "BANK"
-            color: "#888888"
-            font.pixelSize: 11
-            font.family: "Roboto Condensed"
-            font.capitalization: Font.AllUppercase
-        }
+        Column {
+            id: col
+            width: parent.width
+            spacing: 0
 
-        Item { width: 1; height: 12 }
-
-        Row {
-            x: 24
-            spacing: 16
-
-            SySwitch {
-                hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "05"
+            // BANK section header
+            Rectangle {
+                width: parent.width; height: 32
+                color: "#313A47"
+                Text {
+                    x: 16; anchors.verticalCenter: parent.verticalCenter
+                    text: "BANK"
+                    color: "#ffffff"; font.pixelSize: 14
+                    font.family: "Roboto Condensed"
+                }
             }
 
-            SyComboBox {
-                hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "06"
+            // BANK CHANGE MODE
+            Item {
+                width: parent.width; height: 44
+                Text {
+                    x: 32; anchors.verticalCenter: parent.verticalCenter
+                    text: "BANK CHANGE MODE"
+                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    font.family: "Roboto Condensed"
+                }
+                SySwitch {
+                    x: 240; y: -12
+                    hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "05"
+                }
             }
 
-            SyComboBox {
-                hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "07"
+            // BANK EXTENT MIN
+            Item {
+                width: parent.width; height: 44
+                Text {
+                    x: 32; anchors.verticalCenter: parent.verticalCenter
+                    text: "BANK EXTENT MIN"
+                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    font.family: "Roboto Condensed"
+                }
+                SyComboBox {
+                    x: 240; y: 8
+                    hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "06"
+                }
             }
-        }
 
-        Item { width: 1; height: 24 }
+            // BANK EXTENT MAX
+            Item {
+                width: parent.width; height: 44
+                Text {
+                    x: 32; anchors.verticalCenter: parent.verticalCenter
+                    text: "BANK EXTENT MAX"
+                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    font.family: "Roboto Condensed"
+                }
+                SyComboBox {
+                    x: 240; y: 8
+                    hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "07"
+                }
+            }
 
-        Rectangle { width: parent.width - 32; height: 1; color: "#2a2a2a"; x: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
 
-        Item { width: 1; height: 16 }
+            // BANK UP/DOWN SW header
+            Rectangle {
+                width: parent.width; height: 32
+                color: "#313A47"
+                Text {
+                    x: 16; anchors.verticalCenter: parent.verticalCenter
+                    text: "BANK UP/DOWN SW"
+                    color: "#ffffff"; font.pixelSize: 14
+                    font.family: "Roboto Condensed"
+                }
+            }
 
-        Text {
-            x: 16
-            text: "BANK UP/DOWN SW"
-            color: "#888888"
-            font.pixelSize: 11
-            font.family: "Roboto Condensed"
-            font.capitalization: Font.AllUppercase
-        }
-
-        Item { width: 1; height: 12 }
-
-        Row {
-            x: 24
-            spacing: 16
-
-            SySwitch {
-                hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "08"
+            Item {
+                width: parent.width; height: 44
+                Text {
+                    x: 32; anchors.verticalCenter: parent.verticalCenter
+                    text: "BANK UP/DOWN SW"
+                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    font.family: "Roboto Condensed"
+                }
+                SySwitch {
+                    x: 240; y: -12
+                    hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "08"
+                }
             }
         }
     }

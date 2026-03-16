@@ -14,7 +14,6 @@ Item {
 
         // Tab bar
         Row {
-            x: 0
             height: 32
             spacing: 0
 
@@ -22,13 +21,12 @@ Item {
                 model: ["SETTING 1", "SETTING 2", "GUITAR TO MIDI"]
 
                 Rectangle {
-                    width: 140
+                    width: midiRoot.width / 3
                     height: 32
-                    color: midiRoot.currentTab === index ? "#333333" : mouseArea.containsMouse ? "#2a2a2a" : "#222222"
+                    color: midiRoot.currentTab === index ? "#313A47" : "#222222"
 
                     Rectangle {
-                        width: parent.width
-                        height: 2
+                        width: parent.width; height: 2
                         anchors.bottom: parent.bottom
                         color: midiRoot.currentTab === index ? "#66aacc" : "transparent"
                     }
@@ -37,13 +35,11 @@ Item {
                         anchors.centerIn: parent
                         text: modelData
                         color: midiRoot.currentTab === index ? "#ffffff" : "#888888"
-                        font.pixelSize: 11
-                        font.family: "Roboto Condensed"
+                        font.pixelSize: 12; font.family: "Roboto Condensed"
                         font.bold: midiRoot.currentTab === index
                     }
 
                     MouseArea {
-                        id: mouseArea
                         anchors.fill: parent
                         hoverEnabled: true
                         onClicked: midiRoot.currentTab = index
@@ -69,149 +65,166 @@ Item {
         }
     }
 
-    // SETTING 1: 10 controls
+    // SETTING 1: label + control rows
     Component {
         id: setting1Component
 
         Flickable {
-            contentHeight: s1Col.height + 24
+            contentHeight: s1Col.height + 32
             clip: true
 
             Column {
                 id: s1Col
                 width: parent.width
-                spacing: 8
-                topPadding: 16
+                spacing: 0
 
-                Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "00" }
-                    SySwitch   { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "01" }
-                }
-                Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "02" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "03" }
-                }
-                Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "04" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "05" }
-                }
-                Row {
-                    x: 24; spacing: 16
-                    SySwitch   { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "06" }
-                    SySwitch   { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "07" }
-                }
-                Row {
-                    x: 24; spacing: 16
-                    SySwitch   { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "08" }
-                    SySwitch   { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "09" }
+                Repeater {
+                    model: [
+                        { label: "RX CHANNEL",   hex3: "00", type: "combo" },
+                        { label: "OMNI MODE",    hex3: "01", type: "switch" },
+                        { label: "TX CHANNEL",   hex3: "02", type: "combo" },
+                        { label: "MIDI IN THRU", hex3: "03", type: "combo" },
+                        { label: "USB IN THRU",  hex3: "04", type: "combo" },
+                        { label: "SYNC CLOCK",   hex3: "05", type: "combo" },
+                        { label: "CLOCK OUT",    hex3: "06", type: "switch" },
+                        { label: "PC OUT",       hex3: "07", type: "switch" },
+                        { label: "TX PC MAP",    hex3: "08", type: "switch" },
+                        { label: "RX PC MAP",    hex3: "09", type: "switch" }
+                    ]
+
+                    Item {
+                        width: s1Col.width; height: 44
+                        Text {
+                            x: 32; anchors.verticalCenter: parent.verticalCenter
+                            text: modelData.label
+                            color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                            font.family: "Roboto Condensed"
+                        }
+                        Loader {
+                            x: 240; y: modelData.type === "switch" ? -12 : 8
+                            sourceComponent: modelData.type === "combo" ? midiCombo : midiSwitch
+                            property string mHex3: modelData.hex3
+                        }
+                    }
                 }
             }
         }
     }
 
-    // SETTING 2: 17 CC# combos
+    Component {
+        id: midiCombo
+        SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: mHex3 }
+    }
+    Component {
+        id: midiSwitch
+        SySwitch { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: mHex3 }
+    }
+
+    // SETTING 2: CC# combos in rows
     Component {
         id: setting2Component
 
         Flickable {
-            contentHeight: s2Col.height + 24
+            contentHeight: s2Col.height + 32
             clip: true
 
             Column {
                 id: s2Col
                 width: parent.width
-                spacing: 4
-                topPadding: 16
+                spacing: 0
 
-                Text {
-                    x: 16; text: "CC# NUMBERS"
-                    color: "#888888"; font.pixelSize: 11
-                    font.family: "Roboto Condensed"; font.capitalization: Font.AllUppercase
-                }
+                Repeater {
+                    model: [
+                        { label: "CC# No1",       hex3: "0A" },
+                        { label: "CC# No2",       hex3: "0B" },
+                        { label: "CC# No3",       hex3: "0C" },
+                        { label: "CC# No4",       hex3: "0D" },
+                        { label: "CC# BANK DOWN", hex3: "0E" },
+                        { label: "CC# BANK UP",   hex3: "0F" },
+                        { label: "CC# CTL1",      hex3: "10" },
+                        { label: "CC# CTL2",      hex3: "11" },
+                        { label: "CC# CTL3",      hex3: "12" },
+                        { label: "CC# CTL4",      hex3: "13" },
+                        { label: "CC# CTL5",      hex3: "14" },
+                        { label: "CC# CTL6",      hex3: "15" },
+                        { label: "CC# EXP1",      hex3: "16" },
+                        { label: "CC# EXP2",      hex3: "17" },
+                        { label: "CC# GK VOL",    hex3: "18" },
+                        { label: "CC# GK S1",     hex3: "19" },
+                        { label: "CC# GK S2",     hex3: "1A" }
+                    ]
 
-                Item { width: 1; height: 8 }
-
-                // No1-No4
-                Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "0A" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "0B" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "0C" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "0D" }
-                }
-
-                Item { width: 1; height: 8 }
-
-                // Bank Down/Up
-                Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "0E" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "0F" }
-                }
-
-                Item { width: 1; height: 8 }
-
-                // CTL1-6
-                Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "10" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "11" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "12" }
-                }
-                Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "13" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "14" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "15" }
-                }
-
-                Item { width: 1; height: 8 }
-
-                // EXP1, EXP2, GK Vol, GK S1, GK S2
-                Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "16" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "17" }
-                }
-                Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "18" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "19" }
-                    SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: "1A" }
+                    Item {
+                        width: s2Col.width; height: 38
+                        Text {
+                            x: 32; anchors.verticalCenter: parent.verticalCenter
+                            text: modelData.label
+                            color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                            font.family: "Roboto Condensed"
+                        }
+                        SyComboBox {
+                            x: 240; y: 5
+                            hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: modelData.hex3
+                        }
+                    }
                 }
             }
         }
     }
 
-    // GUITAR TO MIDI: 1 switch + 5 combos
+    // GUITAR TO MIDI
     Component {
         id: guitarToMidiComponent
 
-        Column {
-            spacing: 8
-            topPadding: 16
+        Flickable {
+            contentHeight: g2mCol.height + 32
+            clip: true
 
-            Row {
-                x: 24; spacing: 16
-                SySwitch { hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "00" }
-            }
+            Column {
+                id: g2mCol
+                width: parent.width
+                spacing: 0
 
-            Item { width: 1; height: 8 }
+                // On/Off switch
+                Item {
+                    width: parent.width; height: 60
+                    Text {
+                        x: 32; anchors.verticalCenter: parent.verticalCenter
+                        text: "GUITAR TO MIDI"
+                        color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                        font.family: "Roboto Condensed"
+                    }
+                    SySwitch {
+                        x: 240; y: -4
+                        hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "00"
+                    }
+                }
 
-            Row {
-                x: 24; spacing: 16
-                SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "01" }
-                SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "02" }
-                SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "03" }
-            }
+                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
 
-            Row {
-                x: 24; spacing: 16
-                SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "04" }
-                SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "05" }
+                Repeater {
+                    model: [
+                        { label: "PARAMETER 1", hex3: "01" },
+                        { label: "PARAMETER 2", hex3: "02" },
+                        { label: "PARAMETER 3", hex3: "03" },
+                        { label: "PARAMETER 4", hex3: "04" },
+                        { label: "PARAMETER 5", hex3: "05" }
+                    ]
+
+                    Item {
+                        width: g2mCol.width; height: 44
+                        Text {
+                            x: 32; anchors.verticalCenter: parent.verticalCenter
+                            text: modelData.label
+                            color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                            font.family: "Roboto Condensed"
+                        }
+                        SyComboBox {
+                            x: 240; y: 8
+                            hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: modelData.hex3
+                        }
+                    }
+                }
             }
         }
     }

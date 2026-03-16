@@ -5,87 +5,127 @@ Item {
     property string panelHex1: parent ? parent.panelHex1 : "01"
     property string panelHex1b: parent ? parent.panelHex1b : "04"
 
-    Column {
+    Flickable {
         anchors.fill: parent
-        spacing: 0
-        topPadding: 16
+        contentHeight: col.height + 32
+        clip: true
 
-        // ASSIGN HOLD section
-        Text {
-            x: 16
-            text: "ASSIGN HOLD"
-            color: "#888888"
-            font.pixelSize: 11
-            font.family: "Roboto Condensed"
-            font.capitalization: Font.AllUppercase
-        }
+        Column {
+            id: col
+            width: parent.width
+            spacing: 0
 
-        Item { width: 1; height: 12 }
-
-        Row {
-            x: 24
-            spacing: 16
-
-            SySwitch {
-                hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "09"
+            // ASSIGN HOLD section
+            Rectangle {
+                width: parent.width; height: 32
+                color: "#313A47"
+                Text {
+                    x: 16; anchors.verticalCenter: parent.verticalCenter
+                    text: "ASSIGN HOLD"
+                    color: "#ffffff"; font.pixelSize: 14
+                    font.family: "Roboto Condensed"
+                }
             }
 
-            SySwitch {
-                hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "0A"
+            // GK VOL HOLD
+            Item {
+                width: parent.width; height: 44
+                Text {
+                    x: 32; anchors.verticalCenter: parent.verticalCenter
+                    text: "GK VOL HOLD"
+                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    font.family: "Roboto Condensed"
+                }
+                SySwitch {
+                    x: 240; y: -12
+                    hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "09"
+                }
             }
 
-            SySwitch {
-                hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "0B"
+            // EXP1 HOLD
+            Item {
+                width: parent.width; height: 44
+                Text {
+                    x: 32; anchors.verticalCenter: parent.verticalCenter
+                    text: "EXP1 HOLD"
+                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    font.family: "Roboto Condensed"
+                }
+                SySwitch {
+                    x: 240; y: -12
+                    hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "0A"
+                }
             }
-        }
 
-        Item { width: 1; height: 24 }
-        Rectangle { width: parent.width - 32; height: 1; color: "#2a2a2a"; x: 16 }
-        Item { width: 1; height: 16 }
-
-        // GROUND LIFT section
-        Text {
-            x: 16
-            text: "GROUND LIFT"
-            color: "#888888"
-            font.pixelSize: 11
-            font.family: "Roboto Condensed"
-            font.capitalization: Font.AllUppercase
-        }
-
-        Item { width: 1; height: 12 }
-
-        Row {
-            x: 24
-            spacing: 16
-
-            SySwitch {
-                hex0: "00"; hex1: panelHex1b; hex2: "10"; hex3: "00"
+            // EXP2 HOLD
+            Item {
+                width: parent.width; height: 44
+                Text {
+                    x: 32; anchors.verticalCenter: parent.verticalCenter
+                    text: "EXP2 HOLD"
+                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    font.family: "Roboto Condensed"
+                }
+                SySwitch {
+                    x: 240; y: -12
+                    hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "0B"
+                }
             }
-        }
 
-        Item { width: 1; height: 24 }
-        Rectangle { width: parent.width - 32; height: 1; color: "#2a2a2a"; x: 16 }
-        Item { width: 1; height: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
 
-        // OUTPUT LEVEL section
-        Text {
-            x: 16
-            text: "OUTPUT LEVEL"
-            color: "#888888"
-            font.pixelSize: 11
-            font.family: "Roboto Condensed"
-            font.capitalization: Font.AllUppercase
-        }
+            // GROUND LIFT section
+            Rectangle {
+                width: parent.width; height: 32
+                color: "#313A47"
+                Text {
+                    x: 16; anchors.verticalCenter: parent.verticalCenter
+                    text: "GROUND LIFT"
+                    color: "#ffffff"; font.pixelSize: 14
+                    font.family: "Roboto Condensed"
+                }
+            }
 
-        Item { width: 1; height: 12 }
+            Item {
+                width: parent.width; height: 44
+                Text {
+                    x: 32; anchors.verticalCenter: parent.verticalCenter
+                    text: "GROUND LIFT"
+                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    font.family: "Roboto Condensed"
+                }
+                SySwitch {
+                    x: 240; y: -12
+                    hex0: "00"; hex1: panelHex1b; hex2: "10"; hex3: "00"
+                }
+            }
 
-        Row {
-            x: 24
-            spacing: 16
+            Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
 
-            SyComboBox {
-                hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "0D"
+            // OUTPUT LEVEL section
+            Rectangle {
+                width: parent.width; height: 32
+                color: "#313A47"
+                Text {
+                    x: 16; anchors.verticalCenter: parent.verticalCenter
+                    text: "OUTPUT LEVEL"
+                    color: "#ffffff"; font.pixelSize: 14
+                    font.family: "Roboto Condensed"
+                }
+            }
+
+            Item {
+                width: parent.width; height: 44
+                Text {
+                    x: 32; anchors.verticalCenter: parent.verticalCenter
+                    text: "OUTPUT LEVEL"
+                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    font.family: "Roboto Condensed"
+                }
+                SyComboBox {
+                    x: 240; y: 8
+                    hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "0D"
+                }
             }
         }
     }

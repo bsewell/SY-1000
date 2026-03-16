@@ -51,50 +51,33 @@ Item {
 
         // Tab bar
         Row {
-            x: 0
-            height: 32
-            spacing: 0
+            height: 32; spacing: 0
 
             Repeater {
                 model: ["GK INPUT", "NORMAL INPUT"]
-
                 Rectangle {
-                    width: 140
-                    height: 32
-                    color: inputRoot.currentTab === index ? "#333333" : mouseArea.containsMouse ? "#2a2a2a" : "#222222"
-
+                    width: inputRoot.width / 2; height: 32
+                    color: inputRoot.currentTab === index ? "#313A47" : "#222222"
                     Rectangle {
-                        width: parent.width
-                        height: 2
+                        width: parent.width; height: 2
                         anchors.bottom: parent.bottom
                         color: inputRoot.currentTab === index ? "#66aacc" : "transparent"
                     }
-
                     Text {
-                        anchors.centerIn: parent
-                        text: modelData
+                        anchors.centerIn: parent; text: modelData
                         color: inputRoot.currentTab === index ? "#ffffff" : "#888888"
-                        font.pixelSize: 11
-                        font.family: "Roboto Condensed"
+                        font.pixelSize: 12; font.family: "Roboto Condensed"
                         font.bold: inputRoot.currentTab === index
                     }
-
-                    MouseArea {
-                        id: mouseArea
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onClicked: inputRoot.currentTab = index
-                    }
+                    MouseArea { anchors.fill: parent; onClicked: inputRoot.currentTab = index }
                 }
             }
         }
-
         Rectangle { width: parent.width; height: 1; color: "#333333" }
 
         // Content
         Loader {
-            width: parent.width
-            height: parent.height - 33
+            width: parent.width; height: parent.height - 33
             sourceComponent: inputRoot.currentTab === 0 ? gkComponent : normalComponent
         }
     }
@@ -106,21 +89,18 @@ Item {
         Column {
             spacing: 0
 
-            // Set selector
+            // Set selector bar
             Rectangle {
-                width: parent.width
-                height: 32
-                color: "#222222"
+                width: parent.width; height: 36
+                color: "#313A47"
 
                 Row {
                     anchors.verticalCenter: parent.verticalCenter
-                    x: 16
-                    spacing: 8
+                    x: 16; spacing: 6
 
                     Text {
                         text: "SETTING"
-                        color: "#888888"
-                        font.pixelSize: 11
+                        color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
                         font.family: "Roboto Condensed"
                         anchors.verticalCenter: parent.verticalCenter
                     }
@@ -128,9 +108,8 @@ Item {
                     Repeater {
                         model: 10
                         Rectangle {
-                            width: 28; height: 22
-                            radius: 3
-                            color: inputRoot.gkSetIndex === index ? "#66aacc" : gkMa.containsMouse ? "#444444" : "#333333"
+                            width: 28; height: 22; radius: 3
+                            color: inputRoot.gkSetIndex === index ? "#66aacc" : "#444444"
                             Text {
                                 anchors.centerIn: parent
                                 text: (index + 1).toString()
@@ -139,9 +118,7 @@ Item {
                                 font.bold: inputRoot.gkSetIndex === index
                             }
                             MouseArea {
-                                id: gkMa
                                 anchors.fill: parent
-                                hoverEnabled: true
                                 onClicked: inputRoot.gkSetIndex = index
                             }
                         }
@@ -151,16 +128,13 @@ Item {
 
             Rectangle { width: parent.width; height: 1; color: "#333333" }
 
-            // GK Set content — use Loader to force recreate on set change
+            // GK Set content — Loader forces recreate on set change
             Loader {
                 id: gkSetLoader
                 width: parent.width
-                height: parent.parent.height - 65
+                height: parent.parent.height - 70
                 active: true
-
                 sourceComponent: gkSetContent
-
-                // Force reload when set index changes
                 property int setIdx: inputRoot.gkSetIndex
                 onSetIdxChanged: { active = false; active = true }
             }
@@ -172,44 +146,65 @@ Item {
 
         Flickable {
             id: gkFlick
-            contentHeight: gkCol.height + 24
-            clip: true
+            contentHeight: gkCol.height + 32; clip: true
 
             property var addr: inputRoot.gkSetAddr(inputRoot.gkSetIndex)
             property string h1: addr[0]
             property string h2: addr[1]
 
             Column {
-                id: gkCol
-                width: parent.width
-                spacing: 8
-                topPadding: 12
+                id: gkCol; width: parent.width; spacing: 0
 
-                // Top row: GK Type + Scale + PU Phase + PU Direction
+                // GK TYPE
+                Item {
+                    width: parent.width; height: 44
+                    Text { x: 32; y: 14; text: "GK TYPE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: "08" }
+                }
+                // PU PHASE
+                Item {
+                    width: parent.width; height: 44
+                    Text { x: 32; y: 14; text: "PU PHASE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "18" : "17" }
+                }
+                // PU DIRECTION
+                Item {
+                    width: parent.width; height: 44
+                    Text { x: 32; y: 14; text: "PU DIRECTION"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "19" : "18" }
+                }
+                // PU POSITION
+                Item {
+                    width: parent.width; height: 44
+                    Text { x: 32; y: 14; text: "PU POSITION"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "0B" : "1B" }
+                }
+
+                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+
+                // SCALE knob
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SCALE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
-                    x: 24; spacing: 16
-                    SyComboBox { hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: "08" }
+                    x: 32; spacing: 32; height: 80
                     FilmstripKnob {
                         hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: "09"
                         filmstrip: "knobs/knob_56.png"; frameSize: 56
                     }
-                    SyComboBox { hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "18" : "17" }
-                    SyComboBox { hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "19" : "18" }
+                    // NORMAL PU GAIN
+                    FilmstripKnob {
+                        hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2
+                        hex3: inputRoot.isBass ? "1D" : "1C"
+                        filmstrip: "knobs/knob_56.png"; frameSize: 56
+                    }
                 }
 
-                Item { width: 1; height: 4 }
-                Rectangle { width: parent.width - 32; height: 1; color: "#2a2a2a"; x: 16 }
-                Item { width: 1; height: 4 }
+                Item { width: 1; height: 8 }
+                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
 
-                // Distance 1-6
-                Text {
-                    x: 16; text: "DISTANCE"
-                    color: "#888888"; font.pixelSize: 11
-                    font.family: "Roboto Condensed"; font.capitalization: Font.AllUppercase
-                }
-
+                // DISTANCE 1-6
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "DISTANCE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
-                    x: 24; spacing: 8
+                    x: 32; spacing: 16; height: 80
                     Repeater {
                         model: 6
                         FilmstripKnob {
@@ -225,17 +220,13 @@ Item {
                     }
                 }
 
-                Item { width: 1; height: 4 }
+                Item { width: 1; height: 8 }
+                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
 
-                // Level/Sens 1-6
-                Text {
-                    x: 16; text: "LEVEL"
-                    color: "#888888"; font.pixelSize: 11
-                    font.family: "Roboto Condensed"; font.capitalization: Font.AllUppercase
-                }
-
+                // LEVEL / SENS 1-6
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "LEVEL / SENS"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
-                    x: 24; spacing: 8
+                    x: 32; spacing: 16; height: 80
                     Repeater {
                         model: 6
                         FilmstripKnob {
@@ -251,31 +242,18 @@ Item {
                     }
                 }
 
-                Item { width: 1; height: 4 }
-                Rectangle { width: parent.width - 32; height: 1; color: "#2a2a2a"; x: 16 }
-                Item { width: 1; height: 4 }
+                Item { width: 1; height: 8 }
+                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
 
-                // Bottom row: PU Gain, PU Position, Piezo Tone L/H
+                // PIEZO TONE
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "PIEZO TONE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
-                    x: 24; spacing: 16
-
-                    FilmstripKnob {
-                        hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2
-                        hex3: inputRoot.isBass ? "1D" : "1C"
-                        filmstrip: "knobs/knob_56.png"; frameSize: 56
-                    }
-
-                    SyComboBox {
-                        hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2
-                        hex3: inputRoot.isBass ? "0B" : "1B"
-                    }
-
+                    x: 32; spacing: 32; height: 80
                     FilmstripKnob {
                         hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2
                         hex3: inputRoot.isBass ? "1A" : "19"
                         filmstrip: "knobs/knob_56.png"; frameSize: 56
                     }
-
                     FilmstripKnob {
                         hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2
                         hex3: inputRoot.isBass ? "1B" : "1A"
@@ -293,21 +271,18 @@ Item {
         Column {
             spacing: 0
 
-            // Set selector
+            // Set selector bar
             Rectangle {
-                width: parent.width
-                height: 32
-                color: "#222222"
+                width: parent.width; height: 36
+                color: "#313A47"
 
                 Row {
                     anchors.verticalCenter: parent.verticalCenter
-                    x: 16
-                    spacing: 8
+                    x: 16; spacing: 6
 
                     Text {
                         text: "SETTING"
-                        color: "#888888"
-                        font.pixelSize: 11
+                        color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
                         font.family: "Roboto Condensed"
                         anchors.verticalCenter: parent.verticalCenter
                     }
@@ -315,9 +290,8 @@ Item {
                     Repeater {
                         model: 10
                         Rectangle {
-                            width: 28; height: 22
-                            radius: 3
-                            color: inputRoot.normalSetIndex === index ? "#66aacc" : nMa.containsMouse ? "#444444" : "#333333"
+                            width: 28; height: 22; radius: 3
+                            color: inputRoot.normalSetIndex === index ? "#66aacc" : "#444444"
                             Text {
                                 anchors.centerIn: parent
                                 text: (index + 1).toString()
@@ -326,9 +300,7 @@ Item {
                                 font.bold: inputRoot.normalSetIndex === index
                             }
                             MouseArea {
-                                id: nMa
                                 anchors.fill: parent
-                                hoverEnabled: true
                                 onClicked: inputRoot.normalSetIndex = index
                             }
                         }
@@ -342,11 +314,9 @@ Item {
             Loader {
                 id: normalSetLoader
                 width: parent.width
-                height: parent.parent.height - 65
+                height: parent.parent.height - 70
                 active: true
-
                 sourceComponent: normalSetContent
-
                 property int setIdx: inputRoot.normalSetIndex
                 onSetIdxChanged: { active = false; active = true }
             }
@@ -358,32 +328,34 @@ Item {
 
         Flickable {
             id: nFlick
-            contentHeight: nCol.height + 24
-            clip: true
+            contentHeight: nCol.height + 32; clip: true
 
             property var addr: inputRoot.normalSetAddr(inputRoot.normalSetIndex)
             property string h1: addr[0]
             property string h2: addr[1]
 
             Column {
-                id: nCol
-                width: parent.width
-                spacing: 8
-                topPadding: 12
+                id: nCol; width: parent.width; spacing: 0
 
-                // Comp On/Off
-                Row {
-                    x: 24; spacing: 16
+                // COMP ON/OFF
+                Item {
+                    width: parent.width; height: 60
+                    Text {
+                        x: 32; anchors.verticalCenter: parent.verticalCenter
+                        text: "COMP ON/OFF"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed"
+                    }
                     SySwitch {
+                        x: 200; y: -4
                         hex0: "00"; hex1: nFlick.h1; hex2: nFlick.h2; hex3: "08"
                     }
                 }
 
-                Item { width: 1; height: 4 }
+                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
 
-                // Attack, Sustain, Level
+                // Knobs: Attack, Sustain, Level
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "ATTACK / SUSTAIN / LEVEL"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
-                    x: 24; spacing: 16
+                    x: 32; spacing: 32; height: 80
                     FilmstripKnob {
                         hex0: "00"; hex1: nFlick.h1; hex2: nFlick.h2; hex3: "09"
                         filmstrip: "knobs/knob_56.png"; frameSize: 56
@@ -398,9 +370,13 @@ Item {
                     }
                 }
 
-                // Sense, Low, High
+                Item { width: 1; height: 8 }
+                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+
+                // Knobs: Sense, Low, High
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SENSE / LOW / HIGH"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
-                    x: 24; spacing: 16
+                    x: 32; spacing: 32; height: 80
                     FilmstripKnob {
                         hex0: "00"; hex1: nFlick.h1; hex2: nFlick.h2; hex3: "0C"
                         filmstrip: "knobs/knob_56.png"; frameSize: 56

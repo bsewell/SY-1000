@@ -116,13 +116,6 @@ Rectangle {
 
                 property string panelHex1: root.hex1
                 property string panelHex1b: root.hex1b
-
-                onSourceChanged: {
-                    // Force reload by deactivating then reactivating
-                    if (status === Loader.Error) {
-                        console.warn("SystemPanel: failed to load", source)
-                    }
-                }
             }
         }
     }

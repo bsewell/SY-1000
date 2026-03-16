@@ -34,7 +34,7 @@ Item {
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "GK VOL HOLD"
-                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    color: "#ccffffff"; font.pixelSize: 12
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
@@ -49,7 +49,7 @@ Item {
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "EXP1 HOLD"
-                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    color: "#ccffffff"; font.pixelSize: 12
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
@@ -64,7 +64,7 @@ Item {
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "EXP2 HOLD"
-                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    color: "#ccffffff"; font.pixelSize: 12
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
@@ -73,7 +73,7 @@ Item {
                 }
             }
 
-            Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
 
             // GROUND LIFT section
             Rectangle {
@@ -92,7 +92,7 @@ Item {
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "GROUND LIFT"
-                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    color: "#ccffffff"; font.pixelSize: 12
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
@@ -101,7 +101,7 @@ Item {
                 }
             }
 
-            Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
 
             // OUTPUT LEVEL section
             Rectangle {
@@ -120,7 +120,7 @@ Item {
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "OUTPUT LEVEL"
-                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    color: "#ccffffff"; font.pixelSize: 12
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {

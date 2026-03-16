@@ -34,7 +34,7 @@ Item {
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "AUDIO ROUTING"
-                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    color: "#ccffffff"; font.pixelSize: 12
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {
@@ -49,7 +49,7 @@ Item {
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "IN POSITION"
-                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    color: "#ccffffff"; font.pixelSize: 12
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {
@@ -64,7 +64,7 @@ Item {
                 Text {
                     x: 32; anchors.verticalCenter: parent.verticalCenter
                     text: "OUT POSITION"
-                    color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                    color: "#ccffffff"; font.pixelSize: 12
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {
@@ -73,7 +73,7 @@ Item {
                 }
             }
 
-            Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
             Item { width: 1; height: 16 }
 
             // Level knobs row

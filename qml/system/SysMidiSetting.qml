@@ -98,7 +98,7 @@ Item {
                         Text {
                             x: 32; anchors.verticalCenter: parent.verticalCenter
                             text: modelData.label
-                            color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                            color: "#ccffffff"; font.pixelSize: 12
                             font.family: "Roboto Condensed"
                         }
                         Loader {
@@ -160,7 +160,7 @@ Item {
                         Text {
                             x: 32; anchors.verticalCenter: parent.verticalCenter
                             text: modelData.label
-                            color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                            color: "#ccffffff"; font.pixelSize: 12
                             font.family: "Roboto Condensed"
                         }
                         SyComboBox {
@@ -192,7 +192,7 @@ Item {
                     Text {
                         x: 32; anchors.verticalCenter: parent.verticalCenter
                         text: "GUITAR TO MIDI"
-                        color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                        color: "#ccffffff"; font.pixelSize: 12
                         font.family: "Roboto Condensed"
                     }
                     SySwitch {
@@ -201,7 +201,7 @@ Item {
                     }
                 }
 
-                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
 
                 Repeater {
                     model: [
@@ -217,7 +217,7 @@ Item {
                         Text {
                             x: 32; anchors.verticalCenter: parent.verticalCenter
                             text: modelData.label
-                            color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                            color: "#ccffffff"; font.pixelSize: 12
                             font.family: "Roboto Condensed"
                         }
                         SyComboBox {

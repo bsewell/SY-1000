@@ -101,7 +101,7 @@ Item {
 
                     Text {
                         text: "SETTING"
-                        color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                        color: "#ccffffff"; font.pixelSize: 12
                         font.family: "Roboto Condensed"
                         anchors.verticalCenter: parent.verticalCenter
                     }
@@ -159,32 +159,32 @@ Item {
                 // GK TYPE
                 Item {
                     width: parent.width; height: 44
-                    Text { x: 32; y: 14; text: "GK TYPE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                    Text { x: 32; y: 14; text: "GK TYPE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                     SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: "08" }
                 }
                 // PU PHASE
                 Item {
                     width: parent.width; height: 44
-                    Text { x: 32; y: 14; text: "PU PHASE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                    Text { x: 32; y: 14; text: "PU PHASE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                     SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "18" : "17" }
                 }
                 // PU DIRECTION
                 Item {
                     width: parent.width; height: 44
-                    Text { x: 32; y: 14; text: "PU DIRECTION"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                    Text { x: 32; y: 14; text: "PU DIRECTION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                     SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "19" : "18" }
                 }
                 // PU POSITION
                 Item {
                     width: parent.width; height: 44
-                    Text { x: 32; y: 14; text: "PU POSITION"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                    Text { x: 32; y: 14; text: "PU POSITION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                     SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "0B" : "1B" }
                 }
 
-                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
 
                 // SCALE knob
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SCALE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SCALE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
                     x: 32; spacing: 32; height: 80
                     FilmstripKnob {
@@ -200,10 +200,10 @@ Item {
                 }
 
                 Item { width: 1; height: 8 }
-                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
 
                 // DISTANCE 1-6
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "DISTANCE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "DISTANCE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
                     x: 32; spacing: 16; height: 80
                     Repeater {
@@ -222,10 +222,10 @@ Item {
                 }
 
                 Item { width: 1; height: 8 }
-                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
 
                 // LEVEL / SENS 1-6
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "LEVEL / SENS"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "LEVEL / SENS"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
                     x: 32; spacing: 16; height: 80
                     Repeater {
@@ -244,10 +244,10 @@ Item {
                 }
 
                 Item { width: 1; height: 8 }
-                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
 
                 // PIEZO TONE
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "PIEZO TONE"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "PIEZO TONE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
                     x: 32; spacing: 32; height: 80
                     FilmstripKnob {
@@ -283,7 +283,7 @@ Item {
 
                     Text {
                         text: "SETTING"
-                        color: "rgba(255,255,255,0.8)"; font.pixelSize: 12
+                        color: "#ccffffff"; font.pixelSize: 12
                         font.family: "Roboto Condensed"
                         anchors.verticalCenter: parent.verticalCenter
                     }
@@ -343,7 +343,7 @@ Item {
                     width: parent.width; height: 60
                     Text {
                         x: 32; anchors.verticalCenter: parent.verticalCenter
-                        text: "COMP ON/OFF"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed"
+                        text: "COMP ON/OFF"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed"
                     }
                     SySwitch {
                         x: 200; y: -4
@@ -351,10 +351,10 @@ Item {
                     }
                 }
 
-                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
 
                 // Knobs: Attack, Sustain, Level
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "ATTACK / SUSTAIN / LEVEL"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "ATTACK / SUSTAIN / LEVEL"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
                     x: 32; spacing: 32; height: 80
                     FilmstripKnob {
@@ -372,10 +372,10 @@ Item {
                 }
 
                 Item { width: 1; height: 8 }
-                Rectangle { width: parent.width - 32; height: 1; color: "rgba(255,255,255,0.15)"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
 
                 // Knobs: Sense, Low, High
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SENSE / LOW / HIGH"; color: "rgba(255,255,255,0.8)"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SENSE / LOW / HIGH"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
                 Row {
                     x: 32; spacing: 32; height: 80
                     FilmstripKnob {

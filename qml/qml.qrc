@@ -76,5 +76,16 @@
         <file>knobs/knob_48_gain.png</file>
         <file>PatchBrowser.qml</file>
         <file>SeqStepValue.qml</file>
+        <file>TunerPanel.qml</file>
+        <file>SystemPanel.qml</file>
+        <file>system/SysPlaceholder.qml</file>
+        <file>system/SysTotalSetting.qml</file>
+        <file>system/SysPlayOption.qml</file>
+        <file>system/SysHardwareSetting.qml</file>
+        <file>system/SysUsbSetting.qml</file>
+        <file>system/SysMidiSetting.qml</file>
+        <file>system/SysKnobSetting.qml</file>
+        <file>system/SysOutputSetting.qml</file>
+        <file>system/SysInputSetting.qml</file>
     </qresource>
 </RCC>

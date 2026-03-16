@@ -72,95 +72,119 @@ Rectangle {
         anchors.fill: parent
         spacing: 0
 
-        // ===== Row 1: Header — power button + title only =====
+        // ===== Row 1: Header — power icon + title + VARIATION button =====
         Rectangle {
             width: parent.width
-            height: 36
-            color: Qt.rgba(root.accentColor.r, root.accentColor.g, root.accentColor.b, 0.82)
+            height: 40
+            color: Qt.rgba(root.accentColor.r * 0.35, root.accentColor.g * 0.35, root.accentColor.b * 0.35, 1.0)
 
-            Row {
-                anchors.fill: parent
+            // Power icon button
+            Item {
+                id: powerBtn
+                anchors.left: parent.left
                 anchors.leftMargin: 10
-                anchors.rightMargin: 10
-                spacing: 8
+                anchors.verticalCenter: parent.verticalCenter
+                width: 32
+                height: 32
 
-                // Power button
-                Item {
-                    width: 40
-                    height: 36
-                    anchors.verticalCenter: parent.verticalCenter
+                Rectangle {
+                    anchors.centerIn: parent
+                    width: 28
+                    height: 28
+                    radius: 14
+                    color: "transparent"
+                    border.color: root.powerValue !== 0 ? root.accentColor : "#666"
+                    border.width: 2
 
-                    Rectangle {
+                    // Power symbol ⏻ — circle with line
+                    Text {
                         anchors.centerIn: parent
-                        width: 28
-                        height: 18
-                        radius: 9
-                        color: root.powerValue !== 0 ? "#ffffff" : Qt.rgba(0, 0, 0, 0.3)
-                        border.color: Qt.rgba(1, 1, 1, 0.4)
-                        border.width: 1
-
-                        Rectangle {
-                            x: root.powerValue !== 0 ? parent.width - width - 2 : 2
-                            y: 2
-                            width: 14
-                            height: 14
-                            radius: 7
-                            color: root.powerValue !== 0 ? root.accentColor : "#888"
-                            Behavior on x { NumberAnimation { duration: 100 } }
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                root.powerValue = root.powerValue !== 0 ? 0 : 1
-                                paramBridge.setValue("10", root.hex1, root.hex2, "00", root.powerValue)
-                            }
-                        }
+                        text: "\u23FB"
+                        color: root.powerValue !== 0 ? root.accentColor : "#666"
+                        font.pixelSize: 14
                     }
                 }
 
-                // Title
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        root.powerValue = root.powerValue !== 0 ? 0 : 1
+                        paramBridge.setValue("10", root.hex1, root.hex2, "00", root.powerValue)
+                    }
+                }
+            }
+
+            // Title
+            Text {
+                anchors.left: powerBtn.right
+                anchors.leftMargin: 8
+                anchors.verticalCenter: parent.verticalCenter
+                text: root.instLabel
+                color: "#ffffff"
+                font.pixelSize: 16
+                font.family: "Roboto Condensed"
+                font.bold: true
+            }
+
+            // VARIATION dropdown (right-aligned)
+            Rectangle {
+                anchors.right: parent.right
+                anchors.rightMargin: 10
+                anchors.verticalCenter: parent.verticalCenter
+                width: varText.implicitWidth + 24
+                height: 24
+                radius: 3
+                color: "transparent"
+                border.color: "#666"
+                border.width: 1
+
                 Text {
-                    text: root.instLabel
-                    color: "#ffffff"
-                    font.pixelSize: 15
+                    id: varText
+                    anchors.centerIn: parent
+                    text: "VARIATION  \u25BC"
+                    color: "#cccccc"
+                    font.pixelSize: 10
                     font.family: "Roboto Condensed"
-                    font.bold: true
-                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
                 }
             }
         }
 
-        // ===== Row 2: INST TYPE dropdown + tab bar =====
+        // ===== Row 2: INST TYPE dropdown (left) + tab bar (right-aligned) =====
         Rectangle {
             width: parent.width
-            height: 32
+            height: 34
             color: "#2a2a2a"
 
-            Row {
-                anchors.fill: parent
+            // INST TYPE dropdown — left side
+            SyComboBox {
+                id: instTypeCombo
+                hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                anchors.left: parent.left
                 anchors.leftMargin: 12
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            // Tab bar — right-aligned
+            Row {
+                anchors.right: parent.right
+                anchors.rightMargin: 8
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height
                 spacing: 0
 
-                // INST TYPE dropdown
-                SyComboBox {
-                    id: instTypeCombo
-                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-
-                // Spacer
-                Item { width: 16; height: 1 }
-
-                // Tab bar
                 Repeater {
                     model: root.tabNames
 
                     Rectangle {
-                        width: tabText.implicitWidth + 20
-                        height: 32
+                        width: tabText.implicitWidth + 24
+                        height: 34
                         color: "transparent"
-                        anchors.verticalCenter: parent.verticalCenter
 
                         Rectangle {
                             anchors.bottom: parent.bottom
@@ -182,6 +206,7 @@ Rectangle {
 
                         MouseArea {
                             anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
                             onClicked: root.currentTab = index
                         }
                     }
@@ -199,7 +224,7 @@ Rectangle {
         // Tab content area
         Item {
             width: parent.width
-            height: parent.height - 69
+            height: parent.height - 75
 
             CommonTab {
                 anchors.fill: parent

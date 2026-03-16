@@ -8,7 +8,7 @@ Item {
 
     Text {
         anchors.centerIn: parent
-        text: "Not yet implemented"
+        text: "No parameters for this page"
         color: "#666666"
         font.pixelSize: 14
         font.family: "Roboto Condensed"

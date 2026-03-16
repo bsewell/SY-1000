@@ -87,5 +87,9 @@
         <file>system/SysKnobSetting.qml</file>
         <file>system/SysOutputSetting.qml</file>
         <file>system/SysInputSetting.qml</file>
+        <file>system/SysGkSetSelect.qml</file>
+        <file>system/SysNormalSetSelect.qml</file>
+        <file>system/SysGuitarToMidi.qml</file>
+        <file>system/SysAutoPowerOff.qml</file>
     </qresource>
 </RCC>

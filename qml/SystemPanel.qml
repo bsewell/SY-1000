@@ -26,10 +26,10 @@ Rectangle {
         ListElement { label: "USB SETTING";      source: "system/SysUsbSetting.qml" }
         ListElement { label: "MIDI SETTING";     source: "system/SysMidiSetting.qml" }
         ListElement { label: "TUNER";            source: "TunerPanel.qml" }
-        ListElement { label: "GK SET SELECT";    source: "system/SysPlaceholder.qml" }
-        ListElement { label: "NORMAL SET SELECT"; source: "system/SysPlaceholder.qml" }
-        ListElement { label: "GUITAR TO MIDI";   source: "system/SysPlaceholder.qml" }
-        ListElement { label: "AUTO POWER OFF";   source: "system/SysPlaceholder.qml" }
+        ListElement { label: "GK SET SELECT";    source: "system/SysGkSetSelect.qml" }
+        ListElement { label: "NORMAL SET SELECT"; source: "system/SysNormalSetSelect.qml" }
+        ListElement { label: "GUITAR TO MIDI";   source: "system/SysGuitarToMidi.qml" }
+        ListElement { label: "AUTO POWER OFF";   source: "system/SysAutoPowerOff.qml" }
         ListElement { label: "OTHER";            source: "system/SysPlaceholder.qml" }
     }
 

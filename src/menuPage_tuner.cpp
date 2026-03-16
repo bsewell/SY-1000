@@ -42,34 +42,9 @@ void menuPage_tuner::updateSignal()
 
 void menuPage_tuner::setEditPages()
 {
-    QString hex1 = "01";
+    QString hex1 = "00";
     Preferences *preferences = Preferences::Instance();
-    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "08"; };
-    editDetails()->page()->newGroupBox(tr("TUNER"));
-    editDetails()->page()->newStackControl(0);
-    editDetails()->page()->addComboBox(1, 0, 1, 1, "00", hex1, "00", "04", "large"); // tuner type
-    editDetails()->page()->addStackControl();
-    hex1 = "04";
-    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "0B";};
-    editDetails()->page()->addComboBox(1, 1, 1, 1, "00", hex1, "20", "03", "large"); // ref pitch
-    editDetails()->page()->addComboBox(1, 2, 1, 1, "00", hex1, "20", "06", "large"); // output
-    editDetails()->page()->insertStackField(0, 0, 0, 1, 3);
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    hex1 = "00";
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; };
 
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->newGroupBox(tr("POLY TUNER"));
-    editDetails()->page()->addVU(0, 0, 1, 1, "10", hex1, "12", "25", "command", "poly_tuner");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->addStackField();
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->newGroupBox(tr("MONO TUNER"));
-    editDetails()->page()->addVU(0, 0, 1, 1, "10", hex1, "12", "25", "command", "mono_tuner");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->addStackField();
-
-
-    editDetails()->addPage();
+    editDetails()->setQmlPage("qrc:/qml/TunerPanel.qml", hex1, "00");
 }

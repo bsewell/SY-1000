@@ -25,7 +25,7 @@ Rectangle {
         ListElement { label: "HARDWARE SETTING"; source: "system/SysHardwareSetting.qml" }
         ListElement { label: "USB SETTING";      source: "system/SysUsbSetting.qml" }
         ListElement { label: "MIDI SETTING";     source: "system/SysMidiSetting.qml" }
-        ListElement { label: "TUNER";            source: "system/SysPlaceholder.qml" }
+        ListElement { label: "TUNER";            source: "TunerPanel.qml" }
         ListElement { label: "GK SET SELECT";    source: "system/SysPlaceholder.qml" }
         ListElement { label: "NORMAL SET SELECT"; source: "system/SysPlaceholder.qml" }
         ListElement { label: "GUITAR TO MIDI";   source: "system/SysPlaceholder.qml" }

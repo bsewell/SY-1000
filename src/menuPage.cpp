@@ -181,32 +181,32 @@ void menuPage::tuner_ButtonSignal(bool value)
     if (this->id == 10 && value == true)
     {
         SysxIO *sysxIO = SysxIO::Instance();
-        if(!sysxIO->isConnected())
-        {
-            emit setStatusSymbol(0);
-            emit setStatusMessage(tr("Not connected"));
-            qWarning("TUNER_COMMAND_BLOCKED not connected");
-            return;
-        }
         emitValueChanged(this->hex1, this->hex2, "00", "void");
         this->editDialog->setWindow(this->fxName);
         emit setEditDialog(this->editDialog);
-        QString hex1 = "01";
-        Preferences *preferences = Preferences::Instance();
-        if(preferences->getPreferences("Window", "BassMode", "bool")=="true")
+        if(sysxIO->isConnected())
         {
-            hex1 = "08";
-        };
-        int value = sysxIO->getSourceValue("00", hex1, "00", "04");   // tuner type
-        if(value==0)
-        {
-            sysxIO->setMode("mode3");
-            qWarning("TUNER_COMMAND_SENT mode=3");
+            QString hex1 = "01";
+            Preferences *preferences = Preferences::Instance();
+            if(preferences->getPreferences("Window", "BassMode", "bool")=="true")
+            {
+                hex1 = "08";
+            };
+            int value = sysxIO->getSourceValue("00", hex1, "00", "04");   // tuner type
+            if(value==0)
+            {
+                sysxIO->setMode("mode3");
+                qWarning("TUNER_COMMAND_SENT mode=3");
+            }
+            else
+            {
+                sysxIO->setMode("mode4");
+                qWarning("TUNER_COMMAND_SENT mode=4");
+            };
         }
         else
         {
-            sysxIO->setMode("mode4");
-            qWarning("TUNER_COMMAND_SENT mode=4");
+            qWarning("TUNER_SETTINGS_ONLY not connected");
         };
     };
 }

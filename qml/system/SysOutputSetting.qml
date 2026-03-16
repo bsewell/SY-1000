@@ -57,22 +57,22 @@ Item {
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "OUTPUT SELECT L"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "00" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "00" }
                 }
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "OUTPUT SELECT R"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "01" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "01" }
                 }
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "STEREO LINK"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "36" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "36" }
                 }
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "PHASE L"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "34" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "34" }
                 }
 
                 // Level knobs
@@ -111,17 +111,17 @@ Item {
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "OUTPUT SELECT L"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "16" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "16" }
                 }
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "OUTPUT SELECT R"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "17" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "17" }
                 }
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "PHASE L"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "35" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: outputRoot.panelHex1b; hex2: "00"; hex3: "35" }
                 }
 
                 Row {

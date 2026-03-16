@@ -24,17 +24,17 @@ Item {
             Item {
                 width: parent.width; height: 56; clip: true
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SOURCE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SySwitch { x: 240; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "30" }
+                SySwitch { x: 160; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "30" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "PATCH FUNCTION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "2C" }
+                SyComboBox { x: 160; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "2C" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SYSTEM FUNCTION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "1C" }
+                SyComboBox { x: 160; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "1C" }
             }
 
             Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
@@ -47,7 +47,7 @@ Item {
             Item {
                 width: parent.width; height: 56; clip: true
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "GLOBAL"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SySwitch { x: 240; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "00"; hex3: "09" }
+                SySwitch { x: 160; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "00"; hex3: "09" }
             }
 
             Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
@@ -60,27 +60,27 @@ Item {
             Item {
                 width: parent.width; height: 56; clip: true
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SOURCE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SySwitch { x: 240; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "31" }
+                SySwitch { x: 160; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "31" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "PATCH FUNCTION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "2D" }
+                SyComboBox { x: 160; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "2D" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "PATCH MODE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "2E" }
+                SyComboBox { x: 160; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "2E" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SYSTEM FUNCTION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "1D" }
+                SyComboBox { x: 160; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "1D" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SYSTEM MODE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "1E" }
+                SyComboBox { x: 160; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "1E" }
             }
 
             Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
@@ -93,27 +93,27 @@ Item {
             Item {
                 width: parent.width; height: 56; clip: true
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SOURCE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SySwitch { x: 240; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "32" }
+                SySwitch { x: 160; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "32" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "PATCH FUNCTION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "2F" }
+                SyComboBox { x: 160; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "2F" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "PATCH MODE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "30" }
+                SyComboBox { x: 160; y: 8; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: "30" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SYSTEM FUNCTION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "1F" }
+                SyComboBox { x: 160; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "1F" }
             }
             Item {
                 width: parent.width; height: 44
                 Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SYSTEM MODE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                SyComboBox { x: 240; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "20" }
+                SyComboBox { x: 160; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: "20" }
             }
         }
     }

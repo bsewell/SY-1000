@@ -42,31 +42,31 @@ Item {
                     Item {
                         width: parent.width; height: 56; clip: true
                         Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SOURCE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                        SySwitch { x: 240; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "20"; hex3: modelData.prefHex3 }
+                        SySwitch { x: 160; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "20"; hex3: modelData.prefHex3 }
                     }
 
                     // Patch LED ON/OFF
                     Item {
                         width: parent.width; height: 44
                         Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "PATCH LED ON"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                        SyComboBox { x: 240; y: 8; hex0: "10"; hex1: panelHex1; hex2: "03"; hex3: modelData.patchOn }
+                        SyComboBox { x: 160; y: 8; hex0: "10"; hex1: panelHex1; hex2: "03"; hex3: modelData.patchOn }
                     }
                     Item {
                         width: parent.width; height: 44
                         Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "PATCH LED OFF"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                        SyComboBox { x: 240; y: 8; hex0: "10"; hex1: panelHex1; hex2: "03"; hex3: modelData.patchOff }
+                        SyComboBox { x: 160; y: 8; hex0: "10"; hex1: panelHex1; hex2: "03"; hex3: modelData.patchOff }
                     }
 
                     // System LED ON/OFF
                     Item {
                         width: parent.width; height: 44
                         Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SYSTEM LED ON"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                        SyComboBox { x: 240; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "20"; hex3: modelData.sysOn }
+                        SyComboBox { x: 160; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "20"; hex3: modelData.sysOn }
                     }
                     Item {
                         width: parent.width; height: 44
                         Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SYSTEM LED OFF"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                        SyComboBox { x: 240; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "20"; hex3: modelData.sysOff }
+                        SyComboBox { x: 160; y: 8; hex0: "00"; hex1: panelSysHex1; hex2: "20"; hex3: modelData.sysOff }
                     }
 
                     Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }

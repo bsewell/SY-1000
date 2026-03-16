@@ -38,7 +38,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
-                    x: 240; y: 4
+                    x: 160; y: 4
                     hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "05"
                 }
             }
@@ -53,7 +53,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {
-                    x: 240; y: 8
+                    x: 160; y: 8
                     hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "06"
                 }
             }
@@ -68,7 +68,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {
-                    x: 240; y: 8
+                    x: 160; y: 8
                     hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "07"
                 }
             }
@@ -96,7 +96,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SySwitch {
-                    x: 240; y: 4
+                    x: 160; y: 4
                     hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "08"
                 }
             }

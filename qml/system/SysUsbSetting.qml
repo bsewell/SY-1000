@@ -38,7 +38,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {
-                    x: 240; y: 8
+                    x: 160; y: 8
                     hex0: "00"; hex1: panelHex1b; hex2: "00"; hex3: "43"
                 }
             }
@@ -53,7 +53,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {
-                    x: 240; y: 8
+                    x: 160; y: 8
                     hex0: "00"; hex1: panelHex1b; hex2: "00"; hex3: "44"
                 }
             }
@@ -68,7 +68,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {
-                    x: 240; y: 8
+                    x: 160; y: 8
                     hex0: "00"; hex1: panelHex1b; hex2: "00"; hex3: "45"
                 }
             }

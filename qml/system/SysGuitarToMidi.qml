@@ -31,7 +31,7 @@ Item {
                 font.family: "Roboto Condensed"
             }
             SySwitch {
-                x: 240; y: 6
+                x: 160; y: 6
                 hex0: "00"; hex1: panelHex1b; hex2: "21"; hex3: "00"
             }
         }
@@ -56,7 +56,7 @@ Item {
                     font.family: "Roboto Condensed"
                 }
                 SyComboBox {
-                    x: 240; y: 8
+                    x: 160; y: 8
                     hex0: "00"; hex1: panelHex1b; hex2: "21"; hex3: modelData.hex3
                 }
             }

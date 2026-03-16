@@ -102,7 +102,7 @@ Item {
                             font.family: "Roboto Condensed"
                         }
                         Loader {
-                            x: 240; y: modelData.type === "switch" ? 4 : 8
+                            x: 160; y: modelData.type === "switch" ? 4 : 8
                             sourceComponent: modelData.type === "combo" ? midiCombo : midiSwitch
                             property string mHex3: modelData.hex3
                         }
@@ -164,7 +164,7 @@ Item {
                             font.family: "Roboto Condensed"
                         }
                         SyComboBox {
-                            x: 240; y: 5
+                            x: 160; y: 5
                             hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: modelData.hex3
                         }
                     }
@@ -196,7 +196,7 @@ Item {
                         font.family: "Roboto Condensed"
                     }
                     SySwitch {
-                        x: 240; y: 6
+                        x: 160; y: 6
                         hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "00"
                     }
                 }
@@ -221,7 +221,7 @@ Item {
                             font.family: "Roboto Condensed"
                         }
                         SyComboBox {
-                            x: 240; y: 8
+                            x: 160; y: 8
                             hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: modelData.hex3
                         }
                     }

@@ -30,7 +30,7 @@ Item {
                 font.family: "Roboto Condensed"
             }
             SyComboBox {
-                x: 240; y: 8
+                x: 160; y: 8
                 hex0: "00"; hex1: panelHex1; hex2: "00"; hex3: "26"
             }
         }

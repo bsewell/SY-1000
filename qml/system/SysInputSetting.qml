@@ -160,25 +160,25 @@ Item {
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "GK TYPE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: "08" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: "08" }
                 }
                 // PU PHASE
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "PU PHASE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "18" : "17" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "18" : "17" }
                 }
                 // PU DIRECTION
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "PU DIRECTION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "19" : "18" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "19" : "18" }
                 }
                 // PU POSITION
                 Item {
                     width: parent.width; height: 44
                     Text { x: 32; y: 14; text: "PU POSITION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 200; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "0B" : "1B" }
+                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "0B" : "1B" }
                 }
 
                 Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
@@ -346,7 +346,7 @@ Item {
                         text: "COMP ON/OFF"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed"
                     }
                     SySwitch {
-                        x: 200; y: 6
+                        x: 160; y: 6
                         hex0: "00"; hex1: nFlick.h1; hex2: nFlick.h2; hex3: "08"
                     }
                 }

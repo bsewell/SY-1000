@@ -2,7 +2,7 @@
 # deploy.sh — macdeployqt + deterministic bottom-up signing.
 set -euo pipefail
 
-APP="/Users/bsewell/010-MUSIC-STUDIO/SY-1000/build/packager/SY-1000FloorBoard.app"
+APP="/Users/bsewell/010-MUSIC-STUDIO/SY-1000/build/build/packager/SY-1000FloorBoard.app"
 DEST="/Applications/SY-1000FloorBoard.app"
 
 if [ ! -d "$APP" ]; then

@@ -2,6 +2,7 @@ import QtQuick
 import ".."
 
 Item {
+    anchors.fill: parent
     property string panelHex1: parent ? parent.panelHex1 : "01"
     property string panelHex1b: parent ? parent.panelHex1b : "04"
 

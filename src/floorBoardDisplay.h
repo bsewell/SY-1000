@@ -128,6 +128,9 @@ private:
         bool currentSyncStatus;
         initPatchListMenu *initPatch;
         QString patchName;
+        QString currentBankPatchStr;
+        QLabel *bankTypeLabel;
+        void updateCombinedPatchDisplay();
         /*QString temp1_sysxMsg;
         QString temp2_sysxMsg;
         QString temp3_sysxMsg;

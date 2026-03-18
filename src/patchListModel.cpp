@@ -1,4 +1,5 @@
 #include "patchListModel.h"
+#include <QTimer>
 
 PatchListModel *PatchListModel::s_instance = nullptr;
 
@@ -125,7 +126,13 @@ void PatchListModel::itemClicked(int index)
     const QString &text = currentItems().at(index);
     int bank = 0, patch = 0;
     parseBankPatch(text, bank, patch);
-    emit patchClicked(bank, patch);
+    // Defer to next event-loop iteration so the QML MouseArea click
+    // handler finishes before the synchronous MIDI patch-change begins.
+    // Without this, the MIDI send pumps the event loop, which can
+    // destroy QML objects while the click handler is still on the stack.
+    QTimer::singleShot(0, this, [this, bank, patch]() {
+        emit patchClicked(bank, patch);
+    });
 }
 
 const QStringList& PatchListModel::currentItems() const

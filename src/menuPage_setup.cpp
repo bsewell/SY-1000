@@ -43,31 +43,8 @@ void menuPage_setup::updateSignal()
 void menuPage_setup::setEditPages()
 {
     QString hex1 = "00";
-    QString hex2A = "20";
-    QString hex2B = "2B";
     Preferences *preferences = Preferences::Instance();
-    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2A = "1F"; hex2B = "29";};
+    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
-    editDetails()->page()->newGroupBox(tr("Input Levels"));
-    editDetails()->page()->newStackControl(0);
-    editDetails()->page()->addComboBox(0, 0, 1, 1, "10", hex1, "12", "00", "icon_large_40");  // gk/normal patch type
-    editDetails()->page()->addStackControl();
-    editDetails()->page()->addSystemOverride(1, 1, 1, 1, "10", hex1, "12", "00", "00", "command_equal", "10", hex1, "15", "01", "00" ); //control Synth 1 to dynamic
-    editDetails()->page()->addSystemOverride(1, 1, 1, 1, "10", hex1, "12", "00", "00", "command_equal", "10", hex1, hex2A, "01", "00" ); //control Synth 2 to dynamic
-    editDetails()->page()->addSystemOverride(1, 1, 1, 1, "10", hex1, "12", "00", "00", "command_equal", "10", hex1, hex2B, "01", "00" ); //control Synth 3 to dynamic
-    editDetails()->page()->insertStackField(0, 1, 0, 1, 1);
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->newGroupBox(tr("GK Input Levels"));
-    editDetails()->page()->addVU(0, 0, 1, 1, "10", hex1, "12", "25", "command", "6_band");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->addStackField();
-    editDetails()->page()->newStackField(0);
-    editDetails()->page()->newGroupBox(tr("Normal Input Levels"));
-    editDetails()->page()->addVU(0, 0, 1, 1, "10", hex1, "12", "25", "command", "54_band");
-    editDetails()->page()->addGroupBox(0, 0, 1, 1);
-    editDetails()->page()->addStackField();
-
-    editDetails()->addPage();
+    editDetails()->setQmlPage("qrc:/qml/SetupPanel.qml", hex1, "00");
 }

@@ -22,6 +22,7 @@
 ****************************************************************************/
 
 #include "menuPage_master.h"
+#include "Preferences.h"
 
 menuPage_master::menuPage_master(QWidget *parent)
     : menuPage(parent)
@@ -36,5 +37,9 @@ void menuPage_master::updateSignal()
 
 void menuPage_master::setEditPages()
 {
+    QString hex1 = "00";
+    Preferences *preferences = Preferences::Instance();
+    if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02";};
 
+    editDetails()->setQmlPage("qrc:/qml/MasterPanel.qml", hex1, "00");
 }

@@ -98,5 +98,8 @@
         <file>pedal/PdlExp.qml</file>
         <file>pedal/PdlGk.qml</file>
         <file>pedal/PdlLeds.qml</file>
+        <file>SetupPanel.qml</file>
+        <file>AssignPanel.qml</file>
+        <file>assign/AssignSlot.qml</file>
     </qresource>
 </RCC>

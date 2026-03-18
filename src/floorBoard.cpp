@@ -317,7 +317,7 @@ void floorBoard::setFloorBoard()
 
     // Keep the left patch browser compact so the signal-flow/editor area has more room.
     const int rawOffset = qMax(0, qRound(imageFloor.width()*ratio - (997*ratio)));
-    this->offset = qMax(int(150*ratio), rawOffset/2);
+    this->offset = qMax(int(130*ratio), rawOffset/2);
     this->stompSize = imagestompBG.size()*ratio/3;
     this->structureHeight = 60*ratio;
 
@@ -373,7 +373,7 @@ void floorBoard::setSize(QSize newSize)
 
     uint oldOffset = offset;
     const int rawOffset = qMax(0, qRound(newSize.width()*ratio - (997*ratio)));
-    this->offset = qMax(int(150*ratio), rawOffset/2);
+    this->offset = qMax(int(130*ratio), rawOffset/2);
     QSize oldFloorSize = this->floorSize;
     this->floorSize = newSize;
 

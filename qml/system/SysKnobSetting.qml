@@ -71,18 +71,9 @@ Item {
                     { label: "KNOB 6 SETTING", hex3: "22" }
                 ]
 
-                Item {
-                    width: col.width; height: 44
-                    Text {
-                        x: 32; anchors.verticalCenter: parent.verticalCenter
-                        text: modelData.label
-                        color: "#ccffffff"; font.pixelSize: 12
-                        font.family: "Roboto Condensed"
-                    }
-                    SyComboBox {
-                        x: 160; y: 8
-                        hex0: "00"; hex1: knobRoot.panelHex1; hex2: "00"; hex3: modelData.hex3
-                    }
+                SyComboBox {
+                    x: 16; width: 420
+                    hex0: "00"; hex1: knobRoot.panelHex1; hex2: "00"; hex3: modelData.hex3
                 }
             }
         }

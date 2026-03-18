@@ -94,15 +94,18 @@ Item {
                     ]
 
                     Item {
-                        width: s1Col.width; height: modelData.type === "switch" ? 50 : 44; clip: true
+                        width: s1Col.width; height: modelData.type === "switch" ? 44 : 36; clip: true
                         Text {
                             x: 32; anchors.verticalCenter: parent.verticalCenter
                             text: modelData.label
-                            color: "#ccffffff"; font.pixelSize: 12
+                            color: "#ccffffff"; font.pixelSize: 11
                             font.family: "Roboto Condensed"
+                            visible: modelData.type === "switch"
                         }
                         Loader {
-                            x: 160; y: modelData.type === "switch" ? 4 : 8
+                            x: modelData.type === "combo" ? 16 : 160
+                            y: modelData.type === "switch" ? 4 : 4
+                            width: modelData.type === "combo" ? 420 : undefined
                             sourceComponent: modelData.type === "combo" ? midiCombo : midiSwitch
                             property string mHex3: modelData.hex3
                         }
@@ -114,7 +117,7 @@ Item {
 
     Component {
         id: midiCombo
-        SyComboBox { hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: mHex3 }
+        SyComboBox { width: parent ? parent.width : 380; hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: mHex3 }
     }
     Component {
         id: midiSwitch
@@ -155,18 +158,9 @@ Item {
                         { label: "CC# GK S2",     hex3: "1A" }
                     ]
 
-                    Item {
-                        width: s2Col.width; height: 38
-                        Text {
-                            x: 32; anchors.verticalCenter: parent.verticalCenter
-                            text: modelData.label
-                            color: "#ccffffff"; font.pixelSize: 12
-                            font.family: "Roboto Condensed"
-                        }
-                        SyComboBox {
-                            x: 160; y: 5
-                            hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: modelData.hex3
-                        }
+                    SyComboBox {
+                        x: 16; width: 420
+                        hex0: "00"; hex1: midiRoot.panelHex1; hex2: "30"; hex3: modelData.hex3
                     }
                 }
             }
@@ -212,18 +206,9 @@ Item {
                         { label: "PARAMETER 5", hex3: "05" }
                     ]
 
-                    Item {
-                        width: g2mCol.width; height: 44
-                        Text {
-                            x: 32; anchors.verticalCenter: parent.verticalCenter
-                            text: modelData.label
-                            color: "#ccffffff"; font.pixelSize: 12
-                            font.family: "Roboto Condensed"
-                        }
-                        SyComboBox {
-                            x: 160; y: 8
-                            hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: modelData.hex3
-                        }
+                    SyComboBox {
+                        x: 16; width: 420
+                        hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: modelData.hex3
                     }
                 }
             }

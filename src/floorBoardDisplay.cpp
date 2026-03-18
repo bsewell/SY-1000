@@ -64,11 +64,11 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
     //QFont Lfont( "Roboto Condensed", 16*fratio, QFont::Normal);
-    QFont Mfont( "Roboto Condensed", 9*fratio, QFont::Normal);
-    const int headerFontPointSize = qMax(9, int(9 * fratio));
+    QFont Mfont( "Roboto Condensed", 11*fratio, QFont::Normal);
+    const int headerFontPointSize = qMax(11, int(11 * fratio));
     const int headerTitlePointSize = qMax(14, int(14 * fratio));
-    const int headerTop = int(5 * ratio);
-    const int headerHeight = int(34 * ratio);
+    const int headerTop = int(4 * ratio);
+    const int headerHeight = int(40 * ratio);
     //QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
 
     this->pos = pos;
@@ -76,14 +76,14 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     this->patchLoadError = false;
     this->blinkCount = 0;
 
-    this->patchNumDisplay = new customDisplay(QRect(20*ratio, 5*ratio, 74*ratio, 34*ratio), this);
+    this->patchNumDisplay = new customDisplay(QRect(12*ratio, headerTop, 100*ratio, headerHeight), this);
     this->patchNumDisplay->setLabelPosition(true);
     this->patchNumDisplay->setMainObjectName("bankMain");
     this->patchNumDisplay->setSubObjectName("bankSub");
     this->patchNumDisplay->setFrameVisible(false);
     this->patchNumDisplay->setAttribute(Qt::WA_TranslucentBackground, true);
     this->patchNumDisplay->setWhatsThis(tr("Patch Number Display.<br>displays the currently selected patch<br>and patch write memory location."));
-    this->patchDisplay = new customDisplay(QRect(108*ratio, 5*ratio, 145*ratio, 34*ratio), this);
+    this->patchDisplay = new customDisplay(QRect(118*ratio, headerTop, 190*ratio, headerHeight), this);
     this->patchDisplay->setMainObjectName("nameMain");
     this->patchDisplay->setSubObjectName("nameSub");
     this->patchDisplay->setFrameVisible(false);
@@ -121,50 +121,50 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     this->patchDisplay->setMainText(deviceType + tr(" FloorBoard"));
     this->patchDisplay->setSubText(tr("version"), version);
 
-    initPatch = new initPatchListMenu(QRect(265*ratio, 5*ratio, 300*ratio, 34*ratio), this);
+    initPatch = new initPatchListMenu(QRect(316*ratio, headerTop, 240*ratio, headerHeight), this);
     initPatch->setFont(Mfont);
     initPatch->setFlatMode(true);
     initPatch->setAttribute(Qt::WA_TranslucentBackground, true);
     initPatch->setWhatsThis(tr("Clicking on this will load a patch from a predefined selection.<br>patches place in the init_patches folder will appear in this list at the start of the next session."));
 
     renameWidget *nameEdit = new renameWidget(this);
-    nameEdit->setGeometry(108*ratio, 5*ratio, 150*ratio, 34*ratio);
+    nameEdit->setGeometry(118*ratio, headerTop, 190*ratio, headerHeight);
     nameEdit->setWhatsThis(tr("Clicking on this will open<br>a text dialog window<br>allowing user text input."));
 
     this->writeDialog = new patchWriteDialog();
     this->writeDialog->hide();
 
-    this->tuner_Button = new customPanelButton(tr("Tuner"), false, QPoint(570*ratio, 5*ratio), this, ":/images/switch.png");
+    this->tuner_Button = new customPanelButton(tr("Tuner"), false, QPoint(570*ratio, headerTop), this, ":/images/switch.png");
     this->tuner_Button->setBackgroundVisible(false);
     this->tuner_Button->setLabelPointSize(headerFontPointSize);
     this->tuner_Button->setWhatsThis(tr("Deep editing of the selected effect<br>pressing this button will open an edit page<br>allowing detailed setting of this effects parameters."));
 
-    this->setup_Button = new customPanelButton(tr("Input"), false, QPoint(620*ratio, 5*ratio), this, ":/images/switch.png");
+    this->setup_Button = new customPanelButton(tr("Input"), false, QPoint(625*ratio, headerTop), this, ":/images/switch.png");
     this->setup_Button->setBackgroundVisible(false);
     this->setup_Button->setLabelPointSize(headerFontPointSize);
     this->setup_Button->setWhatsThis(tr("Deep editing of the selected effect<br>pressing this button will open an edit page<br>allowing detailed setting of this effects parameters."));
 
-    this->connectButton = new customButton(tr("Off Line/On Line"), false, QPoint(665*ratio, 5*ratio), this, ":/images/greenledbutton.png");
+    this->connectButton = new customButton(tr("deBug Mode"), false, QPoint(680*ratio, headerTop), this, ":/images/greenledbutton.png");
     this->connectButton->setBackgroundVisible(false);
     this->connectButton->setLabelPointSize(headerFontPointSize);
     this->connectButton->setWhatsThis(tr("Connect Button<br>used to establish a continuous midi connection<br>when lit green, the connection is valid"));
 
-    this->writeButton = new customButton(tr("Write"), false, QPoint(750*ratio, 5*ratio), this, ":/images/ledbutton.png");
+    this->writeButton = new customButton(tr("Write"), false, QPoint(770*ratio, headerTop), this, ":/images/ledbutton.png");
     this->writeButton->setBackgroundVisible(false);
     this->writeButton->setLabelPointSize(headerFontPointSize);
     this->writeButton->setWhatsThis(tr("Write Button<br>if the patch number displays [temp buffer]<br>the current patch is sent to the SY-1000 temporary memory only<br>or else the patch will be written to the displayed patch memory location."));
 
-    this->system_Button = new customPanelButton(tr("System"), false, QPoint(840*ratio, 5*ratio), this, ":/images/switch.png");
+    this->system_Button = new customPanelButton(tr("System"), false, QPoint(840*ratio, headerTop), this, ":/images/switch.png");
     this->system_Button->setBackgroundVisible(false);
     this->system_Button->setLabelPointSize(headerFontPointSize);
     this->system_Button->setWhatsThis(tr("Deep editing of the selected effect<br>pressing this button will open an edit page<br>allowing detailed setting of this effects parameters."));
 
-    this->pedal_Button = new customPanelButton(tr("Pedal"), false, QPoint(890*ratio, 5*ratio), this, ":/images/switch.png");
+    this->pedal_Button = new customPanelButton(tr("Pedal"), false, QPoint(900*ratio, headerTop), this, ":/images/switch.png");
     this->pedal_Button->setBackgroundVisible(false);
     this->pedal_Button->setLabelPointSize(headerFontPointSize);
     this->pedal_Button->setWhatsThis(tr("Deep editing of the selected effect<br>pressing this button will open an edit page<br>allowing detailed setting of this effects parameters."));
 
-    this->assign1_Button = new customPanelButton(tr("Assign"), false, QPoint(940*ratio, 5*ratio), this, ":/images/switch.png");
+    this->assign1_Button = new customPanelButton(tr("Assign"), false, QPoint(960*ratio, headerTop), this, ":/images/switch.png");
     this->assign1_Button->setBackgroundVisible(false);
     this->assign1_Button->setLabelPointSize(headerFontPointSize);
     this->assign1_Button->setWhatsThis(tr("Deep editing of the selected effect<br>pressing this button will open an edit page<br>allowing detailed setting of this effects parameters."));
@@ -227,19 +227,43 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     this->pedal_Button->setLabelPointSize(headerFontPointSize);
     this->assign1_Button->setLabelPointSize(headerFontPointSize);
 
-    normalizeDisplayFonts(this->patchNumDisplay);
-    normalizeDisplayFonts(this->patchDisplay);
-    const QList<QLabel*> patchNumberLabels = this->patchNumDisplay->findChildren<QLabel*>();
-    for(QLabel *label : patchNumberLabels)
+    // Patch number: main label (patch number) gets large bold font,
+    // sub label ("User"/"Preset") stays at header size.
     {
-        if(label->objectName() != "bankSub")
+        const QList<QLabel*> numLabels = this->patchNumDisplay->findChildren<QLabel*>();
+        for(QLabel *label : numLabels)
         {
-            continue;
+            QFont font = label->font();
+            if(label->objectName() == "bankMain")
+            {
+                font.setPointSize(headerTitlePointSize);
+                font.setBold(true);
+            }
+            else
+            {
+                font.setPointSize(headerFontPointSize);
+            }
+            label->setFont(font);
         }
-
-        QFont font = label->font();
-        font.setPointSize(headerTitlePointSize);
-        label->setFont(font);
+    }
+    // Patch name: main label (patch name) gets large bold font,
+    // sub label (filename) stays at header size.
+    {
+        const QList<QLabel*> nameLabels = this->patchDisplay->findChildren<QLabel*>();
+        for(QLabel *label : nameLabels)
+        {
+            QFont font = label->font();
+            if(label->objectName() == "nameMain")
+            {
+                font.setPointSize(qMax(13, int(13 * fratio)));
+                font.setBold(true);
+            }
+            else
+            {
+                font.setPointSize(headerFontPointSize);
+            }
+            label->setFont(font);
+        }
     }
     if(QComboBox *quickLoadCombo = initPatch->findChild<QComboBox*>())
     {

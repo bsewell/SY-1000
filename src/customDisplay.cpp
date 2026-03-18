@@ -144,21 +144,21 @@ void customDisplay::setLabelPosition(bool invert)
 
     this->mainLabel = new QLabel(this);
     this->mainLabel->setObjectName("displayLarge");
-    QFont Mfont( "Roboto Condensed", 9*fratio, QFont::Normal);
+    QFont Mfont( "Roboto Condensed", 12*fratio, QFont::Bold);
     this->mainLabel->setFont(Mfont);
     this->mainLabel->setAlignment(Qt::AlignLeft);
     this->mainLabel->setGeometry(mainGeometry);
 
     this->subLabelLeft = new QLabel(this);
     this->subLabelLeft->setObjectName("displaySmall");
-    QFont SLfont( "Roboto Condensed", 8*fratio, QFont::Normal);
+    QFont SLfont( "Roboto Condensed", 10*fratio, QFont::Normal);
     this->subLabelLeft->setFont(SLfont);
     this->subLabelLeft->setAlignment(Qt::AlignLeft);
     this->subLabelLeft->setGeometry(subGeometry);
 
     this->subLabelRight = new QLabel(this);
     this->subLabelRight->setObjectName("displaySmall");
-    QFont SRfont( "Roboto Condensed", 8*fratio, QFont::Normal);
+    QFont SRfont( "Roboto Condensed", 10*fratio, QFont::Normal);
     this->subLabelRight->setFont(SRfont);
     this->subLabelRight->setAlignment(Qt::AlignRight);
     this->subLabelRight->setGeometry(subGeometry);

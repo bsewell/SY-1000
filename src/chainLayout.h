@@ -12,9 +12,10 @@
 // Columns are indexed from 0 (first FX column, immediately right
 // of the source blocks).  Column X = firstFlowX + index * flowStep.
 //
-// Stage 2: data structure only — not yet wired into floorBoard.
-// Stage 3 will replace the local variables in updateStructure()
-// with ChainLayout lookups.
+// Stage 3A complete: row centres wired into update_structure() via rowCenterY().
+// colX() used for BAL1/2/3 column positions.  Local lev1..lev4 / flowStep
+// variables in update_structure() remain as aliases; they may be removed in a
+// future pass if the duplication causes drift.
 
 // The seven logical rows of the signal chain.
 enum class ChainRow : int {

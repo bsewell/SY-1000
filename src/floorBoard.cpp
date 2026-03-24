@@ -1817,11 +1817,11 @@ void floorBoard::update_structure()
         else if(i==2)                     { newFxPos.append(QPoint(offset+(15*ratio), lev3)); }  // instrument 3
         else if(i==3)                     { newFxPos.append(QPoint(offset+(15*ratio), lev4));    x_axis=firstFlowX; y_axis=lev1; rowCenterCurrent=rowCenter1; }  // normal input
         else if(stomp>27 && incr==0)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev2; rowCenterCurrent=rowCenter2; }  // fill lev2
-        else if(stomp>27 && incr==1)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal1xpos*flowStep)), bal1TopY)); x_axis=flowStep+(bal1xpos*flowStep); y_axis=bal1TopY; rowCenterCurrent=rowCenterBal1; }  // Bal1 out
+        else if(stomp>27 && incr==1)      { newFxPos.append(QPoint(offset+layout.colX(bal1xpos), bal1TopY)); x_axis=layout.colX(bal1xpos); y_axis=bal1TopY; rowCenterCurrent=rowCenterBal1; }  // Bal1 out
         else if(stomp>27 && incr==2)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev3; rowCenterCurrent=rowCenter3; }  // fill lev3 – left-pack INST3 items from C1 (§5a C1 rule)
-        else if(stomp>27 && incr==3)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal2xpos*flowStep)), rowCenterBal2 - balancerHalfHeight)); x_axis=flowStep+(bal2xpos*flowStep); y_axis=rowCenterBal2 - balancerHalfHeight; rowCenterCurrent=rowCenterBal2; }  // Bal2 out
+        else if(stomp>27 && incr==3)      { newFxPos.append(QPoint(offset+layout.colX(bal2xpos), rowCenterBal2 - balancerHalfHeight)); x_axis=layout.colX(bal2xpos); y_axis=rowCenterBal2 - balancerHalfHeight; rowCenterCurrent=rowCenterBal2; }  // Bal2 out
         else if(stomp>27 && incr==4)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev4; rowCenterCurrent=rowCenter4; }  // fill lev4 – left-pack NORMAL items from C1 (§5a C1 rule)
-        else if(stomp>27 && incr==5)      { newFxPos.append(QPoint(offset+((40*ratio)+(bal3xpos*flowStep)), rowCenterBal3 - balancerHalfHeight)); x_axis=flowStep+(bal3xpos*flowStep); y_axis=rowCenterBal3 - balancerHalfHeight; rowCenterCurrent=rowCenterBal3; }  // Bal3 out
+        else if(stomp>27 && incr==5)      { newFxPos.append(QPoint(offset+layout.colX(bal3xpos), rowCenterBal3 - balancerHalfHeight)); x_axis=layout.colX(bal3xpos); y_axis=rowCenterBal3 - balancerHalfHeight; rowCenterCurrent=rowCenterBal3; }  // Bal3 out
         else
         {
             const int alignedY = topForRowCenter(stomp, rowCenterCurrent);

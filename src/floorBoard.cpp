@@ -77,6 +77,7 @@
 #include "stompbox_split.h"
 #include "customControlParaEQ.h"
 #include "customControlVU.h"
+#include "chainLayout.h"
 
 floorBoard::floorBoard(QWidget *parent,
                        QString imagePathFloor,
@@ -1747,20 +1748,18 @@ void floorBoard::update_structure()
     int balancerHalfHeight = qRound((96.0*ratio)/(2.0*2.4)); // fallback for 96x96 balancer art at flow scale.
     if(this->stompBoxes.size() > 29 && this->stompBoxes.at(29))
         balancerHalfHeight = flowRectForId(29).height() / 2;
-    // BAL1 sits centred between the INST1 and INST2 signal lines.
-    const int bal1MidY      = qRound(((lev1 + inst1MidY) + (lev2 + inst2MidY)) / 2.0);
+    // Row centres – four INST rows + three BAL output rows – owned by ChainLayout.
+    int rowMidY_arr[4] = { inst1MidY, inst2MidY, inst3MidY, normalMidY };
+    const ChainLayout layout(ratio, rowMidY_arr);
+    const int rowCenter1    = layout.rowCenterY(ChainRow::Inst1);
+    const int rowCenter2    = layout.rowCenterY(ChainRow::Inst2);
+    const int rowCenter3    = layout.rowCenterY(ChainRow::Inst3);
+    const int rowCenter4    = layout.rowCenterY(ChainRow::Normal);
+    const int rowCenterBal1 = layout.rowCenterY(ChainRow::Bal1Out);
+    const int rowCenterBal2 = layout.rowCenterY(ChainRow::Bal2Out);
+    const int rowCenterBal3 = layout.rowCenterY(ChainRow::Bal3Out);
+    const int bal1MidY      = rowCenterBal1;  // alias kept for polygon drawing
     const int bal1TopY      = bal1MidY - balancerHalfHeight;
-    // Row centres – four INST rows + three BAL output rows.
-    const int rowCenter1    = lev1 + inst1MidY;
-    const int rowCenter2    = lev2 + inst2MidY;
-    const int rowCenter3    = lev3 + inst3MidY;
-    const int rowCenter4    = lev4 + normalMidY;
-    const int rowCenterBal1 = bal1MidY;
-    // BAL2/3 centres are the actual midpoints of their input signal lines, not hardcoded lev2/3.
-    // BAL2 collects BAL1 output (bal1MidY) and INST3 (rowCenter3); its output is their midpoint.
-    // BAL3 collects BAL2 output (rowCenterBal2) and NORMAL (rowCenter4); its output is their midpoint.
-    const int rowCenterBal2 = qRound((bal1MidY + rowCenter3) / 2.0);
-    const int rowCenterBal3 = qRound((rowCenterBal2 + rowCenter4) / 2.0);
     // topForRowCenter: return the widget top-left Y that centres stompId on a given signal-line Y.
     // Using the row centre directly avoids ambiguity when balTopYOffset==0 (which would make the
     // BAL output row top equal to the INST row top, breaking row-top comparisons).

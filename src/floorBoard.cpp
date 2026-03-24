@@ -24,6 +24,7 @@
 #include <QVector>
 #include <QDir>
 #include <QApplication>
+#include <QDebug>
 #include <climits>
 //#include <QMovie>
 
@@ -124,9 +125,11 @@ floorBoard::floorBoard(QWidget *parent,
     sysxIO->midi = new midiIO();
     bankTreeList *bankList = new bankTreeList(this);
     floorBoardDisplay *display = new floorBoardDisplay(this);
-    display->setPos(displayPos);
 
     setFloorBoard();
+    // Position display after setFloorBoard() computes the correct offset.
+    display->setPos(displayPos);
+
     initStomps();
     initMenuPages();
 
@@ -508,7 +511,7 @@ void floorBoard::initStomps()
     //Noise suppressor
     stompBox *ns = new stompbox_ns(this);
     ns->setId(7);
-    ns->setPos(QPoint(offset + (80*ratio), 60*ratio));
+    ns->setPos(QPoint(offset + (120*ratio), 60*ratio));
     this->stompBoxes.replace(7, ns);
     this->stompNames.replace(7, "7");
 
@@ -529,7 +532,7 @@ void floorBoard::initStomps()
     //FX3
     stompBox *fx3 = new stompbox_fx3(this);
     fx3->setId(10);
-    fx3->setPos(QPoint(offset + (120*ratio), 60*ratio));
+    fx3->setPos(QPoint(offset + (80*ratio), 60*ratio));
     this->stompBoxes.replace(10, fx3);
     this->stompNames.replace(10, "10");
 
@@ -1630,14 +1633,44 @@ void floorBoard::update_structure()
     if(index6 > index5){ bal3xpos = index6 + 1; };
     if((bal2xpos + index5) > bal3xpos){ bal3xpos = bal2xpos + index5 + 1; };
 
-    // LAYOUT FIX: tighter horizontal spacing + more vertical room for bigger blocks.
-    // FX images are 96x147 px; at kFlowBlockScale=2.4, ratio≈1.20 → blocks 48×73.5 px.
-    // flowStep 55*ratio = 66 px → 18 px gap between blocks (was 29 px at 60*ratio).
-    // Row spacing 65*ratio = 78 px → 4.5 px breathing gap above each block row.
-    // hiddenFlowY pushed to 360*ratio so hidden branch blocks stay off-screen.
+    // Layout rule §L1: no balancer may be pushed more than MAX_BAL_SPREAD columns beyond
+    // the longer of its two direct input paths. Prevents excessively long empty-wire gaps
+    // on shorter input rows (e.g. INST3 row when BAL1 output path has many items).
+    const int MAX_BAL_SPREAD = 2;
+    {
+        // Cap is measured from C1 (absolute columns) but must never pull a balancer
+        // behind the previous one (ordering invariant BAL1 < BAL2 < BAL3).
+        // Zone B starts from BAL1 so its end from C1 is bal1xpos + index3;
+        // INST3 ends at index4 from C1.  Use the longer of the two, then add spread.
+        const int bal2cap = qMax(qMax(bal1xpos + index3, index4) + MAX_BAL_SPREAD,
+                                 bal1xpos + 1);
+        if (bal2xpos > bal2cap) {
+            qDebug() << "[LAYOUT §L1] BAL2 capped:" << bal2xpos << "->" << bal2cap
+                     << "| index3=" << index3 << "index4=" << index4
+                     << "bal1xpos=" << bal1xpos << "dual=" << dual_channel;
+            bal2xpos = bal2cap;
+        }
+        // Zone C starts from BAL2 so its end from C1 is bal2xpos + index5;
+        // NORMAL ends at index6 from C1.
+        const int bal3cap = qMax(qMax(bal2xpos + index5, index6) + MAX_BAL_SPREAD,
+                                 bal2xpos + 1);
+        if (bal3xpos > bal3cap) {
+            qDebug() << "[LAYOUT §L1] BAL3 capped:" << bal3xpos << "->" << bal3cap
+                     << "| index5=" << index5 << "index6=" << index6
+                     << "bal2xpos=" << bal2xpos << "dual=" << dual_channel;
+            bal3xpos = bal3cap;
+        }
+    }
+    // Always log balancer positions so violations appear in the application output.
+    qDebug() << "[LAYOUT] bal1xpos=" << bal1xpos << "bal2xpos=" << bal2xpos
+             << "bal3xpos=" << bal3xpos
+             << "| idx1=" << index1 << "idx2=" << index2
+             << "idx3=" << index3 << "idx4=" << index4
+             << "idx5=" << index5 << "idx6=" << index6
+             << "dual=" << dual_channel;
+
     const int flowStep = 55*ratio;
     const int hiddenFlowY = 360*ratio;
-    // No additional bias – rowCenters are derived from actual source-block heights.
     const int fxLineBiasY = 0;
     int lev1 = 65*ratio;
     int lev2 = 130*ratio;
@@ -1645,13 +1678,9 @@ void floorBoard::update_structure()
     int lev4 = 260*ratio;
     int y_axis = lev1;
     const int instStartX = qRound(15*ratio);
-    // Always derive instWidth from the ON-image dimensions and scale constant (192px / 2.0).
-    // Reading stompBoxes[0]->width() is unreliable: the constructor sizes the widget from the
-    // default amp_off.png, not the actual INST image, so the widget width is wrong until the
-    // first paintEvent runs — which may be after update_structure has already computed fxPos.
-    const int instWidth = qRound((192.0*ratio)/2.0);
-    const int instToFxGap = qRound(16*ratio);
-    const int firstFlowX = instStartX + instWidth + instToFxGap;
+    const int instWidth = qRound(192.0*ratio/2.4);   // actual rendered width: 192px image / kFlowBlockScale 2.4 = 80px
+    const int touchGap = qRound(15*ratio);            // fixed gap between adjacent stomp blocks (§5a touch gap rule)
+    const int firstFlowX = instStartX + instWidth + touchGap;  // first stomp left edge = source right + touchGap
     int x_axis = firstFlowX;
     int incr = 0;
     auto centerOffsetYForId = [this, ratio](int stompId, int fallback) -> int
@@ -1782,7 +1811,7 @@ void floorBoard::update_structure()
         uint stomp = QString(midiTable->getMidiMap("10", hex1, "12", "49", fxChain.at(i+sysxDataOffset+69)).desc).toInt(&ok, 10);
         if(i<4){stomp = stomp-4;};
         if(stomp==21){ab_y_axis = y_axis; ab_rowCenter = rowCenterCurrent; }; // record divider row
-        if(stomp==23){y_axis = ab_y_axis; x_axis=ab_end+((ab_count-1)*flowStep); rowCenterCurrent = ab_rowCenter;}; // mixer is same row as divider.
+        if(stomp==23 && dual_channel>0){y_axis = ab_y_axis; x_axis=ab_end+((ab_count-1)*flowStep); rowCenterCurrent = ab_rowCenter;}; // dual: mixer rejoins at divider row
 
         if     (i==0)                     { newFxPos.append(QPoint(offset+(15*ratio), lev1)); }  // instrument 1 – fixed start positions
         else if(i==1)                     { newFxPos.append(QPoint(offset+(15*ratio), lev2)); }  // instrument 2
@@ -1790,9 +1819,9 @@ void floorBoard::update_structure()
         else if(i==3)                     { newFxPos.append(QPoint(offset+(15*ratio), lev4));    x_axis=firstFlowX; y_axis=lev1; rowCenterCurrent=rowCenter1; }  // normal input
         else if(stomp>27 && incr==0)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev2; rowCenterCurrent=rowCenter2; }  // fill lev2
         else if(stomp>27 && incr==1)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal1xpos*flowStep)), bal1TopY)); x_axis=flowStep+(bal1xpos*flowStep); y_axis=bal1TopY; rowCenterCurrent=rowCenterBal1; }  // Bal1 out
-        else if(stomp>27 && incr==2)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev3; rowCenterCurrent=rowCenter3; }  // fill lev3
+        else if(stomp>27 && incr==2)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev3; rowCenterCurrent=rowCenter3; }  // fill lev3 – left-pack INST3 items from C1 (§5a C1 rule)
         else if(stomp>27 && incr==3)      { newFxPos.append(QPoint(offset+((47*ratio)+(bal2xpos*flowStep)), rowCenterBal2 - balancerHalfHeight)); x_axis=flowStep+(bal2xpos*flowStep); y_axis=rowCenterBal2 - balancerHalfHeight; rowCenterCurrent=rowCenterBal2; }  // Bal2 out
-        else if(stomp>27 && incr==4)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev4; rowCenterCurrent=rowCenter4; }  // fill lev4
+        else if(stomp>27 && incr==4)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev4; rowCenterCurrent=rowCenter4; }  // fill lev4 – left-pack NORMAL items from C1 (§5a C1 rule)
         else if(stomp>27 && incr==5)      { newFxPos.append(QPoint(offset+((40*ratio)+(bal3xpos*flowStep)), rowCenterBal3 - balancerHalfHeight)); x_axis=flowStep+(bal3xpos*flowStep); y_axis=rowCenterBal3 - balancerHalfHeight; rowCenterCurrent=rowCenterBal3; }  // Bal3 out
         else
         {
@@ -1810,8 +1839,8 @@ void floorBoard::update_structure()
     skip:
         if(stomp>27){ incr++; }; // if one of 6 branch mixers (28) then increment for the next x-axis level.
 
-        if(stomp==21){y_axis=y_axis-(20*ratio); ab_start = x_axis; if(x_axis>ab_end){ab_end=x_axis;};};
-        if(stomp==22){y_axis=y_axis+(40*ratio); x_axis = ab_start; if(x_axis>ab_end){ab_end=x_axis;};};
+        if(dual_channel>0 && stomp==21){y_axis=y_axis-(20*ratio); ab_start = x_axis; if(x_axis>ab_end){ab_end=x_axis;};};
+        if(dual_channel>0 && stomp==22){y_axis=y_axis+(40*ratio); x_axis = ab_start; if(x_axis>ab_end){ab_end=x_axis;};};
     };
     this->master_pos = QPoint(offset+(x_axis), topForRowCenter(34, rowCenterCurrent));
 
@@ -1903,15 +1932,6 @@ void floorBoard::update_structure()
             return -1;
         }
         return flowRect.center().x();
-    };
-    auto centerYForId = [flowRectForId](int stompId) -> int
-    {
-        const QRect flowRect = flowRectForId(stompId);
-        if(!flowRect.isValid())
-        {
-            return -1;
-        }
-        return flowRect.center().y();
     };
     auto leftAnchorXForId = [signalRectForId](int stompId) -> int
     {
@@ -2173,13 +2193,17 @@ void floorBoard::update_structure()
 
         const int bal1CenterX = centerXForId(29);
         const int bal1RightX = rightAnchorXForId(29);
-        const int bal1AnchorY = centerYForId(29);
+        // Use rowCenterBal1 directly so the wire Y matches the row centre used for effect
+        // positioning.  centerYForId(29) reads flowLayoutBounds.center().y() which is 1 px
+        // higher than scaledOpaqueBounds.center().y() (used by placeBalancerOnRiser), causing
+        // the BAL1 output wire to drift below the effects on that row.
+        const int bal1AnchorY = (bal1CenterX >= 0 && bal1RightX >= 0) ? rowCenterBal1 : -1;
         const int bal2CenterX = centerXForId(31);
         const int bal2RightX = rightAnchorXForId(31);
-        const int bal2AnchorY = centerYForId(31);
+        const int bal2AnchorY = (bal2CenterX >= 0 && bal2RightX >= 0) ? rowCenterBal2 : -1;
         const int bal3CenterX = centerXForId(33);
         const int bal3RightX = rightAnchorXForId(33);
-        const int bal3AnchorY = centerYForId(33);
+        const int bal3AnchorY = (bal3CenterX >= 0 && bal3RightX >= 0) ? rowCenterBal3 : -1;
 
         if(bal1CenterX >= 0 && bal1RightX >= 0 && bal1AnchorY >= 0)
         {

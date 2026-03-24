@@ -26,7 +26,8 @@ TEMPLATE = app
 CONFIG += c++17
 #CONFIG += release
 TARGET = "SY-1000FloorBoard"
-VERSION = 2026.03.05
+VERSION = 2026.03.24.41
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DESTDIR = ./build/packager
 OBJECTS_DIR += build/release
 UI_DIR += ./build/generatedfiles
@@ -49,6 +50,13 @@ TRANSLATIONS = language_fr.ts \
 
 DEPENDPATH += . ./src
 QT += xml widgets printsupport quick quickwidgets network
+
+# Auto-stamp version in preferences.xml.dist from the .pro VERSION variable.
+# This ensures the embedded version always matches and forces rcc to recompile.
+versionstamp.commands = $$PWD/tools/stamp_version.sh $$VERSION $$PWD/preferences.xml.dist
+versionstamp.depends = $$PWD/SY-1000FloorBoard.pro
+QMAKE_EXTRA_TARGETS += versionstamp
+PRE_TARGETDEPS += versionstamp
 
 #Platform dependent file(s)
 win32-g++:contains(QMAKE_HOST.arch, x86):{
@@ -123,14 +131,16 @@ HEADERS += \
     src/parameterBridge.h \
     src/qmlHost.h \
     src/diagnosticServer.h \
-    src/patchListModel.h
+    src/patchListModel.h \
+    src/chainLayout.h
 
 SOURCES += \
     src/consoletoolbar.cpp \
     src/parameterBridge.cpp \
     src/qmlHost.cpp \
     src/diagnosticServer.cpp \
-    src/patchListModel.cpp
+    src/patchListModel.cpp \
+    src/chainLayout.cpp
 
 RESOURCES += \
     qml/qml.qrc

@@ -26,7 +26,7 @@ TEMPLATE = app
 CONFIG += c++17
 #CONFIG += release
 TARGET = "SY-1000FloorBoard"
-VERSION = 2026.03.24.47
+VERSION = 2026.03.25.1
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DESTDIR = ./build/packager
 OBJECTS_DIR += build/release

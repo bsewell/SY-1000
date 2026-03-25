@@ -1,6 +1,6 @@
 # SY-1000 FloorBoard
 
-Qt desktop editor for the Boss SY-1000 guitar synthesizer, with current effort focused on accurate UI mapping, cleaner layout, and reliable sync between signal-chain tiles and effect detail pages.
+Qt desktop editor for the Boss SY-1000 guitar synthesizer.
 
 ## Credits
 
@@ -10,52 +10,129 @@ This project is a fork of **SY1000FloorBoard** by **Colin Willcocks** (gumtownba
 
 Colin is the originator of the entire application: MIDI SysEx communication, patch storage, signal-chain rendering, custom widget library, and Qt project structure. This fork extends his work with UI accuracy improvements, a QML migration, and a signal-chain layout rewrite.
 
-See [`ABOUT.md`](ABOUT.md) for a full description of the technology stack, what has changed, and why.
+See [`ABOUT.md`](ABOUT.md) for a full description of the technology stack and what has changed.
 
-## Start here
+---
 
-Read these in order:
+## Current status
 
-1. `CLAUDE.md` — agent conventions, build command, key docs list
-2. `docs/repo_layout.md` — repo structure and file placement policy
-3. `docs/ui/sy1000_boss_layout_notes.md` — visual patterns and Boss terminology
-4. `docs/ui/sy1000_claude_compare_matrix.md` — current implementation vs Boss spec
-5. `HANDOFF.md` — active migration tasks (Phase 5 QML migration)
+### What is working
 
-## Docs topic map
+- **Full patch editor** — load, edit, and write patches to the SY-1000 via USB MIDI
+- **Patch browser** — scrollable patch list with live selection
+- **All effect panels** — every effect block has a working detail editor: INST 1/2/3 (all 9 instrument types), AMP, CS, DS, NS, CE, DD1/DD2/DD3, RV, FX1/FX2/FX3, EQ1/EQ2, FV1/FV2, LP, all output blocks (MAIN OUT, SUB OUT, DIVIDER, MIXER, MASTER)
+- **System pages** — MIDI, USB, Input/Output, Hardware, Knob, Play Option, Total, Auto Power Off, Guitar to MIDI, GK/Normal Set Select
+- **Pedal/GK pages** — all pedal and GK assignment controls
+- **Assign pages** — all 16 assign slots
+- **Tuner** — accessible from System sidebar without needing a device connection
+- **Parameter sync** — knobs, switches, and dropdowns update in real time when parameters change externally (MIDI receive, bulk load, tile toggle)
+- **5 themes** — aqua, black, blue, green, white
+- **Boss Tone Studio design tokens** — colors and typography match the official Boss software
 
-| Topic | Doc |
+### What is NOT working — signal chain layout
+
+> **This is the primary outstanding bug. Do not consider the editor release-ready until this is resolved.**
+
+The signal-chain visualizer (the graphical block diagram at the top of the main window showing how effects are routed) has a **layout instability problem**. Specifically:
+
+- **Blocks do not reliably hold their positions.** After patch changes, bulk loads, or window resizes, blocks may shift from their correct columns. The 3-zone compaction algorithm (`src/floorBoard.cpp`) is implemented and mostly correct, but edge cases exist where blocks drift.
+- **Branch wires can stretch incorrectly.** When FX blocks move between rows (e.g. FX3 compacted into Zone B or C), the branch wire endpoints follow the block's type-ID position rather than its actual rendered row, causing polygon points to stretch far to the right. Y-row guards were added to mitigate this but the fix is not complete under all patch configurations.
+- **Balancer placement is fragile.** BAL2 and BAL3 column caps are computed from zone block counts, but patches with unusual block distributions can cause BAL2 or BAL3 to be placed behind their correct column, or to jump forward inconsistently on patch changes.
+- **Wire rendering is not frame-stable.** The signal chain can visually flicker or re-lay on consecutive refreshes of the same patch state.
+
+The layout spec is fully documented in `docs/ui/sy1000_boss_layout_notes.md` §5a. The code is in `src/floorBoard.cpp` (`update_structure()`) and `src/chainLayout.cpp`. The algorithm is understood; what remains is hardening the edge cases and making the refresh path idempotent.
+
+### Other known issues
+
+- User preset names show as "init patch" until the device connects and sends a bulk SysEx dump
+- MIDI port conflict if Boss Tone Studio is open simultaneously — close BTS before launching FloorBoard
+- 13 Assign pages + menuPage_midi are still implemented as C++ widgets (not yet migrated to QML)
+
+---
+
+## Why QML — agentic development context
+
+This project is being developed using **Claude Code** (Anthropic's AI coding agent) as the primary development tool. The QML migration is a direct result of that workflow.
+
+### The problem with C++ widgets and AI agents
+
+The original editor is built entirely from Qt Widgets — imperative C++ code that constructs controls, lays them out, and wires signals manually. Files like `src/stompbox_fx1.cpp` are 1,000+ lines of widget construction code. For a human developer reading it in an IDE, this is manageable. For an AI agent working via file reads and edits, it has serious problems:
+
+- **Hard to read declaratively.** To understand what a panel looks like, an agent must mentally execute dozens of `addWidget`, `setGeometry`, and `setLayout` calls in sequence. The visual structure is not visible in the source.
+- **Hard to edit safely.** Changing a layout means tracking pixel offsets, row indices, and parent/child widget hierarchies across hundreds of lines. An agent making a small change can silently break an adjacent row.
+- **Hard to verify.** There is no single source of truth for what a panel should contain — the code, the running app, and the Boss reference manual all need to be cross-referenced manually.
+
+### How QML fixes this for agents
+
+QML is a declarative language. A panel is described as a tree of items with explicit properties — position, size, binding to data, visual state. An agent can:
+
+- **Read a QML file and immediately understand the layout** — the structure mirrors the visual hierarchy
+- **Add a new control by adding one block** — no cascading widget constructor changes
+- **Bind to a parameter in one line** — `value: paramBridge.getValue(hex1, hex2, hex3)` replaces 20 lines of signal/slot wiring
+- **Verify correctness against the Boss spec** — label names and parameter order are visible at a glance
+
+This is why the migration was done panel by panel, not as a single rewrite. Each migrated panel makes the agent's next task easier and less risky. The end goal is a codebase where any panel can be read, understood, and modified by an AI agent in a single focused pass — without needing to understand the full C++ widget tree.
+
+### What was migrated
+
+Every major panel has been moved from C++ widget code to QML:
+
+| Area | Status |
 |---|---|
-| Agent/AI conventions & build | `CLAUDE.md` |
-| Repo structure | `docs/repo_layout.md` |
-| Active migration tasks | `HANDOFF.md` |
-| Visual patterns & Boss layout rules | `docs/ui/sy1000_boss_layout_notes.md` |
-| Impl vs Boss spec (block-by-block) | `docs/ui/sy1000_claude_compare_matrix.md` |
-| Dropdown typography & shared combo path | `docs/ui/dropdown_inventory.md` |
-| Setting label typography | `docs/ui/setting_label_inventory.md` |
-| Design tokens (Boss CSS extraction) | `docs/ui/ux_improvement_report.md` |
-| Layout regression tracking | `docs/ui/layout_regression_log.md` |
-| Signal-chain architecture & known bugs | `docs/agent_handoff.md` |
-| Panel parameter audit (block-level) | `docs/panel_audit_report.md` |
-| Page → control → MIDI address index | `docs/ui/page_control_inventory.md` |
-| Official manual index | `docs/sy1000_manuals.md` |
-| Parameter inventory (instrument + FX types) | `docs/sy1000_parameter_inventory.md` |
-| Refactor direction (AppServices migration) | `docs/refactor_audit.md` |
-| Diagnostics & log triage | `docs/diagnostics.md` |
+| INST 1 / 2 / 3 (all 9 instrument type sub-panels) | QML |
+| All stomp boxes (NS, CS, DS, AMP, FX1/2/3, CE, DD1/2/3, RV, EQ1/2, FV1/2, LP) | QML |
+| Output blocks (Main Out, Sub Out, Divider, Mixer, Master) | QML |
+| System pages (all 14 sub-pages) | QML |
+| Pedal / GK pages | QML |
+| Tuner | QML |
+| Master, Setup pages | QML |
+| All 16 Assign pages | QML |
+| Patch browser | QML |
+| Assign pages 1–16 | QML |
+| menuPage_midi + menuPage_assign (C++ wrappers) | **Pending** |
 
-## Repository shape
+### QML component library
 
-- `src/` - application source code
-- `docs/` - manual mapping, UI notes, handoff docs
-- `images/` - app assets
-- `qss/` - theme stylesheets
-- `build/` - generated output and archived local build artifacts
+A shared component library lives in `qml/`:
 
-Qt project files remain at the repo root:
+| Component | Purpose |
+|---|---|
+| `SyTheme.qml` | Boss-exact design tokens — colors, type scale, spacing |
+| `SyKnob.qml` | Filmstrip knob with external parameter sync |
+| `SySwitch.qml` | On/off toggle |
+| `SyComboBox.qml` | Styled dropdown bound to parameter bridge |
+| `FilmstripKnob.qml` | Frame-animated knob from PNG filmstrip |
+| `SySettingRow.qml` | Standard label + control row |
+| `SySectionLabel.qml` | Section divider label |
+| `SyTabBar.qml` | Tab navigation bar |
+| `SyPanelBase.qml` | Base layout for all panels |
+| `SyModeSelector.qml` | Mode/type selector header |
 
-- `SY-1000FloorBoard.pro`
-- `SY-1000FloorBoard.pri`
-- `SY-1000FloorBoard.qrc`
+### C++ bridge
+
+All QML controls communicate through `src/parameterBridge.cpp` — a `QObject` singleton exposed to QML. It translates Qt property bindings into SY-1000 MIDI SysEx hex addresses and back. External changes (MIDI receive, bulk load, stompbox tile clicks) propagate to QML via `parameterChanged` signals, so panels stay in sync without polling.
+
+---
+
+## Repository structure
+
+```
+src/          C++ application source
+qml/          QML panels and component library
+qss/          Qt Style Sheets (5 themes)
+images/       PNG assets for widgets and signal-chain tiles
+i18n/         Translation source (.ts) and compiled (.qm) files
+patches/      Default patch files (.syx, .tsl)
+data/         MIDI XML data, XSD schemas
+docs/         Manual mappings, UI audit docs, signal-chain spec, handoff notes
+tools/        Build tools (filmstrip generator, version stamp)
+fonts/        Bundled fonts
+build/        Generated output (not committed)
+```
+
+Qt project files at root: `SY-1000FloorBoard.pro`, `.pri`, `.qrc`
+
+---
 
 ## Build and install
 
@@ -67,7 +144,7 @@ Qt project files remain at the repo root:
 | C++ compiler | see platform notes below | bundled with Qt installer on Windows; Xcode on macOS |
 | Git | any recent version | https://git-scm.com |
 
-Qt is the only significant dependency. Everything else (RtMidi, XML parsing, QML runtime) is either bundled in the repo or included with Qt.
+Qt is the only significant dependency. RtMidi, XML parsing, and the QML runtime are all bundled or included with Qt.
 
 ---
 
@@ -154,15 +231,14 @@ After installing, add the Qt `bin` directory to your shell path. For example, if
 export PATH="$HOME/Qt/6.5.3/macos/bin:$PATH"
 ```
 
-Add this line to your `~/.zshrc` (or `~/.bash_profile`) to make it permanent.
+Add this line to your `~/.zshrc` to make it permanent.
 
 **Step 4 — Build**
 
 ```bash
 git clone https://github.com/bsewell/SY-1000.git
 cd SY-1000
-qmake SY-1000FloorBoard.pro
-make -j$(sysctl -n hw.logicalcpu)
+./build.sh
 ```
 
 Built app bundle: `build/packager/SY-1000FloorBoard.app`
@@ -181,7 +257,7 @@ sudo apt install libasound2-dev
 sudo dnf install alsa-lib-devel
 ```
 
-Then follow the same qmake/make steps as macOS, using a Linux Qt kit.
+Then follow the same steps as macOS using a Linux Qt kit.
 
 ---
 
@@ -194,84 +270,36 @@ Then follow the same qmake/make steps as macOS, using a Linux Qt kit.
 
 **Note:** Close Boss Tone Studio before launching FloorBoard — both apps use the same MIDI port and will conflict if open simultaneously.
 
-## Vibe-coding workflow
+---
 
-This project benefits from fast iteration, but only if the iteration is disciplined.
+## For developers and AI agents
 
-### 1. Pick one surface at a time
+### Docs topic map
 
-Do not mix these in one pass unless the change truly requires it:
+| Topic | Doc |
+|---|---|
+| Agent/AI conventions & build | `CLAUDE.md` |
+| Repo structure | `docs/repo_layout.md` |
+| Active migration tasks | `HANDOFF.md` |
+| Visual patterns & Boss layout rules | `docs/ui/sy1000_boss_layout_notes.md` |
+| Signal-chain layout spec (§5a) | `docs/ui/sy1000_boss_layout_notes.md` |
+| Impl vs Boss spec (block-by-block) | `docs/ui/sy1000_claude_compare_matrix.md` |
+| Dropdown typography & shared combo path | `docs/ui/dropdown_inventory.md` |
+| Setting label typography | `docs/ui/setting_label_inventory.md` |
+| Design tokens (Boss CSS extraction) | `docs/ui/ux_improvement_report.md` |
+| Signal-chain architecture & known bugs | `docs/agent_handoff.md` |
+| Panel parameter audit (block-level) | `docs/panel_audit_report.md` |
+| Official manual index | `docs/sy1000_manuals.md` |
+| Parameter inventory (instrument + FX types) | `docs/sy1000_parameter_inventory.md` |
+| Refactor direction | `docs/refactor_audit.md` |
+| Diagnostics & log triage | `docs/diagnostics.md` |
 
-- signal-chain layout
-- effect-page layout
-- power-toggle behavior
-- instrumentation or debug capture
-- repo-structure cleanup
+### Working conventions
 
-If you mix them, review gets noisy and regressions get harder to localize.
-
-### 2. Use the docs before changing UI
-
-Before changing labels, spacing, tabs, or controls, compare against:
-
-- `docs/ui/sy1000_boss_layout_notes.md`
-- `docs/ui/sy1000_claude_compare_matrix.md`
-- `docs/ui/dropdown_inventory.md`
-- `docs/sy1000_manuals.md`
-
-The target is not generic cleanup. The target is closer SY-1000 behavior and clearer presentation.
-
-### 3. Treat state sync as non-negotiable
-
-When a block can turn on or off, these must stay aligned:
-
-- signal-chain rectangle color/state
-- on/off switch on the detail page
-- enabled or disabled parameter controls
-
-If one changes without the others, the fix is incomplete.
-
-### 4. Keep layout rules consistent
-
-When editing effect pages:
-
-- the on/off control should anchor hard left
-- the first row should read as a single coherent strip
-- spacing under the header should not drift by effect type
-- rows should look intentionally aligned, not individually improvised
-
-### 5. Build after each meaningful pass
-
-Run the build command from the `## Build` section above.
-
-Do not stack several speculative edits without rebuilding.
-
-### 6. Commit by intent
-
-Good commit boundaries:
-
-- `signal-chain toggle sync`
-- `effect-page left rail alignment`
-- `repo layout cleanup`
-- `documentation updates`
-
-Bad commit boundaries:
-
-- mixed UI, docs, instrumentation, and deploy changes in one commit
-
-## Working expectations for another developer or agent
-
-- Prefer narrow, explainable changes.
-- Keep source under `src/`.
-- Do not commit generated output from `build/`, `Makefile`, `.qmake.stash`, or `qrc_*.cpp`.
-- If behavior is unclear, inspect the SY-1000 reference docs before redesigning it.
-- If the task is handoff-oriented, update the relevant docs as part of the same pass.
-
-## Current handoff goal
-
-Prepare the project so another developer can:
-
-- build it without guessing the structure
-- understand where the UI guidance lives
-- compare current implementation against Boss references
-- work on one surface at a time without tripping over unrelated changes
+- Source code lives under `src/`
+- Build output lives under `build/` — do not commit
+- Generated files (`Makefile`, `.qmake.stash`, `qrc_*.cpp`, `moc_*.cpp`) — do not commit
+- When changing effect-page layouts, preserve a consistent left-edge on/off rail and consistent row alignment
+- UI behavior must stay synchronized between signal-chain tiles, on/off switches, and parameter enabled state
+- Keep functional changes separate from repo-structure changes
+- When in doubt, compare against Boss reference docs before redesigning behavior

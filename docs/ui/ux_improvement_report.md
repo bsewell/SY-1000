@@ -3,6 +3,13 @@
 Compiled from: Boss TONE STUDIO (73 CSS files), SYUI screenshots (31 PNGs),
 current QSS themes (5 files), source code, and all existing layout docs.
 
+> **Status note**: Gap analysis in §3 reflects C++ widget state as of early 2026-03-xx. QML pages migrated
+> in Phase 5 (`HANDOFF.md`) may have addressed some color, typography, and tab gaps. Verify against
+> current QML files before treating a gap as open. Design tokens in §1 are extracted from Boss CSS and
+> remain accurate regardless of FloorBoard state.
+>
+> **Related docs**: Layout pattern rules → `docs/ui/sy1000_boss_layout_notes.md`
+
 ---
 
 ## 1. Boss TONE STUDIO Design Token Reference
@@ -431,7 +438,7 @@ From `.qrc` audit — these assets exist but may not be fully connected:
 
 The Boss TONE STUDIO app ships the exact fonts at:
 ```
-/Users/bsewell/010 MUSIC STUDIO /SY-1000 Boss/Contents/Resources/html/js/fonts/
+<Boss Tone Studio install path>/Contents/Resources/html/js/fonts/
   RobotoCondensed-Bold.ttf
   RobotoCondensed-Regular.ttf
   RobotoCondensed-Light.ttf

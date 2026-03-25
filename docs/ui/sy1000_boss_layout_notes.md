@@ -2,6 +2,8 @@
 
 This note captures practical UI patterns from the BOSS SY-1000 screenshots and translates them into implementation guidance for SY-1000 FloorBoard.
 
+> **Related docs**: Exact Boss CSS design tokens (colors, sizes, fonts) → `docs/ui/ux_improvement_report.md §1`
+
 ## 1) Visual/Interaction Patterns to Copy
 
 - Header rail per block
@@ -115,6 +117,83 @@ Recommended layout values from screenshot proportions:
 
 ## 5a) Signal-Chain Geometry Rules
 
+### Signal-Chain Row Model
+
+The signal chain has a **fixed 5-row structure** with a **dynamic X-axis** determined by patch content.
+
+| Row | Content | Y (top, ratio=1) | Signal line Y (ratio=1) |
+|---|---|---|---|
+| Row 0 | INST1 source + pre-BAL1 FX blocks | 65 | 65 + inst1MidY |
+| Row 1 | INST2 source + pre-BAL1 FX blocks | 130 | 130 + inst2MidY |
+| Row B | BAL1 output chain (Zone B→C→output) | midpoint rows 1/2 | bal1MidY |
+| Row 2 | INST3 source + pre-BAL2 FX blocks | 195 | 195 + inst3MidY |
+| Row 3 | NORMAL source + pre-BAL3 FX blocks | 260 | 260 + normalMidY |
+
+Row spacing = **65 px** (ratio=1). Row B is the midpoint of rows 1 and 2 signal lines.
+
+BAL2 output row center = midpoint of Row B and Row 2.
+BAL3 output row center = midpoint of BAL2 output row and Row 3.
+
+### Signal-Chain Block Pitch Constants (ratio=1)
+
+| Constant | Value | Purpose |
+|---|---|---|
+| `flowStep` | 55 px | Horizontal pitch between adjacent FX blocks |
+| `instStartX` | 15 px | Source block left edge |
+| `instWidth` | 80 px | Source block rendered width (192 / kFlowBlockScale 2.4) |
+| `touchGap` | 15 px | Gap between source block and first FX block |
+| `firstFlowX` | 110 px | First FX block left edge (= instStartX + instWidth + touchGap) |
+| `MAX_BAL_SPREAD` | 2 columns | Maximum extra spread allowed beyond longest input path |
+
+All values scale linearly with `ratio`.
+
+### 3-Zone Compaction Algorithm
+
+The signal chain is divided into three zones. All zones are left-packed from C1.
+
+```
+Zone A  — INST1 and INST2 branches (rows 0 and 1), blocks before BAL1
+          Left-packed from C1.
+          BAL1.col = max(INST1_count, INST2_count)
+
+Zone B  — Row B chain between BAL1 and BAL2 + INST3 branch (row 2)
+          BAL2.col = max(BAL1.col + ZoneB_count, INST3_count)
+          Cap: max(max(BAL1.col + ZoneB_count, INST3_count) + MAX_BAL_SPREAD,
+                   BAL1.col + 1)    ← floor preserves BAL1 < BAL2 invariant
+
+Zone C  — Row B chain between BAL2 and BAL3 + NORMAL branch (row 3)
+          BAL3.col = max(BAL2.col + ZoneC_count, NORMAL_count)
+          Cap: max(max(BAL2.col + ZoneC_count, NORMAL_count) + MAX_BAL_SPREAD,
+                   BAL2.col + 1)    ← floor preserves BAL2 < BAL3 invariant
+
+Output  — After BAL3 on Row B; free-form order from patch data. MST always last.
+```
+
+Empty branch = wire only, no blocks. Active/inactive is **visual only** — block positions never change with on/off state.
+
+### Block Label Rule
+
+Labels appear below each block rectangle and show the current type selection.
+
+| Block | Label source | Label shown |
+|---|---|---|
+| INST 1/2/3 | INST TYPE dropdown (`hex3 01`) | yes — e.g. "Dynamic Synth", "E.Guitar" |
+| AMP | AMP model (`hex3 01`) | yes — e.g. "Natural", "JC-120" |
+| CS | Compressor type (`hex3 01`) | yes — e.g. "Boss Comp" |
+| DS | Distortion type (`hex3 01`) | yes — e.g. "X-OD" |
+| RV | Reverb type (`hex3 01`) | yes — e.g. "Plate", "Hall" |
+| DD1 / DD2 / DD3 | Delay type (`hex3 01`) | yes — e.g. "Stereo", "Tape Echo" |
+| CE | Chorus mode (`hex3 01`) | yes |
+| FX1 / FX2 / FX3 | FX type (`hex3 01`) | yes — e.g. "Slicer", "Harmonizer" |
+| EQ1, EQ2 | — | no label |
+| NS | — | no label |
+| FV1, FV2 | — | no label |
+| LP (effects loop) | — | no label |
+| BAL1 / BAL2 / BAL3 | — | no label |
+| DIV, MIX, MST, S LR, M LR | — | no label |
+
+---
+
 - Treat the upper signal chain as a separate geometry system from the lower edit pages.
 - Patch changes may rebuild the upper signal chain; lower-page parameter edits must not disturb upper signal-chain geometry.
 - Balancers must preserve chain order left-to-right: `BAL1`, then `BAL2`, then `BAL3`.
@@ -138,6 +217,9 @@ Recommended layout values from screenshot proportions:
   - `FX1`, `FX2`, `FX3`, `CMP`
   - These square blocks must share one visible left edge.
   - This is the first major guide the eye reads after the source column.
+  - **The first stomp block on every instrument branch (INST1, INST2, INST3, NORMAL) must start at C1 — immediately to the right of the source block with only the standard `instToFxGap` between them.**
+  - If an instrument branch has no stomp blocks before its BAL merge, the wire runs directly from the source to BAL; no phantom space is inserted.
+  - Stomp blocks must never float right to align with a downstream balancer or match another row's column. They always pack left from C1.
 
 - Column `C2`: first merge lane
   - `BAL1`
@@ -549,15 +631,15 @@ Use `INST 1` as the canonical layout source for `INST 2` and `INST 3`. Instrumen
 
 ## 7) File targets in this repo
 
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/src/editPage.cpp`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/src/customControlKnob.cpp`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/src/customControlDataKnob.cpp`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/src/customControlParaEQ.cpp`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/qss/black.qss`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/qss/blue.qss`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/qss/white.qss`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/qss/bts.qss`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/qss/green.qss`
+- `src/editPage.cpp`
+- `src/customControlKnob.cpp`
+- `src/customControlDataKnob.cpp`
+- `src/customControlParaEQ.cpp`
+- `qss/black.qss`
+- `qss/blue.qss`
+- `qss/white.qss`
+- `qss/bts.qss`
+- `qss/green.qss`
 
 ## 8) Acceptance checks for redesign
 

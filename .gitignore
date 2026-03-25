@@ -17,3 +17,19 @@ moc_*.cpp
 
 # macOS
 .DS_Store
+
+# Generated / local-only files — never commit
+docs/logs/
+deploy_log.md
+preferences.xml
+diag.log
+*.log
+run_debug.sh
+build.sh
+claude/
+scripts/
+layout_report.md
+screenshot*.png
+qml_*.png
+qml_debug.log
+sy-1000floorboard_plugin_import.cpp

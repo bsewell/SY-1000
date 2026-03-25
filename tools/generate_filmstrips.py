@@ -8,6 +8,7 @@ Renders at 2x for Retina displays — a "48px" knob is actually 96px in the PNG.
 """
 
 import math
+import os
 from PIL import Image, ImageDraw, ImageFilter
 
 RETINA = 2  # render at 2x, display at 1x in QML with sourceSize
@@ -107,7 +108,7 @@ def generate_filmstrip(filename, logical_size, num_frames, style="default"):
 
 
 if __name__ == "__main__":
-    outdir = "/Users/bsewell/010-MUSIC-STUDIO/SY-1000/qml/knobs"
+    outdir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "qml", "knobs")
 
     print("Generating filmstrip knob PNGs (2x Retina)...")
 

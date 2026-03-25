@@ -36,7 +36,7 @@ No remaining items from the original task list. All 4 items addressed.
 
 <critical_context>
 ## Boss Reference Screenshots
-Located at `/Users/bsewell/000-HOME/010-MUSIC-STUDIO/SYUI/`:
+Located at `<local SYUI project path>`:
 - `INST 1 Common.png` — Header reference (power icon, VARIATION, tab alignment)
 - `Chorus.png` — FX2 chorus in STEREO2 mode (main row + dual chorus rows)
 - `FX1.png`, `FX2.png`, `FX 3.png` — FX panel references

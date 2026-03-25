@@ -10,13 +10,13 @@ This file is the neutral handoff document for either Codex, Claude, or another d
 
 ## Core docs
 
-- Repo structure: `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/repo_layout.md`
-- UI/layout guidance: `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/sy1000_boss_layout_notes.md`
-- Claude comparison matrix: `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/sy1000_claude_compare_matrix.md`
-- Dropdown inventory and shared combo-control path: `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/dropdown_inventory.md`
-- Shared stomp/effect setting-label typography: `/Users/bsewell/010 MUSIC STUDIO /SY-1000/src/customControlLabel.cpp`
-- Setting-label inventory: `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/setting_label_inventory.md`
-- Manual mapping/index: `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/sy1000_manuals.md`
+- Repo structure: `docs/repo_layout.md`
+- UI/layout guidance: `docs/ui/sy1000_boss_layout_notes.md`
+- Claude comparison matrix: `docs/ui/sy1000_claude_compare_matrix.md`
+- Dropdown inventory and shared combo-control path: `docs/ui/dropdown_inventory.md`
+- Shared stomp/effect setting-label typography: `src/customControlLabel.cpp`
+- Setting-label inventory: `docs/ui/setting_label_inventory.md`
+- Manual mapping/index: `docs/sy1000_manuals.md`
 
 ## Practical guidance
 
@@ -25,51 +25,14 @@ This file is the neutral handoff document for either Codex, Claude, or another d
 - Treat repository organization as stable unless there is a deliberate follow-up cleanup pass.
 - Use the documentation to validate terminology, control naming, and missing functionality before changing layouts.
 
-## Current handoff task: upper signal-chain routing only
+## Signal-chain architecture reference
 
-The active task is to finish stabilizing and cleaning up the upper signal chain in `/Users/bsewell/010 MUSIC STUDIO /SY-1000/src/floorBoard.cpp`.
+This section documents the architectural contract for the upper signal chain in `src/floorBoard.cpp`. See `docs/ui/layout_regression_log.md` for a running record of confirmed layout bugs and their resolutions.
 
-Scope rules:
+### Known visual issues (as of last audit)
 
-- Work only on the upper signal-chain renderer and its supporting geometry rules.
-- Do not change lower instrument/effect page layouts as part of this task.
-- Do not mix signal-chain routing fixes with unrelated UI cleanup.
-
-### User-visible problem
-
-The current installed app is better than the earlier regressions, but the signal chain still has logical connector issues:
-
-- some balancer connectors still look like they terminate under the balancer instead of visibly entering/exiting it
-- some intermediate utility blocks can appear visually detached or "floating"
-- right-side spacing after `BAL3` has already been tightened, but connector anchors still need cleanup
-
-### Current good deployed checkpoint
-
-The last known better installed build is the revert state after removing the bad global row-snap experiment:
-
-- commit: `5e2ed81` `Revert "Snap visible chain blocks to signal rows"`
-- installed binary hash:
-  - `4126f483c54dde67c516a8483fbf97a09c61be56ecf67a114c2f68d5beed300a`
-
-That build keeps the improved spacing work from:
-
-- `c04038f` `Tighten signal-chain segment spacing`
-
-but does not include the later bad row-snap pass.
-
-### Current local uncommitted work
-
-There are local, uncommitted edits in:
-
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/sy1000_boss_layout_notes.md`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/src/floorBoard.cpp`
-
-These edits do two things:
-
-1. document a proper signal-chain topology/anchor contract in the notes
-2. begin switching balancer routing from hidden center points to visible left/right signal anchors
-
-This local anchor-routing pass has not yet been validated in the installed app. Treat it as a starting point, not as proven-good state.
+- Some balancer connectors terminate under the balancer instead of visibly entering/exiting it.
+- Some intermediate utility blocks can appear visually detached or "floating."
 
 ### Signal-chain contract to follow
 
@@ -92,15 +55,15 @@ Connector invariants:
 - every visible non-terminal node must show an outgoing connector
 - connector lines must terminate on visible signal anchors, not hidden centers
 
-### Recommended next step
+### Known remaining work
 
-Continue the anchor-based fix in `/Users/bsewell/010 MUSIC STUDIO /SY-1000/src/floorBoard.cpp`:
+In `src/floorBoard.cpp`:
 
 - validate and finish the balancer anchor routing using `signalBounds(...)`
 - prefer fixing anchor points and polygon endpoints over moving every stomp widget
 - if a block still looks detached, fix the relevant anchor math for that node class rather than adding another global snap/reflow pass
 
-### What not to do next
+### What not to do
 
 - Do not reintroduce a global "snap all visible blocks to row centers" pass.
 - Do not let lower-page edits trigger upper-chain geometry rebuilds.

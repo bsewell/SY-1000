@@ -26,7 +26,7 @@ TEMPLATE = app
 CONFIG += c++17
 #CONFIG += release
 TARGET = "SY-1000FloorBoard"
-VERSION = 2026.03.24.41
+VERSION = 2026.03.24.47
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DESTDIR = ./build/packager
 OBJECTS_DIR += build/release
@@ -40,13 +40,13 @@ INCLUDEPATH += ./build/generatedfiles \
 # Require Qt 6
 versionAtLeast(QT_VERSION, 6.0.0)|error("Qt 6.0 or later is required.")
 
-TRANSLATIONS = language_fr.ts \
-               language_ge.ts \
-               language_ch.ts \
-               language_es.ts \
-               language_jp.ts \
-               language_pt.ts \
-               language_pl.ts
+TRANSLATIONS = i18n/language_fr.ts \
+               i18n/language_ge.ts \
+               i18n/language_ch.ts \
+               i18n/language_es.ts \
+               i18n/language_jp.ts \
+               i18n/language_pt.ts \
+               i18n/language_pl.ts
 
 DEPENDPATH += . ./src
 QT += xml widgets printsupport quick quickwidgets network
@@ -94,7 +94,7 @@ macx{
 	LIBS += -framework CoreMidi -framework CoreAudio -framework CoreFoundation
 	message("X-Code LIBRARIES SHOULD BE INSTALLED or ERROR will Occur") 
 	message("Please install the X-Code Audio System packages if not present") 
-	ICON = SY-1000FloorBoard.icns
+	ICON = images/SY-1000FloorBoard.icns
         QMAKE_INFO_PLIST = MyInfo.plist
 	message(Including Mac OS X specific headers and sources...)
 }
@@ -102,7 +102,7 @@ ios{
         LIBS += -framework CoreMidi -framework CoreAudio -framework CoreFoundation
         message("X-Code LIBRARIES SHOULD BE INSTALLED or ERROR will Occur")
         message("Please install the X-Code Audio System packages if not present")
-        ICON = SY-1000FloorBoard.icns
+        ICON = images/SY-1000FloorBoard.icns
         message(Including Mac OS X specific headers and sources...)
 }
 

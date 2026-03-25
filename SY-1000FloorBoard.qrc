@@ -1,8 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>about</file>
-        <file>default_guitar.syx</file>
-        <file>default_bass.syx</file>
+        <file alias="about">data/about</file>
+        <file alias="default_guitar.syx">patches/default_guitar.syx</file>
+        <file alias="default_bass.syx">patches/default_bass.syx</file>
         <file>images/SY-1000FloorBoard.png</file>
         <file>images/amp_on.png</file>
         <file>images/amp_off.png</file>
@@ -93,12 +93,12 @@
         <file>images/upload.png</file>
         <file>images/window.png</file>
         <file>images/windowicon.png</file>
-        <file>language_fr.qm</file>
-        <file>language_ge.qm</file>
-        <file>language_ch.qm</file>
+        <file alias="language_fr.qm">i18n/language_fr.qm</file>
+        <file alias="language_ge.qm">i18n/language_ge.qm</file>
+        <file alias="language_ch.qm">i18n/language_ch.qm</file>
         <file>license.txt</file>
         <file>preferences.xml.dist</file>
-        <file>system.syx</file>
+        <file alias="system.syx">patches/system.syx</file>
         <file>images/EQ_graph.png</file>
         <file>images/switch3way.png</file>
         <file>images/sourceBG.png</file>
@@ -113,11 +113,11 @@
         <file>qss/blue.qss</file>
         <file>qss/green.qss</file>
         <file>qss/white.qss</file>
-        <file>language_es.qm</file>
-        <file>language_jp.qm</file>
-        <file>language_pt.qm</file>
-        <file>midi.xml</file>
-        <file>midi.xsd</file>
+        <file alias="language_es.qm">i18n/language_es.qm</file>
+        <file alias="language_jp.qm">i18n/language_jp.qm</file>
+        <file alias="language_pt.qm">i18n/language_pt.qm</file>
+        <file alias="midi.xml">data/midi.xml</file>
+        <file alias="midi.xsd">data/midi.xsd</file>
         <file>images/floor_blue.png</file>
         <file>images/floor_black.png</file>
         <file>images/floor_aqua.png</file>
@@ -143,7 +143,7 @@
         <file>images/balancer2.png</file>
         <file>images/balancer3.png</file>
         <file>images/master.png</file>
-        <file>default_G.tsl</file>
+        <file alias="default_G.tsl">patches/default_G.tsl</file>
         <file>images/seq_curve_0.png</file>
         <file>images/seq_curve_1.png</file>
         <file>images/seq_curve_2.png</file>
@@ -165,7 +165,7 @@
         <file>images/sub_out_left.png</file>
         <file>images/sub_out_right.png</file>
         <file>images/sub_out_stereo.png</file>
-        <file>default_B.tsl</file>
+        <file alias="default_B.tsl">patches/default_B.tsl</file>
         <file>images/path_thru.png</file>
         <file>images/chain_path_1.png</file>
         <file>images/led_vu.png</file>
@@ -175,8 +175,8 @@
         <file>images/led_tuner_mask.png</file>
         <file>images/led_hi.png</file>
         <file>images/led_lo.png</file>
-        <file>vg99_default.syx</file>
-        <file>vg99_midi.xml</file>
+        <file alias="vg99_default.syx">patches/vg99_default.syx</file>
+        <file alias="vg99_midi.xml">data/vg99_midi.xml</file>
         <file>images/geq_slider_bg.png</file>
         <file>images/geq_slider_knob.png</file>
         <file>images/knob_bts_aqua.png</file>

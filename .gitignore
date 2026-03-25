@@ -1,3 +1,6 @@
+# Compiled translation binaries (generated from i18n/*.ts)
+i18n/*.qm
+
 # Build artifacts
 build/
 release/

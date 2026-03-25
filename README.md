@@ -57,18 +57,142 @@ Qt project files remain at the repo root:
 - `SY-1000FloorBoard.pri`
 - `SY-1000FloorBoard.qrc`
 
-## Build
+## Build and install
 
-From the repository root:
+### What you need
+
+| Tool | Version | Where to get it |
+|---|---|---|
+| Qt | 6.5 or later (LTS recommended) | https://www.qt.io/download — install the open-source edition |
+| C++ compiler | see platform notes below | bundled with Qt installer on Windows; Xcode on macOS |
+| Git | any recent version | https://git-scm.com |
+
+Qt is the only significant dependency. Everything else (RtMidi, XML parsing, QML runtime) is either bundled in the repo or included with Qt.
+
+---
+
+### Windows (PC)
+
+**Step 1 — Install Qt**
+
+Download the Qt online installer from https://www.qt.io/download-qt-installer and run it. During setup, select:
+
+- **Qt 6.5** (or the latest LTS) → **MSVC 2022 64-bit** (preferred) or **MinGW 64-bit**
+- **Qt Creator** (included by default — gives you an IDE if you want one)
+- **Qt Quick** and **Qt Quick Controls** modules (required for the QML UI)
+
+If you chose MSVC, also install **Visual Studio 2022** (the free Community edition works) with the "Desktop development with C++" workload. Qt Creator will find the compiler automatically.
+
+**Step 2 — Edit the .pro file for your WinMM.Lib path**
+
+The Windows MIDI subsystem requires `WinMM.Lib`. Open `SY-1000FloorBoard.pro` and find this section:
+
+```
+win32:contains(QMAKE_HOST.arch, x86_64):{
+    exists("c:\Qt\SY-1000\win64\WinMM.Lib")
+    {
+        LIBS += c:\Qt\SY-1000\win64\WinMM.Lib
+    }
+```
+
+Change both paths to where `WinMM.Lib` lives on your machine. It is typically found at:
+
+```
+C:\Program Files (x86)\Windows Kits\10\Lib\<version>\um\x64\WinMM.Lib
+```
+
+**Step 3 — Open and build in Qt Creator**
+
+1. Open Qt Creator
+2. File → Open File or Project → select `SY-1000FloorBoard.pro`
+3. Qt Creator will ask you to configure the project — select your Qt 6 kit
+4. Click the green Play button (or press Ctrl+R) to build and run
+
+The built executable will appear in `build/packager/`.
+
+**Step 3 (alternative) — Build from the command line**
+
+Open the Qt 6 MinGW or MSVC command prompt (from the Start menu, installed with Qt), then:
+
+```bat
+cd path\to\SY-1000
+qmake SY-1000FloorBoard.pro
+mingw32-make -j4
+```
+
+Or with MSVC:
+
+```bat
+qmake SY-1000FloorBoard.pro
+nmake
+```
+
+---
+
+### macOS
+
+**Step 1 — Install Xcode**
+
+Install Xcode from the Mac App Store, then run:
 
 ```bash
+xcode-select --install
+```
+
+**Step 2 — Install Qt**
+
+Download the Qt online installer from https://www.qt.io/download-qt-installer. During setup select:
+
+- **Qt 6.5** (or latest LTS) → **macOS**
+- **Qt Quick** and **Qt Quick Controls** modules
+
+**Step 3 — Add Qt to your PATH**
+
+After installing, add the Qt `bin` directory to your shell path. For example, if Qt is at `~/Qt`:
+
+```bash
+export PATH="$HOME/Qt/6.5.3/macos/bin:$PATH"
+```
+
+Add this line to your `~/.zshrc` (or `~/.bash_profile`) to make it permanent.
+
+**Step 4 — Build**
+
+```bash
+git clone https://github.com/bsewell/SY-1000.git
+cd SY-1000
 qmake SY-1000FloorBoard.pro
 make -j$(sysctl -n hw.logicalcpu)
 ```
 
 Built app bundle: `build/packager/SY-1000FloorBoard.app`
 
-Deploy helper: `deploy.sh`
+---
+
+### Linux
+
+MIDI uses ALSA. Install the development package before building:
+
+```bash
+# Debian/Ubuntu
+sudo apt install libasound2-dev
+
+# Fedora
+sudo dnf install alsa-lib-devel
+```
+
+Then follow the same qmake/make steps as macOS, using a Linux Qt kit.
+
+---
+
+### Connecting the SY-1000
+
+1. Connect the SY-1000 to your computer via USB
+2. Launch the app
+3. Go to **Preferences** and select the SY-1000 as both the MIDI input and output device
+4. The app will send a bulk request and populate the patch list
+
+**Note:** Close Boss Tone Studio before launching FloorBoard — both apps use the same MIDI port and will conflict if open simultaneously.
 
 ## Vibe-coding workflow
 

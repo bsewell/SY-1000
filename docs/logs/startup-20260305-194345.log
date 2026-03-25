@@ -1,8 +1,0 @@
-2026-03-05 19:43:40 [pid:43673] =======================================================
-2026-03-05 19:43:40 [pid:43673]   SY-1000FloorBoard Startup Log
-2026-03-05 19:43:40 [pid:43673]   Version: 2026.03.05
-2026-03-05 19:43:40 [pid:43673] =======================================================
-2026-03-05 19:43:40 [pid:43673] STEP 0: Crash log initialised.
-2026-03-05 19:43:40 [pid:43673] LAUNCH CONTEXT: pid=43673 cwd=/
-2026-03-05 19:43:40 [pid:43673] STEP 0b: Signal handlers and Qt message handler installed.
-2026-03-05 19:43:40 [pid:43673] STEP 1: About to construct QApplication...

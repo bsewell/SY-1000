@@ -4,23 +4,44 @@ Qt desktop editor for the Boss SY-1000 guitar synthesizer, with current effort f
 
 ## Credits
 
-This project is a fork of **SY1000FloorBoard** by **Colin Willcocks**, originally published on SourceForge:
+This project is a fork of **SY1000FloorBoard** by **Colin Willcocks** (gumtownbassman@yahoo.com), originally published on SourceForge:
 
 > [https://sourceforge.net/projects/sy1000floorboard/files/SY1000FloorBoard/](https://sourceforge.net/projects/sy1000floorboard/files/SY1000FloorBoard/)
 
-All original work is credited to Colin Willcocks. This fork extends the editor with UI improvements, parameter correctness fixes, and updated documentation.
+Colin is the originator of the entire application: MIDI SysEx communication, patch storage, signal-chain rendering, custom widget library, and Qt project structure. This fork extends his work with UI accuracy improvements, a QML migration, and a signal-chain layout rewrite.
+
+See [`ABOUT.md`](ABOUT.md) for a full description of the technology stack, what has changed, and why.
 
 ## Start here
 
 Read these in order:
 
-1. `/Users/bsewell/010 MUSIC STUDIO /SY-1000/AGENTS.md`
-2. `/Users/bsewell/010 MUSIC STUDIO /SY-1000/CLAUDE.md`
-3. `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/repo_layout.md`
-4. `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/agent_handoff.md`
-5. `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/sy1000_boss_layout_notes.md`
-6. `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/sy1000_claude_compare_matrix.md`
-7. `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/dropdown_inventory.md`
+1. `CLAUDE.md` — agent conventions, build command, key docs list
+2. `docs/repo_layout.md` — repo structure and file placement policy
+3. `docs/ui/sy1000_boss_layout_notes.md` — visual patterns and Boss terminology
+4. `docs/ui/sy1000_claude_compare_matrix.md` — current implementation vs Boss spec
+5. `HANDOFF.md` — active migration tasks (Phase 5 QML migration)
+
+## Docs topic map
+
+| Topic | Doc |
+|---|---|
+| Agent/AI conventions & build | `CLAUDE.md` |
+| Repo structure | `docs/repo_layout.md` |
+| Active migration tasks | `HANDOFF.md` |
+| Visual patterns & Boss layout rules | `docs/ui/sy1000_boss_layout_notes.md` |
+| Impl vs Boss spec (block-by-block) | `docs/ui/sy1000_claude_compare_matrix.md` |
+| Dropdown typography & shared combo path | `docs/ui/dropdown_inventory.md` |
+| Setting label typography | `docs/ui/setting_label_inventory.md` |
+| Design tokens (Boss CSS extraction) | `docs/ui/ux_improvement_report.md` |
+| Layout regression tracking | `docs/ui/layout_regression_log.md` |
+| Signal-chain architecture & known bugs | `docs/agent_handoff.md` |
+| Panel parameter audit (block-level) | `docs/panel_audit_report.md` |
+| Page → control → MIDI address index | `docs/ui/page_control_inventory.md` |
+| Official manual index | `docs/sy1000_manuals.md` |
+| Parameter inventory (instrument + FX types) | `docs/sy1000_parameter_inventory.md` |
+| Refactor direction (AppServices migration) | `docs/refactor_audit.md` |
+| Diagnostics & log triage | `docs/diagnostics.md` |
 
 ## Repository shape
 
@@ -45,13 +66,9 @@ qmake SY-1000FloorBoard.pro
 make -j$(sysctl -n hw.logicalcpu)
 ```
 
-Built app bundle:
+Built app bundle: `build/packager/SY-1000FloorBoard.app`
 
-`/Users/bsewell/010 MUSIC STUDIO /SY-1000/build/packager/SY-1000FloorBoard.app`
-
-Deploy helper:
-
-`/Users/bsewell/010 MUSIC STUDIO /SY-1000/deploy.sh`
+Deploy helper: `deploy.sh`
 
 ## Vibe-coding workflow
 
@@ -73,10 +90,10 @@ If you mix them, review gets noisy and regressions get harder to localize.
 
 Before changing labels, spacing, tabs, or controls, compare against:
 
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/sy1000_boss_layout_notes.md`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/sy1000_claude_compare_matrix.md`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/ui/dropdown_inventory.md`
-- `/Users/bsewell/010 MUSIC STUDIO /SY-1000/docs/sy1000_manuals.md`
+- `docs/ui/sy1000_boss_layout_notes.md`
+- `docs/ui/sy1000_claude_compare_matrix.md`
+- `docs/ui/dropdown_inventory.md`
+- `docs/sy1000_manuals.md`
 
 The target is not generic cleanup. The target is closer SY-1000 behavior and clearer presentation.
 
@@ -101,12 +118,7 @@ When editing effect pages:
 
 ### 5. Build after each meaningful pass
 
-Use:
-
-```bash
-qmake SY-1000FloorBoard.pro
-make -j$(sysctl -n hw.logicalcpu)
-```
+Run the build command from the `## Build` section above.
 
 Do not stack several speculative edits without rebuilding.
 

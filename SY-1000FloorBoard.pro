@@ -26,28 +26,37 @@ TEMPLATE = app
 CONFIG += c++17
 #CONFIG += release
 TARGET = "SY-1000FloorBoard"
-VERSION = 2026.03.05
-DESTDIR = ./packager
-OBJECTS_DIR += release
-UI_DIR += ./generatedfiles
-MOC_DIR += ./generatedfiles/release
-INCLUDEPATH += ./generatedfiles \
-./generatedfiles/release \
+VERSION = 2026.03.25.1
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+DESTDIR = ./build/packager
+OBJECTS_DIR += build/release
+UI_DIR += ./build/generatedfiles
+MOC_DIR += ./build/generatedfiles/release
+INCLUDEPATH += ./build/generatedfiles \
+./build/generatedfiles/release \
+./src \
 .
 
 # Require Qt 6
 versionAtLeast(QT_VERSION, 6.0.0)|error("Qt 6.0 or later is required.")
 
-TRANSLATIONS = language_fr.ts \
-               language_ge.ts \
-               language_ch.ts \
-               language_es.ts \
-               language_jp.ts \
-               language_pt.ts \
-               language_pl.ts
+TRANSLATIONS = i18n/language_fr.ts \
+               i18n/language_ge.ts \
+               i18n/language_ch.ts \
+               i18n/language_es.ts \
+               i18n/language_jp.ts \
+               i18n/language_pt.ts \
+               i18n/language_pl.ts
 
-DEPENDPATH += .
-QT += xml widgets printsupport
+DEPENDPATH += . ./src
+QT += xml widgets printsupport quick quickwidgets network
+
+# Auto-stamp version in preferences.xml.dist from the .pro VERSION variable.
+# This ensures the embedded version always matches and forces rcc to recompile.
+versionstamp.commands = $$PWD/tools/stamp_version.sh $$VERSION $$PWD/preferences.xml.dist
+versionstamp.depends = $$PWD/SY-1000FloorBoard.pro
+QMAKE_EXTRA_TARGETS += versionstamp
+PRE_TARGETDEPS += versionstamp
 
 #Platform dependent file(s)
 win32-g++:contains(QMAKE_HOST.arch, x86):{
@@ -85,7 +94,7 @@ macx{
 	LIBS += -framework CoreMidi -framework CoreAudio -framework CoreFoundation
 	message("X-Code LIBRARIES SHOULD BE INSTALLED or ERROR will Occur") 
 	message("Please install the X-Code Audio System packages if not present") 
-	ICON = SY-1000FloorBoard.icns
+	ICON = images/SY-1000FloorBoard.icns
         QMAKE_INFO_PLIST = MyInfo.plist
 	message(Including Mac OS X specific headers and sources...)
 }
@@ -93,7 +102,7 @@ ios{
         LIBS += -framework CoreMidi -framework CoreAudio -framework CoreFoundation
         message("X-Code LIBRARIES SHOULD BE INSTALLED or ERROR will Occur")
         message("Please install the X-Code Audio System packages if not present")
-        ICON = SY-1000FloorBoard.icns
+        ICON = images/SY-1000FloorBoard.icns
         message(Including Mac OS X specific headers and sources...)
 }
 
@@ -115,12 +124,24 @@ DISTFILES += \
     android/gradlew.bat
 
 FORMS += \
-    consoletoolbar.ui
+    src/consoletoolbar.ui
 
 HEADERS += \
-    consoletoolbar.h
+    src/consoletoolbar.h \
+    src/parameterBridge.h \
+    src/qmlHost.h \
+    src/diagnosticServer.h \
+    src/patchListModel.h \
+    src/chainLayout.h
 
 SOURCES += \
-    consoletoolbar.cpp
+    src/consoletoolbar.cpp \
+    src/parameterBridge.cpp \
+    src/qmlHost.cpp \
+    src/diagnosticServer.cpp \
+    src/patchListModel.cpp \
+    src/chainLayout.cpp
 
+RESOURCES += \
+    qml/qml.qrc
 

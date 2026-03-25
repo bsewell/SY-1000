@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  FX Panel - Flanger (example layout)
+  Designed at ratio=1.0 (full scale). At ratio=0.6, the editWindow
+  scales everything down proportionally.
+
+  Open this file with:
+    /opt/homebrew/bin/designer ui/fx_flanger_example.ui
+
+  Custom widgets (customControlKnob, customControlListMenu,
+  customControlSwitch) are "promoted" from standard Qt base classes.
+  Qt Designer renders the base class as a placeholder (grey box /
+  combo). At compile time, uic substitutes the real custom class.
+
+  COLUMN MAP (page grid, ratio=1.0):
+    col 0 : "FX TYPE" label      (~60px)
+    col 1 : type combo box       (~200px)
+    col 2 : ON/OFF switch        (~80px)
+    col 3-12 : 10 knobs          (~100px each)
+-->
+<ui version="4.0">
+ <class>FxFlangerPanel</class>
+ <widget class="QWidget" name="FxFlangerPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1020</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>FX Panel – Flanger</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(28, 28, 32);</string>
+  </property>
+
+  <!-- ── ROOT: vertical stack (type row / divider / knob row) ── -->
+  <layout class="QVBoxLayout" name="rootLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin"><number>8</number></property>
+   <property name="topMargin"><number>6</number></property>
+   <property name="rightMargin"><number>8</number></property>
+   <property name="bottomMargin"><number>6</number></property>
+
+   <!-- ── ROW 1: type selector ── -->
+   <item>
+    <layout class="QHBoxLayout" name="typeRowLayout">
+     <property name="spacing"><number>8</number></property>
+
+     <!-- "FX TYPE" label -->
+     <item>
+      <widget class="QLabel" name="label_fxtype">
+       <property name="minimumSize">
+        <size><width>60</width><height>28</height></size>
+       </property>
+       <property name="maximumSize">
+        <size><width>80</width><height>28</height></size>
+       </property>
+       <property name="text"><string>FX TYPE</string></property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255,255,255); font-family: Arial; font-size: 11pt;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Type dropdown (promoted to customControlListMenu at compile time) -->
+     <item>
+      <widget class="QComboBox" name="combo_type">
+       <property name="minimumSize">
+        <size><width>200</width><height>28</height></size>
+       </property>
+       <property name="maximumSize">
+        <size><width>260</width><height>28</height></size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+         QComboBox {
+           background-color: rgb(20,20,20);
+           color: rgb(185,224,243);
+           border: 1px solid rgb(150,150,150);
+           border-radius: 6px;
+           padding: 4px 18px 4px 10px;
+           font-family: Arial; font-size: 11pt;
+         }
+        </string>
+       </property>
+       <!-- Placeholder items — real items come from MIDI table at runtime -->
+       <item><property name="text"><string>FLANGER</string></property></item>
+      </widget>
+     </item>
+
+     <!-- ON/OFF switch (promoted to customControlSwitch at compile time) -->
+     <item>
+      <widget class="QPushButton" name="switch_onoff">
+       <property name="minimumSize">
+        <size><width>60</width><height>28</height></size>
+       </property>
+       <property name="maximumSize">
+        <size><width>80</width><height>28</height></size>
+       </property>
+       <property name="text"><string>ON</string></property>
+       <property name="checkable"><bool>true</bool></property>
+       <property name="styleSheet">
+        <string notr="true">
+         QPushButton { background-color: rgb(40,40,60); color: white;
+                       border: 1px solid rgb(100,100,150); border-radius: 4px; }
+         QPushButton:checked { background-color: rgb(80,80,200); }
+        </string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Spacer: pushes type row to the left -->
+     <item>
+      <spacer name="typeRowSpacer">
+       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+       <property name="sizeHint" stdset="0">
+        <size><width>40</width><height>20</height></size>
+       </property>
+      </spacer>
+     </item>
+
+    </layout>
+   </item>
+
+   <!-- ── DIVIDER LINE ── -->
+   <item>
+    <widget class="QFrame" name="divider">
+     <property name="minimumSize">
+      <size><width>0</width><height>1</height></size>
+     </property>
+     <property name="maximumSize">
+      <size><width>16777215</width><height>1</height></size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgba(210,220,232,110); background: rgba(210,220,232,110);</string>
+     </property>
+     <property name="frameShape"><enum>QFrame::HLine</enum></property>
+     <property name="frameShadow"><enum>QFrame::Plain</enum></property>
+    </widget>
+   </item>
+
+   <!-- ── ROW 2: 10 knobs ── -->
+   <item>
+    <layout class="QHBoxLayout" name="knobRowLayout">
+     <property name="spacing"><number>0</number></property>
+
+     <!-- Knob 1: RATE
+          At runtime this is a customControlKnob.
+          In Designer it renders as a plain QWidget (grey box).
+          Set minimum size to represent knob + label height. -->
+     <item>
+      <widget class="QWidget" name="knob_rate">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>RATE</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Knob 2: DEPTH -->
+     <item>
+      <widget class="QWidget" name="knob_depth">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>DEPTH</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Knob 3: RESONANCE -->
+     <item>
+      <widget class="QWidget" name="knob_resonance">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>RESONANCE</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Knob 4: MANUAL -->
+     <item>
+      <widget class="QWidget" name="knob_manual">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>MANUAL</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Knob 5: SEPARATION -->
+     <item>
+      <widget class="QWidget" name="knob_separation">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>SEPARATION</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Knob 6: LOW CUT -->
+     <item>
+      <widget class="QWidget" name="knob_low_cut">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>LOW CUT</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Knob 7: HIGH CUT -->
+     <item>
+      <widget class="QWidget" name="knob_high_cut">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>HIGH CUT</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Knob 8: EFFECT LEVEL -->
+     <item>
+      <widget class="QWidget" name="knob_effect_level">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>EFFECT LEVEL</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Knob 9: DIRECT LEVEL -->
+     <item>
+      <widget class="QWidget" name="knob_direct_level">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>DIRECT LEVEL</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Knob 10: BPM -->
+     <item>
+      <widget class="QWidget" name="knob_bpm">
+       <property name="minimumSize">
+        <size><width>90</width><height>100</height></size>
+       </property>
+       <property name="toolTip"><string>BPM</string></property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(50,50,60); border-radius: 4px;</string>
+       </property>
+      </widget>
+     </item>
+
+    </layout>
+   </item>
+
+  </layout>
+ </widget>
+
+ <!--
+   CUSTOM WIDGET DECLARATIONS
+   These tell uic (the .ui compiler) what headers to include and
+   which base class each custom widget extends.
+   Qt Designer shows the base class visually; the compiled app uses
+   the real custom class.
+ -->
+ <customwidgets>
+  <customwidget>
+   <class>customControlKnob</class>
+   <extends>QWidget</extends>
+   <header>customControlKnob.h</header>
+  </customwidget>
+  <customwidget>
+   <class>customControlListMenu</class>
+   <extends>QComboBox</extends>
+   <header>customControlListMenu.h</header>
+  </customwidget>
+  <customwidget>
+   <class>customControlSwitch</class>
+   <extends>QWidget</extends>
+   <header>customControlSwitch.h</header>
+  </customwidget>
+ </customwidgets>
+
+ <resources/>
+ <connections/>
+</ui>

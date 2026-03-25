@@ -1,8 +1,13 @@
+# Compiled translation binaries (generated from i18n/*.ts)
+i18n/*.qm
+
 # Build artifacts
+build/
 release/
+generatedfiles/
+packager/
 Makefile
 .qmake.stash
-generatedfiles/
 qrc_*.cpp
 moc_*.cpp
 *.o
@@ -13,8 +18,21 @@ moc_*.cpp
 .qtcreator/
 *.pro.user
 
-# Packager (built app)
-packager/
-
 # macOS
 .DS_Store
+
+# Generated / local-only files — never commit
+docs/logs/
+deploy_log.md
+preferences.xml
+diag.log
+*.log
+run_debug.sh
+build.sh
+claude/
+scripts/
+layout_report.md
+screenshot*.png
+qml_*.png
+qml_debug.log
+sy-1000floorboard_plugin_import.cpp

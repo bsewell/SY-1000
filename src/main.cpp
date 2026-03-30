@@ -22,22 +22,46 @@
 ****************************************************************************/
 
 // === CRASH LOG SYSTEM ===
-// BEST PRACTICE: All crash logging uses only POSIX primitives so it is safe
-// to call BEFORE QApplication is constructed, AND from inside signal handlers
-// (where C++ runtime and Qt heap allocations are unsafe).
+// BEST PRACTICE: All crash logging uses only low-level OS primitives so it is
+// safe to call BEFORE QApplication is constructed, AND from inside crash
+// handlers (where C++ runtime and Qt heap allocations are unsafe).
 //
-// Log file: ~/Library/Application Support/Gumtown/SY-1000FloorBoard/startup.log
-// Prev log: ~/Library/Application Support/Gumtown/SY-1000FloorBoard/startup.log.prev
+// macOS/Linux log: ~/Library/Application Support/Gumtown/SY-1000FloorBoard/startup.log
+// Windows log:     %APPDATA%\Gumtown\SY-1000FloorBoard\startup.log
 //
-// To read after a crash:
+// To read after a crash (macOS/Linux):
 //   cat ~/Library/Application\ Support/Gumtown/SY-1000FloorBoard/startup.log
 //   cat ~/Library/Application\ Support/Gumtown/SY-1000FloorBoard/startup.log.prev
 
-#include <execinfo.h>   // backtrace(), backtrace_symbols_fd()
+// ── Platform-specific low-level I/O ──────────────────────────────────────
+#ifdef _WIN32
+#  include <windows.h>      // CreateFile, WriteFile, SetUnhandledExceptionFilter
+#  include <dbghelp.h>      // MiniDumpWriteDump
+#  include <direct.h>       // _mkdir, _getcwd
+#  include <io.h>           // _write, _open, _close
+#  include <process.h>      // _getpid
+#  pragma comment(lib, "dbghelp.lib")
+#  define PATH_MAX MAX_PATH
+   // Map POSIX names to Windows equivalents for code below
+#  define getpid()       _getpid()
+#  define getcwd(b,n)    _getcwd(b,n)
+#  define mkdir(p,m)     _mkdir(p)
+#  define popen          _popen
+#  define pclose         _pclose
+#  define O_WRONLY       _O_WRONLY
+#  define O_APPEND       _O_APPEND
+#  define O_CREAT        _O_CREAT
+   static inline int  open(const char *p, int f, int m) { return _open(p, f|_O_BINARY, m); }
+   static inline int  write(int fd, const void *b, unsigned n) { return _write(fd, b, n); }
+   static inline void close(int fd) { _close(fd); }
+#else
+#  include <execinfo.h>     // backtrace(), backtrace_symbols_fd()  [POSIX/glibc/Darwin]
+#  include <unistd.h>       // write(), getpid(), getcwd()
+#  include <fcntl.h>        // O_WRONLY, O_APPEND, O_CREAT
+#endif
+
+#include <sys/stat.h>   // stat(), mkdir() — available on all platforms
 #include <signal.h>     // signal(), SIGABRT etc.
-#include <unistd.h>     // write(), open(), close()
-#include <fcntl.h>      // O_WRONLY, O_APPEND, O_CREAT
-#include <sys/stat.h>   // mkdir()
 #include <ctime>        // time(), localtime(), strftime()
 #include <cstring>      // strlen()
 #include <cstdio>       // snprintf()
@@ -110,6 +134,9 @@ static std::string shellEscapeDoubleQuoted(const std::string &input)
 
 // Detect the Qt runtime flavor the executable is linked against so we can
 // choose a matching plugin path and avoid loading two Qt trees at once.
+// This uses otool -L which is macOS-only — the whole function is a no-op on
+// other platforms where Qt finds its plugins via standard mechanisms.
+#ifdef Q_OS_MAC
 static bool executableLinksToNeedle(const char *exePath, const char *needle)
 {
     if (!exePath || !exePath[0] || !needle || !needle[0]) {
@@ -135,11 +162,20 @@ static bool executableLinksToNeedle(const char *exePath, const char *needle)
     pclose(pipe);
     return found;
 }
+#endif // Q_OS_MAC
 
-// Force deterministic Qt plugin loading from this app bundle to avoid
+// Force deterministic Qt plugin loading from the macOS app bundle to avoid
 // environment/path bleed from Homebrew or other Qt installs.
+// On Linux and Windows, Qt resolves plugins via its own standard paths —
+// no manual intervention needed here.
 static void configureQtPluginPaths(const char *argv0)
 {
+#ifndef Q_OS_MAC
+    // Nothing to do on Linux/Windows — Qt handles plugin paths automatically.
+    (void)argv0;
+    writeRawLog("STEP 1: Qt plugin path configuration skipped (non-macOS).");
+    return;
+#else
     if (!argv0 || !argv0[0]) {
         writeRawLog("STEP 1a: argv[0] unavailable; cannot preconfigure Qt plugin paths.");
         return;
@@ -207,17 +243,29 @@ static void configureQtPluginPaths(const char *argv0)
     writeRawLogFmt("STEP 1d: QT_PLUGIN_PATH=%s", pluginsDir.c_str());
     writeRawLogFmt("STEP 1e: QT_QPA_PLATFORM_PLUGIN_PATH=%s", platformsDir.c_str());
     writeRawLog("STEP 1f: QT_QPA_PLATFORM=cocoa");
+#endif // Q_OS_MAC
 }
 
-// Signal handler — called only on fatal crash-class signals.
-// Writes signal name + stack trace to log then re-raises for core dump / OS dialog.
+// ── Crash handlers ──────────────────────────────────────────────────────────
+//
+// macOS/Linux: POSIX signal handler with backtrace written to the log file.
+//   backtrace_symbols_fd() is async-signal-safe; backtrace() itself may malloc
+//   but is the best available option on Darwin without a dedicated unwinder.
+//
+// Windows: SetUnhandledExceptionFilter with MiniDumpWriteDump.
+//   POSIX signal handlers are unreliable for access violations on Windows;
+//   the structured exception filter is the correct Windows equivalent.
+
+#ifndef _WIN32
 static void crashSignalHandler(int sig)
 {
     const char *signame;
     switch (sig) {
         case SIGABRT: signame = "SIGABRT  (Abort — often a Qt fatal error or assert)"; break;
         case SIGSEGV: signame = "SIGSEGV  (Segmentation Fault — null/bad pointer)";   break;
+#ifdef SIGBUS
         case SIGBUS:  signame = "SIGBUS   (Bus Error — misaligned memory access)";     break;
+#endif
         case SIGFPE:  signame = "SIGFPE   (Floating-Point Exception / divide-by-zero)";break;
         case SIGILL:  signame = "SIGILL   (Illegal Instruction — corrupt binary?)";    break;
         default:      signame = "UNKNOWN SIGNAL";                                       break;
@@ -228,8 +276,6 @@ static void crashSignalHandler(int sig)
     writeRawLog(signame);
     writeRawLog("Stack trace (most recent call last):");
 
-    // backtrace_symbols_fd is async-signal-safe; backtrace() itself may malloc
-    // but is the best option available on Darwin without a dedicated unwinder.
     void *array[64];
     int size = backtrace(array, 64);
     int fd = open(g_logFilePath, O_WRONLY | O_APPEND | O_CREAT, 0644);
@@ -241,10 +287,40 @@ static void crashSignalHandler(int sig)
 
     writeRawLog("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-    // Restore default handler and re-raise so macOS crash reporter still fires.
+    // Restore default handler and re-raise so the OS crash reporter still fires.
     signal(sig, SIG_DFL);
     raise(sig);
 }
+
+#else // _WIN32
+
+static LONG WINAPI windowsExceptionHandler(EXCEPTION_POINTERS *ep)
+{
+    writeRawLog("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    writeRawLog("!!! CRASH DETECTED (Windows SEH) !!!");
+
+    // Write a minidump alongside the log file so developers can load it in WinDbg.
+    if (g_logFilePath[0]) {
+        char dmpPath[1024];
+        snprintf(dmpPath, sizeof(dmpPath), "%s.dmp", g_logFilePath);
+        HANDLE hFile = CreateFileA(dmpPath, GENERIC_WRITE, 0, NULL,
+                                   CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+        if (hFile != INVALID_HANDLE_VALUE) {
+            MINIDUMP_EXCEPTION_INFORMATION mei;
+            mei.ThreadId          = GetCurrentThreadId();
+            mei.ExceptionPointers = ep;
+            mei.ClientPointers    = FALSE;
+            MiniDumpWriteDump(GetCurrentProcess(), GetCurrentProcessId(),
+                              hFile, MiniDumpNormal, &mei, NULL, NULL);
+            CloseHandle(hFile);
+            writeRawLog("Minidump written (open in WinDbg for stack trace).");
+        }
+    }
+
+    writeRawLog("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    return EXCEPTION_CONTINUE_SEARCH; // let Windows error reporting proceed
+}
+#endif // _WIN32
 
 static void onProcessExit()
 {
@@ -308,10 +384,25 @@ static void qtLogHandler(QtMsgType type, const QMessageLogContext &ctx, const QS
 // — before QApplication, before any Qt code.
 static void initCrashLog()
 {
+#ifdef _WIN32
+    // Windows: log to %APPDATA%\Gumtown\SY-1000FloorBoard\startup.log
+    const char *appdata = getenv("APPDATA");
+    if (!appdata || !appdata[0]) appdata = "C:\\Temp";
+
+    char tmp[768];
+    snprintf(tmp, sizeof(tmp), "%s\\Gumtown", appdata);
+    _mkdir(tmp);   // ignore error if already exists
+
+    char dirPath[768];
+    snprintf(dirPath, sizeof(dirPath), "%s\\Gumtown\\SY-1000FloorBoard", appdata);
+    _mkdir(dirPath);
+#else
+    // macOS / Linux: log to ~/Library/Application Support/... (macOS convention)
+    // On Linux this ends up in ~/Library/... which is non-standard but harmless
+    // and keeps the path logic identical across POSIX platforms.
     const char *home = getenv("HOME");
     if (!home || !home[0]) home = "/tmp";
 
-    // Ensure the full directory chain exists.
     char tmp[768];
     snprintf(tmp, sizeof(tmp), "%s/Library", home);                             mkdir(tmp, 0755);
     snprintf(tmp, sizeof(tmp), "%s/Library/Application Support", home);         mkdir(tmp, 0755);
@@ -321,17 +412,27 @@ static void initCrashLog()
     snprintf(dirPath, sizeof(dirPath),
              "%s/Library/Application Support/Gumtown/SY-1000FloorBoard", home);
     mkdir(dirPath, 0755);
+#endif
 
     // Rotate: move previous startup.log -> startup.log.prev
     char prevPath[1024];
+#ifdef _WIN32
+    snprintf(g_logFilePath, sizeof(g_logFilePath), "%s\\startup.log",      dirPath);
+    snprintf(prevPath,      sizeof(prevPath),       "%s\\startup.log.prev", dirPath);
+#else
     snprintf(g_logFilePath, sizeof(g_logFilePath), "%s/startup.log",      dirPath);
     snprintf(prevPath,      sizeof(prevPath),       "%s/startup.log.prev", dirPath);
+#endif
     rename(g_logFilePath, prevPath);   // OK if file does not exist yet
 
     // Write header
     writeRawLog("=======================================================");
     writeRawLog("  SY-1000FloorBoard Startup Log");
-    writeRawLog("  Version: 2026.03.05");
+#ifdef APP_VERSION
+    writeRawLogFmt("  Version: %s", APP_VERSION);
+#else
+    writeRawLog("  Version: unknown");
+#endif
     writeRawLog("=======================================================");
     writeRawLog("STEP 0: Crash log initialised.");
     {
@@ -344,21 +445,29 @@ static void initCrashLog()
         writeRawLog(info);
     }
 
-    // Install POSIX signal handlers
+    // Install crash handler — platform-specific
+#ifdef _WIN32
+    // Windows structured exception filter (equivalent of POSIX signal handlers)
+    SetUnhandledExceptionFilter(windowsExceptionHandler);
+#else
+    // POSIX signal handlers
     signal(SIGABRT, crashSignalHandler);
     signal(SIGSEGV, crashSignalHandler);
-    signal(SIGBUS,  crashSignalHandler);
+#  ifdef SIGBUS
+    signal(SIGBUS,  crashSignalHandler);  // not defined on Windows
+#  endif
     signal(SIGFPE,  crashSignalHandler);
     signal(SIGILL,  crashSignalHandler);
     // Do not trap SIGTERM as a crash. Users closing the app should not be
     // reported as "CRASH DETECTED" in startup.log.
+#endif
 
     // Install Qt message handler (must be before QApplication construction)
     qInstallMessageHandler(qtLogHandler);
     std::set_terminate(terminateHandler);
     atexit(onProcessExit);
 
-    writeRawLog("STEP 0b: Signal handlers and Qt message handler installed.");
+    writeRawLog("STEP 0b: Crash handler and Qt message handler installed.");
 }
 // === END CRASH LOG SYSTEM ===
 
@@ -379,7 +488,8 @@ int main(int argc, char *argv[])
     // QApplicationPrivate::initialize() on macOS 26.3 because the macOS native
     // style plugin accesses APIs that were removed.  Force Fusion style BEFORE
     // QApplication is constructed so Qt never loads libqmacstyle.dylib at all.
-    setenv("QT_STYLE_OVERRIDE", "fusion", 1);
+    // qputenv is Qt's cross-platform setenv — safe to call before QApplication.
+    qputenv("QT_STYLE_OVERRIDE", "fusion");
 
     QApplication app(argc, argv);
     writeRawLog("STEP 2: QApplication constructed OK.");
@@ -497,11 +607,9 @@ int main(int argc, char *argv[])
     int screenHeight = screen.height();
     double resolution = screenWidth;
     if (screenHeight > screenWidth) { resolution = screenHeight; }   // tablet portrait
-    // LAYOUT FIX: Changed divisor from 1.2 → 1.07 so the window fills ~93 % of
-    // screen width instead of ~83 %.  On a 1728-px screen with windowWidth=1350
-    // this gives ratio ≈ 1.20 (was 1.07), making all blocks, text, and spacing
-    // proportionally larger while still leaving a comfortable window margin.
-    resolution = resolution / (windowWidth * 1.07);
+    resolution = resolution / (windowWidth * 1.2);
+    // Cap ratio so the app stays usable on ultrawide/high-res screens
+    if (resolution > 1.1) { resolution = 1.1; }
     QString scaleRatio = QString::number(resolution, 'f', 2);
     double dpi = QGuiApplication::primaryScreen()->logicalDotsPerInch();
     dpi = (96 / dpi) * (resolution);   // ratio 1:1 at 96 dpi
@@ -531,12 +639,7 @@ int main(int argc, char *argv[])
 
     double ratio  = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     double fratio = preferences->getPreferences("Window", "Font",  "ratio").toDouble(&ok);
-    // Global readability bump: keep layout scale unchanged but render text larger.
-    // Store a base ratio so repeated launches do not compound the boost.
-    // LAYOUT FIX: Reduced from 1.20 → 1.05 because the auto-scale divisor change
-    // (1.2 → 1.07) already increases ratio from ~1.07 to ~1.20 on a 1728-px screen.
-    // Stacking fontBoost=1.20 on top would give fratio=1.44, too large.
-    const double fontBoost = 1.05;
+    const double fontBoost = 1.0;
     bool baseOk = false;
     double baseFratio = preferences->getPreferences("Window", "Font", "base_ratio").toDouble(&baseOk);
     if (!baseOk || baseFratio <= 0.0)
@@ -646,7 +749,6 @@ int main(int argc, char *argv[])
                 Qt::WindowTitleHint
                 | Qt::WindowMinimizeButtonHint
                 | Qt::WindowCloseButtonHint
-                //| Qt::MSWindowsFixedSizeDialogHint
                 );
     window.setWindowIcon(QIcon(":/images/windowicon.png"));
 

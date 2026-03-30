@@ -51,9 +51,9 @@
 #  define O_WRONLY       _O_WRONLY
 #  define O_APPEND       _O_APPEND
 #  define O_CREAT        _O_CREAT
-   static inline int  open(const char *p, int f, int m) { return _open(p, f|_O_BINARY, m); }
-   static inline int  write(int fd, const void *b, unsigned n) { return _write(fd, b, n); }
-   static inline void close(int fd) { _close(fd); }
+   static inline int open(const char *p, int f, int m) { return _open(p, f|_O_BINARY, m); }
+   static inline int write(int fd, const void *b, unsigned n) { return _write(fd, b, n); }
+   static inline int close(int fd) { return _close(fd); }
 #else
 #  include <execinfo.h>     // backtrace(), backtrace_symbols_fd()  [POSIX/glibc/Darwin]
 #  include <unistd.h>       // write(), getpid(), getcwd()
@@ -119,6 +119,7 @@ static bool pathExists(const char *path)
     return (path && path[0] && stat(path, &st) == 0);
 }
 
+#ifdef Q_OS_MAC
 static std::string shellEscapeDoubleQuoted(const std::string &input)
 {
     std::string out;
@@ -131,6 +132,7 @@ static std::string shellEscapeDoubleQuoted(const std::string &input)
     }
     return out;
 }
+#endif // Q_OS_MAC
 
 // Detect the Qt runtime flavor the executable is linked against so we can
 // choose a matching plugin path and avoid loading two Qt trees at once.

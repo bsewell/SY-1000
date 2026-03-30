@@ -41,6 +41,9 @@ powershell -NoProfile -Command ^
 :: ── Stamp version into preferences.xml.dist ────────────────────────────────
 :: Remove dots: 2026.03.20 → 20260320
 for /f %%c in ('powershell -NoProfile -Command "'%NEW_VERSION%' -replace '\.', ''"') do set CLEAN_VERSION=%%c
+:: Note on quoting: the outer "..." is a cmd double-quoted argument, so ""
+:: inside it becomes a single " before PowerShell sees it.  The regex and
+:: replacement strings therefore arrive at PowerShell correctly.
 powershell -NoProfile -Command ^
     "(Get-Content 'preferences.xml.dist') -replace '<Application version=""[^""]*""/>', '<Application version=""%CLEAN_VERSION%""/>' | Set-Content 'preferences.xml.dist'"
 

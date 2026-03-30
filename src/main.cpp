@@ -393,11 +393,11 @@ static void initCrashLog()
 
     char tmp[768];
     snprintf(tmp, sizeof(tmp), "%s\\Gumtown", appdata);
-    _mkdir(tmp);   // ignore error if already exists
+    mkdir(tmp, 0755);   // mode arg ignored on Windows via macro; errors ignored if dir exists
 
     char dirPath[768];
     snprintf(dirPath, sizeof(dirPath), "%s\\Gumtown\\SY-1000FloorBoard", appdata);
-    _mkdir(dirPath);
+    mkdir(dirPath, 0755);
 #else
     // macOS / Linux: log to ~/Library/Application Support/... (macOS convention)
     // On Linux this ends up in ~/Library/... which is non-standard but harmless

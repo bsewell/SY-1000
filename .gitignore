@@ -28,7 +28,6 @@ preferences.xml
 diag.log
 *.log
 run_debug.sh
-build.sh
 claude/
 scripts/
 layout_report.md

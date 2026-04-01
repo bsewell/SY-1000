@@ -40,35 +40,55 @@
 #  include <direct.h>       // _mkdir, _getcwd
 #  include <io.h>           // _write, _open, _close
 #  include <process.h>      // _getpid
-#  pragma comment(lib, "dbghelp.lib")
-#  define PATH_MAX MAX_PATH
+// Colin (MinGW fix): <fcntl.h> and <stdio.h> must be explicitly included inside
+// the _WIN32 block — MinGW does not pull in _O_WRONLY/_O_BINARY etc. automatically.
+#  include <fcntl.h>        // _O_WRONLY, _O_APPEND, _O_CREAT, _O_BINARY
+#  include <stdio.h>        // required for _O_* flags on MinGW
+// Colin removed the pragma and put -ldbghelp in .pro for MinGW.
+// We keep the pragma under _MSC_VER so MSVC users don't also need -ldbghelp
+// in their .pro, but MinGW (which ignores pragmas) uses the .pro flag.
+#  ifdef _MSC_VER
+#    pragma comment(lib, "dbghelp.lib")
+#  endif
+// Colin (MinGW fix): MinGW already defines PATH_MAX in <limits.h>; the bare
+// #define caused a "macro redefined" warning.  #ifndef guard keeps MSVC happy.
+#  ifndef PATH_MAX
+#    define PATH_MAX MAX_PATH
+#  endif
    // Map POSIX names to Windows equivalents for code below
 #  define getpid()       _getpid()
 #  define getcwd(b,n)    _getcwd(b,n)
-#  define mkdir(p,m)     _mkdir(p)
+// Colin (MinGW fix): original code had #define mkdir(p,m) _mkdir(p) here.
+// MinGW declares its own mkdir and the macro conflicted.  We removed the macro
+// and call _mkdir() directly at the two call-sites in initCrashLog() instead.
 #  define popen          _popen
 #  define pclose         _pclose
 #  define O_WRONLY       _O_WRONLY
 #  define O_APPEND       _O_APPEND
 #  define O_CREAT        _O_CREAT
    static inline int open(const char *p, int f, int m) { return _open(p, f|_O_BINARY, m); }
-   static inline int write(int fd, const void *b, unsigned n) { return _write(fd, b, n); }
-   static inline int close(int fd) { return _close(fd); }
+// Colin (MinGW fix): 'static inline' on write/close conflicted with MinGW
+// header declarations of the same names.  Removing 'static' resolves it.
+   inline int write(int fd, const void *b, unsigned n) { return _write(fd, b, n); }
+   inline int close(int fd) { return _close(fd); }
 #else
 #  include <execinfo.h>     // backtrace(), backtrace_symbols_fd()  [POSIX/glibc/Darwin]
 #  include <unistd.h>       // write(), getpid(), getcwd()
 #  include <fcntl.h>        // O_WRONLY, O_APPEND, O_CREAT
+// Colin (MinGW fix): moved signal.h, limits.h, and <string> into the #else
+// branch — they are not needed in the Windows code path and MinGW was
+// producing noise about them being redundant with its own includes.
+#  include <signal.h>       // signal(), SIGABRT etc.
+#  include <limits.h>       // PATH_MAX
+#  include <string>
 #endif
 
 #include <sys/stat.h>   // stat(), mkdir() — available on all platforms
-#include <signal.h>     // signal(), SIGABRT etc.
 #include <ctime>        // time(), localtime(), strftime()
 #include <cstring>      // strlen()
 #include <cstdio>       // snprintf()
 #include <exception>    // std::set_terminate
 #include <cstdlib>      // atexit(), getenv()
-#include <limits.h>     // PATH_MAX
-#include <string>
 
 #include <QApplication>
 #include <QStyleFactory>
@@ -113,11 +133,16 @@ static void writeRawLogFmt(const char *fmt, const char *a, const char *b = "")
     writeRawLog(line);
 }
 
+// Colin (MinGW fix): pathExists is only called from the #ifdef Q_OS_MAC block
+// below.  MinGW (and any Windows build) sees it as an unused static function
+// and emits a warning.  Guard it out on Windows to keep the build clean.
+#ifndef _WIN32
 static bool pathExists(const char *path)
 {
     struct stat st;
     return (path && path[0] && stat(path, &st) == 0);
 }
+#endif
 
 #ifdef Q_OS_MAC
 static std::string shellEscapeDoubleQuoted(const std::string &input)
@@ -393,11 +418,17 @@ static void initCrashLog()
 
     char tmp[768];
     snprintf(tmp, sizeof(tmp), "%s\\Gumtown", appdata);
-    mkdir(tmp, 0755);   // mode arg ignored on Windows via macro; errors ignored if dir exists
+    // Colin (MinGW fix): original code used mkdir(tmp, 0755) via a
+    // #define mkdir(p,m) _mkdir(p) macro, but MinGW has its own mkdir
+    // declaration that clashed with the macro.  We removed the macro and call
+    // _mkdir() directly — it takes one arg on both MSVC and MinGW, and the
+    // mode is irrelevant on Windows.  Errors are intentionally ignored (dir
+    // may already exist).
+    _mkdir(tmp);
 
     char dirPath[768];
     snprintf(dirPath, sizeof(dirPath), "%s\\Gumtown\\SY-1000FloorBoard", appdata);
-    mkdir(dirPath, 0755);
+    _mkdir(dirPath);
 #else
     // macOS / Linux: log to ~/Library/Application Support/... (macOS convention)
     // On Linux this ends up in ~/Library/... which is non-standard but harmless

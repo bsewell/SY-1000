@@ -26,7 +26,7 @@ TEMPLATE = app
 CONFIG += c++17
 #CONFIG += release
 TARGET = "SY-1000FloorBoard"
-VERSION = 2026.03.25.1
+VERSION = 2026.03.31.3
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DESTDIR = ./build/packager
 OBJECTS_DIR += build/release
@@ -53,28 +53,40 @@ QT += xml widgets printsupport quick quickwidgets network
 
 # Auto-stamp version in preferences.xml.dist from the .pro VERSION variable.
 # This ensures the embedded version always matches and forces rcc to recompile.
-versionstamp.commands = $$PWD/tools/stamp_version.sh $$VERSION $$PWD/preferences.xml.dist
-versionstamp.depends = $$PWD/SY-1000FloorBoard.pro
-QMAKE_EXTRA_TARGETS += versionstamp
-PRE_TARGETDEPS += versionstamp
+# Colin (MinGW fix): stamp_version.sh requires a POSIX shell; MinGW on bare
+# Windows has no sh.exe on PATH so the pre-target failed with "file not found".
+# Wrapped in unix{} so it only runs on macOS/Linux where the script works.
+# On Windows, bump the version manually or run stamp_version.sh via Git Bash/MSYS2.
+unix {
+    versionstamp.commands = $$PWD/tools/stamp_version.sh $$VERSION $$PWD/preferences.xml.dist
+    versionstamp.depends = $$PWD/SY-1000FloorBoard.pro
+    QMAKE_EXTRA_TARGETS += versionstamp
+    PRE_TARGETDEPS += versionstamp
+}
 
 #Platform dependent file(s)
 win32-g++:contains(QMAKE_HOST.arch, x86):{
        message("x86 build")
        ## Windows x86 (32bit) specific build here
-       exists("C:\Qt\SY-1000 - Qt5-15\windows\WinMM.Lib")
-               {	# <-- Change the path to WinMM.Lib here!
-                   LIBS += C:\Qt\SY-1000 - Qt5-15\windows\WinMM.Lib	# <-- Change the path here also!
-               }
+       # Colin (MinGW fix): MinGW ignores #pragma comment(lib,...) so dbghelp
+       # must be linked explicitly here.  MSVC handles it via the pragma in main.cpp.
+       LIBS += -ldbghelp
+       # Colin (MinGW fix): original paths were hardcoded to C:\Qt\SY-1000 - Qt5-15\...
+       # $$PWD makes the path relative to the project root so any checkout location works.
+       exists("$$PWD\windows\WinMM.Lib") {
+           LIBS += $$PWD\windows\WinMM.Lib
+       }
        message(Including Windows 32 specific headers and sources...)
 }
 win32:contains(QMAKE_HOST.arch, x86_64):{
        message("x86_64 build")
        ## Windows x86_64 (64bit) specific build here
-       exists("c:\Qt\SY-1000\win64\WinMM.Lib")
-               {	# <-- Change the path to WinMM.Lib here!
-                   LIBS += c:\Qt\SY-1000\win64\WinMM.Lib	# <-- Change the path here also!
-               }
+       # Colin (MinGW fix): same as above — explicit -ldbghelp for MinGW.
+       LIBS += -ldbghelp
+       # Colin (MinGW fix): was hardcoded to c:\Qt\SY-1000\win64\...
+       exists("$$PWD\win64\WinMM.Lib") {
+           LIBS += $$PWD\win64\WinMM.Lib
+       }
        message(Including Windows 64 specific headers and sources...)
 }
 linux-g++{

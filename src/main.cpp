@@ -84,6 +84,7 @@
 #endif
 
 #include <sys/stat.h>   // stat(), mkdir() — available on all platforms
+#include <cerrno>       // errno, EEXIST
 #include <ctime>        // time(), localtime(), strftime()
 #include <cstring>      // strlen()
 #include <cstdio>       // snprintf()
@@ -422,13 +423,13 @@ static void initCrashLog()
     // #define mkdir(p,m) _mkdir(p) macro, but MinGW has its own mkdir
     // declaration that clashed with the macro.  We removed the macro and call
     // _mkdir() directly — it takes one arg on both MSVC and MinGW, and the
-    // mode is irrelevant on Windows.  Errors are intentionally ignored (dir
-    // may already exist).
+    // mode is irrelevant on Windows.  EEXIST is expected and ignored.
     _mkdir(tmp);
 
     char dirPath[768];
     snprintf(dirPath, sizeof(dirPath), "%s\\Gumtown\\SY-1000FloorBoard", appdata);
-    _mkdir(dirPath);
+    bool dirFallback = (_mkdir(dirPath) != 0 && errno != EEXIST);
+    if (dirFallback) { snprintf(dirPath, sizeof(dirPath), "C:\\Temp"); }
 #else
     // macOS / Linux: log to ~/Library/Application Support/... (macOS convention)
     // On Linux this ends up in ~/Library/... which is non-standard but harmless
@@ -444,7 +445,8 @@ static void initCrashLog()
     char dirPath[768];
     snprintf(dirPath, sizeof(dirPath),
              "%s/Library/Application Support/Gumtown/SY-1000FloorBoard", home);
-    mkdir(dirPath, 0755);
+    bool dirFallback = (mkdir(dirPath, 0755) != 0 && errno != EEXIST);
+    if (dirFallback) { snprintf(dirPath, sizeof(dirPath), "/tmp"); }
 #endif
 
     // Rotate: move previous startup.log -> startup.log.prev
@@ -467,6 +469,13 @@ static void initCrashLog()
     writeRawLog("  Version: unknown");
 #endif
     writeRawLog("=======================================================");
+    if (dirFallback) {
+        char warnBuf[1024];
+        snprintf(warnBuf, sizeof(warnBuf),
+                 "WARNING: log directory could not be created (errno=%d); falling back to %s",
+                 errno, dirPath);
+        writeRawLog(warnBuf);
+    }
     writeRawLog("STEP 0: Crash log initialised.");
     {
         char info[2048];

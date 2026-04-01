@@ -534,17 +534,32 @@ void customParaEQGraph::updateSlot(  QString hex_1, QString hex_2, QString hex_3
     this->hex_9 = hex_9;
     this->hex_10 = hex_10;
     this->hex_11 = hex_11;
+    // Validate all hex strings before applying any values — a corrupt or
+    // truncated SysEx packet should not partially update the EQ node positions,
+    // as that leaves the graph in an inconsistent state that can trigger the
+    // same null-node crash path we fixed in paintEvent.
     bool ok;
-    setLowCut(this->hex_1.toUShort(&ok, 16));
-    setLowGain(this->hex_2.toUShort(&ok, 16));
-    setLowMidFreq(this->hex_3.toUShort(&ok, 16));
-    setLowMidQ(this->hex_4.toUShort(&ok, 16));
-    setLowMidGain(this->hex_5.toUShort(&ok, 16));
-    setHighMidFreq(this->hex_6.toUShort(&ok, 16));
-    setHighMidQ(this->hex_7.toUShort(&ok, 16));
-    setHighMidGain(this->hex_8.toUShort(&ok, 16));
-    setHighGain(this->hex_9.toUShort(&ok, 16));
-    setHighCut(this->hex_10.toUShort(&ok, 16));
-    setLevel(this->hex_11.toUShort(&ok, 16));
+    unsigned short v1  = this->hex_1.toUShort(&ok, 16);  if (!ok) return;
+    unsigned short v2  = this->hex_2.toUShort(&ok, 16);  if (!ok) return;
+    unsigned short v3  = this->hex_3.toUShort(&ok, 16);  if (!ok) return;
+    unsigned short v4  = this->hex_4.toUShort(&ok, 16);  if (!ok) return;
+    unsigned short v5  = this->hex_5.toUShort(&ok, 16);  if (!ok) return;
+    unsigned short v6  = this->hex_6.toUShort(&ok, 16);  if (!ok) return;
+    unsigned short v7  = this->hex_7.toUShort(&ok, 16);  if (!ok) return;
+    unsigned short v8  = this->hex_8.toUShort(&ok, 16);  if (!ok) return;
+    unsigned short v9  = this->hex_9.toUShort(&ok, 16);  if (!ok) return;
+    unsigned short v10 = this->hex_10.toUShort(&ok, 16); if (!ok) return;
+    unsigned short v11 = this->hex_11.toUShort(&ok, 16); if (!ok) return;
+    setLowCut(v1);
+    setLowGain(v2);
+    setLowMidFreq(v3);
+    setLowMidQ(v4);
+    setLowMidGain(v5);
+    setHighMidFreq(v6);
+    setHighMidQ(v7);
+    setHighMidGain(v8);
+    setHighGain(v9);
+    setHighCut(v10);
+    setLevel(v11);
 
 }

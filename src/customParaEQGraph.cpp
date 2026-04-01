@@ -398,8 +398,16 @@ void customParaEQGraph::paintEvent ( QPaintEvent *pPaintEvent )
         }
 
         if(i == 26) { lowShelfPoint = QPointF(x, y); }
-        if(qAbs(x - lowMidCenter) < (m_lastPlot.width() / 160.0)) { lowMidPoint = QPointF(x, y); }
-        if(qAbs(x - highMidCenter) < (m_lastPlot.width() / 160.0)) { highMidPoint = QPointF(x, y); }
+        // Track the closest sample point to each mid-band center rather than
+        // using a strict threshold — guarantees nodes always have valid positions
+        // even if the center falls exactly between two sample points (which
+        // previously left the node at QPointF(0,0), causing misfire hits at the
+        // top-left corner of the widget and contributing to the drag-out-of-range
+        // crash Colin reported on Windows).
+        if(qAbs(x - lowMidCenter) < qAbs(lowMidPoint.x() - lowMidCenter) || lowMidPoint.isNull())
+            { lowMidPoint = QPointF(x, y); }
+        if(qAbs(x - highMidCenter) < qAbs(highMidPoint.x() - highMidCenter) || highMidPoint.isNull())
+            { highMidPoint = QPointF(x, y); }
         if(i == 134) { highShelfPoint = QPointF(x, y); }
     }
 
@@ -434,7 +442,14 @@ void customParaEQGraph::mousePressEvent ( QMouseEvent *pMouseEvent )
 void customParaEQGraph::mouseMoveEvent ( QMouseEvent *pMouseEvent )
 {
     if(m_iDragNode < 0) { return; }
-    dragNode(pMouseEvent->pos());
+    // Clamp to widget bounds: on Windows, rapidly dragging outside the widget
+    // can produce coordinates beyond the plot area, corrupting node positions
+    // and causing a crash on the next repaint/hit-test.
+    const QPoint pos = QPoint(
+        qBound(0, pMouseEvent->pos().x(), width() - 1),
+        qBound(0, pMouseEvent->pos().y(), height() - 1)
+    );
+    dragNode(pos);
 }
 
 

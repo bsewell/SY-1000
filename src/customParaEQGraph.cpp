@@ -354,9 +354,15 @@ void customParaEQGraph::paintEvent ( QPaintEvent *pPaintEvent )
     const qreal lowCutAmount = qBound(0.0, static_cast<qreal>(m_iLowCut) / 30.0, 1.0);
     const qreal highCutAmount = qBound(0.0, static_cast<qreal>(m_iHighCut) / 30.0, 1.0);
     const qreal lowCutX = m_lastPlot.left() + (m_lastPlot.width() * (0.02 + (lowCutAmount * 0.16)));
-    const qreal highCutX = m_lastPlot.left() + (m_lastPlot.width() * (0.82 + (highCutAmount * 0.14)));
-    const qreal lowMidCenter = m_lastPlot.left() + (m_lastPlot.width() * (0.20 + (qBound(0.0, static_cast<qreal>(m_iLowMidFreq) / 30.0, 1.0) * 0.18)));
-    const qreal highMidCenter = m_lastPlot.left() + (m_lastPlot.width() * (0.58 + (qBound(0.0, static_cast<qreal>(m_iHighMidFreq) / 30.0, 1.0) * 0.18)));
+    // High cut: invert X so higher values move the cutoff LEFT (lower freq, more
+    // of the spectrum rolled off). Was 0.82+amount*0.14 which moved RIGHT as value
+    // increased — visually and perceptually backwards.
+    const qreal highCutX = m_lastPlot.left() + (m_lastPlot.width() * (0.96 - (highCutAmount * 0.14)));
+    // Mid bands: both use the full mid zone (20%–76%) so they can overlap freely.
+    // Previously LowMid was locked to 20–38% and HighMid to 58–76%, preventing any
+    // overlap even though the SY-1000 allows both bands to be set to the same freq.
+    const qreal lowMidCenter = m_lastPlot.left() + (m_lastPlot.width() * (0.20 + (qBound(0.0, static_cast<qreal>(m_iLowMidFreq) / 30.0, 1.0) * 0.56)));
+    const qreal highMidCenter = m_lastPlot.left() + (m_lastPlot.width() * (0.20 + (qBound(0.0, static_cast<qreal>(m_iHighMidFreq) / 30.0, 1.0) * 0.56)));
     const qreal lowMidWidth = m_lastPlot.width() * (0.14 - (qBound(0.0, static_cast<qreal>(m_iLowMidQ) / 5.0, 1.0) * 0.08));
     const qreal highMidWidth = m_lastPlot.width() * (0.14 - (qBound(0.0, static_cast<qreal>(m_iHighMidQ) / 5.0, 1.0) * 0.08));
     const qreal lowShelfStart = m_lastPlot.left() + (m_lastPlot.width() * 0.16);
@@ -492,17 +498,17 @@ void customParaEQGraph::dragNode ( const QPoint& pos )
         setLowGain(gainToValue(gainDb));
         break;
     }
-    case 1: { // low-mid freq + gain
+    case 1: { // low-mid freq + gain — full mid zone 20%–76%
         qreal norm = qBound(0.0, (pos.x() - m_lastPlot.left()) / m_lastPlot.width(), 1.0);
-        qreal frac = qBound(0.0, (norm - 0.20) / 0.18, 1.0);
+        qreal frac = qBound(0.0, (norm - 0.20) / 0.56, 1.0);
         setLowMidFreq(static_cast<unsigned short>(qRound(frac * 30.0)));
         qreal gainDb = (m_lastZeroY - pos.y()) / m_lastGainScale;
         setLowMidGain(gainToValue(gainDb));
         break;
     }
-    case 2: { // high-mid freq + gain
+    case 2: { // high-mid freq + gain — full mid zone 20%–76%
         qreal norm = qBound(0.0, (pos.x() - m_lastPlot.left()) / m_lastPlot.width(), 1.0);
-        qreal frac = qBound(0.0, (norm - 0.58) / 0.18, 1.0);
+        qreal frac = qBound(0.0, (norm - 0.20) / 0.56, 1.0);
         setHighMidFreq(static_cast<unsigned short>(qRound(frac * 30.0)));
         qreal gainDb = (m_lastZeroY - pos.y()) / m_lastGainScale;
         setHighMidGain(gainToValue(gainDb));

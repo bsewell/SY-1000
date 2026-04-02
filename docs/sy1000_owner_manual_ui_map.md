@@ -7,6 +7,7 @@ This document maps each page of the official **SY-1000 Owner's Manual** (`SY-100
 - Source manual: `docs/manuals/SY-1000_eng01_W.pdf`
 - Source text extraction: `docs/manuals/text/SY-1000_eng01_plain.txt`
 - Coverage: Owner's Manual pages 1 through 21 (page 22+ are blank in extraction)
+- Date mapped: 2026-03-07 — re-check `Partial` rows after significant C++ or QML migrations
 
 ## Mapping Key
 

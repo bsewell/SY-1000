@@ -2,9 +2,9 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
+    color: SyTheme.bgPanel
+    implicitWidth: SyTheme.panelWidth
+    implicitHeight: SyTheme.panelHeight
 
     property string hex1: "00"
     property string hex2: "00"
@@ -21,23 +21,23 @@ Rectangle {
         // Header bar — title + OUTPUT SELECT / GLOBAL EQ tabs
         Rectangle {
             width: parent.width
-            height: 40
+            height: SyTheme.headerHeight
             color: Qt.rgba(root.accentColor.r * 0.35, root.accentColor.g * 0.35, root.accentColor.b * 0.35, 1.0)
 
             Text {
                 anchors.left: parent.left
-                anchors.leftMargin: 12
+                anchors.leftMargin: SyTheme.panelPadding
                 anchors.verticalCenter: parent.verticalCenter
                 text: "SUB OUT RIGHT"
-                color: "#ffffff"
-                font.pixelSize: 16
-                font.family: "Roboto Condensed"
+                color: SyTheme.textPrimary
+                font.pixelSize: SyTheme.fontTitle
+                font.family: SyTheme.fontFamily
                 font.bold: true
             }
 
             Row {
                 anchors.right: parent.right
-                anchors.rightMargin: 12
+                anchors.rightMargin: SyTheme.panelPadding
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: 8
 
@@ -46,16 +46,16 @@ Rectangle {
                     height: 26
                     radius: 3
                     color: "transparent"
-                    border.color: root.currentTab === 0 ? "#ffffff" : "#666"
+                    border.color: root.currentTab === 0 ? SyTheme.textPrimary : SyTheme.border
                     border.width: 1
 
                     Text {
                         id: outSelText
                         anchors.centerIn: parent
                         text: "OUTPUT SELECT"
-                        color: root.currentTab === 0 ? "#ffffff" : "#999999"
-                        font.pixelSize: 11
-                        font.family: "Roboto Condensed"
+                        color: root.currentTab === 0 ? SyTheme.textPrimary : SyTheme.textDimmed
+                        font.pixelSize: SyTheme.fontLabel
+                        font.family: SyTheme.fontFamily
                         font.bold: root.currentTab === 0
                     }
 
@@ -71,16 +71,16 @@ Rectangle {
                     height: 26
                     radius: 3
                     color: "transparent"
-                    border.color: root.currentTab === 1 ? "#ffffff" : "#666"
+                    border.color: root.currentTab === 1 ? SyTheme.textPrimary : SyTheme.border
                     border.width: 1
 
                     Text {
                         id: eqText
                         anchors.centerIn: parent
                         text: "GLOBAL EQ"
-                        color: root.currentTab === 1 ? "#ffffff" : "#999999"
-                        font.pixelSize: 11
-                        font.family: "Roboto Condensed"
+                        color: root.currentTab === 1 ? SyTheme.textPrimary : SyTheme.textDimmed
+                        font.pixelSize: SyTheme.fontLabel
+                        font.family: SyTheme.fontFamily
                         font.bold: root.currentTab === 1
                     }
 
@@ -93,7 +93,7 @@ Rectangle {
             }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         // Content area
         Item {
@@ -111,17 +111,17 @@ Rectangle {
                 Column {
                     id: outCol
                     width: parent.width
-                    spacing: 12
-                    topPadding: 16
+                    spacing: SyTheme.flowSpacingSm
+                    topPadding: SyTheme.sectionPadding
 
                     // Row 1: Level knob + Output Select combo
                     Row {
                         x: 8
-                        spacing: 16
+                        spacing: SyTheme.flowSpacing
 
                         FilmstripKnob {
                             hex0: "00"; hex1: root.sys1; hex2: "00"; hex3: "32"
-                            filmstrip: "knobs/knob_56.png"; frameSize: 56
+                            filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
                         }
 
                         Column {
@@ -134,7 +134,7 @@ Rectangle {
                         }
                     }
 
-                    Rectangle { width: parent.width - 16; height: 1; color: "#2a2a2a"; x: 8 }
+                    Rectangle { width: parent.width - 16; height: 1; color: SyTheme.bgControl; x: 8 }
 
                     // Additional settings
                     Flow {
@@ -159,7 +159,7 @@ Rectangle {
                     id: eqCol
                     width: parent.width
                     spacing: 8
-                    topPadding: 12
+                    topPadding: SyTheme.panelPadding
 
                     ParaEqGraph {
                         id: eqGraph
@@ -167,7 +167,7 @@ Rectangle {
                         hex0: "00"; hex1: root.sys1; hex2: "00"; baseHex3: "22"
                     }
 
-                    Rectangle { width: parent.width - 16; height: 1; color: "#2a2a2a"; x: 8 }
+                    Rectangle { width: parent.width - 16; height: 1; color: SyTheme.bgControl; x: 8 }
 
                     ParaEqBands {
                         width: parent.width

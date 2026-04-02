@@ -58,7 +58,7 @@ Item {
                 model: ["GK INPUT", "NORMAL INPUT"]
                 Rectangle {
                     width: inputRoot.width / 2; height: 32
-                    color: inputRoot.currentTab === index ? "#313A47" : "#222222"
+                    color: inputRoot.currentTab === index ? SyTheme.bgSectionHead : "#222222"
                     Rectangle {
                         width: parent.width; height: 2
                         anchors.bottom: parent.bottom
@@ -66,15 +66,15 @@ Item {
                     }
                     Text {
                         anchors.centerIn: parent; text: modelData
-                        color: inputRoot.currentTab === index ? "#ffffff" : "#888888"
-                        font.pixelSize: 12; font.family: "Roboto Condensed"
+                        color: inputRoot.currentTab === index ? SyTheme.textPrimary : SyTheme.textDimmed
+                        font.pixelSize: SyTheme.fontBody; font.family: SyTheme.fontFamily
                         font.bold: inputRoot.currentTab === index
                     }
                     MouseArea { anchors.fill: parent; onClicked: inputRoot.currentTab = index }
                 }
             }
         }
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         // Content
         Loader {
@@ -93,16 +93,16 @@ Item {
             // Set selector bar
             Rectangle {
                 width: parent.width; height: 36
-                color: "#313A47"
+                color: SyTheme.bgSectionHead
 
                 Row {
                     anchors.verticalCenter: parent.verticalCenter
-                    x: 16; spacing: 6
+                    x: SyTheme.sysSectionLabelX; spacing: 6
 
                     Text {
                         text: "SETTING"
-                        color: "#ccffffff"; font.pixelSize: 12
-                        font.family: "Roboto Condensed"
+                        color: SyTheme.textSysLabel; font.pixelSize: SyTheme.fontBody
+                        font.family: SyTheme.fontFamily
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
@@ -115,7 +115,7 @@ Item {
                                 anchors.centerIn: parent
                                 text: (index + 1).toString()
                                 color: inputRoot.gkSetIndex === index ? "#000000" : "#cccccc"
-                                font.pixelSize: 11; font.family: "Roboto Condensed"
+                                font.pixelSize: SyTheme.fontLabel; font.family: SyTheme.fontFamily
                                 font.bold: inputRoot.gkSetIndex === index
                             }
                             MouseArea {
@@ -127,7 +127,7 @@ Item {
                 }
             }
 
-            Rectangle { width: parent.width; height: 1; color: "#333333" }
+            Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
             // GK Set content — Loader forces recreate on set change
             Loader {
@@ -157,34 +157,30 @@ Item {
                 id: gkCol; width: parent.width; spacing: 0
 
                 // GK TYPE
-                Item {
-                    width: parent.width; height: 44
-                    Text { x: 32; y: 14; text: "GK TYPE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: "08" }
+                SySettingRow {
+                    label: "GK TYPE"
+                    SyComboBox { hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: "08" }
                 }
                 // PU PHASE
-                Item {
-                    width: parent.width; height: 44
-                    Text { x: 32; y: 14; text: "PU PHASE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "18" : "17" }
+                SySettingRow {
+                    label: "PU PHASE"
+                    SyComboBox { hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "18" : "17" }
                 }
                 // PU DIRECTION
-                Item {
-                    width: parent.width; height: 44
-                    Text { x: 32; y: 14; text: "PU DIRECTION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "19" : "18" }
+                SySettingRow {
+                    label: "PU DIRECTION"
+                    SyComboBox { hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "19" : "18" }
                 }
                 // PU POSITION
-                Item {
-                    width: parent.width; height: 44
-                    Text { x: 32; y: 14; text: "PU POSITION"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
-                    SyComboBox { x: 160; y: 8; hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "0B" : "1B" }
+                SySettingRow {
+                    label: "PU POSITION"
+                    SyComboBox { hex0: "00"; hex1: gkFlick.h1; hex2: gkFlick.h2; hex3: inputRoot.isBass ? "0B" : "1B" }
                 }
 
-                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
                 // SCALE knob
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SCALE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SCALE"; color: SyTheme.textSysLabel; font.pixelSize: SyTheme.fontBody; font.family: SyTheme.fontFamily }
                 Row {
                     x: 32; spacing: 32; height: 80
                     FilmstripKnob {
@@ -200,10 +196,10 @@ Item {
                 }
 
                 Item { width: 1; height: 8 }
-                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
                 // DISTANCE 1-6
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "DISTANCE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "DISTANCE"; color: SyTheme.textSysLabel; font.pixelSize: SyTheme.fontBody; font.family: SyTheme.fontFamily }
                 Row {
                     x: 32; spacing: 16; height: 80
                     Repeater {
@@ -222,10 +218,10 @@ Item {
                 }
 
                 Item { width: 1; height: 8 }
-                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
                 // LEVEL / SENS 1-6
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "LEVEL / SENS"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "LEVEL / SENS"; color: SyTheme.textSysLabel; font.pixelSize: SyTheme.fontBody; font.family: SyTheme.fontFamily }
                 Row {
                     x: 32; spacing: 16; height: 80
                     Repeater {
@@ -244,10 +240,10 @@ Item {
                 }
 
                 Item { width: 1; height: 8 }
-                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
                 // PIEZO TONE
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "PIEZO TONE"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "PIEZO TONE"; color: SyTheme.textSysLabel; font.pixelSize: SyTheme.fontBody; font.family: SyTheme.fontFamily }
                 Row {
                     x: 32; spacing: 32; height: 80
                     FilmstripKnob {
@@ -275,16 +271,16 @@ Item {
             // Set selector bar
             Rectangle {
                 width: parent.width; height: 36
-                color: "#313A47"
+                color: SyTheme.bgSectionHead
 
                 Row {
                     anchors.verticalCenter: parent.verticalCenter
-                    x: 16; spacing: 6
+                    x: SyTheme.sysSectionLabelX; spacing: 6
 
                     Text {
                         text: "SETTING"
-                        color: "#ccffffff"; font.pixelSize: 12
-                        font.family: "Roboto Condensed"
+                        color: SyTheme.textSysLabel; font.pixelSize: SyTheme.fontBody
+                        font.family: SyTheme.fontFamily
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
@@ -297,7 +293,7 @@ Item {
                                 anchors.centerIn: parent
                                 text: (index + 1).toString()
                                 color: inputRoot.normalSetIndex === index ? "#000000" : "#cccccc"
-                                font.pixelSize: 11; font.family: "Roboto Condensed"
+                                font.pixelSize: SyTheme.fontLabel; font.family: SyTheme.fontFamily
                                 font.bold: inputRoot.normalSetIndex === index
                             }
                             MouseArea {
@@ -309,7 +305,7 @@ Item {
                 }
             }
 
-            Rectangle { width: parent.width; height: 1; color: "#333333" }
+            Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
             // Normal Set content
             Loader {
@@ -339,22 +335,17 @@ Item {
                 id: nCol; width: parent.width; spacing: 0
 
                 // COMP ON/OFF
-                Item {
-                    width: parent.width; height: 56; clip: true
-                    Text {
-                        x: 32; anchors.verticalCenter: parent.verticalCenter
-                        text: "COMP ON/OFF"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed"
-                    }
+                SySettingRow {
+                    label: "COMP ON/OFF"; tall: true
                     SySwitch {
-                        x: 160; y: 6
                         hex0: "00"; hex1: nFlick.h1; hex2: nFlick.h2; hex3: "08"
                     }
                 }
 
-                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
                 // Knobs: Attack, Sustain, Level
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "ATTACK / SUSTAIN / LEVEL"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "ATTACK / SUSTAIN / LEVEL"; color: SyTheme.textSysLabel; font.pixelSize: SyTheme.fontBody; font.family: SyTheme.fontFamily }
                 Row {
                     x: 32; spacing: 32; height: 80
                     FilmstripKnob {
@@ -372,10 +363,10 @@ Item {
                 }
 
                 Item { width: 1; height: 8 }
-                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
                 // Knobs: Sense, Low, High
-                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SENSE / LOW / HIGH"; color: "#ccffffff"; font.pixelSize: 12; font.family: "Roboto Condensed" }
+                Text { x: 16; height: 28; verticalAlignment: Text.AlignVCenter; text: "SENSE / LOW / HIGH"; color: SyTheme.textSysLabel; font.pixelSize: SyTheme.fontBody; font.family: SyTheme.fontFamily }
                 Row {
                     x: 32; spacing: 32; height: 80
                     FilmstripKnob {

@@ -2,13 +2,13 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2: "1A"
 
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: grid.width
         contentHeight: grid.height
         clip: true
@@ -16,17 +16,17 @@ Rectangle {
 
         Column {
             id: grid
-            spacing: 10
+            spacing: SyTheme.gridRowSpacing
 
-            Text { text: "EQUALIZER"; color: "#00ccff"; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
+            Text { text: "EQUALIZER"; color: SyTheme.accent; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
 
             SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "21" }
 
             // ParaEQ bands start at 22
             Grid {
                 columns: 4
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "22" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "23" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "24" }

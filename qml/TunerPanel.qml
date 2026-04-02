@@ -4,8 +4,8 @@ Rectangle {
     id: root
     anchors.fill: parent
     color: "#050505"
-    implicitWidth: 800
-    implicitHeight: 480
+    implicitWidth: SyTheme.panelWidth
+    implicitHeight: SyTheme.panelHeight
 
     property string hex1: "00"
     property string hex2: "00"
@@ -72,9 +72,9 @@ Rectangle {
                 anchors.leftMargin: 16
                 anchors.verticalCenter: parent.verticalCenter
                 text: "STROBE TUNER"
-                color: "#ffffff"
-                font.pixelSize: 16
-                font.family: "Roboto Condensed"
+                color: SyTheme.textPrimary
+                font.pixelSize: SyTheme.fontTitle
+                font.family: SyTheme.fontFamily
                 font.bold: true
                 font.letterSpacing: 2
             }
@@ -87,7 +87,7 @@ Rectangle {
                 width: 12; height: 12; radius: 6
                 color: root.inTune && root.noteDetected
                        ? root.accentColor
-                       : "#333333"
+                       : SyTheme.divider
                 border.color: Qt.rgba(root.accentColor.r, root.accentColor.g,
                                       root.accentColor.b, 0.4)
                 border.width: 1
@@ -96,7 +96,7 @@ Rectangle {
             }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#1a1a1a" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.bgPanel }
 
         // ── Strobe display area ──
         Rectangle {
@@ -186,7 +186,7 @@ Rectangle {
             }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#1a1a1a" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.bgPanel }
 
         // ── Note display + cents bar ──
         Rectangle {
@@ -200,9 +200,9 @@ Rectangle {
                 anchors.centerIn: parent
                 text: root.noteDetected ? root.currentNote : "---"
                 color: root.inTune && root.noteDetected
-                       ? root.accentColor : "#ffffff"
+                       ? root.accentColor : SyTheme.textPrimary
                 font.pixelSize: 72
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
                 font.bold: true
                 font.letterSpacing: 4
 
@@ -216,9 +216,9 @@ Rectangle {
                 anchors.bottom: noteText.bottom
                 anchors.bottomMargin: 8
                 text: root.noteDetected ? root.currentOctave : ""
-                color: "#666666"
+                color: SyTheme.textSection
                 font.pixelSize: 24
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
             }
 
             // Cents readout
@@ -229,9 +229,9 @@ Rectangle {
                 text: root.noteDetected
                       ? (root.centsOffset >= 0 ? "+" : "") + root.centsOffset.toFixed(1) + "¢"
                       : ""
-                color: root.inTune ? root.accentColor : "#888888"
+                color: root.inTune ? root.accentColor : SyTheme.textDimmed
                 font.pixelSize: 20
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
                 font.bold: true
 
                 Behavior on color { ColorAnimation { duration: 200 } }
@@ -243,9 +243,9 @@ Rectangle {
                 anchors.leftMargin: 20
                 anchors.verticalCenter: parent.verticalCenter
                 text: "FLAT"
-                color: root.centsOffset < -2 && root.noteDetected ? "#ff6666" : "#333333"
+                color: root.centsOffset < -2 && root.noteDetected ? "#ff6666" : SyTheme.divider
                 font.pixelSize: 14
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
                 font.bold: true
                 font.letterSpacing: 2
             }
@@ -255,9 +255,9 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: 24
                 text: "SHARP"
-                color: root.centsOffset > 2 && root.noteDetected ? "#ff6666" : "#333333"
+                color: root.centsOffset > 2 && root.noteDetected ? "#ff6666" : SyTheme.divider
                 font.pixelSize: 14
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
                 font.bold: true
                 font.letterSpacing: 2
             }
@@ -318,7 +318,7 @@ Rectangle {
             }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#1a1a1a" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.bgPanel }
 
         // ── Settings row ──
         Rectangle {
@@ -339,9 +339,9 @@ Rectangle {
 
                     Text {
                         text: "TUNER TYPE"
-                        color: "#666666"
-                        font.pixelSize: 10
-                        font.family: "Roboto Condensed"
+                        color: SyTheme.textSection
+                        font.pixelSize: SyTheme.fontSmall
+                        font.family: SyTheme.fontFamily
                         font.letterSpacing: 1
                     }
                     SyComboBox {
@@ -356,9 +356,9 @@ Rectangle {
 
                     Text {
                         text: "REFERENCE PITCH"
-                        color: "#666666"
-                        font.pixelSize: 10
-                        font.family: "Roboto Condensed"
+                        color: SyTheme.textSection
+                        font.pixelSize: SyTheme.fontSmall
+                        font.family: SyTheme.fontFamily
                         font.letterSpacing: 1
                     }
                     SyComboBox {
@@ -373,9 +373,9 @@ Rectangle {
 
                     Text {
                         text: "OUTPUT"
-                        color: "#666666"
-                        font.pixelSize: 10
-                        font.family: "Roboto Condensed"
+                        color: SyTheme.textSection
+                        font.pixelSize: SyTheme.fontSmall
+                        font.family: SyTheme.fontFamily
                         font.letterSpacing: 1
                     }
                     SyComboBox {

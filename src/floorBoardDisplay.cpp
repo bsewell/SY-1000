@@ -63,13 +63,11 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     bool ok;
     const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
     const double fratio = preferences->getPreferences("Window", "Font", "ratio").toDouble(&ok);
-    //QFont Lfont( "Roboto Condensed", 16*fratio, QFont::Normal);
     QFont Mfont( "Roboto Condensed", 11*fratio, QFont::Normal);
     const int headerFontPointSize = qMax(11, int(11 * fratio));
     const int headerTitlePointSize = qMax(14, int(14 * fratio));
     const int headerTop = int(4 * ratio);
     const int headerHeight = int(40 * ratio);
-    //QFont Sfont( "Roboto Condensed", 8*fratio, QFont::Normal);
 
     this->pos = pos;
     this->timer = new QTimer(this);
@@ -77,71 +75,78 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     this->blinkCount = 0;
     this->currentBankPatchStr = "";
 
-    // --- Bank type label: "USER" or "PRESET" (like Boss tab indicator) ---
+    // Set the display's own height so the layout has space to work with.
+    this->setFixedHeight(headerHeight + 2 * headerTop);
+
+    // --- Build all widgets (constructors still set initial geometry, layout overrides it) ---
+
+    // Bank type label: "USER" or "PRESET"
     this->bankTypeLabel = new QLabel(this);
-    this->bankTypeLabel->setGeometry(QRect(12*ratio, headerTop, 70*ratio, headerHeight));
     this->bankTypeLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     this->bankTypeLabel->setAttribute(Qt::WA_TranslucentBackground, true);
     QFont bankTypeFont("Roboto Condensed", headerFontPointSize, QFont::Bold);
     this->bankTypeLabel->setFont(bankTypeFont);
     this->bankTypeLabel->setStyleSheet("background: transparent; color: #33D6FF;");
     this->bankTypeLabel->setText("");
+    this->bankTypeLabel->setFixedWidth(qRound(70 * ratio));
 
-    // --- Hidden patchNumDisplay (kept for API compatibility, not shown) ---
+    // Hidden patchNumDisplay (kept for API compatibility)
     this->patchNumDisplay = new customDisplay(QRect(0, 0, 1, 1), this);
     this->patchNumDisplay->setFrameVisible(false);
     this->patchNumDisplay->setAttribute(Qt::WA_TranslucentBackground, true);
     this->patchNumDisplay->hide();
 
-    // --- Combined patch display: "[U45-3]  BIG BALLAD" ---
-    this->patchDisplay = new customDisplay(QRect(82*ratio, headerTop, 340*ratio, headerHeight), this);
+    // Combined patch display: "[U45-3]  BIG BALLAD"
+    this->patchDisplay = new customDisplay(QRect(0, 0, qRound(340*ratio), headerHeight), this);
     this->patchDisplay->setMainObjectName("nameMain");
     this->patchDisplay->setSubObjectName("nameSub");
     this->patchDisplay->setFrameVisible(false);
     this->patchDisplay->setAttribute(Qt::WA_TranslucentBackground, true);
+    this->patchDisplay->setMinimumWidth(qRound(200 * ratio));
 
     QString version = preferences->getPreferences("General", "Application", "version");
     this->patchDisplay->setMainText(deviceType + tr(" FloorBoard"));
     this->patchDisplay->setSubText(tr("v") + version);
 
-    initPatch = new initPatchListMenu(QRect(430*ratio, headerTop, 130*ratio, headerHeight), this);
+    initPatch = new initPatchListMenu(QRect(0, 0, qRound(130*ratio), headerHeight), this);
     initPatch->setFont(Mfont);
     initPatch->setFlatMode(true);
     initPatch->setAttribute(Qt::WA_TranslucentBackground, true);
+    initPatch->setMinimumWidth(qRound(130 * ratio));
     initPatch->setWhatsThis(tr("Clicking on this will load a patch from a predefined selection.<br>patches place in the init_patches folder will appear in this list at the start of the next session."));
 
-    renameWidget *nameEdit = new renameWidget(this);
-    nameEdit->setGeometry(82*ratio, headerTop, 340*ratio, headerHeight);
-    nameEdit->setWhatsThis(tr("Clicking on this will open<br>a text dialog window<br>allowing user text input."));
+    // Rename overlay — positioned on top of patchDisplay in resizeEvent.
+    this->nameEdit = new renameWidget(this);
+    this->nameEdit->setWhatsThis(tr("Clicking on this will open<br>a text dialog window<br>allowing user text input."));
 
     this->writeDialog = new patchWriteDialog();
     this->writeDialog->hide();
 
-    this->tuner_Button = new customPanelButton(tr("Tuner"), false, QPoint(580*ratio, headerTop), this, ":/images/switch.png");
+    this->tuner_Button = new customPanelButton(tr("Tuner"), false, QPoint(0, 0), this, ":/images/switch.png");
     this->tuner_Button->setBackgroundVisible(false);
     this->tuner_Button->setLabelPointSize(headerFontPointSize);
 
-    this->setup_Button = new customPanelButton(tr("Input"), false, QPoint(640*ratio, headerTop), this, ":/images/switch.png");
+    this->setup_Button = new customPanelButton(tr("Input"), false, QPoint(0, 0), this, ":/images/switch.png");
     this->setup_Button->setBackgroundVisible(false);
     this->setup_Button->setLabelPointSize(headerFontPointSize);
 
-    this->connectButton = new customButton(tr("deBug Mode"), false, QPoint(695*ratio, headerTop), this, ":/images/greenledbutton.png");
+    this->connectButton = new customButton(tr("Connect"), false, QPoint(0, 0), this, ":/images/greenledbutton.png");
     this->connectButton->setBackgroundVisible(false);
     this->connectButton->setLabelPointSize(headerFontPointSize);
 
-    this->writeButton = new customButton(tr("Write"), false, QPoint(790*ratio, headerTop), this, ":/images/ledbutton.png");
+    this->writeButton = new customButton(tr("Write"), false, QPoint(0, 0), this, ":/images/ledbutton.png");
     this->writeButton->setBackgroundVisible(false);
     this->writeButton->setLabelPointSize(headerFontPointSize);
 
-    this->system_Button = new customPanelButton(tr("System"), false, QPoint(850*ratio, headerTop), this, ":/images/switch.png");
+    this->system_Button = new customPanelButton(tr("System"), false, QPoint(0, 0), this, ":/images/switch.png");
     this->system_Button->setBackgroundVisible(false);
     this->system_Button->setLabelPointSize(headerFontPointSize);
 
-    this->pedal_Button = new customPanelButton(tr("Pedal"), false, QPoint(910*ratio, headerTop), this, ":/images/switch.png");
+    this->pedal_Button = new customPanelButton(tr("Pedal"), false, QPoint(0, 0), this, ":/images/switch.png");
     this->pedal_Button->setBackgroundVisible(false);
     this->pedal_Button->setLabelPointSize(headerFontPointSize);
 
-    this->assign1_Button = new customPanelButton(tr("Assign"), false, QPoint(970*ratio, headerTop), this, ":/images/switch.png");
+    this->assign1_Button = new customPanelButton(tr("Assign"), false, QPoint(0, 0), this, ":/images/switch.png");
     this->assign1_Button->setBackgroundVisible(false);
     this->assign1_Button->setLabelPointSize(headerFontPointSize);
 
@@ -152,41 +157,32 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     this->deviceHeader->setAlignment(Qt::AlignCenter);
     this->deviceHeader->setAttribute(Qt::WA_TranslucentBackground, true);
     this->deviceHeader->setStyleSheet("background: transparent; color: #AEEFFF;");
-    const QRect assignRect = this->assign1_Button->geometry();
-    const int headerX = assignRect.right() + qRound(16 * ratio);
     const int headerW = qMax(qRound(95 * ratio), this->deviceHeader->fontMetrics().horizontalAdvance(deviceType) + qRound(14 * ratio));
-    this->deviceHeader->setGeometry(headerX, headerTop, headerW, headerHeight);
+    this->deviceHeader->setFixedWidth(headerW);
 
-    // Align all header widgets to same baseline.
-    auto alignHeaderWidget = [headerTop, headerHeight](QWidget *widget)
-    {
-        if(!widget) return;
-        QRect g = widget->geometry();
-        g.moveTop(headerTop);
-        g.setHeight(headerHeight);
-        widget->setGeometry(g);
-    };
+    // --- Layout ---
+    QHBoxLayout *headerLayout = new QHBoxLayout(this);
+    headerLayout->setContentsMargins(qRound(8 * ratio), headerTop, qRound(8 * ratio), headerTop);
+    headerLayout->setSpacing(qRound(4 * ratio));
 
-    alignHeaderWidget(this->bankTypeLabel);
-    alignHeaderWidget(this->patchDisplay);
-    alignHeaderWidget(initPatch);
-    alignHeaderWidget(this->tuner_Button);
-    alignHeaderWidget(this->setup_Button);
-    alignHeaderWidget(this->connectButton);
-    alignHeaderWidget(this->writeButton);
-    alignHeaderWidget(this->system_Button);
-    alignHeaderWidget(this->pedal_Button);
-    alignHeaderWidget(this->assign1_Button);
-    alignHeaderWidget(this->deviceHeader);
+    // Left: patch info (bank type is already in the combined "[U49-4] NAME" string)
+    this->bankTypeLabel->hide();
+    headerLayout->addWidget(this->patchDisplay, 0, Qt::AlignVCenter);
+    headerLayout->addWidget(initPatch,          0, Qt::AlignVCenter);
 
-    // Reapply font sizes after geometry changes.
-    this->tuner_Button->setLabelPointSize(headerFontPointSize);
-    this->setup_Button->setLabelPointSize(headerFontPointSize);
-    this->connectButton->setLabelPointSize(headerFontPointSize);
-    this->writeButton->setLabelPointSize(headerFontPointSize);
-    this->system_Button->setLabelPointSize(headerFontPointSize);
-    this->pedal_Button->setLabelPointSize(headerFontPointSize);
-    this->assign1_Button->setLabelPointSize(headerFontPointSize);
+    headerLayout->addStretch(1);
+
+    // Right: toolbar buttons — uniform spacing, all centred on the same baseline
+    headerLayout->addWidget(this->connectButton,  0, Qt::AlignVCenter);
+    headerLayout->addWidget(this->writeButton,    0, Qt::AlignVCenter);
+    headerLayout->addSpacing(qRound(8 * ratio));
+    headerLayout->addWidget(this->tuner_Button,   0, Qt::AlignVCenter);
+    headerLayout->addWidget(this->setup_Button,   0, Qt::AlignVCenter);
+    headerLayout->addWidget(this->system_Button,  0, Qt::AlignVCenter);
+    headerLayout->addWidget(this->pedal_Button,   0, Qt::AlignVCenter);
+    headerLayout->addWidget(this->assign1_Button, 0, Qt::AlignVCenter);
+    headerLayout->addSpacing(qRound(8 * ratio));
+    headerLayout->addWidget(this->deviceHeader,   0, Qt::AlignVCenter);
 
     // Make the patch display main label use full height, vertically centered.
     {
@@ -199,8 +195,6 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
                 font.setPointSize(qMax(14, int(14 * fratio)));
                 font.setBold(true);
                 label->setFont(font);
-                // Expand to full widget height and vertically center
-                label->setGeometry(label->x(), 0, label->width(), headerHeight);
                 label->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
             }
             else
@@ -216,12 +210,6 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
         comboFont.setPointSize(headerFontPointSize);
         quickLoadCombo->setFont(comboFont);
     }
-
-    // Keep these controls visible in the main strip.
-    this->tuner_Button->show();
-    this->setup_Button->show();
-    this->system_Button->show();
-    this->deviceHeader->show();
 
     /*    this->temp1_copy_Button = new customButton(tr("Patch Copy"), false, QPoint(26*ratio, tempRowOffset), this, ":/images/pushbutton.png");
     this->temp1_copy_Button->setWhatsThis(tr("Copy current patch to clipboard<br>pressing this button will save the current patch to a clipboard<br>the clipboard is saved to file and is re-loaded<br>on the next session startup."));
@@ -300,6 +288,27 @@ void floorBoardDisplay::setPos(QPoint newPos)
 {
     this->move(newPos);
     this->pos = newPos;
+
+    // Compute display width from parent size minus our X offset.
+    if(this->parentWidget())
+    {
+        const int availableWidth = this->parentWidget()->width() - newPos.x();
+        if(availableWidth > 0)
+        {
+            this->setFixedWidth(availableWidth);
+        }
+    }
+}
+
+void floorBoardDisplay::resizeEvent(QResizeEvent *event)
+{
+    QWidget::resizeEvent(event);
+
+    // Keep the rename overlay aligned with the patch display.
+    if(this->nameEdit && this->patchDisplay)
+    {
+        this->nameEdit->setGeometry(static_cast<QWidget*>(this->patchDisplay)->geometry());
+    }
 }
 
 void floorBoardDisplay::setValueDisplay(QString fxName, QString valueName, QString value)
@@ -327,7 +336,11 @@ void floorBoardDisplay::updateCombinedPatchDisplay()
 void floorBoardDisplay::setPatchDisplay(QString patchName)
 {
     SysxIO *sysxIO = &AppServices::instance().sysx();
-    if(sysxIO->getFileName() != ":/default_guitar.syx" && sysxIO->getFileName() != ":/default_bass.syx") // Keep the initial version display if the default.syx is loaded at startup.
+    // Always update the name when called from updateDisplay() (device or file load).
+    // The old filename guard blocked name updates when the device sent patch data
+    // while the in-memory filename was still ":/default_guitar.syx", causing the
+    // number to show but the name to stay blank.
+    if(!patchName.isEmpty())
     {
         this->patchName = patchName;
         updateCombinedPatchDisplay();

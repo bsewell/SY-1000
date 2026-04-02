@@ -1531,8 +1531,14 @@ void floorBoard::updateStompBoxes()
         "|" + QString::number(sysxIO->getSourceValue("00", sys1, "00", "34")) +
         "|" + QString::number(sysxIO->getSourceValue("00", sys1, "00", "35"));
 
+    qWarning("updateStompBoxes: sig=[%s] last=[%s] match=%d",
+             structureSignature.toUtf8().constData(),
+             _lastStructureSignature.toUtf8().constData(),
+             (structureSignature == _lastStructureSignature) ? 1 : 0);
+
     if(!this->fxPos.isEmpty() && !this->fx.isEmpty() && this->_lastStructureSignature == structureSignature)
     {
+        qWarning("updateStompBoxes: signature unchanged, skipping layout update");
         return;
     }
 
@@ -1671,7 +1677,7 @@ void floorBoard::update_structure()
              << "dual=" << dual_channel;
 
     const int flowStep = 55*ratio;
-    const int hiddenFlowY = 360*ratio;
+    const int hiddenFlowY = this->floorHeight + qRound(50*ratio);  // must be below the 800px floor image
     const int fxLineBiasY = 0;
     int lev1 = 65*ratio;
     int lev2 = 130*ratio;
@@ -1837,6 +1843,9 @@ void floorBoard::update_structure()
         if(i>3){ x_axis = x_axis+flowStep;}; // if not an instrument input, blocks are incremented to the right.
     skip:
         if(stomp>27){ incr++; }; // if one of 6 branch mixers (28) then increment for the next x-axis level.
+        qDebug() << "[CHAIN] i=" << i << "stomp=" << stomp << "incr=" << incr
+                 << "x_axis=" << x_axis << "y_axis=" << y_axis
+                 << "fxPos=" << (newFxPos.isEmpty() ? QPoint(-1,-1) : newFxPos.last());
 
         if(dual_channel>0 && stomp==21){y_axis=y_axis-(20*ratio); ab_start = x_axis; if(x_axis>ab_end){ab_end=x_axis;};};
         if(dual_channel>0 && stomp==22){y_axis=y_axis+(40*ratio); x_axis = ab_start; if(x_axis>ab_end){ab_end=x_axis;};};
@@ -1872,15 +1881,15 @@ void floorBoard::update_structure()
     polygon.append( QPoint(offset+(105*ratio)+(index1*flowStep),   lev1+inst1MidY));  //index1 right   1
     polygon.append( QPoint(offset+(60*ratio),                      lev2+inst2MidY));  //index2 left    2
     polygon.append( QPoint(offset+(105*ratio)+(index2*flowStep),   lev2+inst2MidY));  //index2 right   3
-    polygon.append( QPoint(offset+(60*ratio)+(bal1xpos*flowStep),  bal1MidY));         //index3 left    4
-    polygon.append( QPoint(offset+(65*ratio)+(bal2xpos*flowStep),  bal1MidY));         //index3 right   5
+    polygon.append( QPoint(offset+layout.colX(bal1xpos),           bal1MidY));         //index3 left    4
+    polygon.append( QPoint(offset+layout.colX(bal2xpos),           bal1MidY));         //index3 right   5
     polygon.append( QPoint(offset+(78*ratio),                      lev3+inst3MidY));  //index4 left    6
-    polygon.append( QPoint(offset+(65*ratio)+(bal2xpos*flowStep),  lev3+inst3MidY));  //index4 right   7
-    polygon.append( QPoint(offset+(58*ratio)+(bal2xpos*flowStep),  rowCenterBal2));    //index5 left    8  (BAL2 out; corrected by placeBalancerOnRiser)
-    polygon.append( QPoint(offset+(58*ratio)+(bal3xpos*flowStep),  rowCenterBal2));    //index5 right   9  (BAL3 A in = BAL2 out level)
+    polygon.append( QPoint(offset+layout.colX(bal2xpos),           lev3+inst3MidY));  //index4 right   7
+    polygon.append( QPoint(offset+layout.colX(bal2xpos),           rowCenterBal2));    //index5 left    8  (BAL2 out; corrected by placeBalancerOnRiser)
+    polygon.append( QPoint(offset+layout.colX(bal3xpos),           rowCenterBal2));    //index5 right   9  (BAL3 A in = BAL2 out level)
     polygon.append( QPoint(offset+(78*ratio),                      lev4+normalMidY)); //index6 left    10
-    polygon.append( QPoint(offset+(58*ratio)+(bal3xpos*flowStep),  lev4+normalMidY)); //index6 right   11
-    polygon.append( QPoint(offset+(58*ratio)+(bal3xpos*flowStep),  rowCenterBal3));    //index7 left    12 (BAL3 out; corrected by placeBalancerOnRiser)
+    polygon.append( QPoint(offset+layout.colX(bal3xpos),           lev4+normalMidY)); //index6 right   11
+    polygon.append( QPoint(offset+layout.colX(bal3xpos),           rowCenterBal3));    //index7 left    12 (BAL3 out; corrected by placeBalancerOnRiser)
     polygon.append(fxPos.at(dividerChainIndex)+QPoint(flowMidX, dividerMidY));   // at divider    13
     polygon.append(fxPos.at(dividerChainIndex)+QPoint(flowMidX, dividerTopY));   // above divider 14
     polygon.append(fxPos.at(mixerChainIndex)+QPoint(flowMidX, mixerTopY));       // above mixer   15
@@ -1991,7 +2000,37 @@ void floorBoard::update_structure()
 
     if(polygon.size() >= 12)
     {
-        const int branch1SourceRight = qMax(rightEdgeForId(8), rightEdgeForId(9));   // FX1/FX2
+        // Only use a stompBox's right edge to set branch wire endpoints if the
+        // box is actually on the expected instrument row.  A box that has been
+        // compacted into a later zone sits at a much larger X and would
+        // otherwise stretch the branch wires far to the right (Bug 1 "long bars").
+        // Classify each FX block by row using signal-centre Y (block.y() + its own
+        // centre-offset).  Compare against midpoints between adjacent row centres so
+        // that a block sitting exactly ON a BAL-output row never triggers the adjacent
+        // INST-row band.
+        //
+        //   FX1 on INST1: signalY in  [0,                           mid(rowCenter1, rowCenterBal1))
+        //   FX2 on INST2: signalY in  [mid(rowCenterBal1,rowCenter2), mid(rowCenter2, rowCenterBal2))
+        //   FX3 on INST3: signalY in  [mid(rowCenterBal2,rowCenter3), mid(rowCenter3, rowCenterBal3))
+        const int fx1SignalY = (this->stompBoxes.size() > 8  && this->stompBoxes.at(8))
+            ? (this->stompBoxes.at(8)->y()  + centerOffsetYForId(8,  0)) : -1;
+        const int fx2SignalY = (this->stompBoxes.size() > 9  && this->stompBoxes.at(9))
+            ? (this->stompBoxes.at(9)->y()  + centerOffsetYForId(9,  0)) : -1;
+        const int fx3SignalY_debug = (this->stompBoxes.size() > 10 && this->stompBoxes.at(10))
+            ? (this->stompBoxes.at(10)->y() + centerOffsetYForId(10, 0)) : -1;
+        const bool fx1OnInst1Row = (fx1SignalY >= 0)
+            && (fx1SignalY < (rowCenter1 + rowCenterBal1) / 2);
+        const bool fx2OnInst2Row = (fx2SignalY >= (rowCenterBal1 + rowCenter2) / 2)
+            && (fx2SignalY < (rowCenter2  + rowCenterBal2) / 2);
+        qDebug() << "[GUARDS] fx1SignalY=" << fx1SignalY << "fx2SignalY=" << fx2SignalY
+                 << "fx3SignalY=" << fx3SignalY_debug
+                 << "| rowCenter1=" << rowCenter1 << "rowCenterBal1=" << rowCenterBal1
+                 << "rowCenter2=" << rowCenter2 << "rowCenterBal2=" << rowCenterBal2
+                 << "rowCenter3=" << rowCenter3 << "rowCenterBal3=" << rowCenterBal3
+                 << "| fx1OnInst1=" << fx1OnInst1Row << "fx2OnInst2=" << fx2OnInst2Row
+                 << "poly1x=" << polygon.at(1).x();
+        const int branch1SourceRight = qMax(fx1OnInst1Row ? rightEdgeForId(8) : -1,
+                                            fx2OnInst2Row ? rightEdgeForId(9) : -1);
         if(branch1SourceRight >= 0)
         {
             const int bal1CenterX = centerXForId(29); // BAL1
@@ -2005,7 +2044,11 @@ void floorBoard::update_structure()
             polygon[3].setX(branch1X);
         }
 
-        const int branch2SourceRight = rightEdgeForId(10); // FX3
+        const int fx3SignalY = (this->stompBoxes.size() > 10 && this->stompBoxes.at(10))
+            ? (this->stompBoxes.at(10)->y() + centerOffsetYForId(10, 0)) : -1;
+        const bool fx3OnInst3Row = (fx3SignalY >= (rowCenterBal2 + rowCenter3) / 2)
+            && (fx3SignalY < (rowCenter3 + rowCenterBal3) / 2);
+        const int branch2SourceRight = fx3OnInst3Row ? rightEdgeForId(10) : -1; // FX3
         if(branch2SourceRight >= 0)
         {
             const int bal2CenterX = centerXForId(31); // BAL2

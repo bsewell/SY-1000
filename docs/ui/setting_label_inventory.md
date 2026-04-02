@@ -2,6 +2,11 @@
 
 This note identifies the shared code paths that render the small setting labels under stomp/effect controls.
 
+## Related docs
+
+- Complete dropdown inventory and direction variant usage: `docs/ui/dropdown_inventory.md`
+- Visual layout rules (spacing, sizing, color) that affect label appearance: `docs/ui/sy1000_boss_layout_notes.md`
+
 ## Shared typography source of truth
 
 - `src/customControlLabel.cpp`

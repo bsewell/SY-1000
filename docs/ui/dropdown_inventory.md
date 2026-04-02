@@ -8,6 +8,11 @@ This file isolates the effect-detail dropdown system so future typography and la
 - `src/customControlListMenu.cpp` / `src/customControlListMenu.h` - shared effect-detail dropdown widget, label stack, sizing, and SysEx write-back.
 - `src/customComboBox.cpp` / `src/customComboBox.h` - popup sizing behavior for the shared dropdown.
 
+## Related docs
+
+- Visual layout rules that govern dropdown placement: `docs/ui/sy1000_boss_layout_notes.md`
+- Label typography shared by all stomp/effect controls: `docs/ui/setting_label_inventory.md`
+
 ## Typography control point
 
 - Effect-detail selectors are intentionally centralized in `src/customControlListMenu.cpp`.
@@ -89,134 +94,12 @@ These are intentionally documented here so future combo-box work can distinguish
 3. utility-dialog selectors
 4. application/global selectors
 
-## High-volume dropdown pages
+## Finding per-line dropdown detail
 
-### `soundSource_inst1.cpp` (122)
-- line 96: `large_inst` - type
-- line 116: `default` - wave type
-- line 148: `default` - type
-- line 168: `default` - shape
-- line 176: `default` - pitch sync
-- line 181: `default` - shape
-- line 189: `default` - pitch sync
-- line 196: `default` - pitch target
-- line 197: `default` - cutoff target
-- line 198: `default` - level target
-- line 327: `icon_seq` - 1 curve seq 1
-- line 328: `icon_seq` - 2
-- ... 110 more in this file
+To inspect which direction variant is used for a specific control in any file:
 
-### `soundSource_inst2.cpp` (122)
-- line 92: `large_inst` - type
-- line 123: `default` - wave type
-- line 155: `default` - type
-- line 175: `default` - shape
-- line 183: `default` - pitch sync
-- line 188: `default` - shape
-- line 196: `default` - pitch sync
-- line 203: `default` - pitch target
-- line 204: `default` - cutoff target
-- line 205: `default` - level target
-- line 334: `icon_seq` - 1 curve seq 1
-- line 335: `icon_seq` - 2
-- ... 110 more in this file
+```bash
+grep -n 'addComboBox' src/FILENAME.cpp
+```
 
-### `soundSource_inst3.cpp` (122)
-- line 91: `large_inst` - type
-- line 121: `default` - wave type
-- line 153: `default` - type
-- line 173: `default` - shape
-- line 181: `default` - pitch sync
-- line 186: `default` - shape
-- line 194: `default` - pitch sync
-- line 201: `default` - pitch target
-- line 202: `default` - cutoff target
-- line 203: `default` - level target
-- line 332: `icon_seq` - 1 curve seq 1
-- line 333: `icon_seq` - 2
-- ... 110 more in this file
-
-### `stompbox_master.cpp` (68)
-- line 66: `large` - tempo hold
-- line 67: `large` - key
-- line 68: `icon_large_40` - gk/normal patch type
-- line 72: `large` - GK Set
-- line 74: `large` - normal set
-- line 81: `default` - channel
-- line 82: `default` - patch
-- line 83: `default` - msb
-- line 84: `default` - lsb
-- line 86: `default` - cc#1
-- line 87: `default` - cc# 1 value
-- line 88: `default` - cc#2
-- ... 56 more in this file
-
-### `stompbox_fx1.cpp` (66)
-- line 84: `large` - type
-- line 100: `large`
-- line 118: `large`
-- line 123: `large`
-- line 143: `large` - mode
-- line 149: `large` - output
-- line 161: `default` - waveform
-- line 175: `default` - waveform
-- line 189: `default` - waveform
-- line 203: `default` - waveform
-- line 214: `default` - waveform
-- line 250: `large`
-- ... 54 more in this file
-
-### `stompbox_fx2.cpp` (66)
-- line 81: `large` - type
-- line 97: `large`
-- line 115: `large`
-- line 120: `large`
-- line 140: `large` - mode
-- line 146: `large` - output
-- line 158: `default` - waveform
-- line 172: `default` - waveform
-- line 186: `default` - waveform
-- line 200: `default` - waveform
-- line 211: `default` - waveform
-- line 247: `large`
-- ... 54 more in this file
-
-### `stompbox_fx3.cpp` (66)
-- line 83: `large` - type
-- line 99: `large`
-- line 117: `large`
-- line 122: `large`
-- line 142: `large` - mode
-- line 148: `large` - output
-- line 160: `default` - waveform
-- line 174: `default` - waveform
-- line 188: `default` - waveform
-- line 202: `default` - waveform
-- line 213: `default` - waveform
-- line 249: `large`
-- ... 54 more in this file
-
-### `stompbox_ce.cpp` (7)
-- line 72: `large` - mode
-- line 88: `default` - waveform
-- line 103: `default` - waveform
-- line 118: `default` - waveform
-- line 134: `default` - waveform
-- line 147: `default` - waveform
-- line 155: `large` - output
-
-### `stompbox_main_out_left.cpp` (6)
-- line 63: `large` - stereo link
-- line 66: `large` - eq link
-- line 82: `large` - output select
-- line 85: `large` - phase left
-- line 91: `large` - output select
-- line 94: `large` - phase left
-
-### `stompbox_sub_out_left.cpp` (6)
-- line 62: `large` - stereo link
-- line 65: `large` - eq link
-- line 81: `large` - output select
-- line 84: `large` - phase left
-- line 90: `large` - output select
-- line 93: `large` - phase left
+The second string argument to `addComboBox(...)` is the direction variant (e.g. `"large"`, `"default"`, `"icon_seq"`).

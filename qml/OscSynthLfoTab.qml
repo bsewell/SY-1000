@@ -2,13 +2,13 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2: "18"
 
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: col.width
         contentHeight: col.height
         clip: true
@@ -16,19 +16,19 @@ Rectangle {
 
         Column {
             id: col
-            spacing: 10
+            spacing: SyTheme.gridRowSpacing
 
             // LFO 1
-            Text { text: "LFO 1"; color: "#00ccff"; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
+            Text { text: "LFO 1"; color: SyTheme.accent; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
             Row {
-                spacing: 14
+                spacing: SyTheme.gridColSpacing
                 SySwitch   { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "2D" }
                 SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "2E" }
             }
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "2F" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "30" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "31" }
@@ -39,19 +39,19 @@ Rectangle {
                 SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "36"; implicitWidth: 100 }
             }
 
-            Rectangle { width: 600; height: 1; color: "#333" }
+            Rectangle { width: 600; height: 1; color: SyTheme.divider }
 
             // LFO 2
-            Text { text: "LFO 2"; color: "#00ccff"; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
+            Text { text: "LFO 2"; color: SyTheme.accent; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
             Row {
-                spacing: 14
+                spacing: SyTheme.gridColSpacing
                 SySwitch   { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "37" }
                 SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "38" }
             }
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "39" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "3A" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "3B" }

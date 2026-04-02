@@ -28,6 +28,24 @@ Item {
         }
     }
 
+    Connections {
+        target: paramBridge
+        function onDataRefreshed() {
+            if (root.hex0 !== "") {
+                root.value = paramBridge.getValue(root.hex0, root.hex1, root.hex2, root.hex3)
+                root.displayValue = paramBridge.getDisplayValue(root.hex0, root.hex1, root.hex2, root.hex3, root.value)
+            }
+        }
+        function onParameterChanged(h0, h1, h2, h3, val) {
+            if (h0 === root.hex0 && h1 === root.hex1 &&
+                    h2 === root.hex2 && h3 === root.hex3) {
+                root.value = val
+                root.displayValue = paramBridge.getDisplayValue(root.hex0, root.hex1, root.hex2, root.hex3, val)
+                knobCanvas.requestPaint()
+            }
+        }
+    }
+
     Column {
         anchors.fill: parent
         spacing: 2
@@ -59,16 +77,16 @@ Item {
                 // Outer ring
                 ctx.beginPath()
                 ctx.arc(cx, cy, r, 0, 2 * Math.PI)
-                ctx.fillStyle = "#2a2a2a"
+                ctx.fillStyle = SyTheme.bgControl
                 ctx.fill()
-                ctx.strokeStyle = "#555"
+                ctx.strokeStyle = SyTheme.border
                 ctx.lineWidth = 1.5
                 ctx.stroke()
 
                 // Arc track (background)
                 ctx.beginPath()
                 ctx.arc(cx, cy, r - 4, (225) * Math.PI / 180, (-45) * Math.PI / 180)
-                ctx.strokeStyle = "#333"
+                ctx.strokeStyle = SyTheme.divider
                 ctx.lineWidth = 3
                 ctx.stroke()
 
@@ -78,7 +96,7 @@ Item {
                 if (endAngle > startAngle) {
                     ctx.beginPath()
                     ctx.arc(cx, cy, r - 4, startAngle, endAngle)
-                    ctx.strokeStyle = "#00ccff"
+                    ctx.strokeStyle = SyTheme.accent
                     ctx.lineWidth = 3
                     ctx.stroke()
                 }
@@ -90,7 +108,7 @@ Item {
                 ctx.beginPath()
                 ctx.moveTo(cx + innerR * Math.cos(pointerAngle), cy + innerR * Math.sin(pointerAngle))
                 ctx.lineTo(cx + outerR * Math.cos(pointerAngle), cy + outerR * Math.sin(pointerAngle))
-                ctx.strokeStyle = "#00ccff"
+                ctx.strokeStyle = SyTheme.accent
                 ctx.lineWidth = 2.5
                 ctx.lineCap = "round"
                 ctx.stroke()
@@ -123,18 +141,18 @@ Item {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.displayValue
-            color: "#00ccff"
+            color: SyTheme.accent
             font.pixelSize: 10 * root.knobScale
-            font.family: "Roboto Condensed"
+            font.family: SyTheme.fontFamily
         }
 
         // Label
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.label
-            color: "#aaaaaa"
+            color: SyTheme.textLabel
             font.pixelSize: 9 * root.knobScale
-            font.family: "Roboto Condensed"
+            font.family: SyTheme.fontFamily
             width: root.implicitWidth
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter

@@ -21,6 +21,21 @@ Item {
         }
     }
 
+    Connections {
+        target: paramBridge
+        function onDataRefreshed() {
+            if (root.hex0 !== "") {
+                root.value = paramBridge.getValue(root.hex0, root.hex1, root.hex2, root.hex3)
+            }
+        }
+        function onParameterChanged(h0, h1, h2, h3, val) {
+            if (h0 === root.hex0 && h1 === root.hex1 &&
+                    h2 === root.hex2 && h3 === root.hex3) {
+                root.value = val
+            }
+        }
+    }
+
     Column {
         anchors.fill: parent
         spacing: 4
@@ -31,8 +46,8 @@ Item {
             width: 40
             height: 22
             radius: 11
-            color: root.value !== 0 ? "#00ccff" : "#444"
-            border.color: "#555"
+            color: root.value !== 0 ? SyTheme.accent : "#444"
+            border.color: SyTheme.border
             border.width: 1
 
             Rectangle {
@@ -58,18 +73,18 @@ Item {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.value !== 0 ? "ON" : "OFF"
-            color: root.value !== 0 ? "#00ccff" : "#666"
-            font.pixelSize: 10
-            font.family: "Roboto Condensed"
+            color: root.value !== 0 ? SyTheme.accent : SyTheme.textSection
+            font.pixelSize: SyTheme.fontSmall
+            font.family: SyTheme.fontFamily
         }
 
         // Label
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.label
-            color: "#aaaaaa"
-            font.pixelSize: 9
-            font.family: "Roboto Condensed"
+            color: SyTheme.textLabel
+            font.pixelSize: SyTheme.fontTiny
+            font.family: SyTheme.fontFamily
             width: root.implicitWidth
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter

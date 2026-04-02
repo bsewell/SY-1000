@@ -3,9 +3,9 @@ import "Fx1TypeData.js" as Fx1Data
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
+    color: SyTheme.bgPanel
+    implicitWidth: SyTheme.panelWidth
+    implicitHeight: SyTheme.panelHeight
 
     property string hex1: "00"
     property string hex2: "40"   // base hex2: guitar="40", bass="3D"
@@ -63,7 +63,7 @@ Rectangle {
         Rectangle {
             width: parent.width
             height: 32
-            color: "#2a2a2a"
+            color: SyTheme.bgControl
 
             Row {
                 anchors.fill: parent
@@ -72,9 +72,9 @@ Rectangle {
 
                 Text {
                     text: "FX TYPE"
-                    color: "#888888"
-                    font.pixelSize: 11
-                    font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: SyTheme.fontLabel
+                    font.family: SyTheme.fontFamily
                     font.capitalization: Font.AllUppercase
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -87,12 +87,13 @@ Rectangle {
             }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         // Dynamic content area
+        // Total fixed rows above: StompHeader (headerHeight) + FX TYPE row (modeSelectorH) + divider (1)
         Item {
             width: parent.width
-            height: parent.height - 70
+            height: parent.height - SyTheme.headerHeight - SyTheme.modeSelectorH - 1
 
             // Generic view for simple types
             Loader {
@@ -166,7 +167,7 @@ Rectangle {
         id: knobComponent
         FilmstripKnob {
             hex0: "10"; hex1: ctrlHex1; hex2: ctrlHex2; hex3: ctrl.hex3
-            filmstrip: "knobs/knob_56.png"; frameSize: 56
+            filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
         }
     }
 

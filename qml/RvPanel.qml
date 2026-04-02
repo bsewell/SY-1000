@@ -1,110 +1,41 @@
 import QtQuick
 
-Rectangle {
-    id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
-
-    property string hex1: "01"
-    property string hex2: "32"
-    property color accentColor: Qt.rgba(0, 0.7, 0.8, 1)
+SyPanelBase {
+    id: panel
+    hex1: "01"; hex2: "32"
+    accentColor: Qt.rgba(0, 0.7, 0.8, 1)
+    title: "REVERB"
+    powerHex0: "10"; powerHex1: hex1; powerHex2: hex2; powerHex3: "00"
 
     Column {
-        anchors.fill: parent
-        spacing: 0
+        width: parent.width
+        spacing: SyTheme.flowSpacingSm
+        topPadding: SyTheme.panelPadding
 
-        StompHeader {
-            width: parent.width
-            accentColor: root.accentColor
-            title: "REVERB"
-            powerHex0: "10"; powerHex1: root.hex1; powerHex2: root.hex2; powerHex3: "00"
+        Flow {
+            width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
+            SyComboBox { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "01" }
+            SyComboBox { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "03" }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width - 24; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
 
-        Flickable {
-            width: parent.width
-            height: parent.height - 37
-            contentHeight: contentCol.height + 24
-            clip: true
+        Flow {
+            width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
+            FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "04"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+            FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+            FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0B"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+            FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0D"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+            FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+            FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0A"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+        }
 
-            Column {
-                id: contentCol
-                width: parent.width
-                spacing: 12
-                topPadding: 12
+        Rectangle { width: parent.width - 24; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
 
-                Flow {
-                    width: parent.width - 24
-                    x: 12
-                    spacing: 12
-
-                    SyComboBox {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
-                    }
-
-                    SyComboBox {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"
-                    }
-                }
-
-                Rectangle { width: parent.width - 24; height: 1; color: "#333333"; x: 12 }
-
-                Flow {
-                    width: parent.width - 24
-                    x: 12
-                    spacing: 12
-
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"
-                        filmstrip: "knobs/knob_56.png"; frameSize: 56
-                    }
-
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"
-                        filmstrip: "knobs/knob_56.png"; frameSize: 56
-                    }
-
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0B"
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
-                    }
-
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0D"
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
-                    }
-
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
-                    }
-
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
-                    }
-                }
-
-                Rectangle { width: parent.width - 24; height: 1; color: "#333333"; x: 12 }
-
-                Flow {
-                    width: parent.width - 24
-                    x: 12
-                    spacing: 12
-
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"
-                        filmstrip: "knobs/knob_56.png"; frameSize: 56
-                    }
-
-                    FilmstripKnob {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0C"
-                        filmstrip: "knobs/knob_56.png"; frameSize: 56
-                    }
-                }
-            }
+        Flow {
+            width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
+            FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+            FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0C"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
         }
     }
 }

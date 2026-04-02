@@ -153,7 +153,7 @@ Canvas {
 
         // Gain labels
         ctx.fillStyle = "rgba(185, 197, 214, 0.59)"
-        ctx.font = "9px 'Roboto Condensed'"
+        ctx.font = "9px '" + SyTheme.fontFamily + "'"
         ctx.textAlign = "right"
         ctx.textBaseline = "middle"
         var gains = [-20, -10, 0, 10, 20]
@@ -164,7 +164,7 @@ Canvas {
 
         // Frequency labels along bottom — contiguous ranges: 20-100, 100-1k, 1k-5k, 5k-20k
         // Log-scale positions: 100Hz=0.233, 1kHz=0.566, 5kHz=0.799
-        ctx.font = "9px 'Roboto Condensed'"
+        ctx.font = "9px '" + SyTheme.fontFamily + "'"
         ctx.textBaseline = "top"
         var flY = py + ph + 4
 
@@ -185,7 +185,7 @@ Canvas {
 
         // Band range labels centered in each region
         ctx.fillStyle = "rgba(185, 197, 214, 0.35)"
-        ctx.font = "8px 'Roboto Condensed'"
+        ctx.font = "8px '" + SyTheme.fontFamily + "'"
         ctx.textAlign = "center"
         ctx.fillText("LOW", px + pw * 0.117, flY + 10)
         ctx.fillText("LOW MID", px + pw * 0.40, flY + 10)

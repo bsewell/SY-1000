@@ -35,7 +35,7 @@ Item {
     Rectangle {
         anchors.fill: parent
         radius: 3
-        color: "#2a2a2a"
+        color: SyTheme.bgControl
         border.color: "#444"
         border.width: 1
 
@@ -45,8 +45,8 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             text: paramBridge.getDisplayValue(root.hex0, root.hex1, root.hex2, root.hex3, root.value)
             color: "#dddddd"
-            font.pixelSize: 11
-            font.family: "Roboto Condensed"
+            font.pixelSize: SyTheme.fontLabel
+            font.family: SyTheme.fontFamily
         }
 
         // Up/down arrows column
@@ -58,7 +58,7 @@ Item {
 
             Text {
                 text: "\u25B2"
-                color: "#888"
+                color: SyTheme.textDimmed
                 font.pixelSize: 7
                 MouseArea {
                     anchors.fill: parent
@@ -73,7 +73,7 @@ Item {
             }
             Text {
                 text: "\u25BC"
-                color: "#888"
+                color: SyTheme.textDimmed
                 font.pixelSize: 7
                 MouseArea {
                     anchors.fill: parent

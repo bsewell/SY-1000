@@ -1,16 +1,17 @@
 import QtQuick
+import QtQuick.Controls
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
+    color: SyTheme.bgPanel
+    implicitWidth: SyTheme.panelWidth
+    implicitHeight: SyTheme.panelHeight
 
     property string hex1: "00"
     property string hex2: "00"
     property color accentColor: Qt.rgba(0.8, 0.5, 0.2, 1)
 
-    property int currentIndex: 0
+    property int currentIndex: Math.max(0, Math.min(15, parseInt(hex2, 16)))
 
     // Assign address table: each assign has a hex2 and base offset
     // Assigns 1-2: hex2=04, offsets 00/40
@@ -66,17 +67,17 @@ Rectangle {
 
             Rectangle {
                 width: parent.width; height: 32
-                color: "#442200"
+                color: SyTheme.bgSectionHead
                 Text {
                     anchors.centerIn: parent
                     text: "ASSIGN"
                     color: "#ffcc00"
-                    font.pixelSize: 13; font.family: "Roboto Condensed"
+                    font.pixelSize: 13; font.family: SyTheme.fontFamily
                     font.bold: true; font.capitalization: Font.AllUppercase
                 }
             }
 
-            Rectangle { width: parent.width; height: 1; color: "#333333" }
+            Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
             ListView {
                 id: sidebarList
@@ -85,10 +86,11 @@ Rectangle {
                 model: sidebarModel
                 clip: true
                 currentIndex: root.currentIndex
+                ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
                 delegate: Rectangle {
                     width: sidebarList.width; height: 28
-                    color: index === root.currentIndex ? "#333333" : mouseArea.containsMouse ? "#2a2a2a" : "transparent"
+                    color: index === root.currentIndex ? SyTheme.divider : mouseArea.containsMouse ? SyTheme.bgControl : "transparent"
 
                     Rectangle {
                         width: 3; height: parent.height
@@ -100,8 +102,8 @@ Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         x: 12
                         text: model.label
-                        color: index === root.currentIndex ? "#ffffff" : "#aaaaaa"
-                        font.pixelSize: 11; font.family: "Roboto Condensed"
+                        color: index === root.currentIndex ? SyTheme.textPrimary : SyTheme.textLabel
+                        font.pixelSize: 11; font.family: SyTheme.fontFamily
                         font.bold: index === root.currentIndex
                     }
 
@@ -115,7 +117,7 @@ Rectangle {
             }
         }
 
-        Rectangle { width: 1; height: parent.height; color: "#333333" }
+        Rectangle { width: 1; height: parent.height; color: SyTheme.divider }
 
         // Content area
         Item {

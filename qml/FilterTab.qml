@@ -2,13 +2,15 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2: "16"
 
+    readonly property int comboWidth: 340
+
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: col.width
         contentHeight: col.height
         clip: true
@@ -16,26 +18,18 @@ Rectangle {
 
         Column {
             id: col
-            spacing: 10
+            spacing: 6
 
-            Row {
-                spacing: 14
+            // Stacked dropdowns — same width, left-aligned
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1D"; implicitWidth: root.comboWidth }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1E"; implicitWidth: root.comboWidth }
 
-                // Filter Type dropdown
-                SyComboBox {
-                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1D"
-                }
-
-                // Slope dropdown
-                SyComboBox {
-                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1E"
-                }
-            }
+            Item { width: 1; height: 4 }
 
             Grid {
                 columns: 5
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
 
                 // SW, Cutoff, Resonance, Flt Env Attack, Flt Env Depth
                 SySwitch     { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1C" }

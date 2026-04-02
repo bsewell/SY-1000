@@ -80,6 +80,7 @@ HEADERS += ./src/editPage.h \
     ./src/menuPage.h \
     ./src/menuPage_assign1.h \
     ./src/menuPage_master.h \
+    ./src/menuPage_midi.h \
     ./src/menuPage_pdl.h \
     ./src/menuPage_setup.h \
     ./src/menuPage_system.h \
@@ -207,6 +208,7 @@ SOURCES += ./src/editPage.cpp \
     ./src/menuPage.cpp \
     ./src/menuPage_assign1.cpp \
     ./src/menuPage_master.cpp \
+    ./src/menuPage_midi.cpp \
     ./src/menuPage_pdl.cpp \
     ./src/menuPage_setup.cpp \
     ./src/menuPage_system.cpp \

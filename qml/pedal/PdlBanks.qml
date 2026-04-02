@@ -28,13 +28,13 @@ Item {
                     spacing: 0
 
                     Rectangle {
-                        width: parent.width; height: 28; color: "#313A47"
-                        Text { x: 16; anchors.verticalCenter: parent.verticalCenter; text: modelData.label; color: "#ffffff"; font.pixelSize: 13; font.family: "Roboto Condensed"; font.bold: true }
+                        width: parent.width; height: 28; color: SyTheme.bgSectionHead
+                        Text { x: 16; anchors.verticalCenter: parent.verticalCenter; text: modelData.label; color: SyTheme.textPrimary; font.pixelSize: 13; font.family: SyTheme.fontFamily; font.bold: true }
                     }
 
                     Item {
                         width: parent.width; height: 44
-                        Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SOURCE"; color: "#ccffffff"; font.pixelSize: 11; font.family: "Roboto Condensed" }
+                        Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "SOURCE"; color: SyTheme.textSysLabel; font.pixelSize: 11; font.family: SyTheme.fontFamily }
                         SySwitch { x: 160; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: modelData.src }
                     }
                     Item { width: parent.width; height: 36; SyComboBox { x: 16; width: 420; hex0: "10"; hex1: panelHex1; hex2: "00"; hex3: modelData.patchFunc } }
@@ -42,17 +42,17 @@ Item {
                     Item { width: parent.width; height: 36; SyComboBox { x: 16; width: 420; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: modelData.sysFunc } }
                     Item { width: parent.width; height: 36; SyComboBox { x: 16; width: 420; hex0: "00"; hex1: panelSysHex1; hex2: "10"; hex3: modelData.sysMode } }
 
-                    Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+                    Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
                 }
             }
 
             Rectangle {
-                width: parent.width; height: 28; color: "#313A47"
-                Text { x: 16; anchors.verticalCenter: parent.verticalCenter; text: "BANK UP + BANK DOWN"; color: "#ffffff"; font.pixelSize: 13; font.family: "Roboto Condensed"; font.bold: true }
+                width: parent.width; height: 28; color: SyTheme.bgSectionHead
+                Text { x: 16; anchors.verticalCenter: parent.verticalCenter; text: "BANK UP + BANK DOWN"; color: SyTheme.textPrimary; font.pixelSize: 13; font.family: SyTheme.fontFamily; font.bold: true }
             }
             Item {
                 width: parent.width; height: 44
-                Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "FUNCTION"; color: "#ccffffff"; font.pixelSize: 11; font.family: "Roboto Condensed" }
+                Text { x: 32; anchors.verticalCenter: parent.verticalCenter; text: "FUNCTION"; color: SyTheme.textSysLabel; font.pixelSize: 11; font.family: SyTheme.fontFamily }
                 SySwitch { x: 160; y: 6; hex0: "00"; hex1: panelSysHex1; hex2: "00"; hex3: "08" }
             }
         }

@@ -2,9 +2,9 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
+    color: SyTheme.bgPanel
+    implicitWidth: SyTheme.panelWidth
+    implicitHeight: SyTheme.panelHeight
 
     property string hex1: "00"  // guitar="00", bass="02"
     property string hex2: "12"  // normal pickup always "12"
@@ -22,13 +22,13 @@ Rectangle {
             powerHex0: "10"; powerHex1: root.hex1; powerHex2: "12"; powerHex3: "01"
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         // Cable Sim row — matches Boss layout
         Rectangle {
             width: parent.width
-            height: 32
-            color: "#2a2a2a"
+            height: SyTheme.modeSelectorH
+            color: SyTheme.bgControl
 
             Row {
                 anchors.fill: parent
@@ -37,9 +37,9 @@ Rectangle {
 
                 Text {
                     text: "CABLE SIM"
-                    color: "#888888"
-                    font.pixelSize: 11
-                    font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: SyTheme.fontLabel
+                    font.family: SyTheme.fontFamily
                     font.capitalization: Font.AllUppercase
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -51,12 +51,13 @@ Rectangle {
             }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         // Knobs — left-aligned, top-aligned
+        // Total fixed rows above: StompHeader + divider + Cable Sim row (modeSelectorH) + divider
         Item {
             width: parent.width
-            height: parent.height - 75
+            height: parent.height - SyTheme.headerHeight - 1 - SyTheme.modeSelectorH - 1
 
             Flow {
                 x: 8
@@ -67,13 +68,13 @@ Rectangle {
                 // Normal Level knob
                 FilmstripKnob {
                     hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "02"
-                    filmstrip: "knobs/knob_56.png"; frameSize: 56
+                    filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
                 }
 
                 // Phase knob
                 FilmstripKnob {
                     hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "05"
-                    filmstrip: "knobs/knob_56.png"; frameSize: 56
+                    filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
                 }
             }
         }

@@ -6,6 +6,11 @@ This project now writes startup/crash diagnostics to:
 - `~/Library/Application Support/Gumtown/SY-1000FloorBoard/startup.log.prev`
 - macOS crash reports: `~/Library/Logs/DiagnosticReports/SY-1000FloorBoard-*.ips`
 
+## Related docs
+
+- Signal-chain architecture and known visual bugs: `docs/agent_handoff.md`
+- Layout regression log (layout-score command): `docs/ui/layout_regression_log.md`
+
 ## Key Log Markers
 
 - `STEP N`: startup milestones.

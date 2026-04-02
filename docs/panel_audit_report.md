@@ -1,6 +1,8 @@
 # FloorBoard Panel Audit Report
 > Cross-check: FloorBoard Qt source vs SY-1000 parameter spec (Boss address_map.js + reference manual)
 > Generated: 2026-03-10 | Updated: 2026-03-10 (after Boss address_map.js verification)
+>
+> **Re-audit notice**: This report reflects state as of 2026-03-10. Re-audit any block whose source file has changed since that date. Check `git log -- stompbox_*.cpp soundSource_*.cpp` for changes. For MIDI address reference: `midi.xml`, `src/MidiTable.cpp`.
 
 ---
 

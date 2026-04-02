@@ -51,19 +51,15 @@ statusBarWidget::statusBarWidget(QWidget *parent)
     this->label->setFont(labelFont);
 
     this->dBuglabel = new QStatusBar(this);
-    this->dBuglabel->setFixedWidth(950*ratio);
+    this->dBuglabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     this->dBuglabel->showMessage(tr(""));
     this->dBuglabel->setFont(labelFont);
 
     QHBoxLayout *widgetLayout = new QHBoxLayout;
-    //widgetLayout->setContentsMargins(0, 0, 0, 0);
-    widgetLayout->addWidget(this->progressBar, Qt::AlignCenter);
-    widgetLayout->addWidget(this->symbol, Qt::AlignCenter);
-    widgetLayout->addWidget(this->label, Qt::AlignCenter);
-    widgetLayout->addWidget(this->dBuglabel, Qt::AlignCenter);
-
-
-    widgetLayout->addStretch(0);
+    widgetLayout->addWidget(this->progressBar, 0, Qt::AlignCenter);
+    widgetLayout->addWidget(this->symbol, 0, Qt::AlignCenter);
+    widgetLayout->addWidget(this->label, 0, Qt::AlignCenter);
+    widgetLayout->addWidget(this->dBuglabel, 1);
 
     this->setLayout(widgetLayout);
 }

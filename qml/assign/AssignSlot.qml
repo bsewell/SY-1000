@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 import ".."
 
 Item {
@@ -18,12 +19,16 @@ Item {
         return h.length < 2 ? "0" + h : h
     }
 
-    // Source value for conditional visibility
+    // Source value for conditional visibility — re-fetched when assign changes
     property int sourceValue: 0
 
-    Component.onCompleted: {
+    function refreshSourceValue() {
         sourceValue = paramBridge.getValue("10", panelHex1, assignHex2, hex3(0x0D))
     }
+
+    Component.onCompleted: refreshSourceValue()
+    onAssignHex2Changed: refreshSourceValue()
+    onAssignBaseChanged: refreshSourceValue()
 
     Connections {
         target: sourceCombo
@@ -36,6 +41,7 @@ Item {
         anchors.fill: parent
         contentHeight: mainCol.height + 24
         clip: true
+        ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
         Column {
             id: mainCol
@@ -48,8 +54,8 @@ Item {
                 Text {
                     x: 16; anchors.verticalCenter: parent.verticalCenter
                     text: "ASSIGN " + slotRoot.assignNumber
-                    color: "#ccffffff"
-                    font.pixelSize: 14; font.family: "Roboto Condensed"
+                    color: SyTheme.textSysLabel
+                    font.pixelSize: 14; font.family: SyTheme.fontFamily
                     font.bold: true
                 }
                 SySwitch {
@@ -59,7 +65,7 @@ Item {
                 }
             }
 
-            Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
             // Target row
             Item {
@@ -67,8 +73,8 @@ Item {
                 Text {
                     x: 16; anchors.verticalCenter: parent.verticalCenter
                     text: "TARGET"
-                    color: "#888888"
-                    font.pixelSize: 12; font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: 12; font.family: SyTheme.fontFamily
                 }
                 SyComboBox {
                     x: 160; width: parent.width - 176
@@ -84,8 +90,8 @@ Item {
                 Text {
                     x: 16; anchors.verticalCenter: parent.verticalCenter
                     text: "SOURCE"
-                    color: "#888888"
-                    font.pixelSize: 12; font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: 12; font.family: SyTheme.fontFamily
                 }
                 SyComboBox {
                     id: sourceCombo
@@ -102,8 +108,8 @@ Item {
                 Text {
                     x: 16; anchors.verticalCenter: parent.verticalCenter
                     text: "SOURCE MODE"
-                    color: "#888888"
-                    font.pixelSize: 12; font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: 12; font.family: SyTheme.fontFamily
                 }
                 SyComboBox {
                     x: 160; width: parent.width - 176
@@ -113,7 +119,7 @@ Item {
                 }
             }
 
-            Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
             // Range knobs
             Item {
@@ -122,8 +128,8 @@ Item {
                 Text {
                     x: 16; y: 8
                     text: "RANGE"
-                    color: "#888888"
-                    font.pixelSize: 12; font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: 12; font.family: SyTheme.fontFamily
                 }
 
                 Row {
@@ -133,12 +139,12 @@ Item {
                     FilmstripKnob {
                         hex0: "10"; hex1: slotRoot.panelHex1
                         hex2: slotRoot.assignHex2; hex3: slotRoot.hex3(0x0F)
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                     }
                 }
             }
 
-            Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
             // Switch timing (visible when source < 0x12, i.e. physical switches)
             Item {
@@ -148,8 +154,8 @@ Item {
                 Text {
                     x: 16; y: 8
                     text: "SWITCH TIMING"
-                    color: "#888888"
-                    font.pixelSize: 12; font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: 12; font.family: SyTheme.fontFamily
                 }
 
                 Row {
@@ -159,12 +165,12 @@ Item {
                     FilmstripKnob {
                         hex0: "10"; hex1: slotRoot.panelHex1
                         hex2: slotRoot.assignHex2; hex3: slotRoot.hex3(0x17)
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                     }
                     FilmstripKnob {
                         hex0: "10"; hex1: slotRoot.panelHex1
                         hex2: slotRoot.assignHex2; hex3: slotRoot.hex3(0x18)
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                     }
                 }
             }
@@ -177,8 +183,8 @@ Item {
                 Text {
                     x: 16; y: 8
                     text: "WAVE PEDAL"
-                    color: "#888888"
-                    font.pixelSize: 12; font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: 12; font.family: SyTheme.fontFamily
                 }
 
                 Row {
@@ -188,7 +194,7 @@ Item {
                     FilmstripKnob {
                         hex0: "10"; hex1: slotRoot.panelHex1
                         hex2: slotRoot.assignHex2; hex3: slotRoot.hex3(0x19)
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                     }
                     SyComboBox {
                         anchors.verticalCenter: parent.verticalCenter
@@ -206,8 +212,8 @@ Item {
                 Text {
                     x: 16; y: 8
                     text: "INPUT LEVEL"
-                    color: "#888888"
-                    font.pixelSize: 12; font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: 12; font.family: SyTheme.fontFamily
                 }
 
                 Row {
@@ -217,7 +223,7 @@ Item {
                     FilmstripKnob {
                         hex0: "10"; hex1: slotRoot.panelHex1
                         hex2: "12"; hex3: "44"
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                     }
                 }
             }
@@ -230,8 +236,8 @@ Item {
                 Text {
                     x: 16; y: 8
                     text: "MIDI CC#"
-                    color: "#888888"
-                    font.pixelSize: 12; font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: 12; font.family: SyTheme.fontFamily
                 }
 
                 Row {
@@ -246,12 +252,12 @@ Item {
                     FilmstripKnob {
                         hex0: "10"; hex1: slotRoot.panelHex1
                         hex2: slotRoot.assignHex2; hex3: slotRoot.hex3(0x1C)
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                     }
                     FilmstripKnob {
                         hex0: "10"; hex1: slotRoot.panelHex1
                         hex2: slotRoot.assignHex2; hex3: slotRoot.hex3(0x1D)
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                     }
                 }
             }

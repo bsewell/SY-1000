@@ -7,16 +7,7 @@ Item {
     property string panelHex1b: parent ? parent.panelHex1b : "04"
 
     // Header
-    Rectangle {
-        width: parent.width; height: 32
-        color: "#313A47"
-        Text {
-            x: 16; anchors.verticalCenter: parent.verticalCenter
-            text: "TOTAL SETTING"
-            color: "#ffffff"; font.pixelSize: 14
-            font.family: "Roboto Condensed"
-        }
-    }
+    SySectionLabel { text: "TOTAL SETTING"; isHeader: true; showDivider: false }
 
     // Centered knobs — Boss layout shows 2 knobs centered at y=190
     Row {

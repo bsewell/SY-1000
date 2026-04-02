@@ -35,6 +35,23 @@ Item {
         }
     }
 
+    Connections {
+        target: paramBridge
+        function onDataRefreshed() {
+            if (root.hex0 !== "") {
+                root.value = paramBridge.getValue(root.hex0, root.hex1, root.hex2, root.hex3)
+                root.displayValue = paramBridge.getDisplayValue(root.hex0, root.hex1, root.hex2, root.hex3, root.value)
+            }
+        }
+        function onParameterChanged(h0, h1, h2, h3, val) {
+            if (h0 === root.hex0 && h1 === root.hex1 &&
+                    h2 === root.hex2 && h3 === root.hex3) {
+                root.value = val
+                root.displayValue = paramBridge.getDisplayValue(root.hex0, root.hex1, root.hex2, root.hex3, val)
+            }
+        }
+    }
+
     // Knob drag interaction helper
     function _handleDrag(lastY, mouseY) {
         var delta = (lastY - mouseY) * 0.5
@@ -88,17 +105,18 @@ Item {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.displayValue
-            color: "#00ccff"
-            font.pixelSize: 11
-            font.family: "Roboto Condensed"
+            color: SyTheme.textPrimary
+            font.pixelSize: SyTheme.fontBody
+            font.bold: true
+            font.family: SyTheme.fontFamily
         }
 
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: root.label
-            color: "#aaaaaa"
-            font.pixelSize: 10
-            font.family: "Roboto Condensed"
+            color: SyTheme.textLabel
+            font.pixelSize: SyTheme.fontSmall
+            font.family: SyTheme.fontFamily
             width: root.frameSize + 24
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
@@ -117,9 +135,9 @@ Item {
 
             Text {
                 text: root.label
-                color: "#aaaaaa"
+                color: SyTheme.textLabel
                 font.pixelSize: 9
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
                 width: 56
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignRight
@@ -127,9 +145,10 @@ Item {
 
             Text {
                 text: root.displayValue
-                color: "#00ccff"
-                font.pixelSize: 10
-                font.family: "Roboto Condensed"
+                color: SyTheme.textPrimary
+                font.pixelSize: SyTheme.fontBody
+                font.bold: true
+                font.family: SyTheme.fontFamily
                 width: 56
                 horizontalAlignment: Text.AlignRight
             }

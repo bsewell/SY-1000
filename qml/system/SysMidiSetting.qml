@@ -24,7 +24,7 @@ Item {
                 Rectangle {
                     width: midiRoot.width / 3
                     height: 32
-                    color: midiRoot.currentTab === index ? "#313A47" : "#222222"
+                    color: midiRoot.currentTab === index ? SyTheme.bgSectionHead : "#222222"
 
                     Rectangle {
                         width: parent.width; height: 2
@@ -35,8 +35,8 @@ Item {
                     Text {
                         anchors.centerIn: parent
                         text: modelData
-                        color: midiRoot.currentTab === index ? "#ffffff" : "#888888"
-                        font.pixelSize: 12; font.family: "Roboto Condensed"
+                        color: midiRoot.currentTab === index ? SyTheme.textPrimary : SyTheme.textDimmed
+                        font.pixelSize: SyTheme.fontBody; font.family: SyTheme.fontFamily
                         font.bold: midiRoot.currentTab === index
                     }
 
@@ -49,7 +49,7 @@ Item {
             }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         // Content
         Loader {
@@ -96,14 +96,14 @@ Item {
                     Item {
                         width: s1Col.width; height: modelData.type === "switch" ? 44 : 36; clip: true
                         Text {
-                            x: 32; anchors.verticalCenter: parent.verticalCenter
+                            x: SyTheme.sysLabelX; anchors.verticalCenter: parent.verticalCenter
                             text: modelData.label
-                            color: "#ccffffff"; font.pixelSize: 11
-                            font.family: "Roboto Condensed"
+                            color: SyTheme.textSysLabel; font.pixelSize: SyTheme.fontLabel
+                            font.family: SyTheme.fontFamily
                             visible: modelData.type === "switch"
                         }
                         Loader {
-                            x: modelData.type === "combo" ? 16 : 160
+                            x: modelData.type === "combo" ? 16 : SyTheme.sysControlX
                             y: modelData.type === "switch" ? 4 : 4
                             width: modelData.type === "combo" ? 420 : undefined
                             sourceComponent: modelData.type === "combo" ? midiCombo : midiSwitch
@@ -181,21 +181,14 @@ Item {
                 spacing: 0
 
                 // On/Off switch
-                Item {
-                    width: parent.width; height: 56; clip: true
-                    Text {
-                        x: 32; anchors.verticalCenter: parent.verticalCenter
-                        text: "GUITAR TO MIDI"
-                        color: "#ccffffff"; font.pixelSize: 12
-                        font.family: "Roboto Condensed"
-                    }
+                SySettingRow {
+                    label: "GUITAR TO MIDI"; tall: true
                     SySwitch {
-                        x: 160; y: 6
                         hex0: "00"; hex1: midiRoot.panelHex1b; hex2: "21"; hex3: "00"
                     }
                 }
 
-                Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+                Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
                 Repeater {
                     model: [

@@ -79,8 +79,8 @@ Item {
         width: root.knobW
         spacing: 2
         Text {
-            text: "LOW"; color: "#666666"; anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 10; font.family: "Roboto Condensed"
+            text: "LOW"; color: SyTheme.textSection; anchors.horizontalCenter: parent.horizontalCenter
+            font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
         }
         FilmstripKnob {
             id: lowCutKnob
@@ -103,7 +103,7 @@ Item {
     // Divider at 100Hz
     Rectangle {
         x: root.plotLeft + root.plotW * 0.233
-        width: 1; height: lowMidCol.height; color: "#2a2a2a"
+        width: 1; height: lowMidCol.height; color: SyTheme.bgControl
     }
 
     // === LOW MID: centered under 100Hz-1kHz (0.233 to 0.566) ===
@@ -113,8 +113,8 @@ Item {
         width: root.knobW
         spacing: 2
         Text {
-            text: "LOW MID"; color: "#666666"; anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 10; font.family: "Roboto Condensed"
+            text: "LOW MID"; color: SyTheme.textSection; anchors.horizontalCenter: parent.horizontalCenter
+            font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
         }
         FilmstripKnob {
             id: lowMidFreqKnob
@@ -145,7 +145,7 @@ Item {
     // Divider at 1kHz
     Rectangle {
         x: root.plotLeft + root.plotW * 0.566
-        width: 1; height: lowMidCol.height; color: "#2a2a2a"
+        width: 1; height: lowMidCol.height; color: SyTheme.bgControl
     }
 
     // === HIGH MID: centered under 1kHz-5kHz (0.566 to 0.799) ===
@@ -155,8 +155,8 @@ Item {
         width: root.knobW
         spacing: 2
         Text {
-            text: "HIGH MID"; color: "#666666"; anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 10; font.family: "Roboto Condensed"
+            text: "HIGH MID"; color: SyTheme.textSection; anchors.horizontalCenter: parent.horizontalCenter
+            font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
         }
         FilmstripKnob {
             id: highMidFreqKnob
@@ -187,7 +187,7 @@ Item {
     // Divider at 5kHz
     Rectangle {
         x: root.plotLeft + root.plotW * 0.799
-        width: 1; height: lowMidCol.height; color: "#2a2a2a"
+        width: 1; height: lowMidCol.height; color: SyTheme.bgControl
     }
 
     // === HIGH: cut on top, gain below — centered between 5kHz divider and right edge ===
@@ -197,8 +197,8 @@ Item {
         width: root.knobW
         spacing: 2
         Text {
-            text: "HIGH CUT"; color: "#666666"; anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 10; font.family: "Roboto Condensed"
+            text: "HIGH CUT"; color: SyTheme.textSection; anchors.horizontalCenter: parent.horizontalCenter
+            font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
         }
         FilmstripKnob {
             id: highCutKnob
@@ -209,8 +209,8 @@ Item {
             onValueChanged: if (root.eqGraph) root.eqGraph.highCut = value
         }
         Text {
-            text: "HIGH GAIN"; color: "#666666"
-            font.pixelSize: 10; font.family: "Roboto Condensed"
+            text: "HIGH GAIN"; color: SyTheme.textSection
+            font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
         }
         FilmstripKnob {
             id: highGainKnob

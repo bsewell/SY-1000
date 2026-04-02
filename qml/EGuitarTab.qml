@@ -2,13 +2,16 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2: "1A"
 
+    // Standard dropdown width for stacked combos
+    readonly property int comboWidth: 340
+
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: col.width
         contentHeight: col.height
         clip: true
@@ -16,21 +19,20 @@ Rectangle {
 
         Column {
             id: col
-            spacing: 10
+            spacing: 6
 
-            // Guitar Type
-            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00" }
+            // Stacked dropdowns — all same width, left-aligned
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00"; implicitWidth: root.comboWidth }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"; implicitWidth: root.comboWidth }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; implicitWidth: root.comboWidth }
 
+            Item { width: 1; height: 4 }
+
+            // Sense, Depth, Attack, Resonance, Direct Mix
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
-
-                // PU Select, Tone Type
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"; implicitWidth: 100 }
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; implicitWidth: 100 }
-
-                // Sense, Depth, Attack, Resonance, Direct Mix
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "05" }
@@ -41,8 +43,8 @@ Rectangle {
             // Volume, Tone
             Grid {
                 columns: 2
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09" }
             }

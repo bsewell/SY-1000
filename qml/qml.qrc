@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/qml">
+        <file>qmldir</file>
+        <file>SyTheme.qml</file>
+        <file>SySectionLabel.qml</file>
+        <file>SySettingRow.qml</file>
+        <file>SyModeSelector.qml</file>
+        <file>SyTabBar.qml</file>
+        <file>SyPanelBase.qml</file>
         <file>InstrumentPanel.qml</file>
         <file>NormalInputPanel.qml</file>
         <file>CommonTab.qml</file>
@@ -100,6 +107,7 @@
         <file>pedal/PdlLeds.qml</file>
         <file>SetupPanel.qml</file>
         <file>AssignPanel.qml</file>
+        <file>MidiPanel.qml</file>
         <file>assign/AssignSlot.qml</file>
     </qresource>
 </RCC>

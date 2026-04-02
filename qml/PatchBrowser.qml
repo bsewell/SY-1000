@@ -21,16 +21,16 @@ Rectangle {
             Rectangle {
                 anchors.bottom: parent.bottom
                 width: parent.width; height: 2
-                color: "#00ccff"
+                color: SyTheme.accent
                 visible: patchListModel.presetMode
             }
 
             Text {
                 anchors.centerIn: parent
                 text: "PRESET"
-                color: patchListModel.presetMode ? "#00ccff" : "#888"
+                color: patchListModel.presetMode ? SyTheme.accent : SyTheme.textDimmed
                 font.pixelSize: 12
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
                 font.bold: true
             }
 
@@ -49,16 +49,16 @@ Rectangle {
             Rectangle {
                 anchors.bottom: parent.bottom
                 width: parent.width; height: 2
-                color: "#00ccff"
+                color: SyTheme.accent
                 visible: !patchListModel.presetMode
             }
 
             Text {
                 anchors.centerIn: parent
                 text: "USER"
-                color: !patchListModel.presetMode ? "#00ccff" : "#888"
+                color: !patchListModel.presetMode ? SyTheme.accent : SyTheme.textDimmed
                 font.pixelSize: 12
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
                 font.bold: true
             }
 
@@ -98,7 +98,7 @@ Rectangle {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 width: 3
-                color: "#00ccff"
+                color: SyTheme.accent
                 visible: index === patchListModel.selectedIndex
             }
 
@@ -111,16 +111,16 @@ Rectangle {
 
                 Text {
                     text: bankLabel
-                    color: index === patchListModel.selectedIndex ? "#ffffff" : "#aaaaaa"
-                    font.pixelSize: 11
-                    font.family: "Roboto Condensed"
+                    color: index === patchListModel.selectedIndex ? SyTheme.textPrimary : SyTheme.textLabel
+                    font.pixelSize: SyTheme.fontLabel
+                    font.family: SyTheme.fontFamily
                 }
 
                 Text {
                     text: patchName
-                    color: index === patchListModel.selectedIndex ? "#ffffff" : "#dddddd"
+                    color: index === patchListModel.selectedIndex ? SyTheme.textPrimary : "#dddddd"
                     font.pixelSize: 13
-                    font.family: "Roboto Condensed"
+                    font.family: SyTheme.fontFamily
                     font.bold: true
                     elide: Text.ElideRight
                     width: delegateRoot.width - 24
@@ -135,7 +135,7 @@ Rectangle {
                 anchors.leftMargin: 8
                 anchors.rightMargin: 8
                 height: 1
-                color: "#2a2a2a"
+                color: SyTheme.bgControl
             }
 
             MouseArea {

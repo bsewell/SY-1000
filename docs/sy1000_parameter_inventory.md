@@ -1,6 +1,13 @@
 # SY-1000 Complete Parameter Inventory
 > Source: Boss Tone Studio JS (editor_inst_guitar.js, editor_inst_bass.js, editor_fx.js, editor_amp.js, editor_chorus.js, editor_rev.js, editor_mst_delay.js), resource.js, reference manual
-> Generated: 2026-03-10
+> Generated: 2026-03-10 — re-verify against `midi.xml` and `src/MidiTable.cpp` if parameter ranges or types are in question
+>
+> **Purpose**: Human-readable reference for all instrument and effect parameter types/ranges. Use when:
+> - Verifying a control's value range before editing `stompbox_*.cpp` or `soundSource_*.cpp`
+> - Cross-checking parameter names against Boss reference manual terminology
+> - Planning QML migration of a panel (what controls are needed)
+>
+> **Live code anchors**: `midi.xml` (SysEx address map), `src/MidiTable.cpp` (runtime address lookup)
 
 ---
 

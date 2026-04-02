@@ -39,7 +39,7 @@ Item {
                 }
             }
 
-            Rectangle { width: parent.width - 24; height: 1; color: "#333333"; anchors.horizontalCenter: parent.horizontalCenter }
+            Rectangle { width: parent.width - 24; height: 1; color: SyTheme.divider; anchors.horizontalCenter: parent.horizontalCenter }
 
             // Mode 0: 1 voice
             Column {
@@ -51,10 +51,10 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 12
                     SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01" }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                 }
             }
 
@@ -69,7 +69,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 12
                     SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01" }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                 }
 
                 // Voice 2
@@ -77,29 +77,29 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 12
                     SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02" }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0B"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0B"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                 }
 
                 // Shared
                 Row {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 12
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                 }
             }
 
-            Rectangle { width: parent.width - 24; height: 1; color: "#333333"; anchors.horizontalCenter: parent.horizontalCenter }
+            Rectangle { width: parent.width - 24; height: 1; color: SyTheme.divider; anchors.horizontalCenter: parent.horizontalCenter }
 
             // User Harmony rows (visible when harmMode != "USER" which is value 29 decimal = 0x1D)
             // User Harmony 1
             Text {
                 text: "USER HARMONY 1"
-                color: "#666"
+                color: SyTheme.textSection
                 font.pixelSize: 10
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
@@ -125,9 +125,9 @@ Item {
             // User Harmony 2
             Text {
                 text: "USER HARMONY 2"
-                color: "#666"
+                color: SyTheme.textSection
                 font.pixelSize: 10
-                font.family: "Roboto Condensed"
+                font.family: SyTheme.fontFamily
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 

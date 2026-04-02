@@ -52,13 +52,13 @@ Item {
                 height: 28
                 radius: 14
                 color: "transparent"
-                border.color: root.powerValue !== 0 ? root.accentColor : "#666"
+                border.color: root.powerValue !== 0 ? root.accentColor : SyTheme.textSection
                 border.width: 2
 
                 Text {
                     anchors.centerIn: parent
                     text: "\u23FB"
-                    color: root.powerValue !== 0 ? root.accentColor : "#666"
+                    color: root.powerValue !== 0 ? root.accentColor : SyTheme.textSection
                     font.pixelSize: 14
                 }
             }
@@ -79,9 +79,9 @@ Item {
             anchors.leftMargin: 8
             anchors.verticalCenter: parent.verticalCenter
             text: root.title
-            color: "#ffffff"
-            font.pixelSize: 16
-            font.family: "Roboto Condensed"
+            color: SyTheme.textPrimary
+            font.pixelSize: SyTheme.fontTitle
+            font.family: SyTheme.fontFamily
             font.bold: true
         }
 
@@ -94,16 +94,16 @@ Item {
             height: 24
             radius: 3
             color: "transparent"
-            border.color: "#666"
+            border.color: SyTheme.textSection
             border.width: 1
 
             Text {
                 id: varText
                 anchors.centerIn: parent
                 text: "VARIATION  \u25BC"
-                color: "#cccccc"
-                font.pixelSize: 10
-                font.family: "Roboto Condensed"
+                color: SyTheme.textSecondary
+                font.pixelSize: SyTheme.fontSmall
+                font.family: SyTheme.fontFamily
             }
 
             MouseArea {

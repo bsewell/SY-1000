@@ -9,8 +9,8 @@ Item {
     Text {
         anchors.centerIn: parent
         text: "No parameters for this page"
-        color: "#666666"
-        font.pixelSize: 14
-        font.family: "Roboto Condensed"
+        color: SyTheme.textSection
+        font.pixelSize: SyTheme.fontSectionHead
+        font.family: SyTheme.fontFamily
     }
 }

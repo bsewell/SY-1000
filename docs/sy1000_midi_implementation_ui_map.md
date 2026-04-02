@@ -8,6 +8,13 @@ This maps every page of **SY-1000_MIDI_Imple_eng02_W.pdf** to the FloorBoard MID
 - Per-page text: `docs/manuals/text/midi_pages/page_001.txt` ... `page_097.txt`
 - Date mapped: 2026-03-07 (local)
 
+## Maintenance Note
+
+> This 97-row table is hand-maintained and reflects state as of 2026-03-07. Rows 3–97 are predominantly address-map tables with identical mapping patterns.
+> For MIDI implementation details, use the source PDF (`docs/manuals/SY-1000_MIDI_Imple_eng02_W.pdf`) and extracted text (`docs/manuals/text/midi_pages/`).
+> For live code anchors, see `midi.xml`, `src/MidiTable.cpp`, `src/SysxIO.cpp`.
+> If this table grows stale, consider replacing it with a short summary linking to those sources.
+
 ## Important Reading Note
 
 - This PDF is table-heavy; many pages extract as rows/offsets. Every page is mapped below, but many topic snippets are table-derived.

@@ -41,6 +41,7 @@ signals:
     void parameterChanged(const QString &hex0, const QString &hex1,
                           const QString &hex2, const QString &hex3,
                           int newValue);
+    void dataRefreshed();
 
 private:
     explicit ParameterBridge(QObject *parent = nullptr);

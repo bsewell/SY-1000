@@ -2,13 +2,15 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2: "16"
 
+    readonly property int comboWidth: 340
+
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: col.width
         contentHeight: col.height
         clip: true
@@ -16,17 +18,15 @@ Rectangle {
 
         Column {
             id: col
-            spacing: 10
+            spacing: SyTheme.gridRowSpacing
 
             // Wave Type dropdown
-            SyComboBox {
-                hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"
-            }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"; implicitWidth: root.comboWidth }
 
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
 
                 // Row 0: Pitch, Fine, Detune, Sharpness, Feedback, Harmonics, S-Saw Detune, Pulse Width
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "05" }

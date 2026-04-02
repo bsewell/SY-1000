@@ -28,16 +28,7 @@
 #include "appservices.h"
 
 namespace {
-// Visual scale for the effect-flow blocks (smaller value = bigger blocks).
-// LAYOUT FIX: FX images are 96x147 px. At ratio≈1.20:
-//   scale 2.4 → 48×73.5 px blocks, row spacing 65*ratio=78 px → 4.5 px gap ✓
-//   scale 2.7 → 42.7×65.3 px blocks, row spacing 60*ratio=72 px → 6.7 px gap
-// Using 2.4 gives bigger, easier-to-read blocks with tighter horizontal spacing.
-// flowStep in floorBoard.cpp is 55*ratio (66 px) → 18 px h-gap between blocks ✓
 const double kFlowBlockScale = 2.4;
-// Source input blocks (NORMAL + INST 1-3, id 0-3) use the same scale as FX blocks
-// so they render at the same height.  INST images are 192×96 (wider than 96×96 FX),
-// so at scale 2.4 they become 80×40 — same height as FX blocks, just wider.
 const double kInstBlockScale = 2.4;
 // Keep all descriptor captions directly under their blocks so they stay aligned
 // with the signal chain and never fall behind the lower settings panes.
@@ -47,7 +38,9 @@ const int kInputLabelOffsetPx = 10;
 
 bool hidesFlowDescriptionLabel(unsigned int id)
 {
-    return id == 7 || id == 11 || id == 12 || id == 14 || id == 15 ||
+    // 7=NS, 11=EQ1, 12=EQ2, 18=FV1, 19=FV2, 20=LP, 21=DIV, 23=MIX, >27=BAL/split/MST.
+    // DD1(14) and DD2(15) intentionally omitted — they show delay-type labels like DD3.
+    return id == 7 || id == 11 || id == 12 ||
            id == 18 || id == 19 || id == 20 || id == 21 || id == 23 || id > 27;
 }
 

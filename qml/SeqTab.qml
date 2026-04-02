@@ -2,7 +2,7 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2a: "16"
     property string hex2b: "17"
@@ -70,7 +70,7 @@ Rectangle {
                 }
                 FilmstripKnob {
                     hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "3E"
-                    filmstrip: "knobs/knob_48.png"; frameSize: 48
+                    filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                 }
             }
 
@@ -89,7 +89,7 @@ Rectangle {
                         width: parent.width
                         spacing: 8
                         Text {
-                            text: "SEQ1"; color: "#00ccff"
+                            text: "SEQ1"; color: SyTheme.accent
                             font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true
                             anchors.verticalCenter: parent.verticalCenter
                         }
@@ -107,11 +107,11 @@ Rectangle {
                         SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "23"; implicitWidth: 52 }
                         FilmstripKnob {
                             hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "21"
-                            filmstrip: "knobs/knob_48.png"; frameSize: 48
+                            filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                         }
                         FilmstripKnob {
                             hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "20"
-                            filmstrip: "knobs/knob_48.png"; frameSize: 48
+                            filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                         }
                     }
                 }
@@ -125,7 +125,7 @@ Rectangle {
                         width: parent.width
                         spacing: 8
                         Text {
-                            text: "SEQ2"; color: "#00ccff"
+                            text: "SEQ2"; color: SyTheme.accent
                             font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true
                             anchors.verticalCenter: parent.verticalCenter
                         }
@@ -143,11 +143,11 @@ Rectangle {
                         SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "39"; implicitWidth: 52 }
                         FilmstripKnob {
                             hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "37"
-                            filmstrip: "knobs/knob_48.png"; frameSize: 48
+                            filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                         }
                         FilmstripKnob {
                             hex0: "10"; hex1: root.hex1; hex2: root.hex2b; hex3: "36"
-                            filmstrip: "knobs/knob_48.png"; frameSize: 48
+                            filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                         }
                     }
                 }
@@ -165,14 +165,14 @@ Rectangle {
                         color: "transparent"
                         Rectangle {
                             anchors.bottom: parent.bottom
-                            width: parent.width; height: 2; color: "#00ccff"
+                            width: parent.width; height: 2; color: SyTheme.accent
                             visible: index === root.stepTab
                         }
                         Text {
                             id: tabLabel
                             anchors.centerIn: parent
                             text: modelData
-                            color: index === root.stepTab ? "#00ccff" : "#888"
+                            color: index === root.stepTab ? SyTheme.accent : SyTheme.textDimmed
                             font.pixelSize: 11; font.family: "Roboto Condensed"
                             font.bold: index === root.stepTab
                         }
@@ -196,7 +196,7 @@ Rectangle {
                         Text {
                             width: root.stepCellW
                             text: String(index + 1)
-                            color: "#888"
+                            color: SyTheme.textDimmed
                             font.pixelSize: 9; font.family: "Roboto Condensed"
                             horizontalAlignment: Text.AlignHCenter
                         }
@@ -208,7 +208,7 @@ Rectangle {
                     spacing: root.gridSpacing
                     Text {
                         width: root.labelW; text: "MAX"
-                        color: "#aaa"; font.pixelSize: 10; font.family: "Roboto Condensed"; font.bold: true
+                        color: SyTheme.textLabel; font.pixelSize: 10; font.family: "Roboto Condensed"; font.bold: true
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     Repeater {
@@ -238,7 +238,7 @@ Rectangle {
                     spacing: root.gridSpacing
                     Text {
                         width: root.labelW; text: "MIN"
-                        color: "#aaa"; font.pixelSize: 10; font.family: "Roboto Condensed"; font.bold: true
+                        color: SyTheme.textLabel; font.pixelSize: 10; font.family: "Roboto Condensed"; font.bold: true
                         anchors.verticalCenter: parent.verticalCenter
                     }
                     Repeater {
@@ -276,14 +276,14 @@ Rectangle {
                         color: "transparent"
                         Rectangle {
                             anchors.bottom: parent.bottom
-                            width: parent.width; height: 2; color: "#00ccff"
+                            width: parent.width; height: 2; color: SyTheme.accent
                             visible: index === root.curveTab
                         }
                         Text {
                             id: curveTabLabel
                             anchors.centerIn: parent
                             text: modelData
-                            color: index === root.curveTab ? "#00ccff" : "#888"
+                            color: index === root.curveTab ? SyTheme.accent : SyTheme.textDimmed
                             font.pixelSize: 11; font.family: "Roboto Condensed"
                             font.bold: index === root.curveTab
                         }
@@ -299,7 +299,7 @@ Rectangle {
 
                 Text {
                     width: root.labelW; text: "CURVE"
-                    color: "#aaa"; font.pixelSize: 9; font.family: "Roboto Condensed"; font.bold: true
+                    color: SyTheme.textLabel; font.pixelSize: 9; font.family: "Roboto Condensed"; font.bold: true
                     anchors.verticalCenter: parent.verticalCenter
                 }
 

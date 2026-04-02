@@ -2,13 +2,15 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2: "1D"
 
+    readonly property int comboWidth: 340
+
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: col.width
         contentHeight: col.height
         clip: true
@@ -16,18 +18,19 @@ Rectangle {
 
         Column {
             id: col
-            spacing: 10
+            spacing: 6
 
-            // Type
-            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00" }
+            // Stacked dropdowns — all same width, left-aligned
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00"; implicitWidth: root.comboWidth }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"; implicitWidth: root.comboWidth }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; implicitWidth: root.comboWidth }
+
+            Item { width: 1; height: 4 }
 
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
-
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"; implicitWidth: 100 }
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; implicitWidth: 100 }
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "05" }
@@ -36,35 +39,40 @@ Rectangle {
             }
 
             Row {
-                spacing: 14
+                spacing: SyTheme.gridColSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09" }
             }
 
-            Rectangle { width: 600; height: 1; color: "#333" }
+            Rectangle { width: 600; height: 1; color: SyTheme.divider }
 
             // Filter section
-            Text { text: "FILTER"; color: "#00ccff"; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
+            Text { text: "FILTER"; color: SyTheme.accent; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0F" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "10" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "11" }
-                SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "12"; implicitWidth: 100 }
+            }
+            SyComboBox    { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "12"; implicitWidth: root.comboWidth }
+            Grid {
+                columns: 3
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "13" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "14" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "15" }
             }
 
-            Rectangle { width: 600; height: 1; color: "#333" }
+            Rectangle { width: 600; height: 1; color: SyTheme.divider }
 
             // NS
-            Text { text: "NOISE SUPPRESSOR"; color: "#00ccff"; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
+            Text { text: "NOISE SUPPRESSOR"; color: SyTheme.accent; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
             Row {
-                spacing: 14
+                spacing: SyTheme.gridColSpacing
                 SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "16" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "17" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "18" }

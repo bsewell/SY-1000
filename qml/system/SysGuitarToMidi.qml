@@ -10,33 +10,17 @@ Item {
         width: parent.width
         spacing: 0
 
-        Rectangle {
-            width: parent.width; height: 32
-            color: "#313A47"
-            Text {
-                x: 16; anchors.verticalCenter: parent.verticalCenter
-                text: "GUITAR TO MIDI"
-                color: "#ffffff"; font.pixelSize: 14
-                font.family: "Roboto Condensed"
-            }
-        }
+        SySectionLabel { text: "GUITAR TO MIDI"; isHeader: true; showDivider: false }
 
         // On/Off switch
-        Item {
-            width: parent.width; height: 56; clip: true
-            Text {
-                x: 32; anchors.verticalCenter: parent.verticalCenter
-                text: "GUITAR TO MIDI"
-                color: "#ccffffff"; font.pixelSize: 12
-                font.family: "Roboto Condensed"
-            }
+        SySettingRow {
+            label: "GUITAR TO MIDI"; tall: true
             SySwitch {
-                x: 160; y: 6
                 hex0: "00"; hex1: panelHex1b; hex2: "21"; hex3: "00"
             }
         }
 
-        Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+        Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
         Repeater {
             model: [

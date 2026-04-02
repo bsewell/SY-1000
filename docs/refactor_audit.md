@@ -1,5 +1,9 @@
 # SY-1000 FloorBoard Refactor Audit (2026-03-06)
 
+> **Staleness note**: Baseline metrics and migration status reflect 2026-03-06. For current migration state, run:
+> `git log --oneline -- src/appservices.cpp src/mainWindow.cpp src/floorBoardDisplay.cpp src/initPatchListMenu.cpp`
+> Service facade implementation: `src/appservices.h`, `src/appservices.cpp`
+
 ## Current baseline
 - Approximate file count: 1838
 - Legacy `SIGNAL()/SLOT()` macro connects: 725

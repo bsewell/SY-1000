@@ -2,9 +2,9 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
+    color: SyTheme.bgPanel
+    implicitWidth: SyTheme.panelWidth
+    implicitHeight: SyTheme.panelHeight
 
     property string hex1: "00"
     property string hex2: "00"
@@ -20,7 +20,7 @@ Rectangle {
             title: "MASTER"
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         Flickable {
             width: parent.width
@@ -32,25 +32,25 @@ Rectangle {
                 id: contentCol
                 width: parent.width
                 spacing: 8
-                topPadding: 12
+                topPadding: SyTheme.panelPadding
 
                 // Page 1: Patch settings (hex0="10", hex1, hex2="12")
                 Text {
-                    x: 12; text: "PATCH"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "PATCH"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     FilmstripKnob {
                         hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "3C"
-                        filmstrip: "knobs/knob_56.png"; frameSize: 56
+                        filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
                     }
 
                     FilmstripKnob {
                         hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "3E"
-                        filmstrip: "knobs/knob_48.png"; frameSize: 48
+                        filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall
                     }
 
                     SyComboBox {
@@ -66,15 +66,15 @@ Rectangle {
                     }
                 }
 
-                Rectangle { width: parent.width - 24; height: 1; color: "#2a2a2a"; x: 12 }
+                Rectangle { width: parent.width - 24; height: 1; color: SyTheme.bgControl; x: SyTheme.panelPadding }
 
                 Text {
-                    x: 12; text: "GK / NORMAL SET"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "GK / NORMAL SET"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: "02"; hex3: "00"
@@ -85,16 +85,16 @@ Rectangle {
                     }
                 }
 
-                Rectangle { width: parent.width - 24; height: 1; color: "#2a2a2a"; x: 12 }
+                Rectangle { width: parent.width - 24; height: 1; color: SyTheme.bgControl; x: SyTheme.panelPadding }
 
                 // Page 2: MIDI channels (hex0="10", hex1, hex2="00")
                 Text {
-                    x: 12; text: "PATCH MIDI 1"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "PATCH MIDI 1"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: "00"; hex3: "39"
@@ -122,15 +122,15 @@ Rectangle {
                     }
                 }
 
-                Rectangle { width: parent.width - 24; height: 1; color: "#2a2a2a"; x: 12 }
+                Rectangle { width: parent.width - 24; height: 1; color: SyTheme.bgControl; x: SyTheme.panelPadding }
 
                 Text {
-                    x: 12; text: "PATCH MIDI 2"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "PATCH MIDI 2"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: "00"; hex3: "46"
@@ -158,15 +158,15 @@ Rectangle {
                     }
                 }
 
-                Rectangle { width: parent.width - 24; height: 1; color: "#2a2a2a"; x: 12 }
+                Rectangle { width: parent.width - 24; height: 1; color: SyTheme.bgControl; x: SyTheme.panelPadding }
 
                 Text {
-                    x: 12; text: "PATCH MIDI 3"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "PATCH MIDI 3"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: "00"; hex3: "53"
@@ -194,15 +194,15 @@ Rectangle {
                     }
                 }
 
-                Rectangle { width: parent.width - 24; height: 1; color: "#2a2a2a"; x: 12 }
+                Rectangle { width: parent.width - 24; height: 1; color: SyTheme.bgControl; x: SyTheme.panelPadding }
 
                 Text {
-                    x: 12; text: "PATCH MIDI 4"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "PATCH MIDI 4"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: "00"; hex3: "60"
@@ -230,15 +230,15 @@ Rectangle {
                     }
                 }
 
-                Rectangle { width: parent.width - 24; height: 1; color: "#2a2a2a"; x: 12 }
+                Rectangle { width: parent.width - 24; height: 1; color: SyTheme.bgControl; x: SyTheme.panelPadding }
 
                 Text {
-                    x: 12; text: "MIDI CC CONTROLLERS"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "MIDI CC CONTROLLERS"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: "00"; hex3: "6D"
@@ -254,16 +254,16 @@ Rectangle {
                     }
                 }
 
-                Rectangle { width: parent.width - 24; height: 1; color: "#2a2a2a"; x: 12 }
+                Rectangle { width: parent.width - 24; height: 1; color: SyTheme.bgControl; x: SyTheme.panelPadding }
 
                 // Page 3: Guitar to MIDI (hex0="10", hex1, hex2="14")
                 Text {
-                    x: 12; text: "GUITAR TO MIDI"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "GUITAR TO MIDI"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: "14"; hex3: "00"
@@ -288,15 +288,15 @@ Rectangle {
                     }
                 }
 
-                Rectangle { width: parent.width - 24; height: 1; color: "#2a2a2a"; x: 12 }
+                Rectangle { width: parent.width - 24; height: 1; color: SyTheme.bgControl; x: SyTheme.panelPadding }
 
                 Text {
-                    x: 12; text: "POLY MIDI PATCH"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "POLY MIDI PATCH"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: "00"; hex3: "71"
@@ -309,15 +309,15 @@ Rectangle {
                     }
                 }
 
-                Rectangle { width: parent.width - 24; height: 1; color: "#2a2a2a"; x: 12 }
+                Rectangle { width: parent.width - 24; height: 1; color: SyTheme.bgControl; x: SyTheme.panelPadding }
 
                 Text {
-                    x: 12; text: "STRING PATCHES"; color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    x: SyTheme.panelPadding; text: "STRING PATCHES"; color: SyTheme.textSection
+                    font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily
                 }
 
                 Flow {
-                    width: parent.width - 24; x: 12; spacing: 12
+                    width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
 
                     SyComboBox {
                         hex0: "10"; hex1: root.hex1; hex2: "00"; hex3: "77"

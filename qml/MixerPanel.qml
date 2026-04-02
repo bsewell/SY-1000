@@ -1,52 +1,31 @@
 import QtQuick
 
-Rectangle {
-    id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
+SyPanelBase {
+    id: panel
+    hex1: "00"
+    hex2: "12"
+    accentColor: Qt.rgba(0.45, 0.45, 0.45, 1)
+    title: "MIXER"
 
-    property string hex1: "00"
-    property string hex2: "12"
-    property color accentColor: Qt.rgba(0.45, 0.45, 0.45, 1)
+    Flow {
+        x: SyTheme.panelPadding
+        y: SyTheme.sectionPadding
+        width: parent.width - 2 * SyTheme.panelPadding
+        spacing: SyTheme.flowSpacing
 
-    Column {
-        anchors.fill: parent
-        spacing: 0
-
-        StompHeader {
-            width: parent.width
-            accentColor: root.accentColor
-            title: "MIXER"
+        FilmstripKnob {
+            hex0: "10"; hex1: panel.hex1; hex2: "12"; hex3: "23"
+            filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        FilmstripKnob {
+            hex0: "10"; hex1: panel.hex1; hex2: "12"; hex3: "22"
+            filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
+        }
 
-        Item {
-            width: parent.width
-            height: parent.height - 37
-
-            Flow {
-                x: 12
-                y: 16
-                width: parent.width - 24
-                spacing: 16
-
-                FilmstripKnob {
-                    hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "23"
-                    filmstrip: "knobs/knob_56.png"; frameSize: 56
-                }
-
-                FilmstripKnob {
-                    hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "22"
-                    filmstrip: "knobs/knob_56.png"; frameSize: 56
-                }
-
-                FilmstripKnob {
-                    hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "24"
-                    filmstrip: "knobs/knob_56.png"; frameSize: 56
-                }
-            }
+        FilmstripKnob {
+            hex0: "10"; hex1: panel.hex1; hex2: "12"; hex3: "24"
+            filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
         }
     }
 }

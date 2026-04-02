@@ -10,16 +10,7 @@ Item {
         width: parent.width
         spacing: 0
 
-        Rectangle {
-            width: parent.width; height: 32
-            color: "#313A47"
-            Text {
-                x: 16; anchors.verticalCenter: parent.verticalCenter
-                text: "GK SET SELECT"
-                color: "#ffffff"; font.pixelSize: 14
-                font.family: "Roboto Condensed"
-            }
-        }
+        SySectionLabel { text: "GK SET SELECT"; isHeader: true; showDivider: false }
 
         SyComboBox {
             x: 16; width: 420

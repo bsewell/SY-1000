@@ -8,6 +8,13 @@ This maps every page of the official **SY-1000 Reference Manual** (`SY-1000_refe
 - Per-page text: `docs/manuals/text/reference_pages/page_001.txt` ... `page_099.txt`
 - Date mapped: 2026-03-07 (local)
 
+## Maintenance Note
+
+> This 99-row table is hand-maintained and reflects state as of 2026-03-07. It may not match current implementation.
+> For current parameter-level accuracy, cross-check with `docs/panel_audit_report.md` and `docs/ui/page_control_inventory.md`.
+> Row text for pages 4–99 is sourced from `docs/manuals/text/reference_pages/page_NNN.txt`.
+> If this table grows stale, consider replacing it with a short summary linking to the PDF and extracted text.
+
 ## Status Key
 
 - `Implemented`: UI + data flow exist in this app.

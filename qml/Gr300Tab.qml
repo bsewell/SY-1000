@@ -2,13 +2,15 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2: "19"
 
+    readonly property int comboWidth: 340
+
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: col.width
         contentHeight: col.height
         clip: true
@@ -16,19 +18,19 @@ Rectangle {
 
         Column {
             id: col
-            spacing: 10
+            spacing: SyTheme.gridRowSpacing
 
-            // Mode, Comp, Filter Cutoff, Resonance, Env Mod
+            // Mode, Comp
             Row {
-                spacing: 14
-                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00" }
+                spacing: SyTheme.gridColSpacing
+                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00"; implicitWidth: root.comboWidth }
                 SySwitch   { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01" }
             }
 
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
 
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03" }
@@ -39,18 +41,15 @@ Rectangle {
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "14" }
             }
 
-            Rectangle { width: 600; height: 1; color: "#333" }
+            Rectangle { width: 600; height: 1; color: SyTheme.divider }
 
             // Pitch section
-            Text { text: "PITCH"; color: "#00ccff"; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
-            Row {
-                spacing: 14
-                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07" }
-            }
+            Text { text: "PITCH"; color: SyTheme.accent; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; implicitWidth: root.comboWidth }
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
 
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09" }
@@ -65,8 +64,8 @@ Rectangle {
             // Vibrato
             Grid {
                 columns: 3
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 SySwitch      { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "10" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "11" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "12" }

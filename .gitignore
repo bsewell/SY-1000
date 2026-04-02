@@ -28,7 +28,9 @@ preferences.xml
 diag.log
 *.log
 run_debug.sh
+.claude/
 claude/
+colin/
 scripts/
 layout_report.md
 screenshot*.png

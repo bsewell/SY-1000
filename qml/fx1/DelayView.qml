@@ -33,7 +33,7 @@ Item {
             }
         }
 
-        Rectangle { width: parent.width - 24; height: 1; color: "#333333"; anchors.horizontalCenter: parent.horizontalCenter }
+        Rectangle { width: parent.width - 24; height: 1; color: SyTheme.divider; anchors.horizontalCenter: parent.horizontalCenter }
 
         Item {
             width: parent.width
@@ -45,12 +45,12 @@ Item {
                 spacing: 12
                 visible: root.delayMode <= 1 || (root.delayMode >= 6 && root.delayMode <= 9)
 
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
             }
 
             // PAN mode (2) — adds tap time %
@@ -59,13 +59,13 @@ Item {
                 spacing: 12
                 visible: root.delayMode === 2
 
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1F"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1F"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
             }
 
             // DUAL modes (SERIES=3, PARALLEL=4, L/R=5)
@@ -78,30 +78,30 @@ Item {
                 Row {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 12
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0F"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "10"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0F"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "10"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                 }
 
-                Rectangle { width: parent.width; height: 1; color: "#333333" }
+                Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
                 // Delay 2
                 Row {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 12
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "11"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "15"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "16"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "17"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "11"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "15"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "16"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "17"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                 }
 
                 // Direct + carry over
                 Row {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 12
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                 }
             }
 
@@ -111,15 +111,15 @@ Item {
                 spacing: 12
                 visible: root.delayMode === 10
 
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "18"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "19"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1A"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "18"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "19"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1A"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
             }
 
             // TWIST mode (11)
@@ -136,15 +136,15 @@ Item {
                 Row {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 12
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                     SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1B" }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1C"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1D"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: "knobs/knob_56.png"; frameSize: 56 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: "knobs/knob_48.png"; frameSize: 48 }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1C"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1D"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                 }
             }
         }

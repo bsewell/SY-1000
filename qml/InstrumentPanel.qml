@@ -2,9 +2,9 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
+    color: SyTheme.bgPanel
+    implicitWidth: SyTheme.panelWidth
+    implicitHeight: SyTheme.panelHeight
 
     property string hex1: "00"  // guitar="00", bass="02"
     property string hex2: "15"  // inst1="15", inst2="20"/"1F", inst3="2B"/"29"
@@ -121,9 +121,9 @@ Rectangle {
                 anchors.leftMargin: 8
                 anchors.verticalCenter: parent.verticalCenter
                 text: root.instLabel
-                color: "#ffffff"
-                font.pixelSize: 16
-                font.family: "Roboto Condensed"
+                color: SyTheme.textPrimary
+                font.pixelSize: SyTheme.fontTitle
+                font.family: SyTheme.fontFamily
                 font.bold: true
             }
 
@@ -136,16 +136,16 @@ Rectangle {
                 height: 24
                 radius: 3
                 color: "transparent"
-                border.color: "#666"
+                border.color: SyTheme.border
                 border.width: 1
 
                 Text {
                     id: varText
                     anchors.centerIn: parent
                     text: "VARIATION  \u25BC"
-                    color: "#cccccc"
-                    font.pixelSize: 10
-                    font.family: "Roboto Condensed"
+                    color: SyTheme.textSecondary
+                    font.pixelSize: SyTheme.fontSmall
+                    font.family: SyTheme.fontFamily
                 }
 
                 MouseArea {
@@ -155,25 +155,40 @@ Rectangle {
             }
         }
 
-        // ===== Row 2: INST TYPE dropdown (left) + tab bar (right-aligned) =====
+        // ===== Row 2: INST TYPE label + dropdown + tab bar =====
         Rectangle {
             width: parent.width
             height: 34
-            color: "#2a2a2a"
+            color: SyTheme.bgControl
 
-            // INST TYPE dropdown — left side
-            SyComboBox {
-                id: instTypeCombo
-                hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+            // "INST TYPE" static label
+            Text {
+                id: instTypeLabel
                 anchors.left: parent.left
                 anchors.leftMargin: 12
                 anchors.verticalCenter: parent.verticalCenter
+                text: "INST TYPE"
+                color: SyTheme.textDimmed
+                font.pixelSize: SyTheme.fontLabel
+                font.family: SyTheme.fontFamily
             }
 
-            // Tab bar — right-aligned
+            // Dropdown — immediately after label
+            SyComboBox {
+                id: instTypeCombo
+                hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                anchors.left: instTypeLabel.right
+                anchors.leftMargin: 8
+                anchors.verticalCenter: parent.verticalCenter
+                labelWidth: 0
+                implicitWidth: 180
+            }
+
+            // Tab bar — anchored left of dropdown, reads left-to-right
             Row {
-                anchors.right: parent.right
-                anchors.rightMargin: 8
+                id: tabRow
+                anchors.left: instTypeCombo.right
+                anchors.leftMargin: 16
                 anchors.verticalCenter: parent.verticalCenter
                 height: parent.height
                 spacing: 0
@@ -182,7 +197,7 @@ Rectangle {
                     model: root.tabNames
 
                     Rectangle {
-                        width: tabText.implicitWidth + 24
+                        width: tabText.implicitWidth + 20
                         height: 34
                         color: "transparent"
 
@@ -190,7 +205,7 @@ Rectangle {
                             anchors.bottom: parent.bottom
                             width: parent.width
                             height: 2
-                            color: "#00ccff"
+                            color: SyTheme.accent
                             visible: index === root.currentTab
                         }
 
@@ -198,9 +213,9 @@ Rectangle {
                             id: tabText
                             anchors.centerIn: parent
                             text: modelData
-                            color: index === root.currentTab ? "#00ccff" : "#888888"
-                            font.pixelSize: 11
-                            font.family: "Roboto Condensed"
+                            color: index === root.currentTab ? SyTheme.accent : SyTheme.textDimmed
+                            font.pixelSize: SyTheme.fontLabel
+                            font.family: SyTheme.fontFamily
                             font.bold: index === root.currentTab
                         }
 
@@ -218,7 +233,7 @@ Rectangle {
         Rectangle {
             width: parent.width
             height: 1
-            color: "#333333"
+            color: SyTheme.divider
         }
 
         // Tab content area

@@ -2,14 +2,14 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
 
     property string hex1: "00"
     property string hex2: "16"
 
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: grid.width
         contentHeight: grid.height
         clip: true
@@ -18,8 +18,8 @@ Rectangle {
         Grid {
             id: grid
             columns: 3
-            columnSpacing: 14
-            rowSpacing: 10
+            columnSpacing: SyTheme.gridColSpacing
+            rowSpacing: SyTheme.gridRowSpacing
 
             // Amp Env Attack, Low Cut, High Cut
             FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "23" }

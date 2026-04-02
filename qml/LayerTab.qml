@@ -2,13 +2,13 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2: "17"
 
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: grid.width
         contentHeight: grid.height
         clip: true
@@ -16,10 +16,10 @@ Rectangle {
 
         Column {
             id: grid
-            spacing: 10
+            spacing: SyTheme.gridRowSpacing
 
             Row {
-                spacing: 14
+                spacing: SyTheme.gridColSpacing
 
                 // Lower Layer dropdown
                 SyComboBox {
@@ -33,7 +33,7 @@ Rectangle {
             }
 
             Row {
-                spacing: 14
+                spacing: SyTheme.gridColSpacing
 
                 // Lower Fade knob
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "4A" }

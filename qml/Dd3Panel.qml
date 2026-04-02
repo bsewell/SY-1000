@@ -1,18 +1,16 @@
 import QtQuick
 import "DdTypeData.js" as DdData
 
-Rectangle {
-    id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
-
-    property string hex1: "00"
-    property string hex2: "3E"
-    property color accentColor: Qt.rgba(0.85, 0.85, 0.85, 1)
-    property string ddTitle: "DELAY 3"
+SyPanelBase {
+    id: panel
+    hex1: "00"; hex2: "3E"
+    accentColor: Qt.rgba(0.85, 0.85, 0.85, 1)
+    title: "DELAY 3"
+    powerHex0: "10"; powerHex1: hex1; powerHex2: hex2; powerHex3: "00"
+    showHeader: false
 
     property int ddTypeIndex: 0
+    property var typeCombo: null
 
     Component.onCompleted: {
         ddTypeIndex = paramBridge.getValue("10", hex1, hex2, "01")
@@ -21,71 +19,51 @@ Rectangle {
     Connections {
         target: typeCombo
         function onValueChanged() {
-            root.ddTypeIndex = typeCombo.value
+            panel.ddTypeIndex = typeCombo.value
         }
     }
 
     Column {
-        anchors.fill: parent
+        width: parent.width
         spacing: 0
 
         StompHeader {
             width: parent.width
-            accentColor: root.accentColor
-            title: root.ddTitle
-            powerHex0: "10"; powerHex1: root.hex1; powerHex2: root.hex2; powerHex3: "00"
+            accentColor: panel.accentColor
+            title: "DELAY 3"
+            powerHex0: "10"; powerHex1: panel.hex1; powerHex2: panel.hex2; powerHex3: "00"
         }
 
-        Rectangle {
-            width: parent.width
-            height: 32
-            color: "#2a2a2a"
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
-            Row {
-                anchors.fill: parent
-                anchors.leftMargin: 12
-                spacing: 8
-
-                Text {
-                    text: "TYPE"
-                    color: "#888888"
-                    font.pixelSize: 11
-                    font.family: "Roboto Condensed"
-                    font.capitalization: Font.AllUppercase
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-
-                SyComboBox {
-                    id: typeCombo
-                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-            }
+        SyModeSelector {
+            label: "TYPE"
+            hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "01"
+            Component.onCompleted: typeCombo = combo
         }
-
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
 
         Flickable {
             width: parent.width
-            height: parent.height - 70
-            contentHeight: contentCol.height + 24
+            height: panel.height - SyTheme.headerHeight - 1 - SyTheme.modeSelectorH - 1
+            contentHeight: contentCol.height + 2 * SyTheme.panelPadding
             clip: true
+            interactive: contentHeight > height
 
             Column {
                 id: contentCol
                 width: parent.width
-                spacing: 8
-                topPadding: 12
+                spacing: SyTheme.flowSpacingSm
+                topPadding: SyTheme.panelPadding
 
                 Flow {
-                    width: parent.width - 24
-                    x: 12
-                    spacing: 12
-                    visible: DdData.getCategory(root.ddTypeIndex) !== "dual"
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
+                    spacing: SyTheme.flowSpacingSm
+                    visible: DdData.getCategory(panel.ddTypeIndex) !== "dual"
 
                     Repeater {
                         model: {
-                            var cat = DdData.getCategory(root.ddTypeIndex)
+                            var cat = DdData.getCategory(panel.ddTypeIndex)
                             if (cat === "pan") return DdData.getPanControls()
                             if (cat === "modulate") return DdData.getModulateControls()
                             if (cat === "twist") return DdData.getTwistControls()
@@ -105,37 +83,37 @@ Rectangle {
 
                 Column {
                     width: parent.width
-                    spacing: 8
-                    visible: DdData.getCategory(root.ddTypeIndex) === "dual"
+                    spacing: SyTheme.flowSpacingSm
+                    visible: DdData.getCategory(panel.ddTypeIndex) === "dual"
 
-                    Text { x: 12; text: "DELAY A"; color: "#666666"; font.pixelSize: 10; font.family: "Roboto Condensed" }
+                    Text { x: SyTheme.panelPadding; text: "DELAY A"; color: SyTheme.textSection; font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily }
 
                     Flow {
-                        width: parent.width - 24; x: 12; spacing: 12
+                        width: parent.width - 2 * SyTheme.panelPadding; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
                         Repeater {
                             model: DdData.getDualControls1()
                             Loader { property var ctrl: modelData; sourceComponent: ddKnobComp }
                         }
                     }
 
-                    Rectangle { width: parent.width - 24; height: 1; color: "#333333"; x: 12 }
+                    Rectangle { width: parent.width - 2 * SyTheme.panelPadding; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
 
-                    Text { x: 12; text: "DELAY B"; color: "#666666"; font.pixelSize: 10; font.family: "Roboto Condensed" }
+                    Text { x: SyTheme.panelPadding; text: "DELAY B"; color: SyTheme.textSection; font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily }
 
                     Flow {
-                        width: parent.width - 24; x: 12; spacing: 12
+                        width: parent.width - 2 * SyTheme.panelPadding; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
                         Repeater {
                             model: DdData.getDualControls2()
                             Loader { property var ctrl: modelData; sourceComponent: ddKnobComp }
                         }
                     }
 
-                    Rectangle { width: parent.width - 24; height: 1; color: "#333333"; x: 12 }
+                    Rectangle { width: parent.width - 2 * SyTheme.panelPadding; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
 
-                    Text { x: 12; text: "OUTPUT"; color: "#666666"; font.pixelSize: 10; font.family: "Roboto Condensed" }
+                    Text { x: SyTheme.panelPadding; text: "OUTPUT"; color: SyTheme.textSection; font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily }
 
                     Flow {
-                        width: parent.width - 24; x: 12; spacing: 12
+                        width: parent.width - 2 * SyTheme.panelPadding; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
                         Repeater {
                             model: DdData.getDualCommon()
                             Loader { property var ctrl: modelData; sourceComponent: ddKnobComp }
@@ -149,15 +127,15 @@ Rectangle {
     Component {
         id: ddKnobComp
         FilmstripKnob {
-            hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: ctrl.hex3
-            filmstrip: "knobs/knob_56.png"; frameSize: 56
+            hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: ctrl.hex3
+            filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
         }
     }
 
     Component {
         id: ddComboComp
         SyComboBox {
-            hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: ctrl.hex3
+            hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: ctrl.hex3
         }
     }
 }

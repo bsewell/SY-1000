@@ -2,13 +2,15 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
+    color: SyTheme.bgPanel
     property string hex1: "00"
     property string hex2: "18"
 
+    readonly property int comboWidth: 340
+
     Flickable {
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: SyTheme.panelPadding
         contentWidth: col.width
         contentHeight: col.height
         clip: true
@@ -16,21 +18,20 @@ Rectangle {
 
         Column {
             id: col
-            spacing: 10
+            spacing: 6
 
-            // Wave Category + Wave Type
-            Row {
-                spacing: 14
-                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00" }
-                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01" }
-            }
+            // Wave Category + Wave Type — stacked, same width
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00"; implicitWidth: root.comboWidth }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"; implicitWidth: root.comboWidth }
+
+            Item { width: 1; height: 4 }
 
             // OSC 1: Pitch, Fine, PW, PWM Env, Env A/B/C, Level
-            Text { text: "OSC 1"; color: "#00ccff"; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
+            Text { text: "OSC 1"; color: SyTheme.accent; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04" }
@@ -41,32 +42,30 @@ Rectangle {
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09" }
             }
 
-            Rectangle { width: 600; height: 1; color: "#333" }
+            Rectangle { width: 600; height: 1; color: SyTheme.divider }
 
-            // Mono/Poly, Hold Mode, Porta, Chromatic, Low Vel Cut
+            // Mono/Poly, Hold Mode — stacked, same width
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "13"; implicitWidth: root.comboWidth }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "18"; implicitWidth: root.comboWidth }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "17"; implicitWidth: root.comboWidth }
+
             Row {
-                spacing: 14
-                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "13" }
-                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "18" }
+                spacing: SyTheme.gridColSpacing
                 SySwitch   { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "15" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "16" }
                 SySwitch   { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "14" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "19" }
             }
 
-            // Porta Mode (only when mono)
-            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "17" }
+            Rectangle { width: 600; height: 1; color: SyTheme.divider }
 
             // OSC 2: Wave Type, Pitch, Fine, PW, PWM Env, Env A/B/C, Level
-            Text { text: "OSC 2"; color: "#00ccff"; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
-            Row {
-                spacing: 14
-                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A" }
-            }
+            Text { text: "OSC 2"; color: SyTheme.accent; font.pixelSize: 12; font.family: "Roboto Condensed"; font.bold: true }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; implicitWidth: root.comboWidth }
             Grid {
                 columns: 8
-                columnSpacing: 14
-                rowSpacing: 10
+                columnSpacing: SyTheme.gridColSpacing
+                rowSpacing: SyTheme.gridRowSpacing
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0B" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0C" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0D" }

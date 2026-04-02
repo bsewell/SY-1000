@@ -2,9 +2,9 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
+    color: SyTheme.bgPanel
+    implicitWidth: SyTheme.panelWidth
+    implicitHeight: SyTheme.panelHeight
 
     property string hex1: "00"
     property string hex2: "00"
@@ -40,18 +40,18 @@ Rectangle {
             Text {
                 x: 16; anchors.verticalCenter: parent.verticalCenter
                 text: "SETUP"
-                color: "#ffffff"
-                font.pixelSize: 16; font.family: "Roboto Condensed"
+                color: SyTheme.textPrimary
+                font.pixelSize: 16; font.family: SyTheme.fontFamily
                 font.bold: true
             }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         // Patch Type selector
         Rectangle {
             width: parent.width; height: 36
-            color: "#2a2a2a"
+            color: SyTheme.bgControl
 
             Row {
                 anchors.fill: parent
@@ -60,8 +60,8 @@ Rectangle {
 
                 Text {
                     text: "PATCH TYPE"
-                    color: "#888888"
-                    font.pixelSize: 12; font.family: "Roboto Condensed"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: 12; font.family: SyTheme.fontFamily
                     font.capitalization: Font.AllUppercase
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -74,7 +74,7 @@ Rectangle {
             }
         }
 
-        Rectangle { width: parent.width; height: 1; color: "#333333" }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         // Content area
         Item {
@@ -90,14 +90,14 @@ Rectangle {
 
                 Text {
                     text: "GK INPUT LEVELS"
-                    color: "#ccffffff"
-                    font.pixelSize: 14; font.family: "Roboto Condensed"
+                    color: SyTheme.textSysLabel
+                    font.pixelSize: 14; font.family: SyTheme.fontFamily
                     font.bold: true
                 }
 
                 Rectangle {
                     width: parent.width; height: 1
-                    color: "#26ffffff"
+                    color: SyTheme.dividerLight
                 }
 
                 Row {
@@ -139,8 +139,8 @@ Rectangle {
 
                             Text {
                                 text: modelData.label
-                                color: "#aaaaaa"
-                                font.pixelSize: 10; font.family: "Roboto Condensed"
+                                color: SyTheme.textLabel
+                                font.pixelSize: 10; font.family: SyTheme.fontFamily
                                 anchors.horizontalCenter: parent.horizontalCenter
                             }
                         }
@@ -149,8 +149,8 @@ Rectangle {
 
                 Text {
                     text: "VU meters update in real-time when connected to SY-1000"
-                    color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    color: SyTheme.textSection
+                    font.pixelSize: 10; font.family: SyTheme.fontFamily
                     font.italic: true
                 }
             }
@@ -164,14 +164,14 @@ Rectangle {
 
                 Text {
                     text: "NORMAL INPUT LEVELS"
-                    color: "#ccffffff"
-                    font.pixelSize: 14; font.family: "Roboto Condensed"
+                    color: SyTheme.textSysLabel
+                    font.pixelSize: 14; font.family: SyTheme.fontFamily
                     font.bold: true
                 }
 
                 Rectangle {
                     width: parent.width; height: 1
-                    color: "#26ffffff"
+                    color: SyTheme.dividerLight
                 }
 
                 Row {
@@ -203,8 +203,8 @@ Rectangle {
 
                         Text {
                             text: "L"
-                            color: "#aaaaaa"
-                            font.pixelSize: 11; font.family: "Roboto Condensed"
+                            color: SyTheme.textLabel
+                            font.pixelSize: 11; font.family: SyTheme.fontFamily
                             anchors.horizontalCenter: parent.horizontalCenter
                         }
                     }
@@ -235,8 +235,8 @@ Rectangle {
 
                         Text {
                             text: "R"
-                            color: "#aaaaaa"
-                            font.pixelSize: 11; font.family: "Roboto Condensed"
+                            color: SyTheme.textLabel
+                            font.pixelSize: 11; font.family: SyTheme.fontFamily
                             anchors.horizontalCenter: parent.horizontalCenter
                         }
                     }
@@ -244,8 +244,8 @@ Rectangle {
 
                 Text {
                     text: "VU meters update in real-time when connected to SY-1000"
-                    color: "#666666"
-                    font.pixelSize: 10; font.family: "Roboto Condensed"
+                    color: SyTheme.textSection
+                    font.pixelSize: 10; font.family: SyTheme.fontFamily
                     font.italic: true
                 }
             }

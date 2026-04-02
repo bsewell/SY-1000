@@ -17,63 +17,27 @@ Item {
             spacing: 0
 
             // Header
-            Rectangle {
-                width: parent.width; height: 32
-                color: "#313A47"
-                Text {
-                    x: 16; anchors.verticalCenter: parent.verticalCenter
-                    text: "USB SETTING"
-                    color: "#ffffff"; font.pixelSize: 14
-                    font.family: "Roboto Condensed"
-                }
-            }
+            SySectionLabel { text: "USB SETTING"; isHeader: true; showDivider: false }
 
             // AUDIO ROUTING
-            Item {
-                width: parent.width; height: 44
-                Text {
-                    x: 32; anchors.verticalCenter: parent.verticalCenter
-                    text: "AUDIO ROUTING"
-                    color: "#ccffffff"; font.pixelSize: 12
-                    font.family: "Roboto Condensed"
-                }
-                SyComboBox {
-                    x: 160; y: 8
-                    hex0: "00"; hex1: panelHex1b; hex2: "00"; hex3: "43"
-                }
+            SySettingRow {
+                label: "AUDIO ROUTING"
+                SyComboBox { hex0: "00"; hex1: panelHex1b; hex2: "00"; hex3: "43" }
             }
 
             // IN POSITION
-            Item {
-                width: parent.width; height: 44
-                Text {
-                    x: 32; anchors.verticalCenter: parent.verticalCenter
-                    text: "IN POSITION"
-                    color: "#ccffffff"; font.pixelSize: 12
-                    font.family: "Roboto Condensed"
-                }
-                SyComboBox {
-                    x: 160; y: 8
-                    hex0: "00"; hex1: panelHex1b; hex2: "00"; hex3: "44"
-                }
+            SySettingRow {
+                label: "IN POSITION"
+                SyComboBox { hex0: "00"; hex1: panelHex1b; hex2: "00"; hex3: "44" }
             }
 
             // OUT POSITION
-            Item {
-                width: parent.width; height: 44
-                Text {
-                    x: 32; anchors.verticalCenter: parent.verticalCenter
-                    text: "OUT POSITION"
-                    color: "#ccffffff"; font.pixelSize: 12
-                    font.family: "Roboto Condensed"
-                }
-                SyComboBox {
-                    x: 160; y: 8
-                    hex0: "00"; hex1: panelHex1b; hex2: "00"; hex3: "45"
-                }
+            SySettingRow {
+                label: "OUT POSITION"
+                SyComboBox { hex0: "00"; hex1: panelHex1b; hex2: "00"; hex3: "45" }
             }
 
-            Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
             Item { width: 1; height: 16 }
 
             // Level knobs row

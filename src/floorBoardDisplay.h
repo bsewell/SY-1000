@@ -45,6 +45,9 @@ public:
         ~floorBoardDisplay();
         QPoint getPos();
 
+protected:
+        void resizeEvent(QResizeEvent *event) override;
+
 public slots:
         void setValueDisplay(QString fxName, QString valueName, QString value);
         void setPatchDisplay(QString patchName);
@@ -138,6 +141,7 @@ private:
         QString temp5_sysxMsg;*/
         int set_bank;
         int set_patch;
+        QWidget *nameEdit = nullptr;
         };
 
 #endif // FLOORBOARDDISPLAY_H

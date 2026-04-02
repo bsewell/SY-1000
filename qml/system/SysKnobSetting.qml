@@ -18,47 +18,20 @@ Item {
             spacing: 0
 
             // KNOB LOCK section
-            Rectangle {
-                width: parent.width
-                height: 32
-                color: "#313A47"
-                Text {
-                    x: 16; anchors.verticalCenter: parent.verticalCenter
-                    text: "KNOB LOCK 1~6"
-                    color: "#ffffff"; font.pixelSize: 14
-                    font.family: "Roboto Condensed"
-                }
-            }
+            SySectionLabel { text: "KNOB LOCK 1~6"; isHeader: true; showDivider: false }
 
-            Item {
-                width: parent.width; height: 60
-                Text {
-                    x: 32; y: 20
-                    text: "KNOB LOCK"
-                    color: "#ccffffff"; font.pixelSize: 12
-                    font.family: "Roboto Condensed"
-                }
+            SySettingRow {
+                label: "KNOB LOCK"
                 SyComboBox {
-                    x: 160; y: 14
                     hex0: "00"; hex1: knobRoot.panelHex1; hex2: "00"; hex3: "0C"
                 }
             }
 
             // Divider
-            Rectangle { width: parent.width - 32; height: 1; color: "#26ffffff"; x: 16 }
+            Rectangle { width: parent.width - 32; height: 1; color: SyTheme.dividerLight; x: 16 }
 
             // KNOB FUNCTION section
-            Rectangle {
-                width: parent.width
-                height: 32
-                color: "#313A47"
-                Text {
-                    x: 16; anchors.verticalCenter: parent.verticalCenter
-                    text: "KNOB FUNCTION 1~6"
-                    color: "#ffffff"; font.pixelSize: 14
-                    font.family: "Roboto Condensed"
-                }
-            }
+            SySectionLabel { text: "KNOB FUNCTION 1~6"; isHeader: true; showDivider: false }
 
             // 6 knob function rows — each on its own line to avoid overlap
             Repeater {

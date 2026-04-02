@@ -1,240 +1,260 @@
-# SY-1000 FloorBoard — Grid Layout Consistency Handoff
+# SY-1000 FloorBoard — Handoff: Signal Chain Layout Spec + Phase 5 QML Migration
 
-## Goal
-Make every tab in the INST 1/2/3 editor panels visually consistent. Currently each tab uses different column counts, spacing, groupbox nesting, and widget sizes, creating a disjointed UI.
+## Session Summary (2026-03-24, fourth session)
 
-## What's Already Done (don't repeat this work)
-- **SIGBUS crash fix**: `SysxIO::setFileSource()` — added bounds check for `-1` indexOf (was causing UB)
-- **INST TYPE dropdown**: reduced min-width from 190→130, direction string `large_inst_left`
-- **Deploy script**: `/Users/bsewell/010-MUSIC-STUDIO/SY-1000/deploy.sh`
-- **gridConstants.h created**: `/Users/bsewell/010-MUSIC-STUDIO/SY-1000/src/gridConstants.h` — 2 spacing tiers + ratio/combo macros
-- **compactCurrentStackField added** to all content pages (108 calls across 3 files)
-- **ALT TUNE reflowed** to 6-column grid on all 3 inst files
+Two signal chain wire rendering bugs fixed in `src/floorBoard.cpp`.
 
-## Why The Current Changes Don't Work
-`compactCurrentStackField(h, v)` only sets **pixel gaps between grid cells**. It does NOT:
-- Change column count (tabs still use 3, 4, 7, 8, 11, 13 columns)
-- Change how `applyControlCellMetrics` calculates minimum cell widths
-- Change groupbox placement coordinates
-- Make different pages align visually
+### Bug 1 — "Long bars" (branch wires stretched far right)
 
-**The real fix requires restructuring the grid coordinates** in every `addKnob`/`addComboBox` call.
+**Root cause:** `rightEdgeForId(8/9/10)` returns the right edge of FX1/FX2/FX3 by type ID regardless of which row the block is currently on. When FX3 is in Zone B or C (compacted past BAL2), its large X position inflated `branch2SourceRight`, stretching polygon[5]/[7] (the INST3 branch wire endpoints) far to the right.
 
-## How The Layout System Works
+**Fix (lines 1994-2022):** Added Y-row guards before using each typed stompBox's right edge as a branch endpoint. FX1 is only used if its Y is within the INST1 row band (`lev1 ± rowBand, < lev2`); FX2 within INST2 row; FX3 within INST3 row. If a box is not on its expected row, its contribution is `-1` (ignored).
 
-### Key files
-- **editPage.cpp** (`/Users/bsewell/010-MUSIC-STUDIO/SY-1000/src/editPage.cpp`) — all layout functions
-- **editPage.h** — declarations
-- **soundSource_inst1.cpp** / **inst2.cpp** / **inst3.cpp** — the 3 instrument panel builders
-- **customControlListMenu.cpp** — dropdown/combo widget, direction string parsing
-- **gridConstants.h** — spacing constants and macros
+### Bug 2 — "Col 2 bad alignment" (BAL2 placed wrong relative to wires)
 
-### Layout function chain
-1. `newStackField(id)` → creates a new `QGridLayout` for a tab page
-2. `compactCurrentStackField(h, v)` → sets H/V spacing on that grid, sets `stackFieldLockWidth=true` (prevents expansion)
-3. `addKnob(row, col, rowSpan, colSpan, ...)` → creates widget, places in grid, calls `applyControlCellMetrics`
-4. `applyControlCellMetrics(widget, grid, row, rowSpan, col, colSpan, direction, minWidth)`:
-   - Gets widget's `minimumSizeHint().height()`
-   - Sets `grid->setRowMinimumHeight(row, max(30*ratio, height/rowSpan))` for each spanned row
-   - Sets `grid->setColumnMinimumWidth(col, max(80*ratio, width/colSpan))` for each spanned col
-   - **This dominates layout** — the minimum widths/heights from this function determine cell sizes
-5. `addStackField()` → wraps grid in QWidget, adds to QStackedWidget
+**Root cause:** Polygon points 4, 5, 7-9, 11-12 (the BAL riser endpoints) were initialized with `offset + (58/60/65)*ratio + n*flowStep`. But blocks are placed at `offset + layout.colX(n) = offset + firstFlowX + n*flowStep`, where `firstFlowX = 110px` at ratio=1. The polygon offsets (58-65) were ~50px short of `firstFlowX=110`. This made the upper-bound clamp for BAL2 placement (`polygon[9].x() - minBalancerOrderGap`) ~50px too far left, constraining BAL2 behind its correct position.
 
-### Widget minimum widths (from applyControlCellMetrics)
-- Knob: `118 * ratio` pixels wide
-- ComboBox (standard): `148 * ratio`
-- ComboBox (large): `240 * ratio`
-- ComboBox (left_large): `148 * ratio` + label
-- ParaEQ: `720 * ratio`
-- Switch: smaller, inherits from label
+**Fix (lines 1875-1883):** Replaced all `(58/60/65)*ratio + n*flowStep` with `layout.colX(n)` in the polygon BAL point initializations. The riser wire endpoints now start at the same X origin as the blocks, so `placeBalancerOnRiser` bounds are consistent.
 
-### Ratio (DPI scale)
-- `ratio = Preferences::Instance()->getPreferences("Window", "Scale", "ratio").toFloat()`
-- Typically 1.0. All pixel values scale by this.
+Build: clean, 0 errors.
 
-### GroupBox mechanics
-- `newGroupBox(title)` → creates a QGroupBox with its own nested QGridLayout
-- Widgets added after this go into the groupbox's grid (not the page grid)
-- `addGroupBox(row, col, rowSpan, colSpan)` → finalizes groupbox and places it in the parent grid
-- GroupBoxes can nest (tracked by `groupBoxLevel`)
+---
 
-## The Reference Grid: COMMON Tab
+## Session Summary (2026-03-24, third session)
 
-**This is what "good" looks like** — the COMMON tab at `soundSource_inst1.cpp:525`:
+QML UI quality pass — Boss color tokens, external parameter sync, magic number cleanup.
+
+### Changes made this session
+
+**`qml/SyTheme.qml`** — Boss-exact design tokens:
+- `accent`: `#00ccff` → `#33D6FF` (Boss accent-primary from TONE STUDIO CSS)
+- `bgPanel`: `#1a1a1a` → `#1A1C1F` (Boss bg-base)
+- `bgControl`: `#2a2a2a` → `#292929` (Boss bg-surface)
+- Text colors: now opacity-based white matching Boss: `textSecondary`=80%, `textLabel`=64%, `textDimmed`/`textSection`=32%
+- `divider`/`border`: `#333333`/`#666666` → `#52ffffff` (Boss hairline 32% white)
+- New tokens: `bgElevated: "#252B32"`, `borderProminent: "#a3ffffff"` (64% white)
+
+**`qml/FilmstripKnob.qml`** — two fixes:
+1. Value text: `SyTheme.accent` (cyan) → `SyTheme.textPrimary` (white) + `font.bold: true` (per Boss dial spec)
+2. Added `Connections { onDataRefreshed, onParameterChanged }` — knobs now sync in real time when parameters change externally (MIDI, stompbox tile toggle, bulk load)
+
+**`qml/SyKnob.qml`** — added `onParameterChanged` to existing Connections block; canvas repaints on external change
+
+**`qml/SySwitch.qml`** — added `onParameterChanged` to existing Connections block
+
+**`qml/SyComboBox.qml`** — added `onParameterChanged` to existing Connections block
+
+**`qml/Fx1Panel.qml`, `qml/Fx2Panel.qml`, `qml/Fx3Panel.qml`** — fixed `height: parent.height - 70` (content overflowed by 3px) → `parent.height - SyTheme.headerHeight - SyTheme.modeSelectorH - 1`; also fixed hardcoded `font.pixelSize: 11` → `SyTheme.fontLabel`
+
+**`qml/NormalInputPanel.qml`** — fixed `height: parent.height - 75` (was 1px too tall) → `parent.height - SyTheme.headerHeight - 1 - SyTheme.modeSelectorH - 1`
+
+Build: clean, 0 errors.
+
+### Known debt cleared
+- QML controls now subscribe to `paramBridge.parameterChanged` for external sync ✓
+- `Fx1/2/3Panel` magic height numbers removed ✓
+
+---
+
+## Session Summary (2026-03-24, second session)
+
+Signal chain layout spec fully implemented. Three code bugs fixed, §5a doc updated.
+
+### Changes made this session
+
+**`src/floorBoard.cpp`** — three fixes:
+1. C1 rule for INST3 (incr==2): `x_axis=firstFlowX` → `x_axis=firstFlowX-flowStep`. INST3's first FX block was starting one step too far right.
+2. C1 rule for NORMAL (incr==4): same fix.
+3. BAL cap ordering invariant: `bal2cap = qMax(index3, index4) + MAX_BAL_SPREAD` → `qMax(qMax(bal1xpos + index3, index4) + MAX_BAL_SPREAD, bal1xpos + 1)`. The old cap ignored that Zone B starts from BAL1's column, causing BAL2 to be capped behind BAL1 on patches with an empty Zone B and a non-trivial BAL1 offset. Same fix for BAL3 using bal2xpos.
+
+**`src/stompBox.cpp`** — one fix:
+4. DD1 (id=14) and DD2 (id=15) removed from `hidesFlowDescriptionLabel`. Both delays already called `updateLabel` but the label was hidden at position time. All three DD blocks now show delay-type labels.
+
+**`docs/ui/sy1000_boss_layout_notes.md` §5a** — added at top of section:
+- Signal-Chain Row Model table (5 rows, Y values, row B position)
+- Block Pitch Constants table (flowStep, instStartX, firstFlowX, MAX_BAL_SPREAD, etc.)
+- 3-Zone Compaction Algorithm (Zone A/B/C, BAL2/3 formulae with corrected cap floors)
+- Block Label Rule table (which blocks show labels and what source address)
+
+Build: clean, 0 errors.
+
+---
+
+## Session Summary (2026-03-24, first session)
+
+This session was a requirements-gathering session for the signal chain layout.
+No code was changed. The output is a complete signal chain layout specification
+ready to drive implementation. See `docs/ui/sy1000_boss_layout_notes.md` §5a for
+the full spec — the section has been substantially expanded.
+
+---
+
+## What Was Established This Session
+
+### Signal Chain Layout — Complete Model
+
+The signal chain has a **fixed 5-row structure** with a **dynamic X-axis layout**.
+
+#### Rows (fixed vertical, Y at ratio=1)
+| Row | Content | Y (top) |
+|---|---|---|
+| Row 0 | INST1 source + pre-BAL1 branch blocks | 65px |
+| Row 1 | INST2 source + pre-BAL1 branch blocks | 130px |
+| Row B | BAL1 output chain (Zone B→C→output) | between rows 1 and 2 |
+| Row 2 | INST3 source + pre-BAL2 branch blocks | 195px |
+| Row 3 | NORMAL source + pre-BAL3 branch blocks | 260px |
+
+Row spacing = **65px**. Row B Y = midpoint of rows 1 and 2 signal lines.
+
+#### Block Pitch (from code)
+| Constant | Value (ratio=1) |
+|---|---|
+| flowStep (block pitch) | 55px |
+| Source block width | 96px |
+| instStartX | 15px |
+| instToFxGap | 16px |
+| firstFlowX | 127px |
+| MAX_BAL_SPREAD | 2 columns |
+
+All values scale with `ratio`.
+
+#### BAL Merge Topology (immutable)
+- BAL1 always merges INST1 + INST2
+- BAL2 always merges BAL1 output + INST3
+- BAL3 always merges BAL2 output + NORMAL
+
+BAL Y positions:
+- BAL1: midpoint of rowCenter1 and rowCenter2
+- BAL2: midpoint of rowCenter_B and rowCenter3
+- BAL3: midpoint of rowCenter_B and rowCenter4
+
+#### Compaction Algorithm (3 zones, all left-packed)
 
 ```
-Row 0: [Knob ratio1.5] [Switch] [DataKnob ratio1.25]  ___  ___  ___
-Row 1: [Knob 1.25]     [Knob]   [Knob]    [Knob]  [Knob]  [Knob]   ← 6 string levels
-Row 2: [Knob 1.25]     [Knob]   [Knob]    [Knob]  [Knob]  [Knob]   ← 6 string pans
-```
-- **6 columns max** (cols 0-5)
-- **3 rows** (rows 0-2)
-- Row 0 has 3 wider widgets (the first is ratio1.5 = larger)
-- Rows 1-2 have 6 uniform knobs at ratio1.25
-- Spacing: `compactCurrentStackField(20, 14)`
+Zone A  — INST1/INST2 branches (rows 0 and 1), blocks before BAL1
+          Blocks packed left from source.
+          BAL1.x = firstFlowX + max(INST1_count, INST2_count) × flowStep
 
-## Current Tab Grid Structures (What Needs Fixing)
+Zone B  — Row B shared chain between BAL1 and BAL2
+          + INST3 branch (row 2, packed left from source)
+          BAL2.x = max(BAL1.x + ZoneB_count × flowStep,
+                       firstFlowX + INST3_count × flowStep)
+          Capped at max(INST3_count, ZoneB_count) + MAX_BAL_SPREAD
 
-### Dynamic Synth sub-tabs (stackField 1):
+Zone C  — Row B shared chain between BAL2 and BAL3
+          + NORMAL branch (row 3, packed left from source)
+          BAL3.x = max(BAL2.x + ZoneC_count × flowStep,
+                       firstFlowX + NORMAL_count × flowStep)
+          Capped at max(NORMAL_count, ZoneC_count) + MAX_BAL_SPREAD
 
-| Tab | Max Col | Rows | Problem |
-|-----|---------|------|---------|
-| OSC | 7 | 4 | 8 cols of knobs — should wrap to 6 |
-| FILTER | 4 | 2 | 5 cols — ok but sparse, could use 6 |
-| LFO1 | 6 | 3 | 7 cols — row 1 has cols 0-6 |
-| SEQ | 12 | 16 | Special (16-step sequencer) — leave as-is |
-| LAYER | 6 | 3 | 7 cols — needs reflow |
-| COMMON | 5 | 3 | ✅ Already good (reference grid) |
-| AMP | 2 | 1 | 3 cols — very sparse |
-| LFO2 | 6 | 3 | 7 cols — same as LFO1, needs reflow |
-
-### OSC Synth pages (stackField 2):
-
-| Tab | Max Col | Rows | Problem |
-|-----|---------|------|---------|
-| OSC | 13 | 4 | 14 columns — very wide, 2 oscillators side by side |
-| FILTER | 7 | 4 | 8 cols — should wrap |
-| LFO | 11 | 3 | 12 cols — LFO1+LFO2 stacked with divider |
-
-### GR-300 (stackField 3):
-- Max col 12, rows 3 — very wide, currently uses GRID_DENSE
-
-### E.Guitar pages (stackField 4):
-- Uses groupboxes — "Electric Guitar" groupbox spans (0,0,1,7-9)
-- Inner content uses 7-8 columns
-- Has nested stackField(5) for instrument type variants
-
-### Acoustic pages (stackField 6):
-- Similar to E.Guitar but with different groupbox layout
-- Inner content goes to col 9
-
-### VIO/PolyFX (stackField 8, 9):
-- GroupBox-based with 4-10 columns
-
-## Layout Validator (NEW — built and working)
-
-### How to run
-```bash
-SY1000_VALIDATE_LAYOUTS=1 /Applications/SY-1000FloorBoard.app/Contents/MacOS/SY-1000FloorBoard
-# Report written to: /Users/bsewell/010-MUSIC-STUDIO/SY-1000/layout_report.md
+Output  — After BAL3 on Row B, packed left from BAL3
+          Free-form order from patch data. MST always last.
 ```
 
-### What it checks
-- **COL_COUNT**: grid uses more than 6 columns
-- **GRID_WIDTH**: total minimum width exceeds 900px (at ratio 1.0)
-- **LABEL_CLIP**: label text wider than allocated width
-- **WIDGET_CLIP**: widget's minimumSizeHint exceeds its grid cell allocation
-- **OVERLAP**: two widgets assigned to the same grid cell
+Empty branch = wire only, no blocks, branch length = 0.
 
-### Baseline (original state, no changes)
-- 828 grids audited across all pages
-- 338 grids with violations
-- 813 total violations: 249 COL_COUNT, 162 GRID_WIDTH, 369 WIDGET_CLIP, 33 OVERLAP, 0 LABEL_CLIP
+Active/inactive state = **visual only**. Wires always drawn. Block positions
+never change based on on/off state.
 
-### Current state (after Phase 1 fixes)
-- 828 grids audited
-- 320 grids with violations (-18)
-- 765 total violations (-48): 213 COL_COUNT, 162 GRID_WIDTH, 369 WIDGET_CLIP, 21 OVERLAP, 0 LABEL_CLIP
+#### Branch First-Block Rule (added 2026-03-24)
+The first stomp block on every instrument branch (INST1, INST2, INST3, NORMAL)
+must start at **C1** — immediately right of the source block with only
+`instToFxGap` between them. Blocks never float right to align with a downstream
+BAL or match another row. See `docs/ui/sy1000_boss_layout_notes.md` §5a C1 rule.
 
-### Fixes applied
-1. **Electric Guitar combo overlap** — `addComboBox(0, 1, 1, 7)` → `addComboBox(0, 1, 1, 5)` in stackField 4 non-BassMode branch across all 3 inst files. Eliminated 12 OVERLAP violations.
-2. **12 String str1 inner grid coords** — knobs inside `newGroupBox(str1)` used wrong coords `(1,5)`, `(1,11)`, `(2,5)`, `(2,11)` instead of `(0,0)`, `(0,1)`, `(1,0)`, `(1,1)`. Bug fix across all 3 inst files. Eliminated 18 COL_COUNT violations (str1 inner grids went from 12c to 2c).
-3. **12 String reflow to 2 rows of 3** — moved str3/str2/str1 groupboxes from `(1,6)`, `(1,8)`, `(1,10)` to `(3,0)`, `(3,2)`, `(3,4)`. SystemOverride changed from `(1,0,2,12)` to `(1,0,4,6)`. All 3 inst files. Eliminated 18 COL_COUNT violations (12 String parent went from 12c to 6c).
+#### Output Section Topology
+The output blocks (S LR, M LR, DIV, MIX, MST) can be placed in any order
+after BAL3. When DIV splits the signal, one path runs on Row B and the
+other branches **upward** to a 7th output-only row above Row B. MST is
+always the final node. S LR and M LR must stay in the output chain
+(not mid-chain).
 
-### Known remaining issues
-- **12 String WIDGET_CLIP** (108 violations) — groupboxes need 253px but grid only allocates 88-171px. This is a layout engine limitation: groupboxes don't set column minimums like knobs do. Qt expands columns at runtime with available space.
-- **SP Type WIDGET_CLIP** (18 violations) — combo needs 206px, cell allocates 187px (19px gap). Minor cosmetic clip.
-- **PreAmp COL_COUNT** (11 cols × many instances) — would need major restructure of the Amp section.
-- **Electric Guitar/Bass COL_COUNT** (9 cols) — insertStackField at col 8 makes it 9 cols. Would need restructuring.
-- **Acoustic Guitar COL_COUNT** (10 cols) — similar structural issue.
-- **VIO Guitar/Filter COL_COUNT** (8 cols) — would need reflow.
-- **insertStackField discrepancy** — inst1 uses `insertStackField(5, 0, 8, 1, 1)` (row=0, col=8) while inst2/inst3 use `insertStackField(5, 8, 0, 1, 1)` (row=8, col=0). Potential bug — not yet investigated.
+#### Block Labels (below each block rectangle)
+Shown: the first/closest dropdown to the power button = the "type" selector.
 
-### Files
-- `src/layoutValidator.h` — header with GridCellInfo and GridReport structs
-- `src/layoutValidator.cpp` — implementation
-- Hooked into `editWindow::addPage()` in `editWindow.cpp`
-- Added to `SY-1000FloorBoard.pro` (HEADERS and SOURCES)
+| Block | Label source |
+|---|---|
+| INST 1/2/3 | INST TYPE dropdown (hex3 `01`) — e.g. "Dynamic Synth", "E.Guitar" |
+| AMP | AMP type/model (hex3 `01`) — e.g. "Natural", "JC-120" |
+| CS | Compressor type (hex3 `01`) — e.g. "Boss Comp" |
+| DS | Distortion type (hex3 first combo) — e.g. "X-OD" |
+| RV | Reverb type (hex3 `01`) — e.g. "Plate", "Hall" |
+| DD1/DD2/DD3 | Delay type (hex3 `01`) — e.g. "Stereo", "Tape Echo" |
+| CE | Chorus mode (hex3 `01`) |
+| FX1/FX2/FX3 | FX type (hex3 `01`) — e.g. "Slicer", "Harmonizer" |
+| EQ1, EQ2 | No label |
+| NS | No label |
+| FV1, FV2 | No label |
+| ↑↓ (effects loop) | No label |
+| BAL1/2/3 | No label |
+| DIV, MIX, MST, S LR, M LR | No label |
 
-### CRITICAL RULE
-**Every layout change must be validated.** Workflow:
-1. Run validator → save baseline violation count
-2. Make grid coordinate changes
-3. Rebuild, deploy, run validator again
-4. Violation count must go DOWN or stay same — never up
-5. Only then do visual review
+#### Complete Stomp Box Inventory (maximum — no more exist)
+FX1, FX2, FX3, EQ1, EQ2, AMP, CS, DS, NS, CE, DD1, DD2, DD3, RV, FV1, FV2, LP,
+↑↓ (effects loop), DIV, MIX, S LR, M LR, MST
+Any of these can appear in Zone A, B, C, or the output section.
 
-## Strategy for Real Consistency (REVISED)
+---
 
-The first attempt at blind reflow (changing row/col coordinates without validation) made layouts WORSE. The new strategy is validator-driven.
+## What Needs Updating in Docs
 
-### Phase 1: Fix existing violations WITHOUT changing column count
-Many violations are WIDGET_CLIP (widget too wide for cell) and OVERLAP (duplicate cell assignments). These can be fixed by:
-- Increasing colSpan on widgets that need more space
-- Fixing overlapping cell assignments
-- These are safe changes that don't restructure the layout
+`docs/ui/sy1000_boss_layout_notes.md` §5a needs:
+1. The complete 5-row model with Y values
+2. The block pitch constants table
+3. The 3-zone compaction algorithm (replace the partial column contract)
+4. The BAL column rule (currently incomplete — doesn't account for Zone B chain driving BAL2)
+5. The output topology rules (branching, MST-last, upward split)
+6. The block label rule
 
-### Phase 2: Reflow grids that exceed MAX_COLS
-For each grid with COL_COUNT violations, reflow to ≤6 columns:
-- Run validator before and after each change
-- Handle SystemOverrides carefully (they reference grid coordinates)
-- Move one tab at a time, validate each change independently
+**Status: spec complete, code implemented, doc updated.**
 
-### Phase 3: Fix GRID_WIDTH violations
-For grids where total minimum width exceeds 900px:
-- May need to accept wider grids for genuinely wide content (SEQ, dual OSC)
-- Or restructure with groupboxes / sub-tabs
-- Some pages (E.Guitar with 11 cols, PreAmp, VIO) may need architectural changes
+---
 
-### Priority by violation density
-1. **12 String groupboxes** — most WIDGET_CLIP violations (6 per instance × 3 inst files)
-2. **Electric Guitar / Bass** — OVERLAPs + COL_COUNT + GRID_WIDTH
-3. **Dynamic Synth OSC** — COL_COUNT (8 cols, needs 6)
-4. **OSC Synth pages** — COL_COUNT + GRID_WIDTH (13-14 cols)
-5. **GR-300** — COL_COUNT + GRID_WIDTH (13 cols)
-6. **VIO Guitar / Poly FX** — COL_COUNT + GRID_WIDTH
-6. Update the `compactCurrentStackField` call (should already be `GRID_H, GRID_V`)
-7. Test by building and deploying
+## Session Summary (2026-03-25)
 
-## File Structure
+Phase 5 QML migration completed. All assign pages were already migrated in prior sessions;
+HANDOFF was outdated. Fixed `menuPage_midi.cpp` (contained wrong PDL code) and completed
+the MIDI panel migration.
 
-All 3 inst files follow the same structure:
-```
-soundSource_inst1.cpp  — hex addresses use "00" prefix
-soundSource_inst2.cpp  — hex addresses use "00" or "02" (BassMode-dependent)
-soundSource_inst3.cpp  — hex addresses use member vars hex1, hex2
-```
+### Changes made this session
 
-Each file has identical tab structure:
-- stackField 10 → tab bar
-- stackField 0 → INST TYPE header
-- stackField 1 → Dynamic Synth pages (COMMON, ALT TUNE, OSC, FILTER, AMP, LFO1, LFO2, SEQ, LAYER)
-- stackField 2 → OSC Synth pages
-- stackField 3 → GR-300 pages
-- stackField 4 → E.Guitar/Bass pages
-- stackField 5 → instrument type variant sub-pages (nested in stack 4)
-- stackField 6 → Acoustic Guitar/Bass pages
-- stackField 7 → alternate E.Guitar/Bass pages
-- stackField 8 → VIO Guitar / Poly FX pages
-- stackField 9 → Poly FX (guitar mode only)
+**`src/menuPage_midi.cpp`** — rewrote: was accidentally containing `menuPage_pdl` code.
+Now correctly implements `menuPage_midi::setEditPages()` calling:
+`editDetails()->setQmlPage("qrc:/qml/MidiPanel.qml", sys1, "30")`
+where sys1 = "01" (guitar) or "08" (bass).
 
-## Build & Deploy
+**`qml/MidiPanel.qml`** — new file. Standalone MIDI settings panel with two tabs:
+- SETTING 1: RX/TX channel, OMNI MODE, MIDI IN THRU, USB IN THRU, SYNC CLOCK, CLOCK OUT, PC OUT, TX/RX PC MAP
+- SETTING 2: CC# assignments (No1-4, BANK DN/UP, CTL1-6, EXP1-2, GK VOL/S1/S2)
+All controls use `hex0="00"`, `hex1` (sys1), `hex2="30"`.
 
-```bash
-# Build (from Qt Creator or command line):
-cd /Users/bsewell/010-MUSIC-STUDIO/SY-1000/build
-# (use Qt Creator build, or qmake + make)
+**`qml/qml.qrc`** — added `MidiPanel.qml`.
 
-# Deploy:
-/Users/bsewell/010-MUSIC-STUDIO/SY-1000/deploy.sh
-```
+**`SY-1000FloorBoard.pri`** — added `menuPage_midi.h` and `menuPage_midi.cpp` (were missing).
 
-## Important Gotchas
+**Note:** `menuPage_midi` is not yet wired into `floorBoard::initMenuPages()`.
+It needs an ID assigned when the correct menu button slot is confirmed.
+Currently `menuPage_pdl` (foot controllers) occupies ID 12.
 
-1. **Never change hex address parameters** — the 4 hex strings in each addKnob/addComboBox map to specific SY-1000 MIDI SysEx addresses. Changing them breaks functionality.
-2. **BassMode conditional** — many pages have `if(BassMode==true)` branches with different content. Both branches need the same grid reflow.
-3. **SystemOverride calls** — `addSystemOverride(row, col, ...)` must match the widget it controls. When you move a widget, move its override too.
-4. **addDivider** colspan — dividers span the full width. Update their colspan when changing column count.
-5. **inst2 uses BassMode-dependent hex variables** (`hexA`/`hexB`), inst3 uses member vars (`hex1`/`hex2`) — don't confuse them.
-6. **Deploy script nuance** — must `rm -rf` before `cp -R` to avoid nested .app bundle.
-7. **Qt rebuild needed** — changes to .cpp files require rebuild. gridConstants.h changes require rebuild of all files that include it.
+Build: pre-existing SDK issue (`__yield` in MacOSX26.4.sdk) blocks full build.
+Our files compile cleanly with no errors from our code.
+
+---
+
+## Phase 5 QML Migration — Status
+
+**COMPLETE.** All assign pages and the MIDI panel are now migrated:
+- `menuPage_assign1.cpp` + assigns 4-16: all call `setQmlPage("qrc:/qml/AssignPanel.qml", ...)`
+- `menuPage_midi.cpp`: calls `setQmlPage("qrc:/qml/MidiPanel.qml", sys1, "30")`
+- `AssignPanel.qml` + `assign/AssignSlot.qml`: all 16 assigns, full parameter set
+- `MidiPanel.qml`: SETTING 1 + SETTING 2 tabs
+
+**No wiring needed:** Menu IDs 10-15 are all taken (TUNER/SETUP/CTL/MASTER/SYSTEM/ASSIGN). System-level MIDI settings are already in `SysMidiSetting.qml` inside SystemPanel (ID 14). `menuPage_midi` is a standby component with no hardware button slot.
+
+---
+
+## Known Issues (pre-existing)
+- User presets show "init patch" names until device connects and sends bulk SysEx
+- MIDI port conflict if Boss Tone Studio is open (close BTS before launching FloorBoard)
+- Crash diagnosis: no crash capture beyond macOS DiagnosticReports (no FloorBoard .ips found)
+- Build broken: `__yield` missing from MacOSX26.4.sdk — Qt needs to be rebuilt or SDK downgraded

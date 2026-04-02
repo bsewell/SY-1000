@@ -7,6 +7,9 @@ ParameterBridge* ParameterBridge::instance = nullptr;
 ParameterBridge::ParameterBridge(QObject *parent)
     : QObject(parent)
 {
+    SysxIO *sysxIO = SysxIO::Instance();
+    connect(sysxIO, &SysxIO::updateSignal, this, &ParameterBridge::dataRefreshed);
+    connect(sysxIO, &SysxIO::isChanged,    this, &ParameterBridge::dataRefreshed);
 }
 
 ParameterBridge* ParameterBridge::Instance()

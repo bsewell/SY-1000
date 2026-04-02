@@ -51,6 +51,7 @@ public:
 	void setBlink(bool value);
     void setBackgroundVisible(bool visible);
     void setLabelPointSize(int pointSize);
+    QSize sizeHint() const override;
 
 
 public slots:

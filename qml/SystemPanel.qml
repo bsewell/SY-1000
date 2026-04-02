@@ -2,9 +2,9 @@ import QtQuick
 
 Rectangle {
     id: root
-    color: "#1a1a1a"
-    implicitWidth: 800
-    implicitHeight: 480
+    color: SyTheme.bgPanel
+    implicitWidth: SyTheme.panelWidth
+    implicitHeight: SyTheme.panelHeight
 
     property string hex1: "01"
     property string hex2: "00"
@@ -52,13 +52,13 @@ Rectangle {
                     text: "SYSTEM"
                     color: "#ffcc00"
                     font.pixelSize: 13
-                    font.family: "Roboto Condensed"
+                    font.family: SyTheme.fontFamily
                     font.bold: true
                     font.capitalization: Font.AllUppercase
                 }
             }
 
-            Rectangle { width: parent.width; height: 1; color: "#333333" }
+            Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
             // Sidebar list
             ListView {
@@ -72,7 +72,7 @@ Rectangle {
                 delegate: Rectangle {
                     width: sidebarList.width
                     height: 32
-                    color: index === root.currentIndex ? "#333333" : mouseArea.containsMouse ? "#2a2a2a" : "transparent"
+                    color: index === root.currentIndex ? SyTheme.divider : mouseArea.containsMouse ? SyTheme.bgControl : "transparent"
 
                     Rectangle {
                         width: 3
@@ -85,9 +85,9 @@ Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         x: 12
                         text: model.label
-                        color: index === root.currentIndex ? "#ffffff" : "#aaaaaa"
-                        font.pixelSize: 11
-                        font.family: "Roboto Condensed"
+                        color: index === root.currentIndex ? SyTheme.textPrimary : SyTheme.textLabel
+                        font.pixelSize: SyTheme.fontLabel
+                        font.family: SyTheme.fontFamily
                         font.bold: index === root.currentIndex
                     }
 
@@ -102,7 +102,7 @@ Rectangle {
         }
 
         // Divider
-        Rectangle { width: 1; height: parent.height; color: "#333333" }
+        Rectangle { width: 1; height: parent.height; color: SyTheme.divider }
 
         // --- Content area ---
         Item {

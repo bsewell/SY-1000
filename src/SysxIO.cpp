@@ -461,7 +461,12 @@ void SysxIO:: setFileSource(QString hex0, QString hex1, QString hex2, QString he
         if (area != "System")
         {
             addrIdx = this->fileSource.address.indexOf(address);
-            if(addrIdx == -1) { return; }
+            if(addrIdx == -1)
+            {
+                qWarning("setFileSource: address %s%s%s not found in fileSource, update dropped",
+                         hex0.toUtf8().constData(), hex1.toUtf8().constData(), hex2.toUtf8().constData());
+                return;
+            }
             sysxList = this->fileSource.hex.at(addrIdx);
             int x = 0;
             for(int i=0; i<hexData.size();++i)

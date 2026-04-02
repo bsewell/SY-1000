@@ -407,8 +407,11 @@ void bankTreeList::requestPatch()
 
         emit setStatusSymbol(3);
         emit setStatusMessage(tr("Receiving Patch"));
-        sysxIO->setMode("mode1");
-        sysxIO->setMode("getPNum");
+        // Do NOT call setMode here: setMode("getPNum") sends a 0-reply-size message whose
+        // midiIO receiveMsg() (loopCount=0) returns immediately with an empty buffer,
+        // firing sysxReply("") which prematurately triggers and disconnects both
+        // updatePatch handlers before the real 6290-byte patch reply arrives.
+        // The device is already in mode1 from the click handler's setMode call.
         sysxIO->requestPatch(0, 0);
     };
 }
@@ -568,6 +571,8 @@ void bankTreeList::updatePatch(QString replyMsg)
             };
         };
 
+        qWarning("bankTreeList::updatePatch: storing rebuild size=%lld bytes, bank=%d patch=%d",
+                 (long long)(rebuild.size()/2), sysxIO->getBank(), sysxIO->getPatch());
         sysxIO->setFileSource("Structure", rebuild);		// Set the source to the data received.
         sysxIO->setFileName(tr("Patch from ") + deviceType);	// Set the file name to SY-1000 patch for the display.
         sysxIO->setDevice(true);				// Patch received from the device so this is set to true.

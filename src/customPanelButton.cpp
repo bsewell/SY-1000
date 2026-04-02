@@ -272,3 +272,11 @@ void customPanelButton::updateLabelGeometry()
     this->textLabel->setGeometry(0, y, width(), labelHeight);
 }
 
+QSize customPanelButton::sizeHint() const
+{
+    Preferences *preferences = Preferences::Instance();
+    bool ok;
+    const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
+    return QSize(buttonSize.width()*ratio, buttonSize.height()*ratio);
+}
+

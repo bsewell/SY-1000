@@ -103,7 +103,11 @@ void initPatchListMenu::setInitPatchComboBox(QRect geometry)
 
     updateCombo();
 
-    initPatchComboBox->setGeometry(geometry);
+    // Use a layout so the combo fills this widget when managed by a parent layout.
+    QHBoxLayout *innerLayout = new QHBoxLayout(this);
+    innerLayout->setContentsMargins(0, 0, 0, 0);
+    innerLayout->addWidget(initPatchComboBox);
+
     initPatchComboBox->setEditable(false);
     initPatchComboBox->setFrame(false);
     initPatchComboBox->setMaxVisibleItems(initPatches.count()+1);

@@ -6,7 +6,7 @@ build/
 release/
 generatedfiles/
 packager/
-Makefile
+Makefile*
 .qmake.stash
 qrc_*.cpp
 moc_*.cpp

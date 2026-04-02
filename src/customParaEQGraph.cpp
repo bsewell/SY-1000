@@ -352,12 +352,14 @@ void customParaEQGraph::paintEvent ( QPaintEvent *pPaintEvent )
     m_lastGainScale = m_lastPlot.height() / 44.0;
 
     const qreal lowCutAmount = qBound(0.0, static_cast<qreal>(m_iLowCut) / 30.0, 1.0);
-    const qreal highCutAmount = qBound(0.0, static_cast<qreal>(m_iHighCut) / 30.0, 1.0);
     const qreal lowCutX = m_lastPlot.left() + (m_lastPlot.width() * (0.02 + (lowCutAmount * 0.16)));
-    // High cut: invert X so higher values move the cutoff LEFT (lower freq, more
-    // of the spectrum rolled off). Was 0.82+amount*0.14 which moved RIGHT as value
-    // increased — visually and perceptually backwards.
-    const qreal highCutX = m_lastPlot.left() + (m_lastPlot.width() * (0.96 - (highCutAmount * 0.14)));
+    // HIGH CUT direction: value 0 = 20Hz (max cut), value 30 = FLAT (no effect).
+    // This is the OPPOSITE of LOW CUT (value 0=FLAT, value 30=16kHz).
+    // Recompute highCutAmount as an inverted scale so value 30 = 0.0 (no rendering)
+    // and value 0 = 1.0 (maximum cut). The position moves LEFT as the value decreases
+    // (lower cutoff frequency = more of the spectrum rolled off).
+    const qreal highCutAmountInv = qBound(0.0, 1.0 - static_cast<qreal>(m_iHighCut) / 30.0, 1.0);
+    const qreal highCutX = m_lastPlot.left() + (m_lastPlot.width() * (0.82 + ((1.0 - highCutAmountInv) * 0.14)));
     // Mid bands: both use the full mid zone (20%–76%) so they can overlap freely.
     // Previously LowMid was locked to 20–38% and HighMid to 58–76%, preventing any
     // overlap even though the SY-1000 allows both bands to be set to the same freq.
@@ -388,9 +390,9 @@ void customParaEQGraph::paintEvent ( QPaintEvent *pPaintEvent )
         {
             gain -= 18.0 * lowCutAmount * (1.0 - smoothStep(lowCutX - (m_lastPlot.width() * 0.08), lowCutX + (m_lastPlot.width() * 0.02), x));
         }
-        if(highCutAmount > 0.0)
+        if(highCutAmountInv > 0.0)
         {
-            gain -= 18.0 * highCutAmount * smoothStep(highCutX - (m_lastPlot.width() * 0.02), highCutX + (m_lastPlot.width() * 0.08), x);
+            gain -= 18.0 * highCutAmountInv * smoothStep(highCutX - (m_lastPlot.width() * 0.02), highCutX + (m_lastPlot.width() * 0.08), x);
         }
 
         const qreal y = qBound(m_lastPlot.top(), m_lastZeroY - (gain * m_lastGainScale), m_lastPlot.bottom());

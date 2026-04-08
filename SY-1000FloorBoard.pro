@@ -30,7 +30,7 @@ CONFIG += c++17
 # Qt 6.x qyieldcpu.h triggers this on ARM — suppress until Qt ships a fix.
 QMAKE_CXXFLAGS += -Wno-error=implicit-function-declaration
 TARGET = "SY-1000FloorBoard"
-VERSION = 2026.04.02.12
+VERSION = 2026.04.08.21
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DESTDIR = ./build/packager
 OBJECTS_DIR += build/release

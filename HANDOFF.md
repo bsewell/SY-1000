@@ -254,7 +254,7 @@ Our files compile cleanly with no errors from our code.
 ---
 
 ## Known Issues (pre-existing)
-- User presets show "init patch" names until device connects and sends bulk SysEx
-- MIDI port conflict if Boss Tone Studio is open (close BTS before launching FloorBoard)
+- User presets show "—" placeholder until device connects and sends bulk SysEx (was "init patch", now less misleading)
+- MIDI port conflict if Boss Tone Studio is open — FloorBoard now shows a dialog explaining the issue
 - Crash diagnosis: no crash capture beyond macOS DiagnosticReports (no FloorBoard .ips found)
-- Build broken: `__yield` missing from MacOSX26.4.sdk — Qt needs to be rebuilt or SDK downgraded
+- `__yield` in MacOSX26.4.sdk: **workaround in place** — `.pro` file adds `-Wno-error=implicit-function-declaration`, builds succeed. Proper fix requires a Qt upstream patch.

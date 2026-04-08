@@ -1629,16 +1629,19 @@ void floorBoard::update_structure()
     index2 = index2 - index1 - 1;
     index1 = index1 - 85;
 
-    int bal1xpos = index1 + 1;                          // these xpos values to be indexed from fxChain to find longest string to offset balancers positions.
-    if(index2 > index1){ bal1xpos = index2 + 1; };
+    // Balancer column = immediately after the last block on the longer input branch.
+    // No +1 gap: the balancer occupies the next column directly, avoiding empty-column
+    // gaps that cascade downstream and create "long wire" problems.
+    int bal1xpos = index1;
+    if(index2 > index1){ bal1xpos = index2; };
 
-    int bal2xpos = index3 + 1;
-    if(index4 > index3){ bal2xpos = index4 + 1; };
-    if((bal1xpos + index3) > bal2xpos){ bal2xpos = bal1xpos + index3 + 1; };
+    int bal2xpos = index3;
+    if(index4 > index3){ bal2xpos = index4; };
+    if((bal1xpos + index3) > bal2xpos){ bal2xpos = bal1xpos + index3; };
 
-    int bal3xpos = index5 + 1;
-    if(index6 > index5){ bal3xpos = index6 + 1; };
-    if((bal2xpos + index5) > bal3xpos){ bal3xpos = bal2xpos + index5 + 1; };
+    int bal3xpos = index5;
+    if(index6 > index5){ bal3xpos = index6; };
+    if((bal2xpos + index5) > bal3xpos){ bal3xpos = bal2xpos + index5; };
 
     // Layout rule §L1: no balancer may be pushed more than MAX_BAL_SPREAD columns beyond
     // the longer of its two direct input paths. Prevents excessively long empty-wire gaps
@@ -1650,7 +1653,7 @@ void floorBoard::update_structure()
         // Zone B starts from BAL1 so its end from C1 is bal1xpos + index3;
         // INST3 ends at index4 from C1.  Use the longer of the two, then add spread.
         const int bal2cap = qMax(qMax(bal1xpos + index3, index4) + MAX_BAL_SPREAD,
-                                 bal1xpos + 1);
+                                 bal1xpos);
         if (bal2xpos > bal2cap) {
             qDebug() << "[LAYOUT §L1] BAL2 capped:" << bal2xpos << "->" << bal2cap
                      << "| index3=" << index3 << "index4=" << index4
@@ -1660,7 +1663,7 @@ void floorBoard::update_structure()
         // Zone C starts from BAL2 so its end from C1 is bal2xpos + index5;
         // NORMAL ends at index6 from C1.
         const int bal3cap = qMax(qMax(bal2xpos + index5, index6) + MAX_BAL_SPREAD,
-                                 bal2xpos + 1);
+                                 bal2xpos);
         if (bal3xpos > bal3cap) {
             qDebug() << "[LAYOUT §L1] BAL3 capped:" << bal3xpos << "->" << bal3cap
                      << "| index5=" << index5 << "index6=" << index6

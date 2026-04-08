@@ -306,7 +306,7 @@ QTreeWidget* bankTreeList::newTreeList()
 
         QTreeWidgetItem *userItem = new QTreeWidgetItem();
         userItem->setFont(0, Lfont);
-        userItem->setText(0, "U" + bnum + ":" + pnum + " init patch");
+        userItem->setText(0, "U" + bnum + ":" + pnum + " —");
         userItem->setData(0, BankRole, b);
         userItem->setData(0, PatchRole, p);
         userItem->setSizeHint(0, rowSizeHint);

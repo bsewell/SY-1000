@@ -195,9 +195,11 @@ Canvas {
         // Compute curve — band ranges: LOW 20-100, LOW MID 100-1k, HIGH MID 1k-5k, HIGH 5k-20k
         // Log positions: 100Hz=0.233, 1kHz=0.566, 5kHz=0.799
         var lowCutAmount = Math.max(0, Math.min(1, lowCut / 30.0))
-        var highCutAmount = Math.max(0, Math.min(1, highCut / 30.0))
+        // HIGH CUT direction: value 0 = 20Hz (max cut), value 30 = FLAT (no effect).
+        // This is the OPPOSITE of LOW CUT — invert to match C++ customParaEQGraph.
+        var highCutAmountInv = Math.max(0, Math.min(1, 1.0 - highCut / 30.0))
         var lowCutX = px + pw * (0.02 + lowCutAmount * 0.20)
-        var highCutX = px + pw * (0.82 + highCutAmount * 0.14)
+        var highCutX = px + pw * (0.82 + (1.0 - highCutAmountInv) * 0.14)
         var lowMidCenter = px + pw * (0.233 + Math.max(0, Math.min(1, lowMidFreq / 30.0)) * 0.333)
         var highMidCenter = px + pw * (0.566 + Math.max(0, Math.min(1, highMidFreq / 30.0)) * 0.233)
         var lowMidWidth = pw * (0.16 - Math.max(0, Math.min(1, lowMidQ / 5.0)) * 0.10)
@@ -219,16 +221,22 @@ Canvas {
             if (lowCutAmount > 0) {
                 gain -= 18.0 * lowCutAmount * (1.0 - smoothStep(lowCutX - pw * 0.08, lowCutX + pw * 0.02, x))
             }
-            if (highCutAmount > 0) {
-                gain -= 18.0 * highCutAmount * smoothStep(highCutX - pw * 0.02, highCutX + pw * 0.08, x)
+            if (highCutAmountInv > 0) {
+                gain -= 18.0 * highCutAmountInv * smoothStep(highCutX - pw * 0.02, highCutX + pw * 0.08, x)
             }
             var y = Math.max(py, Math.min(py + ph, zeroY - gain * gainScale))
             points.push({x: x, y: y})
 
             // Node positions: LOW at ~0.117 (i≈19), HIGH at ~0.90 (i≈144)
             if (i === 19) lowShelfPt = {x: x, y: y}
-            if (Math.abs(x - lowMidCenter) < pw / 160.0) lowMidPt = {x: x, y: y}
-            if (Math.abs(x - highMidCenter) < pw / 160.0) highMidPt = {x: x, y: y}
+            // Track the closest sample point to each mid-band center rather than
+            // using a strict threshold — mirrors the C++ fix for the crash Colin
+            // reported where the center falls exactly between two sample points,
+            // leaving the node undefined and causing misfire hits at (0,0).
+            if (!lowMidPt || Math.abs(x - lowMidCenter) < Math.abs(lowMidPt.x - lowMidCenter))
+                lowMidPt = {x: x, y: y}
+            if (!highMidPt || Math.abs(x - highMidCenter) < Math.abs(highMidPt.x - highMidCenter))
+                highMidPt = {x: x, y: y}
             if (i === 144) highShelfPt = {x: x, y: y}
         }
 
@@ -313,14 +321,18 @@ Canvas {
 
         onPositionChanged: function(mouse) {
             if (dragNode < 0) return
-            var gainDb = (root.zeroY - mouse.y) / root.gainScale
+            // Clamp to widget bounds — on Windows, rapidly dragging outside
+            // can produce coordinates beyond the plot area (same fix as C++).
+            var mx = Math.max(0, Math.min(root.width - 1, mouse.x))
+            var my = Math.max(0, Math.min(root.height - 1, mouse.y))
+            var gainDb = (root.zeroY - my) / root.gainScale
             var rawGain = Math.max(12, Math.min(52, Math.round(gainDb + 32)))
 
             if (dragNode === 0) {
                 root.lowGain = rawGain
                 paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.h3LowGain, rawGain)
             } else if (dragNode === 1) {
-                var norm1 = Math.max(0, Math.min(1, (mouse.x - root.plotX) / root.plotW))
+                var norm1 = Math.max(0, Math.min(1, (mx - root.plotX) / root.plotW))
                 var frac1 = Math.max(0, Math.min(1, (norm1 - 0.233) / 0.333))
                 var freq1 = Math.round(frac1 * 30)
                 root.lowMidFreq = freq1
@@ -328,7 +340,7 @@ Canvas {
                 paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.h3LowMidFreq, freq1)
                 paramBridge.setValue(root.hex0, root.hex1, root.hex2, root.h3LowMidGain, rawGain)
             } else if (dragNode === 2) {
-                var norm2 = Math.max(0, Math.min(1, (mouse.x - root.plotX) / root.plotW))
+                var norm2 = Math.max(0, Math.min(1, (mx - root.plotX) / root.plotW))
                 var frac2 = Math.max(0, Math.min(1, (norm2 - 0.566) / 0.233))
                 var freq2 = Math.round(frac2 * 30)
                 root.highMidFreq = freq2

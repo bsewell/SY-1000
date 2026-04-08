@@ -338,8 +338,11 @@ void midiIO::sendSyxMsg(QString sysxOutMsg, uint midiOutPort)
     }
     catch (RtMidiError &error)
     {
-        emit errorSignal(tr("Syx Output Error"), tr("data error"));
-        emit setStatusdBugMessage(QString::fromStdString( error.getMessage()));
+        QString rtMsg = QString::fromStdString(error.getMessage());
+        bool portIssue = !midiout->isPortOpen() || rtMsg.contains("port", Qt::CaseInsensitive);
+        emit errorSignal(tr("Syx Output Error"),
+                         portIssue ? tr("port availability error") : tr("data error"));
+        emit setStatusdBugMessage(rtMsg);
         emit errorEvent();
         midiout->closePort();
         sysxIO->deBug("midiIO EXIT FAILURE !! sendSyxMsg");
@@ -382,8 +385,11 @@ void midiIO::sendMidiMsg(QString sysxOutMsg, uint midiOutPort)
     }
     catch(RtMidiError &error)
     {
-        emit errorSignal(tr("Midi Output Error"), tr("data error"));
-        emit setStatusdBugMessage(QString::fromStdString( error.getMessage()));
+        QString rtMsg = QString::fromStdString(error.getMessage());
+        bool portIssue = !midiout->isPortOpen() || rtMsg.contains("port", Qt::CaseInsensitive);
+        emit errorSignal(tr("Midi Output Error"),
+                         portIssue ? tr("port availability error") : tr("data error"));
+        emit setStatusdBugMessage(rtMsg);
         emit errorEvent();
         midiout->closePort();
     };
@@ -450,8 +456,11 @@ void midiIO::receiveMsg()
         }
         catch (RtMidiError &error)
         {
-            emit errorSignal(tr("Midi Input Error"), tr("data error"));
-            emit setStatusdBugMessage(QString::fromStdString( error.getMessage()));
+            QString rtMsg = QString::fromStdString(error.getMessage());
+            bool portIssue = !midiin->isPortOpen() || rtMsg.contains("port", Qt::CaseInsensitive);
+            emit errorSignal(tr("Midi Input Error"),
+                             portIssue ? tr("port availability error") : tr("data error"));
+            emit setStatusdBugMessage(rtMsg);
             emit errorEvent();
             { QMutexLocker cleanupLocker(&midiInMutex); if(midiin->isPortOpen()) { midiin->closePort(); } }
             //exit( EXIT_FAILURE );
@@ -498,8 +507,11 @@ void midiIO::getMsg()
     catch (RtMidiError &error)
     {
         midiin->closePort();
-        emit errorSignal(tr("getData() Midi Input Error"), tr("data error"));
-        emit setStatusdBugMessage(QString::fromStdString( "getData() " + error.getMessage()));
+        QString rtMsg = QString::fromStdString(error.getMessage());
+        bool portIssue = rtMsg.contains("port", Qt::CaseInsensitive);
+        emit errorSignal(tr("getData() Midi Input Error"),
+                         portIssue ? tr("port availability error") : tr("data error"));
+        emit setStatusdBugMessage("getData() " + rtMsg);
         emit errorEvent();
         //exit( EXIT_FAILURE );
         SysxIO *sysxIO = SysxIO::Instance();
@@ -697,8 +709,11 @@ void midiIO::getData()
     catch (RtMidiError &error)
     {
         midiin->closePort();
-        emit errorSignal(tr("getData() Midi Input Error"), tr("data error"));
-        emit setStatusdBugMessage(QString::fromStdString( "getData() " + error.getMessage()));
+        QString rtMsg = QString::fromStdString(error.getMessage());
+        bool portIssue = rtMsg.contains("port", Qt::CaseInsensitive);
+        emit errorSignal(tr("getData() Midi Input Error"),
+                         portIssue ? tr("port availability error") : tr("data error"));
+        emit setStatusdBugMessage("getData() " + rtMsg);
         emit errorEvent();
         //exit( EXIT_FAILURE );
         SysxIO *sysxIO = SysxIO::Instance();

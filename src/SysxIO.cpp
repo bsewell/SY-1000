@@ -1408,6 +1408,18 @@ void SysxIO::errorSignal(QString errorType, QString errorMsg)
 {
     setNoError(false);
     emit setStatusdBugMessage(errorType + "  " + errorMsg);
+
+    // Show a user-visible dialog for port-related errors so the user
+    // knows why the connection failed and what to do about it.
+    if (errorMsg.contains("port availability", Qt::CaseInsensitive)
+        || errorMsg.contains("port", Qt::CaseInsensitive))
+    {
+        QMessageBox::warning(nullptr, errorType,
+            tr("Could not open the MIDI port.\n\n"
+               "Another application (e.g. Boss Tone Studio) may be using it.\n"
+               "Close any other MIDI software and try again."));
+    }
+
     this->errorType = "";
     this->errorMsg = "";
 }

@@ -7,6 +7,8 @@
 #include "qmlHost.h"
 #include "globalVariables.h"
 #include "patchListModel.h"
+#include "floorBoard.h"
+#include "stompBox.h"
 #include <QApplication>
 #include <QWidget>
 #include <QScreen>
@@ -327,8 +329,9 @@ void DiagnosticServer::handleCommand(QTcpSocket *socket, const QString &command)
     else if (cmd == "sysex")        response = cmdSysex(args);
 
     // ── Layout ──
-    else if (cmd == "layout-score") response = cmdLayoutScore();
-    else if (cmd == "layout-test")  response = cmdLayoutTest(args);
+    else if (cmd == "layout-score")    response = cmdLayoutScore();
+    else if (cmd == "layout-test")     response = cmdLayoutTest(args);
+    else if (cmd == "chain-positions") response = cmdChainPositions();
 
     // ── Monitoring ──
     else if (cmd == "watch")        response = cmdWatch(socket, args);
@@ -2040,4 +2043,153 @@ QJsonObject DiagnosticServer::cmdLayoutTest(const QString &args)
 
     return computeLayoutScore(vals[0], vals[1], vals[2], vals[3],
                               vals[4], vals[5], vals[6]);
+}
+
+// chain-positions — report actual pixel positions of all chain stompboxes.
+// This lets layout tests verify that blocks are at the right coordinates.
+QJsonObject DiagnosticServer::cmdChainPositions()
+{
+    QJsonObject r;
+
+    // Find the floorBoard widget
+    floorBoard *floor = nullptr;
+    for (QWidget *w : QApplication::topLevelWidgets()) {
+        floor = w->findChild<floorBoard*>();
+        if (floor) break;
+    }
+    if (!floor) {
+        r["status"] = "error";
+        r["message"] = "floorBoard widget not found";
+        return r;
+    }
+
+    Preferences *preferences = Preferences::Instance();
+    bool ok;
+    const double ratio = preferences->getPreferences("Window", "Scale", "ratio").toDouble(&ok);
+
+    QJsonArray blocks;
+    // stompNames maps index -> name (e.g. 0=normal, 1=inst1, ..., 8=fx1, 9=fx2, 10=fx3, ...)
+    for (int i = 0; i < floor->chainStompBoxes().size(); ++i) {
+        stompBox *sb = floor->chainStompBoxes().at(i);
+        if (!sb) continue;
+
+        QJsonObject block;
+        block["index"] = i;
+        block["name"] = (i < floor->chainStompNames().size()) ? floor->chainStompNames().at(i) : QString::number(i);
+        block["x"] = sb->pos().x();
+        block["y"] = sb->pos().y();
+        block["width"] = sb->width();
+        block["height"] = sb->height();
+        block["visible"] = sb->isVisible();
+
+        // Flow layout bounds (the visible signal rectangle, not the widget frame)
+        QRect flow = sb->flowLayoutBounds(ratio);
+        if (flow.isValid()) {
+            QJsonObject flowObj;
+            flowObj["x"] = flow.x();
+            flowObj["y"] = flow.y();
+            flowObj["width"] = flow.width();
+            flowObj["height"] = flow.height();
+            block["flowBounds"] = flowObj;
+        }
+
+        blocks.append(block);
+    }
+
+    // Also report the computed fxPos list (chain order positions)
+    QJsonArray chainOrder;
+    for (int i = 0; i < floor->chainFxPos().size(); ++i) {
+        QJsonObject pos;
+        pos["order"] = i;
+        pos["x"] = floor->chainFxPos().at(i).x();
+        pos["y"] = floor->chainFxPos().at(i).y();
+        if (i < floor->chainFxOrder().size())
+            pos["stompIndex"] = floor->chainFxOrder().at(i);
+        chainOrder.append(pos);
+    }
+
+    // Layout constants for diagnostic analysis
+    const int instStartX = qRound(15*ratio);
+    const int instWidth = qRound(192.0*ratio/2.4);
+    const int touchGap = qRound(15*ratio);
+    const int firstFlowX = instStartX + instWidth + touchGap;
+    const int flowStep = qRound(55.0*ratio);  // must match floorBoard::update_structure
+    QJsonObject layoutConsts;
+    // Derive the layout offset from Inst1's actual position
+    // In initStomps: inst1 x = offset + int(15*ratio)
+    int derivedOffset = 0;
+    if (floor->chainStompBoxes().size() > 1 && floor->chainStompBoxes().at(1))
+        derivedOffset = floor->chainStompBoxes().at(1)->pos().x() - static_cast<int>(15*ratio);
+    layoutConsts["offset"] = derivedOffset;
+    layoutConsts["instStartX"] = instStartX;
+    layoutConsts["instWidth"] = instWidth;
+    layoutConsts["touchGap"] = touchGap;
+    layoutConsts["firstFlowX"] = firstFlowX;
+    layoutConsts["flowStep"] = flowStep;
+
+    // Compute expected column X positions
+    QJsonArray cols;
+    for (int c = 0; c < 12; ++c) {
+        QJsonObject col;
+        col["col"] = c;
+        col["x"] = firstFlowX + c * flowStep;
+        cols.append(col);
+    }
+    layoutConsts["columns"] = cols;
+
+    // Map index to human-readable name
+    const QStringList humanNames = {
+        "Normal","Inst1","Inst2","Inst3","Comp","Dist","Amp","NS",
+        "FX1","FX2","FX3","EQ1","EQ2","CE","DD1","DD2","DD3","RV",
+        "FV1","FV2","LP","Divider","BranchAB","Mixer",
+        "SubOutL","SubOutR","MainOutL","MainOutR",
+        "Split1","Bal1","Split2","Bal2","Split3","Bal3","Master"
+    };
+    QJsonArray namedPositions;
+    for (int i = 0; i < floor->chainFxPos().size(); ++i) {
+        QJsonObject entry;
+        entry["order"] = i;
+        int sbIdx = (i < floor->chainFxOrder().size()) ? floor->chainFxOrder().at(i) : -1;
+        entry["stompIndex"] = sbIdx;
+        entry["humanName"] = (sbIdx >= 0 && sbIdx < humanNames.size()) ? humanNames[sbIdx] : QString::number(sbIdx);
+        entry["x"] = floor->chainFxPos().at(i).x();
+        entry["y"] = floor->chainFxPos().at(i).y();
+        // Compute which column this is closest to
+        int relX = floor->chainFxPos().at(i).x() - derivedOffset - firstFlowX;
+        if (flowStep > 0) {
+            entry["colApprox"] = (relX >= 0) ? qRound(static_cast<double>(relX) / flowStep) : -1;
+            entry["colError"] = relX - qRound(static_cast<double>(relX) / flowStep) * flowStep;
+        }
+        namedPositions.append(entry);
+    }
+
+    // Per-step layout trace from update_structure
+    const QStringList humanNames2 = {
+        "Normal","Inst1","Inst2","Inst3","Comp","Dist","Amp","NS",
+        "FX1","FX2","FX3","EQ1","EQ2","CE","DD1","DD2","DD3","RV",
+        "FV1","FV2","LP","Divider","BranchAB","Mixer",
+        "SubOutL","SubOutR","MainOutL","MainOutR",
+        "Split/Bal","Split/Bal","Split/Bal","Split/Bal","Split/Bal","Split/Bal","Master"
+    };
+    QJsonArray traceArr;
+    for (const auto &s : floor->chainTrace()) {
+        QJsonObject step;
+        step["i"] = s.i;
+        step["stomp"] = s.stomp;
+        step["stompName"] = (s.stomp >= 0 && s.stomp < humanNames2.size()) ? humanNames2[s.stomp] : QString::number(s.stomp);
+        step["incr"] = s.incr;
+        step["x_axis"] = s.x_axis;
+        step["alignedX"] = s.alignedX;
+        traceArr.append(step);
+    }
+
+    r["status"] = "ok";
+    r["ratio"] = ratio;
+    r["blocks"] = blocks;
+    r["chainOrder"] = chainOrder;
+    r["namedPositions"] = namedPositions;
+    r["layoutConsts"] = layoutConsts;
+    r["chainTrace"] = traceArr;
+    r["blockCount"] = floor->chainStompBoxes().size();
+    return r;
 }

@@ -108,6 +108,7 @@ private:
     // Layout diagnostics
     QJsonObject cmdLayoutScore();
     QJsonObject cmdLayoutTest(const QString &args);
+    QJsonObject cmdChainPositions();
 
     QTcpServer *server;
     QList<QPointer<QmlHost>> qmlPreviews;

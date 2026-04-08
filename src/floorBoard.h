@@ -55,6 +55,23 @@ public:
     void exportDebugScreens(const QString &dirPath);
     QPoint master_pos = QPoint(0, 0);
 
+    // Accessors for diagnostic server chain-positions command
+    const QList<stompBox*>& chainStompBoxes() const { return stompBoxes; }
+    const QList<QString>& chainStompNames() const { return stompNames; }
+    const QList<QPoint>& chainFxPos() const { return fxPos; }
+    const QList<int>& chainFxOrder() const { return fx; }
+
+    // Per-step layout trace for diagnostics
+    struct ChainStep {
+        int i;
+        int stomp;
+        int incr;
+        int x_axis;
+        int y_axis;
+        int alignedX;
+        int alignedY;
+    };
+    const QList<ChainStep>& chainTrace() const { return m_chainTrace; }
 
 public slots:
     void setWidth(int dist);
@@ -170,6 +187,7 @@ private:
     QString _lastStructureSignature;
     QTimer *structureRefreshTimer;
     bool structureRefreshNeedsNormalization = false;
+    QList<ChainStep> m_chainTrace;
     bool dropIndicatorVisible = false;
     int dropIndicatorX = 0;
     int dropIndicatorTopY = 0;

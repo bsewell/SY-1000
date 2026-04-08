@@ -1676,7 +1676,7 @@ void floorBoard::update_structure()
              << "idx5=" << index5 << "idx6=" << index6
              << "dual=" << dual_channel;
 
-    const int flowStep = 55*ratio;
+    const int flowStep = qRound(55.0*ratio);  // must match ChainLayout::m_flowStep
     const int hiddenFlowY = this->floorHeight + qRound(50*ratio);  // must be below the 800px floor image
     const int fxLineBiasY = 0;
     int lev1 = 65*ratio;
@@ -1811,6 +1811,7 @@ void floorBoard::update_structure()
     int rowCenterCurrent = rowCenter1;
     int ab_rowCenter = rowCenter1; // mirrors ab_y_axis: saves/restores rowCenterCurrent at DIV/MIX
 
+    m_chainTrace.clear();
     for(uint i=0;i<34;i++)
     {
         uint stomp = QString(midiTable->getMidiMap("10", hex1, "12", "49", fxChain.at(i+sysxDataOffset+69)).desc).toInt(&ok, 10);
@@ -1843,6 +1844,17 @@ void floorBoard::update_structure()
         if(i>3){ x_axis = x_axis+flowStep;}; // if not an instrument input, blocks are incremented to the right.
     skip:
         if(stomp>27){ incr++; }; // if one of 6 branch mixers (28) then increment for the next x-axis level.
+        {
+            ChainStep step;
+            step.i = i;
+            step.stomp = stomp;
+            step.incr = incr;
+            step.x_axis = x_axis;
+            step.y_axis = y_axis;
+            step.alignedX = newFxPos.isEmpty() ? -1 : newFxPos.last().x();
+            step.alignedY = newFxPos.isEmpty() ? -1 : newFxPos.last().y();
+            m_chainTrace.append(step);
+        }
         qDebug() << "[CHAIN] i=" << i << "stomp=" << stomp << "incr=" << incr
                  << "x_axis=" << x_axis << "y_axis=" << y_axis
                  << "fxPos=" << (newFxPos.isEmpty() ? QPoint(-1,-1) : newFxPos.last());
@@ -2229,9 +2241,12 @@ void floorBoard::update_structure()
             }
         };
 
-        compactSegmentAfterBalancer(29, 31, false);
-        compactSegmentAfterBalancer(31, 33, false);
-        compactSegmentAfterBalancer(33, -1, true);
+        // Compaction disabled: Boss reference layout uses strict column alignment
+        // across all rows. Per-segment shifting breaks cross-row alignment
+        // (e.g., FX3/Comp drifting 14px left of FX1/FX2).
+        // compactSegmentAfterBalancer(29, 31, false);
+        // compactSegmentAfterBalancer(31, 33, false);
+        // compactSegmentAfterBalancer(33, -1, true);
 
         const int bal1CenterX = centerXForId(29);
         const int bal1RightX = rightAnchorXForId(29);

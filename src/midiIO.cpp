@@ -42,6 +42,7 @@ midiIO* midiIO::_instance = 0;// initialize pointer
 midiIODestroyer midiIO::_destroyer;
 RtMidiOut *midiout = new RtMidiOut();
 RtMidiIn *midiin = new RtMidiIn();
+RtMidiIn *midiCCIn = nullptr;  // Dedicated CC controller input (lazy init)
 /* BUG FIX (contributed): static mutex definitions for thread-safe access to shared globals */
 QMutex midiIO::midiOutMutex;
 QMutex midiIO::midiInMutex;
@@ -69,6 +70,8 @@ midiIO::midiIO()
     //this->stall_timer->start(10000);
     this->rxMode = "false";
     this->deviceID = "10";
+    this->midiCCInPort = -1;
+    this->cc_in_device_name = "None";
 }
 
 midiIO* midiIO::Instance()
@@ -86,6 +89,7 @@ void midiIO::closePorts()
 {
     midiout->closePort();
     midiin->closePort();
+    if (midiCCIn) midiCCIn->closePort();
 }
 
 /*********************** queryMidiOutDevices() *****************************
@@ -705,6 +709,8 @@ void midiIO::getData()
                 };
             };
         };
+        // Poll CC controller input (separate port) — runs independently of SY-1000 connection
+        pollCCInput();
     }
     catch (RtMidiError &error)
     {
@@ -951,4 +957,77 @@ void midiIO::sendMidi(QString midiMsg, uint midiOutPort)
         emit setStatusProgress(0);
         emit midiFinished();
     };
+}
+
+/************************* CC Controller Input ******************************
+* Separate RtMidiIn port for external CC controllers (Launch Control XL etc.)
+* Called from getData() timer every 10ms.
+****************************************************************************/
+signed int midiIO::getCCInDevice()
+{
+    Preferences *preferences = Preferences::Instance();
+    QString deviceName = preferences->getPreferences("Midi", "CCIn", "name");
+
+    // Auto-detect: if no CC device configured, look for Launch Control XL
+    if (deviceName.isEmpty() || deviceName == "None") {
+        for (int i = 0; i < midiInDevices.size(); i++) {
+            if (midiInDevices.at(i).contains("LCXL") || midiInDevices.at(i).contains("Launch Control")) {
+                return midiInPortMap.at(i);
+            }
+        }
+        return -1;
+    }
+
+    // Resolve by name first (port order can change)
+    for (int i = 0; i < midiInDevices.size(); i++) {
+        if (midiInDevices.at(i) == deviceName)
+            return midiInPortMap.at(i);
+    }
+    // Fallback to index
+    bool ok;
+    int deviceIndex = preferences->getPreferences("Midi", "CCIn", "device").toInt(&ok, 10);
+    if (ok && deviceIndex >= 0 && deviceIndex < midiInPortMap.size())
+        return midiInPortMap.at(deviceIndex);
+    return -1;
+}
+
+void midiIO::pollCCInput()
+{
+    try {
+        signed int ccPort = getCCInDevice();
+        if (ccPort < 0) {
+            if (midiCCIn && midiCCIn->isPortOpen()) midiCCIn->closePort();
+            return;
+        }
+
+        if (!midiCCIn) midiCCIn = new RtMidiIn();
+        midiCCIn->ignoreTypes(true, true, true);  // Ignore SysEx, timing, active sense
+        if (!midiCCIn->isPortOpen()) {
+            midiCCIn->openPort(ccPort);
+        }
+
+        // Drain all queued messages (handles fast knob sweeps)
+        std::vector<unsigned char> message;
+        while (true) {
+            midiCCIn->getMessage(&message);
+            if (message.size() == 0) break;
+
+            if (message.size() == 3) {
+                unsigned char status = message[0];
+                // CC message: 0xBn where n = channel
+                if ((status & 0xF0) == 0xB0) {
+                    int channel = status & 0x0F;        // 0-based channel
+                    int ccNumber = (int)message[1];
+                    int value = (int)message[2];
+                    emit ccReceived(channel, ccNumber, value);
+                }
+            }
+            message.clear();
+        }
+    }
+    catch (RtMidiError &error) {
+        if (midiCCIn->isPortOpen()) midiCCIn->closePort();
+        SysxIO *sysxIO = SysxIO::Instance();
+        sysxIO->deBug("pollCCInput error: " + QString::fromStdString(error.getMessage()));
+    }
 }

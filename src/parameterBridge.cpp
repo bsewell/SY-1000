@@ -108,3 +108,46 @@ QVariantList ParameterBridge::getOptions(const QString &hex0, const QString &hex
     }
     return options;
 }
+
+void ParameterBridge::registerKnob(const QString &hex0, const QString &hex1,
+                                   const QString &hex2, const QString &hex3)
+{
+    KnobAddress addr;
+    addr.hex0 = hex0;
+    addr.hex1 = hex1;
+    addr.hex2 = hex2;
+    addr.hex3 = hex3;
+    m_registeredKnobs.append(addr);
+    MidiCCHandler *handler = MidiCCHandler::Instance();
+    handler->setActiveKnobs(m_registeredKnobs);
+    // Show registration count in status bar
+    emit handler->ccActivity(QString("CC: %1 knobs registered").arg(m_registeredKnobs.size()));
+}
+
+void ParameterBridge::clearRegisteredKnobs()
+{
+    m_registeredKnobs.clear();
+    MidiCCHandler::Instance()->clearActiveKnobs();
+}
+
+void ParameterBridge::scanAndRegisterKnobs(QObject *root)
+{
+    if (!root) return;
+
+    // Check if this object has hex0 property (FilmstripKnob or SyComboBox)
+    QVariant hex0Var = root->property("hex0");
+    if (hex0Var.isValid() && !hex0Var.toString().isEmpty()) {
+        QString hex0 = hex0Var.toString();
+        QString hex1 = root->property("hex1").toString();
+        QString hex2 = root->property("hex2").toString();
+        QString hex3 = root->property("hex3").toString();
+        if (!hex0.isEmpty() && !hex3.isEmpty()) {
+            registerKnob(hex0, hex1, hex2, hex3);
+        }
+    }
+
+    // Recurse into children
+    for (QObject *child : root->children()) {
+        scanAndRegisterKnobs(child);
+    }
+}

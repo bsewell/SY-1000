@@ -252,6 +252,7 @@ floorBoardDisplay::floorBoardDisplay(QWidget *parent, QPoint pos)
     QObject::connect(this->setup_Button, SIGNAL(valueChanged(bool)), this->parent(), SIGNAL(setup_buttonSignal(bool)));
     QObject::connect(this->pedal_Button, SIGNAL(valueChanged(bool)), this->parent(), SIGNAL(pedal_buttonSignal(bool)));
     QObject::connect(this->system_Button, SIGNAL(valueChanged(bool)), this->parent(), SIGNAL(system_buttonSignal(bool)));
+    // midi_Button removed — CC activity shows in bottom status bar instead
 
     //QObject::connect(this->parent(), SIGNAL(assign1_statusSignal(bool)), this->assign1_Button, SLOT(setValue(bool)));
 

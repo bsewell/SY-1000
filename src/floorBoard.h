@@ -103,7 +103,6 @@ signals:
     void ns1_buttonSignal(bool value);
     void mod_buttonSignal(bool value);
     void pedal_buttonSignal(bool value);
-    //void master_buttonSignal(bool value);
     void system_buttonSignal(bool value);
     void assign1_buttonSignal(bool value);
     void tuner_buttonSignal(bool value);

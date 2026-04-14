@@ -40,6 +40,7 @@
 #include "consoletoolbar.h"
 #include "qmlHost.h"
 #include "diagnosticServer.h"
+#include "midiCCHandler.h"
 
 // Platform-dependent sleep routines.
 #ifdef Q_OS_WIN
@@ -456,6 +457,18 @@ void mainWindow::createStatusBar()
     QObject::connect(sysxIO, &SysxIO::setStatusdBugMessage, statusInfo, &statusBarWidget::setStatusdBugMessage);
 
     statusBar()->addWidget(statusInfo);
+
+    // MIDI CC controller activity display
+    this->ccStatusLabel = new QLabel("CC: scanning for LCXL...", this);
+    this->ccStatusLabel->setStyleSheet("QLabel { color: #AEEFFF; font-family: 'Roboto Condensed'; font-size: 12px; font-weight: bold; padding: 0 12px; background: #1a1a2e; border: 1px solid #333; border-radius: 3px; }");
+    this->ccStatusLabel->setMinimumWidth(300);
+    statusBar()->addPermanentWidget(this->ccStatusLabel);
+
+    MidiCCHandler *ccHandler = MidiCCHandler::Instance();
+    QObject::connect(ccHandler, &MidiCCHandler::ccActivity, this, [this](const QString &msg) {
+        this->ccStatusLabel->setText(msg);
+    });
+
     statusBar()->setSizeGripEnabled(false);
 }
 
@@ -932,32 +945,16 @@ void mainWindow::settings()
 
         preferences->savePreferences();
 
+        // Apply settings without restart — just save and notify
         QMessageBox *msgBox = new QMessageBox();
-        msgBox->setWindowTitle(tr("Settings saving to File - Restarting"));
-        msgBox->setIcon(QMessageBox::Warning);
+        msgBox->setWindowTitle(tr("Settings Saved"));
+        msgBox->setIcon(QMessageBox::Information);
         msgBox->setTextFormat(Qt::RichText);
-        QString msgText;
-        msgText.append("<font size='+2'><b>");
-        msgText.append(tr("Preference settings have been saved"));
-        msgText.append(tr("<br>SY-1000FloorBoard will now restart"));
-        msgText.append(tr("<br>with new settings applied"));
-        msgText.append("<b></font>");
-        msgBox->setText(msgText);
+        msgBox->setText(tr("<font size='+2'><b>Preference settings have been saved.</b></font>"));
         msgBox->show();
-        uint x=10;
-        while (x>0)
-        {
-            QApplication::processEvents();
-            //QString num = QString::number(x, 10).toUpper();
-            msgText.append("<font size='+2'><b>");
-            msgText.append("* ");
-            msgText.append("<b></font>");
-            msgBox->setText(msgText);
-            SLEEP(40);
-            QApplication::processEvents();
-            x--;
-        };
-        restart();
+        SLEEP(800);
+        QApplication::processEvents();
+        msgBox->close();
     };
     dialog->deleteLater();
 }

@@ -2,7 +2,7 @@
 <!-- Preferences of the SY-1000 FloorBoard application. -->
 <Preferences>
 	<General>
-		<Application version="20260414173"/>
+		<Application version="20260414194"/>
 		<Donate url=""/>
 		<Files dir=""/>
 		<Help url="http:SY-1000-Help-HTML/SY-1000_HTML_Help.html"/>
@@ -25,6 +25,7 @@
         <MidiIn name="SY-1000" device="0"/>
 		<MidiOut name="SY-1000" device="1"/>
 		<TxCh set="1"/>
+		<CCIn name="None" device="-1"/>
 	</Midi>
 	<Scheme>
 		<Colour select="1"/>

@@ -56,9 +56,11 @@ Preferences::Preferences()
     else
     {
         loadPreferences(preferencesFilePath());
+        // On version mismatch, just update the version stamp — don't reload .dist
+        // which would wipe user settings (CC controller, device selections, etc.)
         if(this->getPreferences("General", "Application", "version")!=buildVersion)
         {
-            loadPreferences(":preferences.xml.dist");
+            this->setPreferences("General", "Application", "version", buildVersion);
         };
     };
 }

@@ -79,6 +79,7 @@ private:
         void createActions();
         void createMenus();
         void createStatusBar();
+        QLabel *ccStatusLabel;
         QMenu *fileMenu;
         QMenu *toolsMenu;
         QMenu *settingsMenu;

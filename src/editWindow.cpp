@@ -396,6 +396,13 @@ void editWindow::setPowerState(bool enabled)
     }
 }
 
+QObject* editWindow::getQmlRoot() const
+{
+    if (this->qmlHost)
+        return this->qmlHost->rootObject();
+    return nullptr;
+}
+
 void editWindow::setWindow(QString title)
 {
     this->title->setText(title);

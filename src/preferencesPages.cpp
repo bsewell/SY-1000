@@ -85,14 +85,21 @@ MidiPage::MidiPage(QWidget *parent)
     QLabel *mididescriptionLabel = new QLabel(QObject::tr("Select your midi in and out device."));
     QLabel *midiInLabel = new QLabel(QObject::tr("Midi in:"));
     QLabel *midiOutLabel = new QLabel(QObject::tr("Midi out:"));
+    QLabel *ccInLabel = new QLabel(QObject::tr("CC controller:"));
 
     this->midiInCombo = new QComboBox(this);
     this->midiOutCombo = new QComboBox(this);
-    
+    this->ccInCombo = new QComboBox(this);
+
+    QString ccInDevice = preferences->getPreferences("Midi", "CCIn", "device");
+    this->ccInDeviceName = preferences->getPreferences("Midi", "CCIn", "name");
+    this->ccInDeviceID = ccInDevice.toInt(&ok, 10);
+
     timer = new QTimer(this);
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(updateDevice()) );
     QObject::connect(this->midiInCombo, SIGNAL(activated(int)), this, SLOT(midiInDeviceChanged(int)));
     QObject::connect(this->midiOutCombo, SIGNAL(activated(int)), this, SLOT(midiOutDeviceChanged(int)));
+    QObject::connect(this->ccInCombo, SIGNAL(activated(int)), this, SLOT(ccInDeviceChanged(int)));
     QObject::connect(this->midiInCombo, SIGNAL(highlighted(int)), this, SLOT(midiInDeviceChanged(int)));
     QObject::connect(this->midiOutCombo, SIGNAL(highlighted(int)), this, SLOT(midiOutDeviceChanged(int)));
     updateDevice();
@@ -110,11 +117,13 @@ MidiPage::MidiPage(QWidget *parent)
     QVBoxLayout *midiLabelLayout = new QVBoxLayout;
     midiLabelLayout->addWidget(midiInLabel);
     midiLabelLayout->addWidget(midiOutLabel);
+    midiLabelLayout->addWidget(ccInLabel);
     midiLabelLayout->addStretch();
 
     QVBoxLayout *midiComboLayout = new QVBoxLayout;
     midiComboLayout->addWidget(midiInCombo);
     midiComboLayout->addWidget(midiOutCombo);
+    midiComboLayout->addWidget(ccInCombo);
     midiComboLayout->addWidget(autoCheckBox);
 
     QHBoxLayout *midiSelectLayout = new QHBoxLayout;
@@ -213,6 +222,22 @@ void MidiPage::updateDevice()
         midiOutCombo->setCurrentIndex(midiOutDevices.indexOf("SY-1000"));
         this->midiOutDeviceName="SY-1000";
     };
+
+    // CC controller dropdown — "None" + all MIDI in devices
+    // Block signals to prevent ccInDeviceChanged() firing during repopulation
+    QString ccInDevice = preferences->getPreferences("Midi", "CCIn", "name");
+    ccInCombo->blockSignals(true);
+    ccInCombo->clear();
+    ccInCombo->addItem("None");
+    for (QList<QString>::iterator dev = midiInDevices.begin(); dev != midiInDevices.end(); ++dev)
+    {
+        ccInCombo->addItem(*dev);
+    };
+    if (!ccInDevice.isEmpty() && ccInDevice != "None") {
+        int idx = midiInDevices.indexOf(ccInDevice);
+        if (idx >= 0) ccInCombo->setCurrentIndex(idx + 1);  // +1 for "None" offset
+    }
+    ccInCombo->blockSignals(false);
 }
 
 void MidiPage::midiInDeviceChanged(int value)
@@ -256,6 +281,34 @@ void MidiPage::midiOutDeviceChanged(int value)
         SysxIO *sysxIO = SysxIO::Instance();
         sysxIO->deBug(QString("out device = "+QString::number(value)+" "+midiOutDeviceName));
     };
+}
+
+void MidiPage::ccInDeviceChanged(int value)
+{
+    Preferences *preferences = Preferences::Instance();
+    if (value <= 0) {
+        // "None" selected (index 0)
+        ccInDeviceID = -1;
+        ccInDeviceName = "None";
+        preferences->setPreferences("Midi", "CCIn", "device", "-1");
+        preferences->setPreferences("Midi", "CCIn", "name", "None");
+        return;
+    }
+    // value-1 because index 0 is "None"
+    midiIO *midi = midiIO::Instance();
+    QList<QString> midiInDevices = midi->getMidiInDevices();
+    int deviceIdx = value - 1;
+    if (deviceIdx < 0 || deviceIdx >= midiInDevices.size()) return;
+
+    ccInDeviceID = deviceIdx;
+    ccInDeviceName = midiInDevices.at(deviceIdx);
+    preferences->setPreferences("Midi", "CCIn", "device", QString::number(deviceIdx, 10));
+    preferences->setPreferences("Midi", "CCIn", "name", ccInDeviceName);
+
+    if(preferences->getPreferences("Midi", "DBug", "bool")=="true") {
+        SysxIO *sysxIO = SysxIO::Instance();
+        sysxIO->deBug(QString("CC controller = " + QString::number(deviceIdx) + " " + ccInDeviceName));
+    }
 }
 
 void MidiPage::checkBoxChanged(int value)

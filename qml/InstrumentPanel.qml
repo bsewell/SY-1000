@@ -65,7 +65,7 @@ Rectangle {
 
     Connections {
         target: instTypeCombo
-        function onValueChanged() { root.instType = instTypeCombo.value }
+        function onValueChanged() { root.instType = instTypeCombo.value; paramBridge.requestRescan() }
     }
 
     Column {
@@ -177,6 +177,7 @@ Rectangle {
             SyComboBox {
                 id: instTypeCombo
                 hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                property bool ccExclude: true  // don't map to LCXL — changing inst type destroys panel
                 anchors.left: instTypeLabel.right
                 anchors.leftMargin: 8
                 anchors.verticalCenter: parent.verticalCenter
@@ -222,7 +223,7 @@ Rectangle {
                         MouseArea {
                             anchors.fill: parent
                             cursorShape: Qt.PointingHandCursor
-                            onClicked: root.currentTab = index
+                            onClicked: { root.currentTab = index; paramBridge.requestRescan() }
                         }
                     }
                 }

@@ -1289,6 +1289,11 @@ void floorBoard::setEditDialog(editWindow* editDialog)
     // Scan the active QML panel for knobs and register them with CC handler
     ParameterBridge::Instance()->clearRegisteredKnobs();
     QObject *qmlRoot = this->editDialog->getQmlRoot();
+    { QFile f("/tmp/cc_scan.log"); f.open(QIODevice::Append);
+      QTextStream ts(&f);
+      ts << "setEditDialog: qmlRoot=" << (qmlRoot ? "YES" : "NULL")
+         << " dialog=" << this->editDialog
+         << " title=" << this->editDialog->getTitle() << "\n"; }
     if (qmlRoot) {
         ParameterBridge::Instance()->scanAndRegisterKnobs(qmlRoot);
     }

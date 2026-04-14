@@ -2,6 +2,10 @@
 #include "SysxIO.h"
 #include "MidiTable.h"
 #include <QQuickItem>
+#include <QSet>
+#include <QFile>
+#include <QTextStream>
+#include <QTimer>
 
 ParameterBridge* ParameterBridge::instance = nullptr;
 
@@ -131,15 +135,29 @@ void ParameterBridge::clearRegisteredKnobs()
     MidiCCHandler::Instance()->clearActiveKnobs();
 }
 
+void ParameterBridge::requestRescan()
+{
+    if (m_lastScanRoot) {
+        clearRegisteredKnobs();
+        // Delay to let QML Loader + Repeater finish recreating content
+        // 500ms covers the Loader→Repeater→Loader chain
+        QTimer::singleShot(500, this, [this]() {
+            scanAndRegisterKnobs(m_lastScanRoot);
+        });
+    }
+}
+
 // Collect VISIBLE controls with their Y position for row grouping
 struct ScannedControl {
     KnobAddress addr;
     qreal y;
 };
 
-static void collectVisibleControls(QObject *obj, QVector<ScannedControl> &out)
+static void collectVisibleControls(QObject *obj, QVector<ScannedControl> &out,
+                                   QSet<QObject*> &visited)
 {
-    if (!obj) return;
+    if (!obj || visited.contains(obj)) return;
+    visited.insert(obj);
 
     // Skip invisible items and all their children (hidden tabs, etc.)
     QQuickItem *item = qobject_cast<QQuickItem*>(obj);
@@ -161,15 +179,101 @@ static void collectVisibleControls(QObject *obj, QVector<ScannedControl> &out)
         }
     }
 
+    // Walk QObject children (catches most QML items)
     for (QObject *child : obj->children())
-        collectVisibleControls(child, out);
+        collectVisibleControls(child, out, visited);
+
+    // Also walk QQuickItem visual children (catches Loader content, Repeater delegates)
+    if (item) {
+        for (QQuickItem *visualChild : item->childItems())
+            collectVisibleControls(visualChild, out, visited);
+    }
 }
 
 void ParameterBridge::scanAndRegisterKnobs(QObject *root)
 {
-    // Step 1: collect only VISIBLE controls with scene Y position
+    QQuickItem *rootItem = qobject_cast<QQuickItem*>(root);
+    if (!rootItem) return;
+
+    m_lastScanRoot = root;  // remember for requestRescan()
+
+    // Collect ALL items via both QObject tree AND visual tree
+    // Walk visual tree first (preserves layout order), then QObject tree as fallback
+    QList<QQuickItem*> allItems;
+    QSet<QQuickItem*> seen;
+    std::function<void(QQuickItem*)> collectAll = [&](QQuickItem *item) {
+        if (!item || seen.contains(item)) return;
+        seen.insert(item);
+        allItems.append(item);
+        // Visual children first (preserves layout/document order)
+        for (QQuickItem *vc : item->childItems()) {
+            collectAll(vc);
+        }
+        // Then QObject children as fallback
+        for (QObject *child : item->children()) {
+            QQuickItem *qi = qobject_cast<QQuickItem*>(child);
+            if (qi) collectAll(qi);
+        }
+    };
+    collectAll(rootItem);
+
+    // Deep debug: dump entire tree to file
+    { QFile f("/tmp/cc_scan.log"); f.open(QIODevice::Append);
+      QTextStream ts(&f);
+      ts << "=== TREE DUMP (" << allItems.size() << " items) ===\n";
+      int hexCount = 0;
+      for (QQuickItem *item : allItems) {
+          QVariant h0 = item->property("hex0");
+          bool hasHex = h0.isValid() && !h0.toString().isEmpty();
+          if (hasHex) {
+              hexCount++;
+              ts << "  HEX: " << item->metaObject()->className()
+                 << " hex0=" << h0.toString()
+                 << " hex3=" << item->property("hex3").toString()
+                 << " visible=" << item->isVisible()
+                 << " w=" << item->width() << " h=" << item->height()
+                 << "\n";
+          }
+      }
+      ts << "=== " << hexCount << " items with hex0 ===\n";
+    }
+
     QVector<ScannedControl> controls;
-    collectVisibleControls(root, controls);
+    for (QQuickItem *item : allItems) {
+        if (!item->isVisible()) continue;
+
+        QVariant hex0Var = item->property("hex0");
+        if (!hex0Var.isValid() || hex0Var.toString().isEmpty()) continue;
+
+        QString hex0 = hex0Var.toString();
+        QString hex3 = item->property("hex3").toString();
+        if (hex0.isEmpty() || hex3.isEmpty()) continue;
+
+        // Skip controls marked as ccExclude (e.g., FX TYPE dropdown that destroys panel on change)
+        QVariant excludeVar = item->property("ccExclude");
+        if (excludeVar.isValid() && excludeVar.toBool()) continue;
+
+        ScannedControl sc;
+        sc.addr.hex0 = hex0;
+        sc.addr.hex1 = item->property("hex1").toString();
+        sc.addr.hex2 = item->property("hex2").toString();
+        sc.addr.hex3 = hex3;
+        QPointF pos = item->mapToScene(QPointF(0, 0));
+        sc.y = pos.y();
+        controls.append(sc);
+    }
+
+    // Debug: log scan results to file
+    { QFile f("/tmp/cc_scan.log"); f.open(QIODevice::Append);
+      QTextStream ts(&f);
+      ts << "SCAN: " << allItems.size() << " total items, " << controls.size() << " with hex0\n";
+      for (int i = 0; i < controls.size(); i++) {
+          ts << "  [" << i << "] " << controls[i].addr.hex0 << "/" << controls[i].addr.hex1
+             << "/" << controls[i].addr.hex2 << "/" << controls[i].addr.hex3
+             << " y=" << controls[i].y << "\n";
+      }
+    }
+
     if (controls.isEmpty()) return;
 
     // Step 2: sort by Y (top to bottom), stable sort preserves left-to-right order
@@ -179,8 +283,9 @@ void ParameterBridge::scanAndRegisterKnobs(QObject *root)
         });
 
     // Step 3: group into visual rows and pad each to 8 for LCXL alignment
-    // Controls within 60px Y of each other = same visual row
-    // (merges header dropdowns with adjacent knob row, keeps Grid rows separate at ~108px gap)
+    // Controls within 42px Y of each other = same visual row
+    // FX TYPE header (y~42) separates from knobs (y~85) at 43px gap
+    // INST header controls merge with first knobs at ~43px gap (borderline — INST uses Grid not Flow)
     KnobAddress empty = {"", "", "", ""};
     QVector<KnobAddress> result;
     qreal rowStartY = controls.first().y;
@@ -189,7 +294,7 @@ void ParameterBridge::scanAndRegisterKnobs(QObject *root)
     QString debugRows;
 
     for (int i = 0; i < controls.size(); i++) {
-        bool newRow = (controls[i].y - rowStartY > 60.0) && countInRow > 0;
+        bool newRow = (controls[i].y - rowStartY > 42.0) && countInRow > 0;
 
         if (newRow) {
             int padding = (8 - (countInRow % 8)) % 8;

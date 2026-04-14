@@ -44,6 +44,7 @@ Rectangle {
         target: fxTypeCombo
         function onValueChanged() {
             root.fxTypeIndex = fxTypeCombo.value
+            paramBridge.requestRescan()
         }
     }
 
@@ -81,6 +82,7 @@ Rectangle {
                 SyComboBox {
                     id: fxTypeCombo
                     hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                    property bool ccExclude: true
                     labelWidth: 0
                     anchors.verticalCenter: parent.verticalCenter
                 }

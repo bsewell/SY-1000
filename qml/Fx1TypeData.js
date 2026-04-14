@@ -124,13 +124,12 @@ function getControls(typeIndex) {
             { type: "knob",  hex3: "07" },
             { type: "knob",  hex3: "08" }
         ];
-    case 14: // Isolator
+    case 14: // Isolator — Band, Rate, Depth, Level (BPM is shared Master param)
         return [
             { type: "combo", hex3: "00" },
             { type: "knob",  hex3: "01" },
             { type: "knob",  hex3: "02" },
-            { type: "knob",  hex3: "03" },
-            { type: "knob",  hex3: "04" }
+            { type: "knob",  hex3: "03" }
         ];
     case 15: // Limiter
         return [
@@ -169,20 +168,19 @@ function getControls(typeIndex) {
             { type: "knob",  hex3: "04" },
             { type: "knob",  hex3: "06" }
         ];
-    case 20: // Para EQ (simplified — knobs instead of graphical widget)
+    case 20: // Para EQ — Boss order: Low Cut, Low Gain, LM Freq/Q/Gain, HM Freq/Q/Gain, High Gain, High Cut, Level
         return [
+            { type: "knob", hex3: "09" },
             { type: "knob", hex3: "01" },
-            { type: "knob", hex3: "02" },
             { type: "knob", hex3: "03" },
             { type: "knob", hex3: "04" },
             { type: "knob", hex3: "05" },
             { type: "knob", hex3: "06" },
             { type: "knob", hex3: "07" },
             { type: "knob", hex3: "08" },
-            { type: "knob", hex3: "09" },
+            { type: "knob", hex3: "02" },
             { type: "knob", hex3: "0A" },
-            { type: "knob", hex3: "0B" },
-            { type: "knob", hex3: "0C" }
+            { type: "knob", hex3: "0B" }
         ];
     case 21: // Pedal Bend
         return [

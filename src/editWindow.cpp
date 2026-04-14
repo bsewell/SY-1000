@@ -398,8 +398,12 @@ void editWindow::setPowerState(bool enabled)
 
 QObject* editWindow::getQmlRoot() const
 {
-    if (this->qmlHost)
-        return this->qmlHost->rootObject();
+    qWarning("getQmlRoot: qmlHost=%p", this->qmlHost);
+    if (this->qmlHost) {
+        QObject *root = this->qmlHost->rootObject();
+        qWarning("getQmlRoot: rootObject=%p", root);
+        return root;
+    }
     return nullptr;
 }
 

@@ -45,6 +45,7 @@ Rectangle {
         target: fxTypeCombo
         function onValueChanged() {
             root.fxTypeIndex = fxTypeCombo.value
+            paramBridge.requestRescan()  // re-scan knobs for CC controller mapping
         }
     }
 
@@ -83,6 +84,7 @@ Rectangle {
                 SyComboBox {
                     id: fxTypeCombo
                     hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                    property bool ccExclude: true  // don't map to LCXL — changing FX TYPE destroys panel
                     labelWidth: 0
                     anchors.verticalCenter: parent.verticalCenter
                 }

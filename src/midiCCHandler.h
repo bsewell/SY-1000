@@ -59,8 +59,9 @@ private:
     int m_botCC    = 49;   // Bottom row knobs
     int m_sliderCC = 77;   // Sliders
 
-    // Map CC number to row index (0-3), returns -1 if not mapped
+    // Map CC number to row (0-3) and column (0-7)
     int ccToRow(int ccNumber) const;
+    int ccToColumn(int ccNumber) const;
 
     // Scale CC 0-127 to parameter min..max
     int scaleCC(int ccValue, int paramMin, int paramMax) const;

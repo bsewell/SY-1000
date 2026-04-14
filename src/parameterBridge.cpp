@@ -1,6 +1,7 @@
 #include "parameterBridge.h"
 #include "SysxIO.h"
 #include "MidiTable.h"
+#include <QQuickItem>
 
 ParameterBridge* ParameterBridge::instance = nullptr;
 
@@ -130,24 +131,85 @@ void ParameterBridge::clearRegisteredKnobs()
     MidiCCHandler::Instance()->clearActiveKnobs();
 }
 
-void ParameterBridge::scanAndRegisterKnobs(QObject *root)
-{
-    if (!root) return;
+// Collect VISIBLE controls with their Y position for row grouping
+struct ScannedControl {
+    KnobAddress addr;
+    qreal y;
+};
 
-    // Check if this object has hex0 property (FilmstripKnob or SyComboBox)
-    QVariant hex0Var = root->property("hex0");
+static void collectVisibleControls(QObject *obj, QVector<ScannedControl> &out)
+{
+    if (!obj) return;
+
+    // Skip invisible items and all their children (hidden tabs, etc.)
+    QQuickItem *item = qobject_cast<QQuickItem*>(obj);
+    if (item && !item->isVisible()) return;
+
+    QVariant hex0Var = obj->property("hex0");
     if (hex0Var.isValid() && !hex0Var.toString().isEmpty()) {
         QString hex0 = hex0Var.toString();
-        QString hex1 = root->property("hex1").toString();
-        QString hex2 = root->property("hex2").toString();
-        QString hex3 = root->property("hex3").toString();
-        if (!hex0.isEmpty() && !hex3.isEmpty()) {
-            registerKnob(hex0, hex1, hex2, hex3);
+        QString hex3 = obj->property("hex3").toString();
+        if (!hex0.isEmpty() && !hex3.isEmpty() && item) {
+            ScannedControl sc;
+            sc.addr.hex0 = hex0;
+            sc.addr.hex1 = obj->property("hex1").toString();
+            sc.addr.hex2 = obj->property("hex2").toString();
+            sc.addr.hex3 = hex3;
+            QPointF pos = item->mapToScene(QPointF(0, 0));
+            sc.y = pos.y();
+            out.append(sc);
         }
     }
 
-    // Recurse into children
-    for (QObject *child : root->children()) {
-        scanAndRegisterKnobs(child);
+    for (QObject *child : obj->children())
+        collectVisibleControls(child, out);
+}
+
+void ParameterBridge::scanAndRegisterKnobs(QObject *root)
+{
+    // Step 1: collect only VISIBLE controls with scene Y position
+    QVector<ScannedControl> controls;
+    collectVisibleControls(root, controls);
+    if (controls.isEmpty()) return;
+
+    // Step 2: sort by Y (top to bottom), stable sort preserves left-to-right order
+    std::stable_sort(controls.begin(), controls.end(),
+        [](const ScannedControl &a, const ScannedControl &b) {
+            return a.y < b.y;
+        });
+
+    // Step 3: group into visual rows and pad each to 8 for LCXL alignment
+    // Controls within 60px Y of each other = same visual row
+    // (merges header dropdowns with adjacent knob row, keeps Grid rows separate at ~108px gap)
+    KnobAddress empty = {"", "", "", ""};
+    QVector<KnobAddress> result;
+    qreal rowStartY = controls.first().y;
+    int countInRow = 0;
+    int rowCount = 0;
+    QString debugRows;
+
+    for (int i = 0; i < controls.size(); i++) {
+        bool newRow = (controls[i].y - rowStartY > 60.0) && countInRow > 0;
+
+        if (newRow) {
+            int padding = (8 - (countInRow % 8)) % 8;
+            for (int p = 0; p < padding; p++)
+                result.append(empty);
+            debugRows += QString("r%1:%2 ").arg(rowCount).arg(countInRow);
+            rowCount++;
+            countInRow = 0;
+            rowStartY = controls[i].y;
+        }
+
+        result.append(controls[i].addr);
+        countInRow++;
     }
+    debugRows += QString("r%1:%2").arg(rowCount).arg(countInRow);
+
+    m_registeredKnobs = result;
+    MidiCCHandler *handler = MidiCCHandler::Instance();
+    handler->setActiveKnobs(m_registeredKnobs);
+
+    emit handler->ccActivity(QString("CC: %1 knobs %2 [%3 slots]")
+                             .arg(controls.size()).arg(debugRows).arg(result.size()));
 }

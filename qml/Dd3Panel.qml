@@ -1,27 +1,12 @@
 import QtQuick
-import "DdTypeData.js" as DdData
 
 SyPanelBase {
     id: panel
     hex1: "00"; hex2: "3E"
     accentColor: Qt.rgba(0.85, 0.85, 0.85, 1)
-    title: "DELAY 3"
+    title: "MASTER DELAY"
     powerHex0: "10"; powerHex1: hex1; powerHex2: hex2; powerHex3: "00"
     showHeader: false
-
-    property int ddTypeIndex: 0
-    property var typeCombo: null
-
-    Component.onCompleted: {
-        ddTypeIndex = paramBridge.getValue("10", hex1, hex2, "01")
-    }
-
-    Connections {
-        target: typeCombo
-        function onValueChanged() {
-            panel.ddTypeIndex = typeCombo.value
-        }
-    }
 
     Column {
         width: parent.width
@@ -30,7 +15,7 @@ SyPanelBase {
         StompHeader {
             width: parent.width
             accentColor: panel.accentColor
-            title: "DELAY 3"
+            title: "MASTER DELAY"
             powerHex0: "10"; powerHex1: panel.hex1; powerHex2: panel.hex2; powerHex3: "00"
         }
 
@@ -39,7 +24,6 @@ SyPanelBase {
         SyModeSelector {
             label: "TYPE"
             hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "01"
-            Component.onCompleted: typeCombo = combo
         }
 
         Flickable {
@@ -52,90 +36,60 @@ SyPanelBase {
             Column {
                 id: contentCol
                 width: parent.width
-                spacing: SyTheme.flowSpacingSm
+                spacing: 8
                 topPadding: SyTheme.panelPadding
 
+                // --- Row 1: TIME, FEEDBACK, HIGH CUT, TAP TIME, MOD RATE, MOD DEPTH ---
                 Flow {
                     width: parent.width - 2 * SyTheme.panelPadding
                     x: SyTheme.panelPadding
                     spacing: SyTheme.flowSpacingSm
-                    visible: DdData.getCategory(panel.ddTypeIndex) !== "dual"
 
-                    Repeater {
-                        model: {
-                            var cat = DdData.getCategory(panel.ddTypeIndex)
-                            if (cat === "pan") return DdData.getPanControls()
-                            if (cat === "modulate") return DdData.getModulateControls()
-                            if (cat === "twist") return DdData.getTwistControls()
-                            return DdData.getSimpleControls()
-                        }
-
-                        Loader {
-                            property var ctrl: modelData
-                            sourceComponent: {
-                                if (!ctrl) return null
-                                if (ctrl.type === "combo") return ddComboComp
-                                return ddKnobComp
-                            }
-                        }
-                    }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "06"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "07"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "1F"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "18"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "19"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
                 }
 
-                Column {
-                    width: parent.width
+                Rectangle { width: parent.width - 2 * SyTheme.panelPadding; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
+
+                // --- Row 2: D1 TIME, D1 FEEDBACK, D1 HIGH CUT, D1 EFFECT LEVEL,
+                //            D2 TIME, D2 FEEDBACK, D2 HIGH CUT, D2 EFFECT LEVEL ---
+                Flow {
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
                     spacing: SyTheme.flowSpacingSm
-                    visible: DdData.getCategory(panel.ddTypeIndex) === "dual"
 
-                    Text { x: SyTheme.panelPadding; text: "DELAY A"; color: SyTheme.textSection; font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0A"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0E"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0F"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "10"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "11"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "15"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "16"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "17"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                }
 
-                    Flow {
-                        width: parent.width - 2 * SyTheme.panelPadding; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
-                        Repeater {
-                            model: DdData.getDualControls1()
-                            Loader { property var ctrl: modelData; sourceComponent: ddKnobComp }
-                        }
-                    }
+                Rectangle { width: parent.width - 2 * SyTheme.panelPadding; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
 
-                    Rectangle { width: parent.width - 2 * SyTheme.panelPadding; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
+                // --- Row 3: TRIGGER, RISE TIME, FALL TIME, FADE TIME,
+                //            EFFECT LEVEL, DIRECT LEVEL, CARRY OVER ---
+                Flow {
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
+                    spacing: SyTheme.flowSpacingSm
 
-                    Text { x: SyTheme.panelPadding; text: "DELAY B"; color: SyTheme.textSection; font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily }
-
-                    Flow {
-                        width: parent.width - 2 * SyTheme.panelPadding; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
-                        Repeater {
-                            model: DdData.getDualControls2()
-                            Loader { property var ctrl: modelData; sourceComponent: ddKnobComp }
-                        }
-                    }
-
-                    Rectangle { width: parent.width - 2 * SyTheme.panelPadding; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
-
-                    Text { x: SyTheme.panelPadding; text: "OUTPUT"; color: SyTheme.textSection; font.pixelSize: SyTheme.fontSmall; font.family: SyTheme.fontFamily }
-
-                    Flow {
-                        width: parent.width - 2 * SyTheme.panelPadding; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
-                        Repeater {
-                            model: DdData.getDualCommon()
-                            Loader { property var ctrl: modelData; sourceComponent: ddKnobComp }
-                        }
-                    }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "1A"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "1C"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "1D"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "1E"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "09"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "20"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
                 }
             }
-        }
-    }
-
-    Component {
-        id: ddKnobComp
-        FilmstripKnob {
-            hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: ctrl.hex3
-            filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge
-        }
-    }
-
-    Component {
-        id: ddComboComp
-        SyComboBox {
-            hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: ctrl.hex3
         }
     }
 }

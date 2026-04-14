@@ -62,6 +62,8 @@
         <file>Dd2Panel.qml</file>
         <file>Dd3Panel.qml</file>
         <file>DdTypeData.js</file>
+        <file>MstDelayData.js</file>
+        <file>SyDualModeSelector.qml</file>
         <file>LpPanel.qml</file>
         <file>Fv1Panel.qml</file>
         <file>Fv2Panel.qml</file>

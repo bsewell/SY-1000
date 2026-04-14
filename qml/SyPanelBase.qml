@@ -13,6 +13,9 @@ Rectangle {
     property string powerHex3: ""
     property bool showHeader: true
 
+    // Power state forwarded from C++ editWindow::setPowerState()
+    property int powerValue: 0
+
     // Content goes here via default property
     default property alias content: contentArea.children
 

@@ -1,150 +1,132 @@
 import QtQuick
 import ".."
 
+// FX Delay view — Boss 3-row layout matching Master Delay
+// Row 1: TIME, FEEDBACK, HIGH CUT, TAP TIME, MOD RATE, MOD DEPTH
+// Row 2: D1 TIME, D1 FEEDBACK, D1 HIGH CUT, D1 EFFECT LEVEL,
+//        D2 TIME, D2 FEEDBACK, D2 HIGH CUT, D2 EFFECT LEVEL
+// Row 3: TRIGGER, RISE TIME, FALL TIME, FADE TIME,
+//        EFFECT LEVEL, DIRECT LEVEL, CARRY OVER, BPM
 Item {
     id: root
     property string hex1: "00"
-    property string hex2: "48"  // guitar="48", bass="45"
-
-    property int delayMode: 0
-
-    Component.onCompleted: {
-        delayMode = paramBridge.getValue("10", hex1, hex2, "01")
-    }
-
-    Connections {
-        target: delayModeCombo
-        function onValueChanged() { root.delayMode = delayModeCombo.value }
-    }
+    property string hex2: "48"
 
     Column {
         anchors.fill: parent
-        spacing: 8
-        topPadding: 12
+        spacing: 0
 
-        // Mode selector
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 16
+        // TYPE + MODE selector bar
+        Rectangle {
+            width: parent.width
+            height: SyTheme.modeSelectorH
+            color: SyTheme.bgControl
 
-            SyComboBox {
-                id: delayModeCombo
-                hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+            Row {
+                anchors.fill: parent
+                anchors.leftMargin: SyTheme.panelPadding
+                spacing: 8
+
+                Text {
+                    width: SyTheme.selectorLabelW
+                    text: "TYPE"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: SyTheme.fontLabel
+                    font.family: SyTheme.fontFamily
+                    font.capitalization: Font.AllUppercase
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                SyComboBox {
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                    labelWidth: 0
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                Item { width: 16; height: 1 }
+
+                Text {
+                    width: SyTheme.selectorLabelW
+                    text: "MODE"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: SyTheme.fontLabel
+                    font.family: SyTheme.fontFamily
+                    font.capitalization: Font.AllUppercase
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                SyComboBox {
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1A"
+                    labelWidth: 0
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
         }
 
-        Rectangle { width: parent.width - 24; height: 1; color: SyTheme.divider; anchors.horizontalCenter: parent.horizontalCenter }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
-        Item {
+        // Knob content
+        Flickable {
             width: parent.width
-            height: parent.height - 60
+            height: parent.height - SyTheme.modeSelectorH - 1
+            contentHeight: contentCol.height + 2 * SyTheme.panelPadding
+            clip: true
+            interactive: contentHeight > height
 
-            // Simple delay modes (STEREO1=0, STEREO2=1, REVERSE=6, ANALOG=7, TAPE=8, WARP=9)
-            Row {
-                anchors.centerIn: parent
-                spacing: 12
-                visible: root.delayMode <= 1 || (root.delayMode >= 6 && root.delayMode <= 9)
-
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-            }
-
-            // PAN mode (2) — adds tap time %
-            Row {
-                anchors.centerIn: parent
-                spacing: 12
-                visible: root.delayMode === 2
-
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1F"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-            }
-
-            // DUAL modes (SERIES=3, PARALLEL=4, L/R=5)
             Column {
-                anchors.centerIn: parent
+                id: contentCol
+                width: parent.width
                 spacing: 8
-                visible: root.delayMode >= 3 && root.delayMode <= 5
+                topPadding: SyTheme.panelPadding
 
-                // Delay 1
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 12
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0F"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "10"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                }
+                // --- Row 1: TIME, FEEDBACK, HIGH CUT, TAP TIME, MOD RATE, MOD DEPTH ---
+                Flow {
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
+                    spacing: SyTheme.flowSpacingSm
 
-                Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
-
-                // Delay 2
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 12
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "11"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "15"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "16"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "17"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                }
-
-                // Direct + carry over
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 12
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                }
-            }
-
-            // MODULATE mode (10)
-            Row {
-                anchors.centerIn: parent
-                spacing: 12
-                visible: root.delayMode === 10
-
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "18"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "19"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1A"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-            }
-
-            // TWIST mode (11)
-            Column {
-                anchors.centerIn: parent
-                spacing: 8
-                visible: root.delayMode === 11
-
-                property int twistMode: 0
-                Component.onCompleted: {
-                    twistMode = paramBridge.getValue("10", root.hex1, root.hex2, "1B")
-                }
-
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 12
                     FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1B" }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1C"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1D"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "06"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "07"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1E"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "18"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "19"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                }
+
+                Rectangle { width: parent.width - 2 * SyTheme.panelPadding; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
+
+                // --- Row 2: D1/D2 TIME, FEEDBACK, HIGH CUT, EFFECT LEVEL ---
+                Flow {
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
+                    spacing: SyTheme.flowSpacingSm
+
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0E"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0F"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "10"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "11"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "15"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "16"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "17"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                }
+
+                Rectangle { width: parent.width - 2 * SyTheme.panelPadding; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
+
+                // --- Row 3: TRIGGER, RISE TIME, FALL TIME, FADE TIME,
+                //            EFFECT LEVEL, DIRECT LEVEL, CARRY OVER, BPM ---
+                Flow {
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
+                    spacing: SyTheme.flowSpacingSm
+
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "19"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1B"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1C"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1D"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
                     FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "20"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1F"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
                 }
             }
         }

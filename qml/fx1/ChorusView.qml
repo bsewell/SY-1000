@@ -39,6 +39,7 @@ Item {
                 spacing: 8
 
                 Text {
+                    width: SyTheme.selectorLabelW
                     text: "MODE"
                     color: SyTheme.textDimmed
                     font.pixelSize: SyTheme.fontLabel
@@ -50,6 +51,7 @@ Item {
                 SyComboBox {
                     id: modeCombo
                     hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                    labelWidth: 0
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }

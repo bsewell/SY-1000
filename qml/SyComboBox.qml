@@ -12,7 +12,11 @@ Item {
     property int value: 0
     property var options: []
 
-    implicitWidth: 380
+    // Dimmed state: control stays visible but grayed out and non-interactive
+    property bool dimmed: false
+    opacity: dimmed ? 0.35 : 1.0
+
+    implicitWidth: labelWidth > 0 ? labelWidth + 4 + 160 : 160
     implicitHeight: 28
 
     Component.onCompleted: {
@@ -133,6 +137,7 @@ Item {
 
     Text {
         id: labelText
+        visible: root.labelWidth > 0
         width: root.labelWidth
         anchors.verticalCenter: parent.verticalCenter
         text: root.label
@@ -145,7 +150,7 @@ Item {
 
     Rectangle {
         id: comboButton
-        x: root.labelWidth + 4
+        x: root.labelWidth > 0 ? root.labelWidth + 4 : 0
         width: root.width - x
         height: 26
         radius: 4
@@ -177,6 +182,7 @@ Item {
 
         MouseArea {
             anchors.fill: parent
+            enabled: !root.dimmed
             onClicked: root.openPopup()
         }
     }

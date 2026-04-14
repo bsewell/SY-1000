@@ -22,6 +22,10 @@ Item {
     // Layout mode: "bottom" = label+value below knob, "left" = label+value to left of knob
     property string labelPosition: "bottom"
 
+    // Dimmed state: control stays visible but grayed out and non-interactive
+    property bool dimmed: false
+    opacity: dimmed ? 0.35 : 1.0
+
     implicitWidth: labelPosition === "left" ? 56 + 4 + frameSize : frameSize + 24
     implicitHeight: labelPosition === "left" ? frameSize : frameSize + 28
 
@@ -95,6 +99,7 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
+                enabled: !root.dimmed
                 preventStealing: true
                 property real lastY: 0
                 onPressed: function(mouse) { lastY = mouse.y }
@@ -175,6 +180,7 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
+                enabled: !root.dimmed
                 preventStealing: true
                 property real lastY: 0
                 onPressed: function(mouse) { lastY = mouse.y }

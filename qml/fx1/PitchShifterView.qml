@@ -22,18 +22,37 @@ Item {
         spacing: 8
         topPadding: 12
 
-        // Mode selector
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 16
+        // Mode selector bar
+        Rectangle {
+            width: parent.width
+            height: 32
+            color: SyTheme.bgControl
 
-            SyComboBox {
-                id: psModeCombo
-                hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00"
+            Row {
+                anchors.fill: parent
+                anchors.leftMargin: 12
+                spacing: 8
+
+                Text {
+                    width: SyTheme.selectorLabelW
+                    text: "VOICE"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: SyTheme.fontLabel
+                    font.family: SyTheme.fontFamily
+                    font.capitalization: Font.AllUppercase
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                SyComboBox {
+                    id: psModeCombo
+                    hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00"
+                    labelWidth: 0
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
         }
 
-        Rectangle { width: parent.width - 24; height: 1; color: SyTheme.divider; anchors.horizontalCenter: parent.horizontalCenter }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
         Item {
             width: parent.width

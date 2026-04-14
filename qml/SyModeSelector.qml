@@ -27,6 +27,7 @@ Column {
             spacing: 8
 
             Text {
+                width: SyTheme.selectorLabelW
                 text: root.label
                 color: SyTheme.textDimmed
                 font.pixelSize: SyTheme.fontLabel
@@ -38,6 +39,7 @@ Column {
             SyComboBox {
                 id: modeCombo
                 hex0: root.hex0; hex1: root.hex1; hex2: root.hex2; hex3: root.hex3
+                labelWidth: 0
                 anchors.verticalCenter: parent.verticalCenter
             }
         }

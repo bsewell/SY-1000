@@ -115,8 +115,8 @@ function getControls(typeIndex) {
     case 13: // Humanizer
         return [
             { type: "combo", hex3: "00" },
-            { type: "combo", hex3: "01" },
-            { type: "combo", hex3: "02" },
+            { type: "knob",  hex3: "01" },
+            { type: "knob",  hex3: "02" },
             { type: "knob",  hex3: "03" },
             { type: "knob",  hex3: "04" },
             { type: "knob",  hex3: "05" },

@@ -40,6 +40,7 @@ QtObject {
     // ── Sizing ──
     readonly property int headerHeight:    40
     readonly property int modeSelectorH:   32
+    readonly property int selectorLabelW:  90     // fixed label column for selector bars (Boss alignment)
     readonly property int settingRowH:     44
     readonly property int settingRowTallH: 50
     readonly property int panelWidth:      800

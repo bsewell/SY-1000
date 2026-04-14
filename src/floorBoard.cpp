@@ -41,7 +41,12 @@
 #include "menuPage_system.h"
 #include "menuPage_tuner.h"
 #include "menuPage_master.h"
+#include "menuPage_midi.h"
 #include "menuPage_pdl.h"
+#include "midiCCHandler.h"
+#include "parameterBridge.h"
+#include "qmlHost.h"
+#include "editWindow.h"
 #include "soundSource_inst1.h"
 #include "soundSource_inst2.h"
 #include "soundSource_inst3.h"
@@ -124,6 +129,12 @@ floorBoard::floorBoard(QWidget *parent,
     this->pos = pos;
     SysxIO *sysxIO = SysxIO::Instance();
     sysxIO->midi = new midiIO();
+
+    // Connect CC controller input to handler
+    MidiCCHandler *ccHandler = MidiCCHandler::Instance();
+    QObject::connect(sysxIO->midi, SIGNAL(ccReceived(int,int,int)),
+                     ccHandler, SLOT(handleCC(int,int,int)));
+
     bankTreeList *bankList = new bankTreeList(this);
     floorBoardDisplay *display = new floorBoardDisplay(this);
 
@@ -1271,8 +1282,21 @@ void floorBoard::setEditDialog(editWindow* editDialog)
     };
     this->centerEditDialog();
     this->editDialog->pageUpdateSignal();
+
     this->editDialog->show();
     this->editDialog->raise();
+
+    // Scan the active QML panel for knobs and register them with CC handler
+    ParameterBridge::Instance()->clearRegisteredKnobs();
+    QObject *qmlRoot = this->editDialog->getQmlRoot();
+    { QFile f("/tmp/cc_scan.log"); f.open(QIODevice::Append);
+      QTextStream ts(&f);
+      ts << "setEditDialog: qmlRoot=" << (qmlRoot ? "YES" : "NULL")
+         << " dialog=" << this->editDialog
+         << " title=" << this->editDialog->getTitle() << "\n"; }
+    if (qmlRoot) {
+        ParameterBridge::Instance()->scanAndRegisterKnobs(qmlRoot);
+    }
 }
 
 void floorBoard::centerEditDialog()
@@ -1413,6 +1437,8 @@ void floorBoard::initMenuPages()
 
     menuPage *assign1 = new menuPage_assign1(this);
     assign1->setId(15);
+
+    // MIDI CC controller handled by MidiCCHandler + status bar — no menu page needed
 }
 
 void floorBoard::menuButtonSignal()

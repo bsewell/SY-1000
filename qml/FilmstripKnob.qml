@@ -39,6 +39,8 @@ Item {
         }
     }
 
+    // CC knob registration is handled by C++ scanAndRegisterKnobs() when panel activates
+
     Connections {
         target: paramBridge
         function onDataRefreshed() {

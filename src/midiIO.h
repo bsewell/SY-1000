@@ -73,6 +73,7 @@ signals:
     void errorEvent();
     void midiData(QString message);
     void updateMode(QString mode);
+    void ccReceived(int channel, int ccNumber, int value);
 
 private slots:
     void run();
@@ -111,6 +112,12 @@ private:
     QList<QString> leftOvers;
     int last_progress;
     QString deviceID;
+
+    // CC controller input (separate port for Launch Control XL etc.)
+    void pollCCInput();
+    signed int getCCInDevice();
+    signed int midiCCInPort;
+    QString cc_in_device_name;
 };
 
 #endif // MIDIIO_H

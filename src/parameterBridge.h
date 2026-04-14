@@ -6,6 +6,8 @@
 #include <QStringList>
 #include <QVariantList>
 #include <QVariantMap>
+#include <QVector>
+#include "midiCCHandler.h"
 
 class ParameterBridge : public QObject
 {
@@ -37,6 +39,13 @@ public:
     Q_INVOKABLE QVariantList getOptions(const QString &hex0, const QString &hex1,
                                         const QString &hex2, const QString &hex3);
 
+    // CC controller knob registration
+    Q_INVOKABLE void registerKnob(const QString &hex0, const QString &hex1,
+                                  const QString &hex2, const QString &hex3);
+    Q_INVOKABLE void clearRegisteredKnobs();
+    Q_INVOKABLE void requestRescan();  // QML calls this when panel content changes (e.g. FX TYPE switch)
+    void scanAndRegisterKnobs(QObject *root);
+
 signals:
     void parameterChanged(const QString &hex0, const QString &hex1,
                           const QString &hex2, const QString &hex3,
@@ -46,6 +55,8 @@ signals:
 private:
     explicit ParameterBridge(QObject *parent = nullptr);
     static ParameterBridge *instance;
+    QVector<KnobAddress> m_registeredKnobs;
+    QObject *m_lastScanRoot = nullptr;
 };
 
 #endif // PARAMETERBRIDGE_H

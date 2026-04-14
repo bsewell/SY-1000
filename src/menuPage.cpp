@@ -82,6 +82,8 @@ menuPage::menuPage(QWidget *parent, unsigned int id, QString imagePath, QPoint s
     QObject::connect(this->parent(), SIGNAL(system_buttonSignal(bool)), this, SLOT(system_ButtonSignal(bool) ));
     QObject::connect(this->parent(), SIGNAL(system_buttonSignal(bool)), this->parent(), SLOT(menuButtonSignal()));
 
+    // MIDI CC handled by status bar, no menu page button
+
     QObject::connect(this->parent(), SIGNAL(tuner_buttonSignal(bool)), this, SLOT(tuner_ButtonSignal(bool) ));
     QObject::connect(this->parent(), SIGNAL(tuner_buttonSignal(bool)), this->parent(), SLOT(menuButtonSignal()));
 

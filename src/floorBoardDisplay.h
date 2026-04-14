@@ -106,7 +106,7 @@ private:
         customButton *connectButton;
         customButton *writeButton;
         customPanelButton *system_Button;
-        customPanelButton *master_Button;
+        // midi_Button removed — CC display is in bottom status bar
         customPanelButton *tuner_Button;
         customPanelButton *setup_Button;
         customPanelButton *pedal_Button;

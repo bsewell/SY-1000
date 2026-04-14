@@ -2,17 +2,17 @@
 
 ChainLayout::ChainLayout(double ratio, int rowMidY[4])
     : m_ratio(ratio)
-    , m_flowStep(qRound(55.0 * ratio))
-    , m_firstFlowX(qRound(15.0 * ratio)
-                   + qRound(192.0 * ratio / 2.4)
-                   + qRound(15.0 * ratio))
+    , m_flowStep(qRound(kFlowStep * ratio))
+    , m_firstFlowX(qRound(kInstStartX * ratio)
+                   + qRound(kInstImageW * ratio / kFlowBlockScale)
+                   + qRound(kTouchGap * ratio))
 {
     // Instrument row centres = fixed base Y (lev) + measured widget mid offset.
     const int lev[4] = {
-        qRound( 65.0 * ratio),   // lev1 — INST1
-        qRound(130.0 * ratio),   // lev2 — INST2
-        qRound(195.0 * ratio),   // lev3 — INST3
-        qRound(260.0 * ratio),   // lev4 — NORMAL
+        qRound(kRowSpacing * 1.0 * ratio),   // lev1 — INST1
+        qRound(kRowSpacing * 2.0 * ratio),   // lev2 — INST2
+        qRound(kRowSpacing * 3.0 * ratio),   // lev3 — INST3
+        qRound(kRowSpacing * 4.0 * ratio),   // lev4 — NORMAL
     };
     for (int i = 0; i < 4; ++i)
         m_rowCenter[i] = lev[i] + rowMidY[i];

@@ -132,6 +132,14 @@ floorBoard::floorBoard(QWidget *parent,
     display->setPos(displayPos);
 
     initStomps();
+    // Re-run layout now that stomp widgets exist and can report their
+    // signalCenterYOffset.  The first update_structure() (inside
+    // setFloorBoard → initSize) ran before initStomps, so it fell back
+    // to raw row-centre Y values.  This second pass centres each widget
+    // on its signal line using actual widget geometry.
+    this->_lastStructureSignature.clear();
+    this->fxPos.clear();
+    update_structure();
     initMenuPages();
 
     this->editDialog = new editWindow(this);
@@ -272,29 +280,9 @@ void floorBoard::paintEvent(QPaintEvent *)
         drawOrthogonal(polygon.at(15), polygon.at(17), false);   //link 8-9 MIX = mixer upper to mixer lower.
     }
     else
-    {
-        if(B_channel>0)
-        {  // if single B channel, draw B route white, A route grey.
-            drawOrthogonal(polygon.at(16), polygon.at(17), true);    //index9 = divider lower to mixer lower.
-            drawOrthogonal(polygon.at(13), polygon.at(16), false);   //link 9 = divider centre to divider lower.
-            drawOrthogonal(polygon.at(18), polygon.at(17), false);   //link 9 = mixer centre to mixer lower.
-
-            painter.setPen(greyPen);
-            drawOrthogonal(polygon.at(14), polygon.at(15), true);    //index8 = divider upper to mixer upper.
-            drawOrthogonal(polygon.at(13), polygon.at(14), false);   //link 8 = divider centre to divider upper.
-            drawOrthogonal(polygon.at(18), polygon.at(15), false);   //link 8 = mixer center to mixer upper.
-        }
-        else
-        {
-            drawOrthogonal(polygon.at(14), polygon.at(15), true);    //index8 = divider upper to mixer upper.
-            drawOrthogonal(polygon.at(13), polygon.at(14), false);   //link 8 = divider centre to divider upper.
-            drawOrthogonal(polygon.at(18), polygon.at(15), false);   //link 8 = mixer center to mixer upper.
-
-            painter.setPen(greyPen);
-            drawOrthogonal(polygon.at(16), polygon.at(17), true);    //index9 = divider lower to mixer lower.
-            drawOrthogonal(polygon.at(13), polygon.at(16), false);   //link 9 = divider centre to divider lower.
-            drawOrthogonal(polygon.at(18), polygon.at(17), false);   //link 9  = mixer centre to mixer lower.
-        };
+    {   // Single channel: straight horizontal line from DIV centre to MIX centre.
+        // No vertical branch risers — matches Boss Tone Studio single-channel view.
+        drawOrthogonal(polygon.at(13), polygon.at(18), true);
     };
     //painter.setPen(blackPen);
     //painter.drawLine(polygon.at(13), polygon.at(18));
@@ -463,28 +451,28 @@ void floorBoard::initStomps()
     //Normal Pick Up
     stompBox *normal = new soundsource_normal(this);
     normal->setId(0);
-    normal->setPos(QPoint(offset+(15*ratio), 260*ratio));
+    normal->setPos(QPoint(offset+(15*ratio), 208*ratio));
     this->stompBoxes.replace(0, normal);
     this->stompNames.replace(0, "3");
 
     //Inst 1
     stompBox *inst1 = new soundsource_inst1(this);
     inst1->setId(1);
-    inst1->setPos(QPoint(offset+(15*ratio), 65*ratio));
+    inst1->setPos(QPoint(offset+(15*ratio), 52*ratio));
     this->stompBoxes.replace(1, inst1);
     this->stompNames.replace(1, "0");
 
     //Inst 2
     stompBox *inst2 = new soundsource_inst2(this);
     inst2->setId(2);
-    inst2->setPos(QPoint(offset+(15*ratio), 130*ratio));
+    inst2->setPos(QPoint(offset+(15*ratio), 104*ratio));
     this->stompBoxes.replace(2, inst2);
     this->stompNames.replace(2, "1");
 
     //Inst 3
     stompBox *inst3 = new soundsource_inst3(this);
     inst3->setId(3);
-    inst3->setPos(QPoint(offset+(15*ratio), 195*ratio));
+    inst3->setPos(QPoint(offset+(15*ratio), 156*ratio));
     this->stompBoxes.replace(3, inst3);
     this->stompNames.replace(3, "2");
 
@@ -1629,24 +1617,24 @@ void floorBoard::update_structure()
     index2 = index2 - index1 - 1;
     index1 = index1 - 85;
 
-    // Balancer column = immediately after the last block on the longer input branch.
-    // No +1 gap: the balancer occupies the next column directly, avoiding empty-column
-    // gaps that cascade downstream and create "long wire" problems.
-    int bal1xpos = index1;
-    if(index2 > index1){ bal1xpos = index2; };
+    // Balancer column = one column PAST the last block on the longer input branch.
+    // The +1 ensures the balancer doesn't share a column with the last FX item
+    // on its input row, preventing visual overlap (e.g. I/O box and BAL2 stacking).
+    int bal1xpos = qMax(1, index1);
+    if(index2 > bal1xpos){ bal1xpos = index2; };
 
-    int bal2xpos = index3;
-    if(index4 > index3){ bal2xpos = index4; };
-    if((bal1xpos + index3) > bal2xpos){ bal2xpos = bal1xpos + index3; };
+    int bal2xpos = index3 + 1;
+    if(index4 + 1 > bal2xpos){ bal2xpos = index4 + 1; };
+    if((bal1xpos + index3 + 1) > bal2xpos){ bal2xpos = bal1xpos + index3 + 1; };
 
     int bal3xpos = index5;
-    if(index6 > index5){ bal3xpos = index6; };
+    if(index6 > bal3xpos){ bal3xpos = index6; };
     if((bal2xpos + index5) > bal3xpos){ bal3xpos = bal2xpos + index5; };
 
     // Layout rule §L1: no balancer may be pushed more than MAX_BAL_SPREAD columns beyond
     // the longer of its two direct input paths. Prevents excessively long empty-wire gaps
     // on shorter input rows (e.g. INST3 row when BAL1 output path has many items).
-    const int MAX_BAL_SPREAD = 2;
+    const int MAX_BAL_SPREAD = 1;
     {
         // Cap is measured from C1 (absolute columns) but must never pull a balancer
         // behind the previous one (ordering invariant BAL1 < BAL2 < BAL3).
@@ -1679,17 +1667,17 @@ void floorBoard::update_structure()
              << "idx5=" << index5 << "idx6=" << index6
              << "dual=" << dual_channel;
 
-    const int flowStep = qRound(55.0*ratio);  // must match ChainLayout::m_flowStep
+    const int flowStep = qRound(48.0*ratio);  // must match ChainLayout::m_flowStep — tightened to match Boss Tone Studio spacing
     const int hiddenFlowY = this->floorHeight + qRound(50*ratio);  // must be below the 800px floor image
     const int fxLineBiasY = 0;
-    int lev1 = 65*ratio;
-    int lev2 = 130*ratio;
-    int lev3 = 195*ratio;
-    int lev4 = 260*ratio;
+    int lev1 = 52*ratio;
+    int lev2 = 104*ratio;
+    int lev3 = 156*ratio;
+    int lev4 = 208*ratio;
     int y_axis = lev1;
     const int instStartX = qRound(15*ratio);
     const int instWidth = qRound(192.0*ratio/2.4);   // actual rendered width: 192px image / kFlowBlockScale 2.4 = 80px
-    const int touchGap = qRound(15*ratio);            // fixed gap between adjacent stomp blocks (§5a touch gap rule)
+    const int touchGap = qRound(8*ratio);              // gap between source block and first FX — tightened to match Boss
     const int firstFlowX = instStartX + instWidth + touchGap;  // first stomp left edge = source right + touchGap
     int x_axis = firstFlowX;
     int incr = 0;
@@ -1832,6 +1820,11 @@ void floorBoard::update_structure()
         else if(stomp>27 && incr==3)      { newFxPos.append(QPoint(offset+layout.colX(bal2xpos), rowCenterBal2 - balancerHalfHeight)); x_axis=layout.colX(bal2xpos); y_axis=rowCenterBal2 - balancerHalfHeight; rowCenterCurrent=rowCenterBal2; }  // Bal2 out
         else if(stomp>27 && incr==4)      { newFxPos.append(QPoint(offset+ 0, hiddenFlowY));     x_axis=firstFlowX-flowStep; y_axis=lev4; rowCenterCurrent=rowCenter4; }  // fill lev4 – left-pack NORMAL items from C1 (§5a C1 rule)
         else if(stomp>27 && incr==5)      { newFxPos.append(QPoint(offset+layout.colX(bal3xpos), rowCenterBal3 - balancerHalfHeight)); x_axis=layout.colX(bal3xpos); y_axis=rowCenterBal3 - balancerHalfHeight; rowCenterCurrent=rowCenterBal3; }  // Bal3 out
+        else if(stomp==22 && dual_channel==0)
+        {
+            // Single-channel mode: hide the A/B branch marker off-screen.
+            newFxPos.append(QPoint(offset, hiddenFlowY));
+        }
         else
         {
             const int alignedY = topForRowCenter(stomp, rowCenterCurrent);
@@ -1896,15 +1889,19 @@ void floorBoard::update_structure()
     polygon.append( QPoint(offset+(105*ratio)+(index1*flowStep),   lev1+inst1MidY));  //index1 right   1
     polygon.append( QPoint(offset+(60*ratio),                      lev2+inst2MidY));  //index2 left    2
     polygon.append( QPoint(offset+(105*ratio)+(index2*flowStep),   lev2+inst2MidY));  //index2 right   3
+    // BAL output wires: extend the horizontal run one flowStep PAST the balancer
+    // column so the 90° riser drops AFTER inline items, not on top of them.
+    const int bal2RiserX = layout.colX(bal2xpos) + flowStep;  // past I/O box on BAL1 output row
+    const int bal3RiserX = layout.colX(bal3xpos);             // at BAL3 column — no extra offset
     polygon.append( QPoint(offset+layout.colX(bal1xpos),           bal1MidY));         //index3 left    4
-    polygon.append( QPoint(offset+layout.colX(bal2xpos),           bal1MidY));         //index3 right   5
+    polygon.append( QPoint(offset+bal2RiserX,                      bal1MidY));         //index3 right   5  — past I/O box
     polygon.append( QPoint(offset+(78*ratio),                      lev3+inst3MidY));  //index4 left    6
-    polygon.append( QPoint(offset+layout.colX(bal2xpos),           lev3+inst3MidY));  //index4 right   7
-    polygon.append( QPoint(offset+layout.colX(bal2xpos),           rowCenterBal2));    //index5 left    8  (BAL2 out; corrected by placeBalancerOnRiser)
-    polygon.append( QPoint(offset+layout.colX(bal3xpos),           rowCenterBal2));    //index5 right   9  (BAL3 A in = BAL2 out level)
+    polygon.append( QPoint(offset+bal2RiserX,                      lev3+inst3MidY));  //index4 right   7
+    polygon.append( QPoint(offset+bal2RiserX,                      rowCenterBal2));    //index5 left    8  (BAL2 out riser)
+    polygon.append( QPoint(offset+bal3RiserX,                      rowCenterBal2));    //index5 right   9  (BAL3 riser)
     polygon.append( QPoint(offset+(78*ratio),                      lev4+normalMidY)); //index6 left    10
-    polygon.append( QPoint(offset+layout.colX(bal3xpos),           lev4+normalMidY)); //index6 right   11
-    polygon.append( QPoint(offset+layout.colX(bal3xpos),           rowCenterBal3));    //index7 left    12 (BAL3 out; corrected by placeBalancerOnRiser)
+    polygon.append( QPoint(offset+bal3RiserX,                      lev4+normalMidY)); //index6 right   11 — past BAL3 output items
+    polygon.append( QPoint(offset+bal3RiserX,                      rowCenterBal3));    //index7 left    12 (BAL3 out riser)
     polygon.append(fxPos.at(dividerChainIndex)+QPoint(flowMidX, dividerMidY));   // at divider    13
     polygon.append(fxPos.at(dividerChainIndex)+QPoint(flowMidX, dividerTopY));   // above divider 14
     polygon.append(fxPos.at(mixerChainIndex)+QPoint(flowMidX, mixerTopY));       // above mixer   15
@@ -1912,6 +1909,25 @@ void floorBoard::update_structure()
     polygon.append(fxPos.at(mixerChainIndex)+QPoint(flowMidX, mixerBottomY));    // below mixer   17
     polygon.append(fxPos.at(mixerChainIndex)+QPoint(flowMidX, mixerMidY));       // at mixer      18
     polygon.append(this->master_pos+QPoint(masterLeftX, masterMidY));                        // left-mid of MST 19
+
+    // ── Position dump for visual debugging ──
+    {
+        QFile dbg("/tmp/sy_positions.txt");
+        if(dbg.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+            QTextStream ts(&dbg);
+            ts << "ratio=" << ratio << " flowStep=" << flowStep << " firstFlowX=" << firstFlowX << "\n";
+            ts << "bal1xpos=" << bal1xpos << " bal2xpos=" << bal2xpos << " bal3xpos=" << bal3xpos << "\n";
+            ts << "bal2RiserX=" << bal2RiserX << " bal3RiserX=" << bal3RiserX << "\n";
+            ts << "lev1=" << lev1 << " lev2=" << lev2 << " lev3=" << lev3 << " lev4=" << lev4 << "\n";
+            ts << "rowCenterBal1=" << rowCenterBal1 << " rowCenterBal2=" << rowCenterBal2 << " rowCenterBal3=" << rowCenterBal3 << "\n\n";
+            for(int i = 0; i < qMin(fxPos.size(), 34); ++i) {
+                int stomp = (i < m_chainTrace.size()) ? m_chainTrace.at(i).stomp : -1;
+                ts << "chain[" << i << "] stomp=" << stomp << " x=" << fxPos.at(i).x() << " y=" << fxPos.at(i).y() << "\n";
+            }
+            ts << "master x=" << master_pos.x() << " y=" << master_pos.y() << "\n";
+            dbg.close();
+        }
+    }
 
     // Keep branch riser lines visually aligned to the same spacing rhythm as
     // the standard square FX blocks so the right side does not over-stretch.
@@ -2165,9 +2181,25 @@ void floorBoard::update_structure()
             return true;
         };
 
-        placeBalancerOnRiser(29, 1, 3, 4, INT_MIN / 4, this->polygon.at(5).x() - minBalancerOrderGap);
-        placeBalancerOnRiser(31, 5, 7, 8, this->polygon.at(4).x() + minBalancerOrderGap, this->polygon.at(9).x() - minBalancerOrderGap);
-        placeBalancerOnRiser(33, 9, 11, 12, this->polygon.at(8).x() + minBalancerOrderGap, INT_MAX / 4);
+        // Place each balancer circle at its column X, vertically centred on
+        // the riser midpoint.  Uses the same left-edge X as the stomp boxes
+        // below (DS, EQ2, DLY2) so they align visually.
+        // Riser polygon points are NOT moved — they stay at the riser X.
+        {
+            auto placeBalAtColumn = [this, &localSignalRectForId](int stompId, int riserTopIdx, int riserBottomIdx, int colLeftX) {
+                if(stompId < 0 || stompId >= this->stompBoxes.size() || !this->stompBoxes.at(stompId))
+                    return;
+                stompBox *bal = this->stompBoxes.at(stompId);
+                const QRect balLocal = localSignalRectForId(stompId);
+                if(!balLocal.isValid()) return;
+                const int centerY = (this->polygon.at(riserTopIdx).y() + this->polygon.at(riserBottomIdx).y()) / 2;
+                const int widgetY = centerY - balLocal.center().y();
+                bal->setPos(QPoint(colLeftX, widgetY));
+            };
+            placeBalAtColumn(29, 1, 3, offset + layout.colX(bal1xpos));
+            placeBalAtColumn(31, 5, 7, offset + layout.colX(bal2xpos));
+            placeBalAtColumn(33, 9, 11, offset + layout.colX(bal3xpos));
+        }
 
         auto compactSegmentAfterBalancer = [this, hiddenFlowY, standardFxGap, leftAnchorXForId, rightAnchorXForId](int balancerId, int nextBalancerId, bool shiftTailPolygon) -> void
         {

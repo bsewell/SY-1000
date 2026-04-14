@@ -30,6 +30,14 @@ enum class ChainRow : int {
 };
 constexpr int kChainRowCount = 7;
 
+// ── Spacing constants (base values at ratio=1.0) ──
+constexpr double kRowSpacing   = 52.0;   // vertical distance between instrument rows (20% tighter than 65)
+constexpr double kFlowStep     = 48.0;   // horizontal column pitch (Boss-tight)
+constexpr double kTouchGap     =  8.0;   // gap between source block and first FX (Boss-tight)
+constexpr double kInstStartX   = 15.0;   // source block left edge
+constexpr double kInstImageW   = 192.0;  // source block image width (before scale)
+constexpr double kFlowBlockScale = 2.4;  // image-to-widget scale factor
+
 // ChainLayout is computed once per patch load from the UI scale ratio
 // and the measured signal-line mid-Y offsets of the four instrument stomps.
 //

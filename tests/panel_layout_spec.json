@@ -1,0 +1,186 @@
+{
+  "version": "1.0",
+  "description": "SY-1000 FloorBoard stomp box settings panel layout specifications. Each panel defines the expected structure: header, selector rows, knob rows with exact hex addresses, and layout constraints.",
+
+  "layout_rules": {
+    "header": {
+      "height": "SyTheme.headerHeight",
+      "contains": ["power_button", "title", "variation_dropdown"]
+    },
+    "selector_row": {
+      "height": "SyTheme.modeSelectorH",
+      "label_width": "SyTheme.selectorLabelW (90px)",
+      "dropdown_x": "110px from panel edge (12 + 90 + 8)",
+      "dropdown_labelWidth": 0
+    },
+    "knob_area": {
+      "container": "Flickable > Column > Flow",
+      "column_spacing": 12,
+      "column_topPadding": 16,
+      "flow_x": 8,
+      "flow_width": "parent.width - 16",
+      "flow_spacing": 8,
+      "knob_filmstrip": "SyTheme.knobLargeSrc",
+      "knob_frameSize": "SyTheme.knobLarge"
+    },
+    "no_SyPanelBase": "Panels with custom scroll use plain Rectangle root, not SyPanelBase (avoids nested Flickable)"
+  },
+
+  "panels": {
+    "distortion": {
+      "file": "qml/DsPanel.qml",
+      "stompbox": "stompbox_ds.cpp",
+      "root": "Rectangle",
+      "hex1": "00", "hex2": "37",
+      "structure": [
+        { "type": "header", "title": "DISTORTION", "power_hex3": "00" },
+        { "type": "selector", "label": "TYPE", "hex3": "01" },
+        { "type": "knob_area", "rows": [
+          { "controls": [
+            { "type": "knob", "hex3": "02", "label": "Drive" },
+            { "type": "knob", "hex3": "03", "label": "Tone" },
+            { "type": "knob", "hex3": "05", "label": "Bottom" },
+            { "type": "knob", "hex3": "04", "label": "Level" },
+            { "type": "knob", "hex3": "06", "label": "Direct Level" },
+            { "type": "switch", "hex3": "07", "label": "Solo" },
+            { "type": "knob", "hex3": "08", "label": "Solo Level" }
+          ]}
+        ]}
+      ]
+    },
+
+    "compressor": {
+      "file": "qml/CsPanel.qml",
+      "stompbox": "stompbox_cs.cpp",
+      "structure": [
+        { "type": "header", "title": "COMPRESSOR", "power_hex3": "00" },
+        { "type": "selector", "label": "TYPE", "hex3": "01" },
+        { "type": "knob_area" }
+      ]
+    },
+
+    "chorus": {
+      "file": "qml/CePanel.qml",
+      "stompbox": "stompbox_ce.cpp",
+      "structure": [
+        { "type": "header", "title": "CHORUS", "power_hex3": "00" },
+        { "type": "selector", "label": "MODE", "hex3": "01" },
+        { "type": "knob_area", "rows": [
+          { "label": "main", "controls": [
+            { "type": "knob", "hex3": "02" },
+            { "type": "knob", "hex3": "03" },
+            { "type": "knob", "hex3": "04" },
+            { "type": "knob", "hex3": "05" },
+            { "type": "knob", "hex3": "06" },
+            { "type": "knob", "hex3": "07" },
+            { "type": "knob", "hex3": "08" },
+            { "type": "knob", "hex3": "18" },
+            { "type": "knob", "hex3": "09" }
+          ]},
+          { "label": "chorus1_dual", "visible_when": "mode >= 3", "controls": [
+            { "type": "knob", "hex3": "0A" },
+            { "type": "knob", "hex3": "0B" },
+            { "type": "knob", "hex3": "0C" },
+            { "type": "knob", "hex3": "0D" },
+            { "type": "knob", "hex3": "0E" },
+            { "type": "knob", "hex3": "0F" },
+            { "type": "knob", "hex3": "10" }
+          ]},
+          { "label": "chorus2_dual", "visible_when": "mode >= 3", "controls": [
+            { "type": "knob", "hex3": "11" },
+            { "type": "knob", "hex3": "12" },
+            { "type": "knob", "hex3": "13" },
+            { "type": "knob", "hex3": "14" },
+            { "type": "knob", "hex3": "15" },
+            { "type": "knob", "hex3": "16" },
+            { "type": "knob", "hex3": "17" }
+          ]}
+        ]}
+      ]
+    },
+
+    "fx_generic": {
+      "file": "qml/Fx1Panel.qml",
+      "note": "FX1/FX2/FX3 share Fx1TypeData.js for control definitions",
+      "structure": [
+        { "type": "header", "power_hex3": "00" },
+        { "type": "selector", "label": "FX TYPE", "hex3": "01", "ccExclude": true },
+        { "type": "dynamic_content", "source": "Fx1TypeData.js", "indexed_by": "fxTypeIndex" }
+      ],
+      "fx_types": {
+        "0_ac_resonance": { "combo": "00", "knobs": ["01", "02", "03"] },
+        "1_auto_wah": { "combo": "00", "knobs": ["01", "02", "04", "05"], "combo2": "06", "knobs2": ["03", "07"] },
+        "4_compressor": { "combo": "01", "knobs": ["02", "03", "06", "04", "05"] },
+        "8_flanger": { "knobs": ["00", "01", "02", "03", "04", "05", "06", "07", "08"] },
+        "13_humanizer": { "combo": "00", "knobs": ["01", "02", "03", "04", "05", "06", "07", "08"] },
+        "14_isolator": { "combo": "00", "knobs": ["01", "02", "03"] },
+        "15_limiter": { "combo": "00", "knobs": ["01", "02", "04", "05", "03"] },
+        "20_para_eq": { "knobs": ["09", "01", "03", "04", "05", "06", "07", "08", "02", "0A", "0B"] }
+      }
+    },
+
+    "reverb": {
+      "file": "qml/RvPanel.qml",
+      "stompbox": "stompbox_rv.cpp",
+      "structure": [
+        { "type": "header", "title": "REVERB", "power_hex3": "00" },
+        { "type": "selector", "label": "TYPE", "hex3": "01" }
+      ]
+    },
+
+    "master_delay": {
+      "file": "qml/Dd3Panel.qml",
+      "stompbox": "stompbox_dd3.cpp",
+      "signal_chain_label": "shows type name (updateLabel)",
+      "structure": [
+        { "type": "header", "title": "MASTER DELAY", "power_hex3": "00" }
+      ]
+    },
+
+    "delay1": {
+      "file": "qml/Dd1Panel.qml",
+      "stompbox": "stompbox_dd1.cpp",
+      "signal_chain_label": "blank (clearLabel)",
+      "structure": [
+        { "type": "header", "title": "DELAY 1", "power_hex3": "00" }
+      ]
+    },
+
+    "delay2": {
+      "file": "qml/Dd2Panel.qml",
+      "stompbox": "stompbox_dd2.cpp",
+      "signal_chain_label": "blank (clearLabel)",
+      "structure": [
+        { "type": "header", "title": "DELAY 2", "power_hex3": "00" }
+      ]
+    }
+  },
+
+  "tests": {
+    "layout_structure": [
+      "Every panel with a type selector uses SyModeSelector (not inline SyComboBox in Flow)",
+      "Selector row dropdown aligns at x=110 from panel edge",
+      "Knob area uses Flickable > Column(spacing:12, topPadding:16) > Flow(x:8, width:parent.width-16, spacing:8)",
+      "All visible knobs use knobLargeSrc / knobLarge (no mixed sizes except explicitly documented)",
+      "Panels with custom scroll use plain Rectangle root, NOT SyPanelBase"
+    ],
+    "controls_match_midi": [
+      "Every hex3 address in Fx1TypeData.js exists in data/midi.xml for the corresponding hex2 offset",
+      "No phantom hex3 addresses (like Isolator hex3 04 which was removed)",
+      "Control type (combo vs knob) matches MIDI spec (combo for enums, knob for ranges)"
+    ],
+    "signal_chain_labels": [
+      "DLY 1 and DLY 2 show no sub-label (clearLabel called)",
+      "M DLY shows type name (updateLabel called)",
+      "All other stompboxes with updateLabel show Init Cap text",
+      "Default effectType 'effect' never visible (cleared or overwritten)"
+    ],
+    "cc_mapping": [
+      "FX TYPE combo has ccExclude:true on all FX panels",
+      "INST TYPE combo has ccExclude:true on InstrumentPanel",
+      "Scan finds only visible controls (hidden tabs excluded)",
+      "Controls register in visual order (top-to-bottom, left-to-right)",
+      "Each visual row pads to 8 for LCXL alignment"
+    ]
+  }
+}

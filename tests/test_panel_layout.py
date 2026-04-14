@@ -126,12 +126,15 @@ def test_panel_structure(results, spec):
                 else:
                     results.fail(f"{name}: selector '{label}' not using SyModeSelector or labelWidth:0 pattern")
 
-                # Check ccExclude
+                # Check ccExclude (only required when midi handler exists)
                 if item.get("ccExclude"):
+                    has_midi = (SRC_DIR / "midiCCHandler.h").exists()
                     if "ccExclude" in qml:
                         results.ok(f"{name}: {label} has ccExclude")
-                    else:
+                    elif has_midi:
                         results.fail(f"{name}: {label} missing ccExclude: true")
+                    else:
+                        results.warn(f"{name}: {label} needs ccExclude when midi merges")
 
             elif item_type == "knob_area":
                 if "Flickable" in qml and "Flow" in qml:
@@ -245,7 +248,10 @@ def test_signal_chain_labels(results, spec):
 # ─── Test: CC Mapping Safety ────────────────────────────────────────────
 
 def test_cc_safety(results, spec):
-    """Check ccExclude on type-changing combos."""
+    """Check ccExclude on type-changing combos (midi branch only)."""
+    # ccExclude only exists on midi-cc-controller branch — warn instead of fail on main
+    has_midi = (SRC_DIR / "midiCCHandler.h").exists()
+
     for panel_file in ["Fx1Panel.qml", "Fx2Panel.qml", "Fx3Panel.qml"]:
         qml = read_qml(f"qml/{panel_file}")
         if qml is None:
@@ -254,15 +260,19 @@ def test_cc_safety(results, spec):
 
         if "ccExclude" in qml:
             results.ok(f"{panel_file}: FX TYPE has ccExclude")
-        else:
+        elif has_midi:
             results.fail(f"{panel_file}: FX TYPE missing ccExclude (LCXL will change effect type)")
+        else:
+            results.warn(f"{panel_file}: ccExclude needed when midi branch merges")
 
     inst_qml = read_qml("qml/InstrumentPanel.qml")
     if inst_qml:
         if "ccExclude" in inst_qml:
             results.ok("InstrumentPanel: INST TYPE has ccExclude")
-        else:
+        elif has_midi:
             results.fail("InstrumentPanel: INST TYPE missing ccExclude")
+        else:
+            results.warn("InstrumentPanel: ccExclude needed when midi branch merges")
 
 # ─── Test: Dropdown Alignment ───────────────────────────────────────────
 

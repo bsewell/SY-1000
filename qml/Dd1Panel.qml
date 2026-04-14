@@ -1,12 +1,13 @@
 import QtQuick
 
-SyPanelBase {
+Rectangle {
     id: panel
-    hex1: "00"; hex2: "3C"
-    accentColor: Qt.rgba(0.85, 0.85, 0.85, 1)
-    title: "DELAY 1"
-    powerHex0: "10"; powerHex1: hex1; powerHex2: hex2; powerHex3: "00"
-    showHeader: false
+    color: SyTheme.bgPanel
+    property string hex1: "00"
+    property string hex2: "3C"
+    property color accentColor: Qt.rgba(0.85, 0.85, 0.85, 1)
+    property int powerValue: 0
+    Component.onCompleted: { powerValue = paramBridge.getValue("10", hex1, hex2, "00") }
 
     Column {
         width: parent.width

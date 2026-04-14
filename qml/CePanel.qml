@@ -1,17 +1,17 @@
 import QtQuick
 
-SyPanelBase {
+Rectangle {
     id: panel
-    hex1: "00"; hex2: "3F"
-    accentColor: Qt.rgba(0, 0.7, 0.8, 1)
-    title: "CHORUS"
-    powerHex0: "10"; powerHex1: hex1; powerHex2: hex2; powerHex3: "00"
-    showHeader: false   // We need mode selector between header and content
+    color: SyTheme.bgPanel
 
+    property string hex1: "00"
+    property string hex2: "3F"
+    property color accentColor: Qt.rgba(0, 0.7, 0.8, 1)
+    property int powerValue: 0
     property int ceMode: 0
-    property var modeCombo: null
 
     Component.onCompleted: {
+        powerValue = paramBridge.getValue("10", hex1, hex2, "00")
         ceMode = paramBridge.getValue("10", hex1, hex2, "01")
     }
 
@@ -21,7 +21,7 @@ SyPanelBase {
     }
 
     Column {
-        width: parent.width
+        anchors.fill: parent
         spacing: 0
 
         StompHeader {
@@ -31,26 +31,26 @@ SyPanelBase {
             powerHex0: "10"; powerHex1: panel.hex1; powerHex2: panel.hex2; powerHex3: "00"
         }
 
-        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
-
         SyModeSelector {
+            id: modeSelector
             hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "01"
-            Component.onCompleted: modeCombo = combo
+            property alias modeCombo: modeSelector.combo
         }
 
         Flickable {
             width: parent.width
-            height: panel.height - SyTheme.headerHeight - 1 - SyTheme.modeSelectorH - 1
-            contentHeight: contentCol.height + 24
+            height: parent.height - SyTheme.headerHeight - SyTheme.modeSelectorH - 1
+            contentHeight: knobCol.height + 24
             clip: true
             interactive: contentHeight > height
 
             Column {
-                id: contentCol
+                id: knobCol
                 width: parent.width
-                spacing: SyTheme.flowSpacingSm
-                topPadding: SyTheme.sectionPadding
+                spacing: 12
+                topPadding: 16
 
+                // Main row
                 Flow {
                     width: parent.width - 16; x: 8; spacing: 8
                     FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
@@ -64,33 +64,33 @@ SyPanelBase {
                     FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "09"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
                 }
 
-                // Dual chorus rows (modes 3+ = STEREO2, etc.)
+                // Dual chorus rows (modes 3+)
                 Column {
-                    width: parent.width; spacing: SyTheme.flowSpacingSm
+                    width: parent.width; spacing: 12
                     visible: panel.ceMode >= 3
 
                     Rectangle { width: parent.width - 16; height: 1; color: SyTheme.divider; x: 8 }
 
                     Flow {
-                        width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0A"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0B"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0C"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0D"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0E"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0F"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "10"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                        width: parent.width - 16; x: 8; spacing: 8
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0A"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0B"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0C"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0D"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0E"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "0F"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "10"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
                     }
 
                     Flow {
-                        width: parent.width - 24; x: SyTheme.panelPadding; spacing: SyTheme.flowSpacingSm
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "11"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "12"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "13"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "14"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "15"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "16"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "17"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                        width: parent.width - 16; x: 8; spacing: 8
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "11"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "12"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "13"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "14"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "15"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "16"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                        FilmstripKnob { hex0: "10"; hex1: panel.hex1; hex2: panel.hex2; hex3: "17"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
                     }
                 }
             }

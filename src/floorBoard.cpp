@@ -1087,6 +1087,11 @@ void floorBoard::dropEvent(QDropEvent *event)
             }
             setStomps(normalizeInputOrder(normalizedOrder));
 
+            // Force immediate layout recalculation so blocks move directly to
+            // their new positions without snapping back to old fxPos first.
+            this->_lastStructureSignature.clear();
+            update_structure();
+
             if(orgIndex != destIndex) // Prevent sending data when stomp was dropped in the same place.
             {
                 SysxIO *sysxIO = SysxIO::Instance();
@@ -1284,26 +1289,21 @@ void floorBoard::centerEditDialog()
     if(preferences->getPreferences("Window", "Single", "bool")=="true")
     {
         const int minLeft = this->displayPos.x() + qRound(6*ratio);
-        int preferredLeft = minLeft;
-        if(this->stompBoxes.size() > 0 && this->stompBoxes.at(0))
-        {
-            preferredLeft = this->stompBoxes.at(0)->x() - qRound(2*ratio);
-        }
+        // Align visible content with source blocks (INST1/2/3, NORMAL).
+        // Subtract editWindow's internal shellLeftInset (22*ratio) so the
+        // visible content edge matches the source block left edge.
+        const int shellLeftInset = qRound(22 * ratio);
+        int preferredLeft = this->offset + (int)(15*ratio) - shellLeftInset;
         int maxLeft = qRound(this->floorSize.width()*ratio) - this->editDialog->width() - qRound(8*ratio);
         if(maxLeft < minLeft)
         {
             maxLeft = minLeft;
         }
         int x = qBound(minLeft, preferredLeft, maxLeft);
-        const int extraYOffset = qRound(300*ratio);
-        int y = this->pos.y() + ((((this->floorSize.height()*ratio) + extraYOffset) - this->editDialog->height()) / 2);
-        // Keep the edit panel below the 4-row signal-flow area to avoid top-border overlap.
-        const int flowBottom = qRound((260.0 + (147.0 / 2.4)) * ratio);
-        const int minTop = this->pos.y() + flowBottom + qRound(18*ratio);
-        if(y < minTop)
-        {
-            y = minTop;
-        }
+        // Place the edit panel directly below the signal chain area.
+        // lev4 (208) + one block height (~61px at ratio) + small gap.
+        const int flowBottom = qRound((208.0 + (96.0 / 2.4)) * ratio);
+        int y = this->pos.y() + flowBottom + qRound(29*ratio);
         this->editDialog->move(x, y);
     };
 }
@@ -1620,7 +1620,7 @@ void floorBoard::update_structure()
     // Balancer column = one column PAST the last block on the longer input branch.
     // The +1 ensures the balancer doesn't share a column with the last FX item
     // on its input row, preventing visual overlap (e.g. I/O box and BAL2 stacking).
-    int bal1xpos = qMax(1, index1);
+    int bal1xpos = index1;
     if(index2 > bal1xpos){ bal1xpos = index2; };
 
     int bal2xpos = index3 + 1;

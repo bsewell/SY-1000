@@ -56,7 +56,7 @@ void stompbox_dd1::updateSignal()
     if(preferences->getPreferences("Window", "BassMode", "bool")=="true"){hex1 = "02"; hex2 = "39";};
 
    updateButton("10", hex1, hex2, "00");
-   updateLabel("10", hex1, hex2, "01");
+   clearLabel();
 }
 
 void stompbox_dd1::setEditPages()

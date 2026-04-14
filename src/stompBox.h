@@ -64,6 +64,7 @@ public:
     void updateButton(QString hex0, QString hex1, QString hex2, QString hex3);
     void updateSwitch(QString hex0, QString hex1, QString hex2, QString hex3);
     void updateLabel(QString hex0, QString hex1, QString hex2, QString hex3);
+    void clearLabel();
     uint getId();
     virtual void setEditPages() {}
     editWindow* editDetails();

@@ -75,7 +75,7 @@ stompBox::stompBox(QWidget *parent, uint id, QString imagePathOn, QString imageP
     this->effectType = "effect";
     this->effectLabel = new QLabel(this); //new customControlLabel();
     this->effectLabel->setObjectName("stomplabel");
-    QFont Cfont( "Roboto Condensed", 9*fratio);
+    QFont Cfont( "Roboto Condensed", 10*fratio);
     Cfont.setStretch(85);
     this->effectLabel->setFont(Cfont);
     this->effectLabel->setText(this->effectType);
@@ -679,17 +679,21 @@ void stompBox::updateLabel(QString hex0, QString hex1, QString hex2, QString hex
     int value = sysxIO->getSourceValue(hex0, hex1, hex2, hex3);
     QString valueHex = QString::number(value, 16).toUpper();
     if(valueHex.length() < 2) valueHex.prepend("0");
-    QString valueStr = midiTable->getValue(hex0, hex1, hex2, hex3, valueHex).toLower();
-    if(id < 4) {
-        // Input source tiles: show only the type descriptor.
-        // The image already colour-codes which instrument it is, so the
-        // source prefix is redundant here.
-        this->flowLabelText = valueStr;
-        this->effectLabel->setText(valueStr);
-    } else {
-        this->flowLabelText = valueStr;
-        this->effectLabel->setText(valueStr);
+    // Convert to Init Cap (title case)
+    QString rawStr = midiTable->getValue(hex0, hex1, hex2, hex3, valueHex).toLower();
+    QStringList words = rawStr.split(' ', Qt::SkipEmptyParts);
+    for (int i = 0; i < words.size(); i++) {
+        if (!words[i].isEmpty()) words[i][0] = words[i][0].toUpper();
     }
+    QString valueStr = words.join(' ');
+    this->flowLabelText = valueStr;
+    this->effectLabel->setText(valueStr);
+}
+
+void stompBox::clearLabel()
+{
+    this->flowLabelText.clear();
+    if(this->effectLabel) this->effectLabel->setText("");
 }
 
 void stompBox::valueChanged(int value, QString hex0, QString hex1, QString hex2, QString hex3)

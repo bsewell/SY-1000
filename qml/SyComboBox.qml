@@ -16,7 +16,16 @@ Item {
     property bool dimmed: false
     opacity: dimmed ? 0.35 : 1.0
 
-    implicitWidth: labelWidth > 0 ? labelWidth + 4 + 160 : 160
+    // Auto-size: button width = max option text width + padding, min 120
+    property int _buttonWidth: {
+        var maxW = 80
+        for (var i = 0; i < options.length; i++) {
+            var w = options[i].label.length * 8  // rough char width estimate
+            if (w > maxW) maxW = w
+        }
+        return Math.max(120, Math.min(maxW + 28, 200))  // clamp 120-200
+    }
+    implicitWidth: labelWidth > 0 ? labelWidth + 4 + _buttonWidth : _buttonWidth
     implicitHeight: 28
 
     Component.onCompleted: {

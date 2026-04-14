@@ -30,7 +30,7 @@ CONFIG += c++17
 # Qt 6.x qyieldcpu.h triggers this on ARM — suppress until Qt ships a fix.
 QMAKE_CXXFLAGS += -Wno-error=implicit-function-declaration
 TARGET = "SY-1000FloorBoard"
-VERSION = 2026.04.08.21
+VERSION = 2026.04.13.141
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DESTDIR = ./build/packager
 OBJECTS_DIR += build/release
@@ -148,7 +148,9 @@ HEADERS += \
     src/qmlHost.h \
     src/diagnosticServer.h \
     src/patchListModel.h \
-    src/chainLayout.h
+    src/chainLayout.h \
+    src/midiCCHandler.h \
+    src/midiMonitor.h
 
 SOURCES += \
     src/consoletoolbar.cpp \
@@ -156,7 +158,9 @@ SOURCES += \
     src/qmlHost.cpp \
     src/diagnosticServer.cpp \
     src/patchListModel.cpp \
-    src/chainLayout.cpp
+    src/chainLayout.cpp \
+    src/midiCCHandler.cpp \
+    src/midiMonitor.cpp
 
 RESOURCES += \
     qml/qml.qrc

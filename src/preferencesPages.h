@@ -48,20 +48,24 @@ public:
     MidiPage(QWidget *parent = 0);
     QComboBox* midiInCombo;
     QComboBox* midiOutCombo;
+    QComboBox* ccInCombo;
     QCheckBox* autoCheckBox;
     QCheckBox* dBugCheckBox;
     QSpinBox* midiTxChSpinBox;
     QTimer* timer;
     int midiInDeviceID;
     int midiOutDeviceID;
+    int ccInDeviceID;
     QString midiInDeviceName;
     QString midiOutDeviceName;
+    QString ccInDeviceName;
     QString device;
 
 public slots:
     void updateDevice();
     void midiInDeviceChanged(int value);
     void midiOutDeviceChanged(int value);
+    void ccInDeviceChanged(int value);
     void checkBoxChanged(int value);
 };
 

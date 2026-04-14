@@ -40,6 +40,8 @@
 #include "consoletoolbar.h"
 #include "qmlHost.h"
 #include "diagnosticServer.h"
+#include "midiMonitor.h"
+#include "midiIO.h"
 
 // Platform-dependent sleep routines.
 #ifdef Q_OS_WIN
@@ -98,7 +100,8 @@ mainWindow::mainWindow()
     msgBox->deleteLater();*/
     //#ifdef Q_PROCESSOR_ARM
     qWarning("MW-A: setFixedSize ratio=%.2f", ratio);
-    this->setFixedSize(1350*ratio, 845*ratio);
+    this->setFixedWidth(1350*ratio);
+    this->resize(1350*ratio, 845*ratio);
     qWarning("MW-B: constructing floorBoard...");
 
     this->fxsBoard = new floorBoard(this);
@@ -153,6 +156,15 @@ mainWindow::mainWindow()
     createActions();
     qWarning("MW-G: createMenus...");
     createMenus();
+    // MIDI Monitor — docked at the bottom, hidden by default
+    this->midiMonitor = new MidiMonitor(this);
+    this->midiMonitorDock = new QDockWidget(tr("MIDI Monitor"), this);
+    this->midiMonitorDock->setWidget(this->midiMonitor);
+    this->midiMonitorDock->setAllowedAreas(Qt::BottomDockWidgetArea);
+    this->midiMonitorDock->setFeatures(QDockWidget::DockWidgetClosable);
+    this->midiMonitorDock->setVisible(false);
+    addDockWidget(Qt::BottomDockWidgetArea, this->midiMonitorDock);
+
     qWarning("MW-H: createStatusBar...");
     createStatusBar();
     qWarning("MW-I: setCentralWidget...");
@@ -177,6 +189,11 @@ mainWindow::mainWindow()
         }
     });
     diagServer->start();
+
+    // Wire MIDI I/O signals to the monitor
+    midiIO *midi = &AppServices::instance().midi();
+    QObject::connect(midi, &midiIO::ccReceived,
+                     this->midiMonitor, &MidiMonitor::logCC);
 
     qWarning("MW-K: mainWindow constructor complete");
 }
@@ -457,6 +474,14 @@ void mainWindow::createStatusBar()
 
     statusBar()->addWidget(statusInfo);
     statusBar()->setSizeGripEnabled(false);
+
+    // Wire the MIDI button to toggle the monitor dock
+    QObject::connect(statusInfo->midiMonitorBtn, &QPushButton::toggled,
+                     this, [this](bool checked) {
+        this->midiMonitorDock->setVisible(checked);
+    });
+    QObject::connect(this->midiMonitorDock, &QDockWidget::visibilityChanged,
+                     statusInfo->midiMonitorBtn, &QPushButton::setChecked);
 }
 
 /* FILE MENU */

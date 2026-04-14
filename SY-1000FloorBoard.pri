@@ -78,7 +78,21 @@ HEADERS += ./src/editPage.h \
     ./src/floorPanelBarButton.h \
     ./src/initPatchListMenu.h \
     ./src/menuPage.h \
+    ./src/menuPage_assign.h \
     ./src/menuPage_assign1.h \
+    ./src/menuPage_assign4.h \
+    ./src/menuPage_assign5.h \
+    ./src/menuPage_assign6.h \
+    ./src/menuPage_assign7.h \
+    ./src/menuPage_assign8.h \
+    ./src/menuPage_assign9.h \
+    ./src/menuPage_assign10.h \
+    ./src/menuPage_assign11.h \
+    ./src/menuPage_assign12.h \
+    ./src/menuPage_assign13.h \
+    ./src/menuPage_assign14.h \
+    ./src/menuPage_assign15.h \
+    ./src/menuPage_assign16.h \
     ./src/menuPage_master.h \
     ./src/menuPage_midi.h \
     ./src/menuPage_pdl.h \
@@ -95,6 +109,16 @@ HEADERS += ./src/editPage.h \
     ./src/soundSource_inst2.h \
     ./src/soundSource_inst3.h \
     ./src/soundSource_normal.h \
+    ./src/customControlEZ_amp.h \
+    ./src/customControlEZ_Patch.h \
+    ./src/customControlGraphicEQ.h \
+    ./src/customControlMasterEQ.h \
+    ./src/customEZ_amp.h \
+    ./src/customEZ_Patch.h \
+    ./src/customGraphicEQGraph.h \
+    ./src/customMasterEQGraph.h \
+    ./src/gridConstants.h \
+    ./src/layoutValidator.h \
     ./src/stompBox.h \
     ./src/stompbox_amp.h \
     ./src/stompbox_balancer1.h \
@@ -206,7 +230,21 @@ SOURCES += ./src/editPage.cpp \
     ./src/floorPanelBarButton.cpp \
     ./src/initPatchListMenu.cpp \
     ./src/menuPage.cpp \
+    ./src/menuPage_assign.cpp \
     ./src/menuPage_assign1.cpp \
+    ./src/menuPage_assign4.cpp \
+    ./src/menuPage_assign5.cpp \
+    ./src/menuPage_assign6.cpp \
+    ./src/menuPage_assign7.cpp \
+    ./src/menuPage_assign8.cpp \
+    ./src/menuPage_assign9.cpp \
+    ./src/menuPage_assign10.cpp \
+    ./src/menuPage_assign11.cpp \
+    ./src/menuPage_assign12.cpp \
+    ./src/menuPage_assign13.cpp \
+    ./src/menuPage_assign14.cpp \
+    ./src/menuPage_assign15.cpp \
+    ./src/menuPage_assign16.cpp \
     ./src/menuPage_master.cpp \
     ./src/menuPage_midi.cpp \
     ./src/menuPage_pdl.cpp \
@@ -224,6 +262,15 @@ SOURCES += ./src/editPage.cpp \
     ./src/soundSource_inst2.cpp \
     ./src/soundSource_inst3.cpp \
     ./src/soundSource_normal.cpp \
+    ./src/customControlEZ_amp.cpp \
+    ./src/customControlEZ_Patch.cpp \
+    ./src/customControlGraphicEQ.cpp \
+    ./src/customControlMasterEQ.cpp \
+    ./src/customEZ_amp.cpp \
+    ./src/customEZ_Patch.cpp \
+    ./src/customGraphicEQGraph.cpp \
+    ./src/customMasterEQGraph.cpp \
+    ./src/layoutValidator.cpp \
     ./src/stompBox.cpp \
     ./src/stompbox_amp.cpp \
     ./src/stompbox_balancer1.cpp \

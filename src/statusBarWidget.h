@@ -28,6 +28,7 @@
 #include <QLabel>
 #include <QProgressBar>
 #include <QStatusBar>
+#include <QPushButton>
 #include "statusBarSymbol.h"
 
 class statusBarWidget : public QWidget
@@ -36,6 +37,7 @@ class statusBarWidget : public QWidget
 
 public:
     statusBarWidget(QWidget *parent = 0);
+    QPushButton *midiMonitorBtn;
 
 public slots:
 	void setStatusMessage(QString message);

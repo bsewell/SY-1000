@@ -42,9 +42,11 @@ midiIO* midiIO::_instance = 0;// initialize pointer
 midiIODestroyer midiIO::_destroyer;
 RtMidiOut *midiout = new RtMidiOut();
 RtMidiIn *midiin = new RtMidiIn();
+RtMidiIn *midiCCIn = new RtMidiIn();
 /* BUG FIX (contributed): static mutex definitions for thread-safe access to shared globals */
 QMutex midiIO::midiOutMutex;
 QMutex midiIO::midiInMutex;
+QMutex midiIO::ccInMutex;
 QMutex midiIO::sysxBufferMutex;
 QString midiIO::_last;
 
@@ -86,6 +88,7 @@ void midiIO::closePorts()
 {
     midiout->closePort();
     midiin->closePort();
+    midiCCIn->closePort();
 }
 
 /*********************** queryMidiOutDevices() *****************************
@@ -279,6 +282,140 @@ int midiIO::getInDevice()
     midi_in_device_name = (listPos >= 0 && listPos < devList.size()) ? devList.at(listPos) : devName;
     midi_in_list_number = listPos;
     return (listPos >= 0) ? this->midiInPortMap.at(listPos) : -1;
+}
+
+/*********************** getCCInDevice() *********************************
+ * Returns the RtMidi port index for the CC controller input device,
+ * as configured in preferences under Midi/CCIn.
+ *************************************************************************/
+int midiIO::getCCInDevice()
+{
+    signed int listPos = -1;
+    QList<QString> devList = getMidiInDevices();
+    Preferences *preferences = Preferences::Instance();
+    QString devName = preferences->getPreferences("Midi", "CCIn", "name");
+    bool ok = false;
+    const int savedIndex = preferences->getPreferences("Midi", "CCIn", "device").toInt(&ok, 10);
+
+    if(devName.isEmpty()) return -1;
+    if(devName == "None") return -1;
+
+    if(ok && savedIndex >= 0 && savedIndex < devList.size())
+    {
+        if(devList.at(savedIndex) == devName || !devList.contains(devName))
+        {
+            listPos = savedIndex;
+        }
+    }
+    if(listPos < 0 && devList.contains(devName))
+    {
+        listPos = devList.indexOf(devName);
+    }
+    if(listPos < 0 || listPos >= this->midiInPortMap.size())
+    {
+        return -1;
+    }
+    cc_in_device_name = devList.at(listPos);
+    return this->midiInPortMap.at(listPos);
+}
+
+/*********************** pollCCInput() *********************************
+ * Polls the dedicated CC controller MIDI input for CC messages.
+ * Called from getData() on the same timer. Uses a separate RtMidiIn
+ * instance so it doesn't interfere with SysEx communication.
+ *************************************************************************/
+void midiIO::pollCCInput()
+{
+    // Auto-detect CC input: scan all MIDI input ports for known controller names.
+    // This bypasses the fragile preferences system entirely.
+    static int resolvedPort = -2;  // -2 = not yet resolved
+    static bool reported = false;
+
+    if(resolvedPort == -2)
+    {
+        // First try preferences
+        resolvedPort = getCCInDevice();
+
+        // If preferences didn't find it, auto-scan for known CC controllers
+        if(resolvedPort < 0)
+        {
+            // Known CC controller port names (as reported by RtMidi on macOS)
+            static const QStringList knownCC = {
+                "MIDI Out",         // LCXL3
+                "DAW Out",          // LCXL3 alternate
+                "Launch Control",   // older LCXL
+                "nanoKONTROL",      // Korg
+                "Panorama",         // Nektar (if not used for SysEx)
+            };
+
+            unsigned int nPorts = midiCCIn->getPortCount();
+            for(unsigned int p = 0; p < nPorts; ++p)
+            {
+                QString portName = QString::fromStdString(midiCCIn->getPortName(p));
+                // Skip ports already used for SysEx (SY-1000)
+                if(portName.contains("SY-1000")) continue;
+                if(portName.contains("500R8")) continue;
+
+                for(const QString &known : knownCC)
+                {
+                    if(portName.contains(known, Qt::CaseInsensitive))
+                    {
+                        resolvedPort = static_cast<int>(p);
+                        qDebug() << "MidiIO: CC auto-detected port" << p << portName;
+                        break;
+                    }
+                }
+                if(resolvedPort >= 0) break;
+            }
+        }
+
+        if(resolvedPort >= 0 && !reported)
+        {
+            qDebug() << "MidiIO: CC input port resolved to" << resolvedPort;
+            reported = true;
+        }
+    }
+    if(resolvedPort < 0) return;
+
+    try
+    {
+        QMutexLocker locker(&ccInMutex);
+        if(!midiCCIn->isPortOpen())
+        {
+            midiCCIn->ignoreTypes(true, true, true);
+            midiCCIn->openPort(resolvedPort);
+            qDebug() << "MidiIO: CC input port opened:" << resolvedPort;
+        }
+
+        // Drain all pending messages
+        std::vector<unsigned char> message;
+        for(int i = 0; i < 32; ++i)
+        {
+            double stamp = midiCCIn->getMessage(&message);
+            Q_UNUSED(stamp);
+            if(message.empty()) break;
+
+            uint nBytes = message.size();
+            if(nBytes >= 3)
+            {
+                unsigned char status = message.at(0);
+                if((status & 0xF0) == 0xB0)
+                {
+                    int channel = status & 0x0F;
+                    int ccNum   = int(message.at(1));
+                    int ccVal   = int(message.at(2));
+                    emit ccReceived(channel, ccNum, ccVal);
+                }
+            }
+            message.clear();
+        }
+    }
+    catch(RtMidiError &error)
+    {
+        qWarning() << "MidiIO: CC input error:" << error.what();
+        midiCCIn->closePort();
+        resolvedPort = -1;
+    }
 }
 
 /*********************** sendMsg() **********************************
@@ -520,26 +657,45 @@ void midiIO::getMsg()
 
     if(rxData.size()>0)
     {
-        for(int x=0; x<rxData.size(); x++)
+        for(int x=0; x<rxData.size()-1; x++)
         {
-            if(rxData.at(x)==QString("8") || rxData.at(x)==QString("9") || rxData.at(x)==QString("B"))
-            {            
+            if(rxData.at(x)==QString("B") && x+5 < rxData.size())
+            {
+                // Extract CC: status byte Bx CC VV (each byte = 2 hex chars, but stored as single nibble chars here)
+                bool ok;
+                int channel = QString(rxData.at(x+1)).toInt(&ok, 16);
+                int ccNum   = rxData.mid(x+2, 2).toInt(&ok, 16);
+                int ccVal   = rxData.mid(x+4, 2).toInt(&ok, 16);
+                if(preferences->getPreferences("Midi", "DBug", "bool")=="true")
+                {
+                    sysxIO->deBug(midi_in_device_name + " CC received: ch=" + QString::number(channel) + " cc=" + QString::number(ccNum) + " val=" + QString::number(ccVal));
+                };
+                emit ccReceived(channel, ccNum, ccVal);
+                rxData.remove(x, 6);
+                if(x > 0) x--;
+                continue;
+            };
+
+            if((rxData.at(x)==QString("8") || rxData.at(x)==QString("9")) && x+5 < rxData.size())
+            {
                 if(preferences->getPreferences("Midi", "DBug", "bool")=="true")
                 {
                     sysxIO->deBug(midi_in_device_name + " data removed = " + rxData.mid(x, 6) + " from " + rxData + " at " + QString::number(x, 10));
                 };
                 rxData.remove(x, 6);
-                x=x+4;
+                if(x > 0) x--;
+                continue;
             };
 
-            if(rxData.at(x)==QString("C"))
+            if(rxData.at(x)==QString("C") && x+3 < rxData.size())
             {
                 if(preferences->getPreferences("Midi", "DBug", "bool")=="true")
                 {
                     sysxIO->deBug(midi_in_device_name + " data removed = " + rxData.mid(x, 4) + " from " + rxData + " at " + QString::number(x, 10));
                 };
                 rxData.remove(x, 4);
-                x=x+2;
+                if(x > 0) x--;
+                continue;
             };
             x=x+1;
         };
@@ -701,7 +857,28 @@ void midiIO::getData()
                     {
                         sysxIO->deBug(midi_in_device_name + " getData = " + rxData);
                     };
-                    emit midiData(rxData.trimmed());
+
+                    // Extract CC messages before forwarding to SysEx handler
+                    for(int i=0; i<rxData.size()-1; i++)
+                    {
+                        if(rxData.at(i)==QString("B") && i+5 < rxData.size())
+                        {
+                            bool ok;
+                            int channel = QString(rxData.at(i+1)).toInt(&ok, 16);
+                            int ccNum   = rxData.mid(i+2, 2).toInt(&ok, 16);
+                            int ccVal   = rxData.mid(i+4, 2).toInt(&ok, 16);
+                            emit ccReceived(channel, ccNum, ccVal);
+                            rxData.remove(i, 6);
+                            if(i > 0) i--;
+                            continue;
+                        }
+                        i++;
+                    }
+
+                    if(rxData.size()>0)
+                    {
+                        emit midiData(rxData.trimmed());
+                    };
                 };
             };
         };
@@ -719,6 +896,9 @@ void midiIO::getData()
         SysxIO *sysxIO = SysxIO::Instance();
         sysxIO->deBug("midiIO EXIT FAILURE !! getData");
     };
+
+    // Poll the dedicated CC controller input (separate port)
+    pollCCInput();
 }
 
 /**************************** run() **************************************

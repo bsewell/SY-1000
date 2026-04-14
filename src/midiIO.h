@@ -46,6 +46,7 @@ public:
     QList<QString> getMidiInDevices();
     signed int getOutDevice();
     signed int getInDevice();
+    signed int getCCInDevice();
     static QString sysxBuffer;
     static QString sysxOutMsg;
     static QString rxMode;
@@ -54,6 +55,7 @@ public:
     /* BUG FIX (contributed): mutexes protecting shared globals from concurrent thread access */
     static QMutex midiOutMutex;   /* protects global midiout RtMidiOut* */
     static QMutex midiInMutex;    /* protects global midiin RtMidiIn* */
+    static QMutex ccInMutex;      /* protects global midiCCIn RtMidiIn* */
     static QMutex sysxBufferMutex; /* protects static sysxBuffer QString */
     static QString unitID;
     QTimer* stall_timer;
@@ -73,6 +75,7 @@ signals:
     void errorEvent();
     void midiData(QString message);
     void updateMode(QString mode);
+    void ccReceived(int channel, int ccNumber, int value);
 
 private slots:
     void run();
@@ -111,6 +114,9 @@ private:
     QList<QString> leftOvers;
     int last_progress;
     QString deviceID;
+    void pollCCInput();
+    signed int ccInPort;
+    QString cc_in_device_name;
 };
 
 #endif // MIDIIO_H

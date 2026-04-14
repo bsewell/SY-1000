@@ -25,9 +25,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDockWidget>
 #include "floorBoard.h"
 #include "sysxWriter.h"
 #include "MidiTable.h"
+#include "midiMonitor.h"
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QStyleFactory>
@@ -116,6 +118,8 @@ private:
 
         sysxWriter file;
         floorBoard *fxsBoard;
+        QDockWidget *midiMonitorDock;
+        MidiMonitor *midiMonitor;
 };
 
 #endif // MAINWINDOW_H

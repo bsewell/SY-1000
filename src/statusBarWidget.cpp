@@ -55,11 +55,23 @@ statusBarWidget::statusBarWidget(QWidget *parent)
     this->dBuglabel->showMessage(tr(""));
     this->dBuglabel->setFont(labelFont);
 
+    this->midiMonitorBtn = new QPushButton("MIDI", this);
+    this->midiMonitorBtn->setFixedSize(52*ratio, 18*ratio);
+    this->midiMonitorBtn->setCheckable(true);
+    this->midiMonitorBtn->setFont(labelFont);
+    this->midiMonitorBtn->setStyleSheet(
+        "QPushButton { background: #2A2A3A; color: #88AAFF; border: 1px solid #444; "
+        "border-radius: 3px; font-weight: bold; }"
+        "QPushButton:checked { background: #334; color: #00FF88; border-color: #00FF88; }"
+        "QPushButton:hover { background: #333; }"
+    );
+
     QHBoxLayout *widgetLayout = new QHBoxLayout;
     widgetLayout->addWidget(this->progressBar, 0, Qt::AlignCenter);
     widgetLayout->addWidget(this->symbol, 0, Qt::AlignCenter);
     widgetLayout->addWidget(this->label, 0, Qt::AlignCenter);
     widgetLayout->addWidget(this->dBuglabel, 1);
+    widgetLayout->addWidget(this->midiMonitorBtn, 0, Qt::AlignCenter);
 
     this->setLayout(widgetLayout);
 }

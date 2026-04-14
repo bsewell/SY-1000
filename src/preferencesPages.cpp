@@ -85,19 +85,22 @@ MidiPage::MidiPage(QWidget *parent)
     QLabel *mididescriptionLabel = new QLabel(QObject::tr("Select your midi in and out device."));
     QLabel *midiInLabel = new QLabel(QObject::tr("Midi in:"));
     QLabel *midiOutLabel = new QLabel(QObject::tr("Midi out:"));
+    QLabel *ccInLabel = new QLabel(QObject::tr("CC controller:"));
 
     this->midiInCombo = new QComboBox(this);
     this->midiOutCombo = new QComboBox(this);
-    
+    this->ccInCombo = new QComboBox(this);
+
     timer = new QTimer(this);
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(updateDevice()) );
     QObject::connect(this->midiInCombo, SIGNAL(activated(int)), this, SLOT(midiInDeviceChanged(int)));
     QObject::connect(this->midiOutCombo, SIGNAL(activated(int)), this, SLOT(midiOutDeviceChanged(int)));
+    QObject::connect(this->ccInCombo, SIGNAL(activated(int)), this, SLOT(ccInDeviceChanged(int)));
     QObject::connect(this->midiInCombo, SIGNAL(highlighted(int)), this, SLOT(midiInDeviceChanged(int)));
     QObject::connect(this->midiOutCombo, SIGNAL(highlighted(int)), this, SLOT(midiOutDeviceChanged(int)));
     updateDevice();
 
-    timer->start(1000);   
+    timer->start(1000);
 
     QCheckBox *autoCheckBox = new QCheckBox(QObject::tr("Auto select SY-1000 USB"));
     this->autoCheckBox = autoCheckBox;
@@ -110,11 +113,13 @@ MidiPage::MidiPage(QWidget *parent)
     QVBoxLayout *midiLabelLayout = new QVBoxLayout;
     midiLabelLayout->addWidget(midiInLabel);
     midiLabelLayout->addWidget(midiOutLabel);
+    midiLabelLayout->addWidget(ccInLabel);
     midiLabelLayout->addStretch();
 
     QVBoxLayout *midiComboLayout = new QVBoxLayout;
     midiComboLayout->addWidget(midiInCombo);
     midiComboLayout->addWidget(midiOutCombo);
+    midiComboLayout->addWidget(ccInCombo);
     midiComboLayout->addWidget(autoCheckBox);
 
     QHBoxLayout *midiSelectLayout = new QHBoxLayout;
@@ -213,6 +218,28 @@ void MidiPage::updateDevice()
         midiOutCombo->setCurrentIndex(midiOutDevices.indexOf("SY-1000"));
         this->midiOutDeviceName="SY-1000";
     };
+
+    // CC Controller input dropdown — only rebuild if device list changed
+    QString ccInDevice = preferences->getPreferences("Midi", "CCIn", "name");
+    int currentCCCount = ccInCombo->count();
+    bool ccListChanged = (currentCCCount != midiInDevices.size() + 1);  // +1 for "None"
+    if(ccListChanged)
+    {
+        ccInCombo->blockSignals(true);  // prevent activated() during rebuild
+        ccInCombo->clear();
+        ccInCombo->addItem("None");
+        for (QList<QString>::iterator dev = midiInDevices.begin(); dev != midiInDevices.end(); ++dev)
+        {
+            QString str(*dev);
+            ccInCombo->addItem(str);
+        };
+        if(!ccInDevice.isEmpty() && ccInDevice != "None")
+        {
+            int idx = midiInDevices.indexOf(ccInDevice);
+            if(idx >= 0) ccInCombo->setCurrentIndex(idx + 1);  // +1 for "None" at index 0
+        };
+        ccInCombo->blockSignals(false);
+    };
 }
 
 void MidiPage::midiInDeviceChanged(int value)
@@ -255,6 +282,39 @@ void MidiPage::midiOutDeviceChanged(int value)
     {
         SysxIO *sysxIO = SysxIO::Instance();
         sysxIO->deBug(QString("out device = "+QString::number(value)+" "+midiOutDeviceName));
+    };
+}
+
+void MidiPage::ccInDeviceChanged(int value)
+{
+    qDebug() << "ccInDeviceChanged: value =" << value;
+    Preferences *preferences = Preferences::Instance();
+    midiIO *midi = midiIO::Instance();
+
+    if(value <= 0)
+    {
+        // "None" selected
+        ccInDeviceName = "None";
+        preferences->setPreferences("Midi", "CCIn", "device", "-1");
+        preferences->setPreferences("Midi", "CCIn", "name", "None");
+        return;
+    }
+
+    // value-1 because index 0 is "None"
+    int deviceIndex = value - 1;
+    QList<QString> midiInDevices = midi->getMidiInDevices();
+    if(deviceIndex < 0 || deviceIndex >= midiInDevices.size())
+    {
+        return;
+    }
+    ccInDeviceID = deviceIndex;
+    ccInDeviceName = midiInDevices.at(deviceIndex);
+    preferences->setPreferences("Midi", "CCIn", "device", QString::number(deviceIndex, 10));
+    preferences->setPreferences("Midi", "CCIn", "name", ccInDeviceName);
+    if(preferences->getPreferences("Midi", "DBug", "bool")=="true")
+    {
+        SysxIO *sysxIO = SysxIO::Instance();
+        sysxIO->deBug(QString("CC controller device = "+QString::number(deviceIndex)+" "+ccInDeviceName));
     };
 }
 

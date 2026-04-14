@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "description": "MIDI CC to SY-1000 SysEx parameter mappings. Each entry maps a CC number (0-127) on a given MIDI channel to a 4-byte SysEx parameter address.",
+  "mappings": [
+    {
+      "cc": 1,
+      "channel": 0,
+      "hex": ["10", "00", "00", "31"],
+      "label": "INST1 Level",
+      "enabled": true
+    },
+    {
+      "cc": 2,
+      "channel": 0,
+      "hex": ["10", "00", "02", "1F"],
+      "label": "INST1 Tone",
+      "enabled": true
+    },
+    {
+      "cc": 3,
+      "channel": 0,
+      "hex": ["10", "00", "10", "00"],
+      "label": "INST1 Comp Sustain",
+      "enabled": true
+    },
+    {
+      "cc": 4,
+      "channel": 0,
+      "hex": ["10", "00", "12", "01"],
+      "label": "INST1 OD/DS Drive",
+      "enabled": true
+    },
+    {
+      "cc": 5,
+      "channel": 0,
+      "hex": ["10", "00", "12", "04"],
+      "label": "INST1 OD/DS Level",
+      "enabled": true
+    },
+    {
+      "cc": 7,
+      "channel": 0,
+      "hex": ["10", "00", "30", "00"],
+      "label": "INST1 EQ Low Gain",
+      "enabled": true
+    },
+    {
+      "cc": 8,
+      "channel": 0,
+      "hex": ["10", "00", "30", "03"],
+      "label": "INST1 EQ Mid Gain",
+      "enabled": true
+    },
+    {
+      "cc": 9,
+      "channel": 0,
+      "hex": ["10", "00", "30", "06"],
+      "label": "INST1 EQ High Gain",
+      "enabled": true
+    },
+    {
+      "cc": 10,
+      "channel": 0,
+      "hex": ["10", "00", "30", "08"],
+      "label": "INST1 EQ Level",
+      "enabled": true
+    },
+    {
+      "cc": 11,
+      "channel": 0,
+      "hex": ["10", "00", "14", "01"],
+      "label": "INST1 Delay Time (7-bit)",
+      "enabled": true
+    }
+  ],
+  "learn_slots": []
+}

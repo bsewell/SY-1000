@@ -269,6 +269,7 @@ Labels appear below each block rectangle and show the current type selection.
 
 ### Signal-Chain Anchor Rules
 
+- **Every visible stomp block must sit on the signal wire — see "No-Float Contract" below.**
 - Every visible non-source node must show at least one incoming connector at its input-side anchor.
 - Every visible non-terminal node must show at least one outgoing connector at its output-side anchor.
 - Connector lines must terminate on signal anchors, not hidden node centers.
@@ -278,6 +279,50 @@ Labels appear below each block rectangle and show the current type selection.
   - the merged output starts from the balancer output-side anchor
   - the visible balancer icon must sit between those two anchor sides, not hide the whole connection
 - Divider and mixer routing may still use center routing internally, but their incoming and outgoing chain links must be anchored from visible signal geometry.
+
+### No-Float Contract (stomp blocks must sit on the signal wire)
+
+**Rule:** Every visible stomp block in the signal chain must be visually connected to the signal wire. No block may appear "floating" — positioned on the canvas but separated from the wire that should pass through it. If a block is in the chain, the wire must enter its left signal anchor and exit its right signal anchor. There are no exceptions.
+
+**Reference screenshots:** `sig - floating io and dly 1.png`, `sig - floating 2.png` — both show the LP (IO) block near BAL1 and DLY 1 near BAL3 disconnected from the signal wire.
+
+#### What causes floating
+
+Floating blocks result from a mismatch between where the signal wire is drawn and where the stomp block widget is positioned. The wire and blocks are computed independently:
+
+1. **Block positions** are calculated in the main `for` loop of `update_structure()` (lines ~1818–1867). Each block after a balancer starts at `layout.colX(balNxpos) + flowStep` and increments by `flowStep`. The Y is set to `topForRowCenter(stomp, rowCenterCurrent)`, which centres the block on the current row's signal line.
+
+2. **Wire endpoints** (the `polygon` array) are initially set from the same column-based positions (lines ~1886–1914). But then `placeBalancerOnRiser()` (line ~2088) **moves the balancer widgets** to resolve overlap with adjacent blocks and **updates the polygon endpoints** to match the balancer's new pixel position. The blocks between balancers are **not** repositioned after this step.
+
+3. **Result:** After riser adjustment, the wire's start/end X may no longer bracket all the blocks in the segment. A block can end up outside the wire's X span, or at a Y that doesn't match the wire because the polygon Y was recalculated from the moved balancer.
+
+The specific failure modes are:
+
+- **Column collision (off-by-one):** The cascading balancer formula `bal2xpos = bal1xpos + index3` places the next balancer at the **same column** as the last block in the preceding segment. When `placeBalancerOnRiser` then shifts the balancer to resolve the overlap, the polygon endpoint moves but the block stays — creating a gap. **Partially fixed** by adding `+1` to the cascading formulas, but riser adjustments can still create drift.
+
+- **Riser-induced wire drift:** `placeBalancerOnRiser` can push a balancer left or right by many pixels to avoid overlapping with blocks on adjacent rows. The polygon endpoints follow the balancer, but the inter-balancer blocks stay at their column-grid positions. If the shift is large enough, the wire no longer covers the blocks.
+
+- **Asymmetric Y rounding:** The wire Y comes from `rowCenterBalN` (an integer midpoint of two row centres). The block Y comes from `topForRowCenter(stomp, rowCenterBalN)`, which adds `signalCenterYOffset`. If the block's artwork height produces a different centre via integer rounding, the block's signal centre can be 1–2 px off from the wire Y — visually detaching it from the wire.
+
+#### How to fix
+
+The correct fix must reconcile the wire endpoints with the block positions **after** all adjustments are complete. Two approaches:
+
+**Approach A — Wire follows blocks (preferred):**
+After `placeBalancerOnRiser` and all polygon adjustments are done, walk each inter-balancer segment. For each segment, set the polygon start-X to the first block's left signal anchor and the polygon end-X to the last block's right signal anchor (or the next balancer's left anchor, whichever is further right). Set the polygon Y to the actual `signalBounds().center().y()` of the blocks in that segment. This guarantees the wire always covers every block regardless of riser drift.
+
+**Approach B — Blocks follow wire:**
+After `placeBalancerOnRiser` adjusts polygon endpoints, reposition each inter-balancer block so its signal centre matches the polygon Y and its X falls within the polygon X span. This is simpler but may break cross-row column alignment.
+
+**Approach A is preferred** because it preserves the column-grid block positions (which maintain cross-row alignment) and adjusts only the wire — a purely visual fix with no side effects on block topology.
+
+#### Validation
+
+After any layout change, verify for **every segment** (INST rows, BAL output rows, output section):
+- The signal wire enters the first block's left anchor and exits the last block's right anchor.
+- Every intermediate block's signal centre Y matches the wire Y within ±0 px.
+- No block is positioned outside the wire's X span.
+- Load at least 3 different patches with varying chain lengths to confirm no segment produces floating blocks.
 
 ### Signal-Chain Structural Invariants
 

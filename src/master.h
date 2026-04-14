@@ -40,3 +40,4 @@ public slots:
 	void updateSignal();
 };
 
+#endif // STOMPBOX_MST_H

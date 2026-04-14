@@ -115,7 +115,7 @@ customControlEZ_amp::customControlEZ_amp(QWidget *parent,
     this->h_slider->setMinimumHeight(30*ratio);
 
     QHBoxLayout *h_slider_Layout = new QHBoxLayout;
-    h_slider_Layout->setMargin(0);
+    h_slider_Layout->setContentsMargins(0, 0, 0, 0);
     h_slider_Layout->addSpacing(100*ratio);
     h_slider_Layout->addWidget(this->h_slider, 0, Qt::AlignCenter);
     h_slider_Layout->addStretch(0);
@@ -124,17 +124,17 @@ customControlEZ_amp::customControlEZ_amp(QWidget *parent,
     this->frame->setMinimumSize(QSize(300*ratio, 300*ratio));
 
     QHBoxLayout *knobLayout = new QHBoxLayout;
-    knobLayout->setMargin(0);
+    knobLayout->setContentsMargins(0, 0, 0, 0);
     knobLayout->setSpacing(10*ratio);
     knobLayout->addWidget(this->v_slider, 0, Qt::AlignCenter);
     knobLayout->addWidget(this->label_3, 0, Qt::AlignCenter);
-    knobLayout->setMargin(0);
+    knobLayout->setContentsMargins(0, 0, 0, 0);
     knobLayout->addWidget(this->frame, 0, Qt::AlignCenter);
     knobLayout->addWidget(this->label_4, 0, Qt::AlignCenter);
     knobLayout->addStretch(0);
 
     QVBoxLayout *frameLayout = new QVBoxLayout;
-    frameLayout->setMargin(0);
+    frameLayout->setContentsMargins(0, 0, 0, 0);
     frameLayout->setSpacing(0);
     frameLayout->addWidget(this->label_2, 0, Qt::AlignCenter);
     frameLayout->addLayout(knobLayout);

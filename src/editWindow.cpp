@@ -264,7 +264,7 @@ editWindow::editWindow(QWidget *parent)
     this->pagesWidget = new QStackedWidget;
 
     QHBoxLayout *pagesLayout = new QHBoxLayout;
-    pagesLayout->setContentsMargins(shellLeftInset, 0, 0, 0);
+    pagesLayout->setContentsMargins(0, 0, 0, 0);
     pagesLayout->setSpacing(0);
     pagesLayout->addSpacing(0);
     pagesLayout->addWidget(this->pagesWidget, 0, Qt::AlignTop | Qt::AlignLeft);
@@ -416,6 +416,11 @@ void editWindow::setWindow(QString title)
 QString editWindow::getTitle()
 {
     return this->title->text();
+}
+
+int editWindow::contentInsetLeft() const
+{
+    return this->pagesWidget ? this->pagesWidget->x() : 0;
 }
 
 void editWindow::addPage(QString area, QString hex1, QString hex2, QString hex3, QString hex4 )

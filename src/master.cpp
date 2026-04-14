@@ -37,7 +37,7 @@ stompbox_master::stompbox_master(QWidget *parent)
     setEditPages();
 }
 
-void stompbox_mixer::updateSignal()
+void stompbox_master::updateSignal()
 {
   //updateButton("10", "00", "39", "00");
 }

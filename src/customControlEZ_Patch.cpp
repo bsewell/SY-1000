@@ -67,14 +67,14 @@ customControlEZ_Patch::customControlEZ_Patch(QWidget *parent,
     this->label->setAlignment(Qt::AlignCenter);
 
     QVBoxLayout *comboLayout = new QVBoxLayout;
-    comboLayout->setMargin(0);
+    comboLayout->setContentsMargins(0, 0, 0, 0);
     comboLayout->setSpacing(5*ratio);
     comboLayout->addWidget(this->tone_comboBox, 0, Qt::AlignCenter);
     comboLayout->addWidget(this->variation_comboBox, 0, Qt::AlignCenter);
     comboLayout->addStretch(0);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->setMargin(0);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(5*ratio);
     mainLayout->addWidget(this->label, 0, Qt::AlignCenter);
     mainLayout->addWidget(this->switchbutton, 0, Qt::AlignCenter);
@@ -140,7 +140,7 @@ void customControlEZ_Patch::tone_select(int value)
         {
             int pos = this->patch_range + (x*1333);
             unsigned char r = (char)EZ_Patches[l+pos];
-            list.append(r);
+            list.append(QChar(r));
         };
         patch_list.append(list);        //added new patches to list and remove old list
         variation_comboBox->controlListComboBox->removeItem(0);

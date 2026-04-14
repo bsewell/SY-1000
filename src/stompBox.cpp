@@ -26,6 +26,7 @@
 #include "SysxIO.h"
 #include "Preferences.h"
 #include "appservices.h"
+#include "parameterBridge.h"
 
 namespace {
 const double kFlowBlockScale = 2.4;
@@ -415,6 +416,10 @@ void stompBox::mouseReleaseEvent(QMouseEvent *event)
     if(event->button() == Qt::LeftButton && !this->dragInProgress)
     {
         const int dragDistance = (event->position().toPoint() - this->dragStartPosition).manhattanLength();
+        qDebug() << "stompBox::mouseRelease id=" << id
+                 << "drag=" << dragDistance
+                 << "hex=" << hex0 << hex1 << hex2 << hex3
+                 << "sw=" << sw;
         if(dragDistance <= QApplication::startDragDistance() &&
            id != 24 && id != 25 && id != 26 && id != 27 &&
            this->hex0 != "void" && this->hex1 != "void" &&
@@ -423,6 +428,7 @@ void stompBox::mouseReleaseEvent(QMouseEvent *event)
             this->sw = !this->sw;
             valueChanged(this->sw);
             update();
+            qDebug() << "stompBox::mouseRelease TOGGLED id=" << id << "sw=" << sw;
         }
     }
 
@@ -752,6 +758,11 @@ void stompBox::emitValueChanged(QString hex0, QString hex1, QString hex2, QStrin
                 emit dialogUpdateSignal();
                 //sysxIO->setFileSource(hex0, hex1, hex2, hex3, valueHex);
             };
+            // Notify QML so power buttons and controls stay in sync
+            bool ok2;
+            int intVal = valueHex.toInt(&ok2, 16);
+            emit ParameterBridge::Instance()->parameterChanged(hex0, hex1, hex2, hex3, intVal);
+
             Midi items = midiTable->getMidiMap(hex0, hex1, hex2, hex3);
             valueName = items.customdesc;
             valueStr = midiTable->getValue(hex0, hex1, hex2, hex3, valueHex);

@@ -60,6 +60,7 @@ public:
     const QList<QString>& chainStompNames() const { return stompNames; }
     const QList<QPoint>& chainFxPos() const { return fxPos; }
     const QList<int>& chainFxOrder() const { return fx; }
+    editWindow* currentEditDialog() const { return editDialog; }
 
     // Per-step layout trace for diagnostics
     struct ChainStep {

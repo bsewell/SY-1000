@@ -24,7 +24,7 @@
 #include <QDataStream>
 #include <QByteArray>
 #include <QMessageBox>
-#include "tsl_translation.h"
+#include "tsl_SY300_translation.h"
 #include "fileDialog.h"
 #include "globalVariables.h"
 #include "MidiTable.h"

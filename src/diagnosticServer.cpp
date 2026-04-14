@@ -9,6 +9,7 @@
 #include "patchListModel.h"
 #include "floorBoard.h"
 #include "stompBox.h"
+#include "chainLayout.h"
 #include <QApplication>
 #include <QWidget>
 #include <QScreen>
@@ -2108,18 +2109,18 @@ QJsonObject DiagnosticServer::cmdChainPositions()
         chainOrder.append(pos);
     }
 
-    // Layout constants for diagnostic analysis
-    const int instStartX = qRound(15*ratio);
-    const int instWidth = qRound(192.0*ratio/2.4);
-    const int touchGap = qRound(15*ratio);
+    // Layout constants for diagnostic analysis — use centralized values from chainLayout.h
+    const int instStartX = qRound(kInstStartX*ratio);
+    const int instWidth = qRound(kInstImageW*ratio/kFlowBlockScale);
+    const int touchGap = qRound(kTouchGap*ratio);
     const int firstFlowX = instStartX + instWidth + touchGap;
-    const int flowStep = qRound(55.0*ratio);  // must match floorBoard::update_structure
+    const int flowStep = qRound(kFlowStep*ratio);
     QJsonObject layoutConsts;
     // Derive the layout offset from Inst1's actual position
     // In initStomps: inst1 x = offset + int(15*ratio)
     int derivedOffset = 0;
     if (floor->chainStompBoxes().size() > 1 && floor->chainStompBoxes().at(1))
-        derivedOffset = floor->chainStompBoxes().at(1)->pos().x() - static_cast<int>(15*ratio);
+        derivedOffset = floor->chainStompBoxes().at(1)->pos().x() - qRound(kInstStartX*ratio);
     layoutConsts["offset"] = derivedOffset;
     layoutConsts["instStartX"] = instStartX;
     layoutConsts["instWidth"] = instWidth;

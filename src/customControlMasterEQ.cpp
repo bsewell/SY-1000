@@ -67,7 +67,7 @@ customControlMasterEQ::customControlMasterEQ(QWidget *parent,
     this->display_1->setFixedWidth(lenght);
 
     QVBoxLayout *knob_1Layout = new QVBoxLayout;
-    knob_1Layout->setMargin(0);
+    knob_1Layout->setContentsMargins(0, 0, 0, 0);
     knob_1Layout->setSpacing(0);
     knob_1Layout->addWidget(this->label_1, 0, Qt::AlignCenter);
     knob_1Layout->addWidget(this->knob_1, 0, Qt::AlignCenter);
@@ -89,7 +89,7 @@ customControlMasterEQ::customControlMasterEQ(QWidget *parent,
     this->display_2->setFixedWidth(lenght);
 
     QVBoxLayout *knob_2Layout = new QVBoxLayout;
-    knob_2Layout->setMargin(0);
+    knob_2Layout->setContentsMargins(0, 0, 0, 0);
     knob_2Layout->setSpacing(0);
     knob_2Layout->addWidget(this->label_2, 0, Qt::AlignCenter);
     knob_2Layout->addWidget(this->knob_2, 0, Qt::AlignCenter);
@@ -111,7 +111,7 @@ customControlMasterEQ::customControlMasterEQ(QWidget *parent,
     this->display_3->setFixedWidth(lenght);
 
     QVBoxLayout *knob_3Layout = new QVBoxLayout;
-    knob_3Layout->setMargin(0);
+    knob_3Layout->setContentsMargins(0, 0, 0, 0);
     knob_3Layout->setSpacing(0);
     knob_3Layout->addWidget(this->label_3, 0, Qt::AlignCenter);
     knob_3Layout->addWidget(this->knob_3, 0, Qt::AlignCenter);
@@ -133,7 +133,7 @@ customControlMasterEQ::customControlMasterEQ(QWidget *parent,
     this->display_4->setFixedWidth(lenght);
 
     QVBoxLayout *knob_4Layout = new QVBoxLayout;
-    knob_4Layout->setMargin(0);
+    knob_4Layout->setContentsMargins(0, 0, 0, 0);
     knob_4Layout->setSpacing(0);
     knob_4Layout->addWidget(this->label_4, 0, Qt::AlignCenter);
     knob_4Layout->addWidget(this->knob_4, 0, Qt::AlignCenter);
@@ -155,7 +155,7 @@ customControlMasterEQ::customControlMasterEQ(QWidget *parent,
     this->display_5->setFixedWidth(lenght);
 
     QVBoxLayout *knob_5Layout = new QVBoxLayout;
-    knob_5Layout->setMargin(0);
+    knob_5Layout->setContentsMargins(0, 0, 0, 0);
     knob_5Layout->setSpacing(0);
     knob_5Layout->addWidget(this->label_5, 0, Qt::AlignCenter);
     knob_5Layout->addWidget(this->knob_5, 0, Qt::AlignCenter);
@@ -177,7 +177,7 @@ customControlMasterEQ::customControlMasterEQ(QWidget *parent,
     this->display_6->setFixedWidth(lenght);
 
     QVBoxLayout *knob_6Layout = new QVBoxLayout;
-    knob_6Layout->setMargin(0);
+    knob_6Layout->setContentsMargins(0, 0, 0, 0);
     knob_6Layout->setSpacing(0);
     knob_6Layout->addWidget(this->label_6, 0, Qt::AlignCenter);
     knob_6Layout->addWidget(this->knob_6, 0, Qt::AlignCenter);
@@ -186,7 +186,7 @@ customControlMasterEQ::customControlMasterEQ(QWidget *parent,
 
 
     QHBoxLayout *knobLayout = new QHBoxLayout;
-    knobLayout->setMargin(0);
+    knobLayout->setContentsMargins(0, 0, 0, 0);
     knobLayout->setSpacing(10);
     knobLayout->addLayout(knob_1Layout);  //LowGain
     knobLayout->addLayout(knob_2Layout);  //MidFreq
@@ -201,7 +201,7 @@ customControlMasterEQ::customControlMasterEQ(QWidget *parent,
     this->frame->setMinimumSize(QSize(500, 180));
 
     QVBoxLayout *frameLayout = new QVBoxLayout;
-    frameLayout->setMargin(0);
+    frameLayout->setContentsMargins(0, 0, 0, 0);
     frameLayout->setSpacing(10);
     frameLayout->addWidget(this->frame, 0, Qt::AlignCenter);
     frameLayout->addLayout(knobLayout);

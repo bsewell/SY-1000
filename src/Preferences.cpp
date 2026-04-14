@@ -49,16 +49,27 @@ Preferences::Preferences()
 
     QString buildVersion = this->getPreferences("General", "Application", "version");
 
+    qDebug() << "Preferences: file path =" << preferencesFilePath();
+    qDebug() << "Preferences: build version =" << buildVersion;
+
     if(!QFile(preferencesFilePath()).exists())
     {
+        qDebug() << "Preferences: NO user file, using defaults";
         loadPreferences(":preferences.xml.dist");
     }
     else
     {
         loadPreferences(preferencesFilePath());
-        if(this->getPreferences("General", "Application", "version")!=buildVersion)
+        QString savedVersion = this->getPreferences("General", "Application", "version");
+        QString savedCCIn = this->getPreferences("Midi", "CCIn", "name");
+        qDebug() << "Preferences: saved version =" << savedVersion << "CCIn =" << savedCCIn;
+        if(savedVersion != buildVersion)
         {
-            loadPreferences(":preferences.xml.dist");
+            // Version changed: only update the version stamp, keep user settings.
+            this->setPreferences("General", "Application", "version", buildVersion);
+            qDebug() << "Preferences: version updated to" << buildVersion << "(user settings preserved)";
+            // Immediately save so it doesn't get lost
+            savePreferences();
         };
     };
 }

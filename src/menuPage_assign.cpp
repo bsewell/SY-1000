@@ -46,28 +46,28 @@ void menuPage_assign::setEditPages()
 	editDetails()->page()->addStackControl();
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 1");
-	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "20", "middle", Qt::AlignCenter);
+	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "20", "void", "middle", Qt::AlignCenter);
 	editDetails()->page()->addGroupBox(0, 1, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 2");
-	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "30", "middle", Qt::AlignCenter);
+	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "30", "void", "middle", Qt::AlignCenter);
 	editDetails()->page()->addGroupBox(0, 2, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 3");
-	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "40", "middle", Qt::AlignCenter);
+	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "40", "void", "middle", Qt::AlignCenter);
 	editDetails()->page()->addGroupBox(0, 3, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 4");
-	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "50", "middle", Qt::AlignCenter);
+	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "50", "void", "middle", Qt::AlignCenter);
 	editDetails()->page()->addGroupBox(0, 4, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 5");
-	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "60", "middle", Qt::AlignCenter);
+	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "60", "void", "middle", Qt::AlignCenter);
 	editDetails()->page()->addGroupBox(0, 5, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 6");
-	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "70", "middle", Qt::AlignCenter);
+	editDetails()->page()->addSwitch(0, 0, 1, 1, "0B", "00", "70", "void", "middle", Qt::AlignCenter);
 	editDetails()->page()->addGroupBox(0, 6, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 7");
-	editDetails()->page()->addSwitch(0, 0, 1, 1, "0C", "00", "00", "middle", Qt::AlignCenter);
+	editDetails()->page()->addSwitch(0, 0, 1, 1, "0C", "00", "00", "void", "middle", Qt::AlignCenter);
 	editDetails()->page()->addGroupBox(0, 7, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 8");
-	editDetails()->page()->addSwitch(0, 0, 1, 1, "0C", "00", "10", "middle", Qt::AlignCenter);
+	editDetails()->page()->addSwitch(0, 0, 1, 1, "0C", "00", "10", "void", "middle", Qt::AlignCenter);
 	editDetails()->page()->addGroupBox(0, 8, 1, 1);
 	
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
@@ -79,7 +79,7 @@ void menuPage_assign::setEditPages()
  
   editDetails()->page()->newStackField(0);
   editDetails()->page()->newGroupBox("Assign 1 Target");
-	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "21", "target","target", 120); // Target
+	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "21", "void", "target","target", 120); // Target
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 1 Source");
 	editDetails()->page()->newStackControl(1);
@@ -109,13 +109,13 @@ void menuPage_assign::setEditPages()
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(1);
   editDetails()->page()->newGroupBox("Assign 1 Wave Pedal");
-	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "2E", "normal","right", 105);// Wave Form Rate
+	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "2E", "void", "normal","right", 105);// Wave Form Rate
 	editDetails()->page()->addComboBox(1, 1, 1, 1, "0B", "00", "2F");                    // Wave Form
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(1);
   editDetails()->page()->newGroupBox("Input");
-	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "normal","right", 85);
+	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "void", "normal","right", 85);
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);	
   editDetails()->page()->addStackField();
 	
@@ -123,7 +123,7 @@ void menuPage_assign::setEditPages()
 	
 	editDetails()->page()->newStackField(0);
 	editDetails()->page()->newGroupBox("Assign 2 Target");
-	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "31", "target","target", 120); // Target
+	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "31", "void", "target","target", 120); // Target
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 2 Source");
 	editDetails()->page()->newStackControl(2);
@@ -153,20 +153,20 @@ void menuPage_assign::setEditPages()
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(2);
   editDetails()->page()->newGroupBox("Assign 2 Wave Pedal");
-	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "3E", "normal","right", 105);// Wave Form Rate
+	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "3E", "void", "normal","right", 105);// Wave Form Rate
 	editDetails()->page()->addComboBox(1, 1, 1, 1, "0B", "00", "3F");                    // Wave Form
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(2);
   editDetails()->page()->newGroupBox("Input");
-	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "normal","right", 85);
+	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "void", "normal","right", 85);
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);	
   editDetails()->page()->addStackField();
   
 	
 	editDetails()->page()->newStackField(0);
 	editDetails()->page()->newGroupBox("Assign 3 Target");
-	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "41", "target","target", 120); // Target
+	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "41", "void", "target","target", 120); // Target
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 3 Source");
 	editDetails()->page()->newStackControl(3);
@@ -196,20 +196,20 @@ void menuPage_assign::setEditPages()
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(3);
   editDetails()->page()->newGroupBox("Assign 3 Wave Pedal");
-	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "4E", "normal","right", 105);// Wave Form Rate
+	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "4E", "void", "normal","right", 105);// Wave Form Rate
 	editDetails()->page()->addComboBox(1, 1, 1, 1, "0B", "00", "4F");                    // Wave Form
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(3);
   editDetails()->page()->newGroupBox("Input");
-	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "normal","right", 85);
+	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "void", "normal","right", 85);
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);	
   editDetails()->page()->addStackField();
   
 	
 	editDetails()->page()->newStackField(0);
 	editDetails()->page()->newGroupBox("Assign 4 Target");
-	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "51", "target","target", 120); // Target
+	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "51", "void", "target","target", 120); // Target
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 4 Source");
 	editDetails()->page()->newStackControl(4);
@@ -239,19 +239,19 @@ void menuPage_assign::setEditPages()
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(4);
   editDetails()->page()->newGroupBox("Assign 4 Wave Pedal");
-	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "5E", "normal","right", 105);// Wave Form Rate
+	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "5E", "void", "normal","right", 105);// Wave Form Rate
 	editDetails()->page()->addComboBox(1, 1, 1, 1, "0B", "00", "5F");                    // Wave Form
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(4);
   editDetails()->page()->newGroupBox("Input");
-	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "normal","right", 85);
+	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "void", "normal","right", 85);
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);	
   editDetails()->page()->addStackField();
 	
 	editDetails()->page()->newStackField(0);
 	editDetails()->page()->newGroupBox("Assign 5 Target");
-	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "61", "target","target", 120); // Target
+	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "61", "void", "target","target", 120); // Target
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 5 Source");
 	editDetails()->page()->newStackControl(5);
@@ -281,20 +281,20 @@ void menuPage_assign::setEditPages()
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(5);
   editDetails()->page()->newGroupBox("Assign 5 Wave Pedal");
-	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "6E", "normal","right", 105);// Wave Form Rate
+	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "6E", "void", "normal","right", 105);// Wave Form Rate
 	editDetails()->page()->addComboBox(1, 1, 1, 1, "0B", "00", "6F");                    // Wave Form
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(5);
   editDetails()->page()->newGroupBox("Input");
-	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "normal","right", 85);
+	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "void", "normal","right", 85);
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);	
   editDetails()->page()->addStackField();
   
 	
 	editDetails()->page()->newStackField(0);
 	editDetails()->page()->newGroupBox("Assign 6 Target");
-	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "71", "target","target", 120); // Target
+	editDetails()->page()->addTarget(0, 0, 1, 3, "0B", "00", "71", "void", "target","target", 120); // Target
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 6 Source");
 	editDetails()->page()->newStackControl(6);
@@ -324,20 +324,20 @@ void menuPage_assign::setEditPages()
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(6);
   editDetails()->page()->newGroupBox("Assign 6 Wave Pedal");
-	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "7E", "normal","right", 105);// Wave Form Rate
+	editDetails()->page()->addKnob(1, 0, 1, 1, "0B", "00", "7E", "void", "normal","right", 105);// Wave Form Rate
 	editDetails()->page()->addComboBox(1, 1, 1, 1, "0B", "00", "7F");                    // Wave Form
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(6);
   editDetails()->page()->newGroupBox("Input");
-	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "normal","right", 85);
+	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "void", "normal","right", 85);
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);	
   editDetails()->page()->addStackField();
   
 
 	editDetails()->page()->newStackField(0);
 	editDetails()->page()->newGroupBox("Assign 7 Target");
-	editDetails()->page()->addTarget(0, 0, 1, 3, "0C", "00", "01", "target","target", 120); // Target
+	editDetails()->page()->addTarget(0, 0, 1, 3, "0C", "00", "01", "void", "target","target", 120); // Target
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 7 Source");
 	editDetails()->page()->newStackControl(7);
@@ -367,13 +367,13 @@ void menuPage_assign::setEditPages()
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(7);
   editDetails()->page()->newGroupBox("Assign 7 Wave Pedal");
-	editDetails()->page()->addKnob(1, 0, 1, 1, "0C", "00", "0E", "normal","right", 105);// Wave Form Rate
+	editDetails()->page()->addKnob(1, 0, 1, 1, "0C", "00", "0E", "void", "normal","right", 105);// Wave Form Rate
 	editDetails()->page()->addComboBox(1, 1, 1, 1, "0C", "00", "0F");                    // Wave Form
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(7);
   editDetails()->page()->newGroupBox("Input");
-	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "normal","right", 85);
+	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "void", "normal","right", 85);
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);	
   editDetails()->page()->addStackField();
   
@@ -381,7 +381,7 @@ void menuPage_assign::setEditPages()
 	
 	editDetails()->page()->newStackField(0);
 	editDetails()->page()->newGroupBox("Assign 8 Target");
-	editDetails()->page()->addTarget(0, 0, 1, 3, "0C", "00", "11", "target","target", 120); // Target
+	editDetails()->page()->addTarget(0, 0, 1, 3, "0C", "00", "11", "void", "target","target", 120); // Target
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
 	editDetails()->page()->newGroupBox("Assign 8 Source");
 	editDetails()->page()->newStackControl(8);
@@ -411,13 +411,13 @@ void menuPage_assign::setEditPages()
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(8);
   editDetails()->page()->newGroupBox("Assign 8 Wave Pedal");
-	editDetails()->page()->addKnob(1, 0, 1, 1, "0C", "00", "1E", "normal","right", 105);// Wave Form Rate
+	editDetails()->page()->addKnob(1, 0, 1, 1, "0C", "00", "1E", "void", "normal","right", 105);// Wave Form Rate
 	editDetails()->page()->addComboBox(1, 1, 1, 1, "0C", "00", "1F");                    // Wave Form
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);
   editDetails()->page()->addStackField();
 	editDetails()->page()->newStackField(8);
   editDetails()->page()->newGroupBox("Input");
-	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "normal","right", 85);
+	editDetails()->page()->addKnob(0, 0, 1, 1, "0C", "00", "20", "void", "normal","right", 85);
 	editDetails()->page()->addGroupBox(0, 0, 1, 1);	
   editDetails()->page()->addStackField();
   

@@ -6,9 +6,7 @@ Rectangle {
     property string hex1: "00"
     property string hex2: "16"
 
-    readonly property int comboWidth: 340
-
-    Flickable {
+Flickable {
         anchors.fill: parent
         anchors.margins: SyTheme.panelPadding
         contentWidth: col.width
@@ -21,7 +19,7 @@ Rectangle {
             spacing: SyTheme.gridRowSpacing
 
             // Wave Type dropdown
-            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"; implicitWidth: root.comboWidth }
+            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04" }
 
             Grid {
                 columns: 8
@@ -45,8 +43,6 @@ Rectangle {
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "10" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "11" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "12" }
-                SySwitch { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "13" }
-                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "17"; implicitWidth: 100 }
             }
         }
     }

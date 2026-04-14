@@ -38,6 +38,7 @@ Column {
             SyComboBox {
                 id: modeCombo
                 hex0: root.hex0; hex1: root.hex1; hex2: root.hex2; hex3: root.hex3
+                showLabel: false
                 anchors.verticalCenter: parent.verticalCenter
             }
         }

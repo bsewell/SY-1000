@@ -82,6 +82,7 @@ Rectangle {
                 SyComboBox {
                     id: fxTypeCombo
                     hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                    showLabel: false
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }

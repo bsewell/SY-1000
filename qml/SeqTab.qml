@@ -58,15 +58,12 @@ Rectangle {
 
                 SyComboBox {
                     hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3B"
-                    implicitWidth: 180
                 }
                 SyComboBox {
                     hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3C"
-                    implicitWidth: 180
                 }
                 SyComboBox {
                     hex0: "10"; hex1: root.hex1; hex2: root.hex2a; hex3: "3D"
-                    implicitWidth: 180
                 }
                 FilmstripKnob {
                     hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "3E"

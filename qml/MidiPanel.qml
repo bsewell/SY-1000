@@ -37,9 +37,9 @@ Rectangle {
             width: parent.width; height: SyTheme.modeSelectorH
 
             Repeater {
-                model: ["SETTING 1", "SETTING 2"]
+                model: ["SETTING 1", "SETTING 2", "CC MAP"]
                 Rectangle {
-                    width: root.width / 2; height: SyTheme.modeSelectorH
+                    width: root.width / 3; height: SyTheme.modeSelectorH
                     color: "transparent"
                     Rectangle {
                         width: parent.width; height: 2
@@ -63,7 +63,9 @@ Rectangle {
         Loader {
             width: parent.width
             height: parent.height - SyTheme.headerHeight - 1 - SyTheme.modeSelectorH - 1
-            sourceComponent: root.currentTab === 0 ? setting1 : setting2
+            sourceComponent: root.currentTab === 0 ? setting1
+                           : root.currentTab === 1 ? setting2
+                           : ccMapTab
         }
     }
 
@@ -172,5 +174,11 @@ Rectangle {
                 }
             }
         }
+    }
+
+    // ── CC MAP: External controller mapping ──────────────────────────────
+    Component {
+        id: ccMapTab
+        CCMapPanel { }
     }
 }

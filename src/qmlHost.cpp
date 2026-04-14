@@ -1,6 +1,7 @@
 #include "qmlHost.h"
 #include "parameterBridge.h"
 #include "patchListModel.h"
+#include "midiCCHandler.h"
 #include <QQmlEngine>
 #include <QQuickItem>
 #include <QUrl>
@@ -76,8 +77,10 @@ void QmlHost::setupContext()
 {
     rootContext()->setContextProperty("paramBridge", ParameterBridge::Instance());
     rootContext()->setContextProperty("patchListModel", PatchListModel::Instance());
+    rootContext()->setContextProperty("ccHandler", MidiCCHandler::Instance());
     logToFile("Context property 'paramBridge' set");
     logToFile("Context property 'patchListModel' set");
+    logToFile("Context property 'ccHandler' set");
 }
 
 void QmlHost::setInstHex(const QString &hex1, const QString &hex2)

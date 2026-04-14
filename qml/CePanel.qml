@@ -15,12 +15,11 @@ SyPanelBase {
         ceMode = paramBridge.getValue("10", hex1, hex2, "01")
     }
 
-    Connections {
-        target: modeCombo
-        function onValueChanged() { panel.ceMode = modeCombo.value }
-    }
-
     Column {
+        Connections {
+            target: modeCombo
+            function onValueChanged() { panel.ceMode = modeCombo.value }
+        }
         width: parent.width
         spacing: 0
 

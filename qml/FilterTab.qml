@@ -6,9 +6,7 @@ Rectangle {
     property string hex1: "00"
     property string hex2: "16"
 
-    readonly property int comboWidth: 340
-
-    Flickable {
+Flickable {
         anchors.fill: parent
         anchors.margins: SyTheme.panelPadding
         contentWidth: col.width
@@ -20,9 +18,12 @@ Rectangle {
             id: col
             spacing: 6
 
-            // Stacked dropdowns — same width, left-aligned
-            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1D"; implicitWidth: root.comboWidth }
-            SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1E"; implicitWidth: root.comboWidth }
+            // TYPE and SLOPE dropdowns side by side
+            Row {
+                spacing: SyTheme.gridColSpacing
+                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1D" }
+                SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "1E" }
+            }
 
             Item { width: 1; height: 4 }
 

@@ -21,7 +21,6 @@ Rectangle {
             // Shape dropdown
             SyComboBox {
                 hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "28"
-                implicitWidth: 340
             }
 
             Grid {
@@ -38,9 +37,10 @@ Rectangle {
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "2D" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "2E" }
 
-                // Row 1: Fade Time, Sync
+                // Row 1: Fade Time, Sync, BPM
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "2F" }
                 FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "30" }
+                FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: "12"; hex3: "3E" }
             }
         }
     }

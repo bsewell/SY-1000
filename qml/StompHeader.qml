@@ -1,7 +1,7 @@
 import QtQuick
 
 // Shared header bar for all stomp/effect panels
-// Matches Boss Tone Studio: power icon (⏻) + title + VARIATION dropdown
+// Title + VARIATION dropdown (power is controlled via signal chain tile click only)
 Item {
     id: root
 
@@ -37,38 +37,32 @@ Item {
         anchors.fill: parent
         color: Qt.rgba(root.accentColor.r * 0.35, root.accentColor.g * 0.35, root.accentColor.b * 0.35, 1.0)
 
-        // Power icon button
-        Item {
+        // Power button
+        Rectangle {
             id: powerBtn
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: 8
             anchors.verticalCenter: parent.verticalCenter
-            width: 32
-            height: 32
+            width: 28; height: 28
+            radius: 14
+            color: "transparent"
+            border.color: root.powerValue > 0 ? root.accentColor : SyTheme.textSection
+            border.width: 1.5
 
-            Rectangle {
+            Text {
                 anchors.centerIn: parent
-                width: 28
-                height: 28
-                radius: 14
-                color: "transparent"
-                border.color: root.powerValue !== 0 ? root.accentColor : SyTheme.textSection
-                border.width: 2
-
-                Text {
-                    anchors.centerIn: parent
-                    text: "\u23FB"
-                    color: root.powerValue !== 0 ? root.accentColor : SyTheme.textSection
-                    font.pixelSize: 14
-                }
+                text: "\u23FB"
+                color: root.powerValue > 0 ? root.accentColor : SyTheme.textSection
+                font.pixelSize: 14
+                font.family: SyTheme.fontFamily
             }
 
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
-                    root.powerValue = root.powerValue !== 0 ? 0 : 1
-                    paramBridge.setValue(root.powerHex0, root.powerHex1, root.powerHex2, root.powerHex3, root.powerValue)
+                    var newVal = root.powerValue > 0 ? 0 : 1
+                    paramBridge.setValue(root.powerHex0, root.powerHex1, root.powerHex2, root.powerHex3, newVal)
                 }
             }
         }

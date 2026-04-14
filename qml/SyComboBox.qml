@@ -12,7 +12,26 @@ Item {
     property int value: 0
     property var options: []
 
-    implicitWidth: 380
+    // Measure the widest option label to auto-size the dropdown
+    TextMetrics {
+        id: optionMetrics
+        font.pixelSize: SyTheme.fontLabel
+        font.family: SyTheme.fontFamily
+    }
+
+    property real maxOptionWidth: {
+        var maxW = 60   // minimum so empty combos aren't tiny
+        for (var i = 0; i < options.length; i++) {
+            optionMetrics.text = options[i].label
+            if (optionMetrics.width > maxW) maxW = optionMetrics.width
+        }
+        return maxW
+    }
+
+    // 8px left pad + text + 20px arrow + 8px right pad
+    property real comboWidth: maxOptionWidth + 36
+
+    implicitWidth: showLabel ? (labelWidth + 4 + comboWidth) : comboWidth
     implicitHeight: 28
 
     Component.onCompleted: {
@@ -129,24 +148,33 @@ Item {
         }
     }
 
-    property int labelWidth: 140
+    property bool showLabel: true
+
+    // Measure label text width independently (avoids binding loop with Text element)
+    TextMetrics {
+        id: labelMetrics
+        font.pixelSize: SyTheme.fontLabel
+        font.family: SyTheme.fontFamily
+        text: root.label.toUpperCase()
+    }
+
+    property int labelWidth: showLabel ? (labelMetrics.width + 8) : 0
 
     Text {
         id: labelText
-        width: root.labelWidth
+        visible: root.showLabel
         anchors.verticalCenter: parent.verticalCenter
         text: root.label
         color: SyTheme.textDimmed
         font.pixelSize: SyTheme.fontLabel
         font.family: SyTheme.fontFamily
         font.capitalization: Font.AllUppercase
-        elide: Text.ElideRight
     }
 
     Rectangle {
         id: comboButton
-        x: root.labelWidth + 4
-        width: root.width - x
+        x: root.showLabel ? (root.labelWidth + 4) : 0
+        width: root.comboWidth
         height: 26
         radius: 4
         color: SyTheme.bgControl

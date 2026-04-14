@@ -975,7 +975,7 @@ QString SysxIO::getRequestName()
 *************************************************************************/
 QString SysxIO::getPatchChangeMsg(int bank, int patch)
 {
-    int bankOffset = ((bank - 1) * (patchPerBank+1)) + (patch - 1);
+    int bankOffset = ((bank - 1) * patchPerBank) + (patch - 1);
     int bankSize = 128;
     int bankMsbNum = int(bankOffset / bankSize);
     int programChangeNum = bankOffset - (bankSize * bankMsbNum);

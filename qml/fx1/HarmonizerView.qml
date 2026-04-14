@@ -1,10 +1,17 @@
 import QtQuick
 import ".."
 
+// Harmonizer complex view — matches Boss Tone Studio layout
+// Row 0: VOICE selector bar
+// Flow: HR1 controls (Harmony combo, Level, Pre-Delay, Feedback)
+// Flow: HR2 controls (Harmony combo, Level, Pre-Delay) — visible for 2-voice modes
+// Flow: Shared controls (Direct Level)
+// Section: User Harmony 1 — 12 note combos (visible when HR1 != User)
+// Section: User Harmony 2 — 12 note combos (visible when HR2 != User)
 Item {
     id: root
     property string hex1: "00"
-    property string hex2: "4D"  // guitar="4D", bass="4A"
+    property string hex2: "4D"
 
     property int harmMode: 0
 
@@ -17,135 +24,140 @@ Item {
         function onValueChanged() { root.harmMode = harmModeCombo.value }
     }
 
-    Flickable {
+    Column {
         anchors.fill: parent
-        contentHeight: contentCol.height
-        clip: true
+        spacing: 0
 
-        Column {
-            id: contentCol
+        // VOICE selector bar
+        Rectangle {
             width: parent.width
-            spacing: 8
-            topPadding: 12
+            height: SyTheme.modeSelectorH
+            color: SyTheme.bgControl
 
-            // Voice config selector
             Row {
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 16
+                anchors.fill: parent
+                anchors.leftMargin: 12
+                spacing: 8
+
+                Text {
+                    width: SyTheme.selectorLabelW
+                    text: "VOICE"
+                    color: SyTheme.textDimmed
+                    font.pixelSize: SyTheme.fontLabel
+                    font.family: SyTheme.fontFamily
+                    font.capitalization: Font.AllUppercase
+                    anchors.verticalCenter: parent.verticalCenter
+                }
 
                 SyComboBox {
                     id: harmModeCombo
                     hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "00"
+                    labelWidth: 0
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
+        }
 
-            Rectangle { width: parent.width - 24; height: 1; color: SyTheme.divider; anchors.horizontalCenter: parent.horizontalCenter }
+        Rectangle { width: parent.width; height: 1; color: SyTheme.divider }
 
-            // Mode 0: 1 voice
+        // Scrollable knob content
+        Flickable {
+            width: parent.width
+            height: parent.height - SyTheme.modeSelectorH - 1
+            contentHeight: knobCol.height + 2 * SyTheme.panelPadding
+            clip: true
+            interactive: contentHeight > height
+
             Column {
+                id: knobCol
                 width: parent.width
                 spacing: 8
-                visible: root.harmMode === 0
+                topPadding: SyTheme.panelPadding
 
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 12
-                    SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01" }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                }
-            }
+                // HR1 controls — always visible
+                Flow {
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
+                    spacing: SyTheme.flowSpacingSm
 
-            // Mode 1 or 2: 2 voices
-            Column {
-                width: parent.width
-                spacing: 8
-                visible: root.harmMode === 1 || root.harmMode === 2
-
-                // Voice 1
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 12
-                    SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01" }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "04"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
                 }
 
-                // Voice 2
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 12
-                    SyComboBox { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02" }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0B"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
+                // HR2 controls — visible for 2-voice modes (1 = 2 MONO, 2 = 2 STEREO)
+                Flow {
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
+                    spacing: SyTheme.flowSpacingSm
+                    visible: root.harmMode >= 1
+
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "02"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
+                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0B"; filmstrip: SyTheme.knobLargeSrc; frameSize: SyTheme.knobLarge }
                 }
 
-                // Shared
-                Row {
+                Rectangle { width: parent.width - 2 * SyTheme.panelPadding; height: 1; color: SyTheme.divider; x: SyTheme.panelPadding }
+
+                // User Harmony 1
+                Text {
+                    text: "USER HARMONY 1"
+                    color: SyTheme.textSection
+                    font.pixelSize: 10
+                    font.family: SyTheme.fontFamily
                     anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 12
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "08"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "03"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "0A"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
-                    FilmstripKnob { hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "09"; filmstrip: SyTheme.knobSmallSrc; frameSize: SyTheme.knobSmall }
                 }
-            }
 
-            Rectangle { width: parent.width - 24; height: 1; color: SyTheme.divider; anchors.horizontalCenter: parent.horizontalCenter }
+                Flow {
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
+                    spacing: 4
 
-            // User Harmony rows (visible when harmMode != "USER" which is value 29 decimal = 0x1D)
-            // User Harmony 1
-            Text {
-                text: "USER HARMONY 1"
-                color: SyTheme.textSection
-                font.pixelSize: 10
-                font.family: SyTheme.fontFamily
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-
-            Flow {
-                width: parent.width - 24
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 4
-
-                Repeater {
-                    model: 12
-                    SyComboBox {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2
-                        hex3: {
-                            var v = 0x0F + index
-                            var h = v.toString(16).toUpperCase()
-                            return h.length < 2 ? "0" + h : h
+                    Repeater {
+                        model: 12
+                        SyComboBox {
+                            hex0: "10"; hex1: root.hex1; hex2: root.hex2
+                            hex3: {
+                                var v = 0x0F + index
+                                var h = v.toString(16).toUpperCase()
+                                return h.length < 2 ? "0" + h : h
+                            }
+                            labelWidth: 0
+                            implicitWidth: 100
                         }
-                        implicitWidth: 60
                     }
                 }
-            }
 
-            // User Harmony 2
-            Text {
-                text: "USER HARMONY 2"
-                color: SyTheme.textSection
-                font.pixelSize: 10
-                font.family: SyTheme.fontFamily
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
+                // User Harmony 2
+                Text {
+                    text: "USER HARMONY 2"
+                    color: SyTheme.textSection
+                    font.pixelSize: 10
+                    font.family: SyTheme.fontFamily
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    visible: root.harmMode >= 1
+                }
 
-            Flow {
-                width: parent.width - 24
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 4
+                Flow {
+                    width: parent.width - 2 * SyTheme.panelPadding
+                    x: SyTheme.panelPadding
+                    spacing: 4
+                    visible: root.harmMode >= 1
 
-                Repeater {
-                    model: 12
-                    SyComboBox {
-                        hex0: "10"; hex1: root.hex1; hex2: root.hex2
-                        hex3: {
-                            var v = 0x1B + index
-                            var h = v.toString(16).toUpperCase()
-                            return h.length < 2 ? "0" + h : h
+                    Repeater {
+                        model: 12
+                        SyComboBox {
+                            hex0: "10"; hex1: root.hex1; hex2: root.hex2
+                            hex3: {
+                                var v = 0x1B + index
+                                var h = v.toString(16).toUpperCase()
+                                return h.length < 2 ? "0" + h : h
+                            }
+                            labelWidth: 0
+                            implicitWidth: 100
                         }
-                        implicitWidth: 60
                     }
                 }
             }

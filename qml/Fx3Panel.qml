@@ -69,6 +69,7 @@ Rectangle {
                 spacing: 8
 
                 Text {
+                    width: SyTheme.selectorLabelW
                     text: "FX TYPE"
                     color: SyTheme.textDimmed
                     font.pixelSize: SyTheme.fontLabel
@@ -80,6 +81,7 @@ Rectangle {
                 SyComboBox {
                     id: fxTypeCombo
                     hex0: "10"; hex1: root.hex1; hex2: root.hex2; hex3: "01"
+                    labelWidth: 0
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
@@ -116,39 +118,96 @@ Rectangle {
             property string currentHex1: root.typeEffectiveHex1(root.fxTypeIndex)
             property string currentHex2: root.typeEffectiveHex2(root.fxTypeIndex)
 
-            Flickable {
+            property int firstComboIdx: {
+                if (!controls) return -1
+                for (var i = 0; i < controls.length; i++) {
+                    if (controls[i].type === "combo") return i
+                }
+                return -1
+            }
+
+            Column {
                 anchors.fill: parent
-                contentWidth: controlFlow.width
-                contentHeight: controlFlow.height
-                clip: true
+                spacing: 0
 
-                Flow {
-                    id: controlFlow
-                    width: genericRoot.width - 24
-                    x: 12
-                    y: 16
-                    spacing: 16
+                Rectangle {
+                    width: parent.width
+                    height: genericRoot.firstComboIdx >= 0 ? SyTheme.modeSelectorH : 0
+                    visible: genericRoot.firstComboIdx >= 0
+                    color: SyTheme.bgControl
 
-                    Repeater {
-                        model: genericRoot.controls ? genericRoot.controls.length : 0
+                    Row {
+                        anchors.fill: parent
+                        anchors.leftMargin: SyTheme.panelPadding
+                        spacing: 8
 
-                        Loader {
-                            property var ctrl: genericRoot.controls[index]
-                            property string ctrlHex1: genericRoot.currentHex1
-                            property string ctrlHex2: genericRoot.currentHex2
+                        Text {
+                            id: promotedLabel3
+                            width: SyTheme.selectorLabelW
+                            text: promotedCombo3.label
+                            color: SyTheme.textDimmed
+                            font.pixelSize: SyTheme.fontLabel
+                            font.family: SyTheme.fontFamily
+                            font.capitalization: Font.AllUppercase
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
 
-                            sourceComponent: {
-                                if (!ctrl) return null
-                                switch (ctrl.type) {
-                                case "knob":
-                                case "dataknob":
-                                    return knobComponent
-                                case "combo":
-                                    return comboComponent
-                                case "switch":
-                                    return switchComponent
-                                default:
-                                    return null
+                        SyComboBox {
+                            id: promotedCombo3
+                            hex0: "10"
+                            hex1: genericRoot.currentHex1
+                            hex2: genericRoot.currentHex2
+                            hex3: genericRoot.firstComboIdx >= 0 ? genericRoot.controls[genericRoot.firstComboIdx].hex3 : "00"
+                            labelWidth: 0
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                    }
+                }
+
+                Rectangle {
+                    width: parent.width; height: 1; color: SyTheme.divider
+                    visible: genericRoot.firstComboIdx >= 0
+                }
+
+                Flickable {
+                    width: parent.width
+                    height: parent.height - (genericRoot.firstComboIdx >= 0 ? SyTheme.modeSelectorH + 1 : 0)
+                    contentHeight: controlFlow.height + 2 * SyTheme.panelPadding
+                    clip: true
+                    interactive: contentHeight > height
+
+                    Flow {
+                        id: controlFlow
+                        width: parent.width - 2 * SyTheme.panelPadding
+                        x: SyTheme.panelPadding
+                        y: SyTheme.panelPadding
+                        spacing: SyTheme.flowSpacingSm
+
+                        Repeater {
+                            model: genericRoot.controls ? genericRoot.controls.length : 0
+
+                            Loader {
+                                visible: !(index === genericRoot.firstComboIdx)
+                                width: visible ? implicitWidth : 0
+                                height: visible ? implicitHeight : 0
+
+                                property var ctrl: genericRoot.controls[index]
+                                property string ctrlHex1: genericRoot.currentHex1
+                                property string ctrlHex2: genericRoot.currentHex2
+
+                                sourceComponent: {
+                                    if (!ctrl || index === genericRoot.firstComboIdx) return null
+                                    switch (ctrl.type) {
+                                    case "knob":
+                                    case "dataknob":
+                                        return knobComponent
+                                    case "combo":
+                                        return comboComponent
+                                    case "switch":
+                                        return switchComponent
+                                    default:
+                                        return null
+                                    }
                                 }
                             }
                         }

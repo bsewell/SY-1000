@@ -121,14 +121,16 @@ function getControls(typeIndex) {
             { type: "knob",  hex3: "04" },
             { type: "knob",  hex3: "05" },
             { type: "knob",  hex3: "06" },
-            { type: "knob",  hex3: "07" }
+            { type: "knob",  hex3: "07" },
+            { type: "knob",  hex3: "08" }
         ];
     case 14: // Isolator
         return [
-            { type: "knob", hex3: "00" },
-            { type: "knob", hex3: "01" },
-            { type: "knob", hex3: "02" },
-            { type: "knob", hex3: "03" }
+            { type: "combo", hex3: "00" },
+            { type: "knob",  hex3: "01" },
+            { type: "knob",  hex3: "02" },
+            { type: "knob",  hex3: "03" },
+            { type: "knob",  hex3: "04" }
         ];
     case 15: // Limiter
         return [
@@ -164,7 +166,8 @@ function getControls(typeIndex) {
             { type: "knob",  hex3: "02" },
             { type: "knob",  hex3: "03" },
             { type: "knob",  hex3: "05" },
-            { type: "knob",  hex3: "04" }
+            { type: "knob",  hex3: "04" },
+            { type: "knob",  hex3: "06" }
         ];
     case 20: // Para EQ (simplified — knobs instead of graphical widget)
         return [
